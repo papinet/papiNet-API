@@ -1,3 +1,3 @@
 ##Active
 
-* Bengt Wentus  @bengtwentus
+* Bengt Wentus [@bengtwentus](https://github.com/bengtwentus
