@@ -1,3 +1,3 @@
 ## Active
 * Patrice Krakow [@patricekrakow](https://github.com/patricekrakow)
-* Lars Olofssson
+* Lars Olofsson [@larsolofsson](https://github.com/larsolofsson)
