@@ -4,5 +4,4 @@
 * Bengt Wentus [@bengtwentus](https://github.com/bengtwentus)
 * Al Ivan [@robertalivan](https://github.com/robertalivan)
 * Jens Nordenberg [@MrNordenberg](https://github.com/MrNordenberg)
-
-
+* Jakub Gaj [@jakubgaj-ip](https://github.com/jakubgaj-ip)
