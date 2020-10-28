@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://api.papinet.io
+    description: papiNet Mock Server
+paths:
+  '/orders':
+    get:
+      summary: List `orders`
+      description: Gets a paginated list of all `orders`.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfOrders'
+  '/orders/{orderId}':
+    get:
+      summary: Get an `orders`
+      description: Gets the details of an `order`, including a paginated list of all its lines.
+      parameters:
+        - in: path
+          name: orderId
+          schema:
+            type: integer
+          required: true
+          description: UUID of the `order` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrder'
+components:
+  schemas:
+    PaginationLinks:
+      type: object
+      required:
+        - next
+      properties:
+        first:
+          type: object
+          properties:
+            href:
+              type: string
+        prev:
+          type: object
+          properties:
+            href:
+              type: string
+        next:
+          type: object
+          properties:
+            href:
+              type: string
+        last:
+          type: object
+          properties:
+            href:
+              type: string
+    ListOfOrders:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+    GetOrder:
+      $ref: '#/components/schemas/Order'
+    Order:
+      type: object
+      properties: {}
