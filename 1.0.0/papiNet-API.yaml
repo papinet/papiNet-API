@@ -12,7 +12,9 @@ servers:
   - url: https://api.papinet.io
     description: papiNet Mock Server
 paths:
+
   '/orders':
+    # get /orders
     get:
       summary: List `orders`
       description: Gets a paginated list of all `orders`.
@@ -23,10 +25,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOfOrders'
+
+  
   '/orders/{orderId}':
+    # get /orders/{orderId}
     get:
-      summary: Get an `orders`
-      description: Gets the details of an `order`, including a paginated list of all its lines.
+      summary: Get an `order`
+      description: Gets the details of a specific `order`, including a paginated list of all its lines.
       parameters:
         - in: path
           name: orderId
@@ -41,8 +46,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetOrder'
+
 components:
   schemas:
+
     PaginationLinks:
       type: object
       required:
@@ -68,17 +75,347 @@ components:
           properties:
             href:
               type: string
+
     ListOfOrders:
       type: object
       properties:
         orders:
           type: array
           items:
-            $ref: '#/components/schemas/Order'
+            $ref: '#/components/schemas/OrderHeader'
         links:
           $ref: '#/components/schemas/PaginationLinks'
+
     GetOrder:
       $ref: '#/components/schemas/Order'
-    Order:
+
+    OrderHeader:
       type: object
-      properties: {}
+      required:
+        - id
+        - orderNumber
+        - orderStatus
+        - numberOfLineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+        orderStatus:
+          type: string
+          enum:
+            - ActiveFree
+            - ActiveHold
+            - Cancelled
+            - Complete
+            - Delayed
+            - FinalPlanning
+            - Invoiced
+            - Loaded
+            - NotReceived
+            - OrderLineConfirmed
+            - Packed
+            - PartiallyShipped
+            - Pending
+            - Planned
+            - ProductionComplete
+            - ProductionPlanned
+            - ProductionStarted
+            - Received
+            - ReservedInProductionPlanningSystem
+            - Scheduled
+            - ShipmentComplete
+            - ShipmentPlanned
+            - Shuttled
+            - Staged
+            - Transferred
+            - TransferredToMillSystem
+            - Unscheduled
+            - Unshipped
+        numberOfLineItems:
+          type: integer
+          minimum: 0
+
+    OrderLineItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderLineItemNumber:
+          type: string
+        orderLineItemStatus:
+          type: string
+          enum:
+            - Accepted
+            - Amended
+            - Cancelled
+            - Counterproposal
+            - New
+            - NoAction
+            - Original
+            - PartiallyAccepted
+            - Pending
+            - Rejected
+            - Replaced
+        quantities:
+          type: array
+          items:
+            type: object
+            properties:
+              quantityContext:
+                type: string
+                enum:
+                  - AgreedToClaimValue
+                  - Allocated
+                  - AllowableSpoilage
+                  - Balance
+                  - CalledOff
+                  - Consumed
+                  - Contracted
+                  - Credited
+                  - CutOff
+                  - Damaged
+                  - Delivered
+                  - Destroyed
+                  - Deviation
+                  - Forecasted
+                  - Freight
+                  - Handled
+                  - Imposed
+                  - Intransit
+                  - Invoiced
+                  - Loaded
+                  - Measured
+                  - MeasuredCorrected
+                  - OnHand
+                  - Ordered
+                  - Packed
+                  - Planned
+                  - Produced
+                  - Rejected
+                  - Released
+                  - Reorder
+                  - ReorderPoint
+                  - Reserved
+                  - Scrapped
+                  - Stored
+                  - Tested
+                  - Transported
+                  - Trimmed
+                  - Unloaded
+                  - UnspecifiedDamage
+                  - ValueClaimed
+                  - VendorSupplied
+                  - Wound
+                  - Wrapped
+              quantity:
+                type: object
+                properties:
+                  quantityValue:
+                    type: number
+                  quantityUOM:
+                    type: string
+                    enum:
+                      - AirDryMetricTonne
+                      - AirDryPercent
+                      - AirDryShortTon
+                      - Bale
+                      - BoardFoot
+                      - BookUnit
+                      - Box
+                      - Bundle
+                      - C-Size
+                      - Celsius
+                      - Centimeter
+                      - CentimeterPerSecond
+                      - Cord
+                      - CubicCentimeterPerGram
+                      - CubicCentimeterPerSecond
+                      - CubicFoot
+                      - CubicInchesPerSecond
+                      - CubicMeter
+                      - CubicMeterKilometer
+                      - CubicMeterPerKilogram
+                      - Cubit
+                      - Day
+                      - Decimeter
+                      - Degree
+                      - DegreesSchopperRiegler
+                      - DotsPerInch
+                      - Envelope
+                      - Fahrenheit
+                      - Foot
+                      - Gallon
+                      - Gauge
+                      - Gram
+                      - GramCentimeter
+                      - GramForce
+                      - GramPerCubicCentimeter
+                      - GramPerMeter
+                      - GramsPerSquareMeter
+                      - Hectare
+                      - Hour
+                      - HundredBoardFeet
+                      - HundredLinealFeet
+                      - HundredPound
+                      - HundredSquareFeet
+                      - ImpressionCount
+                      - Inch
+                      - JoulePerSquareMeter
+                      - Kilogram
+                      - KilogramCO2e
+                      - KilogramCO2ePerMetricTon
+                      - KilogramForcePerSquareCentimeter
+                      - KilogramForcePerCentimeter
+                      - KilogramPerCubicMeter
+                      - KilogramPerSquareMeter
+                      - KilogramsPerDay
+                      - KilogramsPerWeek
+                      - Kilometer
+                      - KiloNewton
+                      - KiloNewtonPerMeter
+                      - KiloPascal
+                      - KiloWattHour
+                      - KiloWattHourPerMetricTon
+                      - KnownBreaks
+                      - Layer
+                      - Leaves
+                      - LinearFoot
+                      - LinesPerInch
+                      - Litre
+                      - Load
+                      - Log
+                      - LogPile
+                      - LooseVolumeItem
+                      - MagazineUnit
+                      - Megabyte
+                      - MegaJoulePerKilogram
+                      - MegaWattHour
+                      - MegaWattHourPerMetricTon
+                      - Meter
+                      - MeterPerSecond
+                      - MetricTon
+                      - MetricTonKilometer
+                      - MetricTonsPerDay
+                      - MetricTonsPerHour
+                      - MetricTonsPerWeek
+                      - MicroMeterPerPascalSecond
+                      - Micron
+                      - MilligramKOHPerGram
+                      - MilligramPerKilogram
+                      - MillilitrePerGram
+                      - MilliLitersPerMinute
+                      - Millimeter
+                      - MillimeterPerMeter
+                      - MilliNewton
+                      - MilliNewtonMeter
+                      - MilliNewtonSquareMeterPerGram
+                      - Minute
+                      - Month
+                      - NanoMeter
+                      - Newton
+                      - NewtonMeterPerGram
+                      - None
+                      - Package
+                      - Page
+                      - PagesPerForm
+                      - PagesPerImpression
+                      - PagesPerInch
+                      - PalletUnit
+                      - PartsPerMillion
+                      - Percentage
+                      - PerThousand
+                      - pH
+                      - Picas
+                      - Piece
+                      - PiecesPerDay
+                      - PiecesPerHour
+                      - PiecesPerMeter
+                      - PixelsPerInch
+                      - Pound
+                      - PoundCO2e
+                      - PoundCO2ePerShortTon
+                      - PoundForce
+                      - PoundPerCubicFoot
+                      - PoundPerSixInchDiameter
+                      - PoundPerSquareInch
+                      - PoundsPerDay
+                      - PoundsPerHour
+                      - PoundsPerWeek
+                      - PulpUnit
+                      - Ream
+                      - Reel
+                      - Second
+                      - Set
+                      - Sheet
+                      - ShortTon
+                      - ShortTonsPerDay
+                      - ShortTonsPerHour
+                      - ShortTonsPerWeek
+                      - Signature
+                      - Skid
+                      - SquareDecimeter
+                      - SquareFeet
+                      - SquareInch
+                      - SquareMeter
+                      - SquareMeterPerKilogram
+                      - SquareMillimeterPerKilogram
+                      - SquareMillimeterPerSecond
+                      - TenKilometer
+                      - ThousandBoardFeet
+                      - ThousandLinealFeet
+                      - ThousandPieces
+                      - ThousandSquareCentimeters
+                      - ThousandSquareFeet
+                      - ThousandSquareInch
+                      - Ton
+                      - TonsPerHour
+                      - Unit
+                      - UnknownBreaks
+                      - Week
+                      - Yard
+                      - Year
+                  quantityType:
+                    type: string
+                    enum:
+                      - ActualVolume
+                      - AirDryWeight
+                      - Area
+                      - BoneDry
+                      - Count
+                      - Distance
+                      - GrossWeight
+                      - Energy
+                      - Length
+                      - LogisticsGrossWeight
+                      - LogisticsNetWeight
+                      - LogPileGrossVolume
+                      - LogPileVolume
+                      - NetWeight
+                      - NetNetWeight
+                      - NominalWeight
+                      - Percent
+                      - RunningLength
+                      - ShortLengthVolume
+                      - SolidWoodGrossVolume
+                      - SolidWoodVolume
+                      - TareWeight
+                      - Time
+                      - TippedLooseGrossVolume
+                      - TippedLooseVolume
+                      - Volume
+                      - WoodGrossVolume
+                      - WoodVolume
+
+    Order:
+      allOf:
+        - $ref: '#/components/schemas/OrderHeader'
+        - properties:
+            orderLineItems:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderLineItem'
+            links:
+              $ref: '#/components/schemas/PaginationLinks'
