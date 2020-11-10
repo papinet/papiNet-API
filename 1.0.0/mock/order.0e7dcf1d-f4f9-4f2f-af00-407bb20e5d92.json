@@ -1,0 +1,24 @@
+{
+  "id": "0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92",
+  "orderNumber": "123",
+  "orderStatus": "...",
+  "numberOfLineItems": 3,
+  "orderLineItems": [
+    {
+      "id": "5de4cc7b-8139-4805-9044-c86641453605",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Accepted",
+      "quantities": [
+        {
+          "quantityContext": "...",
+          "quantity": {
+            "quantityValue": 10,
+            "quantityUOM": "Kilogram",
+            "quantityType": "NetWeight"
+          }
+        }
+      ]
+    }
+  ],
+  "links": {}
+}

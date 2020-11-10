@@ -3,10 +3,10 @@ info:
   title: papiNet API
   contact:
     name: papiNet API CWG
-    url: https://github.com/papinet/papiNet-API
+    url: https://github.com/papinet/papiNet-API/issues
   license:
     name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
+    url: https://github.com/papinet/papiNet-API/blob/patrice-v1.0.0/LICENSE
   version: 1.0.0
 servers:
   - url: https://api.papinet.io
@@ -26,7 +26,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListOfOrders'
 
-  
   '/orders/{orderId}':
     # get /orders/{orderId}
     get:
