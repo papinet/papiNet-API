@@ -1,6 +1,6 @@
 'use strict'
-const source = require('./orders.json') // I am not sure this is the best way to load a JSON file...
 const express = require('express')
+const jsonfile = require('jsonfile')
 const PORT = 3000
 const HOST = '0.0.0.0'
 const app = express()
@@ -8,6 +8,8 @@ const app = express()
 // get /orders
 app.get('/orders', (req, res) => {
   let response = {};
+  const sourceFileName = './orders.json'
+  const source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
   let orderStatus = req.query.orderStatus || '*'
   let offset = parseInt(req.query.offset) || 0
   let limit = parseInt(req.query.limit)   || 2 // I may have to add a limit (?)
@@ -82,6 +84,7 @@ app.get('/orders', (req, res) => {
   */  
 
   res.status(200).send({
+    numberOfOrders: length,
     orders: resultFilteredAndSliced,
     links: {
       self: {
@@ -93,6 +96,96 @@ app.get('/orders', (req, res) => {
     }
   })
 
+})
+
+// get /orders/{orderId}
+app.get('/orders/:orderId', (req, res) => {
+  let response = {};
+  let orderId = req.params.orderId
+  const sourceFileName = `./order.${orderId}.json`
+  const source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
+  let offset = parseInt(req.query.offset) || 0
+  let limit = parseInt(req.query.limit)   || 2 // I may have to add a limit (?)
+  let end = offset + limit // Zero-based index **before** which to end extraction (not included).
+
+  response = {
+    id: source.id,
+    orderNumber: source.orderNumber,
+    orderStatus: source.orderStatus,
+    numberOfLineItems: source.numberOfLineItems,
+    orderLineItems: [],
+    links: {}
+  }
+
+  let length = source.orderLineItems.length
+
+  // Let's first verify that the (zero-based) offset is strictly less than the length, if NOT:
+  if (offset >= length) {
+    return res.status(400).json({
+      error: {
+        code: "d63d6ed0-132e-41b7-aedb-00c6213ee5b6",
+        message: `The (zero-based) offset = ${offset} is greather than or equal to the length = ${length}.`
+      },
+      correction: {
+        message: `You MUST provide an offset which is strictly less than the length = ${length}.`,
+        self: {
+          href: `/orders/${orderId}?offset=${length-1}&limit=1`
+        }
+      }
+    });
+  }
+
+  // Then, let's verify that the (zero-based not included) end is lower than or equal to the length, if NOT:
+  if (end > length) {
+    let correctedLimit = limit - (end - length) // see the example above
+    return res.status(400).json({
+      error: {
+        code: "81113d1d-957e-4628-be51-452fc9aaaa9c",
+        message: `The (zero-based not included) end = ${end}, which is calculated as the sum offset + limit = ${offset} + ${limit} = ${end}, is strictly greather than the length = ${length}.`
+      },
+      correction: {
+        message: `You MUST provide an offset = ${offset} and a limit = ${limit} for which the sum offset + limit = ${offset} + ${limit} = ${end} is lower than or equal to the length = ${length}.`,
+        self: {
+          href: `/orders/${orderId}?offset=${offset}&limit=${correctedLimit}`
+        }
+      }
+    });
+  }
+
+  let selfHref = `/orders/${orderId}?offset=${offset}&limit=${limit}`
+
+  let orderLineItemsSliced = source.orderLineItems.slice(offset, end)
+
+  response.orderLineItems = orderLineItemsSliced;
+
+  // If we can still continue with the same limit:
+  let nextOffset = end
+  let nextLimit = limit
+  let nextEnd = nextOffset + nextLimit
+  let nextHref = ''
+
+  // But, let's check that the NEXT (zero-based) offset is strictly less than the length, if NOT:
+  if (nextOffset >= length) {
+    nextHref = ''
+  } else {
+    // However, let's also check that the NEXT (zero-based not included) end is lower than or equal to the length, if NOT:
+    if (nextEnd > length) {
+      // we have to adjut the limit:
+      nextLimit = nextLimit - (nextEnd - length) // see the example below
+    }
+    nextHref = `/orders/${orderId}?offset=${nextOffset}&limit=${nextLimit}`
+  }
+
+  response.links = {
+    self: { 
+      href: selfHref
+    },
+    next: {
+      href: nextHref
+    }
+  }
+
+  res.status(200).send(response);
 })
 
 app.listen(PORT, HOST);

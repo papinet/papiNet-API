@@ -8,6 +8,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonfile": "^6.1.0"
   }
 }
