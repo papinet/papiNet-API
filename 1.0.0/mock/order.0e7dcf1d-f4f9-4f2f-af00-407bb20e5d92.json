@@ -16,6 +16,14 @@
             "quantityUOM": "Kilogram",
             "quantityType": "NetWeight"
           }
+        },
+        {
+          "quantityContext": "Delivered",
+          "quantity": {
+            "quantityValue": 5,
+            "quantityUOM": "Reel",
+            "quantityType": "Count"
+          }
         }
       ]
     },

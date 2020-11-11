@@ -1,6 +1,7 @@
 openapi: 3.0.3
 info:
   title: papiNet API
+  description: papinet API is a global initiative for the Forst and Paper supply chain.
   contact:
     name: papiNet API CWG
     url: https://github.com/papinet/papiNet-API/issues
@@ -18,6 +19,54 @@ paths:
     get:
       summary: List `orders`
       description: Gets a paginated list of all `orders`.
+      parameters:
+        - in: query
+          name: orderStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+            - ActiveFree
+            - ActiveHold
+            - Cancelled
+            - Complete
+            - Delayed
+            - FinalPlanning
+            - Invoiced
+            - Loaded
+            - NotReceived
+            - OrderLineConfirmed
+            - Packed
+            - PartiallyShipped
+            - Pending
+            - Planned
+            - ProductionComplete
+            - ProductionPlanned
+            - ProductionStarted
+            - Received
+            - ReservedInProductionPlanningSystem
+            - Scheduled
+            - ShipmentComplete
+            - ShipmentPlanned
+            - Shuttled
+            - Staged
+            - Transferred
+            - TransferredToMillSystem
+            - Unscheduled
+            - Unshipped
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The number of items to return
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -217,196 +266,49 @@ components:
                   quantityUOM:
                     type: string
                     enum:
-                      - AirDryMetricTonne
-                      - AirDryPercent
-                      - AirDryShortTon
                       - Bale
-                      - BoardFoot
-                      - BookUnit
                       - Box
-                      - Bundle
-                      - C-Size
-                      - Celsius
                       - Centimeter
-                      - CentimeterPerSecond
-                      - Cord
-                      - CubicCentimeterPerGram
-                      - CubicCentimeterPerSecond
-                      - CubicFoot
-                      - CubicInchesPerSecond
-                      - CubicMeter
-                      - CubicMeterKilometer
-                      - CubicMeterPerKilogram
-                      - Cubit
-                      - Day
                       - Decimeter
-                      - Degree
-                      - DegreesSchopperRiegler
-                      - DotsPerInch
-                      - Envelope
-                      - Fahrenheit
                       - Foot
-                      - Gallon
-                      - Gauge
                       - Gram
-                      - GramCentimeter
-                      - GramForce
-                      - GramPerCubicCentimeter
-                      - GramPerMeter
-                      - GramsPerSquareMeter
-                      - Hectare
-                      - Hour
-                      - HundredBoardFeet
-                      - HundredLinealFeet
                       - HundredPound
-                      - HundredSquareFeet
-                      - ImpressionCount
                       - Inch
-                      - JoulePerSquareMeter
                       - Kilogram
-                      - KilogramCO2e
-                      - KilogramCO2ePerMetricTon
-                      - KilogramForcePerSquareCentimeter
-                      - KilogramForcePerCentimeter
-                      - KilogramPerCubicMeter
-                      - KilogramPerSquareMeter
-                      - KilogramsPerDay
-                      - KilogramsPerWeek
                       - Kilometer
-                      - KiloNewton
-                      - KiloNewtonPerMeter
-                      - KiloPascal
-                      - KiloWattHour
-                      - KiloWattHourPerMetricTon
-                      - KnownBreaks
-                      - Layer
-                      - Leaves
-                      - LinearFoot
-                      - LinesPerInch
-                      - Litre
-                      - Load
-                      - Log
-                      - LogPile
-                      - LooseVolumeItem
-                      - MagazineUnit
-                      - Megabyte
-                      - MegaJoulePerKilogram
-                      - MegaWattHour
-                      - MegaWattHourPerMetricTon
                       - Meter
-                      - MeterPerSecond
                       - MetricTon
-                      - MetricTonKilometer
-                      - MetricTonsPerDay
-                      - MetricTonsPerHour
-                      - MetricTonsPerWeek
-                      - MicroMeterPerPascalSecond
-                      - Micron
-                      - MilligramKOHPerGram
-                      - MilligramPerKilogram
-                      - MillilitrePerGram
-                      - MilliLitersPerMinute
                       - Millimeter
-                      - MillimeterPerMeter
-                      - MilliNewton
-                      - MilliNewtonMeter
-                      - MilliNewtonSquareMeterPerGram
-                      - Minute
-                      - Month
-                      - NanoMeter
-                      - Newton
-                      - NewtonMeterPerGram
-                      - None
                       - Package
-                      - Page
-                      - PagesPerForm
-                      - PagesPerImpression
-                      - PagesPerInch
                       - PalletUnit
-                      - PartsPerMillion
-                      - Percentage
-                      - PerThousand
-                      - pH
-                      - Picas
                       - Piece
-                      - PiecesPerDay
-                      - PiecesPerHour
-                      - PiecesPerMeter
-                      - PixelsPerInch
                       - Pound
-                      - PoundCO2e
-                      - PoundCO2ePerShortTon
-                      - PoundForce
-                      - PoundPerCubicFoot
-                      - PoundPerSixInchDiameter
-                      - PoundPerSquareInch
-                      - PoundsPerDay
-                      - PoundsPerHour
-                      - PoundsPerWeek
                       - PulpUnit
                       - Ream
                       - Reel
-                      - Second
-                      - Set
                       - Sheet
                       - ShortTon
-                      - ShortTonsPerDay
-                      - ShortTonsPerHour
-                      - ShortTonsPerWeek
-                      - Signature
                       - Skid
                       - SquareDecimeter
                       - SquareFeet
                       - SquareInch
                       - SquareMeter
-                      - SquareMeterPerKilogram
-                      - SquareMillimeterPerKilogram
-                      - SquareMillimeterPerSecond
-                      - TenKilometer
-                      - ThousandBoardFeet
-                      - ThousandLinealFeet
                       - ThousandPieces
                       - ThousandSquareCentimeters
                       - ThousandSquareFeet
                       - ThousandSquareInch
-                      - Ton
-                      - TonsPerHour
-                      - Unit
-                      - UnknownBreaks
-                      - Week
                       - Yard
-                      - Year
                   quantityType:
                     type: string
                     enum:
-                      - ActualVolume
-                      - AirDryWeight
                       - Area
-                      - BoneDry
                       - Count
-                      - Distance
                       - GrossWeight
-                      - Energy
                       - Length
-                      - LogisticsGrossWeight
-                      - LogisticsNetWeight
-                      - LogPileGrossVolume
-                      - LogPileVolume
                       - NetWeight
                       - NetNetWeight
                       - NominalWeight
-                      - Percent
-                      - RunningLength
-                      - ShortLengthVolume
-                      - SolidWoodGrossVolume
-                      - SolidWoodVolume
                       - TareWeight
-                      - Time
-                      - TippedLooseGrossVolume
-                      - TippedLooseVolume
-                      - Volume
-                      - WoodGrossVolume
-                      - WoodVolume
 
     Order:
       allOf:
