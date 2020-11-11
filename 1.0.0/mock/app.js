@@ -8,8 +8,19 @@ const app = express()
 // get /orders
 app.get('/orders', (req, res) => {
   let response = {};
-  const sourceFileName = './orders.json'
-  const source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
+  let sourceFileName = './orders.json'
+  let source = {}
+  try {
+    source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
+  } catch (err) {
+    return res.status(500).json({
+      error: {
+        code: "0f82451d-b3ac-4347-8386-16d2d361c255",
+        message: "Cannot established connection to the database!"
+      }
+    })
+  }
+
   let orderStatus = req.query.orderStatus || '*'
   let offset = parseInt(req.query.offset) || 0
   let limit = parseInt(req.query.limit)   || 2 // I may have to add a limit (?)
@@ -18,6 +29,20 @@ app.get('/orders', (req, res) => {
   // We apply the filter FIRST:
   let resultFiltered = source.filter(item => (orderStatus == '*' ? true : item.orderStatus == orderStatus))
   let length = resultFiltered.length
+
+  if (length === 0) {
+    return res.status(404).json({
+      error: {
+        code: "b5a54dab-7a01-4973-a47f-6be7134919b9",
+        message: `There are no orders with the selected orderStatus = \'${orderStatus}\'.`
+      },
+      correction: {
+        self: {
+          href: `/orders`
+        }
+      }
+    });
+  }
 
   // Let's first verify that the (zero-based) offset is strictly less than the length, if NOT:
   if (offset >= length) {
@@ -102,8 +127,18 @@ app.get('/orders', (req, res) => {
 app.get('/orders/:orderId', (req, res) => {
   let response = {};
   let orderId = req.params.orderId
-  const sourceFileName = `./order.${orderId}.json`
-  const source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
+  let sourceFileName = `./order.${orderId}.json`
+  let source = {}
+  try {
+    source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
+  } catch (err) {
+    return res.status(404).json({
+      error: {
+        code: "dc6fd15d-d698-4e1a-bd16-3acd3fcb5426",
+        message: `There is no order with the selected orderId = \'${orderId}\'.`
+      }
+    })
+  }
   let offset = parseInt(req.query.offset) || 0
   let limit = parseInt(req.query.limit)   || 2 // I may have to add a limit (?)
   let end = offset + limit // Zero-based index **before** which to end extraction (not included).
