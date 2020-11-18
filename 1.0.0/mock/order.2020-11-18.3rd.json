@@ -1,0 +1,94 @@
+{
+    "id": "0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92",
+    "orderNumber": "1001",
+    "orderStatus": "Active",
+    "numberOfLineItems": 3,
+    "orderLineItems": [
+      {
+        "id": "5de4cc7b-8139-4805-9044-c86641453605",
+        "orderLineItemNumber": "1",
+        "orderLineItemStatus": "ProductionComplete",
+        "quantities": [
+          {
+            "quantityContext": "Confirmed",
+            "quantity": {
+              "quantityValue": 10500,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          },
+          {
+            "quantityContext": "Confirmed",
+            "quantity": {
+              "quantityValue": 5,
+              "quantityUOM": "Reel",
+              "quantityType": "Count"
+            }
+          },
+          {
+            "quantityContext": "Produced",
+            "quantity": {
+              "quantityValue": 10500,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          },
+          {
+            "quantityContext": "Produced",
+            "quantity": {
+              "quantityValue": 5,
+              "quantityUOM": "Reel",
+              "quantityType": "Count"
+            }
+          },
+          {
+            "quantityContext": "Delivered",
+            "quantity": {
+              "quantityValue": 6300,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          },
+          {
+            "quantityContext": "Delivered",
+            "quantity": {
+              "quantityValue": 3,
+              "quantityUOM": "Reel",
+              "quantityType": "Count"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5de4cc7b-8139-4805-9044-c86641453605",
+        "orderLineItemNumber": "2",
+        "orderLineItemStatus": "Pending",
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantity": {
+              "quantityValue": 10000,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5de4cc7b-8139-4805-9044-c86641453605",
+        "orderLineItemNumber": "3",
+        "orderLineItemStatus": "Cancelled",
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantity": {
+              "quantityValue": 10000,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          }
+        ]
+      }
+    ],
+    "links": {}
+  }

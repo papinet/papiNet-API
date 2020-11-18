@@ -1,0 +1,54 @@
+{
+    "id": "0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92",
+    "orderNumber": "1001",
+    "orderStatus": "Pending",
+    "numberOfLineItems": 3,
+    "orderLineItems": [
+      {
+        "id": "5de4cc7b-8139-4805-9044-c86641453605",
+        "orderLineItemNumber": "1",
+        "orderLineItemStatus": "Pending",
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantity": {
+              "quantityValue": 10000,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5de4cc7b-8139-4805-9044-c86641453605",
+        "orderLineItemNumber": "2",
+        "orderLineItemStatus": "Pending",
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantity": {
+              "quantityValue": 10000,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5de4cc7b-8139-4805-9044-c86641453605",
+        "orderLineItemNumber": "3",
+        "orderLineItemStatus": "Pending",
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantity": {
+              "quantityValue": 10000,
+              "quantityUOM": "Kilogram",
+              "quantityType": "NetWeight"
+            }
+          }
+        ]
+      }
+    ],
+    "links": {}
+  }

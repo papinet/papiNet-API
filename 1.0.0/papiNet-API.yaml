@@ -153,34 +153,10 @@ components:
         orderStatus:
           type: string
           enum:
-            - ActiveFree
-            - ActiveHold
+            - Active
             - Cancelled
-            - Complete
-            - Delayed
-            - FinalPlanning
-            - Invoiced
-            - Loaded
-            - NotReceived
-            - OrderLineConfirmed
-            - Packed
-            - PartiallyShipped
+            - Completed
             - Pending
-            - Planned
-            - ProductionComplete
-            - ProductionPlanned
-            - ProductionStarted
-            - Received
-            - ReservedInProductionPlanningSystem
-            - Scheduled
-            - ShipmentComplete
-            - ShipmentPlanned
-            - Shuttled
-            - Staged
-            - Transferred
-            - TransferredToMillSystem
-            - Unscheduled
-            - Unshipped
         numberOfLineItems:
           type: integer
           minimum: 0
@@ -196,17 +172,15 @@ components:
         orderLineItemStatus:
           type: string
           enum:
-            - Accepted
-            - Amended
+            - ActiveFree
+            - ActiveHold
             - Cancelled
-            - Counterproposal
-            - New
-            - NoAction
-            - Original
-            - PartiallyAccepted
+            - Complete
+            - Delayed
+            - OrderLineConfirmed
             - Pending
-            - Rejected
-            - Replaced
+            - ProductionComplete
+            - ShipmentComplete
         quantities:
           type: array
           items:
@@ -215,49 +189,14 @@ components:
               quantityContext:
                 type: string
                 enum:
-                  - AgreedToClaimValue
-                  - Allocated
-                  - AllowableSpoilage
-                  - Balance
                   - CalledOff
-                  - Consumed
-                  - Contracted
-                  - Credited
-                  - CutOff
+                  - Confirmed
                   - Damaged
                   - Delivered
-                  - Destroyed
-                  - Deviation
-                  - Forecasted
-                  - Freight
-                  - Handled
-                  - Imposed
                   - Intransit
                   - Invoiced
-                  - Loaded
-                  - Measured
-                  - MeasuredCorrected
-                  - OnHand
                   - Ordered
-                  - Packed
-                  - Planned
                   - Produced
-                  - Rejected
-                  - Released
-                  - Reorder
-                  - ReorderPoint
-                  - Reserved
-                  - Scrapped
-                  - Stored
-                  - Tested
-                  - Transported
-                  - Trimmed
-                  - Unloaded
-                  - UnspecifiedDamage
-                  - ValueClaimed
-                  - VendorSupplied
-                  - Wound
-                  - Wrapped
               quantity:
                 type: object
                 properties:
@@ -305,8 +244,8 @@ components:
                       - Count
                       - GrossWeight
                       - Length
-                      - NetWeight
                       - NetNetWeight
+                      - NetWeight
                       - NominalWeight
                       - TareWeight
 
