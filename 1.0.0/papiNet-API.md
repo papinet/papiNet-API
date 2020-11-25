@@ -2,22 +2,19 @@
 
 orderStatus:
 
-* _**Active**_: ...
-* _**Cancelled**_: ...
-* _**Completed**_: ...
-* _**Pending**_: ...
+* _**Active**_: The order ...
+* _**Cancelled**_: The order ...
+* _**Completed**_: The order ...
+* _**Pending**_: The order ...
 
 orderLineItemStatus:
 
-* _**ActiveFree**_: The PO, order, or line item has been accepted or confirmed by the supplier. It may not have been manufactured, packed, or shipped yet. It is free for production. This status is also known as open status.
-* _**ActiveHold**_: The PO, order, or line item has been accepted or confirmed by the supplier. It may not have been manufactured, packed, or shipped yet. It is not free for production. Examples of this status include a reserved order or line item, the print time has not been determined, other payment terms not completed, or the last date for change has not been received.
-* _**Cancelled**_: The PO, order, or line item has a cancelled status in the supplier’s system. It will not be manufactured nor shipped.
-* _**Complete**_: The PO, order, or line item has a complete status in the supplier’s system. It has been packed, shipped, and invoiced successfully.
-* _**Delayed**_: An unexpected event has caused a delay.
-* _**OrderLineConfirmed**_: The order line has been confirmed.
-* _**Pending**_: The PO, order, or line item has a pending status in the supplier’s system. It has not yet been confirmed, accepted, nor rejected by the suppler. This status indicates that the suppler requires more time to determine acceptance.
-* _**ProductionComplete**_: The PO, order, or line item has completed the manufacture process by the supplier.
-* _**ShipmentComplete**_: The order has been fully shipped.
+* _**Cancelled**_: The order line item has a cancelled status in the supplier’s system. It will not be manufactured nor shipped.
+* _**Complete**_: The  order line item has a complete status in the supplier’s system. It has been packed, shipped, and invoiced successfully.
+* _**Confirmed**_: The order line item has been confirmed.
+* _**Pending**_: The order line item has a pending status in the supplier’s system. It has not yet been confirmed, accepted, nor rejected by the suppler. This status indicates that the suppler requires more time to determine acceptance.
+* _**ProductionCompleted**_: The order line item has completed the manufacture process by the supplier.
+* _**ShipmentCompleted**_: The order line item has been fully shipped.
 
 quantityContext:
 

@@ -27,34 +27,10 @@ paths:
           schema:
             type: string
             enum:
-            - ActiveFree
-            - ActiveHold
+            - Active
             - Cancelled
-            - Complete
-            - Delayed
-            - FinalPlanning
-            - Invoiced
-            - Loaded
-            - NotReceived
-            - OrderLineConfirmed
-            - Packed
-            - PartiallyShipped
+            - Completed
             - Pending
-            - Planned
-            - ProductionComplete
-            - ProductionPlanned
-            - ProductionStarted
-            - Received
-            - ReservedInProductionPlanningSystem
-            - Scheduled
-            - ShipmentComplete
-            - ShipmentPlanned
-            - Shuttled
-            - Staged
-            - Transferred
-            - TransferredToMillSystem
-            - Unscheduled
-            - Unshipped
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set
@@ -152,6 +128,7 @@ components:
           type: string
         orderStatus:
           type: string
+          # Enumeration for 'orderStatus':
           enum:
             - Active
             - Cancelled
@@ -163,6 +140,10 @@ components:
 
     OrderLineItem:
       type: object
+      required:
+        - id
+        - orderLineItemNumber
+        - orderLineItemStatus
       properties:
         id:
           type: string
@@ -171,16 +152,16 @@ components:
           type: string
         orderLineItemStatus:
           type: string
+          # Enumeration for 'orderLineItemStatus':
           enum:
-            - ActiveFree
-            - ActiveHold
             - Cancelled
-            - Complete
-            - Delayed
-            - OrderLineConfirmed
+            - Completed
+            - Confirmed
             - Pending
-            - ProductionComplete
-            - ShipmentComplete
+            - ProductionCompleted
+            - ShipmentCompleted
+        changeable:
+          type: boolean
         quantities:
           type: array
           items:
@@ -188,6 +169,7 @@ components:
             properties:
               quantityContext:
                 type: string
+                # Enumeration for 'quantityContext':
                 enum:
                   - CalledOff
                   - Confirmed
@@ -204,6 +186,7 @@ components:
                     type: number
                   quantityUOM:
                     type: string
+                    # Enumeration for 'quantityUOM':
                     enum:
                       - Bale
                       - Box
@@ -239,6 +222,7 @@ components:
                       - Yard
                   quantityType:
                     type: string
+                    # Enumeration for 'quantityType':
                     enum:
                       - Area
                       - Count
