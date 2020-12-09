@@ -12,6 +12,7 @@ orderLineItemStatus:
 * _**Cancelled**_: The order line item has a cancelled status in the supplier’s system. It will not be manufactured nor shipped.
 * _**Complete**_: The  order line item has a complete status in the supplier’s system. It has been packed, shipped, and invoiced successfully.
 * _**Confirmed**_: The order line item has been confirmed.
+* _**DeliveryCompleted**_: ...
 * _**Pending**_: The order line item has a pending status in the supplier’s system. It has not yet been confirmed, accepted, nor rejected by the suppler. This status indicates that the suppler requires more time to determine acceptance.
 * _**ProductionCompleted**_: The order line item has completed the manufacture process by the supplier.
 * _**ShipmentCompleted**_: The order line item has been fully shipped.
@@ -22,10 +23,10 @@ quantityContext:
 * _**Confirmed**_: ...
 * _**Damaged**_: A quantity that has been damaged.
 * _**Delivered**_: Delivered to the ship-to location.
-* _**Intransit**_: A quantity that is undergoing the transportation process and is (usually) not available for immediate use.
 * _**Invoiced**_: The number to be used when preparing the invoice.
 * _**Ordered**_: A PurchaseOrder has been placed for the product.
 * _**Produced**_: The quantity added to stock through a manufacturing or conversion process.
+* _**Shipped**_: ...
 
 quantityType:
 

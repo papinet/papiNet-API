@@ -1,0 +1,73 @@
+{
+    "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+    "orderNumber": "1001",
+    "orderStatus": "Completed",
+    "numberOfLineItems": 1,
+    "orderLineItems": [
+      {
+        "id": "e436266b-d831-47a1-9fef-3f749c955673",
+        "orderLineItemNumber": "1",
+        "orderLineItemStatus": "DeliveryCompleted",
+        "changeable": false,
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantity": {
+              "quantityValue": 10000,
+              "quantityUOM": "Kilogram",
+              "quantityType": "GrossWeight"
+            }
+          },
+          {
+            "quantityContext": "Confirmed",
+            "quantity": {
+              "quantityValue": 9600,
+              "quantityUOM": "Kilogram",
+              "quantityType": "GrossWeight"
+            }
+          },
+          {
+            "quantityContext": "Confirmed",
+            "quantity": {
+              "quantityValue": 3,
+              "quantityUOM": "Reel",
+              "quantityType": "Count"
+            }
+          },
+          {
+            "quantityContext": "Produced",
+            "quantity": {
+              "quantityValue": 9900,
+              "quantityUOM": "Kilogram",
+              "quantityType": "GrossWeight"
+            }
+          },
+          {
+            "quantityContext": "Produced",
+            "quantity": {
+              "quantityValue": 3,
+              "quantityUOM": "Reel",
+              "quantityType": "Count"
+            }
+          },
+          {
+            "quantityContext": "Delivered",
+            "quantity": {
+              "quantityValue": 9900,
+              "quantityUOM": "Kilogram",
+              "quantityType": "GrossWeight"
+            }
+          },
+          {
+            "quantityContext": "Delivered",
+            "quantity": {
+              "quantityValue": 3,
+              "quantityUOM": "Reel",
+              "quantityType": "Count"
+            }
+          }
+        ]
+      }
+    ],
+    "links": {}
+  }

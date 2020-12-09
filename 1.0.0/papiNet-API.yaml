@@ -157,6 +157,7 @@ components:
             - Cancelled
             - Completed
             - Confirmed
+            - DeliveryCompleted
             - Pending
             - ProductionCompleted
             - ShipmentCompleted
@@ -175,10 +176,10 @@ components:
                   - Confirmed
                   - Damaged
                   - Delivered
-                  - Intransit
                   - Invoiced
                   - Ordered
                   - Produced
+                  - Shipped
               quantity:
                 type: object
                 properties:
