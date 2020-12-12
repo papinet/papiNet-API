@@ -1,7 +1,7 @@
 {
     "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
     "orderNumber": "1003",
-    "orderStatus": "Completed",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "orderLineItems": [
       {
