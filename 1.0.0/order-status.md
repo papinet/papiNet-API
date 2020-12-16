@@ -10,6 +10,17 @@ We suggest that the _Supplier_ exposes the papiNet API endpoints using the domai
 
 The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the domain `api.papinet.io`.
 
+## Authentication
+
+### Scenarios
+
+* Scenario A - One Production and One Shipment
+* Scenario B - Multiple Productions and One Shipment
+* Scenario C - One Production and Multiple Shipments
+* Scenario D - Multiple Productions and Multiple Shipments
+* Scenario E - Under Shipment
+* Scenario F - Over Shipment
+
 ## Scenario A
 
 The _Buyer_ sends an API request to get the list of all its _pending orders_:

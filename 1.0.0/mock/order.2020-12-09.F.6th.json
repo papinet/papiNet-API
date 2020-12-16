@@ -1,0 +1,65 @@
+{
+  "id": "1804bcfb-15ae-476a-bc8b-f31bc9f4de62",
+  "orderNumber": "1006",
+  "orderStatus": "Completed",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "fc890c7d-39e5-4181-8040-affde22edf89",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Completed",
+      "changeable": false,
+      "quantities": [
+        {
+        "quantityContext": "Ordered",
+        "quantityValue": 10000,
+        "quantityUOM": "Kilogram",
+        "quantityType": "GrossWeight"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityValue": 9600,
+          "quantityUOM": "Kilogram",
+          "quantityType": "GrossWeight"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityValue": 3,
+          "quantityUOM": "Reel",
+          "quantityType": "Count"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityValue": 9900,
+          "quantityUOM": "Kilogram",
+          "quantityType": "GrossWeight"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityValue": 3,
+          "quantityUOM": "Reel",
+          "quantityType": "Count"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityValue": 16000,
+          "quantityUOM": "Kilogram",
+          "quantityType": "GrossWeight"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityValue": 5,
+          "quantityUOM": "Reel",
+          "quantityType": "Count"
+        },
+        {
+          "quantityContext": "Invoiced",
+          "quantityValue": 16000,
+          "quantityUOM": "Kilogram",
+          "quantityType": "GrossWeight"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
