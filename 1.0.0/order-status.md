@@ -2,7 +2,7 @@
 
 ## Context
 
-A _Buyer_ requests to a _Supplier_ the status of one or multiple of its _orders_.
+A _Order Issuer_ requests to a _Supplier_ the status of one or multiple of its _orders_.
 
 ## Base URL
 
@@ -12,7 +12,7 @@ The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the doma
 
 ## Authentication
 
-### Scenarios
+## Scenarios
 
 * Scenario A - One Production and One Shipment
 * Scenario B - Multiple Productions and One Shipment
@@ -21,9 +21,9 @@ The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the doma
 * Scenario E - Under Shipment
 * Scenario F - Over Shipment
 
-## Scenario A
+### Scenario A
 
-The _Buyer_ sends an API request to get the list of all its _pending orders_:
+The _Order Issuer_ sends an API request to get the list of all its _pending orders_:
 
 ```text
 $ curl --request GET \
@@ -31,25 +31,25 @@ $ curl --request GET \
   --header 'Content-Type: application/json'
 ```
 
-If all goes well, the _Buyer_ will receive a response like this:
+If all goes well, the _Order Issuer_ will receive a response like this:
 
 ```json
 {
-  "numberOfOrders": 5,
+  "numberOfOrders": 6,
   "orders": [
     {
-      "id": "c634e000-4ba1-45b0-94d3-80c319c942ce",
-      "orderNumber": "1002",
+      "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+      "orderNumber": "1001",
       "orderStatus": "Pending",
-      "numberOfLineItems": 5,
-      "link": "/orders/c634e000-4ba1-45b0-94d3-80c319c942ce"
+      "numberOfLineItems": 1,
+      "link": "/orders/c51d8903-01d1-485c-96ce-51a9be192207"
     },
     {
-      "id": "3cb9cd15-1358-443b-b140-756ea9b812f2",
-      "orderNumber": "1003",
+      "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
+      "orderNumber": "1002",
       "orderStatus": "Pending",
-      "numberOfLineItems": 7,
-      "link": "/orders/3cb9cd15-1358-443b-b140-756ea9b812f2"
+      "numberOfLineItems": 1,
+      "link": "/orders/6a0d16db-546f-4c19-b288-ddd2a250f064"
     }
   ],
   "links": {
@@ -63,4 +63,90 @@ If all goes well, the _Buyer_ will receive a response like this:
 }
 ```
 
-You can see that the _Buyer_ has **5**  _pending orders_. The response only contains the header information, to get the details of the order, including the order lines, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full order. You can also notice that the response only gives 2 _pending orders_ out of the 5. This is because of the pagination mechanism.
+> You can see that the _Order Issuer_ has **5**  _pending orders_. The response only contains the header information, to get the details of the order, including the order lines, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full order. You can also notice that the response only gives 2 _pending orders_ out of the 6. This is because of the pagination mechanism.
+
+Then, the _Order Issuer_ sends an API request to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
+
+```text
+$ curl --request GET \
+  --URL https://api.papinet.io//orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "orderNumber": "1001",
+  "orderStatus": "Pending",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "e436266b-d831-47a1-9fef-3f749c955673",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Pending",
+      "changeable": true,
+      "quantities": [
+        {
+        "quantityContext": "Ordered",
+        "quantityValue": 10000,
+        "quantityUOM": "Kilogram",
+        "quantityType": "GrossWeight"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the order `1001` has been well received by the _Supplier_, but that it has not been yet processed as the status is still `Pending`.
+
+Let's consider that, after some time, the _Supplier_ have processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
+
+```text
+$ curl --request GET \
+  --URL https://api.papinet.io//orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "orderNumber": "1001",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "e436266b-d831-47a1-9fef-3f749c955673",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Confirmed",
+      "changeable": true,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityValue": 10000,
+          "quantityUOM": "Kilogram",
+          "quantityType": "GrossWeight"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityValue": 9600,
+          "quantityUOM": "Kilogram",
+          "quantityType": "GrossWeight"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityValue": 3,
+          "quantityUOM": "Reel",
+          "quantityType": "Count"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
