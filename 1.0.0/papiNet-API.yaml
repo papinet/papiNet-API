@@ -157,7 +157,6 @@ components:
             - Cancelled
             - Completed
             - Confirmed
-            - DeliveryCompleted
             - Pending
             - ProductionCompleted
             - ShipmentCompleted
@@ -172,67 +171,61 @@ components:
                 type: string
                 # Enumeration for 'quantityContext':
                 enum:
-                  - CalledOff
                   - Confirmed
-                  - Damaged
-                  - Delivered
                   - Invoiced
                   - Ordered
                   - Produced
                   - Shipped
-              quantity:
-                type: object
-                properties:
-                  quantityValue:
-                    type: number
-                  quantityUOM:
-                    type: string
-                    # Enumeration for 'quantityUOM':
-                    enum:
-                      - Bale
-                      - Box
-                      - Centimeter
-                      - Decimeter
-                      - Foot
-                      - Gram
-                      - HundredPound
-                      - Inch
-                      - Kilogram
-                      - Kilometer
-                      - Meter
-                      - MetricTon
-                      - Millimeter
-                      - Package
-                      - PalletUnit
-                      - Piece
-                      - Pound
-                      - PulpUnit
-                      - Ream
-                      - Reel
-                      - Sheet
-                      - ShortTon
-                      - Skid
-                      - SquareDecimeter
-                      - SquareFeet
-                      - SquareInch
-                      - SquareMeter
-                      - ThousandPieces
-                      - ThousandSquareCentimeters
-                      - ThousandSquareFeet
-                      - ThousandSquareInch
-                      - Yard
-                  quantityType:
-                    type: string
-                    # Enumeration for 'quantityType':
-                    enum:
-                      - Area
-                      - Count
-                      - GrossWeight
-                      - Length
-                      - NetNetWeight
-                      - NetWeight
-                      - NominalWeight
-                      - TareWeight
+              quantityValue:
+                type: number
+              quantityUOM:
+                type: string
+                # Enumeration for 'quantityUOM':
+                enum:
+                  - Bale
+                  - Box
+                  - Centimeter
+                  - Decimeter
+                  - Foot
+                  - Gram
+                  - HundredPound
+                  - Inch
+                  - Kilogram
+                  - Kilometer
+                  - Meter
+                  - MetricTon
+                  - Millimeter
+                  - Package
+                  - PalletUnit
+                  - Piece
+                  - Pound
+                  - PulpUnit
+                  - Ream
+                  - Reel
+                  - Sheet
+                  - ShortTon
+                  - Skid
+                  - SquareDecimeter
+                  - SquareFeet
+                  - SquareInch
+                  - SquareMeter
+                  - ThousandPieces
+                  - ThousandSquareCentimeters
+                  - ThousandSquareFeet
+                  - ThousandSquareInch
+                  - Yard
+              quantityType:
+                type: string
+                # Enumeration for 'quantityType':
+                enum:
+                  - Area
+                  - Count
+                  - GrossWeight
+                  - Length
+                  - NetNetWeight
+                  - NetWeight
+                  - NominalWeight
+                  - TareWeight
 
     Order:
       allOf:
