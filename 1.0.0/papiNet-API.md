@@ -2,77 +2,71 @@
 
 orderStatus:
 
-* _**Active**_: The order ...
-* _**Cancelled**_: The order ...
-* _**Completed**_: The order ...
-* _**Pending**_: The order ...
+* _**Active**_: The order is confirmed by the supplier.
+* _**Cancelled**_: The order is cancelled when all order line items are cancelled. It will not be produced nor shipped.
+* _**Completed**_: The order is completed when all order line items are completed. It has been produced, shipped and invoiced.
+* _**Pending**_: The order is pending when all order lines are pending. It has not yet been confirmed nor rejected by the supplier. This status indicates that the supplier requires more time to determine acceptance.
 
 orderLineItemStatus:
 
-* _**Cancelled**_: The order line item has a cancelled status in the supplier’s system. It will not be manufactured nor shipped.
-* _**Completed**_: The  order line item has a complete status in the supplier’s system. It has been packed, shipped, and invoiced successfully.
-* _**Confirmed**_: The order line item has been confirmed.
-* _**Pending**_: The order line item has a pending status in the supplier’s system. It has not yet been confirmed, accepted, nor rejected by the suppler. This status indicates that the suppler requires more time to determine acceptance.
-* _**ProductionCompleted**_: The order line item has completed the manufacture process by the supplier.
-* _**ShipmentCompleted**_: The order line item has been fully shipped.
-
+* _**Cancelled**_: The order line item is cancelled. It will not be produced nor shipped.
+* _**Completed**_: The  order line item is completed. It has been produced, shipped and invoiced.
+* _**Confirmed**_: The order line item is confirmed by the supplier.
+* _**Pending**_: The order line item is pending. It has not yet been confirmed nor rejected by the supplier. This status indicates that the supplier requires more time to determine acceptance.
+* _**ProductionCompleted**_: The order line item is fully stocked through a production or conversion process by the supplier.
+* _**ShipmentCompleted**_: The order line item is fully shipped.
+ 
 quantityContext:
 
-* _**Confirmed**_: ...
-* _**Invoiced**_: The number to be used when preparing the invoice.
-* _**Ordered**_: A PurchaseOrder has been placed for the product.
-* _**Produced**_: The quantity added to stock through a manufacturing or conversion process.
-* _**Shipped**_: ...
+* _**Confirmed**_: The quantity confirmed by the supplier.
+* _**Invoiced**_: The quantity invoiced and qualified for compensation.
+* _**Ordered**_: The quantity ordered on the purchase order by the order issuer.
+* _**Produced**_: The quantity added to stock through a production or conversion process.
+* _**Shipped**_: The quantity shipped to the ship-to location.
 
 quantityType:
 
-* _**Area**_: A number that represents the length multiplied by the width is being communicated.
+* _**Area**_: The area that is the length multiplied by the width of the item.
 * _**Count**_: The number of items.
-* _**GrossWeight**_: The weight including all packaging and furnishing. The gross weight of the deliveries includes tare weight.
-
-  > Note: In Forest Wood Supply business the quantity type GrossWeight is used in contexts when the weight of an item is not directly linked to a product. The gross weight of the item is then the weight before removal of rejects and other deductions. See also the definition of quantity type NetNetWeight.
-
-* _**Length**_: The length of the object.
-* _**NetNetWeight**_: The net weight of the product without any packaging or conversion materials.
-
-  > Note: In Forest Wood Supply business the product specification defines what is included in this net weight, for example if rejects or other deductions are included or not. See also the definition of quantity type GrossWeight.
-
-* _**NetWeight**_: The net weight of the product is being used, does not include tare weights. May include certain conversion components.
-
-* _**NominalWeight**_: A calculated weight that is derived from another measurement. For example, the length of paper multiplied by the specified basis weight could be used to derive a nominal weight.
-* _**TareWeight**_: The weight of the previously agreed to packaging and furnishing.
+* _**GrossWeight**_: The weight including all packaging and furnishing. The gross weight of the shipments includes tare weight.
+* _**Length**_: The length of the item.
+* _**NetNetWeight**_: The net weight of the product without any packaging and conversion components.
+* _**NetWeight**_: The net weight of the product that may include certain conversion components, but does not include tare weight.
+* _**NominalWeight**_: The calculated weight that is derived from another measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+* _**TareWeight**_: The weight of the packaging and the furnishing materials.
 
 quantityUOM:
 
-* _**Bale**_: ...
-* _**Box**_: ...
-* _**Centimeter**_: ...
-* _**Decimeter**_: ...
-* _**Foot**_: ...
-* _**Gram**_: ...
-* _**HundredPound**_: ...
-* _**Inch**_: ...
-* _**Kilogram**_: ...
-* _**Kilometer**_: ...
-* _**Meter**_: ...
-* _**MetricTon**_: ...
-* _**Millimeter**_: ...
-* _**Package**_: ...
-* _**PalletUnit**_: ...
-* _**Piece**_: ...
-* _**Pound**_: ...
-* _**PulpUnit**_: ...
-* _**Ream**_: ...
-* _**Reel**_: ...
-* _**Sheet**_: ...
-* _**ShortTon**_: ...
-* _**Skid**_: ...
-* _**SquareDecimeter**_: ...
-* _**SquareFeet**_: ...
-* _**SquareInch**_: ...
-* _**SquareMeter**_: ...
-* _**ThousandPieces**_: ...
-* _**ThousandSquareCentimeters**_: ...
-* _**ThousandSquareFeet**_: ...
-* _**ThousandSquareInch**_: ...
-* _**Yard**_: ...
+* _**Bale**_: The value is expressed in number of bales.
+* _**Box**_: The value is expressed in number of boxes.
+* _**Centimeter**_: The value is expressed in centimetres.
+* _**Decimeter**_: The value is expressed in decimetres.
+* _**Foot**_: The value is expressed in feet.
+* _**Gram**_: The value is expressed in grams.
+* _**HundredPound**_: The value is expressed in hundred of pounds.
+* _**Inch**_: The value is expressed in inches.
+* _**Kilogram**_: The value is expressed in kilograms.
+* _**Kilometer**_: The value is expressed in kilometres.
+* _**Meter**_: The value is expressed in metres.
+* _**MetricTon**_: The value is expressed in metric tons. A metric ton is equal to 1000 kilogram.
+* _**Millimeter**_: The value is expressed in millimetres.
+* _**Package**_: The value is expressed in number of packages.
+* _**PalletUnit**_: The value is expressed in number of pallets.
+* _**Piece**_: The value is expressed in number of pieces.
+* _**Pound**_: The value is expressed in pounds.
+* _**PulpUnit**_: The value is expressed in number of pulp units. A pulp unit is related to the packaging characteristic or material handling equipment for pulp and normally contains several pulp bales.
+* _**Ream**_: The value is expressed in number of reams.
+* _**Reel**_: The value is expressed in number of reels.
+* _**Sheet**_: The value is expressed in number of sheets.
+* _**ShortTon**_: The value is expressed in short tons. A short ton is equal to 2000 pounds.
+* _**Skid**_: The value is expressed in number of skids.
+* _**SquareDecimeter**_: The value is expressed in square decimetres.
+* _**SquareFeet**_: The value is expressed in square feet.
+* _**SquareInch**_: The value is expressed in square inches.
+* _**SquareMeter**_: The value is expressed in square metres.
+* _**ThousandPieces**_: The value is expressed in thousand of pieces.
+* _**ThousandSquareCentimeters**_: The value is expressed in thousand of square centimetres.
+* _**ThousandSquareFeet**_: The value is expressed in thousand of square feet.
+* _**ThousandSquareInch**_: The value is expressed in thousand of square inches.
+* _**Yard**_: The value is expressed in yards.
+...
