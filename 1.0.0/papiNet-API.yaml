@@ -33,13 +33,13 @@ paths:
             - Pending
         - in: query
           name: offset
-          description: The number of items to skip before starting to collect the result set
+          description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: string
         - in: query
           name: limit
-          description: The number of items to return
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: string

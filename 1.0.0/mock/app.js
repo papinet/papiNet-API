@@ -1,9 +1,73 @@
 'use strict'
-const express = require('express')
-const jsonfile = require('jsonfile')
-const PORT = 3001
-const HOST = '0.0.0.0'
-const app = express()
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const short = require("short-uuid");
+const jsonfile = require("jsonfile");
+
+const PORT = 3001;
+const HOST = '0.0.0.0';
+const SERVICE_NAME = "papinet-mock";
+const SERVICE_VERSION = "1.0.0";
+
+const app = express();
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+const corsOptions = {};
+app.use(cors(corsOptions));
+
+const sessions = [];
+const sessionsIndexedByToken = [];
+
+const ordersToCopy = [
+  {
+    id: "c51d8903-01d1-485c-96ce-51a9be192207",
+    scenario: "A",
+    currentStep: 0,
+    numberOfSteps: 6
+  },
+  {
+    id: "778fe5cb-f7ac-4493-b492-25fe98df67c4",
+    scenario: "B",
+    currentStep: 0,
+    numberOfSteps: 8
+  },
+  {
+    id: "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+    scenario: "C",
+    currentStep: 0,
+    numberOfSteps: 7
+  },
+  {
+    id: "fb441640-e40b-4d91-8930-61ebf981da63",
+    scenario: "D",
+    currentStep: 0,
+    numberOfSteps: 9
+  },
+  {
+    id: "12e8667f-14ed-49e6-9610-dc58dee95560",
+    scenario: "E",
+    currentStep: 0,
+    numberOfSteps: 6
+  },
+  {
+    id:"1804bcfb-15ae-476a-bc8b-f31bc9f4de62",
+    scenario: "F",
+    currentStep: 0,
+    numberOfSteps: 6
+  }
+];
+const ordersIndexedById = [
+  "c51d8903-01d1-485c-96ce-51a9be192207",
+  "778fe5cb-f7ac-4493-b492-25fe98df67c4",
+  "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "fb441640-e40b-4d91-8930-61ebf981da63",
+  "12e8667f-14ed-49e6-9610-dc58dee95560",
+  "1804bcfb-15ae-476a-bc8b-f31bc9f4de62"
+];
 
 // get /orders
 app.get('/orders', (req, res) => {
@@ -33,7 +97,7 @@ app.get('/orders', (req, res) => {
   if (length === 0) {
     return res.status(404).json({
       error: {
-        code: "b5a54dab-7a01-4973-a47f-6be7134919b9",
+        code: "ERR-01",
         message: `There are no orders with the selected orderStatus = \'${orderStatus}\'.`
       },
       correction: {
@@ -48,7 +112,7 @@ app.get('/orders', (req, res) => {
   if (offset >= length) {
     return res.status(400).json({
       error: {
-        code: "3a34825f-64bc-4ed2-81b2-5e8bc33a59c9",
+        code: "ERR-02",
         message: `The (zero-based) offset = ${offset} is greather than or equal to the length = ${length}, obtained after filtering (orderStatus=\'${orderStatus}\').`
       },
       correction: {
@@ -65,7 +129,7 @@ app.get('/orders', (req, res) => {
     let correctedLimit = limit - (end - length) // see the example below
     return res.status(400).json({
       error: {
-        code: "20cde508-e3d2-4379-8bd2-b39fd660a123",
+        code: "ERR-03",
         message: `The (zero-based not included) end = ${end}, which is calculated as the sum offset + limit = ${offset} + ${limit} = ${end}, is strictly greather than the length = ${length}, obtained after filtering (orderStatus=\'${orderStatus}\').`
       },
       correction: {
@@ -123,25 +187,112 @@ app.get('/orders', (req, res) => {
 
 })
 
+// post /tokens
+app.post('/tokens', (req, res) => {
+  const traceId = short.uuid();
+  console.log(`[INFO] [${traceId}] post /tokens [${Date.now()}] `);
+  const id = short.uuid();
+  /*
+  const orders = ordersToCopy; // Is this a COPY? No, it's NOT a COPY :-(
+  let orders = ordersToCopy; // Is this a COPY? No, it's NOT a COPY :-(
+  const orders = [...ordersToCopy]; // Is this a COPY? No, it's NOT a COPY :-(
+  const orders = ordersToCopy.slice(); // Is this a COPY? No, it's NOT a COPY :-(
+  const orders = Array.from(ordersToCopy);  // Is this a COPY? No, it's NOT a COPY :-(
+  */
+  const orders = JSON.parse(JSON.stringify(ordersToCopy)); // Is this a COPY? YEEEEEEEEES ;-)
+  const session = {
+    id: id,
+    token: id,
+    orders: orders
+  };
+  sessions.push(session);
+  sessionsIndexedByToken.push(session.token);
+  res.status(201).json({
+    token: session.token
+  });
+});
+
+// get /debug
+app.get('/debug', (req, res) => {
+  return res.status(200).send(sessions);
+});
+
 // get /orders/{orderId}
 app.get('/orders/:orderId', (req, res) => {
+  const traceId = short.uuid();
+  console.log(`[INFO] [${traceId}] get /orders/{orderId} [${Date.now()}]`);
+  const authorization = req.headers.authorization;
+  console.log(`[INFO] [${traceId}]   authorization: ${authorization} [${Date.now()}]`);
+
+  if (authorization === undefined || !authorization.startsWith("Bearer ")) {
+    return res.status(401).json({
+      error: {
+        code: "ERR-04",
+        message: "Cannot get a bearer token :-("
+      }
+    });
+  }
+
+  const token = authorization.substring(7, authorization.length);
+  console.log(`[INFO] [${traceId}]   token: ${token}`);
+
+  const sessionPos = sessionsIndexedByToken.indexOf(token);
+  console.log(`[INFO] [${traceId}]   sessionPos: ${sessionPos}`);
+
+  if (sessionPos === -1) {
+    return res.status(401).json({
+      error: {
+        code: "ERR-05",
+        message: "Cannot retrieve the session based on the Bearer token :-("
+      }
+    });
+  }
+
+  const orderId = req.params.orderId;
+  console.log(`[INFO] [${traceId}]   orderId: ${orderId}`);
+  const orderPos = ordersIndexedById.indexOf(orderId);
+  console.log(`[INFO] [${traceId}]   orderPos: ${orderPos}`);
+
+  if (orderPos === -1) {
+    return res.status(404).end();
+  }
+
+  const scenario = sessions[sessionPos].orders[orderPos].scenario;
+  console.log(`[INFO] [${traceId}]   scenario: ${scenario}`);
+
+  const previousStep = sessions[sessionPos].orders[orderPos].currentStep;
+  console.log(`[INFO] [${traceId}]   previousStep: ${previousStep}`);
+  const numberOfSteps = sessions[sessionPos].orders[orderPos].numberOfSteps;
+  console.log(`[INFO] [${traceId}]   numberOfSteps: ${numberOfSteps}`);
+
+  let currentStep = previousStep;
+  if (previousStep < numberOfSteps) {
+    currentStep++;
+    sessions[sessionPos].orders[orderPos].currentStep = currentStep;
+  }
+  console.log(`[INFO] [${traceId}]   currentStep: ${currentStep}`);
+
+  const sourceFileName = `./order.${scenario}.step-${currentStep}.json`;
+  console.log(`[INFO] [${traceId}]   sourceFileName: ${sourceFileName}`);
+
   let response = {};
-  let orderId = req.params.orderId
-  let sourceFileName = `./order.${orderId}.json`
   let source = {}
   try {
     source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
   } catch (err) {
     return res.status(404).json({
       error: {
-        code: "dc6fd15d-d698-4e1a-bd16-3acd3fcb5426",
+        code: "ERR-06",
         message: `There is no order with the selected orderId = \'${orderId}\'.`
       }
     })
   }
   let offset = parseInt(req.query.offset) || 0
+  console.log(`[INFO] [${traceId}]   offset: ${sourceFileName}`);
   let limit = parseInt(req.query.limit)   || 2 // I may have to add a limit (?)
+  console.log(`[INFO] [${traceId}]   limit: ${limit}`);
   let end = offset + limit // Zero-based index **before** which to end extraction (not included).
+  console.log(`[INFO] [${traceId}]   end: ${end}`);
 
   response = {
     id: source.id,
@@ -152,7 +303,8 @@ app.get('/orders/:orderId', (req, res) => {
     links: {}
   }
 
-  let length = source.orderLineItems.length
+  let length = source.orderLineItems.length;
+  console.log(`[INFO] [${traceId}]   length: ${length}`);
 
   // Let's first verify that the (zero-based) offset is strictly less than the length, if NOT:
   if (offset >= length) {
@@ -172,6 +324,7 @@ app.get('/orders/:orderId', (req, res) => {
 
   // Then, let's verify that the (zero-based not included) end is lower than or equal to the length, if NOT:
   if (end > length) {
+    /*
     let correctedLimit = limit - (end - length) // see the example above
     return res.status(400).json({
       error: {
@@ -185,6 +338,8 @@ app.get('/orders/:orderId', (req, res) => {
         }
       }
     });
+    */
+    end = length; // That's simpler ;-)
   }
 
   let selfHref = `/orders/${orderId}?offset=${offset}&limit=${limit}`

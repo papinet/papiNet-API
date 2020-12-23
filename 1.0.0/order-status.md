@@ -65,6 +65,8 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 > You can see that the _Order Issuer_ has **5**  _pending orders_. The response only contains the header information, to get the details of the order, including the order lines, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full order. You can also notice that the response only gives 2 _pending orders_ out of the 6. This is because of the pagination mechanism.
 
+#### Step 1
+
 Then, the _Order Issuer_ sends an API request to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
 ```text
@@ -102,6 +104,8 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 ```
 
 It shows that the order `1001` has been well received by the _Supplier_, but that it has not been yet processed as the status is still `Pending`.
+
+#### Step 2
 
 Let's consider that, after some time, the _Supplier_ have processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
