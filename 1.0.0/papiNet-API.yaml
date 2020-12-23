@@ -30,7 +30,6 @@ paths:
             - Active
             - Cancelled
             - Completed
-            - Pending
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.
@@ -60,7 +59,8 @@ paths:
         - in: path
           name: orderId
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
           description: UUID of the `order` to get
       responses:
@@ -133,7 +133,6 @@ components:
             - Active
             - Cancelled
             - Completed
-            - Pending
         numberOfLineItems:
           type: integer
           minimum: 0
