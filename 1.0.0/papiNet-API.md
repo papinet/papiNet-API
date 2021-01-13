@@ -3,35 +3,35 @@
 orderStatus:
 
 * _**Active**_: The order is active when the _Supplier_ has processed it.
-* _**Cancelled**_: The order is cancelled when all order line items are cancelled, it will neither be produced nor shipped.
-* _**Completed**_: The order is completed when all order line items are completed, it has been produced, shipped and invoiced.
+* _**Cancelled**_: The order is cancelled when all order line items are cancelled, the order will neither be produced nor shipped.
+* _**Completed**_: The order is completed when order line items are either cancelled or completed, the order has been produced, shipped and invoiced.
 
 orderLineItemStatus:
 
 * _**Cancelled**_: The order line item is cancelled, it will neither be produced nor shipped.
 * _**Completed**_: The  order line item is completed, it has been produced, shipped and invoiced.
 * _**Confirmed**_: The order line item is confirmed, it will be produced, shipped and invoiced.
-* _**Pending**_: The order line item is pending, it has neither been _Confirmed_ nor _Cancelled_. This status indicates that the _Supplier_ requires more time to determine acceptance.
+* _**Pending**_: The order line item is pending, it has neither been confirmed nor cancelled. This status indicates that the _Supplier_ requires more time to determine acceptance.
 * _**ProductionCompleted**_: The order line item is fully stocked through a production or conversion process.
 * _**ShipmentCompleted**_: The order line item is fully shipped.
- 
+
 quantityContext:
 
-* _**Confirmed**_: The quantity confirmed.
-* _**Invoiced**_: The quantity invoiced and qualified for compensation.
-* _**Ordered**_: The quantity ordered on the purchase order.
-* _**Produced**_: The quantity added to stock through a production or conversion process.
-* _**Shipped**_: The quantity shipped to the ship-to location.
+* _**Confirmed**_: The quantity is confirmed.
+* _**Invoiced**_: The quantity is invoiced and qualified for compensation.
+* _**Ordered**_: The quantity is the purchase order requested quantity.
+* _**Produced**_: The quantity is added to stock through a production or conversion process.
+* _**Shipped**_: The quantity is shipped, it has left the _Supplier_'s location.
 
 quantityType:
 
 * _**Area**_: The area that is the length multiplied by the width of the item.
 * _**Count**_: The number of items.
-* _**GrossWeight**_: The weight including all packaging and furnishing. The gross weight of the shipments includes tare weight.
+* _**GrossWeight**_: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
 * _**Length**_: The length of the item.
 * _**NetNetWeight**_: The net weight of the product without any packaging and conversion components.
 * _**NetWeight**_: The net weight of the product that may include certain conversion components, but does not include tare weight.
-* _**NominalWeight**_: The calculated weight that is derived from another measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+* _**NominalWeight**_: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
 * _**TareWeight**_: The weight of the packaging and the furnishing materials.
 
 quantityUOM:
@@ -68,4 +68,3 @@ quantityUOM:
 * _**ThousandSquareFeet**_: The value is expressed in thousand of square feet.
 * _**ThousandSquareInches**_: The value is expressed in thousand of square inches.
 * _**Yard**_: The value is expressed in yards.
-...
