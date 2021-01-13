@@ -9,7 +9,7 @@
 
 ## Use Case Driven
 
-For this new flavor of the papiNet standard, we have decided to adopt an agile way of working, delivering the papiNet API definition iteratively based on specific use cases.
+For this new flavour of the papiNet standard, we have decided to adopt an agile way of working, delivering the papiNet API definition iteratively based on specific use cases.
 
 ### Order Status
 
