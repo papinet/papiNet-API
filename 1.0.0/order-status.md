@@ -12,6 +12,30 @@ The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the doma
 
 ## Authentication
 
+We recommend secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
+
+The _Order Issuer_ sends an API request to create a session, and gets its associated _access token_:
+
+```text
+$ curl --request POST \
+  --URL https://api.papinet.io/tokens \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "partnerId": "public:36297346-e4d0-4214-b298-dd129c6ed82b",
+    "partnerSecret": "private:ce2d3cf4-68f9-4202-acbf-8a73c3801195"
+  }'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{ 
+  "accessToken": "5cd5943e-8efb-4bbc-bf7b-17367b6784ba",
+  "expiresIn": 86400, 
+  "tokenType": "bearer", 
+}
+```
+
 ## Scenarios
 
 * Scenario A - One Production and One Shipment

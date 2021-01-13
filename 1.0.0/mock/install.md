@@ -42,7 +42,7 @@ v12.18.0
 1\. Create a `papinet-mock-service-2020-11-11` folder:
 
 ```text
-$ $ mkdir papinet-mock-service-2020-11-11
+$ mkdir papinet-mock-service-2020-11-11
 $ cd papinet-mock-service-2020-11-11/
 ```
 
