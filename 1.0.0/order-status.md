@@ -18,7 +18,7 @@ The _Order Issuer_ sends an API request to create a session, and gets its associ
 
 ```text
 $ curl --request POST \
-  --URL https://api.papinet.io/tokens \
+  --URL http://localhost:3001/tokens \
   --header 'Content-Type: application/json' \
   --data '{
     "partnerId": "public:36297346-e4d0-4214-b298-dd129c6ed82b",
@@ -30,7 +30,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 ```json
 { 
-  "accessToken": "5cd5943e-8efb-4bbc-bf7b-17367b6784ba",
+  "accessToken": "d08305d0-4645-4e05-baf4-2253703f89b5",
   "expiresIn": 86400, 
   "tokenType": "bearer", 
 }
@@ -51,8 +51,9 @@ The _Order Issuer_ sends an API request to get the list of all its _pending orde
 
 ```text
 $ curl --request GET \
-  --URL https://api.papinet.io/orders?orderStatus=Pending \
-  --header 'Content-Type: application/json'
+  --URL http://localhost:3001/orders?orderStatus=Pending \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer d08305d0-4645-4e05-baf4-2253703f89b5'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -91,21 +92,22 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 #### Step 1
 
-Then, the _Order Issuer_ sends an API request to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
+The step 1 of the scenario A will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends an API request to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
 ```text
 $ curl --request GET \
   --URL https://api.papinet.io//orders/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Content-Type: application/json'
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer d08305d0-4645-4e05-baf4-2253703f89b5'
 ```
 
-If all goes well, the _Order Issuer_ will receive a response like this:
+And, if all goes well, the _Order Issuer_ will receive a response like this:
 
 ```json
 {
   "id": "c51d8903-01d1-485c-96ce-51a9be192207",
   "orderNumber": "1001",
-  "orderStatus": "Pending",
+  "orderStatus": "Active",
   "numberOfLineItems": 1,
   "orderLineItems": [
     {
@@ -116,9 +118,9 @@ If all goes well, the _Order Issuer_ will receive a response like this:
       "quantities": [
         {
         "quantityContext": "Ordered",
+        "quantityType": "GrossWeight",
         "quantityValue": 10000,
-        "quantityUOM": "Kilogram",
-        "quantityType": "GrossWeight"
+        "quantityUOM": "Kilogram"
         }
       ]
     }
@@ -127,7 +129,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the order `1001` has been well received by the _Supplier_, but that it has not been yet processed as the status is still `Pending`.
+It shows that the order `1001` has been well received by the _Supplier_, is still `Pending` and can still be changed (`"changeable": true`).
 
 #### Step 2
 
