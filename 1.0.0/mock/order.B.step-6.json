@@ -12,39 +12,33 @@
       "quantities": [
         {
           "quantityContext": "Ordered",
-          "quantity": {
-            "quantityValue": 10000,
-            "quantityUOM": "Kilogram",
-            "quantityType": "GrossWeight"
-          }
+          "quantityType": "GrossWeight",
+          "quantityValue": 10000,
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Confirmed",
-          "quantity": {
-            "quantityValue": 9600,
-            "quantityUOM": "Kilogram",
-            "quantityType": "GrossWeight"
-          }
+          "quantityType": "GrossWeight",
+          "quantityValue": 9600,
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Confirmed",
-          "quantity": {
-            "quantityValue": 3,
-            "quantityUOM": "Reel",
-            "quantityType": "Count"
-          }
-        },
-        {
-          "quantityContext": "Produced",
-          "quantityValue": 9900,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
-        },
-        {
-          "quantityContext": "Produced",
+          "quantityType": "Count",
           "quantityValue": 3,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
+          "quantityValue": 9900,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "Count",
+          "quantityValue": 3,
+          "quantityUOM": "Reel"
         }
       ]
     }
