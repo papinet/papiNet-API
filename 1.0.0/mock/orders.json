@@ -2,42 +2,42 @@
   {
     "id": "c51d8903-01d1-485c-96ce-51a9be192207",
     "orderNumber": "1001",
-    "orderStatus": "Pending",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "link": "/orders/c51d8903-01d1-485c-96ce-51a9be192207"
   },
   {
     "id": "778fe5cb-f7ac-4493-b492-25fe98df67c4",
     "orderNumber": "1002",
-    "orderStatus": "Pending",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "link": "/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4"
   },
   {
     "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
     "orderNumber": "1003",
-    "orderStatus": "Pending",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "link": "/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e"
   },
   {
     "id": "fb441640-e40b-4d91-8930-61ebf981da63",
     "orderNumber": "1004",
-    "orderStatus": "Pending",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "link": "/orders/fb441640-e40b-4d91-8930-61ebf981da63"
   },
   {
     "id": "12e8667f-14ed-49e6-9610-dc58dee95560",
     "orderNumber": "1005",
-    "orderStatus": "Pending",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "link": "/orders/12e8667f-14ed-49e6-9610-dc58dee95560"
   },
   {
     "id": "1804bcfb-15ae-476a-bc8b-f31bc9f4de62",
     "orderNumber": "1006",
-    "orderStatus": "Pending",
+    "orderStatus": "Active",
     "numberOfLineItems": 1,
     "link": "/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62"
   }
