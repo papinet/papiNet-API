@@ -10,7 +10,7 @@ info:
     url: https://github.com/papinet/papiNet-API/blob/patrice-v1.0.0/LICENSE
   version: 1.0.0
 servers:
-  - url: https://api.papinet.io
+  - url: https://papinet.papinet.io
     description: papiNet Mock Server
 paths:
 
@@ -175,6 +175,18 @@ components:
                   - Ordered
                   - Produced
                   - Shipped
+              quantityType:
+                type: string
+                # Enumeration for 'quantityType':
+                enum:
+                  - Area
+                  - Count
+                  - GrossWeight
+                  - Length
+                  - NetNetWeight
+                  - NetWeight
+                  - NominalWeight
+                  - TareWeight
               quantityValue:
                 type: number
               quantityUOM:
@@ -187,7 +199,7 @@ components:
                   - Decimeter
                   - Foot
                   - Gram
-                  - HundredPound
+                  - HundredPounds
                   - Inch
                   - Kilogram
                   - Kilometer
@@ -205,26 +217,14 @@ components:
                   - ShortTon
                   - Skid
                   - SquareDecimeter
-                  - SquareFeet
+                  - SquareFoot
                   - SquareInch
                   - SquareMeter
                   - ThousandPieces
                   - ThousandSquareCentimeters
                   - ThousandSquareFeet
-                  - ThousandSquareInch
+                  - ThousandSquareInches
                   - Yard
-              quantityType:
-                type: string
-                # Enumeration for 'quantityType':
-                enum:
-                  - Area
-                  - Count
-                  - GrossWeight
-                  - Length
-                  - NetNetWeight
-                  - NetWeight
-                  - NominalWeight
-                  - TareWeight
 
     Order:
       allOf:
