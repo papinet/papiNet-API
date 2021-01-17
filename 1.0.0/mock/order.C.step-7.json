@@ -11,52 +11,52 @@
       "changeable": false,
       "quantities": [
         {
-        "quantityContext": "Ordered",
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
           "quantityValue": 35,
-          "quantityUOM": "MetricTon",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "MetricTon"
         },
         {
           "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
           "quantityValue": 35000,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Confirmed",
+          "quantityType": "Count",
           "quantityValue": 35,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
         },
         {
           "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
           "quantityValue": 35000,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Produced",
+          "quantityType": "Count",
           "quantityValue": 35,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
         },
         {
           "quantityContext": "Shipped",
+          "quantityType": "GrossWeight",
           "quantityValue": 35000,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Shipped",
+          "quantityType": "Count",
           "quantityValue": 35,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
         },
         {
           "quantityContext": "Invoiced",
+          "quantityType": "GrossWeight",
           "quantityValue": 35000,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         }
       ]
     }
