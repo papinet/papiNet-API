@@ -72,7 +72,7 @@ const ordersIndexedById = [
 // get /orders
 app.get('/orders', (req, res) => {
   let response = {};
-  let sourceFileName = './orders.json'
+  let sourceFileName = './samples/orders.json'
   let source = {}
   try {
     source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
@@ -272,7 +272,7 @@ app.get('/orders/:orderId', (req, res) => {
   }
   console.log(`[INFO] [${traceId}]   currentStep: ${currentStep}`);
 
-  const sourceFileName = `./order.${scenario}.step-${currentStep}.json`;
+  const sourceFileName = `./samples/order.${scenario}.step-${currentStep}.json`;
   console.log(`[INFO] [${traceId}]   sourceFileName: ${sourceFileName}`);
 
   let response = {};
