@@ -6,7 +6,7 @@
 
 ## Domain Name
 
-1\. Create an DNS `A Record` with name `api.papinet.io` and the public IP address from above.
+1\. Create an DNS `A Record` with name `papinet.papinet.io` and the public IP address from above.
 
 ## Install NGINX
 
@@ -17,7 +17,7 @@ $ sudo apt-get update
 $ sudo apt-get install -y nginx
 ```
 
-2\. Test the installation by opening <http://api.papinet.io> in a browser.
+2\. Test the installation by opening <http://papinet.papinet.io> in a browser.
 
 ## Install Node.js
 
@@ -39,11 +39,11 @@ v12.18.0
 
 ## Install and Run the papiNet API Mock Service
 
-1\. Create a `papinet-mock-service-2020-11-11` folder:
+1\. Create a `papinet-mock-service-2021-01-16` folder:
 
 ```text
-$ mkdir papinet-mock-service-2020-11-11
-$ cd papinet-mock-service-2020-11-11/
+$ mkdir papinet-mock-service-2021-01-16
+$ cd papinet-mock-service-2021-01-16/
 ```
 
 2\. Upload the following files into the `~` folder:
@@ -52,9 +52,10 @@ $ cd papinet-mock-service-2020-11-11/
 * `package.json`
 * `package-lock.json`
 * `orders.json`
-* `order.0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92.json`
+* `order.A.step-1.json`
+* ...
 
-3\. Move those files to the `papinet-mock-service-2020-11-11` folder:
+3\. Move those files to the `papinet-mock-service-2021-01-16` folder:
 
 ```text
 $ mv app.js papinet-mock-service-2020-11-11/
@@ -79,7 +80,7 @@ $ mv order.0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92.json papinet-mock-service-2020-1
 6\. Start the papiNet mock service with PM2:
 
 ```text
-~$ pm2 start app.js
+~$ pm2 start app.js --name papiNet-mock
 ```
 
 7\. Check locally if the papiNet mock service is properly running:
@@ -91,20 +92,20 @@ $ mv order.0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92.json papinet-mock-service-2020-1
 
 ## Configure NGINX
 
-1\. Upload the file `api.papinet.rest.conf` into the `~` folder.
+1\. Upload the file `papinet.papinet.io` into the `papinet-mock-service-2021-01-16` folder.
 
 2\. Configure NGINX by typing the following commands:
 
 ```text
-~$ sudo mv api.papinet.io.conf /etc/nginx/sites-available
+~$ sudo mv papinet.papinet.io.conf /etc/nginx/sites-available
 ~$ sudo rm /etc/nginx/sites-enabled/default
-~$ sudo ln -s /etc/nginx/sites-available/api.papinet.io.conf /etc/nginx/sites-enabled/api.papinet.io.conf
+~$ sudo ln -s /etc/nginx/sites-available/papinet.papinet.io.conf /etc/nginx/sites-enabled/papinet.papinet.io.conf
 ~$ sudo service nginx configtest
 ~$ sudo service nginx reload
 ~$ sudo service nginx status
 ```
 
-3\. Test the installation by opening <http://api.papinet.io/orders> in a browser.
+3\. Test the installation by opening <http://papinet.papinet.io/orders> in a browser.
 
 ## Use _Let’s Encrypt_ to configure HTTPS
 
@@ -112,12 +113,8 @@ $ mv order.0e7dcf1d-f4f9-4f2f-af00-407bb20e5d92.json papinet-mock-service-2020-1
 
 ```text
 ~$ sudo apt-get update
-~$ sudo apt-get install software-properties-common
-~$ sudo add-apt-repository universe
-~$ sudo add-apt-repository ppa:certbot/certbot
-~$ sudo apt-get update
-~$ sudo apt-get install certbot python3-certbot-nginx
+~$ sudo apt-get install certbot
 ~$ sudo certbot --nginx
 ```
 
-2\. Test the installation by opening <https://api.papinet.io/orders> in a browser.
+2\. Test the installation by opening <https://papinet.papinet.io/orders> in a browser.

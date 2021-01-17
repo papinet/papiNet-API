@@ -9,7 +9,7 @@ This use case is designed for Pulp and Paper business.
 
 We suggest that the _Supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
-The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the domain `api.papinet.io`.
+The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the domain `papinet.papinet.io`.
 
 ## Authentication
 
@@ -19,7 +19,7 @@ The _Order Issuer_ sends an API request to create a session, and gets its associ
 
 ```text
 $ curl --request POST \
-  --URL http://localhost:3001/tokens \
+  --URL https://papinet.papinet.io/tokens \
   --header 'Content-Type: application/json' \
   --data '{
     "partnerId": "public:36297346-e4d0-4214-b298-dd129c6ed82b",
@@ -52,7 +52,7 @@ The _Order Issuer_ sends an API request to the _Supplier_ in order to get the li
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders?orderStatus=Active \
+  --URL https://papinet.papinet.io/orders?orderStatus=Active \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -99,7 +99,7 @@ The step 1 of the scenario A will simulate the situation in which the (unique) l
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL https://papinet.papinet.io/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -471,7 +471,7 @@ The _Order Issuer_ sends an API request to the _Supplier_ in order to get the li
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders?orderStatus=Active \
+  --URL https://papinet.papinet.io/orders?orderStatus=Active \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -516,7 +516,7 @@ The step 1 of the scenario B will simulate the situation in which the (unique) l
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -557,7 +557,7 @@ The step 2 of the scenario B will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -610,7 +610,7 @@ The step 3 of the scenario B will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -663,7 +663,7 @@ The step 4 of the scenario B will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -728,7 +728,7 @@ The step 5 of the scenario B will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -793,7 +793,7 @@ The step 6 of the scenario A will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -858,7 +858,7 @@ The step 7 of the scenario A will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
@@ -935,7 +935,7 @@ The step 8 of the scenario A will simulate the situation in which the _Supplier_
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
 ```
