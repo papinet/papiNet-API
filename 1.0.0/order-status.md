@@ -31,7 +31,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 ```json
 { 
-  "accessToken": "8c015e40-c63d-4ff8-a49a-bfcd553430d0",
+  "accessToken": "a9deda7d-2b32-4af6-a16e-fa826e31d4c9",
   "expiresIn": 86400, 
   "tokenType": "bearer", 
 }
@@ -54,7 +54,7 @@ The _Order Issuer_ sends an API request to the _Supplier_ in order to get the li
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders?orderStatus=Active \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -101,7 +101,7 @@ The step 1 of the scenario A will simulate the situation in which the (unique) l
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -473,7 +473,7 @@ The _Order Issuer_ sends an API request to the _Supplier_ in order to get the li
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders?orderStatus=Active \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -518,7 +518,7 @@ The step 1 of the scenario B will simulate the situation in which the (unique) l
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -559,7 +559,7 @@ The step 2 of the scenario B will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -612,7 +612,7 @@ The step 3 of the scenario B will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -665,7 +665,7 @@ The step 4 of the scenario B will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -730,7 +730,7 @@ The step 5 of the scenario B will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -795,7 +795,7 @@ The step 6 of the scenario A will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -860,7 +860,7 @@ The step 7 of the scenario A will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -937,7 +937,7 @@ The step 8 of the scenario A will simulate the situation in which the _Supplier_
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 8c015e40-c63d-4ff8-a49a-bfcd553430d0'
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -1011,3 +1011,536 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 ```
 
 It shows that the first (and unique) line, as well as the order `1002`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+
+### Scenario C - One Production and Multiple Shipments
+
+The _Order Issuer_ sends an API request to the _Supplier_ in order to get the list of all its _Active orders_:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders?orderStatus=Active \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "numberOfOrders": 6,
+  "orders": [
+    {
+      "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+      "orderNumber": "1001",
+      "orderStatus": "Active",
+      "numberOfLineItems": 1,
+      "link": "/orders/c51d8903-01d1-485c-96ce-51a9be192207"
+    },
+    {
+      "id": "778fe5cb-f7ac-4493-b492-25fe98df67c4",
+      "orderNumber": "1002",
+      "orderStatus": "Active",
+      "numberOfLineItems": 1,
+      "link": "/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/orders?orderStatus=Active&offset=0&limit=2"
+    },
+    "next": {
+      "href": "/orders?orderStatus=Active&offset=2&limit=2"
+    }
+  }
+}
+```
+
+We have prepared the scenario A on the order `1003`, so we need to get the "next page" in order to find the UUID of the order. We can directly use the path provided within `links.next.href` property.
+
+```text
+$ curl --request GET \
+  --URL 'https://papinet.papinet.io/orders?orderStatus=Active&offset=2&limit=2' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "numberOfOrders": 6,
+  "orders": [
+    {
+      "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+      "orderNumber": "1003",
+      "orderStatus": "Active",
+      "numberOfLineItems": 1,
+      "link": "/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e"
+    },
+    {
+      "id": "fb441640-e40b-4d91-8930-61ebf981da63",
+      "orderNumber": "1004",
+      "orderStatus": "Active",
+      "numberOfLineItems": 1,
+      "link": "/orders/fb441640-e40b-4d91-8930-61ebf981da63"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/orders?orderStatus=Active&offset=2&limit=2"
+    },
+    "next": {
+      "href": "/orders?orderStatus=Active&offset=4&limit=2"
+    }
+  }
+}
+```
+
+#### Step 1
+
+The step 1 of the scenario C will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Pending",
+      "changeable": true,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the order `1003` has been well received by the _Supplier_ and is _Active_. Its first (and unique) line is still `Pending` and can still be changed (`"changeable": true`).
+
+#### Step 2
+
+The step 2 of the scenario C will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Confirmed",
+      "changeable": true,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the first (and unique) line is now `Confirmed`, but can still be changed (`"changeable": true`), as the quantities have been _Confirmed_.
+
+#### Step 3
+
+The step 3 of the scenario C will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Confirmed",
+      "changeable": false,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+
+#### Step 4
+
+The step 4 of the scenario C will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "ProductionCompleted",
+      "changeable": false,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the first (and unique) line has now reached the status `ProductionCompleted`. The quantities have been updated accordingly, using the context `Produced`.
+
+#### Step 5
+
+The step 5 of the scenario C will simulate the situation in which the _Supplier_ has partially completed the shipment for the order line. It means that a part of the products have left the _Supplier_ location. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "ProductionCompleted",
+      "changeable": false,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityType": "GrossWeight",
+          "quantityValue": 24000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityType": "Count",
+          "quantityValue": 24,
+          "quantityUOM": "Reel"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the first (and unique) line is still on the status `ProductionCompleted`, while quantities have been updated, using the context `Shipped`.
+
+#### Step 6
+
+The step 6 of the scenario C will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that all the products have left the _Supplier_ location. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Active",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "ShipmentCompleted",
+      "changeable": false,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the first (and unique) line has now reached the status `ShipmentCompleted`. The quantities have been updated accordingly, using the context `Shipped`.
+
+#### Step 7
+
+The step 7 of the scenario C will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer a9deda7d-2b32-4af6-a16e-fa826e31d4c9'
+```
+
+If all goes well, the _Order Issuer_ will receive a response like this:
+
+```json
+{
+  "id": "c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "orderNumber": "1003",
+  "orderStatus": "Completed",
+  "numberOfLineItems": 1,
+  "orderLineItems": [
+    {
+      "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
+      "orderLineItemNumber": "1",
+      "orderLineItemStatus": "Completed",
+      "changeable": false,
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35,
+          "quantityUOM": "MetricTon"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Confirmed",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Produced",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Shipped",
+          "quantityType": "Count",
+          "quantityValue": 35,
+          "quantityUOM": "Reel"
+        },
+        {
+          "quantityContext": "Invoiced",
+          "quantityType": "GrossWeight",
+          "quantityValue": 35000,
+          "quantityUOM": "Kilogram"
+        }
+      ]
+    }
+  ],
+  "links": {}
+}
+```
+
+It shows that the first (and unique) line, as well as the order `1003`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
