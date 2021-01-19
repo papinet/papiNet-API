@@ -1,7 +1,7 @@
 {
   "id": "fb441640-e40b-4d91-8930-61ebf981da63",
   "orderNumber": "1004",
-  "orderStatus": "Pending",
+  "orderStatus": "Active",
   "numberOfLineItems": 1,
   "orderLineItems": [
     {
@@ -11,10 +11,10 @@
       "changeable": true,
       "quantities": [
         {
+          "quantityType": "GrossWeight",
           "quantityContext": "Ordered",
           "quantityValue": 70,
-          "quantityUOM": "MetricTon",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "MetricTon"
         }
       ]
     }

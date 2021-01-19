@@ -1,7 +1,7 @@
 {
   "id": "12e8667f-14ed-49e6-9610-dc58dee95560",
   "orderNumber": "1005",
-  "orderStatus": "Pending",
+  "orderStatus": "Active",
   "numberOfLineItems": 1,
   "orderLineItems": [
     {
@@ -12,9 +12,9 @@
       "quantities": [
         {
         "quantityContext": "Ordered",
+        "quantityType": "GrossWeight",
         "quantityValue": 10000,
-        "quantityUOM": "Kilogram",
-        "quantityType": "GrossWeight"
+        "quantityUOM": "Kilogram"
         }
       ]
     }

@@ -12,21 +12,21 @@
       "quantities": [
         {
         "quantityContext": "Ordered",
+        "quantityType": "GrossWeight",
         "quantityValue": 10000,
-        "quantityUOM": "Kilogram",
-        "quantityType": "GrossWeight"
+        "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
           "quantityValue": 9600,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Confirmed",
+          "quantityType": "Count",
           "quantityValue": 3,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
         }
       ]
     }

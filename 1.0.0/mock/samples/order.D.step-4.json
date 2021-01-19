@@ -12,33 +12,33 @@
       "quantities": [
         {
           "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
           "quantityValue": 70,
-          "quantityUOM": "MetricTon",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "MetricTon"
         },
         {
           "quantityContext": "Confirmed",
+          "quantityType": "GrossWeight",
           "quantityValue": 70000,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Confirmed",
+          "quantityType": "Count",
           "quantityValue": 70,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
         },
         {
           "quantityContext": "Produced",
+          "quantityType": "GrossWeight",
           "quantityValue": 20000,
-          "quantityUOM": "Kilogram",
-          "quantityType": "GrossWeight"
+          "quantityUOM": "Kilogram"
         },
         {
           "quantityContext": "Produced",
+          "quantityType": "Count",
           "quantityValue": 20,
-          "quantityUOM": "Reel",
-          "quantityType": "Count"
+          "quantityUOM": "Reel"
         }
       ]
     }
