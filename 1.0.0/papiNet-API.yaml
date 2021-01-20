@@ -136,7 +136,6 @@ components:
         numberOfLineItems:
           type: integer
           minimum: 0
-
     OrderLineItem:
       type: object
       required:
@@ -148,7 +147,8 @@ components:
           type: string
           format: uuid
         orderLineItemNumber:
-          type: string
+          type: number
+          minimum: 0
         orderLineItemStatus:
           type: string
           # Enumeration for 'orderLineItemStatus':
