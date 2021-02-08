@@ -4,6 +4,8 @@
   "description": "Mock for papiNet API",
   "author": "Patrice Krakow <patrice.krakow@gmail.com>",
   "main": "app.js",
+  "private": "true",
+  "license" : "See LICENSE",
   "scripts": {
     "start": "node app.js"
   },
