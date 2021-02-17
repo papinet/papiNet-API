@@ -1,4 +1,4 @@
-To run the mocks on Docker
+To run the mock on Docker
 
 1\. Build the docker image
 ```docker build -t papinet/api-mock . ```
