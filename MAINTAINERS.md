@@ -11,7 +11,7 @@
 
 ## Proxy Maintainer
 
-* Matthew Oberpriller, proxy of Marcel Dumont [@globaltopmedia](https://github.com/globaltopmedia)
+* Matthew Oberpriller [@maoberpriller](https://github.com/maoberpriller), proxy of Marcel Dumont [@globaltopmedia](https://github.com/globaltopmedia)
 
 ## Non-Voting Maintainer
 
