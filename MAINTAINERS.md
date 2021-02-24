@@ -5,13 +5,13 @@
 * Björn Jonsson Dannetun [@bjdannetun](https://github.com/bjdannetun)
 * Jens Nordenberg [@MrNordenberg](https://github.com/MrNordenberg)
 * Lars Olofsson [@larsolofsson](https://github.com/larsolofsson)
-* Marcel Dumont [@globaltopmedia](https://github.com/globaltopmedia)
+* Matthew Oberpriller [@maoberpriller](https://github.com/maoberpriller)
 * Per Hammarström [@t02phf](https://github.com/t02phf)
 * Tom Meniga [@tommeniga](https://github.com/tommeniga)
 
 ## Proxy Maintainer
 
-* Matthew Oberpriller [@maoberpriller](https://github.com/maoberpriller), proxy of Marcel Dumont [@globaltopmedia](https://github.com/globaltopmedia)
+* Marcel Dumont [@globaltopmedia](https://github.com/globaltopmedia), proxy of Matthew Oberpriller [@maoberpriller](https://github.com/maoberpriller)
 
 ## Non-Voting Maintainer
 
