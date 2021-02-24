@@ -2,7 +2,13 @@
 
 ## Project Maintainers
 
-[Project maintainers](MAINTAINERS.md) are responsible for activities around maintaining and updating the papiNet API standard. Final decisions on the standard reside with the project maintainers.
+[Project maintainers](MAINTAINERS.md) are responsible for activities around maintaining and updating the papiNet API standard. There are three types of project maintainers:
+
+* Voting maintainer, who have 1 vote, and may designate up to one proxy maintainer;
+* Proxy maintainer, who have 1 vote only if the voting maintainer by who she/he has been designated as proxy maintainer is absent;
+* Non-voting maintainer, who does not participate in voting.
+
+While all maintainers should equally participate in the development of the papiNet API standard, final decisions on the standard reside with the project voting maintainers and proxy maintainers.
 
 Maintainers MUST remain active. If they are unresponsive for >6 months, they will be automatically removed unless a [two-thirds supermajority vote](https://en.wikipedia.org/wiki/Supermajority#Two-thirds_vote) of the other project maintainers agrees to extend the period to be greater than 6 months.
 
