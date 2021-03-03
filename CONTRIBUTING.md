@@ -26,6 +26,8 @@ The _hotfix_ branches MUST be created from the `main` branch and eventually merg
 
 The `main` branch will always contain the latest version of the standard located in the directory with the highest semantic version, `MAJOR.MINOR.PATCH/`.
 
+The files located in the root directory are called the _supporting files_.
+
 The `develop` branch will contain the latest delivered changes for the next release. These latest delivered changes MUST be located in either:
 
 * the directory `MAJOR++.0.0/` if they are _incompatible_ changes
@@ -42,4 +44,9 @@ In order to contribute to the papiNet standard, you MUST either:
 
 As a maintainer, you can create/push these branches on the `papiNet-API` repository from the `papinet` GitHub account. As an external contributor, you MUST use your own fork. Both maintainers and external contributors MUST use pull request (PR) for merging their `feature/my_feature` branches into the `develop` branch, as well as for merging their `hotfix/MAJOR.MINOR.PATCH++` branches into the `master` branch.
 
-Regularly, the maintainer MUST transfer the latest delivered changes on the `develop` branch to the `main` branch via release branches.
+Regularly, the maintainer MUST transfer the latest delivered changes of the `develop` branch to the `main` branch via release branches. They MUST either:
+
+* start a `release/MAJOR++.0.0` branch to release _incompatible_ changes
+* start a `release/MAJOR.MINOR++.0` branch to release  _backwards compatible_ changes
+
+Changes of the _supporting files_ SHOULD be done using `hotfix/my_hotfix` branches.
