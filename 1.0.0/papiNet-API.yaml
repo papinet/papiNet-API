@@ -147,7 +147,7 @@ components:
           type: string
           format: uuid
         orderLineItemNumber:
-          type: number
+          type: integer
           minimum: 0
         orderLineItemStatus:
           type: string
