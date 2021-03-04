@@ -89,7 +89,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-> You can see that the _Order Issuer_ has **5**  _Active orders_. The response only contains the header information, to get the details of the order, including the order lines, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full order. You can also notice that the response only gives 2 _Active orders_ out of the 6. This is because of the pagination mechanism.
+> You can see that the _Order Issuer_ has **6**  _Active orders_. The response only contains the header information, to get the details of the order, including the order lines, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full order. You can also notice that the response only gives 2 _Active orders_ out of the 6. This is because of the pagination mechanism.
 
 We have prepared the scenario A on the order `1001`.
 
@@ -189,7 +189,7 @@ It shows that the first (and unique) line is now `Confirmed`, but can still be c
 
 #### Step 3 of Scenario A
 
-The step 3 of the scenario A will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
+The step 3 of the scenario A will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
 ```text
 $ curl --request GET \
@@ -238,7 +238,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
 #### Step 4 of Scenario A
 
@@ -463,7 +463,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line, as well as the order `1001`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+It shows that the first (and unique) line, as well as the order `1001`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that the quantity of type `Count` is not relevant in the context `Invoiced`.
 
 ### Scenario B - Multiple Productions and One Shipment
 
@@ -508,7 +508,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-We have prepared the scenario A on the order `1002`.
+We have prepared the scenario B on the order `1002`.
 
 #### Step 1 of Scenario B
 
@@ -606,7 +606,7 @@ It shows that the first (and unique) line is now `Confirmed`, but can still be c
 
 #### Step 3 of Scenario B
 
-The step 3 of the scenario B will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
+The step 3 of the scenario B will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
 ```text
 $ curl --request GET \
@@ -655,7 +655,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
 #### Step 4 of Scenario B
 
@@ -1010,7 +1010,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line, as well as the order `1002`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+It shows that the first (and unique) line, as well as the order `1002`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that the quantity of type `Count` is not relevant in the context `Invoiced`.
 
 ### Scenario C - One Production and Multiple Shipments
 
@@ -1192,7 +1192,7 @@ It shows that the first (and unique) line is now `Confirmed`, but can still be c
 
 #### Step 3 of Scenario C
 
-The step 3 of the scenario C will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
+The step 3 of the scenario C will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
 ```text
 $ curl --request GET \
@@ -1241,7 +1241,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
 #### Step 4 of Scenario C
 
@@ -1543,7 +1543,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line, as well as the order `1003`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+It shows that the first (and unique) line, as well as the order `1003`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that the quantity of type `Count` is not relevant in the context `Invoiced`.
 
 ### Scenario D - Multiple Productions and Multiple Shipments
 
@@ -1643,7 +1643,7 @@ It shows that the first (and unique) line is now `Confirmed`, but can still be c
 
 #### Step 3 of Scenario D
 
-The step 3 of the scenario D will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
+The step 3 of the scenario D will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
 ```text
 $ curl --request GET \
@@ -1692,7 +1692,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
 #### Step 4 of Scenario D
 
@@ -1834,7 +1834,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows ...
+It shows that the first (and unique) line is still on the status `Confirmed`, while quantities have been updated, using the contexts `Produced`and `Shipped`.
 
 #### Step 6 of Scenario D
 
@@ -1911,7 +1911,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows ...
+It shows that the first (and unique) line has now reached the status `ProductionCompleted`, while quantities have been updated, using the contexts `Produced`and `Shipped`.
 
 #### Step 7 of Scenario D
 
@@ -1988,7 +1988,8 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows ...
+
+It shows that the first (and unique) line is still on the status `ProductionCompleted`, while quantities have been updated, using the context `Shipped`.
 
 #### Step 8 of Scenario D
 
@@ -2148,13 +2149,13 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line, as well as the order `1004`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+It shows that the first (and unique) line, as well as the order `1004`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that the quantity of type `Count` is not relevant in the context `Invoiced`.
 
 ### Scenario E - Under Shipment
 
 #### Step 1 of Scenario E
 
-The step 1 of the scenario D will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
+The step 1 of the scenario E will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
 ```text
 $ curl --request GET \
@@ -2195,7 +2196,7 @@ It shows that the order `1005` has been well received by the _Supplier_ and is _
 
 #### Step 2 of Scenario E
 
-The step 2 of the scenario D will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
+The step 2 of the scenario E will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
 ```text
 $ curl --request GET \
@@ -2248,7 +2249,7 @@ It shows that the first (and unique) line is now `Confirmed`, but can still be c
 
 #### Step 3 of Scenario E
 
-The step 3 of the scenario D will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
+The step 3 of the scenario E will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
 ```text
 $ curl --request GET \
@@ -2297,7 +2298,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
 #### Step 4 of Scenario E
 
@@ -2522,13 +2523,13 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line, as well as the order `1005`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+It shows that the first (and unique) line, as well as the order `1005`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that the quantity of type `Count` is not relevant in the context `Invoiced`.
 
 ### Scenario F - Over Shipment
 
 #### Step 1 of Scenario F
 
-The step 1 of the scenario D will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
+The step 1 of the scenario F will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
 
 ```text
 $ curl --request GET \
@@ -2569,7 +2570,7 @@ It shows that the order `1006` has been well received by the _Supplier_ and is _
 
 #### Step 2 of Scenario F
 
-The step 2 of the scenario D will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
+The step 2 of the scenario F will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
 
 ```text
 $ curl --request GET \
@@ -2622,7 +2623,7 @@ It shows that the first (and unique) line is now `Confirmed`, but can still be c
 
 #### Step 3 of Scenario F
 
-The step 3 of the scenario D will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
+The step 3 of the scenario F will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
 
 ```text
 $ curl --request GET \
@@ -2671,11 +2672,11 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": true`).
+It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
 #### Step 4 of Scenario F
 
-The step 4 of the scenario E will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
+The step 4 of the scenario F will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
 
 ```text
 $ curl --request GET \
@@ -2739,7 +2740,7 @@ It shows that the first (and unique) line has now reached the status `Production
 
 #### Step 5 of Scenario F
 
-The step 5 of the scenario E will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that all the products have left the _Supplier_ location. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
+The step 5 of the scenario F will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that all the products have left the _Supplier_ location. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
 
 ```text
 $ curl --request GET \
@@ -2816,7 +2817,7 @@ It shows that the first (and unique) line has now reached the status `ShipmentCo
 
 #### Step 6 of Scenario F
 
-The step 6 of the scenario E will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
+The step 6 of the scenario F will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `1804bcfb-15ae-476a-bc8b-f31bc9f4de62`:
 
 ```text
 $ curl --request GET \
@@ -2895,4 +2896,4 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-It shows that the first (and unique) line, as well as the order `1006`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that only the quantity of type `Count` is not relevant in the context `Invoiced`.
+It shows that the first (and unique) line, as well as the order `1006`, has now reached the status `Completed`. The quantities have been updated accordingly, using the context `Invoiced`. Notice that the quantity of type `Count` is not relevant in the context `Invoiced`.
