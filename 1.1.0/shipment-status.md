@@ -25,6 +25,8 @@ Within the logistic supply chain, a _Supplier_ buys transport services from a _F
 
 ### Scenario A
 
+A _Forwarder_ requests to a _Carrier_ the status of one or multiple of its _shipments_. The _Forwarder_ has earlier booked the transport from the _Carrier_.
+
 #### Authentication
 
 We recommend secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
@@ -33,7 +35,7 @@ The _Forwarder_ sends an API request to the create _Carrier_ in order to create 
 
 ```text
 $ curl --request POST \
-  --URL https://papinet.papinet.io/tokens \
+  --URL https://papinet.carrier-a.papinet.io/tokens \
   --header 'Content-Type: application/json' \
   --data '{
     "partnerId": "public:36297346-e4d0-4214-b298-dd129c6ed82b",
@@ -51,7 +53,7 @@ If all goes well, the _Forwarder_ will receive a response like this:
 }
 ```
 
-#### Step 2 of Scenario A
+#### Step 1 of Scenario A
 
 The _Forwarder_ sends an API request to the _Carrier_ in order to get the list of all its _Active shipments_:
 
@@ -87,7 +89,7 @@ If all goes well, the _Forwarder_ will receive from the _Carrier_ a response lik
         }
       ],
       "shipmentStatus": "Active",
-      "shipmentArrivalStatus": "Delayed",
+      "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
       "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
       "link": "/shipments/c51d8903-01d1-485c-96ce-51a9be192207"
@@ -103,7 +105,7 @@ If all goes well, the _Forwarder_ will receive from the _Carrier_ a response lik
         }
       ],
       "shipmentStatus": "Active",
-      "shipmentArrivalStatus": "Delayed",
+      "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
       "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
       "link": "/shipments/778fe5cb-f7ac-4493-b492-25fe98df67c4"
@@ -123,3 +125,72 @@ If all goes well, the _Forwarder_ will receive from the _Carrier_ a response lik
 > You can see that the _Carrier_ has **6** _Active shipments_. The response only contains summary information, to get the details of the _shipment_ you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _shipment_. You can also notice that the response only gives 2 _Active shipments_ out of the 6. This is because of the pagination mechanism.
 
 #### Step 2 of Scenario A
+
+The _Forwarder_ sends an API request to the _Carrier_ in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.papinet.io/shimpents/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
+```
+
+If all goes well, the _Forwarder_ will receive a response like this:
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "shipmentNumber": "1001",
+  "shipmentReferences": [
+    {
+      "type": "shipmentNumber",
+      "assignedBy": "Forwarder",
+      "value": "ABC01"
+    }
+  ],
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "OnTime",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:53:36",
+  "latestEvent": {
+    "id": "7af38a28-068f-496e-97f3-e7035edc5445",
+    "type": "LoadingStarted",
+    "dateTime": "2021-03-23T13:56:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
+```
+
+#### Step [At Arrival] of Scenario A
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "shipmentNumber": "1001",
+  "shipmentReferences": [
+    {
+      "type": "shipmentNumber",
+      "assignedBy": "Forwarder",
+      "value": "ABC01"
+    }
+  ],
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "OnTime",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
+  "actualDateTimeOfArrival": "2021-04-24T13:56:00",
+  "latestEvent": {
+    "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
+    "type": "Arrived",
+    "dateTime": "2021-04-24T14:15:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
+```
+
+> As the shipment is actually arrived, we have an "actualDateTimeOfArrival" and not "estimatedDateTimeOfArrival" anymore.
