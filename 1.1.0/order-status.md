@@ -5,9 +5,9 @@
 An _Order Issuer_ requests to a _Supplier_ the status of one or multiple of its _orders_. The _Order Issuer_ has earlier sent the orders to the Supplier. 
 This use case is designed for Pulp and Paper business.
 
-## Base URL
+## Domain Name
 
-We suggest that the _Supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+We suggest that _Suppliers_ expose their papiNet API endpoints using the domain name of their respective corporate web sides with the prefix `papinet.*`. For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose their papiNet API endpoints on the domain name `papinet.acme.com`.
 
 The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the domain `papinet.papinet.io`.
 
