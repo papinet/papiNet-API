@@ -2,6 +2,8 @@
 
 ## Context
 
+This use case is designed for Pulp and Paper business.
+
 ### Preconditions
 
 An _Order Issuer_ has sent _orders_ to the _Supplier_.
@@ -50,8 +52,19 @@ The _Forwarder_ sends an API request to the _Carrier_ in order to be authenticat
 
 ```text
 $ curl --request POST \
-  --URL https://papinet.road.papinet.io/token \
-  --user 'public-36297346:private-ce2d3cf4'
+  --URL https://papinet.road.papinet.io/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+```
+
+or
+
+```text
+$ curl --request POST \
+  --URL http://localhost:3001/tokens \
+  --header 'X-papiNet-Party: Road' \
+  --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
 ```
@@ -60,9 +73,9 @@ If all goes well, the _Forwarder_ will receive a response like this:
 
 ```json
 { 
-  "access_token": "2YotnFZFEjr1zCsicMWpAA",
+  "access_token": "f6555ce5-303f-45f0-8a1d-bf698587feb2",
   "token_type": "bearer", 
-  "expires_in":3600
+  "expires_in": 3600
 }
 ```
 
@@ -74,7 +87,7 @@ The _Forwarder_ sends an API request to the _Carrier_ in order to get the list o
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments?shipmentStatus=Active \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA'
+  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
 ```
 
 If all goes well, the _Forwarder_ will receive from the _Carrier_ a response like this:
@@ -95,8 +108,8 @@ If all goes well, the _Forwarder_ will receive from the _Carrier_ a response lik
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
       "link": "/shipments/c51d8903-01d1-485c-96ce-51a9be192207"
     },
     {
@@ -135,9 +148,9 @@ The _Forwarder_ sends an API request to the _Carrier_ in order to get the detail
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.papinet.io/shimpents/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA'
+  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
 ```
 
 If all goes well, the _Forwarder_ will receive a response like this:
@@ -155,12 +168,12 @@ If all goes well, the _Forwarder_ will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:53:36",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
   "latestEvent": {
     "id": "7af38a28-068f-496e-97f3-e7035edc5445",
     "type": "LoadingStarted",
-    "dateTime": "2021-03-23T13:56:00",
+    "dateTime": "2021-03-23T13:00:00",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -169,7 +182,18 @@ If all goes well, the _Forwarder_ will receive a response like this:
 }
 ```
 
-#### Step [At Arrival] of Scenario A
+#### Step 4 of Scenario A
+
+The step 4 of the scenario A will simulate the situation in which the Carrier reports that the shipment has left the _Supplier_'s location. Then, the _Forwarder_ sends another similar API request to the _Carrier_ in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+```
+
+If all goes well, the _Forwarder_ will receive a response like this:
 
 ```json
 {
@@ -184,12 +208,92 @@ If all goes well, the _Forwarder_ will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-  "actualDateTimeOfArrival": "2021-04-24T13:56:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "latestEvent": {
+    "id": "3fadd366-e438-4901-bd3f-a8d10f8c85a2",
+    "type": "Departed",
+    "dateTime": "2021-03-23T13:30:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
+```
+
+#### Step 5 of Scenario A
+
+The step 5 of the scenario A will simulate the situation in which the Carrier reports that the shipment arrival is getting delayed because of a traffic jam. Then, the _Forwarder_ sends another similar API request to the _Carrier_ in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+```
+
+If all goes well, the _Forwarder_ will receive a response like this:
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "shipmentNumber": "1001",
+  "shipmentReferences": [
+    {
+      "type": "shipmentNumber",
+      "assignedBy": "Forwarder",
+      "value": "ABC01"
+    }
+  ],
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00",
+  "latestEvent": {
+    "id": "275a18a7-69a6-4d4f-a890-b6055611b63b",
+    "type": "TrafficJam",
+    "dateTime": "2021-03-23T18:00:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
+```
+
+#### Step 6 of Scenario A
+
+The step 6 of the scenario A will simulate the situation in which the Carrier reports that the shipment has arrived at the time estimated after the traffic jam was reported. Then, the _Forwarder_ sends another similar API request to the _Carrier_ in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+```
+
+If all goes well, the _Forwarder_ will receive a response like this:
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "shipmentNumber": "1001",
+  "shipmentReferences": [
+    {
+      "type": "shipmentNumber",
+      "assignedBy": "Forwarder",
+      "value": "ABC01"
+    }
+  ],
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
   "latestEvent": {
     "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
     "type": "Arrived",
-    "dateTime": "2021-04-24T14:15:00",
+    "dateTime": "2021-04-24T10:00:00",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -199,3 +303,115 @@ If all goes well, the _Forwarder_ will receive a response like this:
 ```
 
 > As the shipment is actually arrived, we have an "actualDateTimeOfArrival" and not "estimatedDateTimeOfArrival" anymore.
+
+#### Step 7 of Scenario A
+
+The step 7 of the scenario A will simulate the situation in which the Carrier reports that the shipment is completed. Then, the _Forwarder_ sends another similar API request to the _Carrier_ in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+```
+
+If all goes well, the _Forwarder_ will receive a response like this:
+
+```json
+{
+  "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+  "shipmentNumber": "1001",
+  "shipmentReferences": [
+    {
+      "type": "shipmentNumber",
+      "assignedBy": "Forwarder",
+      "value": "ABC01"
+    }
+  ],
+  "shipmentStatus": "Completed",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "latestEvent": {
+    "id": "a7eadf12-dd54-4ee2-98b4-29fabb6a10e9",
+    "type": "Completed",
+    "dateTime": "2021-04-24T11:00:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
+```
+
+### Scenario B
+
+A _Supplier_ requests to a _Forwarder_ the status of one or multiple of its _shipments_. The _Supplier_ has earlier sent delivery instruction(s) to the _Forwarder_.
+
+#### Step 1 of Scenario B - Authentication
+
+The _Supplier_ sends an API request to the _Forwarder_ in order to be authenticated, and gets an _access token_:
+
+```text
+$ curl --request POST \
+  --URL https://papinet.fast.papinet.io/token \
+  --user 'public-36297346:private-ce2d3cf4'
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+
+If all goes well, the _Forwarder_ will receive a response like this:
+
+```json
+{ 
+  "access_token": "92f27fba-7aac-4151-854b-534da02a3e15",
+  "token_type": "bearer", 
+  "expires_in": 3600
+}
+```
+
+#### Step 2 of Scenario B
+
+The _Supplier_ sends an API request to the _Forwarder_ in order to get the list of all its _Active shipments_:
+
+```text
+$ curl --request GET \
+  --URL https://papinet.fast.papinet.io/shipments?shipmentStatus=Active \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+```
+
+If all goes well, the _Supplier_ will receive from the _Forwarder_ a response like this:
+
+```json
+{
+  "numberOfShipments": 6,
+  "shipments": [
+    {
+      "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
+      "shipmentNumber": "ABC01",
+      "shipmentStatus": "Active",
+      "shipmentArrivalStatus": "OnTime",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "link": "/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede"
+    },
+    {
+      "id": "678df9d5-ebc5-4f41-a4ab-2cdf1d991deb",
+      "supplierShipmentNumber": "ABC02",
+      "shipmentStatus": "Active",
+      "shipmentArrivalStatus": "OnTime",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "link": "/shipments/678df9d5-ebc5-4f41-a4ab-2cdf1d991deb"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/shipments?shipmentStatus=Active&offset=0&limit=2"
+    },
+    "next": {
+      "href": "/shipments?shipmentStatus=Active&offset=2&limit=2"
+    }
+  }
+}
+```
