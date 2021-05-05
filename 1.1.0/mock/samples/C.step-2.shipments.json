@@ -1,0 +1,31 @@
+{
+  "numberOfShipments": 6,
+  "shipments": [
+    {
+      "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
+      "shipmentNumber": "ABC01",
+      "shipmentStatus": "Active",
+      "shipmentArrivalStatus": "OnTime",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "link": "/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17"
+    },
+    {
+      "id": "55cdad30-51df-4bfb-96ad-34e756ce7ba0",
+      "supplierShipmentNumber": "ABC02",
+      "shipmentStatus": "Active",
+      "shipmentArrivalStatus": "OnTime",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "link": "/shipments/55cdad30-51df-4bfb-96ad-34e756ce7ba0"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/shipments?shipmentStatus=Active&offset=0&limit=2"
+    },
+    "next": {
+      "href": "/shipments?shipmentStatus=Active&offset=2&limit=2"
+    }
+  }
+}

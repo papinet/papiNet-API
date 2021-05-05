@@ -1,0 +1,17 @@
+{
+  "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
+  "shipmentNumber": "ABC01",
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "latestEvent": {
+    "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
+    "type": "Arrived",
+    "dateTime": "2021-04-24T10:00:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}

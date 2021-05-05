@@ -1,0 +1,17 @@
+{
+  "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
+  "shipmentNumber": "ABC01",
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00",
+  "latestEvent": {
+    "id": "275a18a7-69a6-4d4f-a890-b6055611b63b",
+    "type": "TrafficJam",
+    "dateTime": "2021-03-23T18:00:00",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
