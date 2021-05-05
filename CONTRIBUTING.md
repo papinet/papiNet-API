@@ -80,3 +80,7 @@ It always seems impossible until it's done. Nelson Mandela
 6\. Open the file `quotes.txt` from your local folder, modify it and save it.
 
 7\. Commit your changed file `quotes.txt` to the (local) `feature/add-arthur-ashe` branch, with a proper comment such as `Add a new quote (and reformat)`.
+
+8\. Push your (local) commit to the origin remote.
+
+9.\ Create a _Pull Request_ to merge the (remote) `feature/add-arthur-ashe` branch into the (remote) `develop` branch.
