@@ -1,4 +1,4 @@
-## Contributing Guidelines
+# Contributing Guidelines
 
 This document intends to establish guidelines which build a transparent, open mechanism for deciding how to evolve the papiNet API standard. The papiNet Central Working Group (CWG) will follow these processes when merging changes from external contributors or from the CWG itself. This guideline document will be adjusted as practicality dictates.
 
@@ -50,3 +50,33 @@ Regularly, the maintainer MUST transfer the latest delivered changes of the `dev
 * start a `release/MAJOR.MINOR++.0` branch to release  _backwards compatible_ changes
 
 Changes of the _supporting files_ SHOULD be done using `hotfix/my_hotfix` branches.
+
+## Getting Started
+
+### Let's Change a _Supporting File_
+
+1\. Switch to the `develop` branch.
+
+2\. You should find a `quotes.txt` file with (something similar to) the following content:
+
+```text
+It always seems impossible until it's done. Nelson Mandela
+```
+
+3\. Now, let's say that you would like to propose changing the content of this file as follow:
+
+```text
+"It always seems impossible until it's done."
+--Nelson Mandela
+
+"Start where you are. Use what you have. Do what you can."
+--Arthur Ashe
+```
+
+4\. Create a new branch called, for instance, `feature/add-arthur-ashe`. Make sure that this branch is created based on the `develop` branch.
+
+5\. Switch to the `feature/add-arthur-ashe` branch.
+
+6\. Open the file `quotes.txt` from your local folder, modify it and save it.
+
+7\. Commit your changed file `quotes.txt` to the (local) `feature/add-arthur-ashe` branch, with a proper comment such as `Add a new quote (and reformat)`.
