@@ -3,7 +3,7 @@
   "shipmentNumber": "1001",
   "shipmentReferences": [
     {
-      "type": "shipmentNumber",
+      "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
       "value": "ABC01"
     }
