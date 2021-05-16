@@ -74,7 +74,7 @@ If all goes well, the company **Fast** will receive a response like this:
 
 ```json
 { 
-  "access_token": "04427536-25b7-42b8-8938-91146a62e11f",
+  "access_token": "efe30794-3f53-40c4-a5dc-77c475a8561d",
   "token_type": "bearer", 
   "expires_in": 3600
 }
@@ -87,7 +87,7 @@ The company **Fast**, being a _Forwarder_, sends an API request to the company *
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -96,7 +96,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
   --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -160,7 +160,7 @@ The company **Fast**, being a _Forwarder_, sends an API request to the company *
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -169,7 +169,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -209,7 +209,7 @@ The step 4 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -218,7 +218,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -258,7 +258,7 @@ The step 5 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -267,7 +267,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -307,7 +307,7 @@ The step 6 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -316,7 +316,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -358,7 +358,7 @@ The step 7 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -367,7 +367,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
+  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
