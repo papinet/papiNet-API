@@ -59,48 +59,60 @@ const scenarios = [
     path: "/shipments/c51d8903-01d1-485c-96ce-51a9be192207",
     useCase: "shipment-use-case",
     name: "A",
-    shipmentId: "c51d8903-01d1-485c-96ce-51a9be192207",
-    party: "Road",
     firstStep: 3,
     lastStep: 7,
     previousStep: 0
   },
   {
+    method: "GET",
+    domain:"papinet.fast.papinet.io",
+    path: "/shipments",
+    useCase: "shipment-use-case",
+    name: "B",
+    firstStep: 2,
+    lastStep: 2,
+    previousStep: 0
+  },
+  {
+    method: "GET",
+    domain:"papinet.fast.papinet.io",
     path: "/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
     useCase: "shipment-use-case",
     name: "B",
-    shipmentId: "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-    party: "Fast",
     firstStep: 3,
     lastStep: 7,
     previousStep: 0
   },
   {
+    method: "GET",
+    domain:"papinet.pulp.papinet.io",
+    path: "/shipments",
+    useCase: "shipment-use-case",
+    name: "C",
+    firstStep: 2,
+    lastStep: 2,
+    previousStep: 0
+  },
+  {
+    method: "GET",
+    domain:"papinet.pulp.papinet.io",
     path: "/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
     useCase: "shipment-use-case",
     name: "C",
-    shipmentId: "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-    party: "Pulp",
     firstStep: 3,
     lastStep: 7,
     previousStep: 0
   }
-]
-const scenariosIndexedByParty = [
-  "GET|papinet.papinet.io|/orders",
-  "GET|papinet.papinet.io|/orders/c51d8903-01d1-485c-96ce-51a9be192207",
-  "GET|papinet.road.papinet.io|/shipments",
-  "Road",
-  "Fast",
-  "Pulp"
 ]
 const scenariosIndexedByAPIEndpoint = [
   "GET|papinet.papinet.io|/orders",
   "GET|papinet.papinet.io|/orders/c51d8903-01d1-485c-96ce-51a9be192207",
   "GET|papinet.road.papinet.io|/shipments",
   "GET|papinet.road.papinet.io|/shipments/c51d8903-01d1-485c-96ce-51a9be192207",
-  "GET|papinet.road.papinet.io|/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "GET|papinet.road.papinet.io|/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17"
+  "GET|papinet.fast.papinet.io|/shipments",
+  "GET|papinet.fast.papinet.io|/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
+  "GET|papinet.pulp.papinet.io|/shipments",
+  "GET|papinet.pulp.papinet.io|/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17"
 ]
 
 // post /tokens
@@ -108,26 +120,21 @@ app.post('/tokens', (req, res) => {
   const traceId = short.uuid()
   console.log(`[INFO] [${traceId}] post /tokens [${Date.now()}] `)
   const id = short.uuid()
-  // Depreacted:
-  const party = req.header('X-papiNet-Party')
-  console.log(`[INFO] [${traceId}]   party = ${party} [${Date.now()}]`)
-  // Replaced By:
+  // X-papiNet-Domain
   const domain = req.header('X-papiNet-Domain')
   console.log(`[INFO] [${traceId}]   domain = ${domain} [${Date.now()}]`)
 
-  const scenarioPos = scenariosIndexedByParty.indexOf(party)
-  console.log(`[INFO] [${traceId}]   scenarioPos: ${scenarioPos}`)
-
+  //const scenarioPos = scenariosIndexedByParty.indexOf(party)
+  //console.log(`[INFO] [${traceId}]   scenarioPos: ${scenarioPos}`)
   // This is the (ONLY) good way to make a genuine COPY!!!
-  const sessionScenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]));
+  //const sessionScenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]));
+  //we do NOT know which scenario YET ???
 
   const session = {
     id: id,
     token: id,
     domain: domain,
-    party: party,
-    scenario: sessionScenario,
-    scenarioActivated: false
+    scenario: {}
   }
   sessions.push(session)
   sessionsIndexedByToken.push(session.token)
@@ -253,8 +260,13 @@ app.get('/orders', (req, res) => {
 
 // get /shipments
 app.get('/shipments', (req, res) => {
-  const traceId = short.uuid()
+  const traceId = short.uuid();
   console.log(`[INFO] [${traceId}] get /shipments [${Date.now()}]`)
+
+  handle(traceId, 'GET', '/shipments', req, res)
+
+  return // END HERE!
+
   const authorization = req.headers.authorization
   console.log(`[INFO] [${traceId}]   authorization: ${authorization} [${Date.now()}]`)
 
@@ -323,6 +335,11 @@ app.get('/shipments/:shipmentId', (req, res) => {
   const traceId = short.uuid();
   const shipmentId = req.params.shipmentId;
   console.log(`[INFO] [${traceId}] get /shipments/${shipmentId} [${Date.now()}]`)
+
+  handle(traceId, 'GET', `/shipments/${shipmentId}`, req, res)
+
+  return // END HERE!
+
   const authorization = req.headers.authorization;
   console.log(`[INFO] [${traceId}]   authorization: ${authorization} [${Date.now()}]`)
 
@@ -350,35 +367,53 @@ app.get('/shipments/:shipmentId', (req, res) => {
     })
   }
 
-  const sessionParty = sessions[sessionPos].party
-  console.log(`[INFO] [${traceId}]   sessionParty: ${sessionParty}`)
+  const sessionDomain = sessions[sessionPos].domain
+  console.log(`[INFO] [${traceId}]   sessionDomain: ${sessionDomain}`)
 
-  const party = req.header('X-papiNet-Party')
-  console.log(`[INFO] [${traceId}]   party: ${party}`)
+  const domain = req.header('X-papiNet-Domain')
+  console.log(`[INFO] [${traceId}]   domain: ${domain}`)
 
-  if (sessionParty !== party) {
+  if (sessionDomain !== domain) {
     return res.status(401).json({
       error: {
         code: "ERR-06",
-        message: "The 'X-papiNet-Party' does not correpsond to the session's party :("
+        message: "The 'X-papiNet-Domain' does not correpsond to the session's domain :("
       }
     })
   }
+
+  const sessionScenario = sessions[sessionPos].scenario
+  console.log(`[INFO] [${traceId}]   apiEndpoint: ${sessionScenario}`)
+
+  if (JSON.stringify(sessionScenario) === '{}') {
+    const apiEndpoint = `GET|${domain}|/shipments/${shipmentId}`
+    console.log(`[INFO] [${traceId}]   apiEndpoint: ${apiEndpoint}`)
+
+    const scenarioPos = scenariosIndexedByAPIEndpoint.indexOf(apiEndpoint)
+    console.log(`[INFO] [${traceId}]   scenarioPos: ${scenarioPos}`)
+
+    sessions[sessionPos].scenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]))
+    console.log(`[INFO] [${traceId}]   apiEndpoint: ${sessionScenario}`)
+  }
+
+  const sessionScenarioUseCase = sessions[sessionPos].scenario.useCase
+  console.log(`[INFO] [${traceId}]   sessionScenarioUseCase: ${sessionScenarioUseCase}`)
 
   const sessionScenarioName = sessions[sessionPos].scenario.name
   console.log(`[INFO] [${traceId}]   sessionScenarioName: ${sessionScenarioName}`)
 
-  const sessionShipmentId = sessions[sessionPos].scenario.shipmentId
-  console.log(`[INFO] [${traceId}]   sessionShipmentId: ${sessionShipmentId}`)
-
-  if (sessionShipmentId !== shipmentId) {
-    return res.status(404).json({
-      error: {
-        code: "ERR-XX",
-        message: "The shipment ${shipmentId} was NOT FOUND :-("
-      }
-    })
+  /*
+  {
+    method: "GET",
+    domain:"papinet.road.papinet.io",
+    path: "/shipments",
+    useCase: "shipment-use-case",
+    name: "A",
+    firstStep: 2,
+    lastStep: 2,
+    previousStep: 0
   }
+  */
 
   const firstStep = sessions[sessionPos].scenario.firstStep
   console.log(`[INFO] [${traceId}]   firstStep: ${firstStep}`)
@@ -401,7 +436,7 @@ app.get('/shipments/:shipmentId', (req, res) => {
 
   sessions[sessionPos].scenario.previousStep = currentStep
 
-  const sourceFileName = `./samples/shipment-use-case.${sessionScenarioName}.step-${currentStep}.json`;
+  const sourceFileName = `./samples/${sessionScenarioUseCase}.${sessionScenarioName}.step-${currentStep}.json`;
   console.log(`[INFO] [${traceId}]   sourceFileName: ${sourceFileName}`);
 
   let source = {}
@@ -422,6 +457,142 @@ app.get('/shipments/:shipmentId', (req, res) => {
 app.listen(PORT, HOST)
 console.log(`Running on http://${HOST}:${PORT}`)
 
-function handle(method, domain, path) {
-  return {}
+/*
+HANDLE
+*/
+function handle(traceId, method, path, req, res) {
+  const authorization = req.headers.authorization;
+  console.log(`[INFO] [${traceId}]   authorization: ${authorization} [${Date.now()}]`)
+
+  if (authorization === undefined || !authorization.startsWith("Bearer ")) {
+    return res.status(401).json({
+      error: {
+        code: "ERR-04",
+        message: "Cannot get a bearer token :-("
+      }
+    })
+  }
+
+  const token = authorization.substring(7, authorization.length)
+  console.log(`[INFO] [${traceId}]   token: ${token}`)
+
+  const sessionPos = sessionsIndexedByToken.indexOf(token)
+  console.log(`[INFO] [${traceId}]   sessionPos: ${sessionPos}`)
+
+  if (sessionPos === -1) {
+    return res.status(401).json({
+      error: {
+        code: "ERR-05",
+        message: "Cannot retrieve the session based on the Bearer token :-("
+      }
+    })
+  }
+
+  const sessionDomain = sessions[sessionPos].domain
+  console.log(`[INFO] [${traceId}]   sessionDomain: ${sessionDomain}`)
+
+  const domain = req.header('X-papiNet-Domain')
+  console.log(`[INFO] [${traceId}]   domain: ${domain}`)
+
+  if (sessionDomain !== domain) {
+    return res.status(401).json({
+      error: {
+        code: "ERR-06",
+        message: "The 'X-papiNet-Domain' does not correpsond to the session's domain :("
+      }
+    })
+  }
+
+  const apiEndpoint = `GET|${domain}|${path}`
+  console.log(`[INFO] [${traceId}]   apiEndpoint: ${apiEndpoint}`)
+
+  const scenarioPos = scenariosIndexedByAPIEndpoint.indexOf(apiEndpoint)
+  console.log(`[INFO] [${traceId}]   scenarioPos: ${scenarioPos}`)
+
+  const scenario = scenarios[scenarioPos]
+  console.log(`[INFO] [${traceId}]   scenario: ${scenario}`)
+
+  const scenarioUseCase = scenario.useCase
+  console.log(`[INFO] [${traceId}]   scenarioUseCase: ${scenarioUseCase}`)
+  const scenarioName = scenario.name
+  console.log(`[INFO] [${traceId}]   scenarioName: ${scenarioName}`)
+
+  const sessionScenario = sessions[sessionPos].scenario
+  console.log(`[INFO] [${traceId}]   sessionScenario: ${sessionScenario}`)
+
+  if (JSON.stringify(sessionScenario) === '{}') {
+    sessions[sessionPos].scenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]))
+    console.log(`[INFO] [${traceId}]   apiEndpoint: ${sessionScenario}`)
+  }
+
+  const sessionScenarioUseCase = sessions[sessionPos].scenario.useCase
+  console.log(`[INFO] [${traceId}]   sessionScenarioUseCase: ${sessionScenarioUseCase}`)
+
+  const sessionScenarioName = sessions[sessionPos].scenario.name
+  console.log(`[INFO] [${traceId}]   sessionScenarioName: ${sessionScenarioName}`)
+
+  if (sessionScenarioUseCase == scenarioUseCase && sessionScenarioName == scenarioName) {
+    if (sessionScenario.path != scenario.path) {
+      sessions[sessionPos].scenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]))
+      console.log(`[INFO] [${traceId}]   apiEndpoint: ${sessionScenario}`)
+    }
+  } else {
+    return res.status(401).json({
+      error: {
+        code: "ERR-07",
+        message: "The scenario does not correpsond to the session's scenario :("
+      }
+    })
+  }
+
+  /*
+  {
+    method: "GET",
+    domain:"papinet.road.papinet.io",
+    path: "/shipments",
+    useCase: "shipment-use-case",
+    name: "A",
+    firstStep: 2,
+    lastStep: 2,
+    previousStep: 0
+  }
+  */
+
+  const firstStep = sessions[sessionPos].scenario.firstStep
+  console.log(`[INFO] [${traceId}]   firstStep: ${firstStep}`)
+  const lastStep = sessions[sessionPos].scenario.lastStep
+  console.log(`[INFO] [${traceId}]   lastStep: ${lastStep}`)
+  const previousStep = sessions[sessionPos].scenario.previousStep
+  console.log(`[INFO] [${traceId}]   previousStep: ${previousStep}`)
+
+  let currentStep = -1
+  if (previousStep < firstStep) {
+    currentStep = firstStep
+  }
+  else if (previousStep < lastStep) {
+    currentStep = previousStep + 1
+  }
+  else if (previousStep >= lastStep) {
+    currentStep = lastStep
+  }
+  console.log(`[INFO] [${traceId}]   currentStep: ${currentStep}`)
+
+  sessions[sessionPos].scenario.previousStep = currentStep
+
+  const sourceFileName = `./samples/${sessionScenarioUseCase}.${sessionScenarioName}.step-${currentStep}.json`;
+  console.log(`[INFO] [${traceId}]   sourceFileName: ${sourceFileName}`);
+
+  let source = {}
+  try {
+    source = jsonfile.readFileSync(sourceFileName) // MUST be changed to async
+  } catch (err) {
+    return res.status(404).json({
+      error: {
+        code: "ERR-06",
+        message: `Cannot find the file \'${sourceFileName}\'.`
+      }
+    })
+  }
+
+  return res.status(200).send(source)
 }

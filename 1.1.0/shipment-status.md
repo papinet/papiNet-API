@@ -64,7 +64,7 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request POST \
   --URL http://localhost:3001/tokens \
-  --header 'X-papiNet-Party: Road' \
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -74,7 +74,7 @@ If all goes well, the company **Fast** will receive a response like this:
 
 ```json
 { 
-  "access_token": "f6555ce5-303f-45f0-8a1d-bf698587feb2",
+  "access_token": "04427536-25b7-42b8-8938-91146a62e11f",
   "token_type": "bearer", 
   "expires_in": 3600
 }
@@ -87,7 +87,7 @@ The company **Fast**, being a _Forwarder_, sends an API request to the company *
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -95,13 +95,13 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
 
-<!-- FILE: A.step-2.shipments.json -->
+<!-- FILE: shipment-use-case.A.step-2.json -->
 ```json
 {
   "numberOfShipments": 6,
@@ -111,9 +111,9 @@ If all goes well, the company **Fast** will receive a response like this:
       "shipmentNumber": "1001",
       "shipmentReferences": [
         {
-          "type": "shipmentNumber",
+          "type": "ShipmentNumber",
           "assignedBy": "Forwarder",
-          "value": "ABC01"
+          "value": "SHP001"
         }
       ],
       "shipmentStatus": "Active",
@@ -127,9 +127,9 @@ If all goes well, the company **Fast** will receive a response like this:
       "supplierShipmentNumber": "1002",
       "shipmentReferences": [
         {
-          "type": "shipmentNumber",
+          "type": "ShipmentNumber",
           "assignedBy": "Forwarder",
-          "value": "ABC02"
+          "value": "SHP002"
         }
       ],
       "shipmentStatus": "Active",
@@ -160,7 +160,7 @@ The company **Fast**, being a _Forwarder_, sends an API request to the company *
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -168,22 +168,22 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
 
-<!-- FILE: A.step-3.shipment.json -->
+<!-- FILE: shipment-use-case.A.step-3.json -->
 ```json
 {
   "id": "c51d8903-01d1-485c-96ce-51a9be192207",
   "shipmentNumber": "1001",
   "shipmentReferences": [
     {
-      "type": "shipmentNumber",
+      "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
-      "value": "ABC01"
+      "value": "SHP001"
     }
   ],
   "shipmentStatus": "Active",
@@ -209,7 +209,7 @@ The step 4 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -217,22 +217,22 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
 
-<!-- FILE: A.step-4.shipment.json -->
+<!-- FILE: shipment-use-case.A.step-4.json -->
 ```json
 {
   "id": "c51d8903-01d1-485c-96ce-51a9be192207",
   "shipmentNumber": "1001",
   "shipmentReferences": [
     {
-      "type": "shipmentNumber",
+      "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
-      "value": "ABC01"
+      "value": "SHP001"
     }
   ],
   "shipmentStatus": "Active",
@@ -258,7 +258,7 @@ The step 5 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -266,22 +266,22 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
 
-<!-- FILE: A.step-5.shipment.json -->
+<!-- FILE: shipment-use-case.A.step-5.json -->
 ```json
 {
   "id": "c51d8903-01d1-485c-96ce-51a9be192207",
   "shipmentNumber": "1001",
   "shipmentReferences": [
     {
-      "type": "shipmentNumber",
+      "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
-      "value": "ABC01"
+      "value": "SHP001"
     }
   ],
   "shipmentStatus": "Active",
@@ -307,7 +307,7 @@ The step 6 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -315,22 +315,22 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
 
-<!-- FILE: A.step-6.shipment.json -->
+<!-- FILE: shipment-use-case.A.step-6.json -->
 ```json
 {
   "id": "c51d8903-01d1-485c-96ce-51a9be192207",
   "shipmentNumber": "1001",
   "shipmentReferences": [
     {
-      "type": "shipmentNumber",
+      "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
-      "value": "ABC01"
+      "value": "SHP001"
     }
   ],
   "shipmentStatus": "Active",
@@ -358,7 +358,7 @@ The step 7 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -366,22 +366,22 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer f6555ce5-303f-45f0-8a1d-bf698587feb2'
+  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer 04427536-25b7-42b8-8938-91146a62e11f'
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
 
-<!-- FILE: A.step-7.shipment.json -->
+<!-- FILE: shipment-use-case.A.step-7.json -->
 ```json
 {
   "id": "c51d8903-01d1-485c-96ce-51a9be192207",
   "shipmentNumber": "1001",
   "shipmentReferences": [
     {
-      "type": "shipmentNumber",
+      "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
-      "value": "ABC01"
+      "value": "SHP001"
     }
   ],
   "shipmentStatus": "Completed",
@@ -421,7 +421,7 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request POST \
   --URL http://localhost:3001/tokens \
-  --header 'X-papiNet-Party: Fast' \
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -431,7 +431,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 
 ```json
 { 
-  "access_token": "92f27fba-7aac-4151-854b-534da02a3e15",
+  "access_token": "1d3c4294-4624-4cec-a769-fa345c8235bc",
   "token_type": "bearer", 
   "expires_in": 3600
 }
@@ -444,7 +444,7 @@ The company **Pulp**, being a _Supplier_, sends an API request to the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -452,20 +452,32 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
-  --header 'X-papiNet-Party: Fast' \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
 
-<!-- FILE: B.step-2.shipments.json -->
+<!-- FILE: shipment-use-case.B.step-2.json -->
 ```json
 {
   "numberOfShipments": 6,
   "shipments": [
     {
       "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-      "shipmentNumber": "ABC01",
+      "shipmentNumber": "SHP001",
+      "shipmentReferences": [
+        {
+          "type": "DeliveryInstructionNumber",
+          "assignedBy": "Supplier",
+          "value": "DEL001"
+        },
+        {
+          "type": "DeliveryInstructionSequenceNumber",
+          "assignedBy": "Supplier",
+          "value": "1"
+        }
+      ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -474,7 +486,19 @@ If all goes well, the company **Pulp** will receive a response like this:
     },
     {
       "id": "678df9d5-ebc5-4f41-a4ab-2cdf1d991deb",
-      "supplierShipmentNumber": "ABC02",
+      "supplierShipmentNumber": "SHP002",
+      "shipmentReferences": [
+        {
+          "type": "DeliveryInstructionNumber",
+          "assignedBy": "Supplier",
+          "value": "DEL002"
+        },
+        {
+          "type": "DeliveryInstructionSequenceNumber",
+          "assignedBy": "Supplier",
+          "value": "1"
+        }
+      ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
@@ -500,7 +524,7 @@ The company **Pulp**, being a _Supplier_, sends an API request to the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -508,17 +532,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Party: Fast' \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
 
-<!-- FILE: B.step-3.shipment.json -->
+<!-- FILE: shipment-use-case.B.step-3.json -->
 ```json
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -542,7 +578,7 @@ The step 4 of the scenario B will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -550,17 +586,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Party: Fast' \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
 
-<!-- FILE: B.step-4.shipment.json -->
+<!-- FILE: shipment-use-case.B.step-4.json -->
 ```json
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -583,8 +631,8 @@ The step 5 of the scenario B will simulate the situation in which the company **
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.road.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -592,17 +640,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
 
-<!-- FILE: B.step-5.shipment.json -->
+<!-- FILE: shipment-use-case.B.step-5.json -->
 ```json
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -626,7 +686,7 @@ The step 6 of the scenario B will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -634,17 +694,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Party: Fast' \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
 
-<!-- FILE: B.step-6.shipment.json -->
+<!-- FILE: shipment-use-case.B.step-6.json -->
 ```json
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -667,8 +739,8 @@ The step 7 of the scenario B will simulate the situation in which the company **
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.road.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -676,17 +748,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer 92f27fba-7aac-4151-854b-534da02a3e15'
+  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
 
-<!-- FILE: B.step-7.shipment.json -->
+<!-- FILE: shipment-use-case.B.step-7.json -->
 ```json
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -724,7 +808,7 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request POST \
   --URL http://localhost:3001/tokens \
-  --header 'X-papiNet-Party: Pulp' \
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -734,7 +818,7 @@ If all goes well, the company **Corp** will receive a response like this:
 
 ```json
 { 
-  "access_token": "2423a31e-113b-4de8-81a6-a65a95d4f30f",
+  "access_token": "fe69f78b-a2fd-4e8d-99c1-2f9672846a9a",
   "token_type": "bearer", 
   "expires_in": 3600
 }
@@ -747,7 +831,7 @@ The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an A
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -755,20 +839,32 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
-  --header 'X-papiNet-Party: Pulp' \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
 
-<!-- FILE: C.step-2.shipments.json -->
+<!-- FILE: shipment-use-case.C.step-2.json -->
 ```json
 {
   "numberOfShipments": 6,
   "shipments": [
     {
       "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-      "shipmentNumber": "ABC01",
+      "shipmentNumber": "SHP001",
+      "shipmentReferences": [
+        {
+          "type": "OrderNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "ORD001"
+        },
+        {
+          "type": "OrderLineItemNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "1"
+        }
+      ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -777,7 +873,19 @@ If all goes well, the company **Corp** will receive a response like this:
     },
     {
       "id": "55cdad30-51df-4bfb-96ad-34e756ce7ba0",
-      "supplierShipmentNumber": "ABC02",
+      "shipmentNumber": "SHP002",
+      "shipmentReferences": [
+        {
+          "type": "OrderNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "ORD002"
+        },
+        {
+          "type": "OrderLineItemNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "1"
+        }
+      ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
@@ -802,8 +910,8 @@ The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an A
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.fast.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -811,17 +919,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Party: Fast' \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
 
-<!-- FILE: C.step-3.shipment.json -->
+<!-- FILE: shipment-use-case.C.step-3.json -->
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -844,8 +964,8 @@ The step 4 of the scenario C will simulate the situation in which the company **
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.fast.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -853,17 +973,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Party: Fast' \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
 
-<!-- FILE: C.step-4.shipment.json -->
+<!-- FILE: shipment-use-case.C.step-4.json -->
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -886,8 +1018,8 @@ The step 5 of the scenario C will simulate the situation in which the company **
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.road.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -895,17 +1027,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
 
-<!-- FILE: C.step-5.shipment.json -->
+<!-- FILE: shipment-use-case.C.step-5.json -->
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -929,7 +1073,7 @@ The step 6 of the scenario C will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -937,17 +1081,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Party: Pulp' \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
 
-<!-- FILE: C.step-6.shipment.json -->
+<!-- FILE: shipment-use-case.C.step-6.json -->
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -970,8 +1126,8 @@ The step 7 of the scenario C will simulate the situation in which the company **
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.road.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -979,17 +1135,29 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Party: Road' \
-  --header 'Authorization: Bearer 2423a31e-113b-4de8-81a6-a65a95d4f30f'
+  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
 
-<!-- FILE: C.step-7.shipment.json -->
+<!-- FILE: shipment-use-case.C.step-7.json -->
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
