@@ -264,6 +264,17 @@ app.get('/orders', (req, res) => {
   return res.status(200).send(source)
 })
 
+// get /orders/{orderId}
+app.get('/orders/:orderId', (req, res) => {
+  const traceId = short.uuid();
+  const orderId = req.params.orderId;
+  console.log(`[INFO] [${traceId}] get /orders/${orderId} [${Date.now()}]`)
+
+  handle(traceId, 'GET', `/orders/${orderId}`, req, res)
+
+  return // END HERE!
+})
+
 // get /shipments
 app.get('/shipments', (req, res) => {
   const traceId = short.uuid();
