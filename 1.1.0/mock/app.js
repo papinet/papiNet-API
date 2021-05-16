@@ -40,7 +40,7 @@ const scenarios = [
     useCase: "order-status-use-case",
     name: "A",
     firstStep: 1,
-    lastStep: 1,
+    lastStep: 6,
     previousStep: 0
   },
   {

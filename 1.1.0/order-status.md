@@ -40,7 +40,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 ```json
 { 
-  "access_token": "a2ab542e-453f-449f-95ad-7865b6d2cb1b",
+  "access_token": "a4b21de8-f2a3-4a14-9851-d319e195f98a",
   "token_type": "bearer", 
   "expires_in": 3600
 }
@@ -63,7 +63,7 @@ The _Order Issuer_ sends an API request to the _Supplier_ in order to get the li
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders?orderStatus=Active \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer a2ab542e-453f-449f-95ad-7865b6d2cb1b'
+  --header 'Authorization: Bearer a4b21de8-f2a3-4a14-9851-d319e195f98a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -72,7 +72,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/orders?orderStatus=Active \
   --header 'X-papiNet-Domain: papinet.papinet.io' \
-  --header 'Authorization: Bearer a2ab542e-453f-449f-95ad-7865b6d2cb1b'
+  --header 'Authorization: Bearer a4b21de8-f2a3-4a14-9851-d319e195f98a'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
@@ -119,7 +119,7 @@ The step 1 of the scenario A will simulate the situation in which the (unique) l
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer a2ab542e-453f-449f-95ad-7865b6d2cb1b'
+  --header 'Authorization: Bearer a4b21de8-f2a3-4a14-9851-d319e195f98a'
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -128,7 +128,7 @@ or, if you use locally the docker container of the papiNet mock server:
 $ curl --request GET \
   --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'X-papiNet-Domain: papinet.papinet.io' \
-  --header 'Authorization: Bearer a2ab542e-453f-449f-95ad-7865b6d2cb1b'
+  --header 'Authorization: Bearer a4b21de8-f2a3-4a14-9851-d319e195f98a'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
