@@ -28,7 +28,7 @@ const scenarios = [
     domain:"papinet.papinet.io",
     path: "/orders",
     useCase: "order-status-use-case",
-    name: "_",
+    name: "A",
     firstStep: 0,
     lastStep: 0,
     previousStep: -1
@@ -150,7 +150,13 @@ app.get('/debug', (req, res) => {
 
 // get /orders
 app.get('/orders', (req, res) => {
-  const traceId = short.uuid()
+  const traceId = short.uuid();
+  console.log(`[INFO] [${traceId}] GET /orders [${Date.now()}]`)
+
+  handle(traceId, 'GET', '/orders', req, res)
+
+  return // END HERE!
+
   console.log(`[INFO] [${traceId}] get /orders [${Date.now()}]`)
 
   const method = 'GET'

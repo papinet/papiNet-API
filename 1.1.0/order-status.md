@@ -20,20 +20,29 @@ The _Order Issuer_ sends an API request to create a session, and gets its associ
 ```text
 $ curl --request POST \
   --URL https://papinet.papinet.io/tokens \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "partnerId": "public:36297346-e4d0-4214-b298-dd129c6ed82b",
-    "partnerSecret": "private:ce2d3cf4-68f9-4202-acbf-8a73c3801195"
-  }'
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+```
+
+or, if you use locally the docker container of the papiNet mock server:
+
+```text
+$ curl --request POST \
+  --URL http://localhost:3001/tokens \
+  --header 'X-papiNet-Domain: papinet.papinet.io' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
 
 ```json
 { 
-  "accessToken": "0b732cd6-210b-4ae7-9e95-04938c7e862e",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
+  "access_token": "c7418ba7-e37f-4647-a2d8-9a924a71d042",
+  "token_type": "bearer", 
+  "expires_in": 3600
 }
 ```
 
@@ -54,7 +63,16 @@ The _Order Issuer_ sends an API request to the _Supplier_ in order to get the li
 $ curl --request GET \
   --URL https://papinet.papinet.io/orders?orderStatus=Active \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
+  --header 'Authorization: Bearer c7418ba7-e37f-4647-a2d8-9a924a71d042'
+```
+
+or, if you use locally the docker container of the papiNet mock server:
+
+```text
+$ curl --request GET \
+  --URL http://localhost:3001/orders?orderStatus=Active \
+  --header 'X-papiNet-Domain: papinet.papinet.io' \
+  --header 'Authorization: Bearer c7418ba7-e37f-4647-a2d8-9a924a71d042'
 ```
 
 If all goes well, the _Order Issuer_ will receive a response like this:
