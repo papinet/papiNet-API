@@ -1,11 +1,11 @@
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
   "shipmentReferences": [
     {
       "type": "DeliveryInstructionNumber",
       "assignedBy": "Supplier",
-      "value": "XYZ01"
+      "value": "DEL001"
     },
     {
       "type": "DeliveryInstructionSequenceNumber",

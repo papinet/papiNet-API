@@ -6,9 +6,9 @@
       "shipmentNumber": "1001",
       "shipmentReferences": [
         {
-          "type": "shipmentNumber",
+          "type": "ShipmentNumber",
           "assignedBy": "Forwarder",
-          "value": "ABC01"
+          "value": "SHP001"
         }
       ],
       "shipmentStatus": "Active",
@@ -22,9 +22,9 @@
       "supplierShipmentNumber": "1002",
       "shipmentReferences": [
         {
-          "type": "shipmentNumber",
+          "type": "ShipmentNumber",
           "assignedBy": "Forwarder",
-          "value": "ABC02"
+          "value": "SHP002"
         }
       ],
       "shipmentStatus": "Active",

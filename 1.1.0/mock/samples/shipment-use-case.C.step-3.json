@@ -1,6 +1,6 @@
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "XYZ01",
+  "shipmentNumber": "SHP001",
   "shipmentReferences": [
     {
       "type": "OrderNumber",

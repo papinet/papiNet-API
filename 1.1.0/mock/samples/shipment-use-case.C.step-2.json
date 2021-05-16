@@ -3,7 +3,19 @@
   "shipments": [
     {
       "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-      "shipmentNumber": "ABC01",
+      "shipmentNumber": "SHP001",
+      "shipmentReferences": [
+        {
+          "type": "OrderNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "ORD001"
+        },
+        {
+          "type": "OrderLineItemNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "1"
+        }
+      ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
@@ -12,7 +24,19 @@
     },
     {
       "id": "55cdad30-51df-4bfb-96ad-34e756ce7ba0",
-      "supplierShipmentNumber": "ABC02",
+      "shipmentNumber": "SHP002",
+      "shipmentReferences": [
+        {
+          "type": "OrderNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "ORD002"
+        },
+        {
+          "type": "OrderLineItemNumber",
+          "assignedBy": "OrderIssuer",
+          "value": "1"
+        }
+      ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",

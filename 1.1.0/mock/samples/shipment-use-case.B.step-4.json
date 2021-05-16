@@ -1,6 +1,18 @@
 {
   "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",

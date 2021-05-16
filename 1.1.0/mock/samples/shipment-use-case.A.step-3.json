@@ -5,7 +5,7 @@
     {
       "type": "ShipmentNumber",
       "assignedBy": "Forwarder",
-      "value": "ABC01"
+      "value": "SHP001"
     }
   ],
   "shipmentStatus": "Active",

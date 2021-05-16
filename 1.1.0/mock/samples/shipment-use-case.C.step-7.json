@@ -1,6 +1,18 @@
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "ABC01",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
   "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
