@@ -10,12 +10,12 @@
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "275a18a7-69a6-4d4f-a890-b6055611b63b",
     "type": "TrafficJam",
-    "dateTime": "2021-03-23T18:00:00",
+    "dateTime": "2021-03-23T18:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
