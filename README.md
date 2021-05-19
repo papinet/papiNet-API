@@ -17,7 +17,7 @@ The first use case we have decided to examine is the [_Order Status_](1.1.0/orde
 
 ### Shipment Status
 
-Then, we complement the papiNet with new _API endpoints_ in order to introduce the [_Shipment Status_](1.1.0/order-status.md) use case.
+Then, we complement the papiNet with new _API endpoints_ in order to introduce the [_Shipment Status_](1.1.0/shipment-status.md) use case.
 
 ## The papiNet API Standard
 
