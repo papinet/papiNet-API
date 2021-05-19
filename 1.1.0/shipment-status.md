@@ -20,7 +20,8 @@ Within the logistic supply chain, a _Supplier_ buys transport services from a _F
 
 ## Domain Name
 
-We suggest that _Suppliers_, _Forwarder_ and _Carrier_ expose their papiNet API endpoints using the domain name of their respective corporate web sides with the prefix `papinet.*`. For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose their papiNet API endpoints on the domain name `papinet.acme.com`.
+We suggest that _Suppliers_, _Forwarder_ and _Carrier_ expose their papiNet API endpoints using the domain name of their respective corporate web sides with the prefix `papinet.*`.
+For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose their papiNet API endpoints on the domain name `papinet.acme.com`.
 
 The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on different domain names based on different fictional company names used to simulate different business roles:
 
@@ -33,7 +34,7 @@ The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on differen
 
 ## Authentication
 
-We recommend secure the access to the papiNet API endpoints using the [OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.4) standard, with the _client credentials_ authorization grant.
+We recommend to secure the access to the papiNet API endpoints using the [OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.4) standard, with the _client credentials_ authorization grant.
 
 ## Scenarios
 

@@ -2,68 +2,78 @@
 
 ## Context
 
+This use case is designed for Paper business.
+
+> Recovered paper is not included with our definition of the Paper business.
+
 ### Preconditions
 
 None.
 
 ### Process
 
-An _Order Issuer_ requests to a _Supplier_ the list of _products_ offered.
-The _products_ might be grouped in _catalogues_ by the _Supplier_; hence, the _Order Issuer_ could first request to the _Supplier_ the list of _catalogues_ offered, and then request the list of _products_ within a selected _catalogue_.
-This use case is designed for Pulp and Paper business.
+An authenticated or anonymous _Party_ requests to a _Supplier_ the list of _products_ on offer (to that _Party_).
+The _products_ might be grouped in _catalogues_ by the _Supplier_; hence, the _Party_ could first request to the _Supplier_ the list of _catalogues_ on offer, and then request the list of _products_ within a selected _catalogue_.
 
-## Base URL
+## Domain Name
 
-We suggest that the _Supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+We suggest that the _Supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`.
+For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
 The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the domain `papinet.papinet.io`.
 
 ## Authentication
 
-We recommend secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
+For authenticated _Party_, we recommend to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
 
-The _Order Issuer_ sends an API request to create a session, and gets its associated _access token_:
+The _Party_ sends an API request to create a session, and gets its associated _access token_:
 
 ```text
 $ curl --request POST \
   --URL https://papinet.papinet.io/tokens \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "partnerId": "public:36297346-e4d0-4214-b298-dd129c6ed82b",
-    "partnerSecret": "private:ce2d3cf4-68f9-4202-acbf-8a73c3801195"
-  }'
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
 ```
 
-If all goes well, the _Order Issuer_ will receive a response like this:
+If all goes well, the _Party_ will receive a response like this:
 
 ```json
 { 
-  "accessToken": "0b732cd6-210b-4ae7-9e95-04938c7e862e",
+  "accessToken": "1a27ae3f-02f3-4355-8a70-9ed547d0ccf8",
   "expiresIn": 86400, 
   "tokenType": "bearer", 
 }
 ```
 
+This step is not necessary if the _Supplier_ supports anonymous requests.
+
 ## Scenarios
 
-* Scenario A - An _Anonymous User_ gets the list of all _products_ offered, and gets the details of a selected _product_.
-* Scenario B - An (authenticated) _Order Issuer_ gets the list of all _products_ offered, and gets the details of a selected _product_.
-* Scenario C - An (authenticated) _Order Issuer_ gets the list of all _catalogues_ offered, gets the list of all _products_ offered within a selected _catalogue_, and gets the details of a selected _product_.
-* [Out of scope/for later] Scenario D - An (authenticated) _Publisher_ (once) grants access to an The (authenticated) _Printer_ so it can access is offered _products_. The (authenticated) _Printer_ gets the list of all _products_ offered to the  _Publisher_, and gets the details of a selected _product_.
+* Scenario A - An anonymous _Party_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
 
-> If _catalogues_ exists, they could be accessible to _Anonymous User_ as well.
+* Scenario B - An authenticated _Party_ gets the list of all _products_ on offer to that _Party_, and gets the details of a selected _product_.
 
-### Scenario A - An _Anonymous User_ gets the list of all _products_ offered, and gets the details of a selected _product_
+* Scenario C - An authenticated _Party_ gets the list of all _catalogues_ on offer to that _Party_, gets the list of all _products_ within a selected _catalogue_, and gets the details of a selected _product_.
 
-The _Anonymous User_ sends an API request to the _Supplier_ in order to get the list of all _products_ offered:
+* [Out of scope/for later] Scenario D - An authenticated _Publisher_ (once) grants access to an authenticated _Printer_ so it can access _products_ on offer to the _Publisher_. The authenticated _Printer_ gets the list of all _products_ on offer to the _Publisher_, and gets the details of a selected _product_.
+
+> If _catalogues_ exist, they could be accessible to an anonymous _Party_ as well.
+
+### Scenario A
+
+An anonymous _Party_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
+
+#### Step 1 of Scenario A
+
+The anonymous _Party_ sends an API request to the _Supplier_ in order to get the list of all _products_ on offer:
 
 ```text
 $ curl --request GET \
   --URL https://papinet.papinet.io/products \
-  --header 'Content-Type: application/json' \
 ```
 
-If all goes well, the _Anonymous User_ will receive a response like this:
+If all goes well, the anonymous _Party_ will receive a response like this:
 
 ```json
 {
@@ -105,38 +115,38 @@ If all goes well, the _Anonymous User_ will receive a response like this:
 }
 ```
 
-> You can see that the _Supplier_ has **17** _products_ offered to the _Anonymous User_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 17. This is because of the pagination mechanism.
+> You can see that the _Supplier_ has **17** _products_ offered to the anonymous _Party_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 17. This is because of the pagination mechanism.
 
 #### Step 2 of Scenario A
 
-Then, the _Anonymous User_ sends an API request to the _Supplier_ in order to get the details of the first _product_ `30eb793d-9dcb-41b7-b0ec-21a658e9bb77`:
+Then, the anonymous _Party_ sends an API request to the _Supplier_ in order to get the details of the first _product_ `30eb793d-9dcb-41b7-b0ec-21a658e9bb77`:
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.papinet.io/products/30eb793d-9dcb-41b7-b0ec-21a658e9bb77 \
-  --header 'Content-Type: application/json' \
+  --URL https://papinet.papinet.io/products/30eb793d-9dcb-41b7-b0ec-21a658e9bb77
 ```
+
+If all goes well, the anonymous _Party_ will receive a response like this:
 
 ```json
 
 ```
 
-If all goes well, the _Anonymous User_ will receive a response like this:
+### Scenario B
 
-### Scenario B - An (authenticated) _Order Issuer_ gets the list of all _products_ offered, and gets the details of a selected _product_
+An authenticated _Party_ gets the list of all _products_ on offer to that _Party_, and gets the details of a selected _product_.
 
 #### Step 1 of Scenario B
 
-The _Order Issuer_ sends an API request to the _Supplier_ in order to get the list of all _products_ offered:
+The authenticated _Party_ sends an API request to the _Supplier_ in order to get the list of all _products_ on offer:
 
 ```text
 $ curl --request GET \
   --URL https://papinet.papinet.io/products \
-  --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
 ```
 
-If all goes well, the _Order Issuer_ will receive a response like this:
+If all goes well, the authenticated _Party_ will receive a response like this:
 
 ```json
 {
@@ -184,16 +194,15 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-> You can see that the _Supplier_ has **42** _products_ available to be ordered by the _Order Issuer_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 42. This is because of the pagination mechanism.
+> You can see that the _Supplier_ has **42** _products_ available to be ordered by the _Party_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 42. This is because of the pagination mechanism.
 
 #### Step 2 of Scenario B
 
-Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the first _product_ `30eb793d-9dcb-41b7-b0ec-21a658e9bb77`:
+Then, the _Party_ sends an API request to the _Supplier_ in order to get the details of the first _product_ `30eb793d-9dcb-41b7-b0ec-21a658e9bb77`:
 
 ```text
 $ curl --request GET \
   --URL https://papinet.papinet.io/products/30eb793d-9dcb-41b7-b0ec-21a658e9bb77 \
-  --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
 ```
 
@@ -236,20 +245,21 @@ $ curl --request GET \
 }
 ```
 
-### Scenario C - An _Order Issuer_ gets the list of all _catalogues_ offered, gets the list of all _products_ offered within a selected _catalogue_, and gets the details of a selected _product_
+### Scenario C
+
+An authenticated _Party_ gets the list of all _catalogues_ on offer to that _Party_, gets the list of all _products_ within a selected _catalogue_, and gets the details of a selected _product_.
 
 #### Step 1 of Scenario C
 
-The _Order Issuer_ sends an API request to the _Supplier_ in order to get the list of all _catalogues_ offered:
+The _Party_ sends an API request to the _Supplier_ in order to get the list of all _catalogues_ offered:
 
 ```text
 $ curl --request GET \
   --URL https://papinet.papinet.io/catalogues \
-  --header 'Content-Type: application/json' \
   --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
 ```
 
-If all goes well, the _Order Issuer_ will receive a response like this:
+If all goes well, the _Party_ will receive a response like this:
 
 ```json
 {
@@ -278,7 +288,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 #### Step 2 of Scenario C
 
-Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the list of all _products_ offered within the first _catalogue_ `81cd426a-480a-4793-bc6b-991bcee6705d`:
+Then, the _Party_ sends an API request to the _Supplier_ in order to get the list of all _products_ offered within the first _catalogue_ `81cd426a-480a-4793-bc6b-991bcee6705d`:
 
 ```text
 $ curl --request GET \
@@ -287,7 +297,7 @@ $ curl --request GET \
   --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
 ```
 
-If all goes well, the _Order Issuer_ will receive a response like this:
+If all goes well, the _Party_ will receive a response like this:
 
 ```json
 {
@@ -329,4 +339,4 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-> You can see that the _Supplier_ has **8** _products_ available to be ordered by the _Order Issuer_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 8. This is because of the pagination mechanism.
+> You can see that the _Supplier_ has **8** _products_ available to be ordered by the _Party_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 8. This is because of the pagination mechanism.
