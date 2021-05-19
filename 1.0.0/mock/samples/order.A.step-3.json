@@ -6,7 +6,7 @@
     "orderLineItems": [
       {
         "id": "e436266b-d831-47a1-9fef-3f749c955673",
-        "orderLineItemNumber": 1,
+        "orderLineItemNumber": "1",
         "orderLineItemStatus": "Confirmed",
         "changeable": false,
         "quantities": [
