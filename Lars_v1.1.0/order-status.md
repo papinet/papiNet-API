@@ -52,7 +52,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 * Scenario B - Multiple Productions and One Shipment
 * Scenario C - One Production and Multiple Shipments
 * Scenario D - Multiple Productions and Multiple Shipments
-* Scenario E - Under Shipment
+* Scenario E - Under Shipment 
 
 ### Scenario A - One Production and One Shipment
 
