@@ -28,7 +28,7 @@ const scenarios = [
     domain:"papinet.papinet.io",
     path: "/orders",
     useCase: "order-status-use-case",
-    name: "A",
+    name: "_",
     firstStep: 0,
     lastStep: 0,
     previousStep: -1
@@ -40,7 +40,7 @@ const scenarios = [
     useCase: "order-status-use-case",
     name: "A",
     firstStep: 1,
-    lastStep: 1,
+    lastStep: 6,
     previousStep: 0
   },
   {
@@ -527,7 +527,7 @@ function handle(traceId, method, path, req, res) {
   console.log(`[INFO] [${traceId}]   scenarioPos: ${scenarioPos}`)
 
   const scenario = scenarios[scenarioPos]
-  console.log(`[INFO] [${traceId}]   scenario: ${scenario}`)
+  console.log(`[INFO] [${traceId}]   scenario: ${JSON.stringify(scenario)}`)
 
   const scenarioUseCase = scenario.useCase
   console.log(`[INFO] [${traceId}]   scenarioUseCase: ${scenarioUseCase}`)
@@ -535,7 +535,7 @@ function handle(traceId, method, path, req, res) {
   console.log(`[INFO] [${traceId}]   scenarioName: ${scenarioName}`)
 
   const sessionScenario = sessions[sessionPos].scenario
-  console.log(`[INFO] [${traceId}]   sessionScenario: ${sessionScenario}`)
+  console.log(`[INFO] [${traceId}]   sessionScenario: ${JSON.stringify(sessionScenario)}`)
 
   if (JSON.stringify(sessionScenario) === '{}') {
     sessions[sessionPos].scenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]))
@@ -548,10 +548,11 @@ function handle(traceId, method, path, req, res) {
   const sessionScenarioName = sessions[sessionPos].scenario.name
   console.log(`[INFO] [${traceId}]   sessionScenarioName: ${sessionScenarioName}`)
 
-  if (sessionScenarioUseCase == scenarioUseCase && sessionScenarioName == scenarioName) {
+  if (sessionScenarioUseCase == scenarioUseCase && (sessionScenarioName == scenarioName || sessionScenarioName == '_')) {
     if (sessionScenario.path != scenario.path) {
+      console.log(`[INFO] [${traceId}]   UPDATE the session!`)
       sessions[sessionPos].scenario = JSON.parse(JSON.stringify(scenarios[scenarioPos]))
-      console.log(`[INFO] [${traceId}]   apiEndpoint: ${sessionScenario}`)
+      console.log(`[INFO] [${traceId}]   sessionScenario: ${JSON.stringify(sessionScenario)}`)
     }
   } else {
     return res.status(401).json({
@@ -561,6 +562,9 @@ function handle(traceId, method, path, req, res) {
       }
     })
   }
+
+  console.log(`[INFO] [${traceId}]   sessionScenarioUseCase: ${sessionScenarioUseCase}`)
+  console.log(`[INFO] [${traceId}]   sessionScenarioName: ${sessionScenarioName}`)
 
   /*
   {
@@ -596,7 +600,9 @@ function handle(traceId, method, path, req, res) {
 
   sessions[sessionPos].scenario.previousStep = currentStep
 
-  const sourceFileName = `./samples/${sessionScenarioUseCase}.${sessionScenarioName}.step-${currentStep}.json`;
+  // WARNING: Using 'sessions[sessionPos].scenario.name' instead of 'sessionScenarioName'
+  //          as it may have changed, this is UGLY CODE, but it works for now :-|
+  const sourceFileName = `./samples/${sessionScenarioUseCase}.${sessions[sessionPos].scenario.name}.step-${currentStep}.json`;
   console.log(`[INFO] [${traceId}]   sourceFileName: ${sourceFileName}`);
 
   let source = {}
