@@ -3,7 +3,7 @@
 ## Context
 
 An _Order Issuer_ requests to a _Supplier_ the status of one or multiple of its _orders_. The _Order Issuer_ has earlier sent the orders to the Supplier. 
-This use case is designed for Pulp and Paper business.
+This use case is designed for Pulp and Paper business and only for orders with direct shipments from the _Supplier_ site to the customer ship-to location(s).
 
 ## Domain Name
 
