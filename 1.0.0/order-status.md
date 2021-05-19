@@ -115,7 +115,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "e436266b-d831-47a1-9fef-3f749c955673",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Pending",
       "changeable": true,
       "quantities": [
@@ -156,7 +156,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "e436266b-d831-47a1-9fef-3f749c955673",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": true,
       "quantities": [
@@ -209,7 +209,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -262,7 +262,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "e436266b-d831-47a1-9fef-3f749c955673",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -327,7 +327,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "e436266b-d831-47a1-9fef-3f749c955673",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ShipmentCompleted",
       "changeable": false,
       "quantities": [
@@ -404,7 +404,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "e436266b-d831-47a1-9fef-3f749c955673",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Completed",
       "changeable": false,
       "quantities": [
@@ -532,7 +532,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Pending",
       "changeable": true,
       "quantities": [
@@ -573,7 +573,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": true,
       "quantities": [
@@ -626,7 +626,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -679,7 +679,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -744,7 +744,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -809,7 +809,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -874,7 +874,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ShipmentCompleted",
       "changeable": false,
       "quantities": [
@@ -951,7 +951,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "6a0d16db-546f-4c19-b288-ddd2a250f064",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Completed",
       "changeable": false,
       "quantities": [
@@ -1118,7 +1118,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Pending",
       "changeable": true,
       "quantities": [
@@ -1159,7 +1159,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": true,
       "quantities": [
@@ -1212,7 +1212,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -1265,7 +1265,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -1330,7 +1330,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -1407,7 +1407,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ShipmentCompleted",
       "changeable": false,
       "quantities": [
@@ -1484,7 +1484,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "29868f71-46a0-4757-981e-1ad26a4cb3c1",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Completed",
       "changeable": false,
       "quantities": [
@@ -1569,7 +1569,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Pending",
       "changeable": true,
       "quantities": [
@@ -1610,7 +1610,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": true,
       "quantities": [
@@ -1663,7 +1663,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -1716,7 +1716,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -1781,7 +1781,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -1858,7 +1858,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -1935,7 +1935,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -2012,7 +2012,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ShipmentCompleted",
       "changeable": false,
       "quantities": [
@@ -2089,7 +2089,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1c9192cb-10d4-4e2e-a3d0-bcb4d67eb605",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Completed",
       "changeable": false,
       "quantities": [
@@ -2174,7 +2174,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1deca55f-2d03-4c18-93d0-c60362b891a5",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Pending",
       "changeable": true,
       "quantities": [
@@ -2215,7 +2215,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1deca55f-2d03-4c18-93d0-c60362b891a5",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": true,
       "quantities": [
@@ -2268,7 +2268,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1deca55f-2d03-4c18-93d0-c60362b891a5",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -2321,7 +2321,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1deca55f-2d03-4c18-93d0-c60362b891a5",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -2386,7 +2386,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1deca55f-2d03-4c18-93d0-c60362b891a5",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ShipmentCompleted",
       "changeable": false,
       "quantities": [
@@ -2463,7 +2463,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "1deca55f-2d03-4c18-93d0-c60362b891a5",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Completed",
       "changeable": false,
       "quantities": [
@@ -2548,7 +2548,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Pending",
       "changeable": true,
       "quantities": [
@@ -2589,7 +2589,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": true,
       "quantities": [
@@ -2642,7 +2642,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Confirmed",
       "changeable": false,
       "quantities": [
@@ -2694,7 +2694,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ProductionCompleted",
       "changeable": false,
       "quantities": [
@@ -2759,7 +2759,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "ShipmentCompleted",
       "changeable": false,
       "quantities": [
@@ -2836,7 +2836,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
   "orderLineItems": [
     {
       "id": "fc890c7d-39e5-4181-8040-affde22edf89",
-      "orderLineItemNumber": 1,
+      "orderLineItemNumber": "1",
       "orderLineItemStatus": "Completed",
       "changeable": false,
       "quantities": [
