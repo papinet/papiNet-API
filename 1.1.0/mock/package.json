@@ -1,0 +1,17 @@
+{
+  "name": "papinet-mock",
+  "version": "1.1.0",
+  "description": "Mock for papiNet API version 1.1.0",
+  "author": "Patrice Krakow <patrice.krakow@gmail.com>",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonfile": "^6.1.0",
+    "short-uuid": "^4.1.0"
+  }
+}

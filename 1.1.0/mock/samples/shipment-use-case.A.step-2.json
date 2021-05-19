@@ -1,0 +1,45 @@
+{
+  "numberOfShipments": 6,
+  "shipments": [
+    {
+      "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+      "shipmentNumber": "1001",
+      "shipmentReferences": [
+        {
+          "type": "ShipmentNumber",
+          "assignedBy": "Forwarder",
+          "value": "SHP001"
+        }
+      ],
+      "shipmentStatus": "Active",
+      "shipmentArrivalStatus": "OnTime",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "link": "/shipments/c51d8903-01d1-485c-96ce-51a9be192207"
+    },
+    {
+      "id": "778fe5cb-f7ac-4493-b492-25fe98df67c4",
+      "supplierShipmentNumber": "1002",
+      "shipmentReferences": [
+        {
+          "type": "ShipmentNumber",
+          "assignedBy": "Forwarder",
+          "value": "SHP002"
+        }
+      ],
+      "shipmentStatus": "Active",
+      "shipmentArrivalStatus": "OnTime",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "link": "/shipments/778fe5cb-f7ac-4493-b492-25fe98df67c4"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/shipments?shipmentStatus=Active&offset=0&limit=2"
+    },
+    "next": {
+      "href": "/shipments?shipmentStatus=Active&offset=2&limit=2"
+    }
+  }
+}
