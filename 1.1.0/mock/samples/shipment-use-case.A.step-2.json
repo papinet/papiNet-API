@@ -13,13 +13,13 @@
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
       "link": "/shipments/c51d8903-01d1-485c-96ce-51a9be192207"
     },
     {
       "id": "778fe5cb-f7ac-4493-b492-25fe98df67c4",
-      "supplierShipmentNumber": "1002",
+      "shipmentNumber": "1002",
       "shipmentReferences": [
         {
           "type": "ShipmentNumber",
@@ -29,8 +29,8 @@
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/778fe5cb-f7ac-4493-b492-25fe98df67c4"
     }
   ],

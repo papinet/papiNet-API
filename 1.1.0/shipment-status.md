@@ -118,8 +118,8 @@ If all goes well, the company **Fast** will receive a response like this:
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
       "link": "/shipments/c51d8903-01d1-485c-96ce-51a9be192207"
     },
     {
@@ -134,8 +134,8 @@ If all goes well, the company **Fast** will receive a response like this:
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/778fe5cb-f7ac-4493-b492-25fe98df67c4"
     }
   ],
@@ -188,12 +188,12 @@ If all goes well, the company **Fast** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "7af38a28-068f-496e-97f3-e7035edc5445",
     "type": "LoadingStarted",
-    "dateTime": "2021-03-23T13:00:00",
+    "dateTime": "2021-03-23T13:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -237,12 +237,12 @@ If all goes well, the company **Fast** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "3fadd366-e438-4901-bd3f-a8d10f8c85a2",
     "type": "Departed",
-    "dateTime": "2021-03-23T13:30:00",
+    "dateTime": "2021-03-23T13:30:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -286,12 +286,12 @@ If all goes well, the company **Fast** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "275a18a7-69a6-4d4f-a890-b6055611b63b",
     "type": "TrafficJam",
-    "dateTime": "2021-03-23T18:00:00",
+    "dateTime": "2021-03-23T18:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -335,12 +335,12 @@ If all goes well, the company **Fast** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
     "type": "Arrived",
-    "dateTime": "2021-04-24T10:00:00",
+    "dateTime": "2021-04-24T10:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -386,12 +386,12 @@ If all goes well, the company **Fast** will receive a response like this:
   ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "a7eadf12-dd54-4ee2-98b4-29fabb6a10e9",
     "type": "Completed",
-    "dateTime": "2021-04-24T11:00:00",
+    "dateTime": "2021-04-24T11:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -480,8 +480,8 @@ If all goes well, the company **Pulp** will receive a response like this:
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
       "link": "/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede"
     },
     {
@@ -501,8 +501,8 @@ If all goes well, the company **Pulp** will receive a response like this:
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/678df9d5-ebc5-4f41-a4ab-2cdf1d991deb"
     }
   ],
@@ -557,12 +557,12 @@ If all goes well, the company **Pulp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "7af38a28-068f-496e-97f3-e7035edc5445",
     "type": "LoadingStarted",
-    "dateTime": "2021-03-23T13:00:00",
+    "dateTime": "2021-03-23T13:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -611,12 +611,12 @@ If all goes well, the company **Pulp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "3fadd366-e438-4901-bd3f-a8d10f8c85a2",
     "type": "Departed",
-    "dateTime": "2021-03-23T13:30:00",
+    "dateTime": "2021-03-23T13:30:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -665,12 +665,12 @@ If all goes well, the company **Pulp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "275a18a7-69a6-4d4f-a890-b6055611b63b",
     "type": "TrafficJam",
-    "dateTime": "2021-03-23T18:00:00",
+    "dateTime": "2021-03-23T18:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -719,12 +719,12 @@ If all goes well, the company **Pulp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
     "type": "Arrived",
-    "dateTime": "2021-04-24T10:00:00",
+    "dateTime": "2021-04-24T10:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -773,12 +773,12 @@ If all goes well, the company **Pulp** will receive a response like this:
   ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "a7eadf12-dd54-4ee2-98b4-29fabb6a10e9",
     "type": "Completed",
-    "dateTime": "2021-04-24T11:00:00",
+    "dateTime": "2021-04-24T11:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -867,8 +867,8 @@ If all goes well, the company **Corp** will receive a response like this:
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
       "link": "/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17"
     },
     {
@@ -888,8 +888,8 @@ If all goes well, the company **Corp** will receive a response like this:
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/55cdad30-51df-4bfb-96ad-34e756ce7ba0"
     }
   ],
@@ -944,12 +944,12 @@ If all goes well, the company **Corp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "7af38a28-068f-496e-97f3-e7035edc5445",
     "type": "LoadingStarted",
-    "dateTime": "2021-03-23T13:00:00",
+    "dateTime": "2021-03-23T13:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -998,12 +998,12 @@ If all goes well, the company **Corp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "3fadd366-e438-4901-bd3f-a8d10f8c85a2",
     "type": "Departed",
-    "dateTime": "2021-03-23T13:30:00",
+    "dateTime": "2021-03-23T13:30:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -1052,12 +1052,12 @@ If all goes well, the company **Corp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "275a18a7-69a6-4d4f-a890-b6055611b63b",
     "type": "TrafficJam",
-    "dateTime": "2021-03-23T18:00:00",
+    "dateTime": "2021-03-23T18:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -1106,12 +1106,12 @@ If all goes well, the company **Corp** will receive a response like this:
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
     "type": "Arrived",
-    "dateTime": "2021-04-24T10:00:00",
+    "dateTime": "2021-04-24T10:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499
@@ -1160,12 +1160,12 @@ If all goes well, the company **Corp** will receive a response like this:
   ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "a7eadf12-dd54-4ee2-98b4-29fabb6a10e9",
     "type": "Completed",
-    "dateTime": "2021-04-24T11:00:00",
+    "dateTime": "2021-04-24T11:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499

@@ -18,8 +18,8 @@
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
       "link": "/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17"
     },
     {
@@ -39,8 +39,8 @@
       ],
       "shipmentStatus": "Active",
       "shipmentArrivalStatus": "OnTime",
-      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00",
-      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00",
+      "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
+      "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/55cdad30-51df-4bfb-96ad-34e756ce7ba0"
     }
   ],
