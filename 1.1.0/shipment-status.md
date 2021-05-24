@@ -64,7 +64,7 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request POST \
   --URL http://localhost:3001/tokens \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
+  --header 'Host: papinet.road.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -80,6 +80,33 @@ If all goes well, the company **Fast** will receive a response like this:
 }
 ```
 
+In order to re-use the value of the `access_token` in subsequent API requests, it is convenient to save it into an environment variable:
+
+```text
+$ export ACCESS_TOKEN=$(curl --request POST \
+  --URL https://papinet.road.papinet.io/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
+or, if you use locally the docker container of the papiNet mock server:
+
+```$ export ACCESS_TOKEN=$(curl --request POST \
+  --URL http://localhost:3001/tokens \
+  --header 'Host: papinet.road.papinet.io' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
+You can easily verify the value of the `ACCESS_TOKEN` environment variable using:
+
+```text
+$ echo $ACCESS_TOKEN
+9b875e37-42ec-4fb0-bced-0fb6724d4767
+```
+
 #### Step 2 of Scenario A - List of Shipments
 
 The company **Fast**, being a _Forwarder_, sends an API request to the company **Road**, being a _Carrier_, in order to get the list of all its _Active shipments_:
@@ -87,7 +114,7 @@ The company **Fast**, being a _Forwarder_, sends an API request to the company *
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -95,8 +122,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Host: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -160,7 +187,7 @@ The company **Fast**, being a _Forwarder_, sends an API request to the company *
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -168,8 +195,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Host: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -209,7 +236,7 @@ The step 4 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -217,8 +244,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Host: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -258,7 +285,7 @@ The step 5 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -266,8 +293,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Host: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -307,7 +334,7 @@ The step 6 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -315,8 +342,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Host: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -358,7 +385,7 @@ The step 7 of the scenario A will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.road.papinet.io/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -366,8 +393,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/c51d8903-01d1-485c-96ce-51a9be192207 \
-  --header 'X-papiNet-Domain: papinet.road.papinet.io' \
-  --header 'Authorization: Bearer efe30794-3f53-40c4-a5dc-77c475a8561d'
+  --header 'Host: papinet.road.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Fast** will receive a response like this:
@@ -410,8 +437,8 @@ The company **Pulp**, being a _Supplier_, sends an API request to the company **
 
 ```text
 $ curl --request POST \
-  --URL https://papinet.fast.papinet.io/token \
-  --user 'public-36297346:private-ce2d3cf4'
+  --URL https://papinet.fast.papinet.io/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
 ```
@@ -421,7 +448,7 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request POST \
   --URL http://localhost:3001/tokens \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
+  --header 'Host: papinet.fast.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -437,6 +464,33 @@ If all goes well, the company **Pulp** will receive a response like this:
 }
 ```
 
+In order to re-use the value of the `access_token` in subsequent API requests, it is convenient to save it into an environment variable:
+
+```text
+$ export ACCESS_TOKEN=$(curl --request POST \
+  --URL https://papinet.fast.papinet.io/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
+or, if you use locally the docker container of the papiNet mock server:
+
+```$ export ACCESS_TOKEN=$(curl --request POST \
+  --URL http://localhost:3001/tokens \
+  --header 'Host: papinet.fast.papinet.io' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
+You can easily verify the value of the `ACCESS_TOKEN` environment variable using:
+
+```text
+$ echo $ACCESS_TOKEN
+e7e32320-7ec4-4d94-ba30-dfdaae6ef686
+```
+
 #### Step 2 of Scenario B - List of Shipments
 
 The company **Pulp**, being a _Supplier_, sends an API request to the company **Fast**, being a _Forwarder_, in order to get the list of all its _Active shipments_:
@@ -444,7 +498,7 @@ The company **Pulp**, being a _Supplier_, sends an API request to the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -452,8 +506,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Host: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
@@ -524,7 +578,7 @@ The company **Pulp**, being a _Supplier_, sends an API request to the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -532,8 +586,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Host: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
@@ -578,7 +632,7 @@ The step 4 of the scenario B will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -586,8 +640,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Host: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
@@ -632,7 +686,7 @@ The step 5 of the scenario B will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -640,8 +694,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Host: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
@@ -686,7 +740,7 @@ The step 6 of the scenario B will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -694,8 +748,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Host: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
@@ -740,7 +794,7 @@ The step 7 of the scenario B will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.fast.papinet.io/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -748,8 +802,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/3a9108d5-f7f0-42ae-9a29-eb302bdb8ede \
-  --header 'X-papiNet-Domain: papinet.fast.papinet.io' \
-  --header 'Authorization: Bearer 1d3c4294-4624-4cec-a769-fa345c8235bc'
+  --header 'Host: papinet.fast.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Pulp** will receive a response like this:
@@ -808,7 +862,7 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request POST \
   --URL http://localhost:3001/tokens \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
+  --header 'Host: papinet.pulp.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -824,6 +878,33 @@ If all goes well, the company **Corp** will receive a response like this:
 }
 ```
 
+In order to re-use the value of the `access_token` in subsequent API requests, it is convenient to save it into an environment variable:
+
+```text
+$ export ACCESS_TOKEN=$(curl --request POST \
+  --URL https://papinet.pulp.papinet.io/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
+or, if you use locally the docker container of the papiNet mock server:
+
+```$ export ACCESS_TOKEN=$(curl --request POST \
+  --URL http://localhost:3001/tokens \
+  --header 'Host: papinet.pulp.papinet.io' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
+You can easily verify the value of the `ACCESS_TOKEN` environment variable using:
+
+```text
+$ echo $ACCESS_TOKEN
+4da15489-edd6-434e-96fe-830fc8beba2d
+```
+
 #### Step 2 of Scenario C - List of Shipments
 
 The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the list of all its _Active shipments_:
@@ -831,7 +912,7 @@ The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an A
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments?shipmentStatus=Active \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -839,8 +920,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments?shipmentStatus=Active \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Host: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
@@ -911,7 +992,7 @@ The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an A
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -919,8 +1000,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Host: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
@@ -965,7 +1046,7 @@ The step 4 of the scenario C will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -973,8 +1054,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Host: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
@@ -1019,7 +1100,7 @@ The step 5 of the scenario C will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -1027,8 +1108,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Host: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
@@ -1073,7 +1154,7 @@ The step 6 of the scenario C will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -1081,8 +1162,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Host: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
@@ -1127,7 +1208,7 @@ The step 7 of the scenario C will simulate the situation in which the company **
 ```text
 $ curl --request GET \
   --URL https://papinet.pulp.papinet.io/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 or, if you use locally the docker container of the papiNet mock server:
@@ -1135,8 +1216,8 @@ or, if you use locally the docker container of the papiNet mock server:
 ```text
 $ curl --request GET \
   --URL http://localhost:3001/shipments/d4fd1f2c-642f-4df8-a7b3-139cf9d63d17 \
-  --header 'X-papiNet-Domain: papinet.pulp.papinet.io' \
-  --header 'Authorization: Bearer fe69f78b-a2fd-4e8d-99c1-2f9672846a9a'
+  --header 'Host: papinet.pulp.papinet.io' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
 If all goes well, the company **Corp** will receive a response like this:
