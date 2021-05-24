@@ -29,7 +29,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request POST \
-  --URL http://localhost:3001/tokens \
+  --URL http://localhost:3002/tokens \
   --header 'Host: papinet.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -59,7 +59,7 @@ $ export ACCESS_TOKEN=$(curl --request POST \
 or, if you use locally the docker container of the papiNet mock server:
 
 ```$ export ACCESS_TOKEN=$(curl --request POST \
-  --URL http://localhost:3001/tokens \
+  --URL http://localhost:3002/tokens \
   --header 'Host: papinet.papinet.io' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -96,7 +96,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders?orderStatus=Active \
+  --URL http://localhost:3002/orders?orderStatus=Active \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
@@ -151,7 +151,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL http://localhost:3002/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
@@ -200,7 +200,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL http://localhost:3002/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -260,7 +260,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL http://localhost:3002/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -320,7 +320,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL http://localhost:3002/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -392,7 +392,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL http://localhost:3002/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -476,7 +476,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
+  --URL http://localhost:3002/orders/c51d8903-01d1-485c-96ce-51a9be192207 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -566,7 +566,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders?orderStatus=Active \
+  --URL http://localhost:3002/orders?orderStatus=Active \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -618,7 +618,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -667,7 +667,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -727,7 +727,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -787,7 +787,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -859,7 +859,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -931,7 +931,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1003,7 +1003,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1087,7 +1087,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
+  --URL http://localhost:3002/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1177,7 +1177,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders?orderStatus=Active \
+  --URL http://localhost:3002/orders?orderStatus=Active \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1225,7 +1225,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders?orderStatus=Active&offset=2&limit=2 \
+  --URL http://localhost:3002/orders?orderStatus=Active&offset=2&limit=2 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1275,7 +1275,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1323,7 +1323,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1383,7 +1383,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1443,7 +1443,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1515,7 +1515,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1599,7 +1599,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1683,7 +1683,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
+  --URL http://localhost:3002/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1775,7 +1775,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1823,7 +1823,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1883,7 +1883,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -1943,7 +1943,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2015,7 +2015,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2099,7 +2099,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2183,7 +2183,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2267,7 +2267,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2351,7 +2351,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
+  --URL http://localhost:3002/orders/fb441640-e40b-4d91-8930-61ebf981da63 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2443,7 +2443,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
+  --URL http://localhost:3002/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2491,7 +2491,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
+  --URL http://localhost:3002/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2551,7 +2551,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
+  --URL http://localhost:3002/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2611,7 +2611,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
+  --URL http://localhost:3002/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2683,7 +2683,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
+  --URL http://localhost:3002/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2767,7 +2767,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
+  --URL http://localhost:3002/orders/12e8667f-14ed-49e6-9610-dc58dee95560 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2859,7 +2859,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
+  --URL http://localhost:3002/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2907,7 +2907,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
+  --URL http://localhost:3002/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -2967,7 +2967,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
+  --URL http://localhost:3002/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -3027,7 +3027,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
+  --URL http://localhost:3002/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -3098,7 +3098,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
+  --URL http://localhost:3002/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
@@ -3182,7 +3182,7 @@ or, if you use locally the docker container of the papiNet mock server:
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3001/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
+  --URL http://localhost:3002/orders/1804bcfb-15ae-476a-bc8b-f31bc9f4de62 \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 
