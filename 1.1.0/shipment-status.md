@@ -160,7 +160,7 @@ If all goes well, the company **Fast** will receive a response like this:
         }
       ],
       "shipmentStatus": "Active",
-      "shipmentArrivalStatus": "OnTime",
+      "shipmentArrivalStatus": "Delayed",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
       "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/778fe5cb-f7ac-4493-b492-25fe98df67c4"
@@ -178,7 +178,7 @@ If all goes well, the company **Fast** will receive a response like this:
 ```
 
 > You can see that the _Carrier_ has **6** _Active shipments_. The response only contains summary information, to get the details of the _shipment_ the `link` properties contains a prepared API endpoint giving direct access to the full _shipment_. You can also notice that the response only gives 2 _Active shipments_ out of the 6. This is because of the pagination mechanism.
-The value `ABC02` is coming from the _Forwarder_ when it has earlier booked the transport from the _Carrier_.
+The values `SHP001` and `SHP002` is coming from the _Forwarder_ when it has earlier booked the transports from the _Carrier_.
 
 #### Step 3 of Scenario A - The Shipment is being Loaded
 
@@ -540,7 +540,7 @@ If all goes well, the company **Pulp** will receive a response like this:
     },
     {
       "id": "678df9d5-ebc5-4f41-a4ab-2cdf1d991deb",
-      "supplierShipmentNumber": "SHP002",
+      "shipmentNumber": "SHP002",
       "shipmentReferences": [
         {
           "type": "DeliveryInstructionNumber",
@@ -554,7 +554,7 @@ If all goes well, the company **Pulp** will receive a response like this:
         }
       ],
       "shipmentStatus": "Active",
-      "shipmentArrivalStatus": "OnTime",
+      "shipmentArrivalStatus": "Delayed",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
       "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/678df9d5-ebc5-4f41-a4ab-2cdf1d991deb"
@@ -933,7 +933,7 @@ If all goes well, the company **Corp** will receive a response like this:
   "shipments": [
     {
       "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-      "shipmentNumber": "SHP001",
+      "shipmentNumber": "SU001SHP001",
       "shipmentReferences": [
         {
           "type": "OrderNumber",
@@ -954,7 +954,7 @@ If all goes well, the company **Corp** will receive a response like this:
     },
     {
       "id": "55cdad30-51df-4bfb-96ad-34e756ce7ba0",
-      "shipmentNumber": "SHP002",
+      "shipmentNumber": "SU002SHP002",
       "shipmentReferences": [
         {
           "type": "OrderNumber",
@@ -968,7 +968,7 @@ If all goes well, the company **Corp** will receive a response like this:
         }
       ],
       "shipmentStatus": "Active",
-      "shipmentArrivalStatus": "OnTime",
+      "shipmentArrivalStatus": "Delayed",
       "scheduledDateTimeOfArrival": "2021-04-24T09:54:00Z",
       "estimatedDateTimeOfArrival": "2021-04-24T13:56:00Z",
       "link": "/shipments/55cdad30-51df-4bfb-96ad-34e756ce7ba0"
@@ -1010,7 +1010,7 @@ If all goes well, the company **Corp** will receive a response like this:
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "SHP001",
+  "shipmentNumber": "SU001SHP001",
   "shipmentReferences": [
     {
       "type": "OrderNumber",
@@ -1064,7 +1064,7 @@ If all goes well, the company **Corp** will receive a response like this:
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "SHP001",
+  "shipmentNumber": "SU001SHP001",
   "shipmentReferences": [
     {
       "type": "OrderNumber",
@@ -1118,7 +1118,7 @@ If all goes well, the company **Corp** will receive a response like this:
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "SHP001",
+  "shipmentNumber": "SU001SHP001",
   "shipmentReferences": [
     {
       "type": "OrderNumber",
@@ -1172,7 +1172,7 @@ If all goes well, the company **Corp** will receive a response like this:
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "SHP001",
+  "shipmentNumber": "SU001SHP001",
   "shipmentReferences": [
     {
       "type": "OrderNumber",
@@ -1226,7 +1226,7 @@ If all goes well, the company **Corp** will receive a response like this:
 ```json
 {
   "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
-  "shipmentNumber": "SHP001",
+  "shipmentNumber": "SU001SHP001",
   "shipmentReferences": [
     {
       "type": "OrderNumber",

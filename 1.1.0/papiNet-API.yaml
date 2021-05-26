@@ -350,14 +350,14 @@ components:
             $ref: '#/components/schemas/shipmentReference'
         shipmentStatus:
           type: string
-          # Enumeration for 'orderStatus':
+          # Enumeration for 'shipmentStatus':
           enum:
             - Active
             - Rejected
             - Completed
         shipmentArrivalStatus:
           type: string
-          # Enumration for 'shipmentArrivalStatus'
+          # Enumeration for 'shipmentArrivalStatus'
           enum:
             - OnTime
             - Early
