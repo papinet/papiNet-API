@@ -12,7 +12,10 @@ None.
 
 ### Process
 
-An authenticated or anonymous _Party_ requests to a _Supplier_ the list of _products_ on offer (to that _Party_).
+An authenticated or anonymous _Party_ requests to a _Supplier_ the list of _product families_, which contains several possible features, on offer (to that _Party_).
+
+Based on _products_, the 
+
 The _products_ might be grouped in _catalogues_ by the _Supplier_; hence, the _Party_ could first request to the _Supplier_ the list of _catalogues_ on offer, and then request the list of _products_ within a selected _catalogue_.
 
 ## Domain Name

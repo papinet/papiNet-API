@@ -13,7 +13,7 @@ The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the doma
 
 ## Authentication
 
-We recommend to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
+We recommend secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
 
 The _Order Issuer_ sends an API request to create a session, and gets its associated _access token_:
 
