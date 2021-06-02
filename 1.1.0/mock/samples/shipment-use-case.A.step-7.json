@@ -10,12 +10,12 @@
   ],
   "shipmentStatus": "Completed",
   "shipmentArrivalStatus": "Delayed",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "actualDateTimeOfArrival": "2021-04-24T10:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
   "latestEvent": {
     "id": "a7eadf12-dd54-4ee2-98b4-29fabb6a10e9",
     "type": "Completed",
-    "dateTime": "2021-04-24T11:00:00",
+    "dateTime": "2021-04-24T11:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499

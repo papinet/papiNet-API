@@ -15,12 +15,12 @@
   ],
   "shipmentStatus": "Active",
   "shipmentArrivalStatus": "OnTime",
-  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00",
-  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "estimatedDateTimeOfArrival": "2021-04-24T09:00:00Z",
   "latestEvent": {
     "id": "7af38a28-068f-496e-97f3-e7035edc5445",
     "type": "LoadingStarted",
-    "dateTime": "2021-03-23T13:00:00",
+    "dateTime": "2021-03-23T13:00:00Z",
     "location" : {
       "latitude" : 37.4224764,
       "longitude" : -122.0842499

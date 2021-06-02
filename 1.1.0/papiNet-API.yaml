@@ -133,8 +133,6 @@ components:
 
     PaginationLinks:
       type: object
-      required:
-        - next
       properties:
         first:
           type: object
@@ -205,7 +203,7 @@ components:
           type: string
           format: uuid
         orderLineItemNumber:
-          type: number
+          type: integer
           minimum: 0
         orderLineItemStatus:
           type: string
@@ -346,36 +344,20 @@ components:
           format: uuid
         shipmentNumber:
           type: string
+        shipmentReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/shipmentReference'
         shipmentStatus:
           type: string
-          # Enumeration for 'orderStatus':
+          # Enumeration for 'shipmentStatus':
           enum:
             - Active
             - Rejected
             - Completed
-        shipmentReference:
-          type: object
-          required:
-            - type
-            - assignedBy
-            - value
-          properties:
-            type:
-              type: string
-              enum:
-                - shipmentNumber
-                - deliveryInstructionNumber
-            assignedBy:
-              type: string
-              enum:
-                - Supplier
-                - Forwarder
-                - Carrier
-            value:
-              type: string
         shipmentArrivalStatus:
           type: string
-          # Enumration for 'shipmentArrivalStatus'
+          # Enumeration for 'shipmentArrivalStatus'
           enum:
             - OnTime
             - Early
@@ -390,8 +372,35 @@ components:
           type: string
           format: date-time
 
+    shipmentReference:
+      type: object
+      required:
+        - type
+        - assignedBy
+        - value
+      properties:
+        type:
+          type: string
+          enum:
+            - ShipmentNumber
+            - DeliveryInstructionNumber
+            - DeliveryInstructionSequenceNumber
+            - OrderNumber
+            - OrderLineItemNumber
+        assignedBy:
+          type: string
+          enum:
+            - Supplier
+            - Forwarder
+            - Carrier
+            - OrderIssuer
+        value:
+          type: string
+
     ListOfShipments:
       type: object
+      required:
+        - shipments
       properties:
         shipments:
           type: array

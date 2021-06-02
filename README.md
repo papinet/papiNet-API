@@ -27,7 +27,3 @@ The following normative documents are available:
 - [`papiNet-API.md`](1.1.0/papiNet-API.md) the semantic specification of the main objects and properties used within the OpenAPI document.
 
 In addition to these normative documents, we also provide a papiNet mock service that give live responses in line with the scenarios described within the use case documents.
-
-## Contributing
-
-Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for more information on contributing to the papiNet API standard.

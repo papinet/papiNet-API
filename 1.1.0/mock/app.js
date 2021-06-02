@@ -5,7 +5,12 @@ const bodyParser = require('body-parser')
 const short = require('short-uuid')
 const jsonfile = require('jsonfile')
 
-const PORT = 3001
+/*
+We will one specific TCP port per release with the following mapping:
+3001 = 1.0.0
+3002 = 1.1.0
+*/
+const PORT = 3002
 const HOST = '0.0.0.0'
 const SERVICE_NAME = 'papinet-mock'
 const SERVICE_VERSION = '1.1.0'
@@ -41,6 +46,46 @@ const scenarios = [
     name: "A",
     firstStep: 1,
     lastStep: 6,
+    previousStep: 0
+  },
+  {
+    method: "GET",
+    domain:"papinet.papinet.io",
+    path: "/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4",
+    useCase: "order-status-use-case",
+    name: "B",
+    firstStep: 1,
+    lastStep: 8,
+    previousStep: 0
+  },
+  {
+    method: "GET",
+    domain:"papinet.papinet.io",
+    path: "/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+    useCase: "order-status-use-case",
+    name: "C",
+    firstStep: 1,
+    lastStep: 7,
+    previousStep: 0
+  },
+  {
+    method: "GET",
+    domain:"papinet.papinet.io",
+    path: "/orders/fb441640-e40b-4d91-8930-61ebf981da63",
+    useCase: "order-status-use-case",
+    name: "D",
+    firstStep: 1,
+    lastStep: 9,
+    previousStep: 0
+  },
+  {
+    method: "GET",
+    domain:"papinet.papinet.io",
+    path: "/orders/12e8667f-14ed-49e6-9610-dc58dee95560",
+    useCase: "order-status-use-case",
+    name: "E",
+    firstStep: 1,
+    lastStep: 7,
     previousStep: 0
   },
   {
@@ -107,6 +152,10 @@ const scenarios = [
 const scenariosIndexedByAPIEndpoint = [
   "GET|papinet.papinet.io|/orders",
   "GET|papinet.papinet.io|/orders/c51d8903-01d1-485c-96ce-51a9be192207",
+  "GET|papinet.papinet.io|/orders/778fe5cb-f7ac-4493-b492-25fe98df67c4",
+  "GET|papinet.papinet.io|/orders/c898aa54-8ebb-40ab-a0b9-3d979e082a9e",
+  "GET|papinet.papinet.io|/orders/fb441640-e40b-4d91-8930-61ebf981da63",
+  "GET|papinet.papinet.io|/orders/12e8667f-14ed-49e6-9610-dc58dee95560",
   "GET|papinet.road.papinet.io|/shipments",
   "GET|papinet.road.papinet.io|/shipments/c51d8903-01d1-485c-96ce-51a9be192207",
   "GET|papinet.fast.papinet.io|/shipments",
@@ -120,8 +169,7 @@ app.post('/tokens', (req, res) => {
   const traceId = short.uuid()
   console.log(`[INFO] [${traceId}] post /tokens [${Date.now()}] `)
   const id = short.uuid()
-  // X-papiNet-Domain
-  const domain = req.header('X-papiNet-Domain')
+  const domain = req.hostname // Contains the hostname derived from the Host HTTP header.
   console.log(`[INFO] [${traceId}]   domain = ${domain} [${Date.now()}]`)
 
   //const scenarioPos = scenariosIndexedByParty.indexOf(party)
@@ -508,7 +556,7 @@ function handle(traceId, method, path, req, res) {
   const sessionDomain = sessions[sessionPos].domain
   console.log(`[INFO] [${traceId}]   sessionDomain: ${sessionDomain}`)
 
-  const domain = req.header('X-papiNet-Domain')
+  const domain = req.hostname // Contains the hostname derived from the Host HTTP header.
   console.log(`[INFO] [${traceId}]   domain: ${domain}`)
 
   if (sessionDomain !== domain) {
