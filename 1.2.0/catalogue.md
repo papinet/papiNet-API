@@ -12,24 +12,26 @@ None.
 
 ### Process
 
-An authenticated or anonymous _Party_ requests to a _Supplier_ the list of _product families_, which contains several possible features, on offer (to that _Party_).
+An authenticated or anonymous _customer_ requests to a _supplier_ the list of its _products_.
 
-Based on _products_, the 
+The authenticated or anonymous _customer_ requests to a _supplier_ the details of a specific _product_.
 
-The _products_ might be grouped in _catalogues_ by the _Supplier_; hence, the _Party_ could first request to the _Supplier_ the list of _catalogues_ on offer, and then request the list of _products_ within a selected _catalogue_.
+The authenticated _customer_ creates an _article_ based on a specific _product_.
+
+The authenticated _customer_ requests to the _supplier_ the list of _articles_ it has created.
 
 ## Domain Name
 
-We suggest that the _Supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`.
-For instance, if the _Supplier_ is the company **ACME** using `acme.com` for its corporate web site, they should then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+We suggest that the _supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`.
+For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
 The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on the domain `papinet.papinet.io`.
 
 ## Authentication
 
-For authenticated _Party_, we recommend to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
+For authenticated _customer_, we recommend to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
 
-The _Party_ sends an API request to create a session, and gets its associated _access token_:
+The _customer_ sends an API request to create a session, and gets its associated _access token_:
 
 ```text
 $ curl --request POST \
@@ -39,7 +41,7 @@ $ curl --request POST \
   --data 'grant_type=client_credentials'
 ```
 
-If all goes well, the _Party_ will receive a response like this:
+If all goes well, the _customer_ will receive a response like this:
 
 ```json
 { 
@@ -49,27 +51,21 @@ If all goes well, the _Party_ will receive a response like this:
 }
 ```
 
-This step is not necessary if the _Supplier_ supports anonymous requests.
+This step is not necessary if the _supplier_ supports anonymous requests.
 
 ## Scenarios
 
-* Scenario A - An anonymous _Party_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
+* Scenario A - An anonymous _customer_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
 
-* Scenario B - An authenticated _Party_ gets the list of all _products_ on offer to that _Party_, and gets the details of a selected _product_.
-
-* Scenario C - An authenticated _Party_ gets the list of all _catalogues_ on offer to that _Party_, gets the list of all _products_ within a selected _catalogue_, and gets the details of a selected _product_.
-
-* [Out of scope/for later] Scenario D - An authenticated _Publisher_ (once) grants access to an authenticated _Printer_ so it can access _products_ on offer to the _Publisher_. The authenticated _Printer_ gets the list of all _products_ on offer to the _Publisher_, and gets the details of a selected _product_.
-
-> If _catalogues_ exist, they could be accessible to an anonymous _Party_ as well.
+* Scenario B - An authenticated _customer_ gets the list of all _products_ on offer, gets the details of a specific _product_, creates an _article_ based on this specific _product_ and gets the list of all _articles_ it has created.
 
 ### Scenario A
 
-An anonymous _Party_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
+An anonymous _customer_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
 
 #### Step 1 of Scenario A
 
-The anonymous _Party_ sends an API request to the _Supplier_ in order to get the list of all _products_ on offer:
+The anonymous _customer_ sends an API request to the _supplier_ in order to get the list of all _products_ on offer:
 
 ```text
 $ curl --request GET \

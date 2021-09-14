@@ -1,0 +1,80 @@
+{
+  "id": "be9a9fdb-9553-4ca3-8974-1a9dcc062b14",
+  "name": "Galerie Lite",
+  "descriptions": [
+    {
+      "language": "eng",
+      "value": "When your high volume print job demands an ultra lightweight gloss paper with superior quality and runnability."
+    },
+    {
+      "language": "fra",
+      "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
+    }
+  ],
+  "paper": {
+    "finishType": "Gloss",
+    "printType": "HeatsetOffset",
+    "basisWeights": [
+      {
+        "value": 35,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 39,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 42,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 45,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 48,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 51,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 54,
+        "UOM": "GramsPerSquareMeter"
+      }
+    ],
+    "reel": {
+      "diameters": [
+        {
+          "value": 1000,
+          "UOM": "Millimeter"
+        },
+        {
+          "value": 1250,
+          "UOM": "Millimeter"
+        }
+      ],
+      "coreDiameters": [
+        {
+          "value": 76,
+          "UOM": "Millimeter"
+        },
+        {
+          "value": 150,
+          "UOM": "Millimeter"
+        }
+      ],
+      "widthRange": {
+        "min": {
+          "value": 400,
+          "UOM": "Millimeter"
+        },
+        "max": {
+          "value": 2600,
+          "UOM": "Millimeter"
+        }
+      }
+    }
+  }
+}
