@@ -30,11 +30,11 @@ app.get('/', (req, res) => {
   })
 })
 
-const products = require('./products.json')
+const products = require('./samples/sappi.products.json')
 
 // List all `products`:
 app.get('/products', (req, res) => {
-  handleCollections(req, res, products, ["id", "name", "descriptions"])
+  handleCollections(req, res, products, ["id", "name", "link"])
 })
 
 // Get the details of a specific `product`:
@@ -54,17 +54,29 @@ const articles = []
 // Create a new `article`:
 app.post('/articles', (req, res) => {
   const id = short.uuid()
-  const productRef = req.body.productRef
-  // Check if productRef exists:
-  if (products.filter(product => product.id === productRef).length !== 1) {
-    res.status(400).json({ "error": "productRef does NOT exist :-("} )
+  const productHref = req.body.productHref
+  // Check if productHref exists:
+  if (products.filter(product => product.id === productHref).length !== 1) {
+    res.status(400).json({ "error": "productHref does NOT exist :-("} )
     return
   }
   const name = req.body.name
+  const product = products.filter(product => product.id === productHref)[0]
   const article = {
     id: id,
-    productRef: productRef,
-    name: name
+    productHref: productHref,
+    name: name,
+    descriptions: product.descriptions,
+    paper: {
+      finishType: product.paper.finishType,
+      printType: product.paper.printType,
+      basisWeight: req.body.paper.basisWeight,
+      reel: {
+        width: req.body.paper.reel.width,
+        diameter: req.body.paper.reel.diameter,
+        coreDiameter: req.body.paper.reel.coreDiameter
+      }
+    }
   }
   articles.push(article);
   res.location(`/articles/${article.id}`)
@@ -73,7 +85,7 @@ app.post('/articles', (req, res) => {
 
 // List all `articles`:
 app.get('/articles', (req, res) => {
-  handleCollections(req, res, articles, ["id", "productRef", "name"])
+  handleCollections(req, res, articles, ["id", "productHref", "name"])
 })
 
 // Get the details of a specific `article`:
@@ -100,7 +112,7 @@ function handleCollections(req, res, items, properties) {
   let offset = req.query.offset
   let limit = req.query.limit
   if (offset === undefined) offset = 0
-  if (limit === undefined) limit = items.length // Good enough ;-)
+  if (limit === undefined) limit = 5
   // IMPORTANT!!!
   offset = parseInt(offset)
   limit = parseInt(limit)
@@ -125,6 +137,14 @@ function handleCollections(req, res, items, properties) {
   })
   res.status(200).json({
     size: items.length,
-    data: resultItems
+    data: resultItems,
+    links: {
+      self: {
+        href: `${req.path}?offset=${offset}&limit=${limit}`
+      },
+      next: {
+        href: `${req.path}?offset=${offset+limit}&limit=${limit}`
+      }
+    }
   })
 }
