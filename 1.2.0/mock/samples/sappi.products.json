@@ -19,7 +19,18 @@
       "basisWeights": [
         {
           "value": 54,
-          "UOM": "GramsPerSquareMeter"
+          "UOM": "GramsPerSquareMeter",
+          "listPricePerUnit": {
+            "amount": "1250",
+            "currency": "EUR",
+            "unit": {
+              "value": 1,
+              "UOM": "MetricTon"
+            },
+            "validity": {
+              "from": "2021-09-15"
+            }
+          }
         },
         {
           "value": 57,
