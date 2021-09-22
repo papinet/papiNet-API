@@ -1,0 +1,520 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forst and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 1.2.0
+servers:
+  - url: https://papinet.papinet.io
+    description: papiNet Mock Server
+paths:
+
+  '/orders':
+    # get /orders
+    get:
+      summary: List `orders`
+      description: Gets a paginated list of all `orders`.
+      parameters:
+        - in: query
+          name: orderStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+            - Active
+            - Cancelled
+            - Completed
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfOrders'
+
+  '/orders/{orderId}':
+    # get /orders/{orderId}
+    get:
+      summary: Get an `order`
+      description: Gets the details of a specific `order`, including a paginated list of all its lines.
+      parameters:
+        - in: path
+          name: orderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `order` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrder'
+
+  '/shipments':
+    # get /shipments
+    get:
+      summary: List `shipments`
+      description: Gets a paginated list of all `shipments`.
+      parameters:
+        - in: query
+          name: shipmentStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Rejected
+              - Completed
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfShipments'
+
+  '/shipments/{shipmentId}':
+    # get /shipments/{shipmentId}
+    get:
+      summary: Get a `shipment`
+      description: Gets the details of a specific `shipment`.
+      parameters:
+        - in: path
+          name: shipmentId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `shipment` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetShipment'
+
+  '/supplier-products':
+    # GET /supplier-products
+    get:
+      summary: List `products`
+      description: Gets a paginated list of all `products` defined by the `supplier`.
+      responses:
+        '200':
+          description: OK
+
+  '/supplier-products/{productId}':
+    # GET /supplier-products/{productId}
+    get:
+      summary: Get a `product`
+      description: Gets the details of a specific `product`.
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `product` to get
+      responses:
+        '200':
+          description: OK
+
+  '/customer-articles':
+    # POST /customer-articles
+    post:
+      summary: Create an `article`
+      description: Creates an `article` defined by the `customer` based on a `product`.
+      requestBody:
+        description: The definition of an `article`.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+      responses:
+        '201':
+          description: Created
+          
+    # GET /customer-articles
+    get:
+      summary: List `articles`
+      description: Gets a paginated list of all `articles` defined by the `customer`.
+      responses:
+        '200':
+          description: OK
+          
+  '/customer-articles/{articleId}':
+    # PUT /customer-articles/{articleId}
+    put:
+      summary: Create or modify an `article`
+      description: Creates or modifies an `article` defined by the `customer` based on a `product`.
+      parameters:
+        - in: path
+          name: articleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `article`
+      requestBody:
+        description: The definition of an `article`.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+      responses:
+        '201':
+          description: Created
+        '200':
+          description: OK
+          
+    # GET /customer-articles/{articleId}
+    get:
+      summary: Get an `article`
+      description: Gets the details of a specific `product`.
+      parameters:
+        - in: path
+          name: articleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `article`
+      responses:
+        '200':
+          description: OK
+
+components:
+  schemas:
+
+    PaginationLinks:
+      type: object
+      properties:
+        first:
+          type: object
+          properties:
+            href:
+              type: string
+        prev:
+          type: object
+          properties:
+            href:
+              type: string
+        next:
+          type: object
+          properties:
+            href:
+              type: string
+        last:
+          type: object
+          properties:
+            href:
+              type: string
+
+    ListOfOrders:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderHeader'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetOrder:
+      $ref: '#/components/schemas/Order'
+
+    OrderHeader:
+      type: object
+      required:
+        - id
+        - orderNumber
+        - orderStatus
+        - numberOfLineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+        orderStatus:
+          type: string
+          # Enumeration for 'orderStatus':
+          enum:
+            - Active
+            - Cancelled
+            - Completed
+        numberOfLineItems:
+          type: integer
+          minimum: 0
+
+    OrderLineItem:
+      type: object
+      required:
+        - id
+        - orderLineItemNumber
+        - orderLineItemStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderLineItemNumber:
+          type: integer
+          minimum: 0
+        orderLineItemStatus:
+          type: string
+          # Enumeration for 'orderLineItemStatus':
+          enum:
+            - Cancelled
+            - Completed
+            - Confirmed
+            - Pending
+            - ProductionCompleted
+            - ShipmentCompleted
+        changeable:
+          type: boolean
+        quantities:
+          type: array
+          items:
+            type: object
+            properties:
+              quantityContext:
+                type: string
+                # Enumeration for 'quantityContext':
+                enum:
+                  - Confirmed
+                  - Invoiced
+                  - Ordered
+                  - Produced
+                  - Shipped
+              quantityType:
+                type: string
+                # Enumeration for 'quantityType':
+                enum:
+                  - Area
+                  - Count
+                  - GrossWeight
+                  - Length
+                  - NetNetWeight
+                  - NetWeight
+                  - NominalWeight
+                  - TareWeight
+              quantityValue:
+                type: number
+              quantityUOM:
+                type: string
+                # Enumeration for 'quantityUOM':
+                enum:
+                  - Bale
+                  - Box
+                  - Centimeter
+                  - Decimeter
+                  - Foot
+                  - Gram
+                  - HundredPounds
+                  - Inch
+                  - Kilogram
+                  - Kilometer
+                  - Meter
+                  - MetricTon
+                  - Millimeter
+                  - Package
+                  - PalletUnit
+                  - Piece
+                  - Pound
+                  - PulpUnit
+                  - Ream
+                  - Reel
+                  - Sheet
+                  - ShortTon
+                  - Skid
+                  - SquareDecimeter
+                  - SquareFoot
+                  - SquareInch
+                  - SquareMeter
+                  - ThousandPieces
+                  - ThousandSquareCentimeters
+                  - ThousandSquareFeet
+                  - ThousandSquareInches
+                  - Yard
+
+    Order:
+      allOf:
+        - $ref: '#/components/schemas/OrderHeader'
+        - properties:
+            orderLineItems:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderLineItem'
+            links:
+              $ref: '#/components/schemas/PaginationLinks'
+
+    Event:
+      type: object
+      required:
+        - id
+        - type
+        - dateTime
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          # Enumeration for 'Event.type'
+          enum:
+            - Scheduled
+            - ReadyToLoad
+            - LoadingStarted
+            - LoadingCompleted
+            - Departed
+            - TrafficJam
+            - Transshipment
+            - Arrived
+            - Measured
+            - UnloadingStarted
+            - UnloadingCompleted
+            - Completed
+        dateTime:
+          type: string
+          format: date-time
+        location:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+            name:
+              type: string
+
+    ShipmentHeader:
+      type: object
+      required:
+        - id
+        - shipmentNumber
+        - shipmentStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        shipmentNumber:
+          type: string
+        shipmentReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/shipmentReference'
+        shipmentStatus:
+          type: string
+          # Enumeration for 'shipmentStatus':
+          enum:
+            - Active
+            - Rejected
+            - Completed
+        shipmentArrivalStatus:
+          type: string
+          # Enumeration for 'shipmentArrivalStatus'
+          enum:
+            - OnTime
+            - Early
+            - Delayed
+        scheduledDateTimeOfArrival:
+          type: string
+          format: date-time
+        estimatedDateTimeOfArrival:
+          type: string
+          format: date-time
+        actualDateTimeOfArrival:
+          type: string
+          format: date-time
+
+    shipmentReference:
+      type: object
+      required:
+        - type
+        - assignedBy
+        - value
+      properties:
+        type:
+          type: string
+          enum:
+            - ShipmentNumber
+            - DeliveryInstructionNumber
+            - DeliveryInstructionSequenceNumber
+            - OrderNumber
+            - OrderLineItemNumber
+        assignedBy:
+          type: string
+          enum:
+            - Supplier
+            - Forwarder
+            - Carrier
+            - OrderIssuer
+        value:
+          type: string
+
+    ListOfShipments:
+      type: object
+      required:
+        - shipments
+      properties:
+        shipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentHeader'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetShipment:
+      $ref: '#/components/schemas/Shipment'
+
+    Shipment:
+      allOf:
+        - $ref: '#/components/schemas/ShipmentHeader'
+        - properties:
+            latestEvent:
+              $ref: '#/components/schemas/Event'
+
+    Article:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
