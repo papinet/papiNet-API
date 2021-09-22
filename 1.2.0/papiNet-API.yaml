@@ -185,6 +185,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfArticles'
           
   '/customer-articles/{articleId}':
     # PUT /customer-articles/{articleId}
@@ -227,6 +231,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
 
 components:
   schemas:
@@ -709,6 +717,36 @@ components:
       type: object
       required:
         - name
+        - href
       properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
+        href:
+          type: string
+        link:
+          type: string
+          format: uri
+        descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Description'
+        paper:
+          $ref: '#/components/schemas/Paper'
+
+    ListOfArticles:
+      type: object
+      required:
+        - size
+        - data
+      properties:
+        size:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
