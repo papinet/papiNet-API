@@ -136,6 +136,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfProducts'
 
   '/supplier-products/{productId}':
     # GET /supplier-products/{productId}
@@ -153,6 +157,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
 
   '/customer-articles':
     # POST /customer-articles
@@ -510,6 +518,192 @@ components:
         - properties:
             latestEvent:
               $ref: '#/components/schemas/Event'
+
+    Description:
+      type: object
+      required:
+        - value
+      properties:
+        language:
+          type: string
+          enum:
+            - eng
+            - fra
+
+    FinishType:
+      type: string
+      enum:
+        - Gloss
+        - HighGloss
+        - Silk
+
+    PrintType:
+      type: string
+      enum:
+        - Digital
+        - HeatsetOffset
+
+    BasisWeight:
+      type: object
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - GramsPerSquareMeter
+
+    Width:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Millimeter
+            
+    WidthRange:
+      type: object
+      properties:
+        min:
+          $ref: '#/components/schemas/Width'
+        max:
+          $ref: '#/components/schemas/Width'
+
+    Diameter:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Millimeter
+            
+    DiameterRange:
+      type: object
+      properties:
+        min:
+          $ref: '#/components/schemas/Diameter'
+        max:
+          $ref: '#/components/schemas/Diameter'
+          
+    CoreDiameter:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Millimeter
+            
+    CoreDiameterRange:
+      type: object
+      properties:
+        min:
+          $ref: '#/components/schemas/CoreDiameter'
+        max:
+          $ref: '#/components/schemas/CoreDiameter'
+
+    Reel:
+      type: object
+      properties:
+        width:
+          $ref: '#/components/schemas/Width'
+        widths:
+          type: array
+          items:
+            $ref: '#/components/schemas/Width'
+        widthRange:
+          $ref: '#/components/schemas/WidthRange'
+        diameter:
+          $ref: '#/components/schemas/Diameter'
+        diameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Diameter'
+        diameterRange:
+          $ref: '#/components/schemas/DiameterRange'
+        coreDiameter:
+          $ref: '#/components/schemas/CoreDiameter'
+        coreDiameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoreDiameter'
+        coreDiameterRange:
+          $ref: '#/components/schemas/CoreDiameterRange'
+
+    Paper:
+      type: object
+      properties:
+        finishType:
+          $ref: '#/components/schemas/FinishType'
+        finishTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinishType'
+        printType:
+          $ref: '#/components/schemas/PrintType'
+        printTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrintType'
+        basisWeight:
+          $ref: '#/components/schemas/BasisWeight'
+        basisWeights:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasisWeight'
+        reel:
+          $ref: '#/components/schemas/Reel'
+
+    Product:
+      type: object
+      required:
+        - id
+        - name
+        - link
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        link:
+          type: string
+          format: uri
+        descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Description'
+        paper:
+          $ref: '#/components/schemas/Paper'
+
+    ListOfProducts:
+      type: object
+      required:
+        - size
+        - data
+      properties:
+        size:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
 
     Article:
       type: object
