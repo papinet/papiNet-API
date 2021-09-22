@@ -30,18 +30,18 @@ app.get('/', (req, res) => {
   })
 })
 
-const products = require('./samples/sappi.products.json')
+const products = require('./samples/sappi.supplier-products.json')
 
-// List all `products`:
-app.get('/products', (req, res) => {
+// List all `supplier-products`:
+app.get('/supplier-products', (req, res) => {
   handleCollections(req, res, products, ["id", "name", "link"])
 })
 
-// Get the details of a specific `product`:
-app.get('/products/:productId', (req, res) => {
+// Get the details of a specific `supplier-product`:
+app.get('/supplier-products/:productId', (req, res) => {
   const result = products.filter(product => product.id === req.params.productId)
   if (result.length === 0) {
-    res.status(404).end()
+    res.status(204).end()
   } else if (result.length === 1) {
     res.status(200).json(result[0])
   } else {
@@ -52,20 +52,21 @@ app.get('/products/:productId', (req, res) => {
 const articles = []
 
 // Create a new `article`:
-app.post('/articles', (req, res) => {
+app.post('/customer-articles', (req, res) => {
   const id = short.uuid()
-  const productHref = req.body.productHref
+  const productId = req.body.href.split(/^\/supplier-products\//)[1]
   // Check if productHref exists:
-  if (products.filter(product => product.id === productHref).length !== 1) {
-    res.status(400).json({ "error": "productHref does NOT exist :-("} )
+  if (products.filter(product => product.id === productId).length !== 1) {
+    res.status(400).json({ "error": "href does NOT exist :-("} )
     return
   }
   const name = req.body.name
-  const product = products.filter(product => product.id === productHref)[0]
+  const product = products.filter(product => product.id === productId)[0]
   const article = {
     id: id,
-    productHref: productHref,
+    href: `/supplier-products/${productId}`,
     name: name,
+    link: `/customer-articles/${id}`,
     descriptions: product.descriptions,
     paper: {
       finishType: product.paper.finishType,
@@ -79,17 +80,17 @@ app.post('/articles', (req, res) => {
     }
   }
   articles.push(article);
-  res.location(`/articles/${article.id}`)
+  res.location(`/customer-articles/${article.id}`)
   res.status(201).json(article);
 });
 
 // List all `articles`:
-app.get('/articles', (req, res) => {
-  handleCollections(req, res, articles, ["id", "productHref", "name"])
+app.get('/customer-articles', (req, res) => {
+  handleCollections(req, res, articles, ["id", "name", "href", "link"])
 })
 
 // Get the details of a specific `article`:
-app.get('/articles/:articleId', (req, res) => {
+app.get('/customer-articles/:articleId', (req, res) => {
   const result = articles.filter(article => article.id === req.params.articleId)
   if (result.length === 0) {
     res.status(404).end()
@@ -105,7 +106,7 @@ console.log(`Running on http://${HOST}:${PORT}`)
 
 function handleCollections(req, res, items, properties) {
   if (items.length === 0) {
-    res.status(404).end()
+    res.status(204).end()
     return
   }
   // Validation of the `offset` and `limit` query parameters:

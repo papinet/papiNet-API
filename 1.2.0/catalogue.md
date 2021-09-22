@@ -35,7 +35,7 @@ The _customer_ sends an API request to create a session, and gets its associated
 
 ```text
 $ curl --request POST \
-  --URL https://papinet.papinet.io/tokens \
+  --URL http://papinet.papinet.io/tokens \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -69,71 +69,163 @@ The anonymous _customer_ sends an API request to the _supplier_ in order to get 
 
 ```text
 $ curl --request GET \
-  --URL https://papinet.papinet.io/products \
+  --URL http://localhost:3003/supplier-products
+```
+
+If all goes well, the anonymous _customer_ will receive a response like this:
+
+```json
+{
+  "size": 30,
+  "data": [
+    {
+      "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "name": "Galerie Brite",
+      "link": "/supplier-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6"
+    },
+    {
+      "id": "c9e893c8-42ce-4321-97de-86b7f604647b",
+      "name": "Galerie Brite Bulk",
+      "link": "/supplier-products/c9e893c8-42ce-4321-97de-86b7f604647b"
+    },
+    {
+      "id": "1ae825c7-b872-4e68-b2e3-af021e7ba2bd",
+      "name": "Galerie Brite Plus",
+      "link": "/supplier-products/1ae825c7-b872-4e68-b2e3-af021e7ba2bd"
+    },
+    {
+      "id": "0d8b0183-49bb-4f49-86e1-2a8096aa5ca3",
+      "name": "Galerie Brite Silk",
+      "link": "/supplier-products/0d8b0183-49bb-4f49-86e1-2a8096aa5ca3"
+    },
+    {
+      "id": "752513da-0eb2-4094-8ed4-08b53f854965",
+      "name": "Galerie Fine",
+      "link": "/supplier-products/752513da-0eb2-4094-8ed4-08b53f854965"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/supplier-products?offset=0&limit=5"
+    },
+    "next": {
+      "href": "/supplier-products?offset=5&limit=5"
+    }
+  }
+}
+```
+
+> You can see that the _supplier_ has **30** _products_ offered to the anonymous _customer_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 5 _products_ out of the 30. This is because of the pagination mechanism.
+
+#### Step 2 of Scenario A
+
+Then, the anonymous _customer_ sends an API request to the _supplier_ in order to get the details of the first _product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`:
+
+```text
+$ curl --request GET \
+  --URL http://localhost:3003/supplier-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6
 ```
 
 If all goes well, the anonymous _Party_ will receive a response like this:
 
 ```json
 {
-  "numberOfProducts": 17,
-  "products": [
+  "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+  "name": "Galerie Brite",
+  "link": "/supplier-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+  "descriptions": [
     {
-      "id": "30eb793d-9dcb-41b7-b0ec-21a658e9bb77",
-      "link": "/products/30eb793d-9dcb-41b7-b0ec-21a658e9bb77"
+      "language": "eng",
+      "value": "When your high volume print job demands an ultra lightweight gloss paper with superior quality and runnability."
     },
     {
-      "id": "960f18cc-8fd1-4c4b-8590-155d1c8fda4c",
-      "link": "/products/960f18cc-8fd1-4c4b-8590-155d1c8fda4c"
-    },
-    {
-      "id": "29ad4a9a-1035-4ff6-a12b-c610e3675a9c",
-      "link": "/products/29ad4a9a-1035-4ff6-a12b-c610e3675a9c"
-    },
-    {
-      "id": "ffb7e6c4-c9d2-4a7e-875b-00b5bbb332e3",
-      "link": "/products/ffb7e6c4-c9d2-4a7e-875b-00b5bbb332e3"
-    },
-    {
-      "id": "9099045a-1f9f-4c95-967a-afd46a270ab6",
-      "link": "/products/9099045a-1f9f-4c95-967a-afd46a270ab6"
-    },
-    {
-      "id": "d27f1810-0344-4c6f-b3f4-fcbf50f714ad",
-      "link": "/products/d27f1810-0344-4c6f-b3f4-fcbf50f714ad"
+      "language": "fra",
+      "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
     }
   ],
-  "links": {
-    "self": {
-      "href": "/products?offset=0&limit=6"
-    },
-    "next": {
-      "href": "/products?offset=6&limit=6"
+  "paper": {
+    "finishType": "Gloss",
+    "printType": "HeatsetOffset",
+    "basisWeights": [
+      {
+        "value": 54,
+        "UOM": "GramsPerSquareMeter",
+        "listPricePerUnit": {
+          "amount": "1250",
+          "currency": "EUR",
+          "unit": {
+            "value": 1,
+            "UOM": "MetricTon"
+          },
+          "validity": {
+            "from": "2021-09-15"
+          }
+        }
+      },
+      {
+        "value": 57,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 60,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 65,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 70,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 80,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 90,
+        "UOM": "GramsPerSquareMeter"
+      }
+    ],
+    "reel": {
+      "widthRange": {
+        "min": {
+          "value": 400,
+          "UOM": "Millimeter"
+        },
+        "max": {
+          "value": 2600,
+          "UOM": "Millimeter"
+        }
+      },
+      "diameters": [
+        {
+          "value": 1000,
+          "UOM": "Millimeter"
+        },
+        {
+          "value": 1250,
+          "UOM": "Millimeter"
+        }
+      ],
+      "coreDiameters": [
+        {
+          "value": 76,
+          "UOM": "Millimeter"
+        },
+        {
+          "value": 150,
+          "UOM": "Millimeter"
+        }
+      ]
     }
   }
 }
 ```
 
-> You can see that the _Supplier_ has **17** _products_ offered to the anonymous _Party_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 17. This is because of the pagination mechanism.
-
-#### Step 2 of Scenario A
-
-Then, the anonymous _Party_ sends an API request to the _Supplier_ in order to get the details of the first _product_ `30eb793d-9dcb-41b7-b0ec-21a658e9bb77`:
-
-```text
-$ curl --request GET \
-  --URL https://papinet.papinet.io/products/30eb793d-9dcb-41b7-b0ec-21a658e9bb77
-```
-
-If all goes well, the anonymous _Party_ will receive a response like this:
-
-```json
-
-```
-
 ### Scenario B
 
-An authenticated _Party_ gets the list of all _products_ on offer to that _Party_, and gets the details of a selected _product_.
+An authenticated _customer_ gets the list of all _products_ on offer to that _customer_, and gets the details of a selected _product_.
 
 #### Step 1 of Scenario B
 
@@ -244,98 +336,39 @@ $ curl --request GET \
 }
 ```
 
-### Scenario C
-
-An authenticated _Party_ gets the list of all _catalogues_ on offer to that _Party_, gets the list of all _products_ within a selected _catalogue_, and gets the details of a selected _product_.
-
-#### Step 1 of Scenario C
-
-The _Party_ sends an API request to the _Supplier_ in order to get the list of all _catalogues_ offered:
+...
 
 ```text
-$ curl --request GET \
-  --URL https://papinet.papinet.io/catalogues \
-  --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
-```
-
-If all goes well, the _Party_ will receive a response like this:
-
-```json
-{
-  "numberOfCatalogues": 3,
-  "catalogues": [
-    {
-      "id": "81cd426a-480a-4793-bc6b-991bcee6705d",
-      "link": "/catalogues/81cd426a-480a-4793-bc6b-991bcee6705d/products"
-    },
-    {
-      "id": "945473b7-df4f-4854-abdd-ae15d21f1ce9",
-      "link": "/catalogues/945473b7-df4f-4854-abdd-ae15d21f1ce9/products"
-    },
-    {
-      "id": "b101ec3c-7094-4789-bb9d-62d5fb259d0c",
-      "link": "/catalogues/b101ec3c-7094-4789-bb9d-62d5fb259d0c/products"
-    }
-  ],
-  "links": {
-    "self": {
-      "href": "/catalogues?offset=0&limit=3"
-    }
-  }
-}
-```
-
-#### Step 2 of Scenario C
-
-Then, the _Party_ sends an API request to the _Supplier_ in order to get the list of all _products_ offered within the first _catalogue_ `81cd426a-480a-4793-bc6b-991bcee6705d`:
-
-```text
-$ curl --request GET \
-  --URL https://papinet.papinet.io/catalogues/81cd426a-480a-4793-bc6b-991bcee6705d/products \
+$ curl --request POST \
+  --URL 'http://localhost:3003/customer-articles' \
   --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer 0b732cd6-210b-4ae7-9e95-04938c7e862e'
+  --data-raw '{
+      "name": "My Galerie Brite",
+      "href": "/supplier-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "paper": {
+          "basisWeight": {
+              "value": "54",
+              "UOM": "GramsPerSquareMeter"
+          },
+          "reel": {
+              "width": {
+                  "value": 1000,
+                  "UOM": "Millimeter"
+              },
+              "diameter": {
+                  "value": 1250,
+                  "UOM": "Millimeter"
+              },
+              "coreDiameter": {
+                  "value": 76,
+                  "UOM": "Millimeter"
+              }
+          }
+      }
+  }'
 ```
 
-If all goes well, the _Party_ will receive a response like this:
-
-```json
-{
-  "numberOfProducts": 8,
-  "products": [
-    {
-      "id": "30eb793d-9dcb-41b7-b0ec-21a658e9bb77",
-      "link": "/products/30eb793d-9dcb-41b7-b0ec-21a658e9bb77"
-    },
-    {
-      "id": "960f18cc-8fd1-4c4b-8590-155d1c8fda4c",
-      "link": "/products/960f18cc-8fd1-4c4b-8590-155d1c8fda4c"
-    },
-    {
-      "id": "29ad4a9a-1035-4ff6-a12b-c610e3675a9c",
-      "link": "/products/29ad4a9a-1035-4ff6-a12b-c610e3675a9c"
-    },
-    {
-      "id": "ffb7e6c4-c9d2-4a7e-875b-00b5bbb332e3",
-      "link": "/products/ffb7e6c4-c9d2-4a7e-875b-00b5bbb332e3"
-    },
-    {
-      "id": "9099045a-1f9f-4c95-967a-afd46a270ab6",
-      "link": "/products/9099045a-1f9f-4c95-967a-afd46a270ab6"
-    },
-    {
-      "id": "d27f1810-0344-4c6f-b3f4-fcbf50f714ad",
-      "link": "/products/d27f1810-0344-4c6f-b3f4-fcbf50f714ad"
-    }
-  ],
-  "links": {
-    "self": {
-      "href": "/products?offset=0&limit=6"
-    },
-    "next": {
-      "href": "/products?offset=6&limit=2"
-    }
-  }
-}
+```text
+$ curl --request GET \
+  --URL http://localhost:3003/customer-articles
 ```
-
-> You can see that the _Supplier_ has **8** _products_ available to be ordered by the _Party_. The response only contains the `id` information, to get the details of a _product_, you can see the `link` properties that contains a prepared API endpoint giving direct access to the full _product_ details. You can also notice that the response only gives 6 _products_ out of the 8. This is because of the pagination mechanism.
