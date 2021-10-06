@@ -55,9 +55,9 @@ This step is not necessary if the _supplier_ supports anonymous requests.
 
 ## Scenarios
 
-* Scenario A - An anonymous _customer_ gets the list of all _products_ on offer, and gets the details of a selected _product_.
+* Scenario A - An anonymous _customer_ gets the list of all _supplier-products_ on offer, and gets the details of a selected _supplier-product_.
 
-* Scenario B - An authenticated _customer_ gets the list of all _products_ on offer, gets the details of a specific _product_, creates an _article_ based on this specific _product_ and gets the list of all _articles_ it has created.
+* Scenario B - An authenticated _customer_ gets the list of all _supplier-products_ on offer, gets the details of a specific _supplier-product_, creates an _customer-article_ based on this specific _supplier-product_ and gets the list of all _customer-articles_ it has created.
 
 ### Scenario A
 

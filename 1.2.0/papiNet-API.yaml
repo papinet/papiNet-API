@@ -573,7 +573,7 @@ components:
           type: string
           enum:
             - Millimeter
-            
+
     WidthRange:
       type: object
       properties:
@@ -594,7 +594,7 @@ components:
           type: string
           enum:
             - Millimeter
-            
+
     DiameterRange:
       type: object
       properties:
@@ -602,7 +602,7 @@ components:
           $ref: '#/components/schemas/Diameter'
         max:
           $ref: '#/components/schemas/Diameter'
-          
+
     CoreDiameter:
       type: object
       required:
@@ -615,7 +615,7 @@ components:
           type: string
           enum:
             - Millimeter
-            
+
     CoreDiameterRange:
       type: object
       properties:
