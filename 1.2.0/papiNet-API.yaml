@@ -128,11 +128,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetShipment'
 
-  '/supplier-products':
-    # GET /supplier-products
+  '/seller-products':
+    # GET /seller-products
     get:
-      summary: List `products`
-      description: Gets a paginated list of all `products` defined by the `supplier`.
+      summary: List `seller-products`
+      description: Gets a paginated list of all `seller-products` defined by the `seller`.
       responses:
         '200':
           description: OK
@@ -141,14 +141,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListOfProducts'
 
-  '/supplier-products/{productId}':
-    # GET /supplier-products/{productId}
+  '/seller-products/{sellerProductId}':
+    # GET /seller-products/{sellerProductId}
     get:
-      summary: Get a `product`
-      description: Gets the details of a specific `product`.
+      summary: Get a `seller-product`
+      description: Gets the details of a specific `seller-product`.
       parameters:
         - in: path
-          name: productId
+          name: sellerProductId
           schema:
             type: string
             format: uuid
@@ -160,7 +160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                $ref: '#/components/schemas/SellerProduct'
 
   '/customer-articles':
     # POST /customer-articles
@@ -538,28 +538,248 @@ components:
             - eng
             - fra
 
+    Descriptions:
+      type: array
+      items:
+        $ref: '#/components/schemas/Description'
+
+    # Paper's properties
+
+    Coating:
+      type: string
+      enum:
+        - Acrylic
+        - Flexolyn
+        - FoilCoated
+        - GreaseBarrier
+        - Metallic
+        - MetalizedPolyester
+        - MoistureBarrier
+        - MoldInhibitor
+        - None
+        - OilBarrier
+        - OxygenBarrier
+        - Plastic
+        - PolyCoating
+        - Polyethylene
+        - Pyroxylin
+        - Silicone
+
+    Coatings:
+      type: array
+      items:
+        $ref: '#/components/schemas/Coating'
+
     FinishType:
       type: string
       enum:
+        - Dull
+        - English
         - Gloss
-        - HighGloss
+        - Laid
+        - Linen
+        - Machine
+        - Matte
+        - Satin
+        - SCA
+        - SCB
+        - SCC
         - Silk
+        - Smooth
+        - SoftGloss
+        - Vellum
+        - Velvet
+
+    FinishTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/FinishType'
 
     PrintType:
       type: string
       enum:
+        - ColdsetOffset
+        - ContinuousForms
         - Digital
+        - Flexography
+        - FoilPrint
+        - Forms
+        - Gravure
         - HeatsetOffset
+        - InkJet
+        - InstantOffset
+        - Laser
+        - Letterpress
+        - LightPrint
+        - MiniWeb
+        - RotoFlexography
+        - RotoGravure
+        - RotoLetterpress
+        - RotoSilkScreen
+        - SheetfedOffset
+        - SilkScreen
+        - WebOffset
+
+    PrintTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/PrintType'
 
     BasisWeight:
       type: object
+      required:
+        - value
+        - UOM
       properties:
+        sizeType:
+          type: string
+          enum:
+            - 24x36
+            - 25x38
         value:
           type: number
         UOM:
           type: string
           enum:
             - GramsPerSquareMeter
+            - Pound
+
+    BasisWeights:
+      type: array
+      items:
+        $ref: '#/components/schemas/BasisWeight'
+
+    BasisWeightRange:
+      type: object
+      required:
+        - min
+        - max
+      properties:
+        min:
+          $ref: '#/components/schemas/BasisWeight'
+        max:
+          $ref: '#/components/schemas/BasisWeight'
+
+    Bulks:
+      type: array
+      items:
+        type: object
+        required:
+          - value
+          - UOM
+        properties:
+          value:
+            type: string
+            enum:
+              - CubicCentimeterPerGram
+
+    Caliper:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Micron
+            - Millimeter
+
+    Calipers:
+      type: array
+      items:
+        $ref: '#/components/schemas/Caliper'
+
+    ColourShade:
+      type: object
+      required:
+        - value
+        - agency
+      properties:
+        value:
+          type: string
+        agency:
+          type: string
+          enum:
+            - AFPA
+            - ANSI
+            - APPITA
+            - ATA
+            - BISAC
+            - BSI
+            - Buyer
+            - Carrier
+            - CCTI
+            - CEN
+            - CEPI
+            - Customs
+            - DUNS
+            - EAN
+            - ECTA-EPCA-CEFIC
+            - EndUser
+            - FINFO
+            - Forwarder
+            - FSC
+            - GCA
+            - GCA-CCTI
+            - GOST
+            - IFRA
+            - Intrastat
+            - ISO
+            - ISRI
+            - Mill
+            - NOBB
+            - NMFTA
+            - NPTA
+            - Ondule
+            - PEFC
+            - PMS
+            - PPPC
+            - RASI
+            - SD
+            - SDC
+            - Seller
+            - Supplier
+            - TAPPI
+            - UCC
+            - UN/ECE
+            - WarehouseOperator
+            - WCO
+            - XBITS
+            - Other
+
+    ColourShades:
+      type: array
+      items:
+        $ref: '#/components/schemas/ColourShade'
+
+    ColourDescriptions:
+      type: array
+      items:
+        type: string
+
+    Recycled:
+      type: array
+      items:
+        type: object
+        required:
+          - value
+          - UOM
+        properties:
+          value:
+            type: number
+          UOM:
+            type: string
+            enum:
+              - Percentage
+
+    PaperFormat:
+      type: string
+      enum:
+        - Reel
+        - Sheet
 
     Width:
       type: object
@@ -572,17 +792,27 @@ components:
         UOM:
           type: string
           enum:
+            - Centimeter
+            - Inch
             - Millimeter
+
+    Widths:
+      type: array
+      items:
+        $ref: '#/components/schemas/Width'
 
     WidthRange:
       type: object
+      required:
+        - min
+        - max
       properties:
         min:
           $ref: '#/components/schemas/Width'
         max:
           $ref: '#/components/schemas/Width'
 
-    Diameter:
+    Length:
       type: object
       required:
         - value
@@ -593,15 +823,108 @@ components:
         UOM:
           type: string
           enum:
+            - Centimeter
+            - Inch
             - Millimeter
 
-    DiameterRange:
+    Lengths:
+      type: array
+      items:
+        $ref: '#/components/schemas/Length'
+
+    LengthRange:
+      type: object
+      required:
+        - min
+        - max
+      properties:
+        min:
+          $ref: '#/components/schemas/Length'
+        max:
+          $ref: '#/components/schemas/Length'
+
+    WindingDirection:
+      type: string
+      enum:
+        - WireSideIn
+        - WireSideOut
+
+    WindingDirections:
+      type: array
+      items:
+        $ref: '#/components/schemas/WindingDirection'
+
+    ReelMakeToConstraint:
+      type: string
+      enum:
+        - Length
+        - Diameter
+
+    ReelMakeToConstraints:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReelMakeToConstraint'
+
+    ReelDiameter:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Centimeter
+            - Inch
+            - Millimeter
+
+    ReelDiameters:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReelDiameter'
+
+    ReelDiameterRange:
       type: object
       properties:
         min:
-          $ref: '#/components/schemas/Diameter'
+          $ref: '#/components/schemas/ReelDiameter'
         max:
-          $ref: '#/components/schemas/Diameter'
+          $ref: '#/components/schemas/ReelDiameter'
+
+    CoreEndType:
+      type: string
+      enum:
+        - Adaptor
+        - Bevelled
+        - Bridge
+        - Notched
+        - NotchedFullMetal
+        - Plain
+        - PlainFullMetal
+        - Tapered
+
+    CoreEndTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreEndType'
+
+    CoreMaterialType:
+      type: string
+      enum:
+        - Aluminium
+        - Composite
+        - Fibre
+        - Iron
+        - Paper
+        - Plastic
+        - Steel
+
+    CoreMaterialTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreMaterialType'
 
     CoreDiameter:
       type: object
@@ -614,7 +937,14 @@ components:
         UOM:
           type: string
           enum:
+            - Centimeter
+            - Inch
             - Millimeter
+
+    CoreDiameters:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreDiameter'
 
     CoreDiameterRange:
       type: object
@@ -624,79 +954,235 @@ components:
         max:
           $ref: '#/components/schemas/CoreDiameter'
 
-    Reel:
+    CoreStrengthCode:
+      type: object
+      required:
+        - value
+        - agency
+      properties:
+        value:
+          type: string
+        agency:
+          type: string
+          enum:
+            - AFPA
+            - ANSI
+            - APPITA
+            - ATA
+            - BISAC
+            - BSI
+            - Buyer
+            - Carrier
+            - CCTI
+            - CEN
+            - CEPI
+            - Customs
+            - DUNS
+            - EAN
+            - ECTA-EPCA-CEFIC
+            - EndUser
+            - FINFO
+            - Forwarder
+            - FSC
+            - GCA
+            - GCA-CCTI
+            - GOST
+            - IFRA
+            - Intrastat
+            - ISO
+            - ISRI
+            - Mill
+            - NOBB
+            - NMFTA
+            - NPTA
+            - Ondule
+            - PEFC
+            - PMS
+            - PPPC
+            - RASI
+            - SD
+            - SDC
+            - Seller
+            - Supplier
+            - TAPPI
+            - UCC
+            - UN/ECE
+            - WarehouseOperator
+            - WCO
+            - XBITS
+            - Other
+
+    CoreStrengthCodes:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreStrengthCode'
+
+    ReelsPerPack:
+      type: integer
+
+    ReelsPerPacks:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReelsPerPack'
+
+    ReelsPerPackRange:
       type: object
       properties:
-        width:
-          $ref: '#/components/schemas/Width'
-        widths:
-          type: array
-          items:
-            $ref: '#/components/schemas/Width'
-        widthRange:
-          $ref: '#/components/schemas/WidthRange'
-        diameter:
-          $ref: '#/components/schemas/Diameter'
-        diameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Diameter'
-        diameterRange:
-          $ref: '#/components/schemas/DiameterRange'
-        coreDiameter:
-          $ref: '#/components/schemas/CoreDiameter'
-        coreDiameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoreDiameter'
-        coreDiameterRange:
-          $ref: '#/components/schemas/CoreDiameterRange'
+        min:
+          $ref: '#/components/schemas/ReelsPerPack'
+        max:
+          $ref: '#/components/schemas/ReelsPerPack'
+
+    GrainDirection:
+      type: string
+      enum:
+        - Long
+        - Short
+
+    GrainDirections:
+      type: array
+      items:
+        $ref: '#/components/schemas/GrainDirection'
+
+    PaperSizeType:
+      type: string
+
+    PaperSizeTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/PaperSizeType'
 
     Paper:
       type: object
       properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          $ref: '#/components/schemas/Coating'
+        coatingTops:
+          $ref: '#/components/schemas/Coatings'
+        coatingBottom:
+          $ref: '#/components/schemas/Coating'
+        coatingBottoms:
+          $ref: '#/components/schemas/Coatings'
         finishType:
           $ref: '#/components/schemas/FinishType'
         finishTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/FinishType'
+          $ref: '#/components/schemas/FinishTypes'
         printType:
           $ref: '#/components/schemas/PrintType'
         printTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/PrintType'
+          $ref: '#/components/schemas/PrintTypes'
         basisWeight:
           $ref: '#/components/schemas/BasisWeight'
         basisWeights:
-          type: array
-          items:
-            $ref: '#/components/schemas/BasisWeight'
-        reel:
-          $ref: '#/components/schemas/Reel'
+          $ref: '#/components/schemas/BasisWeights'
+        basisWeightRange:
+          $ref: '#/components/schemas/BasisWeightRange'
+        bulks:
+          $ref: '#/components/schemas/Bulks'
+        caliper:
+          $ref: '#/components/schemas/Caliper'
+        calipers:
+          $ref: '#/components/schemas/Calipers'
+        colourShade:
+          $ref: '#/components/schemas/ColourShade'
+        colourShades:
+          $ref: '#/components/schemas/ColourShades'
+        colourDescriptions:
+          $ref: '#/components/schemas/ColourDescriptions'
+        recycled:
+          $ref: '#/components/schemas/Recycled'
+        format:
+          $ref: '#/components/schemas/PaperFormat'
 
-    Product:
+        # Properties that are common to reel or sheet format:
+        width:
+          $ref: '#/components/schemas/Width'
+        widths:
+          $ref: '#/components/schemas/Widths'
+        widthRange:
+          $ref: '#/components/schemas/WidthRange'
+        length:
+          $ref: '#/components/schemas/Length'
+        lengths:
+          $ref: '#/components/schemas/Lengths'
+        lengthRange:
+          $ref: '#/components/schemas/LengthRange'
+
+        # Properties that are specific to reel format:
+        windingDirection:
+          $ref: '#/components/schemas/WindingDirection'
+        windingDirections:
+          $ref: '#/components/schemas/WindingDirections'
+        reelMakeToConstraint:
+          $ref: '#/components/schemas/ReelMakeToConstraint'
+        reelMakeToConstraints:
+          $ref: '#/components/schemas/ReelMakeToConstraints'
+        reelDiameter:
+          $ref: '#/components/schemas/ReelDiameter'
+        reelDiameters:
+          $ref: '#/components/schemas/ReelDiameters'
+        reelDiameterRange:
+          $ref: '#/components/schemas/ReelDiameterRange'
+        coreEndType:
+          $ref: '#/components/schemas/CoreEndType'
+        coreEndTypes:
+          $ref: '#/components/schemas/CoreEndTypes'
+        coreMaterialType:
+          $ref: '#/components/schemas/CoreMaterialType'
+        coreMaterialTypes:
+          $ref: '#/components/schemas/CoreMaterialTypes'
+        coreDiameterInside:
+          $ref: '#/components/schemas/CoreDiameter'
+        coreDiameterInsides:
+          $ref: '#/components/schemas/CoreDiameters'
+        coreDiameterInsideRange:
+          $ref: '#/components/schemas/CoreDiameterRange'
+        coreStrengthCode:
+          $ref: '#/components/schemas/CoreStrengthCode'
+        coreStrengthCodes:
+          $ref: '#/components/schemas/CoreStrengthCodes'
+        reelsPerPack:
+          $ref: '#/components/schemas/ReelsPerPack'
+        reelsPerPacks:
+          $ref: '#/components/schemas/ReelsPerPacks'
+        reelsPerPackRange:
+          $ref: '#/components/schemas/ReelsPerPackRange'
+
+        # Properties that are specific to sheet format:
+        grainDirection:
+          $ref: '#/components/schemas/GrainDirection'
+        grainDirections:
+          $ref: '#/components/schemas/GrainDirections'
+        paperSizeType:
+          $ref: '#/components/schemas/PaperSizeType'
+        paperSizeTypes:
+          $ref: '#/components/schemas/PaperSizeTypes'
+
+    SellerProductCommon:
       type: object
       required:
         - id
         - name
-        - link
+        - href
       properties:
         id:
           type: string
           format: uuid
         name:
           type: string
-        link:
+        href:
           type: string
-          format: uri
+          format: uri-reference
         descriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Description'
-        paper:
-          $ref: '#/components/schemas/Paper'
+          $ref: '#/components/schemas/Descriptions'
+
+    SellerProduct:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SellerProductCommon'
+        - anyOf:
+          - $ref: '#/components/schemas/Paper'
 
     ListOfProducts:
       type: object
@@ -709,7 +1195,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/Product'
+            $ref: '#/components/schemas/SellerProductCommon'
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
