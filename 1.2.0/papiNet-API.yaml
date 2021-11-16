@@ -590,6 +590,24 @@ components:
             latestEvent:
               $ref: '#/components/schemas/Event'
 
+    OtherIdentifier:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: string
+        assignedBy:
+          type: string
+          enum:
+            - Customer
+            - Seller
+
+    OtherIdentifiers:
+      type: array
+      items:
+        $ref: '#/components/schemas/OtherIdentifier'
+
     Description:
       type: object
       required:
@@ -606,7 +624,7 @@ components:
       items:
         $ref: '#/components/schemas/Description'
 
-    # Paper's properties
+    # [BEGING] Paper's properties
 
     Coating:
       type: string
@@ -1222,78 +1240,112 @@ components:
         paperSizeTypes:
           $ref: '#/components/schemas/PaperSizeTypes'
 
-    SellerProductCommon:
+    # [END] Paper's properties
+
+    SellerProductBasic:
       type: object
       required:
         - id
         - name
-        - href
       properties:
         id:
           type: string
           format: uuid
+        otherIdentifier:
+          $ref: '#/components/schemas/OtherIdentifier'
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
         name:
           type: string
-        href:
+        link:
           type: string
           format: uri-reference
         descriptions:
           $ref: '#/components/schemas/Descriptions'
+        productType:
+          type: string
+          enum:
+            - Paper
 
     SellerProduct:
       type: object
       allOf:
-        - $ref: '#/components/schemas/SellerProductCommon'
+        - $ref: '#/components/schemas/SellerProductBasic'
         - anyOf:
           - $ref: '#/components/schemas/Paper'
 
     ListOfSellerProducts:
       type: object
       required:
-        - size
-        - data
+        - numberOfSellerProducts
+        - sellerProducts
       properties:
-        size:
+        numberOfSellerProducts:
           type: number
-        data:
+        sellerProducts:
           type: array
           items:
-            $ref: '#/components/schemas/SellerProductCommon'
+            $ref: '#/components/schemas/SellerProductBasic'
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
-    CustomerArticle:
+    CustomerArticleBasic:
       type: object
       required:
+        - id
         - name
-        - href
       properties:
         id:
           type: string
           format: uuid
-        name:
+        otherIdentifier:
+          $ref: '#/components/schemas/OtherIdentifier'
+        sellerProductId:
           type: string
-        href:
+          format: uuid
+        sellerProductOtherIdentifier:
+          $ref: '#/components/schemas/OtherIdentifier'
+        sellerProductStatus:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        name:
           type: string
         link:
           type: string
-          format: uri
+          format: uri-reference
         descriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Description'
-        paper:
-          $ref: '#/components/schemas/Paper'
+          $ref: '#/components/schemas/Descriptions'
+        productType:
+          type: string
+          enum:
+            - Paper
+
+    CustomerArticle:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CustomerArticleBasic'
+        - anyOf:
+          - $ref: '#/components/schemas/Paper'
 
     ListOfCustomerArticles:
       type: object
       required:
-        - size
-        - data
+        - numberOfCustomerArticles
+        - customerArticles
       properties:
-        size:
+        numberOfCustomerArticles:
           type: number
-        data:
+        customerArticles:
           type: array
           items:
             $ref: '#/components/schemas/CustomerArticle'
