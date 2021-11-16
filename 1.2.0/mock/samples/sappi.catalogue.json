@@ -1,6 +1,8 @@
 [
   {
     "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+    "otherIdentifier": { "value": "galerie-brite", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Brite",
     "link": "/supplier-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
     "descriptions": [
@@ -13,6 +15,7 @@
         "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
       }
     ],
+    "productType": "Paper",
     "paper": {
       "finishType": "Gloss",
       "printType": "HeatsetOffset",
@@ -93,9 +96,21 @@
   },
   {
     "id": "c9e893c8-42ce-4321-97de-86b7f604647b",
+    "otherIdentifier": { "value": "galerie-brite-bulk", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Brite Bulk",
     "link": "/supplier-products/c9e893c8-42ce-4321-97de-86b7f604647b",
-    "descriptions": [],
+    "descriptions": [
+      {
+        "language": "eng",
+        "value": "When you’re looking for serious distribution savings in a high-bulk, matt paper with a natural feel and outstanding standards of brightness and opacity."
+      },
+      {
+        "language": "fra",
+        "value": "Quand vous cherchez à réaliser de sérieuses économies sur les frais de distribution avec un papier mat offrant une blancheur et une opacité remarquables, le tout avec un toucher authentique."
+      }
+    ],
+    "productType": "Paper",
     "paper": {
       "finishType": "Matte",
       "printType": "HeatsetOffset",
@@ -130,9 +145,21 @@
   },
   {
     "id": "1ae825c7-b872-4e68-b2e3-af021e7ba2bd",
+    "otherIdentifier": { "value": "galerie-brite-plus", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Brite Plus",
     "link": "/supplier-products/1ae825c7-b872-4e68-b2e3-af021e7ba2bd",
-    "descriptions": [],
+    "descriptions": [
+      {
+        "language": "eng",
+        "value": ""
+      },
+      {
+        "language": "fra",
+        "value": ""
+      }
+    ],
+    "productType": "Paper",
     "paper": {
       "finishType": "Gloss",
       "printType": "HeatsetOffset",
@@ -167,9 +194,12 @@
   },
   {
     "id": "0d8b0183-49bb-4f49-86e1-2a8096aa5ca3",
+    "otherIdentifier": { "value": "galerie-brite-silk", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Brite Silk",
     "link": "/supplier-products/0d8b0183-49bb-4f49-86e1-2a8096aa5ca3",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Silk",
       "printType": "HeatsetOffset",
@@ -200,9 +230,12 @@
   },
   {
     "id": "752513da-0eb2-4094-8ed4-08b53f854965",
+    "otherIdentifier": { "value": "galerie-fine", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Fine",
     "link": "/supplier-products/752513da-0eb2-4094-8ed4-08b53f854965",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Gloss",
       "printType": "HeatsetOffset",
@@ -236,9 +269,12 @@
   },
   {
     "id": "8f1b9d7b-ada9-444c-b06d-d459b05c3bbf",
+    "otherIdentifier": { "value": "galerie-fine-bulk", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Fine Bulk",
     "link": "/supplier-products/8f1b9d7b-ada9-444c-b06d-d459b05c3bbf",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Matte",
       "printType": "HeatsetOffset",
@@ -269,9 +305,12 @@
   },
   {
     "id": "70ef59c0-68bb-4335-9d7a-5afb0e048830",
+    "otherIdentifier": { "value": "galerie-fine-silk", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Fine Silk",
     "link": "/supplier-products/70ef59c0-68bb-4335-9d7a-5afb0e048830",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Silk",
       "printType": "HeatsetOffset",
@@ -306,9 +345,12 @@
   },
   {
     "id": "62f111e3-b575-4b9d-9a23-ea6f68ac2b12",
+    "otherIdentifier": { "value": "galerie-lite", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Lite",
     "link": "/supplier-products/62f111e3-b575-4b9d-9a23-ea6f68ac2b12",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Gloss",
       "printType": "HeatsetOffset",
@@ -347,9 +389,12 @@
   },
   {
     "id": "f7154a15-1d8a-492d-8216-97ee8389fdea",
+    "otherIdentifier": { "value": "galerie-lite-bulk", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "Galerie Lite Bulk",
     "link": "/supplier-products/f7154a15-1d8a-492d-8216-97ee8389fdea",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Matte",
       "printType": "HeatsetOffset",
@@ -384,9 +429,12 @@
   },
   {
     "id": "8398ec58-0486-45da-ac18-1e2fb2fac46e",
+    "otherIdentifier": { "value": "galerieart-gloss", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "GalerieArt Gloss",
     "link": "/supplier-products/8398ec58-0486-45da-ac18-1e2fb2fac46e",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Gloss",
       "printType": "Digital",
@@ -425,9 +473,12 @@
   },
   {
     "id": "5616abce-2564-49c7-9794-5697a9614543",
+    "otherIdentifier": { "value": "galerieart-matt", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "GalerieArt Matt",
     "link": "/supplier-products/5616abce-2564-49c7-9794-5697a9614543",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Matte",
       "printType": "Digital",
@@ -474,9 +525,12 @@
   },
   {
     "id": "a67d562d-0690-4f79-822f-fe7484c96ffa",
+    "otherIdentifier": { "value": "galerieart-natural", "assignedBy": "Seller" },
+    "status": "Active",
     "name": "GalerieArt Natural",
     "link": "/supplier-products/a67d562d-0690-4f79-822f-fe7484c96ffa",
     "descriptions": [],
+    "productType": "Paper",
     "paper": {
       "finishType": "Uncoated",
       "printType": "Digital",
