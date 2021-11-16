@@ -139,7 +139,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfProducts'
+                $ref: '#/components/schemas/ListOfSellerProducts'
+        '204':
+          description: No Content
 
   '/seller-products/{sellerProductId}':
     # GET /seller-products/{sellerProductId}
@@ -153,7 +155,7 @@ paths:
             type: string
             format: uuid
           required: true
-          description: UUID of the `product` to get
+          description: UUID of the `seller-product` to get
       responses:
         '200':
           description: OK
@@ -161,80 +163,141 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SellerProduct'
+        '404':
+          description: Not Found
 
   '/customer-articles':
     # POST /customer-articles
     post:
-      summary: Create an `article`
-      description: Creates an `article` defined by the `customer` based on a `product`.
+      summary: Create a `customer-article`
+      description: Creates a `customer-article` defined by the `customer` based on a `seller-product`.
       requestBody:
-        description: The definition of an `article`.
+        description: The definition of the `customer-article` to create.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Article'
+              $ref: '#/components/schemas/CustomerArticle'
       responses:
         '201':
           description: Created
-          
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+
     # GET /customer-articles
     get:
-      summary: List `articles`
-      description: Gets a paginated list of all `articles` defined by the `customer`.
+      summary: List `customer-articles`
+      description: Gets a paginated list of all `customer-articles` defined by the `customer`.
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfArticles'
-          
-  '/customer-articles/{articleId}':
-    # PUT /customer-articles/{articleId}
+                $ref: '#/components/schemas/ListOfCustomerArticles'
+        '204':
+          description: No Content
+
+  '/customer-articles/{customerArticleId}':
+    # PUT /customer-articles/{customerArticleId}
     put:
-      summary: Create or modify an `article`
-      description: Creates or modifies an `article` defined by the `customer` based on a `product`.
+      summary: Create or modify a `customer-article`
+      description: Creates or modifies (with a full representation) a `customer-article` defined by the `customer` based on a `seller-product`.
       parameters:
         - in: path
-          name: articleId
+          name: customerArticleId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `article`
+          description: UUID of the `customer-article` to create or modify
       requestBody:
-        description: The definition of an `article`.
+        description: The definition of the `customer-article` to create or modify.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Article'
+              $ref: '#/components/schemas/CustomerArticle'
       responses:
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
         '200':
           description: OK
-          
-    # GET /customer-articles/{articleId}
-    get:
-      summary: Get an `article`
-      description: Gets the details of a specific `product`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+
+    # PATCH /customer-articles/{customerArticleId}
+    patch:
+      summary: Modify a `customer-article`
+      description: Modifies (with a partial representation) a specific `customer-article`.
       parameters:
         - in: path
-          name: articleId
+          name: customerArticleId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `article`
+          description: UUID of the `customer-article` to modify
+      requestBody:
+        description: The definition of the `customer-article` to modify.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerArticle'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Article'
+                $ref: '#/components/schemas/CustomerArticle'
+
+    # GET /customer-articles/{customerArticleId}
+    get:
+      summary: Get a `customer-article`
+      description: Gets the details of a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+        '404':
+          description: Not Found
+
+    # DELETE /customer-articles/{customerArticleId}
+    delete:
+      summary: Delete a `customer-article`
+      description: Deletes a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to delete.
+      responses:
+        '204':
+          description: No Content
 
 components:
   schemas:
@@ -1184,7 +1247,7 @@ components:
         - anyOf:
           - $ref: '#/components/schemas/Paper'
 
-    ListOfProducts:
+    ListOfSellerProducts:
       type: object
       required:
         - size
@@ -1199,7 +1262,7 @@ components:
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
-    Article:
+    CustomerArticle:
       type: object
       required:
         - name
@@ -1222,7 +1285,7 @@ components:
         paper:
           $ref: '#/components/schemas/Paper'
 
-    ListOfArticles:
+    ListOfCustomerArticles:
       type: object
       required:
         - size
@@ -1233,6 +1296,6 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/Article'
+            $ref: '#/components/schemas/CustomerArticle'
         links:
           $ref: '#/components/schemas/PaginationLinks'
