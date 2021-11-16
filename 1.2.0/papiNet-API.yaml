@@ -741,18 +741,21 @@ components:
         max:
           $ref: '#/components/schemas/BasisWeight'
 
+    Bulk:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: string
+          enum:
+            - CubicCentimeterPerGram
+
     Bulks:
       type: array
       items:
-        type: object
-        required:
-          - value
-          - UOM
-        properties:
-          value:
-            type: string
-            enum:
-              - CubicCentimeterPerGram
+        $ref: '#/components/schemas/Bulk'
 
     Caliper:
       type: object
@@ -1098,22 +1101,6 @@ components:
       items:
         $ref: '#/components/schemas/CoreStrengthCode'
 
-    ReelsPerPack:
-      type: integer
-
-    ReelsPerPacks:
-      type: array
-      items:
-        $ref: '#/components/schemas/ReelsPerPack'
-
-    ReelsPerPackRange:
-      type: object
-      properties:
-        min:
-          $ref: '#/components/schemas/ReelsPerPack'
-        max:
-          $ref: '#/components/schemas/ReelsPerPack'
-
     GrainDirection:
       type: string
       enum:
@@ -1135,6 +1122,8 @@ components:
 
     Paper:
       type: object
+      required:
+        - paperFormat
       properties:
         # Properties that do not depend on the reel or sheet format:
         coatingTop:
@@ -1159,6 +1148,8 @@ components:
           $ref: '#/components/schemas/BasisWeights'
         basisWeightRange:
           $ref: '#/components/schemas/BasisWeightRange'
+        bulk:
+          $ref: '#/components/schemas/Bulk'
         bulks:
           $ref: '#/components/schemas/Bulks'
         caliper:
@@ -1223,12 +1214,6 @@ components:
           $ref: '#/components/schemas/CoreStrengthCode'
         coreStrengthCodes:
           $ref: '#/components/schemas/CoreStrengthCodes'
-        reelsPerPack:
-          $ref: '#/components/schemas/ReelsPerPack'
-        reelsPerPacks:
-          $ref: '#/components/schemas/ReelsPerPacks'
-        reelsPerPackRange:
-          $ref: '#/components/schemas/ReelsPerPackRange'
 
         # Properties that are specific to sheet format:
         grainDirection:
