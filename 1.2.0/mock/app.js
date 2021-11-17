@@ -99,7 +99,7 @@ const products = require('./samples/catalogue-use-case.sappi.json')
 // List all `seller-products`:
 app.get('/seller-products', (req, res) => {
   handleCollections(req, res, products,
-    ["numberOfSellerProducts", "products"],
+    ["numberOfSellerProducts", "sellerProduct"],
     ["id", "otherIdentifier", "status", "name", "link", "descriptions", "productType"])
 })
 

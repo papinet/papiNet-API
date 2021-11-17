@@ -615,9 +615,7 @@ components:
       properties:
         language:
           type: string
-          enum:
-            - eng
-            - fra
+          description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
 
     Descriptions:
       type: array
@@ -787,52 +785,11 @@ components:
         agency:
           type: string
           enum:
-            - AFPA
-            - ANSI
-            - APPITA
-            - ATA
-            - BISAC
-            - BSI
             - Buyer
-            - Carrier
-            - CCTI
-            - CEN
-            - CEPI
-            - Customs
-            - DUNS
-            - EAN
-            - ECTA-EPCA-CEFIC
+            - Customer
             - EndUser
-            - FINFO
-            - Forwarder
-            - FSC
-            - GCA
-            - GCA-CCTI
-            - GOST
-            - IFRA
-            - Intrastat
-            - ISO
-            - ISRI
-            - Mill
-            - NOBB
-            - NMFTA
-            - NPTA
-            - Ondule
-            - PEFC
-            - PMS
-            - PPPC
-            - RASI
-            - SD
-            - SDC
             - Seller
             - Supplier
-            - TAPPI
-            - UCC
-            - UN/ECE
-            - WarehouseOperator
-            - WCO
-            - XBITS
-            - Other
 
     ColourShades:
       type: array
@@ -1049,52 +1006,11 @@ components:
         agency:
           type: string
           enum:
-            - AFPA
-            - ANSI
-            - APPITA
-            - ATA
-            - BISAC
-            - BSI
             - Buyer
-            - Carrier
-            - CCTI
-            - CEN
-            - CEPI
-            - Customs
-            - DUNS
-            - EAN
-            - ECTA-EPCA-CEFIC
+            - Customer
             - EndUser
-            - FINFO
-            - Forwarder
-            - FSC
-            - GCA
-            - GCA-CCTI
-            - GOST
-            - IFRA
-            - Intrastat
-            - ISO
-            - ISRI
-            - Mill
-            - NOBB
-            - NMFTA
-            - NPTA
-            - Ondule
-            - PEFC
-            - PMS
-            - PPPC
-            - RASI
-            - SD
-            - SDC
             - Seller
             - Supplier
-            - TAPPI
-            - UCC
-            - UN/ECE
-            - WarehouseOperator
-            - WCO
-            - XBITS
-            - Other
 
     CoreStrengthCodes:
       type: array
@@ -1123,7 +1039,7 @@ components:
     Paper:
       type: object
       required:
-        - paperFormat
+        - format
       properties:
         # Properties that do not depend on the reel or sheet format:
         coatingTop:
@@ -1269,7 +1185,7 @@ components:
         - sellerProducts
       properties:
         numberOfSellerProducts:
-          type: number
+          type: integer
         sellerProducts:
           type: array
           items:
@@ -1329,7 +1245,7 @@ components:
         - customerArticles
       properties:
         numberOfCustomerArticles:
-          type: number
+          type: integer
         customerArticles:
           type: array
           items:

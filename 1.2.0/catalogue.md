@@ -8,7 +8,7 @@ This use case is designed for Paper business.
 
 ### Preconditions
 
-None.
+The _seller_ has created a catalogue being a list of _products_, and more precisely a list of _seller-products_ as defined below.
 
 ### Definitions
 
@@ -28,9 +28,11 @@ An authenticated or anonymous _customer_ requests to a _seller_ the list of its 
 
 The authenticated or anonymous _customer_ requests to a _seller_ the details of a specific _seller-product_.
 
-The authenticated _customer_ creates an _customer-article_ based on a specific _seller-product_.
+The authenticated _customer_ creates a _customer-article_ based on a specific _seller-product_.
 
 The authenticated _customer_ requests to the _seller_ the list of _customer-articles_ that have been created.
+
+The authenticated _customer_ requests to the _seller_ the details of a specific _customer-article_ that have been created.
 
 ## Domain Name
 
@@ -77,13 +79,15 @@ This step is not necessary if the _seller_ supports anonymous requests.
 
 ## Scenarios
 
-* Scenario A - An anonymous _customer_ gets the list of all _seller-products_ on offer, and gets the details of a selected _seller-product_.
+* Scenario A - An anonymous _customer_ gets the list of all _seller-products_ on offer; and gets the details of a selected _seller-product_.
 
-* Scenario B - An authenticated _customer_ gets the list of all _seller-products_ on offer, gets the details of a specific _seller-product_, creates an _customer-article_ based on this specific _seller-product_ and gets the list of all _customer-articles_ it has created.
+* Scenario B - An authenticated _customer_ gets the list of all _seller-products_ on offer for that _customer_; gets the details of a specific _seller-product_; creates a _customer-article_ based on this specific _seller-product_; and gets the list of all _customer-articles_ that have been created.
+
+* Scenario C - An authenticated _customer_ gets the list of all _seller-products_ on offer for that _customer_; gets the details of a specific _seller-product_, using the `sellerProductOtherIdentifier` to refer to it (and not its UUID); creates a _customer-article_ based on this specific _seller-product_, using the `sellerProductOtherIdentifier` to refer to it (and not its UUID); and gets the list of all _customer-articles_ that have been created.
 
 ### Scenario A
 
-An anonymous _customer_ gets the list of all _seller-products_ on offer, and gets the details of a selected _seller-product_.
+An anonymous _customer_ gets the list of all _seller-products_ on offer; and gets the details of a selected _seller-product_.
 
 #### Step 1 of Scenario A
 
@@ -106,7 +110,7 @@ If all goes well, the anonymous _customer_ will receive a response like this:
 ```json
 {
   "numberOfSellerProducts": 30,
-  "products": [
+  "sellerProducts": [
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
       "otherIdentifier": {
@@ -264,7 +268,6 @@ If all goes well, the anonymous _customer_ will receive a response like this:
       "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
     }
   ],
-  "productType": "Paper",
   "paper": {
     "finishType": "Gloss",
     "printType": "HeatsetOffset",
@@ -365,7 +368,7 @@ If all goes well, the anonymous _customer_ will receive a response like this:
 
 ### Scenario B
 
-An authenticated _customer_ gets the list of all _seller-products_ on offer to that _customer_, and gets the details of a selected _seller-product_.
+An authenticated _customer_ gets the list of all _seller-products_ on offer for that _customer_; gets the details of a specific _seller-product_; creates a _customer-article_ based on this specific _seller-product_; and gets the list of all _customer-articles_ that have been created.
 
 #### Step 1 of Scenario B - Authentication
 
@@ -449,7 +452,7 @@ If all goes well, the authenticated _Party_ will receive a response like this:
 ```json
 {
   "numberOfSellerProducts": 30,
-  "products": [
+  "sellerProducts": [
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
       "otherIdentifier": {
@@ -609,7 +612,6 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
     }
   ],
-  "productType": "Paper",
   "paper": {
     "finishType": "Gloss",
     "printType": "HeatsetOffset",
@@ -738,6 +740,7 @@ curl --request POST \
   --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json' \
   --data-raw '{
+      "otherIdentifier": { "value": "SAP12345", "assignedBy": "Customer" },
       "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
       "status": "Active",
       "name": "My Galerie Brite 54",
@@ -774,6 +777,7 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "otherIdentifier": { "value": "SAP12345", "assignedBy": "Customer" },
   "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
   "sellerProductOtherIdentifier": {
     "value": "galerie-brite",
@@ -832,6 +836,7 @@ If all goes well, the _customer_ will receive a response like this:
   "customerArticles": [
     {
       "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+      "otherIdentifier": { "value": "SAP12345", "assignedBy": "Customer" },
       "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
       "sellerProductOtherIdentifier": {
         "value": "galerie-brite",
@@ -840,7 +845,8 @@ If all goes well, the _customer_ will receive a response like this:
       "sellerProductStatus": "Active",
       "status": "Active",
       "name": "My Galerie Brite 54",
-      "link": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+      "link": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+      "productType": "Paper"
     }
   ],
   "links": {
@@ -877,6 +883,7 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "otherIdentifier": { "value": "SAP12345", "assignedBy": "Customer" },
   "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
   "sellerProductOtherIdentifier": {
     "value": "galerie-brite",
@@ -908,3 +915,5 @@ If all goes well, the _customer_ will receive a response like this:
   }
 }
 ```
+
+### Scenario C
