@@ -18,9 +18,9 @@ A **_product_** is owned and defined by the _seller_. It has several properties 
 
 An **_article_** is owned and defined by the _customer_. Usually, a customer defines an _article_ in order to fix on one value the properties that have multiple possible values. However, this step is not mandatory for ordering as you could give the final specifications directly within the order.
 
-In order to show that important distintion within the API itself, we will always use the word _product_ together with _seller_ creating the hyphenated word **_seller-product_**, and the word _article_ will always be used with _customer_ creating **_customer-article_**.
+In order to show that important distinction within the API itself, we will always use the word _product_ together with _seller_ creating the hyphenated word **_seller-product_**, and the word _article_ will always be used with _customer_ creating **_customer-article_**.
 
-These hyphenated words _seller-product_ and _customer-article_ do sound like a pleonasm, however we found them a convenient way to remind the definition/disctinction between _product_ and _article_ within the API endpoints themselves.
+These hyphenated words _seller-product_ and _customer-article_ do sound like a pleonasm, however we found them a convenient way to remind the definition/distinction between _product_ and _article_ within the API endpoints themselves.
 
 ### Process
 
@@ -92,37 +92,89 @@ If all goes well, the anonymous _customer_ will receive a response like this:
   "sellerProducts": [
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "otherIdentifier": {
+        "value": "galerie-brite",
+        "assignedBy": "Seller"
+      },
       "status": "Active",
       "name": "Galerie Brite",
       "link": "/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "descriptions": [
+        {
+          "language": "eng",
+          "value": "When your high volume print job demands an ultra lightweight gloss paper with superior quality and runnability."
+        },
+        {
+          "language": "fra",
+          "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
+        }
+      ],
       "productType": "Paper"
     },
     {
       "id": "c9e893c8-42ce-4321-97de-86b7f604647b",
+      "otherIdentifier": {
+        "value": "galerie-brite-bulk",
+        "assignedBy": "Seller"
+      },
       "status": "Active",
       "name": "Galerie Brite Bulk",
       "link": "/seller-products/c9e893c8-42ce-4321-97de-86b7f604647b",
+      "descriptions": [
+        {
+          "language": "eng",
+          "value": "When you’re looking for serious distribution savings in a high-bulk, matt paper with a natural feel and outstanding standards of brightness and opacity."
+        },
+        {
+          "language": "fra",
+          "value": "Quand vous cherchez à réaliser de sérieuses économies sur les frais de distribution avec un papier mat offrant une blancheur et une opacité remarquables, le tout avec un toucher authentique."
+        }
+      ],
       "productType": "Paper"
     },
     {
       "id": "1ae825c7-b872-4e68-b2e3-af021e7ba2bd",
+      "otherIdentifier": {
+        "value": "galerie-brite-plus",
+        "assignedBy": "Seller"
+      },
       "status": "Active",
       "name": "Galerie Brite Plus",
       "link": "/seller-products/1ae825c7-b872-4e68-b2e3-af021e7ba2bd",
+      "descriptions": [
+        {
+          "language": "eng",
+          "value": ""
+        },
+        {
+          "language": "fra",
+          "value": ""
+        }
+      ],
       "productType": "Paper"
     },
     {
       "id": "0d8b0183-49bb-4f49-86e1-2a8096aa5ca3",
+      "otherIdentifier": {
+        "value": "galerie-brite-silk",
+        "assignedBy": "Seller"
+      },
       "status": "Active",
       "name": "Galerie Brite Silk",
       "link": "/seller-products/0d8b0183-49bb-4f49-86e1-2a8096aa5ca3",
+      "descriptions": [],
       "productType": "Paper"
     },
     {
       "id": "752513da-0eb2-4094-8ed4-08b53f854965",
+      "otherIdentifier": {
+        "value": "galerie-fine",
+        "assignedBy": "Seller"
+      },
       "status": "Active",
       "name": "Galerie Fine",
       "link": "/seller-products/752513da-0eb2-4094-8ed4-08b53f854965",
+      "descriptions": [],
       "productType": "Paper"
     }
   ],
@@ -238,6 +290,14 @@ If all goes well, the anonymous _Party_ will receive a response like this:
 
 An authenticated _customer_ gets the list of all _seller-products_ on offer to that _customer_, and gets the details of a selected _seller-product_.
 
+```text
+ACCESS_TOKEN=$(curl --request POST \
+  --URL http://localhost:3003/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' | jq -r '.access_token')
+```
+
 #### Step 1 of Scenario B
 
 The authenticated _Party_ sends an API request to the _seller_ in order to get the list of all _products_ on offer:
@@ -352,34 +412,48 @@ $ curl --request GET \
 ```text
 $ curl --request POST \
   --URL 'http://localhost:3003/customer-articles' \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json' \
   --data-raw '{
-      "name": "My Galerie Brite",
-      "href": "/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "status": "Active",
+      "name": "My Galerie Brite 54",
       "paper": {
-          "basisWeight": {
-              "value": "54",
-              "UOM": "GramsPerSquareMeter"
-          },
-          "reel": {
-              "width": {
-                  "value": 1000,
-                  "UOM": "Millimeter"
-              },
-              "diameter": {
-                  "value": 1250,
-                  "UOM": "Millimeter"
-              },
-              "coreDiameter": {
-                  "value": 76,
-                  "UOM": "Millimeter"
-              }
-          }
+        "finishType": "Gloss",
+        "printType": "HeatsetOffset",
+        "basisWeight": {
+          "value": "54",
+          "UOM": "GramsPerSquareMeter"
+        },
+        "bulk": {
+          "value": 0.92,
+          "UOM": "CubicCentimeterPerGram"
+        },
+        "format": "Reel",
+        "width": {
+          "value": 900,
+          "UOM": "Millimeter"
+        },
+        "diameter": {
+            "value": 1000,
+            "UOM": "Millimeter"
+        },
+        "coreDiameter": {
+            "value": 76,
+            "UOM": "Millimeter"
+        }
       }
   }'
 ```
 
 ```text
 $ curl --request GET \
-  --URL http://localhost:3003/customer-articles
+  --URL http://localhost:3003/customer-articles \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+```text
+$ curl --request GET \
+  --URL http://localhost:3003/customer-articles/36dcb699-2cb6-43e1-b9a0-a4d06913bbfc \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
