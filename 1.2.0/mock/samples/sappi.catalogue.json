@@ -170,11 +170,11 @@
     "descriptions": [
       {
         "language": "eng",
-        "value": ""
+        "value": "When the job demands a quality high bulk paper boasting a gloss surface alongside enhanced printability."
       },
       {
         "language": "fra",
-        "value": ""
+        "value": "Quand votre travail exige un papier de qualité avec une main élevée associée à une belle surface brillante, le tout avec des propriétés d’imprimabilité optimales."
       }
     ],
     "productType": "Paper",
@@ -216,7 +216,16 @@
     "status": "Active",
     "name": "Galerie Brite Silk",
     "link": "/seller-products/0d8b0183-49bb-4f49-86e1-2a8096aa5ca3",
-    "descriptions": [],
+    "descriptions": [
+      {
+        "language": "eng",
+        "value": "When you’re looking for a high quality paper with a seriously smooth surface that boasts superb printability."
+      },
+      {
+        "language": "fra",
+        "value": "When you’re looking for a high quality paper with a seriously smooth surface that boasts superb printability."
+      }
+    ],
     "productType": "Paper",
     "paper": {
       "finishType": "Silk",
@@ -252,7 +261,16 @@
     "status": "Active",
     "name": "Galerie Fine",
     "link": "/seller-products/752513da-0eb2-4094-8ed4-08b53f854965",
-    "descriptions": [],
+    "descriptions": [
+      {
+        "language": "eng",
+        "value": "Outstanding image reproduction and superb smoothness meets first-class on-press performance."
+      },
+      {
+        "language": "fra",
+        "value": "Outstanding image reproduction and superb smoothness meets first-class on-press performance."
+      }
+    ],
     "productType": "Paper",
     "paper": {
       "finishType": "Gloss",
