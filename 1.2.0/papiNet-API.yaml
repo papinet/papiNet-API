@@ -1,0 +1,1313 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forst and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 1.2.0
+servers:
+  - url: https://papinet.papinet.io
+    description: papiNet Mock Server
+paths:
+
+  '/orders':
+    # get /orders
+    get:
+      summary: List `orders`
+      description: Gets a paginated list of all `orders`.
+      parameters:
+        - in: query
+          name: orderStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+            - Active
+            - Cancelled
+            - Completed
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfOrders'
+
+  '/orders/{orderId}':
+    # get /orders/{orderId}
+    get:
+      summary: Get an `order`
+      description: Gets the details of a specific `order`, including a paginated list of all its lines.
+      parameters:
+        - in: path
+          name: orderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `order` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrder'
+
+  '/shipments':
+    # get /shipments
+    get:
+      summary: List `shipments`
+      description: Gets a paginated list of all `shipments`.
+      parameters:
+        - in: query
+          name: shipmentStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Rejected
+              - Completed
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfShipments'
+
+  '/shipments/{shipmentId}':
+    # get /shipments/{shipmentId}
+    get:
+      summary: Get a `shipment`
+      description: Gets the details of a specific `shipment`.
+      parameters:
+        - in: path
+          name: shipmentId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `shipment` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetShipment'
+
+  '/seller-products':
+    # GET /seller-products
+    get:
+      summary: List `seller-products`
+      description: Gets a paginated list of all `seller-products` defined by the `seller`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: otherIdentifier.value
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: otherIdentifier.assignedBy
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfSellerProducts'
+        '204':
+          description: No Content
+
+  '/seller-products/{sellerProductId}':
+    # GET /seller-products/{sellerProductId}
+    get:
+      summary: Get a `seller-product`
+      description: Gets the details of a specific `seller-product`.
+      parameters:
+        - in: path
+          name: sellerProductId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `seller-product` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SellerProduct'
+        '404':
+          description: Not Found
+
+  '/customer-articles':
+    # POST /customer-articles
+    post:
+      summary: Create a `customer-article`
+      description: Creates a `customer-article` defined by the `customer` based on a `seller-product`.
+      requestBody:
+        description: The definition of the `customer-article` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerArticle'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+
+    # GET /customer-articles
+    get:
+      summary: List `customer-articles`
+      description: Gets a paginated list of all `customer-articles` defined by the `customer`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: otherIdentifier.value
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: otherIdentifier.assignedBy
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfCustomerArticles'
+        '204':
+          description: No Content
+
+  '/customer-articles/{customerArticleId}':
+    # PUT /customer-articles/{customerArticleId}
+    put:
+      summary: Create or modify a `customer-article`
+      description: Creates or modifies (with a full representation) a `customer-article` defined by the `customer` based on a `seller-product`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to create or modify
+      requestBody:
+        description: The definition of the `customer-article` to create or modify.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerArticle'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+
+    # PATCH /customer-articles/{customerArticleId}
+    patch:
+      summary: Modify a `customer-article`
+      description: Modifies (with a partial representation) a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to modify
+      requestBody:
+        description: The definition of the `customer-article` to modify.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerArticle'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+
+    # GET /customer-articles/{customerArticleId}
+    get:
+      summary: Get a `customer-article`
+      description: Gets the details of a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerArticle'
+        '404':
+          description: Not Found
+
+    # DELETE /customer-articles/{customerArticleId}
+    delete:
+      summary: Delete a `customer-article`
+      description: Deletes a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to delete.
+      responses:
+        '204':
+          description: No Content
+
+components:
+  schemas:
+
+    PaginationLinks:
+      type: object
+      properties:
+        first:
+          type: object
+          properties:
+            href:
+              type: string
+        prev:
+          type: object
+          properties:
+            href:
+              type: string
+        next:
+          type: object
+          properties:
+            href:
+              type: string
+        last:
+          type: object
+          properties:
+            href:
+              type: string
+
+    ListOfOrders:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderHeader'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetOrder:
+      $ref: '#/components/schemas/Order'
+
+    OrderHeader:
+      type: object
+      required:
+        - id
+        - orderNumber
+        - orderStatus
+        - numberOfLineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+        orderStatus:
+          type: string
+          # Enumeration for 'orderStatus':
+          enum:
+            - Active
+            - Cancelled
+            - Completed
+        numberOfLineItems:
+          type: integer
+          minimum: 0
+
+    OrderLineItem:
+      type: object
+      required:
+        - id
+        - orderLineItemNumber
+        - orderLineItemStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderLineItemNumber:
+          type: integer
+          minimum: 0
+        orderLineItemStatus:
+          type: string
+          # Enumeration for 'orderLineItemStatus':
+          enum:
+            - Cancelled
+            - Completed
+            - Confirmed
+            - Pending
+            - ProductionCompleted
+            - ShipmentCompleted
+        changeable:
+          type: boolean
+        quantities:
+          type: array
+          items:
+            type: object
+            properties:
+              quantityContext:
+                type: string
+                # Enumeration for 'quantityContext':
+                enum:
+                  - Confirmed
+                  - Invoiced
+                  - Ordered
+                  - Produced
+                  - Shipped
+              quantityType:
+                type: string
+                # Enumeration for 'quantityType':
+                enum:
+                  - Area
+                  - Count
+                  - GrossWeight
+                  - Length
+                  - NetNetWeight
+                  - NetWeight
+                  - NominalWeight
+                  - TareWeight
+              quantityValue:
+                type: number
+              quantityUOM:
+                type: string
+                # Enumeration for 'quantityUOM':
+                enum:
+                  - Bale
+                  - Box
+                  - Centimeter
+                  - Decimeter
+                  - Foot
+                  - Gram
+                  - HundredPounds
+                  - Inch
+                  - Kilogram
+                  - Kilometer
+                  - Meter
+                  - MetricTon
+                  - Millimeter
+                  - Package
+                  - PalletUnit
+                  - Piece
+                  - Pound
+                  - PulpUnit
+                  - Ream
+                  - Reel
+                  - Sheet
+                  - ShortTon
+                  - Skid
+                  - SquareDecimeter
+                  - SquareFoot
+                  - SquareInch
+                  - SquareMeter
+                  - ThousandPieces
+                  - ThousandSquareCentimeters
+                  - ThousandSquareFeet
+                  - ThousandSquareInches
+                  - Yard
+
+    Order:
+      allOf:
+        - $ref: '#/components/schemas/OrderHeader'
+        - properties:
+            orderLineItems:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderLineItem'
+            links:
+              $ref: '#/components/schemas/PaginationLinks'
+
+    Event:
+      type: object
+      required:
+        - id
+        - type
+        - dateTime
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          # Enumeration for 'Event.type'
+          enum:
+            - Scheduled
+            - ReadyToLoad
+            - LoadingStarted
+            - LoadingCompleted
+            - Departed
+            - TrafficJam
+            - Transshipment
+            - Arrived
+            - Measured
+            - UnloadingStarted
+            - UnloadingCompleted
+            - Completed
+        dateTime:
+          type: string
+          format: date-time
+        location:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+            name:
+              type: string
+
+    ShipmentHeader:
+      type: object
+      required:
+        - id
+        - shipmentNumber
+        - shipmentStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        shipmentNumber:
+          type: string
+        shipmentReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/shipmentReference'
+        shipmentStatus:
+          type: string
+          # Enumeration for 'shipmentStatus':
+          enum:
+            - Active
+            - Rejected
+            - Completed
+        shipmentArrivalStatus:
+          type: string
+          # Enumeration for 'shipmentArrivalStatus'
+          enum:
+            - OnTime
+            - Early
+            - Delayed
+        scheduledDateTimeOfArrival:
+          type: string
+          format: date-time
+        estimatedDateTimeOfArrival:
+          type: string
+          format: date-time
+        actualDateTimeOfArrival:
+          type: string
+          format: date-time
+
+    shipmentReference:
+      type: object
+      required:
+        - type
+        - assignedBy
+        - value
+      properties:
+        type:
+          type: string
+          enum:
+            - ShipmentNumber
+            - DeliveryInstructionNumber
+            - DeliveryInstructionSequenceNumber
+            - OrderNumber
+            - OrderLineItemNumber
+        assignedBy:
+          type: string
+          enum:
+            - Supplier
+            - Forwarder
+            - Carrier
+            - OrderIssuer
+        value:
+          type: string
+
+    ListOfShipments:
+      type: object
+      required:
+        - shipments
+      properties:
+        shipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentHeader'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetShipment:
+      $ref: '#/components/schemas/Shipment'
+
+    Shipment:
+      allOf:
+        - $ref: '#/components/schemas/ShipmentHeader'
+        - properties:
+            latestEvent:
+              $ref: '#/components/schemas/Event'
+
+    OtherIdentifier:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: string
+        assignedBy:
+          type: string
+          enum:
+            - Customer
+            - Seller
+
+    OtherIdentifiers:
+      type: array
+      items:
+        $ref: '#/components/schemas/OtherIdentifier'
+
+    Description:
+      type: object
+      required:
+        - value
+      properties:
+        language:
+          type: string
+          description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
+
+    Descriptions:
+      type: array
+      items:
+        $ref: '#/components/schemas/Description'
+
+    # [BEGING] Paper's properties
+
+    Coating:
+      type: string
+      enum:
+        - Acrylic
+        - Flexolyn
+        - FoilCoated
+        - GreaseBarrier
+        - Metallic
+        - MetalizedPolyester
+        - MoistureBarrier
+        - MoldInhibitor
+        - None
+        - OilBarrier
+        - OxygenBarrier
+        - Plastic
+        - PolyCoating
+        - Polyethylene
+        - Pyroxylin
+        - Silicone
+
+    Coatings:
+      type: array
+      items:
+        $ref: '#/components/schemas/Coating'
+
+    FinishType:
+      type: string
+      enum:
+        - Dull
+        - English
+        - Gloss
+        - Laid
+        - Linen
+        - Machine
+        - Matte
+        - Satin
+        - SCA
+        - SCB
+        - SCC
+        - Silk
+        - Smooth
+        - SoftGloss
+        - Vellum
+        - Velvet
+
+    FinishTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/FinishType'
+
+    PrintType:
+      type: string
+      enum:
+        - ColdsetOffset
+        - ContinuousForms
+        - Digital
+        - Flexography
+        - FoilPrint
+        - Forms
+        - Gravure
+        - HeatsetOffset
+        - InkJet
+        - InstantOffset
+        - Laser
+        - Letterpress
+        - LightPrint
+        - MiniWeb
+        - RotoFlexography
+        - RotoGravure
+        - RotoLetterpress
+        - RotoSilkScreen
+        - SheetfedOffset
+        - SilkScreen
+        - WebOffset
+
+    PrintTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/PrintType'
+
+    BasisWeight:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        sizeType:
+          type: string
+          enum:
+            - 24x36
+            - 25x38
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - GramsPerSquareMeter
+            - Pound
+
+    BasisWeights:
+      type: array
+      items:
+        $ref: '#/components/schemas/BasisWeight'
+
+    BasisWeightRange:
+      type: object
+      required:
+        - min
+        - max
+      properties:
+        min:
+          $ref: '#/components/schemas/BasisWeight'
+        max:
+          $ref: '#/components/schemas/BasisWeight'
+
+    Bulk:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: string
+          enum:
+            - CubicCentimeterPerGram
+
+    Bulks:
+      type: array
+      items:
+        $ref: '#/components/schemas/Bulk'
+
+    Caliper:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Micron
+            - Millimeter
+
+    Calipers:
+      type: array
+      items:
+        $ref: '#/components/schemas/Caliper'
+
+    ColourShade:
+      type: object
+      required:
+        - value
+        - agency
+      properties:
+        value:
+          type: string
+        agency:
+          type: string
+          enum:
+            - Buyer
+            - Customer
+            - EndUser
+            - Seller
+            - Supplier
+
+    ColourShades:
+      type: array
+      items:
+        $ref: '#/components/schemas/ColourShade'
+
+    ColourDescriptions:
+      type: array
+      items:
+        type: string
+
+    Recycled:
+      type: array
+      items:
+        type: object
+        required:
+          - value
+          - UOM
+        properties:
+          value:
+            type: number
+          UOM:
+            type: string
+            enum:
+              - Percentage
+
+    PaperFormat:
+      type: string
+      enum:
+        - Reel
+        - Sheet
+
+    Width:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Centimeter
+            - Inch
+            - Millimeter
+
+    Widths:
+      type: array
+      items:
+        $ref: '#/components/schemas/Width'
+
+    WidthRange:
+      type: object
+      required:
+        - min
+        - max
+      properties:
+        min:
+          $ref: '#/components/schemas/Width'
+        max:
+          $ref: '#/components/schemas/Width'
+
+    Length:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Centimeter
+            - Foot
+            - Inch
+            - Meter
+            - Millimeter
+            - Yard
+
+    Lengths:
+      type: array
+      items:
+        $ref: '#/components/schemas/Length'
+
+    LengthRange:
+      type: object
+      required:
+        - min
+        - max
+      properties:
+        min:
+          $ref: '#/components/schemas/Length'
+        max:
+          $ref: '#/components/schemas/Length'
+
+    WindingDirection:
+      type: string
+      enum:
+        - WireSideIn
+        - WireSideOut
+
+    WindingDirections:
+      type: array
+      items:
+        $ref: '#/components/schemas/WindingDirection'
+
+    ReelMakeToConstraint:
+      type: string
+      enum:
+        - Length
+        - Diameter
+
+    ReelMakeToConstraints:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReelMakeToConstraint'
+
+    ReelDiameter:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Centimeter
+            - Inch
+            - Millimeter
+
+    ReelDiameters:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReelDiameter'
+
+    ReelDiameterRange:
+      type: object
+      properties:
+        min:
+          $ref: '#/components/schemas/ReelDiameter'
+        max:
+          $ref: '#/components/schemas/ReelDiameter'
+
+    CoreEndType:
+      type: string
+      enum:
+        - Adaptor
+        - Bevelled
+        - Bridge
+        - Notched
+        - NotchedFullMetal
+        - Plain
+        - PlainFullMetal
+        - Tapered
+
+    CoreEndTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreEndType'
+
+    CoreMaterialType:
+      type: string
+      enum:
+        - Aluminium
+        - Composite
+        - Fibre
+        - Iron
+        - Paper
+        - Plastic
+        - Steel
+
+    CoreMaterialTypes:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreMaterialType'
+
+    CoreDiameter:
+      type: object
+      required:
+        - value
+        - UOM
+      properties:
+        value:
+          type: number
+        UOM:
+          type: string
+          enum:
+            - Centimeter
+            - Inch
+            - Millimeter
+
+    CoreDiameters:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreDiameter'
+
+    CoreDiameterRange:
+      type: object
+      properties:
+        min:
+          $ref: '#/components/schemas/CoreDiameter'
+        max:
+          $ref: '#/components/schemas/CoreDiameter'
+
+    CoreStrengthCode:
+      type: object
+      required:
+        - value
+        - agency
+      properties:
+        value:
+          type: string
+        agency:
+          type: string
+          enum:
+            - Buyer
+            - Customer
+            - EndUser
+            - Seller
+            - Supplier
+
+    CoreStrengthCodes:
+      type: array
+      items:
+        $ref: '#/components/schemas/CoreStrengthCode'
+
+    GrainDirection:
+      type: string
+      enum:
+        - Long
+        - Short
+
+    GrainDirections:
+      type: array
+      items:
+        $ref: '#/components/schemas/GrainDirection'
+
+    Paper:
+      type: object
+      required:
+        - format
+      properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          $ref: '#/components/schemas/Coating'
+        coatingTops:
+          $ref: '#/components/schemas/Coatings'
+        coatingBottom:
+          $ref: '#/components/schemas/Coating'
+        coatingBottoms:
+          $ref: '#/components/schemas/Coatings'
+        finishType:
+          $ref: '#/components/schemas/FinishType'
+        finishTypes:
+          $ref: '#/components/schemas/FinishTypes'
+        printType:
+          $ref: '#/components/schemas/PrintType'
+        printTypes:
+          $ref: '#/components/schemas/PrintTypes'
+        basisWeight:
+          $ref: '#/components/schemas/BasisWeight'
+        basisWeights:
+          $ref: '#/components/schemas/BasisWeights'
+        basisWeightRange:
+          $ref: '#/components/schemas/BasisWeightRange'
+        bulk:
+          $ref: '#/components/schemas/Bulk'
+        bulks:
+          $ref: '#/components/schemas/Bulks'
+        caliper:
+          $ref: '#/components/schemas/Caliper'
+        calipers:
+          $ref: '#/components/schemas/Calipers'
+        colourShade:
+          $ref: '#/components/schemas/ColourShade'
+        colourShades:
+          $ref: '#/components/schemas/ColourShades'
+        colourDescriptions:
+          $ref: '#/components/schemas/ColourDescriptions'
+        recycled:
+          $ref: '#/components/schemas/Recycled'
+        format:
+          $ref: '#/components/schemas/PaperFormat'
+
+        # Properties that are common to reel or sheet format:
+        width:
+          $ref: '#/components/schemas/Width'
+        widths:
+          $ref: '#/components/schemas/Widths'
+        widthRange:
+          $ref: '#/components/schemas/WidthRange'
+        length:
+          $ref: '#/components/schemas/Length'
+        lengths:
+          $ref: '#/components/schemas/Lengths'
+        lengthRange:
+          $ref: '#/components/schemas/LengthRange'
+
+        # Properties that are specific to reel format:
+        windingDirection:
+          $ref: '#/components/schemas/WindingDirection'
+        windingDirections:
+          $ref: '#/components/schemas/WindingDirections'
+        reelMakeToConstraint:
+          $ref: '#/components/schemas/ReelMakeToConstraint'
+        reelMakeToConstraints:
+          $ref: '#/components/schemas/ReelMakeToConstraints'
+        reelDiameter:
+          $ref: '#/components/schemas/ReelDiameter'
+        reelDiameters:
+          $ref: '#/components/schemas/ReelDiameters'
+        reelDiameterRange:
+          $ref: '#/components/schemas/ReelDiameterRange'
+        coreEndType:
+          $ref: '#/components/schemas/CoreEndType'
+        coreEndTypes:
+          $ref: '#/components/schemas/CoreEndTypes'
+        coreMaterialType:
+          $ref: '#/components/schemas/CoreMaterialType'
+        coreMaterialTypes:
+          $ref: '#/components/schemas/CoreMaterialTypes'
+        coreDiameterInside:
+          $ref: '#/components/schemas/CoreDiameter'
+        coreDiameterInsides:
+          $ref: '#/components/schemas/CoreDiameters'
+        coreDiameterInsideRange:
+          $ref: '#/components/schemas/CoreDiameterRange'
+        coreStrengthCode:
+          $ref: '#/components/schemas/CoreStrengthCode'
+        coreStrengthCodes:
+          $ref: '#/components/schemas/CoreStrengthCodes'
+
+        # Properties that are specific to sheet format:
+        grainDirection:
+          $ref: '#/components/schemas/GrainDirection'
+        grainDirections:
+          $ref: '#/components/schemas/GrainDirections'
+
+    # [END] Paper's properties
+
+    SellerProductBasic:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        otherIdentifier:
+          $ref: '#/components/schemas/OtherIdentifier'
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        name:
+          type: string
+        link:
+          type: string
+          format: uri-reference
+        descriptions:
+          $ref: '#/components/schemas/Descriptions'
+        productType:
+          type: string
+          enum:
+            - Paper
+
+    SellerProduct:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/SellerProductBasic'
+        - anyOf:
+          - $ref: '#/components/schemas/Paper'
+
+    ListOfSellerProducts:
+      type: object
+      required:
+        - numberOfSellerProducts
+        - sellerProducts
+      properties:
+        numberOfSellerProducts:
+          type: integer
+        sellerProducts:
+          type: array
+          items:
+            $ref: '#/components/schemas/SellerProductBasic'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    CustomerArticleBasic:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        otherIdentifier:
+          $ref: '#/components/schemas/OtherIdentifier'
+        sellerProductId:
+          type: string
+          format: uuid
+        sellerProductOtherIdentifier:
+          $ref: '#/components/schemas/OtherIdentifier'
+        sellerProductStatus:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        name:
+          type: string
+        link:
+          type: string
+          format: uri-reference
+        descriptions:
+          $ref: '#/components/schemas/Descriptions'
+        productType:
+          type: string
+          enum:
+            - Paper
+
+    CustomerArticle:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CustomerArticleBasic'
+        - anyOf:
+          - $ref: '#/components/schemas/Paper'
+
+    ListOfCustomerArticles:
+      type: object
+      required:
+        - numberOfCustomerArticles
+        - customerArticles
+      properties:
+        numberOfCustomerArticles:
+          type: integer
+        customerArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerArticle'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
