@@ -133,6 +133,28 @@ paths:
     get:
       summary: List `seller-products`
       description: Gets a paginated list of all `seller-products` defined by the `seller`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -190,6 +212,28 @@ paths:
     get:
       summary: List `customer-articles`
       description: Gets a paginated list of all `customer-articles` defined by the `customer`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: OK
