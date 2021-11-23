@@ -1,0 +1,29 @@
+{
+  "id": "3a9108d5-f7f0-42ae-9a29-eb302bdb8ede",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "DeliveryInstructionNumber",
+      "assignedBy": "Supplier",
+      "value": "DEL001"
+    },
+    {
+      "type": "DeliveryInstructionSequenceNumber",
+      "assignedBy": "Supplier",
+      "value": "1"
+    }
+  ],
+  "shipmentStatus": "Active",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
+  "latestEvent": {
+    "id": "842a10d3-0845-49e8-a5bc-ab18fb0b01bc",
+    "type": "Arrived",
+    "dateTime": "2021-04-24T10:00:00Z",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
