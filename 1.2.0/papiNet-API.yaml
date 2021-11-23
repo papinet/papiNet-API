@@ -144,6 +144,18 @@ paths:
               - Active
               - Inactive
         - in: query
+          name: otherIdentifier.value
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: otherIdentifier.assignedBy
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
@@ -222,6 +234,18 @@ paths:
             enum:
               - Active
               - Inactive
+        - in: query
+          name: otherIdentifier.value
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: otherIdentifier.assignedBy
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.

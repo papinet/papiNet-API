@@ -725,7 +725,7 @@ We can see that this _seller-product_ has
 * a `width` that has a range from `400` to `2600 Millimeter`
 * a `diameter` that can take the following values:
   * `1000 Millimeter`
-  * `1250 Millimiter`
+  * `1250 Millimeter`
 * a `coreDiameter` that can take the following values:
   * `76 Millimeter`
   * `150 Millimeter`
@@ -1128,7 +1128,7 @@ Then, the _customer_ sends an API request to the _seller_ in order to get the de
 
 ```text
 curl --request GET \
-  --URL http://localhost:3003/seller-products/otherIdentifier.value=galerie-brite&otherIdentifier.assignedBy=Seller \
+  --URL http://localhost:3003/seller-products?otherIdentifier.value=galerie-brite&otherIdentifier.assignedBy=Seller \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
@@ -1156,108 +1156,147 @@ If all goes well, the _customer_ will receive a response like this:
           "language": "fra",
           "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
         }
-      ],
-      "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
-        "basisWeights": [
-          {
-            "value": 54,
-            "UOM": "GramsPerSquareMeter"
-          },
-          {
-            "value": 57,
-            "UOM": "GramsPerSquareMeter"
-          },
-          {
-            "value": 60,
-            "UOM": "GramsPerSquareMeter"
-          },
-          {
-            "value": 65,
-            "UOM": "GramsPerSquareMeter"
-          },
-          {
-            "value": 70,
-            "UOM": "GramsPerSquareMeter"
-          },
-          {
-            "value": 80,
-            "UOM": "GramsPerSquareMeter"
-          },
-          {
-            "value": 90,
-            "UOM": "GramsPerSquareMeter"
-          }
-        ],
-        "bulks": [
-          {
-            "value": 0.92,
-            "UOM": "CubicCentimeterPerGram"
-          },
-          {
-            "value": 0.89,
-            "UOM": "CubicCentimeterPerGram"
-          },
-          {
-            "value": 0.89,
-            "UOM": "CubicCentimeterPerGram"
-          },
-          {
-            "value": 0.88,
-            "UOM": "CubicCentimeterPerGram"
-          },
-          {
-            "value": 0.86,
-            "UOM": "CubicCentimeterPerGram"
-          },
-          {
-            "value": 0.84,
-            "UOM": "CubicCentimeterPerGram"
-          },
-          {
-            "value": 0.82,
-            "UOM": "CubicCentimeterPerGram"
-          }
-        ],
-        "format": "Reel",
-        "widthRange": {
-          "min": {
-            "value": 400,
-            "UOM": "Millimeter"
-          },
-          "max": {
-            "value": 2600,
-            "UOM": "Millimeter"
-          }
-        },
-        "diameters": [
-          {
-            "value": 1000,
-            "UOM": "Millimeter"
-          },
-          {
-            "value": 1250,
-            "UOM": "Millimeter"
-          }
-        ],
-        "coreDiameters": [
-          {
-            "value": 76,
-            "UOM": "Millimeter"
-          },
-          {
-            "value": 150,
-            "UOM": "Millimeter"
-          }
-        ]
-      }
+      ]
     }
   ],
   "links": {
     "self": {
       "href": "/seller-products?otherIdentifier.value=galerie-brite&otherIdentifier.assignedBy=Seller&offset=0&limit=1"
     }
+  }
+}
+```
+
+```text
+curl --request GET \
+  --URL http://localhost:3003/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+<!--
+curl --request GET \
+  --URL http://localhost:3003/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN \
+  --write-out '%{http_code}' \
+  | jq '.'
+-->
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+  "otherIdentifier": {
+    "value": "galerie-brite",
+    "assignedBy": "Seller"
+  },
+  "status": "Active",
+  "name": "Galerie Brite",
+  "link": "/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+  "descriptions": [
+    {
+      "language": "eng",
+      "value": "When your high volume print job demands an ultra lightweight gloss paper with superior quality and runnability."
+    },
+    {
+      "language": "fra",
+      "value": "Quand vos travaux à longs tirages exigent un papier brillant dans des grammages légers avec une qualité d’impression et une roulabilité sans faille."
+    }
+  ],
+  "paper": {
+    "finishType": "Gloss",
+    "printType": "HeatsetOffset",
+    "basisWeights": [
+      {
+        "value": 54,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 57,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 60,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 65,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 70,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 80,
+        "UOM": "GramsPerSquareMeter"
+      },
+      {
+        "value": 90,
+        "UOM": "GramsPerSquareMeter"
+      }
+    ],
+    "bulks": [
+      {
+        "value": 0.92,
+        "UOM": "CubicCentimeterPerGram"
+      },
+      {
+        "value": 0.89,
+        "UOM": "CubicCentimeterPerGram"
+      },
+      {
+        "value": 0.89,
+        "UOM": "CubicCentimeterPerGram"
+      },
+      {
+        "value": 0.88,
+        "UOM": "CubicCentimeterPerGram"
+      },
+      {
+        "value": 0.86,
+        "UOM": "CubicCentimeterPerGram"
+      },
+      {
+        "value": 0.84,
+        "UOM": "CubicCentimeterPerGram"
+      },
+      {
+        "value": 0.82,
+        "UOM": "CubicCentimeterPerGram"
+      }
+    ],
+    "format": "Reel",
+    "widthRange": {
+      "min": {
+        "value": 400,
+        "UOM": "Millimeter"
+      },
+      "max": {
+        "value": 2600,
+        "UOM": "Millimeter"
+      }
+    },
+    "diameters": [
+      {
+        "value": 1000,
+        "UOM": "Millimeter"
+      },
+      {
+        "value": 1250,
+        "UOM": "Millimeter"
+      }
+    ],
+    "coreDiameters": [
+      {
+        "value": 76,
+        "UOM": "Millimeter"
+      },
+      {
+        "value": 150,
+        "UOM": "Millimeter"
+      }
+    ]
   }
 }
 ```
@@ -1277,7 +1316,7 @@ We can see that this _seller-product_ has
 * a `width` that has a range from `400` to `2600 Millimeter`
 * a `diameter` that can take the following values:
   * `1000 Millimeter`
-  * `1250 Millimiter`
+  * `1250 Millimeter`
 * a `coreDiameter` that can take the following values:
   * `76 Millimeter`
   * `150 Millimeter`
@@ -1441,32 +1480,64 @@ If all goes well, the _customer_ will receive a response like this:
       "sellerProductStatus": "Active",
       "status": "Active",
       "name": "My Galerie Brite 54",
-      "link": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
-      "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
-        "basisWeight": {
-          "value": "54",
-          "UOM": "GramsPerSquareMeter"
-        },
-        "width": {
-          "value": 900,
-          "UOM": "Millimeter"
-        },
-        "diameter": {
-          "value": 1000,
-          "UOM": "Millimeter"
-        },
-        "coreDiameter": {
-          "value": 76,
-          "UOM": "Millimeter"
-        }
-      }
+      "link": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
     }
   ],
   "links": {
     "self": {
       "href": "/customer-articles?otherIdentifier.value=SAP12345&otherIdentifier.assignedBy=Customer&offset=0&limit=1"
+    }
+  }
+}
+```
+
+```text
+curl --request GET \
+  --URL http://localhost:3003/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+<!--
+curl --request GET \
+  --URL http://localhost:3003/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN \
+  --write-out '%{http_code}' \
+  | jq '.'
+-->
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "otherIdentifier": { "value": "SAP12345", "assignedBy": "Customer" },
+  "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+  "sellerProductOtherIdentifier": {
+    "value": "galerie-brite",
+    "assignedBy": "Seller"
+  },
+  "sellerProductStatus": "Active",
+  "status": "Active",
+  "name": "My Galerie Brite 54",
+  "link": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "paper": {
+    "finishType": "Gloss",
+    "printType": "HeatsetOffset",
+    "basisWeight": {
+      "value": "54",
+      "UOM": "GramsPerSquareMeter"
+    },
+    "width": {
+      "value": 900,
+      "UOM": "Millimeter"
+    },
+    "diameter": {
+      "value": 1000,
+      "UOM": "Millimeter"
+    },
+    "coreDiameter": {
+      "value": 76,
+      "UOM": "Millimeter"
     }
   }
 }
