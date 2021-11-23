@@ -933,8 +933,11 @@ components:
           type: string
           enum:
             - Centimeter
+            - Foot
             - Inch
+            - Meter
             - Millimeter
+            - Yard
 
     Lengths:
       type: array
@@ -1096,14 +1099,6 @@ components:
       items:
         $ref: '#/components/schemas/GrainDirection'
 
-    PaperSizeType:
-      type: string
-
-    PaperSizeTypes:
-      type: array
-      items:
-        $ref: '#/components/schemas/PaperSizeType'
-
     Paper:
       type: object
       required:
@@ -1204,10 +1199,6 @@ components:
           $ref: '#/components/schemas/GrainDirection'
         grainDirections:
           $ref: '#/components/schemas/GrainDirections'
-        paperSizeType:
-          $ref: '#/components/schemas/PaperSizeType'
-        paperSizeTypes:
-          $ref: '#/components/schemas/PaperSizeTypes'
 
     # [END] Paper's properties
 

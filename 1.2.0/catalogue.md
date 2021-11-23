@@ -794,6 +794,11 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "54",
       "UOM": "GramsPerSquareMeter"
     },
+    "bulk": {
+      "value": 0.92,
+      "UOM": "CubicCentimeterPerGram"
+    },
+    "format": "Reel",
     "width": {
       "value": 900,
       "UOM": "Millimeter"
@@ -1387,6 +1392,11 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "54",
       "UOM": "GramsPerSquareMeter"
     },
+    "bulk": {
+      "value": 0.92,
+      "UOM": "CubicCentimeterPerGram"
+    },
+    "format": "Reel",
     "width": {
       "value": 900,
       "UOM": "Millimeter"
