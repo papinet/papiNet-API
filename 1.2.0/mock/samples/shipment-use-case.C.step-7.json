@@ -1,0 +1,29 @@
+{
+  "id": "d4fd1f2c-642f-4df8-a7b3-139cf9d63d17",
+  "shipmentNumber": "SHP001",
+  "shipmentReferences": [
+    {
+      "type": "OrderNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "ORD001"
+    },
+    {
+      "type": "OrderLineItemNumber",
+      "assignedBy": "OrderIssuer",
+      "value": "1"
+    }
+  ],
+  "shipmentStatus": "Completed",
+  "shipmentArrivalStatus": "Delayed",
+  "scheduledDateTimeOfArrival": "2021-04-24T09:00:00Z",
+  "actualDateTimeOfArrival": "2021-04-24T10:00:00Z",
+  "latestEvent": {
+    "id": "a7eadf12-dd54-4ee2-98b4-29fabb6a10e9",
+    "type": "Completed",
+    "dateTime": "2021-04-24T11:00:00Z",
+    "location" : {
+      "latitude" : 37.4224764,
+      "longitude" : -122.0842499
+    }
+  }
+}
