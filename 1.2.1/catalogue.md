@@ -55,15 +55,6 @@ curl --request POST \
   --data 'grant_type=client_credentials'
 ```
 
-<!--
-curl --request POST \
-  --URL http://localhost:3003/tokens \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials' \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -98,12 +89,6 @@ curl --request GET \
   --URL http://localhost:3003/seller-products
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/seller-products \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the anonymous _customer_ will receive a response like this:
 
@@ -239,12 +224,6 @@ curl --request GET \
   --URL http://localhost:3003/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6 \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the anonymous _customer_ will receive a response like this:
 
@@ -439,13 +418,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/seller-products \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the authenticated _Party_ will receive a response like this:
 
@@ -582,13 +554,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -825,13 +790,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/customer-articles \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -875,13 +833,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -905,6 +856,11 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "54",
       "UOM": "GramsPerSquareMeter"
     },
+    "bulk": {
+      "value": 0.92,
+      "UOM": "CubicCentimeterPerGram"
+    },
+    "format": "Reel",
     "width": {
       "value": 900,
       "UOM": "Millimeter"
@@ -994,13 +950,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/seller-products \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the authenticated _Party_ will receive a response like this:
 
@@ -1178,13 +1127,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -1326,7 +1268,7 @@ We can see that this _seller-product_ has
   * `76 Millimeter`
   * `150 Millimeter`
 
-#### Step 4 of Scenario B
+#### Step 4 of Scenario C
 
 The _customer_ will now create a new _customer-article_ based on the first _seller-product_ `{ "value": "galerie-brite", "assignedBy": "Seller" }`. This _customer-article_ will fix the values of the `basisWeight`, `bulk`, `width`, `diameter` and `coreDiameter`. If the _customer_ is not absolutely sure that the _seller_ will not change the properties of this _seller-product_, then all the other important properties, such as `finishType` and `printType` MUST also be copied to the _customer-article_ definition.
 
@@ -1377,6 +1319,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
   "otherIdentifier": { "value": "SAP12345", "assignedBy": "Customer" },
+  "sellerProductId": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
   "sellerProductOtherIdentifier": {
     "value": "galerie-brite",
     "assignedBy": "Seller"
@@ -1423,13 +1366,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/customer-articles \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -1507,13 +1443,6 @@ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
-<!--
-curl --request GET \
-  --URL http://localhost:3003/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN \
-  --write-out '%{http_code}' \
-  | jq '.'
--->
 
 If all goes well, the _customer_ will receive a response like this:
 
@@ -1537,6 +1466,11 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "54",
       "UOM": "GramsPerSquareMeter"
     },
+    "bulk": {
+      "value": 0.92,
+      "UOM": "CubicCentimeterPerGram"
+    },
+    "format": "Reel",
     "width": {
       "value": 900,
       "UOM": "Millimeter"
