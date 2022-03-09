@@ -1,0 +1,301 @@
+{
+  "consumer": {
+    "name": "Customer"
+  },
+  "provider": {
+    "name": "Seller"
+  },
+  "interactions": [
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Authentication",
+      "providerState": "Unauthenticated",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+          "token_type": "bearer", 
+          "expires_in": 3600
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario A",
+      "providerState": "Interaction 2 of Scenario A",
+      "request": {
+        "method": "POST",
+        "path": "/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6/check-availability",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "sellerProducts": [
+            {
+              "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+              "name": "Galerie Brite",
+              "paper": {
+                "finishType": "Gloss",
+                "printType": "HeatsetOffset",
+                "basisWeight": {
+                  "value": 54,
+                  "UOM": "GramsPerSquareMeter"
+                },
+                "bulk": {
+                  "value": 0.92,
+                  "UOM": "CubicCentimeterPerGram"
+                },
+                "format": "Reel",
+                "width": {
+                  "value": 900,
+                  "UOM": "Millimeter"
+                },
+                "diameter": {
+                    "value": 1000,
+                    "UOM": "Millimeter"
+                },
+                "coreDiameter": {
+                    "value": 76,
+                    "UOM": "Millimeter"
+                }
+              },
+              "locations": [
+                {
+                  "locationURL": "http://localhost:3004/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5",
+                  "onHandQuantities": [
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "GrossWeight",
+                      "quantityValue": 9600,
+                      "quantityUOM": "Kilogram"
+                    },
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "Count",
+                      "quantityValue": 3,
+                      "quantityUOM": "Reel"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+              "name": "Galerie Brite",
+              "paper": {
+                "finishType": "Gloss",
+                "printType": "HeatsetOffset",
+                "basisWeight": {
+                  "value": 90,
+                  "UOM": "GramsPerSquareMeter"
+                },
+                "bulk": {
+                  "value": 0.92,
+                  "UOM": "CubicCentimeterPerGram"
+                },
+                "format": "Reel",
+                "width": {
+                  "value": 900,
+                  "UOM": "Millimeter"
+                },
+                "diameter": {
+                    "value": 1000,
+                    "UOM": "Millimeter"
+                },
+                "coreDiameter": {
+                    "value": 76,
+                    "UOM": "Millimeter"
+                }
+              },
+              "locations": [
+                {
+                  "locationURL": "http://localhost:3004/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5",
+                  "onHandQuantities": [
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "GrossWeight",
+                      "quantityValue": 16000,
+                      "quantityUOM": "Kilogram"
+                    },
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "Count",
+                      "quantityValue": 5,
+                      "quantityUOM": "Reel"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 3 of Scenario A",
+      "providerState": "Interaction 3 of Scenario A",
+      "request": {
+        "method": "GET",
+        "path": "/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "name": "Sappi Germany"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Step 2 of Scenario A",
+      "providerState": "The customer is authenticated and has received 'a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' as an access token.",
+      "request": {
+        "method": "POST",
+        "path": "/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6/check-availability",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "sellerProducts": [
+            {
+              "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+              "otherIdentifier": { "value": "galerie-brite", "assignedBy": "Seller" },
+              "name": "Galerie Brite",
+              "paper": {
+                "finishType": "Gloss",
+                "printType": "HeatsetOffset",
+                "basisWeight": {
+                  "value": 54,
+                  "UOM": "GramsPerSquareMeter"
+                },
+                "bulk": {
+                  "value": 0.92,
+                  "UOM": "CubicCentimeterPerGram"
+                },
+                "format": "Reel",
+                "width": {
+                  "value": 900,
+                  "UOM": "Millimeter"
+                },
+                "diameter": {
+                    "value": 1000,
+                    "UOM": "Millimeter"
+                },
+                "coreDiameter": {
+                    "value": 76,
+                    "UOM": "Millimeter"
+                }
+              },
+              "locations": [
+                {
+                  "otherIdentifier": { "value": "lanaken-mill", "assignedBy": "Seller" },
+                  "name": "Lanaken Mill",
+                  "country": "BE",
+                  "latitude" : 50.881141,
+                  "longitude" : 5.6317766,
+                  "quantitiesOnHand": [
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "GrossWeight",
+                      "quantityValue": 9600,
+                      "quantityUOM": "Kilogram"
+                    },
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "Count",
+                      "quantityValue": 3,
+                      "quantityUOM": "Reel"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+              "otherIdentifier": { "value": "galerie-brite", "assignedBy": "Seller" },
+              "name": "Galerie Brite",
+              "paper": {
+                "finishType": "Gloss",
+                "printType": "HeatsetOffset",
+                "basisWeight": {
+                  "value": 90,
+                  "UOM": "GramsPerSquareMeter"
+                },
+                "bulk": {
+                  "value": 0.92,
+                  "UOM": "CubicCentimeterPerGram"
+                },
+                "format": "Reel",
+                "width": {
+                  "value": 900,
+                  "UOM": "Millimeter"
+                },
+                "diameter": {
+                    "value": 1000,
+                    "UOM": "Millimeter"
+                },
+                "coreDiameter": {
+                    "value": 76,
+                    "UOM": "Millimeter"
+                }
+              },
+              "locations": [
+                {
+                  "otherIdentifier": { "value": "lanaken-mill", "assignedBy": "Seller" },
+                  "name": "Lanaken Mill",
+                  "country": "BE",
+                  "latitude" : 50.881141,
+                  "longitude" : 5.6317766,
+                  "quantitiesOnHand": [
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "GrossWeight",
+                      "quantityValue": 16000,
+                      "quantityUOM": "Kilogram"
+                    },
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "Count",
+                      "quantityValue": 5,
+                      "quantityUOM": "Reel"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
