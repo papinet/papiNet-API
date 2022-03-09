@@ -165,8 +165,8 @@
     },
     {
       "type": "Synchronous/HTTP",
-      "description": "Step 2 of Scenario A",
-      "providerState": "The customer is authenticated and has received 'a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' as an access token.",
+      "description": "Interaction 2 of Scenario B",
+      "providerState": "Interaction 2 of Scenario B",
       "request": {
         "method": "POST",
         "path": "/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6/check-availability",
@@ -184,7 +184,6 @@
           "sellerProducts": [
             {
               "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-              "otherIdentifier": { "value": "galerie-brite", "assignedBy": "Seller" },
               "name": "Galerie Brite",
               "paper": {
                 "finishType": "Gloss",
@@ -213,12 +212,8 @@
               },
               "locations": [
                 {
-                  "otherIdentifier": { "value": "lanaken-mill", "assignedBy": "Seller" },
-                  "name": "Lanaken Mill",
-                  "country": "BE",
-                  "latitude" : 50.881141,
-                  "longitude" : 5.6317766,
-                  "quantitiesOnHand": [
+                  "locationURL": "http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+                  "onHandQuantities": [
                     {
                       "quantityContext": "Stock",
                       "quantityType": "GrossWeight",
@@ -232,12 +227,28 @@
                       "quantityUOM": "Reel"
                     }
                   ]
+                },
+                {
+                  "locationURL": "http://localhost:3004/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+                  "onHandQuantities": [
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "GrossWeight",
+                      "quantityValue": 7200,
+                      "quantityUOM": "Kilogram"
+                    },
+                    {
+                      "quantityContext": "Stock",
+                      "quantityType": "Count",
+                      "quantityValue": 2,
+                      "quantityUOM": "Reel"
+                    }
+                  ]
                 }
               ]
             },
             {
               "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-              "otherIdentifier": { "value": "galerie-brite", "assignedBy": "Seller" },
               "name": "Galerie Brite",
               "paper": {
                 "finishType": "Gloss",
@@ -266,12 +277,8 @@
               },
               "locations": [
                 {
-                  "otherIdentifier": { "value": "lanaken-mill", "assignedBy": "Seller" },
-                  "name": "Lanaken Mill",
-                  "country": "BE",
-                  "latitude" : 50.881141,
-                  "longitude" : 5.6317766,
-                  "quantitiesOnHand": [
+                  "locationURL": "http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+                  "onHandQuantities": [
                     {
                       "quantityContext": "Stock",
                       "quantityType": "GrossWeight",
