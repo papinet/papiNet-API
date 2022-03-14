@@ -172,15 +172,15 @@ If all goes well, the _customer_ will receive a response like this:
       "locations": [
         {
           "locationURL": "http://localhost:3004/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 9600,
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 3,
               "quantityUOM": "Reel"
@@ -220,15 +220,15 @@ If all goes well, the _customer_ will receive a response like this:
       "locations": [
         {
           "locationURL": "http://localhost:3004/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 16000,
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 5,
               "quantityUOM": "Reel"
@@ -335,15 +335,15 @@ If all goes well, the _customer_ will receive a response like this:
       "locations": [
         {
           "locationURL": "http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 9600,
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 3,
               "quantityUOM": "Reel"
@@ -352,15 +352,15 @@ If all goes well, the _customer_ will receive a response like this:
         },
         {
           "locationURL": "http://localhost:3004/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 7200,
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 2,
               "quantityUOM": "Reel"
@@ -400,15 +400,15 @@ If all goes well, the _customer_ will receive a response like this:
       "locations": [
         {
           "locationURL": "http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 16000,
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 5,
               "quantityUOM": "Reel"
@@ -538,15 +538,15 @@ If all goes well, the _customer_ will receive a response like this:
       "locations": [
         {
           "locationURL": "http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 9600,
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 3,
               "quantityUOM": "Reel"
@@ -555,15 +555,15 @@ If all goes well, the _customer_ will receive a response like this:
           "plannedQuantities": [
             {
               "estimatedAvailableDateTime": "2022-02-02T13:00:00Z",
-              "quantites": [
+              "quantities": [
                 {
-                  "quantityContext": "Stock",
+                  "quantityContext": "ProductionPlanned",
                   "quantityType": "GrossWeight",
                   "quantityValue": 22400,
                   "quantityUOM": "Kilogram"
                 },
                 {
-                  "quantityContext": "Stock",
+                  "quantityContext": "ProductionPlanned",
                   "quantityType": "Count",
                   "quantityValue": 7,
                   "quantityUOM": "Reel"
@@ -605,9 +605,9 @@ If all goes well, the _customer_ will receive a response like this:
       "locations": [
         {
           "locationURL": "http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-          "onHandQuantities": [
+          "quantities": [
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "GrossWeight",
               "quantityValue": 16000,
               "quantityUOM": "Kilogram"
@@ -624,13 +624,13 @@ If all goes well, the _customer_ will receive a response like this:
               "estimatedAvailableDateTime": "2022-02-04T09:00:00Z",
               "quantites": [
                 {
-                  "quantityContext": "Stock",
+                  "quantityContext": "InTransit",
                   "quantityType": "GrossWeight",
                   "quantityValue": 12800,
                   "quantityUOM": "Kilogram"
                 },
                 {
-                  "quantityContext": "Stock",
+                  "quantityContext": "InTransit",
                   "quantityType": "Count",
                   "quantityValue": 4,
                   "quantityUOM": "Reel"
