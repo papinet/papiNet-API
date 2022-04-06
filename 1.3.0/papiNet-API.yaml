@@ -367,6 +367,27 @@ paths:
         '204':
           description: No Content
 
+  '/locations/{locationId}':
+    # GET /locations/{locationId}
+    get:
+      summary: Get a `location`
+      description: Gets the details of a specific `location`.
+      parameters:
+        - in: path
+          name: locationId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `location` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+
 components:
   schemas:
 
@@ -1311,3 +1332,15 @@ components:
             $ref: '#/components/schemas/CustomerArticle'
         links:
           $ref: '#/components/schemas/PaginationLinks'
+
+    Location:
+      type: object
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
