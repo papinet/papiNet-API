@@ -1366,6 +1366,65 @@ components:
         longitude:
           type: number
 
+    Quantity:
+      type: object
+      properties:
+        quantityContext:
+          type: string
+          # Enumeration for 'quantityContext':
+          enum:
+            - OnHand
+        quantityType:
+          type: string
+          # Enumeration for 'quantityType':
+          enum:
+            - Area
+            - Count
+            - GrossWeight
+            - Length
+            - NetNetWeight
+            - NetWeight
+            - NominalWeight
+            - TareWeight
+        quantityValue:
+          type: number
+        quantityUOM:
+          type: string
+          # Enumeration for 'quantityUOM':
+          enum:
+            - Bale
+            - Box
+            - Centimeter
+            - Decimeter
+            - Foot
+            - Gram
+            - HundredPounds
+            - Inch
+            - Kilogram
+            - Kilometer
+            - Meter
+            - MetricTon
+            - Millimeter
+            - Package
+            - PalletUnit
+            - Piece
+            - Pound
+            - PulpUnit
+            - Ream
+            - Reel
+            - Sheet
+            - ShortTon
+            - Skid
+            - SquareDecimeter
+            - SquareFoot
+            - SquareInch
+            - SquareMeter
+            - ThousandPieces
+            - ThousandSquareCentimeters
+            - ThousandSquareFeet
+            - ThousandSquareInches
+            - Yard
+
     AvailabilityForSellerProduct:
       type: object
       properties:
@@ -1387,60 +1446,16 @@ components:
                         quantities:
                           type: array
                           items:
+                            $ref: '#/components/schemas/Quantity'
+                        plannedQuantities:
+                          type: array
+                          items:
                             type: object
                             properties:
-                              quantityContext:
+                              estimatedAvailableDateTime:
                                 type: string
-                                # Enumeration for 'quantityContext':
-                                enum:
-                                  - OnHand
-                              quantityType:
-                                type: string
-                                # Enumeration for 'quantityType':
-                                enum:
-                                  - Area
-                                  - Count
-                                  - GrossWeight
-                                  - Length
-                                  - NetNetWeight
-                                  - NetWeight
-                                  - NominalWeight
-                                  - TareWeight
-                              quantityValue:
-                                type: number
-                              quantityUOM:
-                                type: string
-                                # Enumeration for 'quantityUOM':
-                                enum:
-                                  - Bale
-                                  - Box
-                                  - Centimeter
-                                  - Decimeter
-                                  - Foot
-                                  - Gram
-                                  - HundredPounds
-                                  - Inch
-                                  - Kilogram
-                                  - Kilometer
-                                  - Meter
-                                  - MetricTon
-                                  - Millimeter
-                                  - Package
-                                  - PalletUnit
-                                  - Piece
-                                  - Pound
-                                  - PulpUnit
-                                  - Ream
-                                  - Reel
-                                  - Sheet
-                                  - ShortTon
-                                  - Skid
-                                  - SquareDecimeter
-                                  - SquareFoot
-                                  - SquareInch
-                                  - SquareMeter
-                                  - ThousandPieces
-                                  - ThousandSquareCentimeters
-                                  - ThousandSquareFeet
-                                  - ThousandSquareInches
-                                  - Yard
+                                format: date-time
+                              quantities:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/Quantity'
