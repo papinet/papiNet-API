@@ -388,6 +388,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/Location'
 
+  '/seller-products/{sellerProductId}/check-availability':
+    # POST /seller-products/{sellerProductId}/check-availability
+    post:
+      summary: Check the `availability`
+      description: Check the `availability` of a specific `seller-product`.
+      parameters:
+        - in: path
+          name: sellerProductId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `seller-product` to check the `availability` for
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailabilityForSellerProduct'
+
 components:
   schemas:
 
@@ -1344,3 +1365,82 @@ components:
           type: number
         longitude:
           type: number
+
+    AvailabilityForSellerProduct:
+      type: object
+      properties:
+        sellerProducts:
+          type: array
+          items:
+            type: object
+            allOf:
+              - $ref: '#/components/schemas/SellerProduct'
+              - type: object
+                properties:
+                  locations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        locationURL:
+                          type: string
+                        quantities:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              quantityContext:
+                                type: string
+                                # Enumeration for 'quantityContext':
+                                enum:
+                                  - OnHand
+                              quantityType:
+                                type: string
+                                # Enumeration for 'quantityType':
+                                enum:
+                                  - Area
+                                  - Count
+                                  - GrossWeight
+                                  - Length
+                                  - NetNetWeight
+                                  - NetWeight
+                                  - NominalWeight
+                                  - TareWeight
+                              quantityValue:
+                                type: number
+                              quantityUOM:
+                                type: string
+                                # Enumeration for 'quantityUOM':
+                                enum:
+                                  - Bale
+                                  - Box
+                                  - Centimeter
+                                  - Decimeter
+                                  - Foot
+                                  - Gram
+                                  - HundredPounds
+                                  - Inch
+                                  - Kilogram
+                                  - Kilometer
+                                  - Meter
+                                  - MetricTon
+                                  - Millimeter
+                                  - Package
+                                  - PalletUnit
+                                  - Piece
+                                  - Pound
+                                  - PulpUnit
+                                  - Ream
+                                  - Reel
+                                  - Sheet
+                                  - ShortTon
+                                  - Skid
+                                  - SquareDecimeter
+                                  - SquareFoot
+                                  - SquareInch
+                                  - SquareMeter
+                                  - ThousandPieces
+                                  - ThousandSquareCentimeters
+                                  - ThousandSquareFeet
+                                  - ThousandSquareInches
+                                  - Yard
