@@ -10,6 +10,16 @@ This use case is designed for Paper business.
 
 The _customer_ should know the identifier (UUID) of the _seller-product_ or _customer-article_ for which she/he wants to receive availability information.
 
+## papiNet Stub Service
+
+You can run locally the papiNet stub service using the following command:
+
+```text
+pact-stub-server --file papiNet.pact.json --port 3004 --provider-state-header-name X-Provider-Sate
+```
+
+The `pact-stub-server` is available at <https://github.com/pact-foundation/pact-stub-server/releases>.
+
 ## Scenarios
 
 Scenario A
@@ -243,6 +253,10 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario A
 
+Within the _availability_ response, the _locations_ are only given via their URLs containing their identifier (UUID). However, you can get their detailed information using these URLs with the `GET` methods.
+
+The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5`:
+
 ```text
 $ curl --request GET \
   --URL http://localhost:3004/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5 \
@@ -251,6 +265,8 @@ $ curl --request GET \
   --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json'
 ```
+
+If all goes well, the _customer_ will receive a response like this:
 
 <!-- RESPONSE: Interaction 3 of Scenario A -->
 ```json
@@ -423,14 +439,18 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario B
 
+The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `4cc7b1ba-6278-4a56-9ee2-ad316950c008`:
+
 ```text
 $ curl --request GET \
-  --URL http://localhost:3004/locations/7f54154d-7ca3-4e5d-9e94-93389e07f7fc \
+  --URL http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008 \
   --header 'X-Provider-Sate: Interaction 3 of Scenario B' \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json'
 ```
+
+If all goes well, the _customer_ will receive a response like this:
 
 <!-- RESPONSE: Interaction 3 of Scenario B -->
 ```json
@@ -444,22 +464,26 @@ $ curl --request GET \
 
 #### Interaction 4 of Scenario B
 
+The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `8a69e22b-9a8c-4585-a8f9-7fbce8de7c73`:
+
 ```text
 $ curl --request GET \
-  --URL http://localhost:3004/locations/987446dd-4554-4cf9-991d-393adfdc571e \
-  --header 'X-Provider-Sate: Interaction 3 of Scenario B' \
+  --URL http://localhost:3004/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73 \
+  --header 'X-Provider-Sate: Interaction 4 of Scenario B' \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json'
 ```
 
+If all goes well, the _customer_ will receive a response like this:
+
 <!-- RESPONSE: Interaction 4 of Scenario B -->
 ```json
 {
-  "name": "Sappi Alfeld Mill",
-  "country": "DE",
-  "latitude" : 51.9852363,,
-  "longitude" : 9.8200211
+  "name": "Sappi Lanaken Mill",
+  "country": "BE",
+  "latitude" : 50.881141,
+  "longitude" : 5.6317766
 }
 ```
 
@@ -613,7 +637,7 @@ If all goes well, the _customer_ will receive a response like this:
               "quantityUOM": "Kilogram"
             },
             {
-              "quantityContext": "Stock",
+              "quantityContext": "OnHand",
               "quantityType": "Count",
               "quantityValue": 5,
               "quantityUOM": "Reel"
@@ -647,14 +671,18 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario C
 
+The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `4cc7b1ba-6278-4a56-9ee2-ad316950c008`:
+
 ```text
 $ curl --request GET \
-  --URL http://localhost:3004/locations/7f54154d-7ca3-4e5d-9e94-93389e07f7fc \
+  --URL http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008 \
   --header 'X-Provider-Sate: Interaction 3 of Scenario B' \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json'
 ```
+
+If all goes well, the _customer_ will receive a response like this:
 
 <!-- RESPONSE: Interaction 3 of Scenario C -->
 ```json
