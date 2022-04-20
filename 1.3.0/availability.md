@@ -689,7 +689,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "name": "Sappi Lanaken Mill",
   "country": "BE",
-  "latitude" : 50.881141,
-  "longitude" : 5.6317766
+  "latitude": 50.881141,
+  "longitude": 5.6317766
 }
 ```

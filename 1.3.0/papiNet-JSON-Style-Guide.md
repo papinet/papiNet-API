@@ -22,3 +22,9 @@ So, within the following example:
 ```
 
 It's the `"propertyName": "propertyValue"` part, that we call a _property_.
+
+## Design Rules
+
+### Rule 1
+
+Create as many "components" as needed in order to restrict the 'enumeration list' based on the context! It means that we will ALWAYS define LOCALLY the structure containing enumeration.

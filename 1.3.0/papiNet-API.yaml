@@ -1374,6 +1374,9 @@ components:
           # Enumeration for 'quantityContext':
           enum:
             - OnHand
+            - Reserved
+            - InTransit
+            - PlannedProduction
         quantityType:
           type: string
           # Enumeration for 'quantityType':
