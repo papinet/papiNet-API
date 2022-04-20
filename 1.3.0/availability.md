@@ -457,8 +457,8 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "name": "Sappi Lanaken Mill",
   "country": "BE",
-  "latitude" : 50.881141,
-  "longitude" : 5.6317766
+  "latitude": 50.8827787,
+  "longitude": 5.6375872
 }
 ```
 
@@ -480,10 +480,10 @@ If all goes well, the _customer_ will receive a response like this:
 <!-- RESPONSE: Interaction 4 of Scenario B -->
 ```json
 {
-  "name": "Sappi Lanaken Mill",
+  "name": "Sappi Alfeld Mill",
   "country": "BE",
-  "latitude" : 50.881141,
-  "longitude" : 5.6317766
+  "latitude": 51.985233,
+  "longitude": 9.8200211
 }
 ```
 
@@ -689,7 +689,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "name": "Sappi Lanaken Mill",
   "country": "BE",
-  "latitude": 50.881141,
-  "longitude": 5.6317766
+  "latitude": 50.8827787,
+  "longitude": 5.6375872
 }
 ```
