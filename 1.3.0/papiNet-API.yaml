@@ -8,9 +8,9 @@ info:
   license:
     name: Apache 2.0
     url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
-  version: 1.2.0
+  version: 1.3.0
 servers:
-  - url: https://papinet.papinet.io
+  - url: http://localhost:3004
     description: papiNet Mock Server
 paths:
 
@@ -856,6 +856,8 @@ components:
         - UOM
       properties:
         value:
+          type: number
+        UOM:
           type: string
           enum:
             - CubicCentimeterPerGram
@@ -1277,7 +1279,12 @@ components:
       allOf:
         - $ref: '#/components/schemas/SellerProductBasic'
         - anyOf:
-          - $ref: '#/components/schemas/Paper'
+          - type: object
+            required:
+              - paper
+            properties:
+              paper:
+                $ref: '#/components/schemas/Paper'
 
     ListOfSellerProducts:
       type: object

@@ -334,10 +334,10 @@
           "Content-Type": "application/json; charset=utf-8"
         },
         "body": {
-          "name": "Sappi Lanaken Mill",
+          "name": "Sappi Alfeld Mill",
           "country": "BE",
-          "latitude" : 50.881141,
-          "longitude" : 5.6317766
+          "latitude": 51.985233,
+          "longitude": 9.8200211
         }
       }
     },
@@ -410,13 +410,13 @@
                       "estimatedAvailableDateTime": "2022-02-02T13:00:00Z",
                       "quantities": [
                         {
-                          "quantityContext": "ProductionPlanned",
+                          "quantityContext": "PlannedProduction",
                           "quantityType": "GrossWeight",
                           "quantityValue": 22400,
                           "quantityUOM": "Kilogram"
                         },
                         {
-                          "quantityContext": "ProductionPlanned",
+                          "quantityContext": "PlannedProduction",
                           "quantityType": "Count",
                           "quantityValue": 7,
                           "quantityUOM": "Reel"
@@ -504,7 +504,7 @@
       "providerState": "Interaction 3 of Scenario C",
       "request": {
         "method": "GET",
-        "path": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73"
+        "path": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008"
       },
       "response": {
         "status": 200,

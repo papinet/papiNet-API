@@ -43,7 +43,7 @@ Within the **scenario B**, the _seller_ has 1 _seller-product_ in 2 _locations_.
 | Galerie Brite | 54 g/m2      | Sappi Alfeld Mill  |  7200 kg (2 reels) |
 | Galerie Brite | 90 g/m2      | Sappi Lanaken Mill | 16000 kg (5 reels) |
 
-Within the **scenario C**, the _seller_ has 1 _seller-product_ in 1 _location_ with 2 different on-hand quantities depending on 2 different basis weight, as well as 2 different planned quantities for the 2 different basis weight.
+Within the **scenario C**, the _seller_ has 1 _seller-product_ in 1 _location_ with 2 different on-hand quantities depending on 2 different basis weight, as well as 2 different planned quantities for the 2 different basis weight
 
 | Product Name  | Basis Weight | Location     | Quantity (now)     | Planned Quantities (future)                     |
 | ------------  | ------------ | ------------ | ------------------ | ----------------------------------------------- |
@@ -59,7 +59,7 @@ Given that the _customer_ is not authenticated by the _seller_;
 The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
 
 ```text
-curl --request POST \
+curl --silent --show-error --request POST \
   --URL http://localhost:3004/tokens \
   --header 'Host: papinet.papinet.io' \
   --header 'X-Provider-Sate: Unauthenticated' \
@@ -82,7 +82,7 @@ If all goes well, the _customer_ will receive a response like this:
 In order to re-use the value of the `access_token` in subsequent API requests, it is convenient to save it into an environment variable:
 
 ```text
-ACCESS_TOKEN=$(curl --request POST \
+ACCESS_TOKEN=$(curl --silent --show-error --request POST \
   --URL http://localhost:3004/tokens \
   --header 'Host: papinet.papinet.io' \
   --header 'X-Provider-Sate: Unauthenticated' \
@@ -111,7 +111,7 @@ Given that the _seller_ has the following availability data for the _seller-prod
 The authenticated _customer_ sends an API request to the _seller_ in order to get the availability of the _seller-product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`:
 
 ```text
-$ curl --request POST \
+curl --silent --show-error --request POST \
   --URL http://localhost:3004/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6/check-availability \
   --header 'X-Provider-Sate: Interaction 2 of Scenario A' \
   --header 'Host: papinet.papinet.io' \
@@ -232,7 +232,7 @@ Within the _availability_ response, the _locations_ are only given via their URL
 The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5`:
 
 ```text
-$ curl --request GET \
+curl --silent --show-error --request GET \
   --URL http://localhost:3004/locations/578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5 \
   --header 'X-Provider-Sate: Interaction 3 of Scenario A' \
   --header 'Host: papinet.papinet.io' \
@@ -270,7 +270,7 @@ Given that the _seller_ has the following availability data for the _seller-prod
 The authenticated _customer_ sends an API request to the _seller_ in order to get the availability of the _seller-product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`:
 
 ```text
-$ curl --request POST \
+curl --silent --show-error --request POST \
   --URL http://localhost:3004/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6/check-availability \
   --header 'X-Provider-Sate: Interaction 2 of Scenario B' \
   --header 'Host: papinet.papinet.io' \
@@ -406,7 +406,7 @@ If all goes well, the _customer_ will receive a response like this:
 The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `4cc7b1ba-6278-4a56-9ee2-ad316950c008`:
 
 ```text
-$ curl --request GET \
+curl --silent --show-error --request GET \
   --URL http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008 \
   --header 'X-Provider-Sate: Interaction 3 of Scenario B' \
   --header 'Host: papinet.papinet.io' \
@@ -431,7 +431,7 @@ If all goes well, the _customer_ will receive a response like this:
 The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `8a69e22b-9a8c-4585-a8f9-7fbce8de7c73`:
 
 ```text
-$ curl --request GET \
+curl --silent --show-error --request GET \
   --URL http://localhost:3004/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73 \
   --header 'X-Provider-Sate: Interaction 4 of Scenario B' \
   --header 'Host: papinet.papinet.io' \
@@ -471,7 +471,7 @@ Given that the _seller_ has the following availability data for the _seller-prod
 The authenticated _customer_ sends an API request to the _seller_ in order to get the availability of the _seller-product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`:
 
 ```text
-$ curl --request POST \
+curl --silent --show-error --request POST \
   --URL http://localhost:3004/seller-products/e7bfd8a6-edde-48ab-b304-b7d4f1d007a6/check-availability \
   --header 'X-Provider-Sate: Interaction 2 of Scenario C' \
   --header 'Host: papinet.papinet.io' \
@@ -628,9 +628,9 @@ If all goes well, the _customer_ will receive a response like this:
 The authenticated _customer_ sends an API request to the _seller_ in order to get the detailed information of the _location_ `4cc7b1ba-6278-4a56-9ee2-ad316950c008`:
 
 ```text
-$ curl --request GET \
+curl --silent --show-error --request GET \
   --URL http://localhost:3004/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008 \
-  --header 'X-Provider-Sate: Interaction 3 of Scenario B' \
+  --header 'X-Provider-Sate: Interaction 3 of Scenario C' \
   --header 'Host: papinet.papinet.io' \
   --header 'Authorization: Bearer '$ACCESS_TOKEN \
   --header 'Content-Type: application/json'
