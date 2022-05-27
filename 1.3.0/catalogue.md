@@ -6,11 +6,11 @@ This use case is designed for Paper business.
 
 > Recovered paper is not included within our definition of Paper business.
 
-### Preconditions
+## Preconditions
 
 The _seller_ has created a catalogue being a list of _products_, and more precisely a list of _seller-products_ as defined below.
 
-### Definitions
+## Definitions
 
 The distinction we make between the concepts _product_ and _article_ is essential to the understanding of the 8 new API endpoints we introduced for this new catalogue use case.
 
@@ -22,7 +22,7 @@ In order to show that important distinction within the API itself, we will alway
 
 These hyphenated words _seller-product_ and _customer-article_ do sound like a pleonasm, however we found them a convenient way to remind the definition/distinction between _product_ and _article_ within the API endpoints themselves.
 
-### Process
+## Process
 
 An authenticated or anonymous _customer_ requests to a _seller_ the list of its _seller-products_.
 
