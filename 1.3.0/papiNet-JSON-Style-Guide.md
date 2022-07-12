@@ -27,4 +27,4 @@ It's the `"propertyName": "propertyValue"` part, that we call a _property_.
 
 ### Rule 1
 
-Create as many "components" as needed in order to restrict the 'enumeration list' based on the context! It means that we will ALWAYS define LOCALLY the structure containing enumeration.
+We want to restrict enumerated values to the minimum list that applies within the context. As a consequence, we will always define objects **locally**!
