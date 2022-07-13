@@ -49,6 +49,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOfOrders'
+        '204':
+          description: No Content
 
   '/orders/{orderId}':
     # GET /orders/{orderId}
@@ -106,6 +108,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOfShipments'
+        '204':
+          description: No Content
 
   '/shipments/{shipmentId}':
     # GET /shipments/{shipmentId}
@@ -875,9 +879,10 @@ components:
       properties:
         numberOfSellerProducts:
           type: integer
-          minimum: 0
+          minimum: 1
         sellerProducts:
           type: array
+          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
           items:
             type: object
             required:
@@ -1044,9 +1049,10 @@ components:
       properties:
         numberOfCustomerArticles:
           type: integer
-          minimum: 0
+          minimum: 1
         customerArticles:
           type: array
+          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
           items:
             type: object
             required:
@@ -1545,7 +1551,7 @@ components:
             - Completed
         numberOfLineItems:
           type: integer
-          minimum: 0
+          minimum: 1 # An order without any lines is NOT an order!
 
     OrderLineItem:
       type: object
@@ -1643,6 +1649,7 @@ components:
         - properties:
             orderLineItems:
               type: array
+              # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
               items:
                 $ref: '#/components/schemas/OrderLineItem'
             links:
