@@ -6,7 +6,7 @@ This style guide documents guidelines and recommendations for designing JSON str
 
 ## Definitions
 
-For the purposes of this style guide, we define the following terms:
+For the purposes of this style guide, papiNet defines the following terms:
 
 * **_property_** - a name/value pair inside a JSON object.
 * **_property name_** - the name portion of the property, also called **_key_**.
@@ -21,7 +21,7 @@ So, within the following example:
 }
 ```
 
-It's the `"propertyName": "propertyValue"` part, that we call a _property_.
+It's the `"propertyName": "propertyValue"` part, that papiNet calls a _property_.
 
 ## Design Rules
 
@@ -29,16 +29,20 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### Rule 1
 
-We want to restrict enumerated values to the minimum list that applies within the context. As a consequence, we will always define objects **locally**!
+papiNet restrict enumerated values to the minimum list that applies within the context. As a consequence, objects will always be defined **locally**!
 
 ### Rule 2 - How to handle empty collection
 
-An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. We will enforce that rule by not allowing empty array in the non-empty response's body using `minContains: 1` (new in JSON Schema New in draft 2019-09) when it will be supported by OpenAPI.
+An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. This rule will be enforced by not allowing empty array in the non-empty response's body using `minContains: 1` (new in JSON Schema New in draft 2019-09) when it will be supported by OpenAPI.
 
-### Rule 3 - minLength of string
+### Rule 3 - minLength of property with type `string`
 
-When we make a property with type `string` required, we ALWAYS mean that this property MUST communicate a non-empty information, therefore we will always add the constraint `minLength: 1`.
+When papiNet defines a property with type `string` required, papiNet ALWAYS means that this property MUST communicate a non-empty information, therefore the constraint `minLength: 1` will always be added.
 
-When a property with type `string` is not required and there is no information to be communicated, the property MUST NOT appear in the reponse's body. We will enfore that rule by always add the constraint `minLength: 1` to all properties with type `string`.
+When a property with type `string` is not required and there is no information to be communicated, the property MUST NOT appear in the reponse's body. That rule will be enforced by always add the constraint `minLength: 1` to all properties with type `string`.
 
-This `minLength: 1` constraint will not be added to the property with type `string` that already have such a contraint via `enum` or `format`. Of course, we can have a more restrictive constraint with more than 1 character minimum, but not less!
+This `minLength: 1` constraint will not be added to the property with type `string` that already has such a contraint via `enum` or `format`. Of course, more restrictive constraint with more than 1 character minimum can be defined, but not less!
+
+### Rule 4 - maxLength of property with type `string`
+
+papiNet does not set a `maxLength` to all properties with type `string` driven by system technical constraints. papiNet only sets a `maxLength` to a property with type `string` when it is driven by a business contraint!

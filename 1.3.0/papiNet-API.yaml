@@ -445,25 +445,25 @@ components:
           properties:
             href:
               type: string
-              minLength: 1
+              format: uri-reference
         prev:
           type: object
           properties:
             href:
               type: string
-              minLength: 1
+              format: uri-reference
         next:
           type: object
           properties:
             href:
               type: string
-              minLength: 1
+              format: uri-reference
         last:
           type: object
           properties:
             href:
               type: string
-              minLength: 1
+              format: uri-reference
 
     Paper:
       type: object
