@@ -12,7 +12,7 @@ The _Forwarder_ is responsible to book transports with one or multiple _Carriers
 
 ### Process
 
-The _Order Issuer_ and/or the _End User_ can track expected _shipments_, related to the _orders_, from the _Supplier_.
+The _Order Issuer_ can track expected _shipments_, related to the _orders_, from the _Supplier_.
 The _Supplier_ is tracking the expected _shipments_, related to the delivery instruction(s), from the _Forwarder_.
 The _Forwarder_ is tracking the expected _shipments_, related to the transport bookings, from the _Carrier(s)_.
 
@@ -24,12 +24,12 @@ We suggest that _Suppliers_, _Forwarder_ and _Carrier_ expose their papiNet API 
 
 The _**papiNet Mock Service**_ is exposing the papiNet API endpoints on different domain names based on different fictional company names used to simulate different business roles:
 
-| Name | Domain Name             | Business Role(s)            |
-| ---- | ----------------------- | --------------------------- |
-| Pulp | papinet.pulp.papinet.io | _Supplier_                  |
-| Fast | papinet.fast.papinet.io | _Forwarder_                 |
-| Road | papinet.road.papinet.io | _Carrier_                   |
-| Corp | papinet.corp.papinet.io | _Order Issuer_ & _End User_ |
+| Name | Domain Name             | Business Role(s) |
+| ---- | ----------------------- | ---------------- |
+| Pulp | papinet.pulp.papinet.io | _Supplier_       |
+| Fast | papinet.fast.papinet.io | _Forwarder_      |
+| Road | papinet.road.papinet.io | _Carrier_        |
+| Corp | papinet.corp.papinet.io | _Order Issuer_   |
 
 ## Authentication
 
@@ -39,7 +39,7 @@ We recommend secure the access to the papiNet API endpoints using the [OAuth 2.0
 
 * Scenario A - The company **Fast**, a _Forwarder_, requests to the company **Road**, a _Carrier_, the status of one or multiple of its _shipments_. The _Forwarder_ has earlier booked the transport from the _Carrier_.
 * Scenario B - The company **Pulp**, a _Supplier_, requests to the company **Fast**, a _Forwarder_, the status of one or multiple of its _shipments_. The _Supplier_ has earlier sent delivery instruction(s) to the _Forwarder_.
-* Scenario C - The company **Corp**, being either or both the _End User_ and the _Order Issuer_, requests to the company **Pulp**, a _Supplier_, the status of one or multiple of its expected _shipments_. The _Order Issuer_ has earlier sent the related orders to the _Supplier_, for the _End User_ to receive ordered products.
+* Scenario C - The company **Corp**, being the _Order Issuer_, requests to the company **Pulp**, a _Supplier_, the status of one or multiple of its expected _shipments_. The _Order Issuer_ has earlier sent the related orders to the _Supplier_, for the _End User_ to receive ordered products.
 
 ![Diagram 1 - Shipment Status Scenarios](shipment-status.png)
 
@@ -843,11 +843,11 @@ If all goes well, the company **Pulp** will receive a response like this:
 
 ### Scenario C
 
-The company **Corp**, being both the _End User_ and the _Order Issuer_, requests to the company **Pulp**, a _Supplier_, the status of one or multiple of its expected _shipments_. The _Order Issuer_ has earlier sent the related orders to the _Supplier_, for the _End User_ to receive ordered products.
+The company **Corp**, being the _Order Issuer_, requests to the company **Pulp**, a _Supplier_, the status of one or multiple of its expected _shipments_. The _Order Issuer_ has earlier sent the related orders to the _Supplier_, for the _End User_ to receive ordered products.
 
 #### Step 1 of Scenario C - Authentication
 
-The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to be authenticated, and gets an _access token_:
+The company **Corp**, being an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to be authenticated, and gets an _access token_:
 
 ```text
 $ curl --request POST \
@@ -907,7 +907,7 @@ $ echo $ACCESS_TOKEN
 
 #### Step 2 of Scenario C - List of Shipments
 
-The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the list of all its _Active shipments_:
+The company **Corp**, being an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the list of all its _Active shipments_:
 
 ```text
 $ curl --request GET \
@@ -987,7 +987,7 @@ If all goes well, the company **Corp** will receive a response like this:
 
 #### Step 3 of Scenario C - The Shipment is being Loaded
 
-The company **Corp**, being both an _End User_ and an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
+The company **Corp**, being an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
 ```text
 $ curl --request GET \
@@ -1041,7 +1041,7 @@ If all goes well, the company **Corp** will receive a response like this:
 
 #### Step 4 of Scenario C - The Shipment has Left
 
-The step 4 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment has left the _Supplier_'s location. Then, the company **Corp**, being both an _End User_ and an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
+The step 4 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment has left the _Supplier_'s location. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
 ```text
 $ curl --request GET \
@@ -1095,7 +1095,7 @@ If all goes well, the company **Corp** will receive a response like this:
 
 #### Step 5 of Scenario C - There is a Traffic Jam
 
-The step 5 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment arrival is getting delayed because of a traffic jam. Then, the company **Corp**, being both an _End User_ and an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
+The step 5 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment arrival is getting delayed because of a traffic jam. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
 ```text
 $ curl --request GET \
@@ -1149,7 +1149,7 @@ If all goes well, the company **Corp** will receive a response like this:
 
 #### Step 6 of Scenario C - The Shipment has Arrived
 
-The step 6 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment has arrived at the time estimated after the traffic jam was reported. Then, the company **Corp**, being both an _End User_ and an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
+The step 6 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment has arrived at the time estimated after the traffic jam was reported. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
 ```text
 $ curl --request GET \
@@ -1203,7 +1203,7 @@ If all goes well, the company **Corp** will receive a response like this:
 
 #### Step 7 of Scenario C - The Shipment is Completed
 
-The step 7 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment is completed. Then, the company **Corp**, being both an _End User_ and an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
+The step 7 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment is completed. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
 ```text
 $ curl --request GET \
