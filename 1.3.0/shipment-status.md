@@ -47,7 +47,7 @@ We recommend secure the access to the papiNet API endpoints using the [OAuth 2.0
 
 The company **Fast**, a _Forwarder_, requests to the company **Road**, a _Carrier_, the status of one or multiple of its _shipments_. The _Forwarder_ has earlier booked the transport from the _Carrier_.
 
-#### Step 1 of Scenario A - Authentication
+#### Interaction 1 of Scenario A - Authentication
 
 The company **Fast**, being a _Forwarder_, sends an API request to the company **Road**, being a _Carrier_, in order to be authenticated, and gets an _access token_:
 
@@ -107,7 +107,7 @@ $ echo $ACCESS_TOKEN
 9b875e37-42ec-4fb0-bced-0fb6724d4767
 ```
 
-#### Step 2 of Scenario A - List of Shipments
+#### Interaction 2 of Scenario A - List of Shipments
 
 The company **Fast**, being a _Forwarder_, sends an API request to the company **Road**, being a _Carrier_, in order to get the list of all its _Active shipments_:
 
@@ -180,7 +180,7 @@ If all goes well, the company **Fast** will receive a response like this:
 > You can see that the _Carrier_ has **6** _Active shipments_. The response only contains summary information, to get the details of the _shipment_ the `link` properties contains a prepared API endpoint giving direct access to the full _shipment_. You can also notice that the response only gives 2 _Active shipments_ out of the 6. This is because of the pagination mechanism.
 The values `SHP001` and `SHP002` is coming from the _Forwarder_ when it has earlier booked the transports from the _Carrier_.
 
-#### Step 3 of Scenario A - The Shipment is being Loaded
+#### Interaction 3 of Scenario A - The Shipment is being Loaded
 
 The company **Fast**, being a _Forwarder_, sends an API request to the company **Road**, being a _Carrier_, in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
 
@@ -229,7 +229,7 @@ If all goes well, the company **Fast** will receive a response like this:
 }
 ```
 
-#### Step 4 of Scenario A - The Shipment has Left
+#### Interaction 4 of Scenario A - The Shipment has Left
 
 The step 4 of the scenario A will simulate the situation in which the company **Road**, being a _Carrier_, reports that the shipment has left the _Supplier_'s location. Then, the company **Fast**, being a _Forwarder_, sends another similar API request to the company **Road** in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
 
@@ -278,7 +278,7 @@ If all goes well, the company **Fast** will receive a response like this:
 }
 ```
 
-#### Step 5 of Scenario A - There is a Traffic Jam
+#### Interaction 5 of Scenario A - There is a Traffic Jam
 
 The step 5 of the scenario A will simulate the situation in which the company **Road**, being a _Carrier_, reports that the shipment arrival is getting delayed because of a traffic jam. Then, the company **Fast**, being a _Forwarder_, sends another similar API request to the company **Road** in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
 
@@ -327,7 +327,7 @@ If all goes well, the company **Fast** will receive a response like this:
 }
 ```
 
-#### Step 6 of Scenario A - The Shipment has Arrived
+#### Interaction 6 of Scenario A - The Shipment has Arrived
 
 The step 6 of the scenario A will simulate the situation in which the company **Road**, being a _Carrier_, reports that the shipment has arrived at the time estimated after the traffic jam was reported. Then, the company **Fast**, being a _Forwarder_, sends another similar API request to the company **Road** in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
 
@@ -378,7 +378,7 @@ If all goes well, the company **Fast** will receive a response like this:
 
 > As the shipment is actually arrived, we have an "actualDateTimeOfArrival" and not "estimatedDateTimeOfArrival" anymore.
 
-#### Step 7 of Scenario A - The Shipment is Completed
+#### Interaction 7 of Scenario A - The Shipment is Completed
 
 The step 7 of the scenario A will simulate the situation in which the company **Road**, being a _Carrier_, reports that the shipment is completed. Then, the company **Fast**, being a _Forwarder_, sends another similar API request to the company **Road** in order to get the details of the first _shipment_ `c51d8903-01d1-485c-96ce-51a9be192207`:
 
@@ -431,7 +431,7 @@ If all goes well, the company **Fast** will receive a response like this:
 
 The company **Pulp**, a _Supplier_, requests to the company **Fast**, a _Forwarder_, the status of one or multiple of its _shipments_. The _Supplier_ has earlier sent delivery instruction(s) to the _Forwarder_.
 
-#### Step 1 of Scenario B - Authentication
+#### Interaction 1 of Scenario B - Authentication
 
 The company **Pulp**, being a _Supplier_, sends an API request to the company **Fast**, being a _Forwarder_, in order to be authenticated, and gets an _access token_:
 
@@ -491,7 +491,7 @@ $ echo $ACCESS_TOKEN
 e7e32320-7ec4-4d94-ba30-dfdaae6ef686
 ```
 
-#### Step 2 of Scenario B - List of Shipments
+#### Interaction 2 of Scenario B - List of Shipments
 
 The company **Pulp**, being a _Supplier_, sends an API request to the company **Fast**, being a _Forwarder_, in order to get the list of all its _Active shipments_:
 
@@ -571,7 +571,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 }
 ```
 
-#### Step 3 of Scenario B - The Shipment is being Loaded
+#### Interaction 3 of Scenario B - The Shipment is being Loaded
 
 The company **Pulp**, being a _Supplier_, sends an API request to the company **Fast**, being a _Forwarder_, in order to get the details of the first _shipment_ `3a9108d5-f7f0-42ae-9a29-eb302bdb8ede`:
 
@@ -625,7 +625,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 }
 ```
 
-#### Step 4 of Scenario B - The Shipment has Left
+#### Interaction 4 of Scenario B - The Shipment has Left
 
 The step 4 of the scenario B will simulate the situation in which the company **Fast**, being a _Forwarder_, reports that the shipment has left the _Supplier_'s location. Then, the company **Pulp**, being a _Supplier_, sends another similar API request to the company **Fast** in order to get the details of the first _shipment_ `3a9108d5-f7f0-42ae-9a29-eb302bdb8ede`:
 
@@ -679,7 +679,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 }
 ```
 
-#### Step 5 of Scenario B - There is a Traffic Jam
+#### Interaction 5 of Scenario B - There is a Traffic Jam
 
 The step 5 of the scenario B will simulate the situation in which the company **Fast**, being a _Forwarder_, reports that the shipment arrival is getting delayed because of a traffic jam. Then, the company **Pulp**, being a _Supplier_, sends another similar API request to the company **Fast** in order to get the details of the first _shipment_ `3a9108d5-f7f0-42ae-9a29-eb302bdb8ede`:
 
@@ -733,7 +733,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 }
 ```
 
-#### Step 6 of Scenario B - The Shipment has Arrived
+#### Interaction 6 of Scenario B - The Shipment has Arrived
 
 The step 6 of the scenario B will simulate the situation in which the company **Fast**, being a _Forwarder_, reports that the shipment has arrived at the time estimated after the traffic jam was reported. Then, the company **Pulp**, being a _Supplier_, sends another similar API request to the company **Fast** in order to get the details of the first _shipment_ `3a9108d5-f7f0-42ae-9a29-eb302bdb8ede`:
 
@@ -787,7 +787,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 }
 ```
 
-#### Step 7 of Scenario B - The Shipment is Completed
+#### Interaction 7 of Scenario B - The Shipment is Completed
 
 The step 7 of the scenario B will simulate the situation in which the company **Fast**, being a _Forwarder_, reports that the shipment is completed. Then, the company **Pulp**, being a _Supplier_, sends another similar API request to the company **Fast** in order to get the details of the first _shipment_ `3a9108d5-f7f0-42ae-9a29-eb302bdb8ede`:
 
@@ -845,7 +845,7 @@ If all goes well, the company **Pulp** will receive a response like this:
 
 The company **Corp**, being the _Order Issuer_, requests to the company **Pulp**, a _Supplier_, the status of one or multiple of its expected _shipments_. The _Order Issuer_ has earlier sent the related orders to the _Supplier_, for the _End User_ to receive ordered products.
 
-#### Step 1 of Scenario C - Authentication
+#### Interaction 1 of Scenario C - Authentication
 
 The company **Corp**, being an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to be authenticated, and gets an _access token_:
 
@@ -905,7 +905,7 @@ $ echo $ACCESS_TOKEN
 4da15489-edd6-434e-96fe-830fc8beba2d
 ```
 
-#### Step 2 of Scenario C - List of Shipments
+#### Interaction 2 of Scenario C - List of Shipments
 
 The company **Corp**, being an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the list of all its _Active shipments_:
 
@@ -985,7 +985,7 @@ If all goes well, the company **Corp** will receive a response like this:
 }
 ```
 
-#### Step 3 of Scenario C - The Shipment is being Loaded
+#### Interaction 3 of Scenario C - The Shipment is being Loaded
 
 The company **Corp**, being an _Order Issuer_, sends an API request to the company **Pulp**, being a _Supplier_, in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
@@ -1039,7 +1039,7 @@ If all goes well, the company **Corp** will receive a response like this:
 }
 ```
 
-#### Step 4 of Scenario C - The Shipment has Left
+#### Interaction 4 of Scenario C - The Shipment has Left
 
 The step 4 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment has left the _Supplier_'s location. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
@@ -1093,7 +1093,7 @@ If all goes well, the company **Corp** will receive a response like this:
 }
 ```
 
-#### Step 5 of Scenario C - There is a Traffic Jam
+#### Interaction 5 of Scenario C - There is a Traffic Jam
 
 The step 5 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment arrival is getting delayed because of a traffic jam. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
@@ -1147,7 +1147,7 @@ If all goes well, the company **Corp** will receive a response like this:
 }
 ```
 
-#### Step 6 of Scenario C - The Shipment has Arrived
+#### Interaction 6 of Scenario C - The Shipment has Arrived
 
 The step 6 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment has arrived at the time estimated after the traffic jam was reported. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 
@@ -1201,7 +1201,7 @@ If all goes well, the company **Corp** will receive a response like this:
 }
 ```
 
-#### Step 7 of Scenario C - The Shipment is Completed
+#### Interaction 7 of Scenario C - The Shipment is Completed
 
 The step 7 of the scenario C will simulate the situation in which the company **Pulp**, being a _Supplier_, reports that the shipment is completed. Then, the company **Corp**, being an _Order Issuer__, sends another similar API request to the company **Pulp** in order to get the details of the first _shipment_ `d4fd1f2c-642f-4df8-a7b3-139cf9d63d17`:
 

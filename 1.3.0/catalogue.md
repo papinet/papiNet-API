@@ -89,7 +89,7 @@ This step is not necessary if the _seller_ supports anonymous requests.
 
 An anonymous _customer_ gets the list of all _seller-products_ on offer; and gets the details of a selected _seller-product_.
 
-#### Step 1 of Scenario A
+#### Interaction 1 of Scenario A
 
 The anonymous _customer_ sends an API request to the _seller_ in order to get the list of all _seller-products_ on offer:
 
@@ -230,7 +230,7 @@ If all goes well, the anonymous _customer_ will receive a response like this:
 
 > You can see that the _seller_ has **30** _seller-products_ offered to the anonymous _customer_. The response only contains a few properties per _seller-product_, to get the details of a specific _seller-product_, you can use the `link` property that contains a prepared URL path giving direct access to the full _seller-product_ details. You can also notice that the response only gives 5 _seller-products_ out of the 30. This is because of the pagination mechanism.
 
-#### Step 2 of Scenario A
+#### Interaction 2 of Scenario A
 
 Then, the anonymous _customer_ sends an API request to the _seller_ in order to get the details of the first _seller-product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`:
 
@@ -370,7 +370,7 @@ If all goes well, the anonymous _customer_ will receive a response like this:
 
 An authenticated _customer_ gets the list of all _seller-products_ on offer for that _customer_; gets the details of a specific _seller-product_; creates a _customer-article_ based on this specific _seller-product_; and gets the list of all _customer-articles_ that have been created.
 
-#### Step 1 of Scenario B - Authentication
+#### Interaction 1 of Scenario B - Authentication
 
 The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
 
@@ -429,7 +429,7 @@ $ echo $ACCESS_TOKEN
 fe325ec2-ec40-4225-80a9-5a8cec6b4f07
 ```
 
-#### Step 2 of Scenario B
+#### Interaction 2 of Scenario B
 
 The authenticated _customer_ sends an API request to the _seller_ in order to get the list of all _seller-products_ on offer:
 
@@ -572,7 +572,7 @@ If all goes well, the authenticated _Party_ will receive a response like this:
 
 > You can see that the _seller_ has **30** _seller-products_ offered to the authenticated _customer_. The response only contains a few properties per _seller-product_, to get the details of a specific _seller-product_, you can use the `link` property that contains a prepared URL path giving direct access to the full _seller-product_ details. You can also notice that the response only gives 5 _seller-products_ out of the 30. This is because of the pagination mechanism.
 
-#### Step 3 of Scenario B
+#### Interaction 3 of Scenario B
 
 Then, the _customer_ sends an API request to the _seller_ in order to get the details of the first _seller-product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`:
 
@@ -730,7 +730,7 @@ We can see that this _seller-product_ has
   * `76 Millimeter`
   * `150 Millimeter`
 
-#### Step 4 of Scenario B
+#### Interaction 4 of Scenario B
 
 The _customer_ will now create a new _customer-article_ based on the first _seller-product_ `e7bfd8a6-edde-48ab-b304-b7d4f1d007a6`. This _customer-article_ will fix the values of the `basisWeight`, `bulk`, `width`, `diameter` and `coreDiameter`. If the _customer_ is not absolutely sure that the _seller_ will not change the properties of this _seller-product_, then all the other important properties, such as `finishType` and `printType` MUST also be copied to the _customer-article_ definition.
 
@@ -815,7 +815,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Step 5 of Scenario B
+#### Interaction 5 of Scenario B
 
 At any time, the _customer_ can list all the _customer-articles_ that have been created:
 
@@ -865,7 +865,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Step 6 of Scenario B
+#### Interaction 6 of Scenario B
 
 At any time, the _customer_ can get the details of a specific _customer-articles_ that has been created:
 
@@ -930,7 +930,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 An authenticated _customer_ gets the list of all _seller-products_ on offer for that _customer_; gets the details of a specific _seller-product_, using the `sellerProductOtherIdentifier` to refer to it (and not its UUID); creates a _customer-article_ based on this specific _seller-product_, using the `sellerProductOtherIdentifier` to refer to it (and not its UUID); and gets the list of all _customer-articles_ that have been created.
 
-#### Step 1 of Scenario C - Authentication
+#### Interaction 1 of Scenario C - Authentication
 
 The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
 
@@ -989,7 +989,7 @@ $ echo $ACCESS_TOKEN
 fe325ec2-ec40-4225-80a9-5a8cec6b4f07
 ```
 
-#### Step 2 of Scenario C
+#### Interaction 2 of Scenario C
 
 The authenticated _customer_ sends an API request to the _seller_ in order to get the list of all _seller-products_ on offer:
 
@@ -1132,7 +1132,7 @@ If all goes well, the authenticated _Party_ will receive a response like this:
 
 > You can see that the _seller_ has **30** _seller-products_ offered to the authenticated _customer_. The response only contains a few properties per _seller-product_, to get the details of a specific _seller-product_, you can use the `link` property that contains a prepared URL path giving direct access to the full _seller-product_ details. You can also notice that the response only gives 5 _seller-products_ out of the 30. This is because of the pagination mechanism.
 
-#### Step 3 of Scenario C
+#### Interaction 3 of Scenario C
 
 Then, the _customer_ sends an API request to the _seller_ in order to get the details of the first _seller-product_ using `{ "value": "galerie-brite", "assignedBy": "Seller" }` to refer to it (and not its UUID):
 
@@ -1331,7 +1331,7 @@ We can see that this _seller-product_ has
   * `76 Millimeter`
   * `150 Millimeter`
 
-#### Step 4 of Scenario C
+#### Interaction 4 of Scenario C
 
 The _customer_ will now create a new _customer-article_ based on the first _seller-product_ `{ "value": "galerie-brite", "assignedBy": "Seller" }`. This _customer-article_ will fix the values of the `basisWeight`, `bulk`, `width`, `diameter` and `coreDiameter`. If the _customer_ is not absolutely sure that the _seller_ will not change the properties of this _seller-product_, then all the other important properties, such as `finishType` and `printType` MUST also be copied to the _customer-article_ definition.
 
@@ -1418,7 +1418,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Step 5 of Scenario C
+#### Interaction 5 of Scenario C
 
 At any time, the _customer_ can list all the _customer-articles_ that have been created:
 
@@ -1468,7 +1468,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Step 6 of Scenario C
+#### Interaction 6 of Scenario C
 
 At any time, the _customer_ can get the details of a specific _customer-articles_ that has been created:
 

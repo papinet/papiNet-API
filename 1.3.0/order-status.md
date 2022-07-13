@@ -136,7 +136,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 We have prepared the scenario A on the order `1001`.
 
-#### Step 1 of Scenario A
+#### Interaction 1 of Scenario A
 
 The step 1 of the scenario A will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
@@ -185,7 +185,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the order `1001` has been well received by the _Supplier_ and is _Active_. Its first (and unique) line is still `Pending` and can still be changed (`"changeable": true`).
 
-#### Step 2 of Scenario A
+#### Interaction 2 of Scenario A
 
 The step 2 of the scenario A will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
@@ -245,7 +245,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is now `Confirmed`, but can still be changed (`"changeable": true`), as the quantities have been _Confirmed_.
 
-#### Step 3 of Scenario A
+#### Interaction 3 of Scenario A
 
 The step 3 of the scenario A will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
@@ -305,7 +305,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
-#### Step 4 of Scenario A
+#### Interaction 4 of Scenario A
 
 The step 4 of the scenario A will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
@@ -377,7 +377,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ProductionCompleted`. The quantities have been updated accordingly, using the context `Produced`.
 
-#### Step 5 of Scenario A
+#### Interaction 5 of Scenario A
 
 The step 5 of the scenario A will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that the products have left the _Supplier_ location.  Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
@@ -461,7 +461,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ShipmentCompleted`. The quantities have been updated accordingly, using the context `Shipped`.
 
-#### Step 6 of Scenario A
+#### Interaction 6 of Scenario A
 
 The step 6 of the scenario A will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line.  Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `6a0d16db-546f-4c19-b288-ddd2a250f064`:
 
@@ -603,7 +603,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 We have prepared the scenario B on the order `1002`.
 
-#### Step 1 of Scenario B
+#### Interaction 1 of Scenario B
 
 The step 1 of the scenario B will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -652,7 +652,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the order `1002` has been well received by the _Supplier_ and is _Active_. Its first (and unique) line is still `Pending` and can still be changed (`"changeable": true`).
 
-#### Step 2 of Scenario B
+#### Interaction 2 of Scenario B
 
 The step 2 of the scenario B will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -712,7 +712,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is now `Confirmed`, but can still be changed (`"changeable": true`), as the quantities have been _Confirmed_.
 
-#### Step 3 of Scenario B
+#### Interaction 3 of Scenario B
 
 The step 3 of the scenario B will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -772,7 +772,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
-#### Step 4 of Scenario B
+#### Interaction 4 of Scenario B
 
 The step 4 of the scenario B will simulate the situation in which the _Supplier_ has partially completed the production (or conversion) process for one reel of the the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -844,7 +844,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still on the status `Confirmed`, while quantities have been updated, using the context `Produced`.
 
-#### Step 5 of Scenario B
+#### Interaction 5 of Scenario B
 
 The step 5 of the scenario B will simulate the situation in which the _Supplier_ has continued to partially completed the production (or conversion) process for a second reel of the the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -916,7 +916,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still on the status `Confirmed`, while quantities have been updated, using the context `Produced`.
 
-#### Step 6 of Scenario B
+#### Interaction 6 of Scenario B
 
 The step 6 of the scenario A will simulate the situation in which the _Supplier_ has finally completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -988,7 +988,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ProductionCompleted`. The quantities have been updated accordingly, using the context `Produced`.
 
-#### Step 7 of Scenario B
+#### Interaction 7 of Scenario B
 
 The step 7 of the scenario A will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that the products have left the _Supplier_ location. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -1072,7 +1072,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ShipmentCompleted`. The quantities have been updated accordingly, using the context `Shipped`.
 
-#### Step 8 of Scenario B
+#### Interaction 8 of Scenario B
 
 The step 8 of the scenario A will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `778fe5cb-f7ac-4493-b492-25fe98df67c4`:
 
@@ -1260,7 +1260,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 }
 ```
 
-#### Step 1 of Scenario C
+#### Interaction 1 of Scenario C
 
 The step 1 of the scenario C will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1308,7 +1308,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the order `1003` has been well received by the _Supplier_ and is _Active_. Its first (and unique) line is still `Pending` and can still be changed (`"changeable": true`).
 
-#### Step 2 of Scenario C
+#### Interaction 2 of Scenario C
 
 The step 2 of the scenario C will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1368,7 +1368,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is now `Confirmed`, but can still be changed (`"changeable": true`), as the quantities have been _Confirmed_.
 
-#### Step 3 of Scenario C
+#### Interaction 3 of Scenario C
 
 The step 3 of the scenario C will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1428,7 +1428,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
-#### Step 4 of Scenario C
+#### Interaction 4 of Scenario C
 
 The step 4 of the scenario C will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1500,7 +1500,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ProductionCompleted`. The quantities have been updated accordingly, using the context `Produced`.
 
-#### Step 5 of Scenario C
+#### Interaction 5 of Scenario C
 
 The step 5 of the scenario C will simulate the situation in which the _Supplier_ has partially completed the shipment for the order line. It means that a part of the products have left the _Supplier_ location. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1584,7 +1584,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still on the status `ProductionCompleted`, while quantities have been updated, using the context `Shipped`.
 
-#### Step 6 of Scenario C
+#### Interaction 6 of Scenario C
 
 The step 6 of the scenario C will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that all the products have left the _Supplier_ location. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1668,7 +1668,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ShipmentCompleted`. The quantities have been updated accordingly, using the context `Shipped`.
 
-#### Step 7 of Scenario C
+#### Interaction 7 of Scenario C
 
 The step 7 of the scenario C will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends an API request to the _Supplier_ in order to get the details of the second order `c898aa54-8ebb-40ab-a0b9-3d979e082a9e`:
 
@@ -1760,7 +1760,7 @@ It shows that the first (and unique) line, as well as the order `1003`, has now 
 
 ### Scenario D - Multiple Productions and Multiple Shipments
 
-#### Step 1 of Scenario D
+#### Interaction 1 of Scenario D
 
 The step 1 of the scenario D will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -1808,7 +1808,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the order `1004` has been well received by the _Supplier_ and is _Active_. Its first (and unique) line is still `Pending` and can still be changed (`"changeable": true`).
 
-#### Step 2 of Scenario D
+#### Interaction 2 of Scenario D
 
 The step 2 of the scenario D will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -1868,7 +1868,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is now `Confirmed`, but can still be changed (`"changeable": true`), as the quantities have been _Confirmed_.
 
-#### Step 3 of Scenario D
+#### Interaction 3 of Scenario D
 
 The step 3 of the scenario D will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -1928,7 +1928,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
-#### Step 4 of Scenario D
+#### Interaction 4 of Scenario D
 
 The step 4 of the scenario D will simulate the situation in which the _Supplier_ has partially completed the production (or conversion) process for some reels of the the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -2000,7 +2000,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still on the status `Confirmed`, while quantities have been updated, using the context `Produced`.
 
-#### Step 5 of Scenario D
+#### Interaction 5 of Scenario D
 
 The step 5 of the scenario D will simulate the situation in which the _Supplier_ has partially completed the shipment for the order line, while partially completed the production (or conversion) process for some reels of the the order line. It means that a part of the products have left the _Supplier_ location. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -2084,7 +2084,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still on the status `Confirmed`, while quantities have been updated, using the contexts `Produced`and `Shipped`.
 
-#### Step 6 of Scenario D
+#### Interaction 6 of Scenario D
 
 The step 6 of the scenario D will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line, while partially completed the shipment for the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -2168,7 +2168,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ProductionCompleted`, while quantities have been updated, using the contexts `Produced`and `Shipped`.
 
-#### Step 7 of Scenario D
+#### Interaction 7 of Scenario D
 
 The step 7 of the scenario D will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line, while still partially completed the shipment for the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -2252,7 +2252,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still on the status `ProductionCompleted`, while quantities have been updated, using the context `Shipped`.
 
-#### Step 8 of Scenario D
+#### Interaction 8 of Scenario D
 
 The step 8 of the scenario D will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that all the products have left the _Supplier_ location. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -2336,7 +2336,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ShipmentCompleted`. The quantities have been updated accordingly, using the context `Shipped`.
 
-#### Step 9 of Scenario D
+#### Interaction 9 of Scenario D
 
 The step 9 of the scenario D will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `fb441640-e40b-4d91-8930-61ebf981da63`:
 
@@ -2428,7 +2428,7 @@ It shows that the first (and unique) line, as well as the order `1004`, has now 
 
 ### Scenario E - Under Shipment
 
-#### Step 1 of Scenario E
+#### Interaction 1 of Scenario E
 
 The step 1 of the scenario E will simulate the situation in which the (unique) line is `Pending` and can still be changed (`"changeable": true`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
@@ -2476,7 +2476,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the order `1005` has been well received by the _Supplier_ and is _Active_. Its first (and unique) line is still `Pending` and can still be changed (`"changeable": true`).
 
-#### Step 2 of Scenario E
+#### Interaction 2 of Scenario E
 
 The step 2 of the scenario E will simulate the situation in which the _Supplier_ has processed the order and confirmed the ordered quantities. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
@@ -2536,7 +2536,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is now `Confirmed`, but can still be changed (`"changeable": true`), as the quantities have been _Confirmed_.
 
-#### Step 3 of Scenario E
+#### Interaction 3 of Scenario E
 
 The step 3 of the scenario E will simulate the situation in which the _Supplier_ has started the production (or conversion) process for the order line, meaning that it can't be changed anymore (`"changeable": false`). Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
@@ -2596,7 +2596,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line is still `Confirmed`, but cannot be changed anymore (`"changeable": false`).
 
-#### Step 4 of Scenario E
+#### Interaction 4 of Scenario E
 
 The step 4 of the scenario E will simulate the situation in which the _Supplier_ has completed the production (or conversion) process for the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
@@ -2668,7 +2668,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ProductionCompleted`. The quantities have been updated accordingly, using the context `Produced`.
 
-#### Step 5 of Scenario E
+#### Interaction 5 of Scenario E
 
 The step 5 of the scenario E will simulate the situation in which the _Supplier_ has completed the shipment for the order line. It means that all the products have left the _Supplier_ location. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
@@ -2752,7 +2752,7 @@ If all goes well, the _Order Issuer_ will receive a response like this:
 
 It shows that the first (and unique) line has now reached the status `ShipmentCompleted`, despite the fact that `Shipped` quantities are less than the `Produced` quantities.
 
-#### Step 6 of Scenario E
+#### Interaction 6 of Scenario E
 
 The step 6 of the scenario E will simulate the situation in which the _Supplier_ has sent an invoice referring to the order line. Then, the _Order Issuer_ sends another similar API request to the _Supplier_ in order to get the details of the first order `12e8667f-14ed-49e6-9610-dc58dee95560`:
 
