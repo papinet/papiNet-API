@@ -905,6 +905,11 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "54",
       "UOM": "GramsPerSquareMeter"
     },
+    "bulk": {
+      "value": 0.92,
+      "UOM": "CubicCentimeterPerGram"
+    },
+    "format": "Reel",
     "width": {
       "value": 900,
       "UOM": "Millimeter"
@@ -1326,7 +1331,7 @@ We can see that this _seller-product_ has
   * `76 Millimeter`
   * `150 Millimeter`
 
-#### Step 4 of Scenario B
+#### Step 4 of Scenario C
 
 The _customer_ will now create a new _customer-article_ based on the first _seller-product_ `{ "value": "galerie-brite", "assignedBy": "Seller" }`. This _customer-article_ will fix the values of the `basisWeight`, `bulk`, `width`, `diameter` and `coreDiameter`. If the _customer_ is not absolutely sure that the _seller_ will not change the properties of this _seller-product_, then all the other important properties, such as `finishType` and `printType` MUST also be copied to the _customer-article_ definition.
 
@@ -1537,6 +1542,11 @@ If all goes well, the _customer_ will receive a response like this:
       "value": "54",
       "UOM": "GramsPerSquareMeter"
     },
+    "bulk": {
+      "value": 0.92,
+      "UOM": "CubicCentimeterPerGram"
+    },
+    "format": "Reel",
     "width": {
       "value": 900,
       "UOM": "Millimeter"
