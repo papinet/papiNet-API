@@ -25,6 +25,12 @@ It's the `"propertyName": "propertyValue"` part, that we call a _property_.
 
 ## Design Rules
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119).
+
 ### Rule 1
 
 We want to restrict enumerated values to the minimum list that applies within the context. As a consequence, we will always define objects **locally**!
+
+### Rule 2 - How to handle empty collection
+
+An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. We will enforce that rule by not allowing empty array in the non-empty response's body using `minContains: 1` (new in JSON Schema New in draft 2019-09) when it will be supported by OpenAPI.

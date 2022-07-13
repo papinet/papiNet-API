@@ -1505,9 +1505,16 @@ components:
 
     ListOfOrders:
       type: object
+      required:
+        - numberOfOrders
+        - orders
       properties:
+        numberOfOrders:
+          type: integer
+          minimum: 1
         orders:
           type: array
+          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
           items:
             $ref: '#/components/schemas/OrderHeader'
         links:
@@ -1748,10 +1755,15 @@ components:
     ListOfShipments:
       type: object
       required:
+        - numberOfShipments
         - shipments
       properties:
+        numberOfShipments:
+          type: integer
+          minimum: 1
         shipments:
           type: array
+          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
           items:
             $ref: '#/components/schemas/ShipmentHeader'
         links:
