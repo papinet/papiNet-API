@@ -1,2 +1,5 @@
-# Dependency directories
+.vscode/*
+
 node_modules/
+
+*.exe
