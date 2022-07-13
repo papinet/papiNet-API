@@ -34,3 +34,11 @@ We want to restrict enumerated values to the minimum list that applies within th
 ### Rule 2 - How to handle empty collection
 
 An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. We will enforce that rule by not allowing empty array in the non-empty response's body using `minContains: 1` (new in JSON Schema New in draft 2019-09) when it will be supported by OpenAPI.
+
+### Rule 3 - minLength of string
+
+When we make a property with type `string` required, we ALWAYS mean that this property MUST communicate a non-empty information, therefore we will always add the constraint `minLength: 1`.
+
+When a property with type `string` is not required and there is no information to be communicated, the property MUST NOT appear in the reponse's body. We will enfore that rule by always add the constraint `minLength: 1` to all properties with type `string`.
+
+This `minLength: 1` constraint will not be added to the property with type `string` that already have such a contraint via `enum` or `format`. Of course, we can have a more restrictive constraint with more than 1 character minimum, but not less!

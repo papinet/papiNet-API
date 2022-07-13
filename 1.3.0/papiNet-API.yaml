@@ -445,21 +445,25 @@ components:
           properties:
             href:
               type: string
+              minLength: 1
         prev:
           type: object
           properties:
             href:
               type: string
+              minLength: 1
         next:
           type: object
           properties:
             href:
               type: string
+              minLength: 1
         last:
           type: object
           properties:
             href:
               type: string
+              minLength: 1
 
     Paper:
       type: object
@@ -638,6 +642,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             agency:
               type: string
               enum:
@@ -654,6 +659,7 @@ components:
           type: array
           items:
             type: string
+            minLength: 1
         recycled:
           type: array
           items:
@@ -847,6 +853,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             agency:
               type: string
               enum:
@@ -899,6 +906,7 @@ components:
                 properties:
                   value:
                     type: string
+                    minLength: 1
                   assignedBy:
                     type: string
                     enum:
@@ -911,6 +919,7 @@ components:
                   - Inactive
               name:
                 type: string
+                minLength: 1
               link:
                 type: string
                 format: uri-reference
@@ -923,8 +932,11 @@ components:
                   properties:
                     value:
                       type: string
+                      minLength: 1
                     language:
                       type: string
+                      minLength: 3
+                      maxLength: 3
                       description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
               productType:
                 type: string
@@ -949,6 +961,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             assignedBy:
               type: string
               enum:
@@ -961,6 +974,7 @@ components:
             - Inactive
         name:
           type: string
+          minLength: 1
         link:
           type: string
           format: uri-reference
@@ -973,8 +987,11 @@ components:
             properties:
               value:
                 type: string
+                minLength: 1
               language:
                 type: string
+                minLength: 3
+                maxLength: 3
                 description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
         paper:
           $ref: '#/components/schemas/Paper'
@@ -991,6 +1008,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             assignedBy:
               type: string
               enum:
@@ -1006,6 +1024,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             assignedBy:
               type: string
               enum:
@@ -1023,6 +1042,7 @@ components:
             - Inactive
         name:
           type: string
+          minLength: 1
         link:
           type: string
           format: uri-reference
@@ -1035,8 +1055,11 @@ components:
             properties:
               value:
                 type: string
+                minLength: 1
               language:
                 type: string
+                minLength: 3
+                maxLength: 3
                 description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
         paper:
           $ref: '#/components/schemas/Paper'
@@ -1069,6 +1092,7 @@ components:
                 properties:
                   value:
                     type: string
+                    minLength: 1
                   assignedBy:
                     type: string
                     enum:
@@ -1084,6 +1108,7 @@ components:
                 properties:
                   value:
                     type: string
+                    minLength: 1
                   assignedBy:
                     type: string
                     enum:
@@ -1101,6 +1126,7 @@ components:
                   - Inactive
               name:
                 type: string
+                minLength: 1
               link:
                 type: string
                 format: uri-reference
@@ -1113,8 +1139,11 @@ components:
                   properties:
                     value:
                       type: string
+                      minLength: 1
                     language:
                       type: string
+                      minLength: 3
+                      maxLength: 3
                       description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
               productType:
                 type: string
@@ -1139,6 +1168,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             assignedBy:
               type: string
               enum:
@@ -1154,6 +1184,7 @@ components:
           properties:
             value:
               type: string
+              minLength: 1
             assignedBy:
               type: string
               enum:
@@ -1171,6 +1202,7 @@ components:
             - Inactive
         name:
           type: string
+          minLength: 1
         link:
           type: string
           format: uri-reference
@@ -1183,8 +1215,11 @@ components:
             properties:
               value:
                 type: string
+                minLength: 1
               language:
                 type: string
+                minLength: 3
+                maxLength: 3
                 description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
         paper:
           $ref: '#/components/schemas/Paper'
@@ -1207,6 +1242,7 @@ components:
                       properties:
                         locationURL:
                           type: string
+                          format: uri-reference
                         quantities:
                           type: array
                           items:
@@ -1360,6 +1396,7 @@ components:
                       properties:
                         locationURL:
                           type: string
+                          format: uri-reference
                         quantities:
                           type: array
                           items:
@@ -1500,8 +1537,10 @@ components:
       properties:
         name:
           type: string
+          minLength: 1
         country:
           type: string
+          minLength: 1
         latitude:
           type: number
         longitude:
@@ -1542,6 +1581,7 @@ components:
           format: uuid
         orderNumber:
           type: string
+          minLength: 1
         orderStatus:
           type: string
           # Enumeration for 'orderStatus':
@@ -1693,6 +1733,7 @@ components:
               type: number
             name:
               type: string
+              minLength: 1
 
     ShipmentHeader:
       type: object
@@ -1706,6 +1747,7 @@ components:
           format: uuid
         shipmentNumber:
           type: string
+          minLength: 1
         shipmentReferences:
           type: array
           items:
@@ -1758,6 +1800,7 @@ components:
             - OrderIssuer
         value:
           type: string
+          minLength: 1
 
     ListOfShipments:
       type: object
