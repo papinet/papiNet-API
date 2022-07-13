@@ -439,27 +439,36 @@ components:
 
     PaginationLinks:
       type: object
+      # none of the properties are required.
       properties:
         first:
           type: object
+          required:
+            - href
           properties:
             href:
               type: string
               format: uri-reference
         prev:
           type: object
+          required:
+            - href
           properties:
             href:
               type: string
               format: uri-reference
         next:
           type: object
+          required:
+            - href
           properties:
             href:
               type: string
               format: uri-reference
         last:
           type: object
+          required:
+            - href
           properties:
             href:
               type: string
@@ -883,6 +892,7 @@ components:
       required:
         - numberOfSellerProducts
         - sellerProducts
+        # links is not required
       properties:
         numberOfSellerProducts:
           type: integer
@@ -895,6 +905,7 @@ components:
             required:
               - id
               - name
+              - productType
             properties:
               id:
                 type: string
@@ -1069,6 +1080,7 @@ components:
       required:
         - numberOfCustomerArticles
         - customerArticles
+        # links is not required
       properties:
         numberOfCustomerArticles:
           type: integer
@@ -1081,6 +1093,7 @@ components:
             required:
               - id
               - name
+              - productType
             properties:
               id:
                 type: string
@@ -1226,6 +1239,8 @@ components:
 
     CheckAvailabilityOfSellerProductById:
       type: object
+      required:
+        - sellerProducts
       properties:
         sellerProducts:
           type: array
@@ -1234,11 +1249,16 @@ components:
             allOf:
               - $ref: '#/components/schemas/GetSellerProductById'
               - type: object
+                required:
+                  - locations
                 properties:
                   locations:
                     type: array
                     items:
                       type: object
+                      required:
+                        - locationURL
+                        - quantities
                       properties:
                         locationURL:
                           type: string
@@ -1247,6 +1267,11 @@ components:
                           type: array
                           items:
                             type: object
+                            required:
+                              - quantityContext
+                              - quantityType
+                              - quantityValue
+                              - quantityUOM
                             properties:
                               quantityContext:
                                 type: string
@@ -1318,6 +1343,11 @@ components:
                                 type: array
                                 items:
                                   type: object
+                                  required:
+                                    - quantityContext
+                                    - quantityType
+                                    - quantityValue
+                                    - quantityUOM
                                   properties:
                                     quantityContext:
                                       type: string
@@ -1380,19 +1410,26 @@ components:
 
     CheckAvailabilityOfCustomerArticleById:
       type: object
+      required:
+        - customerArticles
       properties:
-        sellerProducts:
+        customerArticles:
           type: array
           items:
             type: object
             allOf:
               - $ref: '#/components/schemas/GetCustomerArticleById'
               - type: object
+                required:
+                  - locations
                 properties:
                   locations:
                     type: array
                     items:
                       type: object
+                      required:
+                        - locationURL
+                        - quantities
                       properties:
                         locationURL:
                           type: string
@@ -1401,6 +1438,11 @@ components:
                           type: array
                           items:
                             type: object
+                            required:
+                              - quantityContext
+                              - quantityType
+                              - quantityValue
+                              - quantityUOM
                             properties:
                               quantityContext:
                                 type: string
@@ -1472,6 +1514,11 @@ components:
                                 type: array
                                 items:
                                   type: object
+                                  required:
+                                    - quantityContext
+                                    - quantityType
+                                    - quantityValue
+                                    - quantityUOM
                                   properties:
                                     quantityContext:
                                       type: string
@@ -1534,6 +1581,8 @@ components:
 
     GetLocationById:
       type: object
+      required:
+        - name
       properties:
         name:
           type: string
@@ -1553,6 +1602,7 @@ components:
       required:
         - numberOfOrders
         - orders
+        # links is not required
       properties:
         numberOfOrders:
           type: integer
@@ -1622,6 +1672,11 @@ components:
           type: array
           items:
             type: object
+            required:
+              - quantityContext
+              - quantityType
+              - quantityValue
+              - quantityUOM
             properties:
               quantityContext:
                 type: string
@@ -1807,6 +1862,7 @@ components:
       required:
         - numberOfShipments
         - shipments
+        # links is not required
       properties:
         numberOfShipments:
           type: integer
