@@ -1831,6 +1831,7 @@ components:
       required:
         - id
         - shipmentNumber
+        - shipmentReferences
         - shipmentStatus
       properties:
         id:
