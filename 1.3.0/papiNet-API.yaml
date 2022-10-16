@@ -205,7 +205,7 @@ paths:
           description: Not Found
 
   '/customer-articles':
-    # POST /customer-articles ~ CreateCustomerArticle
+    # POST /customer-articles ~ CreateCustomerArticle => GetCustomerArticleById
     post:
       summary: Create a `customer-article`
       description: Creates a `customer-article` defined by the `customer` based on a `seller-product`.
@@ -222,9 +222,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateCustomerArticle'
+                $ref: '#/components/schemas/GetCustomerArticleById'
 
-    # GET /customer-articles ~ ListCustomerArticles
+    # GET /customer-articles ~ => ListCustomerArticles
     get:
       summary: List `customer-articles`
       description: Gets a paginated list of all `customer-articles` defined by the `customer`.
@@ -273,7 +273,7 @@ paths:
           description: No Content
 
   '/customer-articles/{customerArticleId}':
-    # PUT /customer-articles/{customerArticleId}
+    # PUT /customer-articles/{customerArticleId} ~ CreateCustomerArticle => GetCustomerArticleById
     put:
       summary: Create or modify a `customer-article`
       description: Creates or modifies (with a full representation) a `customer-article` defined by the `customer` based on a `seller-product`.
@@ -298,15 +298,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateCustomerArticle'
+                $ref: '#/components/schemas/GetCustomerArticleById'
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateCustomerArticle'
+                $ref: '#/components/schemas/GetCustomerArticleById'
 
-    # PATCH /customer-articles/{customerArticleId}
+    # PATCH /customer-articles/{customerArticleId} ~ CreateCustomerArticle => GetCustomerArticleById
     patch:
       summary: Modify a `customer-article`
       description: Modifies (with a partial representation) a specific `customer-article`.
@@ -331,9 +331,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateCustomerArticle'
+                $ref: '#/components/schemas/GetCustomerArticleById'
 
-    # GET /customer-articles/{customerArticleId} ~ GetCustomerArticleById
+    # GET /customer-articles/{customerArticleId} ~ => GetCustomerArticleById
     get:
       summary: Get a `customer-article`
       description: Gets the details of a specific `customer-article`.
