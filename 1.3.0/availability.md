@@ -245,6 +245,7 @@ If all goes well, the _customer_ will receive a response like this:
 <!-- RESPONSE: Interaction 3 of Scenario A -->
 ```json
 {
+  "id": "578e5b28-3ce0-4952-a2a9-bf2eec3ad7a5",
   "name": "Sappi Germany"
 }
 ```
@@ -419,10 +420,13 @@ If all goes well, the _customer_ will receive a response like this:
 <!-- RESPONSE: Interaction 3 of Scenario B -->
 ```json
 {
+  "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
   "name": "Sappi Lanaken Mill",
   "country": "BE",
-  "latitude": 50.8827787,
-  "longitude": 5.6375872
+  "coordinatesWGS84": {
+    "latitude": 50.8827787,
+    "longitude": 5.6375872
+  }
 }
 ```
 
@@ -444,10 +448,13 @@ If all goes well, the _customer_ will receive a response like this:
 <!-- RESPONSE: Interaction 4 of Scenario B -->
 ```json
 {
+  "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
   "name": "Sappi Alfeld Mill",
   "country": "BE",
-  "latitude": 51.985233,
-  "longitude": 9.8200211
+  "coordinatesWGS84": {
+    "latitude": 51.985233,
+    "longitude": 9.8200211
+  }
 }
 ```
 
@@ -600,7 +607,7 @@ If all goes well, the _customer_ will receive a response like this:
           "plannedQuantities": [
             {
               "estimatedAvailableDateTime": "2022-02-04T09:00:00Z",
-              "quantites": [
+              "quantities": [
                 {
                   "quantityContext": "InTransit",
                   "quantityType": "GrossWeight",
@@ -641,9 +648,12 @@ If all goes well, the _customer_ will receive a response like this:
 <!-- RESPONSE: Interaction 3 of Scenario C -->
 ```json
 {
+  "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
   "name": "Sappi Lanaken Mill",
   "country": "BE",
-  "latitude": 50.8827787,
-  "longitude": 5.6375872
+  "coordinatesWGS84": {
+    "latitude": 50.8827787,
+    "longitude": 5.6375872
+  }
 }
 ```

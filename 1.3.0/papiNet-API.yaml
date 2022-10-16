@@ -907,6 +907,17 @@ components:
           items:
             $ref: '#/components/schemas/Paper/properties/grainDirection'
 
+    CoordinatesWGS84:
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number
+
     ListSellerProducts:
       type: object
       required:
@@ -1634,10 +1645,8 @@ components:
         country:
           type: string
           minLength: 1
-        latitude:
-          type: number
-        longitude:
-          type: number
+        coordinatesWGS84:
+          $ref: '#/components/schemas/CoordinatesWGS84'
 
 # ---
 
@@ -1827,13 +1836,11 @@ components:
         location:
           type: object
           properties:
-            latitude:
-              type: number
-            longitude:
-              type: number
             name:
               type: string
               minLength: 1
+            coordinatesWGS84:
+              $ref: '#/components/schemas/CoordinatesWGS84'
 
     ShipmentHeader:
       type: object
