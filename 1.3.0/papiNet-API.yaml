@@ -1364,6 +1364,9 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            required:
+                              - estimatedAvailableDateTime
+                              - quantities
                             properties:
                               estimatedAvailableDateTime:
                                 type: string
@@ -1540,6 +1543,9 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            required:
+                              - estimatedAvailableDateTime
+                              - quantities
                             properties:
                               estimatedAvailableDateTime:
                                 type: string
