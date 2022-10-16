@@ -54,3 +54,7 @@ The response body always contains the full representation of the resource, inclu
 ### Rule 6 - Avoid lookup optimization
 
 When a response contains the reference to something (e.g. a _seller-product_), it MUST only contain the identifier of that thing and any additional information MUST be retrieved via a subsequent lookup. There should not be any lookup optimization combining the identifier with additional information.
+
+### Rule 7 - Array MUST be defined to have at least one element
+
+When papiNet defines a property of type `array`, papiNet ALWAYS means that this array MUST have at least one element; therefore the constraint `minItems: 1` will always be added.

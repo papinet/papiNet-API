@@ -501,6 +501,7 @@ components:
             - Silicone
         coatingTops:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/coatingTop'
         coatingBottom:
@@ -524,6 +525,7 @@ components:
             - Silicone
         coatingBottoms:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/coatingBottom'
         finishType:
@@ -547,6 +549,7 @@ components:
             - Velvet
         finishTypes:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/finishType'
         printType:
@@ -575,6 +578,7 @@ components:
             - WebOffset
         printTypes:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/printType'
         basisWeight: # This is the result of a nice compromise between EU and US usage.
@@ -598,6 +602,7 @@ components:
                 - Pound
         basisWeights:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/basisWeight'
         basisWeightRange:
@@ -624,6 +629,7 @@ components:
                 - CubicCentimeterPerGram
         bulks:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/bulk'
         caliper:
@@ -641,6 +647,7 @@ components:
                 - Millimeter
         calipers:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/caliper'
         colourShade:
@@ -662,15 +669,18 @@ components:
                 - Supplier
         colourShades:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/colourShade'
         colourDescriptions:
           type: array
+          minItems: 1
           items:
             type: string
             minLength: 1
         recycled:
           type: array
+          minItems: 1
           items:
             type: object
             required:
@@ -706,6 +716,7 @@ components:
                 - Millimeter
         widths:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/width'
         widthRange:
@@ -737,6 +748,7 @@ components:
                 - Yard
         lengths:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/length'
         lengthRange:
@@ -758,6 +770,7 @@ components:
             - WireSideOut
         windingDirections:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/windingDirection'
         reelMakeToConstraint:
@@ -767,6 +780,7 @@ components:
             - Diameter
         reelMakeToConstraints:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/reelMakeToConstraint'
         reelDiameter:
@@ -785,6 +799,7 @@ components:
                 - Millimeter
         reelDiameters:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/reelDiameter'
         reelDiameterRange:
@@ -810,6 +825,7 @@ components:
             - Tapered
         coreEndTypes:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/coreEndType'
         coreMaterialType:
@@ -824,6 +840,7 @@ components:
             - Steel
         coreMaterialTypes:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/coreMaterialType'
         coreDiameterInside:
@@ -842,6 +859,7 @@ components:
                 - Millimeter
         coreDiameterInsides:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/coreDiameterInside'
         coreDiameterInsideRange:
@@ -873,6 +891,7 @@ components:
                 - Supplier
         coreStrengthCodes:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/coreStrengthCode'
 
@@ -884,6 +903,7 @@ components:
             - Short
         grainDirections:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/Paper/properties/grainDirection'
 
@@ -899,7 +919,7 @@ components:
           minimum: 1
         sellerProducts:
           type: array
-          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
+          minItems: 1
           items:
             type: object
             required:
@@ -936,6 +956,7 @@ components:
                 format: uri-reference
               descriptions:
                 type: array
+                minItems: 1
                 items:
                   type: object
                   required:
@@ -991,6 +1012,7 @@ components:
           format: uri-reference
         descriptions:
           type: array
+          minItems: 1
           items:
             type: object
             required:
@@ -1059,6 +1081,7 @@ components:
           format: uri-reference
         descriptions:
           type: array
+          minItems: 1
           items:
             type: object
             required:
@@ -1087,7 +1110,7 @@ components:
           minimum: 1
         customerArticles:
           type: array
-          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
+          minItems: 1
           items:
             type: object
             required:
@@ -1145,6 +1168,7 @@ components:
                 format: uri-reference
               descriptions:
                 type: array
+                minItems: 1
                 items:
                   type: object
                   required:
@@ -1221,6 +1245,7 @@ components:
           format: uri-reference
         descriptions:
           type: array
+          minItems: 1
           items:
             type: object
             required:
@@ -1244,6 +1269,7 @@ components:
       properties:
         sellerProducts:
           type: array
+          minItems: 1
           items:
             type: object
             allOf:
@@ -1254,6 +1280,7 @@ components:
                 properties:
                   locations:
                     type: array
+                    minItems: 1
                     items:
                       type: object
                       required:
@@ -1265,6 +1292,7 @@ components:
                           format: uri-reference
                         quantities:
                           type: array
+                          minItems: 1
                           items:
                             type: object
                             required:
@@ -1333,6 +1361,7 @@ components:
                                   - Yard
                         plannedQuantities:
                           type: array
+                          minItems: 1
                           items:
                             type: object
                             properties:
@@ -1341,6 +1370,7 @@ components:
                                 format: date-time
                               quantities:
                                 type: array
+                                minItems: 1
                                 items:
                                   type: object
                                   required:
@@ -1415,6 +1445,7 @@ components:
       properties:
         customerArticles:
           type: array
+          minItems: 1
           items:
             type: object
             allOf:
@@ -1425,6 +1456,7 @@ components:
                 properties:
                   locations:
                     type: array
+                    minItems: 1
                     items:
                       type: object
                       required:
@@ -1436,6 +1468,7 @@ components:
                           format: uri-reference
                         quantities:
                           type: array
+                          minItems: 1
                           items:
                             type: object
                             required:
@@ -1504,6 +1537,7 @@ components:
                                   - Yard
                         plannedQuantities:
                           type: array
+                          minItems: 1
                           items:
                             type: object
                             properties:
@@ -1512,6 +1546,7 @@ components:
                                 format: date-time
                               quantities:
                                 type: array
+                                minItems: 1
                                 items:
                                   type: object
                                   required:
@@ -1609,7 +1644,7 @@ components:
           minimum: 1
         orders:
           type: array
-          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
+          minItems: 1
           items:
             $ref: '#/components/schemas/OrderHeader'
         links:
@@ -1670,6 +1705,7 @@ components:
           type: boolean
         quantities:
           type: array
+          minItems: 1
           items:
             type: object
             required:
@@ -1744,7 +1780,7 @@ components:
         - properties:
             orderLineItems:
               type: array
-              # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
+              minItems: 1
               items:
                 $ref: '#/components/schemas/OrderLineItem'
             links:
@@ -1805,6 +1841,7 @@ components:
           minLength: 1
         shipmentReferences:
           type: array
+          minItems: 1
           items:
             $ref: '#/components/schemas/shipmentReference'
         shipmentStatus:
@@ -1869,7 +1906,7 @@ components:
           minimum: 1
         shipments:
           type: array
-          # minContains: 1 (new in JSON Schema New in draft 2019-09, not supported yet by OpenAPI)
+          minItems: 1
           items:
             $ref: '#/components/schemas/ShipmentHeader'
         links:
