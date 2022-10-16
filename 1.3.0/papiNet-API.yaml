@@ -1279,8 +1279,8 @@ components:
                                 enum:
                                   - OnHand
                                   - Reserved
-                                  - InTransit
-                                  # PlannedProduction does not make sense in the context of 'plannedQuantities'
+                                  # InTransit does not make sense in the context of 'quantities'
+                                  # PlannedProduction does not make sense in the context of 'quantities'
                               quantityType:
                                 type: string
                                 # Enumeration for 'quantityType':
@@ -1355,7 +1355,7 @@ components:
                                       enum:
                                         # OnHand does not make sense in the context of 'plannedQuantities'
                                         # Reserved does not make sense in the context of 'plannedQuantities'
-                                        # InTransit does not make sense in the context of 'plannedQuantities'
+                                        - InTransit
                                         - PlannedProduction
                                     quantityType:
                                       type: string
@@ -1450,8 +1450,8 @@ components:
                                 enum:
                                   - OnHand
                                   - Reserved
-                                  - InTransit
-                                  - PlannedProduction
+                                  # InTransit does not make sense in the context of 'quantities'
+                                  # PlannedProduction does not make sense in the context of 'quantities'
                               quantityType:
                                 type: string
                                 # Enumeration for 'quantityType':
@@ -1525,7 +1525,7 @@ components:
                                       # Enumeration for 'quantityContext':
                                       enum:
                                         # OnHand does not make sense in the context of 'plannedQuantities'
-                                        - Reserved
+                                        # Reserved does not make sense in the context of 'plannedQuantities'
                                         - InTransit
                                         - PlannedProduction
                                     quantityType:

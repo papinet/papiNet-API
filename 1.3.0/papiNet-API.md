@@ -18,14 +18,14 @@ orderLineItemStatus:
 quantityContext:
 
 * _**Confirmed**_: The quantity is confirmed.
-* _**InTransit**: The quantity is shipped to a location.
+* _**InTransit**: The quantity is transported to a stock location and has not yet arrived.
 * _**Invoiced**_: The quantity is invoiced and qualified for compensation.
 * _**OnHand**_: The quantity is available without any restrictions.
 * _**Ordered**_: The quantity is the purchase order requested quantity.
 * _**PlannedProduction**_: The quantity is planned for production.
 * _**Produced**_: The quantity is added to stock through a production or conversion process.
 * _**Reserved**_: The quantity is reserved for one or multiple customers, but might be freed up later in the future.
-* _**Shipped**_: The quantity is shipped, it has left the _Supplier_'s location.
+* _**Shipped**_: The quantity is shipped, it has left the _Supplier_'s location and goes to an _End User_'s location.
 
 quantityType:
 
