@@ -1623,8 +1623,11 @@ components:
     GetLocationById:
       type: object
       required:
+        - id
         - name
       properties:
+        id:
+          type: string
         name:
           type: string
           minLength: 1
