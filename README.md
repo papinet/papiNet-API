@@ -34,7 +34,6 @@ Then, we add 8 new _API endpoints_ to the _papiNet API_ in order to support the 
 * `GET /seller-products`
 * `GET /seller-products/{sellerProductId}`
 * `POST /customer-articles`
-* `PUT /customer-articles/{customerArticleId}`
 * `PATCH /customer-articles/{customerArticleId}`
 * `GET /customer-articles`
 * `GET /customer-articles/{customerArticleId}`
