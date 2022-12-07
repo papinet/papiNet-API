@@ -476,8 +476,8 @@ components:
 
     Paper:
       type: object
-      required:
-        - format
+      # We removed the `required` constraint on the `format` property as this
+      # constraint will be added using `allOf`.
       properties:
         # Properties that do not depend on the reel or sheet format:
         coatingTop:
@@ -907,6 +907,10 @@ components:
           items:
             $ref: '#/components/schemas/Paper/properties/grainDirection'
 
+    # Just a placeholder for now ;-)
+    Pulp:
+      type: object
+
     CoordinatesWGS84:
       type: object
       required:
@@ -988,11 +992,8 @@ components:
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
-    GetSellerProductById:
+    SellerGenericProduct:
       type: object
-      required:
-        - id
-        - name
       properties:
         id:
           type: string
@@ -1037,13 +1038,30 @@ components:
                 minLength: 3
                 maxLength: 3
                 description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
-        paper:
-          $ref: '#/components/schemas/Paper'
 
-    CreateCustomerArticle:
+    GetSellerProductById:
+      allOf:
+        - $ref: '#/components/schemas/SellerGenericProduct'
+        - required:
+            - id
+            - name
+        - oneOf:
+            - required:
+                - paper
+              properties:
+                paper:
+                  allOf:
+                    - $ref: '#/components/schemas/Paper'
+                    - required:
+                      - format
+            - required:
+                - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
+
+    CreateCustomerGenericArticle:
       type: object
-      required:
-        - name
       properties:
         otherIdentifier:
           type: object
@@ -1106,8 +1124,26 @@ components:
                 minLength: 3
                 maxLength: 3
                 description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
-        paper:
-          $ref: '#/components/schemas/Paper'
+
+    CreateCustomerArticle:
+      allOf:
+        - $ref: '#/components/schemas/CreateCustomerGenericArticle'
+        - required:
+            - name
+        - oneOf:
+            - required:
+                - paper
+              properties:
+                paper:
+                  allOf:
+                    - $ref: '#/components/schemas/Paper'
+                    - required:
+                      - format
+            - required:
+                - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
 
     ListCustomerArticles:
       type: object
@@ -1200,78 +1236,34 @@ components:
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
+    CustomerGenericArticle:
+      allOf:
+        - $ref: '#/components/schemas/CreateCustomerGenericArticle'
+        - properties:
+            id:
+              type: string
+              format: uuid
+
     GetCustomerArticleById:
-      type: object
-      required:
-        - id
-        - name
-      properties:
-        id:
-          type: string
-          format: uuid
-        otherIdentifier:
-          type: object
-          required:
-            - value
-          properties:
-            value:
-              type: string
-              minLength: 1
-            assignedBy:
-              type: string
-              enum:
-                - Customer
-                - Seller
-        sellerProductId:
-          type: string
-          format: uuid
-        sellerProductOtherIdentifier:
-          type: object
-          required:
-            - value
-          properties:
-            value:
-              type: string
-              minLength: 1
-            assignedBy:
-              type: string
-              enum:
-                - Customer
-                - Seller
-        sellerProductStatus:
-          type: string
-          enum:
-            - Active
-            - Inactive
-        status:
-          type: string
-          enum:
-            - Active
-            - Inactive
-        name:
-          type: string
-          minLength: 1
-        link:
-          type: string
-          format: uri-reference
-        descriptions:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            required:
-              - value
-            properties:
-              value:
-                type: string
-                minLength: 1
-              language:
-                type: string
-                minLength: 3
-                maxLength: 3
-                description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
-        paper:
-          $ref: '#/components/schemas/Paper'
+      allOf:
+        - $ref: '#/components/schemas/CustomerGenericArticle'
+        - required:
+            - id
+            - name
+        - oneOf:
+            - required:
+                - paper
+              properties:
+                paper:
+                  allOf:
+                    - $ref: '#/components/schemas/Paper'
+                    - required:
+                      - format
+            - required:
+                - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
 
     CheckAvailabilityOfSellerProductById:
       type: object
@@ -1282,9 +1274,17 @@ components:
           type: array
           minItems: 1
           items:
-            type: object
             allOf:
-              - $ref: '#/components/schemas/GetSellerProductById'
+              - $ref: '#/components/schemas/SellerGenericProduct'
+              - required:
+                  - id
+              - anyOf:
+                  - properties:
+                      paper:
+                        $ref: '#/components/schemas/Paper'
+                  - properties:
+                      pulp:
+                        $ref: '#/components/schemas/Pulp'
               - type: object
                 required:
                   - locations
@@ -1461,9 +1461,17 @@ components:
           type: array
           minItems: 1
           items:
-            type: object
             allOf:
-              - $ref: '#/components/schemas/GetCustomerArticleById'
+              - $ref: '#/components/schemas/CustomerGenericArticle'
+              - required:
+                  - id
+              - anyOf:
+                  - properties:
+                      paper:
+                        $ref: '#/components/schemas/Paper'
+                  - properties:
+                      pulp:
+                        $ref: '#/components/schemas/Pulp'
               - type: object
                 required:
                   - locations
