@@ -127,10 +127,7 @@ If all goes well, the _customer_ will receive a response like this:
   "sellerProducts": [
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-      "name": "Galerie Brite",
       "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
         "basisWeight": {
           "value": 54,
           "UOM": "GramsPerSquareMeter"
@@ -139,7 +136,6 @@ If all goes well, the _customer_ will receive a response like this:
           "value": 0.92,
           "UOM": "CubicCentimeterPerGram"
         },
-        "format": "Reel",
         "width": {
           "value": 900,
           "UOM": "Millimeter"
@@ -175,10 +171,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-      "name": "Galerie Brite",
       "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
         "basisWeight": {
           "value": 90,
           "UOM": "GramsPerSquareMeter"
@@ -187,7 +180,6 @@ If all goes well, the _customer_ will receive a response like this:
           "value": 0.92,
           "UOM": "CubicCentimeterPerGram"
         },
-        "format": "Reel",
         "width": {
           "value": 900,
           "UOM": "Millimeter"
@@ -287,10 +279,7 @@ If all goes well, the _customer_ will receive a response like this:
   "sellerProducts": [
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-      "name": "Galerie Brite",
       "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
         "basisWeight": {
           "value": 54,
           "UOM": "GramsPerSquareMeter"
@@ -299,7 +288,6 @@ If all goes well, the _customer_ will receive a response like this:
           "value": 0.92,
           "UOM": "CubicCentimeterPerGram"
         },
-        "format": "Reel",
         "width": {
           "value": 900,
           "UOM": "Millimeter"
@@ -352,10 +340,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-      "name": "Galerie Brite",
       "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
         "basisWeight": {
           "value": 90,
           "UOM": "GramsPerSquareMeter"
@@ -364,7 +349,6 @@ If all goes well, the _customer_ will receive a response like this:
           "value": 0.92,
           "UOM": "CubicCentimeterPerGram"
         },
-        "format": "Reel",
         "width": {
           "value": 900,
           "UOM": "Millimeter"
@@ -494,10 +478,7 @@ If all goes well, the _customer_ will receive a response like this:
   "sellerProducts": [
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-      "name": "Galerie Brite",
       "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
         "basisWeight": {
           "value": 54,
           "UOM": "GramsPerSquareMeter"
@@ -506,7 +487,6 @@ If all goes well, the _customer_ will receive a response like this:
           "value": 0.92,
           "UOM": "CubicCentimeterPerGram"
         },
-        "format": "Reel",
         "width": {
           "value": 900,
           "UOM": "Millimeter"
@@ -561,10 +541,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "e7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
-      "name": "Galerie Brite",
       "paper": {
-        "finishType": "Gloss",
-        "printType": "HeatsetOffset",
         "basisWeight": {
           "value": 90,
           "UOM": "GramsPerSquareMeter"
@@ -573,7 +550,6 @@ If all goes well, the _customer_ will receive a response like this:
           "value": 0.92,
           "UOM": "CubicCentimeterPerGram"
         },
-        "format": "Reel",
         "width": {
           "value": 900,
           "UOM": "Millimeter"

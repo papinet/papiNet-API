@@ -58,3 +58,7 @@ When a response contains the reference to something (e.g. a _seller-product_), i
 ### Rule 7 - Array MUST be defined to have at least one element
 
 When papiNet defines a property of type `array`, papiNet ALWAYS means that this array MUST have at least one element; therefore the constraint `minItems: 1` will always be added.
+
+### Rule 8 - Response paylod size SHOUD always be minimized
+
+... (with the execption of the `id`)
