@@ -55,4 +55,4 @@ The following normative documents are available:
 * [`papiNet-API.yaml`](1.3.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
 * [`papiNet-API.md`](1.3.0/papiNet-API.md) the semantic specification of the main objects and properties used within the OpenAPI document.
 
-In addition to these normative documents, we also provide a papiNet mock service that give live responses in line with the scenarios described within the use case documents.
+In addition to these normative documents, we also have a papiNet mock service that provides live responses in line with the scenarios described within the use case documents.
