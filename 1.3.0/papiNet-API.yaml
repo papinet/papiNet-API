@@ -404,7 +404,7 @@ paths:
             type: string
             format: uuid
           required: true
-          description: UUID of the `seller-product` to check the `availability` for
+          description: UUID of the `customer-article` to check the `availability` for
       responses:
         '200':
           description: OK
