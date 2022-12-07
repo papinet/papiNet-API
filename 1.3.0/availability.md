@@ -21,7 +21,7 @@ The authenticated _customer_ requests to a _seller_ detailed information about t
 You can run locally the papiNet stub service using the following command:
 
 ```text
-./pact-stub-server --file papiNet.pact.json --port 3004 --provider-state-header-name X-Provider-Sate
+./pact-stub-server --file papiNet.pact.json --port 3004 --provider-state-header-name X-Provider-State
 ```
 
 The `pact-stub-server` is available at <https://github.com/pact-foundation/pact-stub-server/releases>.
