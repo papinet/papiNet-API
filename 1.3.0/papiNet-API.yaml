@@ -1238,11 +1238,11 @@ components:
 
     CustomerGenericArticle:
       allOf:
-        - $ref: '#/components/schemas/CreateCustomerGenericArticle'
         - properties:
             id:
               type: string
               format: uuid
+        - $ref: '#/components/schemas/CreateCustomerGenericArticle'
 
     GetCustomerArticleById:
       allOf:
