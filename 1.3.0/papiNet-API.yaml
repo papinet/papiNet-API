@@ -1647,12 +1647,15 @@ components:
       properties:
         id:
           type: string
+          format: uuid
         name:
           type: string
           minLength: 1
-        country:
+        countryCode:
           type: string
-          minLength: 1
+          minLength: 2
+          maxLength: 2
+          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         coordinatesWGS84:
           $ref: '#/components/schemas/CoordinatesWGS84'
 

@@ -406,7 +406,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
   "name": "Sappi Lanaken Mill",
-  "country": "BE",
+  "countryCode": "BE",
   "coordinatesWGS84": {
     "latitude": 50.8827787,
     "longitude": 5.6375872
@@ -434,7 +434,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
   "name": "Sappi Alfeld Mill",
-  "country": "BE",
+  "countryCode": "BE",
   "coordinatesWGS84": {
     "latitude": 51.985233,
     "longitude": 9.8200211
@@ -626,7 +626,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
   "name": "Sappi Lanaken Mill",
-  "country": "BE",
+  "countryCode": "BE",
   "coordinatesWGS84": {
     "latitude": 50.8827787,
     "longitude": 5.6375872
