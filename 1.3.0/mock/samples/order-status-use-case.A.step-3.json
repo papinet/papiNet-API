@@ -1,0 +1,35 @@
+{
+    "id": "c51d8903-01d1-485c-96ce-51a9be192207",
+    "orderNumber": "1001",
+    "orderStatus": "Active",
+    "numberOfLineItems": 1,
+    "orderLineItems": [
+      {
+        "id": "e436266b-d831-47a1-9fef-3f749c955673",
+        "orderLineItemNumber": 1,
+        "orderLineItemStatus": "Confirmed",
+        "changeable": false,
+        "quantities": [
+          {
+            "quantityContext": "Ordered",
+            "quantityType": "GrossWeight",
+            "quantityValue": 10000,
+            "quantityUOM": "Kilogram"
+          },
+          {
+            "quantityContext": "Confirmed",
+            "quantityType": "GrossWeight",
+            "quantityValue": 9600,
+            "quantityUOM": "Kilogram"
+          },
+          {
+            "quantityContext": "Confirmed",
+            "quantityType": "Count",
+            "quantityValue": 3,
+            "quantityUOM": "Reel"
+          }
+        ]
+      }
+    ],
+    "links": {}
+  }

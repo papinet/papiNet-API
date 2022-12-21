@@ -1,0 +1,1951 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forst and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 1.3.0
+servers:
+  - url: http://localhost:3004
+    description: papiNet Mock Server
+paths:
+
+  '/orders':
+    # GET /orders
+    get:
+      summary: List `orders`
+      description: Gets a paginated list of all `orders`.
+      parameters:
+        - in: query
+          name: orderStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+            - Active
+            - Cancelled
+            - Completed
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfOrders'
+        '204':
+          description: No Content
+
+  '/orders/{orderId}':
+    # GET /orders/{orderId}
+    get:
+      summary: Get an `order`
+      description: Gets the details of a specific `order`, including a paginated list of all its lines.
+      parameters:
+        - in: path
+          name: orderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `order` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrder'
+
+  '/shipments':
+    # GET /shipments
+    get:
+      summary: List `shipments`
+      description: Gets a paginated list of all `shipments`.
+      parameters:
+        - in: query
+          name: shipmentStatus
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Rejected
+              - Completed
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfShipments'
+        '204':
+          description: No Content
+
+  '/shipments/{shipmentId}':
+    # GET /shipments/{shipmentId}
+    get:
+      summary: Get a `shipment`
+      description: Gets the details of a specific `shipment`.
+      parameters:
+        - in: path
+          name: shipmentId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `shipment` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetShipment'
+
+  '/seller-products':
+    # GET /seller-products ~ ListSellerProducts
+    get:
+      summary: List `seller-products`
+      description: Gets a paginated list of all `seller-products` defined by the `seller`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: otherIdentifier.value
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: otherIdentifier.assignedBy
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSellerProducts'
+        '204':
+          description: No Content
+
+  '/seller-products/{sellerProductId}':
+    # GET /seller-products/{sellerProductId} ~ GetSellerProductById
+    get:
+      summary: Get a `seller-product`
+      description: Gets the details of a specific `seller-product`.
+      parameters:
+        - in: path
+          name: sellerProductId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `seller-product` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSellerProductById'
+        '404':
+          description: Not Found
+
+  '/customer-articles':
+    # POST /customer-articles ~ CreateCustomerArticle => GetCustomerArticleById
+    post:
+      summary: Create a `customer-article`
+      description: Creates a `customer-article` defined by the `customer` based on a `seller-product`.
+      requestBody:
+        description: The definition of the `customer-article` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerArticle'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+
+    # GET /customer-articles ~ => ListCustomerArticles
+    get:
+      summary: List `customer-articles`
+      description: Gets a paginated list of all `customer-articles` defined by the `customer`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: otherIdentifier.value
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: otherIdentifier.assignedBy
+          description: Filter by otherIdentifier
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomerArticles'
+        '204':
+          description: No Content
+
+  '/customer-articles/{customerArticleId}':
+    # PUT /customer-articles/{customerArticleId} ~ CreateCustomerArticle => GetCustomerArticleById
+    put:
+      summary: Create or modify a `customer-article`
+      description: Creates or modifies (with a full representation) a `customer-article` defined by the `customer` based on a `seller-product`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to create or modify
+      requestBody:
+        description: The definition of the `customer-article` to create or modify.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerArticle'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+
+    # PATCH /customer-articles/{customerArticleId} ~ CreateCustomerArticle => GetCustomerArticleById
+    patch:
+      summary: Modify a `customer-article`
+      description: Modifies (with a partial representation) a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to modify
+      requestBody:
+        description: The definition of the `customer-article` to modify.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerArticle'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+
+    # GET /customer-articles/{customerArticleId} ~ => GetCustomerArticleById
+    get:
+      summary: Get a `customer-article`
+      description: Gets the details of a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+        '404':
+          description: Not Found
+
+    # DELETE /customer-articles/{customerArticleId}
+    delete:
+      summary: Delete a `customer-article`
+      description: Deletes a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to delete.
+      responses:
+        '204':
+          description: No Content
+
+  '/seller-products/{sellerProductId}/check-availability':
+    # POST /seller-products/{sellerProductId}/check-availability ~ CheckAvailabilityOfSellerProductById
+    post:
+      summary: Check the `availability`
+      description: Check the `availability` of a specific `seller-product`.
+      parameters:
+        - in: path
+          name: sellerProductId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `seller-product` to check the `availability` for
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckAvailabilityOfSellerProductById'
+
+  '/customer-articles/{customerArticleId}/check-availability':
+    # POST /customer-articles/{customerArticleId}/check-availability ~ CheckAvailabilityOfCustomerArticleById
+    post:
+      summary: Check the `availability`
+      description: Check the `availability` of a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to check the `availability` for
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckAvailabilityOfCustomerArticleById'
+
+  '/locations/{locationId}':
+    # GET /locations/{locationId} ~ GetLocationById
+    get:
+      summary: Get a `location`
+      description: Gets the details of a specific `location`.
+      parameters:
+        - in: path
+          name: locationId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `location` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLocationById'
+
+components:
+  schemas:
+
+    PaginationLinks:
+      type: object
+      # none of the properties are required.
+      properties:
+        first:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        prev:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        next:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        last:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+
+    Paper:
+      type: object
+      # We removed the `required` constraint on the `format` property as this
+      # constraint will be added using `allOf`.
+      properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        coatingTops:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/coatingTop'
+        coatingBottom:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        coatingBottoms:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/coatingBottom'
+        finishType:
+          type: string
+          enum:
+            - Dull
+            - English
+            - Gloss
+            - Laid
+            - Linen
+            - Machine
+            - Matte
+            - Satin
+            - SCA
+            - SCB
+            - SCC
+            - Silk
+            - Smooth
+            - SoftGloss
+            - Vellum
+            - Velvet
+        finishTypes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/finishType'
+        printType:
+          type: string
+          enum:
+            - ColdsetOffset
+            - ContinuousForms
+            - Digital
+            - Flexography
+            - FoilPrint
+            - Forms
+            - Gravure
+            - HeatsetOffset
+            - InkJet
+            - InstantOffset
+            - Laser
+            - Letterpress
+            - LightPrint
+            - MiniWeb
+            - RotoFlexography
+            - RotoGravure
+            - RotoLetterpress
+            - RotoSilkScreen
+            - SheetfedOffset
+            - SilkScreen
+            - WebOffset
+        printTypes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/printType'
+        basisWeight: # This is the result of a nice compromise between EU and US usage.
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            sizeType:
+              type: string
+              enum:
+                - 24x36
+                - 25x38
+            value:
+              type: number
+              minimum: 0
+            UOM:
+              type: string
+              enum:
+                - GramsPerSquareMeter
+                - Pound
+        basisWeights:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/basisWeight'
+        basisWeightRange:
+          type: object
+          required:
+            - min
+            - max
+          properties:
+            min:
+              $ref: '#/components/schemas/Paper/properties/basisWeight'
+            max:
+              $ref: '#/components/schemas/Paper/properties/basisWeight'
+        bulk:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - CubicCentimeterPerGram
+        bulks:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/bulk'
+        caliper:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Micron
+                - Millimeter
+        calipers:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/caliper'
+        colourShade:
+          type: object
+          required:
+            - value
+            - agency
+          properties:
+            value:
+              type: string
+              minLength: 1
+            agency:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        colourShades:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/colourShade'
+        colourDescriptions:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+        recycled:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+              - UOM
+            properties:
+              value:
+                type: number
+              UOM:
+                type: string
+                enum:
+                  - Percentage
+        format:
+          type: string
+          enum:
+            - Reel
+            - Sheet
+
+        # Properties that are common to reel or sheet format:
+        width:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        widths:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/width'
+        widthRange:
+          type: object
+          required:
+            - min
+            - max
+          properties:
+            min:
+              $ref: '#/components/schemas/Paper/properties/width'
+            max:
+              $ref: '#/components/schemas/Paper/properties/width'
+        length:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Foot
+                - Inch
+                - Meter
+                - Millimeter
+                - Yard
+        lengths:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/length'
+        lengthRange:
+          type: object
+          required:
+            - min
+            - max
+          properties:
+            min:
+              $ref: '#/components/schemas/Paper/properties/length'
+            max:
+              $ref: '#/components/schemas/Paper/properties/length'
+
+        # Properties that are specific to reel format:
+        windingDirection:
+          type: string
+          enum:
+            - WireSideIn
+            - WireSideOut
+        windingDirections:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/windingDirection'
+        reelMakeToConstraint:
+          type: string
+          enum:
+            - Length
+            - Diameter
+        reelMakeToConstraints:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/reelMakeToConstraint'
+        reelDiameter:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        reelDiameters:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/reelDiameter'
+        reelDiameterRange:
+          type: object
+          required:
+            - min
+            - max
+          properties:
+            min:
+              $ref: '#/components/schemas/Paper/properties/reelDiameter'
+            max:
+              $ref: '#/components/schemas/Paper/properties/reelDiameter'
+        coreEndType:
+          type: string
+          enum:
+            - Adaptor
+            - Bevelled
+            - Bridge
+            - Notched
+            - NotchedFullMetal
+            - Plain
+            - PlainFullMetal
+            - Tapered
+        coreEndTypes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/coreEndType'
+        coreMaterialType:
+          type: string
+          enum:
+            - Aluminium
+            - Composite
+            - Fibre
+            - Iron
+            - Paper
+            - Plastic
+            - Steel
+        coreMaterialTypes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/coreMaterialType'
+        coreDiameterInside:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreDiameterInsides:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/coreDiameterInside'
+        coreDiameterInsideRange:
+          type: object
+          required:
+            - min
+            - max
+          properties:
+            min:
+              $ref: '#/components/schemas/Paper/properties/coreDiameterInside'
+            max:
+              $ref: '#/components/schemas/Paper/properties/coreDiameterInside'
+        coreStrengthCode:
+          type: object
+          required:
+            - value
+            - agency
+          properties:
+            value:
+              type: string
+              minLength: 1
+            agency:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        coreStrengthCodes:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/coreStrengthCode'
+
+        # Properties that are specific to sheet format:
+        grainDirection:
+          type: string
+          enum:
+            - Long
+            - Short
+        grainDirections:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Paper/properties/grainDirection'
+
+    # Just a placeholder for now ;-)
+    Pulp:
+      type: object
+
+    CoordinatesWGS84:
+      type: object
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number
+
+    ListSellerProducts:
+      type: object
+      required:
+        - numberOfSellerProducts
+        - sellerProducts
+        # links is not required
+      properties:
+        numberOfSellerProducts:
+          type: integer
+          minimum: 1
+        sellerProducts:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - name
+              - productType
+            properties:
+              id:
+                type: string
+                format: uuid
+              otherIdentifier:
+                type: object
+                required:
+                  - value
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Customer
+                      - Seller
+              status:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              name:
+                type: string
+                minLength: 1
+              link:
+                type: string
+                format: uri-reference
+              descriptions:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - value
+                  properties:
+                    value:
+                      type: string
+                      minLength: 1
+                    language:
+                      type: string
+                      minLength: 3
+                      maxLength: 3
+                      description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
+              productType:
+                type: string
+                enum:
+                  - Paper
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    SellerGenericProduct:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        otherIdentifier:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Customer
+                - Seller
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        name:
+          type: string
+          minLength: 1
+        link:
+          type: string
+          format: uri-reference
+        descriptions:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+            properties:
+              value:
+                type: string
+                minLength: 1
+              language:
+                type: string
+                minLength: 3
+                maxLength: 3
+                description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
+
+    GetSellerProductById:
+      allOf:
+        - $ref: '#/components/schemas/SellerGenericProduct'
+        - required:
+            - id
+            - name
+        - oneOf:
+            - required:
+                - paper
+              properties:
+                paper:
+                  allOf:
+                    - $ref: '#/components/schemas/Paper'
+                    - required:
+                      - format
+            - required:
+                - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
+
+    CreateCustomerGenericArticle:
+      type: object
+      properties:
+        otherIdentifier:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Customer
+                - Seller
+        sellerProductId:
+          type: string
+          format: uuid
+        sellerProductOtherIdentifier:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Customer
+                - Seller
+        sellerProductStatus:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        name:
+          type: string
+          minLength: 1
+        link:
+          type: string
+          format: uri-reference
+        descriptions:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+            properties:
+              value:
+                type: string
+                minLength: 1
+              language:
+                type: string
+                minLength: 3
+                maxLength: 3
+                description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
+
+    CreateCustomerArticle:
+      allOf:
+        - $ref: '#/components/schemas/CreateCustomerGenericArticle'
+        - required:
+            - name
+        - oneOf:
+            - required:
+                - paper
+              properties:
+                paper:
+                  allOf:
+                    - $ref: '#/components/schemas/Paper'
+                    - required:
+                      - format
+            - required:
+                - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
+
+    ListCustomerArticles:
+      type: object
+      required:
+        - numberOfCustomerArticles
+        - customerArticles
+        # links is not required
+      properties:
+        numberOfCustomerArticles:
+          type: integer
+          minimum: 1
+        customerArticles:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - name
+              - productType
+            properties:
+              id:
+                type: string
+                format: uuid
+              otherIdentifier:
+                type: object
+                required:
+                  - value
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Customer
+                      - Seller
+              sellerProductId:
+                type: string
+                format: uuid
+              sellerProductOtherIdentifier:
+                type: object
+                required:
+                  - value
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Customer
+                      - Seller
+              sellerProductStatus:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              status:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              name:
+                type: string
+                minLength: 1
+              link:
+                type: string
+                format: uri-reference
+              descriptions:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - value
+                  properties:
+                    value:
+                      type: string
+                      minLength: 1
+                    language:
+                      type: string
+                      minLength: 3
+                      maxLength: 3
+                      description: The (three-letter) value - e.g. "eng", "fra", ... - MUST exist in the ISO 639-2 standard list.
+              productType:
+                type: string
+                enum:
+                  - Paper
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    CustomerGenericArticle:
+      allOf:
+        - properties:
+            id:
+              type: string
+              format: uuid
+        - $ref: '#/components/schemas/CreateCustomerGenericArticle'
+
+    GetCustomerArticleById:
+      allOf:
+        - $ref: '#/components/schemas/CustomerGenericArticle'
+        - required:
+            - id
+            - name
+        - oneOf:
+            - required:
+                - paper
+              properties:
+                paper:
+                  allOf:
+                    - $ref: '#/components/schemas/Paper'
+                    - required:
+                      - format
+            - required:
+                - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
+
+    CheckAvailabilityOfSellerProductById:
+      type: object
+      required:
+        - sellerProducts
+      properties:
+        sellerProducts:
+          type: array
+          minItems: 1
+          items:
+            allOf:
+              - $ref: '#/components/schemas/SellerGenericProduct'
+              - required:
+                  - id
+              - anyOf:
+                  - properties:
+                      paper:
+                        $ref: '#/components/schemas/Paper'
+                  - properties:
+                      pulp:
+                        $ref: '#/components/schemas/Pulp'
+              - type: object
+                required:
+                  - locations
+                properties:
+                  locations:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - locationURL
+                        - quantities
+                      properties:
+                        locationURL:
+                          type: string
+                          format: uri-reference
+                        quantities:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - quantityContext
+                              - quantityType
+                              - quantityValue
+                              - quantityUOM
+                            properties:
+                              quantityContext:
+                                type: string
+                                # Enumeration for 'quantityContext':
+                                enum:
+                                  - OnHand
+                                  - Reserved
+                                  # InTransit does not make sense in the context of 'quantities'
+                                  # PlannedProduction does not make sense in the context of 'quantities'
+                              quantityType:
+                                type: string
+                                # Enumeration for 'quantityType':
+                                enum:
+                                  - Area
+                                  - Count
+                                  - GrossWeight
+                                  - Length
+                                  - NetNetWeight
+                                  - NetWeight
+                                  - NominalWeight
+                                  - TareWeight
+                              quantityValue:
+                                type: number
+                              quantityUOM:
+                                type: string
+                                # Enumeration for 'quantityUOM':
+                                enum:
+                                  - Bale
+                                  - Box
+                                  - Centimeter
+                                  - Decimeter
+                                  - Foot
+                                  - Gram
+                                  - HundredPounds
+                                  - Inch
+                                  - Kilogram
+                                  - Kilometer
+                                  - Meter
+                                  - MetricTon
+                                  - Millimeter
+                                  - Package
+                                  - PalletUnit
+                                  - Piece
+                                  - Pound
+                                  - PulpUnit
+                                  - Ream
+                                  - Reel
+                                  - Sheet
+                                  - ShortTon
+                                  - Skid
+                                  - SquareDecimeter
+                                  - SquareFoot
+                                  - SquareInch
+                                  - SquareMeter
+                                  - ThousandPieces
+                                  - ThousandSquareCentimeters
+                                  - ThousandSquareFeet
+                                  - ThousandSquareInches
+                                  - Yard
+                        plannedQuantities:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - estimatedAvailableDateTime
+                              - quantities
+                            properties:
+                              estimatedAvailableDateTime:
+                                type: string
+                                format: date-time
+                              quantities:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - quantityContext
+                                    - quantityType
+                                    - quantityValue
+                                    - quantityUOM
+                                  properties:
+                                    quantityContext:
+                                      type: string
+                                      # Enumeration for 'quantityContext':
+                                      enum:
+                                        # OnHand does not make sense in the context of 'plannedQuantities'
+                                        # Reserved does not make sense in the context of 'plannedQuantities'
+                                        - InTransit
+                                        - PlannedProduction
+                                    quantityType:
+                                      type: string
+                                      # Enumeration for 'quantityType':
+                                      enum:
+                                        - Area
+                                        - Count
+                                        - GrossWeight
+                                        - Length
+                                        - NetNetWeight
+                                        - NetWeight
+                                        - NominalWeight
+                                        - TareWeight
+                                    quantityValue:
+                                      type: number
+                                    quantityUOM:
+                                      type: string
+                                      # Enumeration for 'quantityUOM':
+                                      enum:
+                                        - Bale
+                                        - Box
+                                        - Centimeter
+                                        - Decimeter
+                                        - Foot
+                                        - Gram
+                                        - HundredPounds
+                                        - Inch
+                                        - Kilogram
+                                        - Kilometer
+                                        - Meter
+                                        - MetricTon
+                                        - Millimeter
+                                        - Package
+                                        - PalletUnit
+                                        - Piece
+                                        - Pound
+                                        - PulpUnit
+                                        - Ream
+                                        - Reel
+                                        - Sheet
+                                        - ShortTon
+                                        - Skid
+                                        - SquareDecimeter
+                                        - SquareFoot
+                                        - SquareInch
+                                        - SquareMeter
+                                        - ThousandPieces
+                                        - ThousandSquareCentimeters
+                                        - ThousandSquareFeet
+                                        - ThousandSquareInches
+                                        - Yard
+
+    CheckAvailabilityOfCustomerArticleById:
+      type: object
+      required:
+        - customerArticles
+      properties:
+        customerArticles:
+          type: array
+          minItems: 1
+          items:
+            allOf:
+              - $ref: '#/components/schemas/CustomerGenericArticle'
+              - required:
+                  - id
+              - anyOf:
+                  - properties:
+                      paper:
+                        $ref: '#/components/schemas/Paper'
+                  - properties:
+                      pulp:
+                        $ref: '#/components/schemas/Pulp'
+              - type: object
+                required:
+                  - locations
+                properties:
+                  locations:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - locationURL
+                        - quantities
+                      properties:
+                        locationURL:
+                          type: string
+                          format: uri-reference
+                        quantities:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - quantityContext
+                              - quantityType
+                              - quantityValue
+                              - quantityUOM
+                            properties:
+                              quantityContext:
+                                type: string
+                                # Enumeration for 'quantityContext':
+                                enum:
+                                  - OnHand
+                                  - Reserved
+                                  # InTransit does not make sense in the context of 'quantities'
+                                  # PlannedProduction does not make sense in the context of 'quantities'
+                              quantityType:
+                                type: string
+                                # Enumeration for 'quantityType':
+                                enum:
+                                  - Area
+                                  - Count
+                                  - GrossWeight
+                                  - Length
+                                  - NetNetWeight
+                                  - NetWeight
+                                  - NominalWeight
+                                  - TareWeight
+                              quantityValue:
+                                type: number
+                              quantityUOM:
+                                type: string
+                                # Enumeration for 'quantityUOM':
+                                enum:
+                                  - Bale
+                                  - Box
+                                  - Centimeter
+                                  - Decimeter
+                                  - Foot
+                                  - Gram
+                                  - HundredPounds
+                                  - Inch
+                                  - Kilogram
+                                  - Kilometer
+                                  - Meter
+                                  - MetricTon
+                                  - Millimeter
+                                  - Package
+                                  - PalletUnit
+                                  - Piece
+                                  - Pound
+                                  - PulpUnit
+                                  - Ream
+                                  - Reel
+                                  - Sheet
+                                  - ShortTon
+                                  - Skid
+                                  - SquareDecimeter
+                                  - SquareFoot
+                                  - SquareInch
+                                  - SquareMeter
+                                  - ThousandPieces
+                                  - ThousandSquareCentimeters
+                                  - ThousandSquareFeet
+                                  - ThousandSquareInches
+                                  - Yard
+                        plannedQuantities:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - estimatedAvailableDateTime
+                              - quantities
+                            properties:
+                              estimatedAvailableDateTime:
+                                type: string
+                                format: date-time
+                              quantities:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - quantityContext
+                                    - quantityType
+                                    - quantityValue
+                                    - quantityUOM
+                                  properties:
+                                    quantityContext:
+                                      type: string
+                                      # Enumeration for 'quantityContext':
+                                      enum:
+                                        # OnHand does not make sense in the context of 'plannedQuantities'
+                                        # Reserved does not make sense in the context of 'plannedQuantities'
+                                        - InTransit
+                                        - PlannedProduction
+                                    quantityType:
+                                      type: string
+                                      # Enumeration for 'quantityType':
+                                      enum:
+                                        - Area
+                                        - Count
+                                        - GrossWeight
+                                        - Length
+                                        - NetNetWeight
+                                        - NetWeight
+                                        - NominalWeight
+                                        - TareWeight
+                                    quantityValue:
+                                      type: number
+                                    quantityUOM:
+                                      type: string
+                                      # Enumeration for 'quantityUOM':
+                                      enum:
+                                        - Bale
+                                        - Box
+                                        - Centimeter
+                                        - Decimeter
+                                        - Foot
+                                        - Gram
+                                        - HundredPounds
+                                        - Inch
+                                        - Kilogram
+                                        - Kilometer
+                                        - Meter
+                                        - MetricTon
+                                        - Millimeter
+                                        - Package
+                                        - PalletUnit
+                                        - Piece
+                                        - Pound
+                                        - PulpUnit
+                                        - Ream
+                                        - Reel
+                                        - Sheet
+                                        - ShortTon
+                                        - Skid
+                                        - SquareDecimeter
+                                        - SquareFoot
+                                        - SquareInch
+                                        - SquareMeter
+                                        - ThousandPieces
+                                        - ThousandSquareCentimeters
+                                        - ThousandSquareFeet
+                                        - ThousandSquareInches
+                                        - Yard
+
+    GetLocationById:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+        countryCode:
+          type: string
+          minLength: 2
+          maxLength: 2
+          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        coordinatesWGS84:
+          $ref: '#/components/schemas/CoordinatesWGS84'
+
+# ---
+
+    ListOfOrders:
+      type: object
+      required:
+        - numberOfOrders
+        - orders
+        # links is not required
+      properties:
+        numberOfOrders:
+          type: integer
+          minimum: 1
+        orders:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/OrderHeader'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetOrder:
+      $ref: '#/components/schemas/Order'
+
+    OrderHeader:
+      type: object
+      required:
+        - id
+        - orderNumber
+        - orderStatus
+        - numberOfLineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderNumber:
+          type: string
+          minLength: 1
+        orderStatus:
+          type: string
+          # Enumeration for 'orderStatus':
+          enum:
+            - Active
+            - Cancelled
+            - Completed
+        numberOfLineItems:
+          type: integer
+          minimum: 1 # An order without any lines is NOT an order!
+
+    OrderLineItem:
+      type: object
+      required:
+        - id
+        - orderLineItemNumber
+        - orderLineItemStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        orderLineItemNumber:
+          type: integer
+          minimum: 0
+        orderLineItemStatus:
+          type: string
+          # Enumeration for 'orderLineItemStatus':
+          enum:
+            - Cancelled
+            - Completed
+            - Confirmed
+            - Pending
+            - ProductionCompleted
+            - ShipmentCompleted
+        changeable:
+          type: boolean
+        quantities:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - quantityContext
+              - quantityType
+              - quantityValue
+              - quantityUOM
+            properties:
+              quantityContext:
+                type: string
+                # Enumeration for 'quantityContext':
+                enum:
+                  - Confirmed
+                  - Invoiced
+                  - Ordered
+                  - Produced
+                  - Shipped
+              quantityType:
+                type: string
+                # Enumeration for 'quantityType':
+                enum:
+                  - Area
+                  - Count
+                  - GrossWeight
+                  - Length
+                  - NetNetWeight
+                  - NetWeight
+                  - NominalWeight
+                  - TareWeight
+              quantityValue:
+                type: number
+              quantityUOM:
+                type: string
+                # Enumeration for 'quantityUOM':
+                enum:
+                  - Bale
+                  - Box
+                  - Centimeter
+                  - Decimeter
+                  - Foot
+                  - Gram
+                  - HundredPounds
+                  - Inch
+                  - Kilogram
+                  - Kilometer
+                  - Meter
+                  - MetricTon
+                  - Millimeter
+                  - Package
+                  - PalletUnit
+                  - Piece
+                  - Pound
+                  - PulpUnit
+                  - Ream
+                  - Reel
+                  - Sheet
+                  - ShortTon
+                  - Skid
+                  - SquareDecimeter
+                  - SquareFoot
+                  - SquareInch
+                  - SquareMeter
+                  - ThousandPieces
+                  - ThousandSquareCentimeters
+                  - ThousandSquareFeet
+                  - ThousandSquareInches
+                  - Yard
+
+    Order:
+      allOf:
+        - $ref: '#/components/schemas/OrderHeader'
+        - properties:
+            orderLineItems:
+              type: array
+              minItems: 1
+              items:
+                $ref: '#/components/schemas/OrderLineItem'
+            links:
+              $ref: '#/components/schemas/PaginationLinks'
+
+    Event:
+      type: object
+      required:
+        - id
+        - type
+        - dateTime
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          # Enumeration for 'Event.type'
+          enum:
+            - Scheduled
+            - ReadyToLoad
+            - LoadingStarted
+            - LoadingCompleted
+            - Departed
+            - TrafficJam
+            - Transshipment
+            - Arrived
+            - Measured
+            - UnloadingStarted
+            - UnloadingCompleted
+            - Completed
+        dateTime:
+          type: string
+          format: date-time
+        location:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 1
+            coordinatesWGS84:
+              $ref: '#/components/schemas/CoordinatesWGS84'
+
+    ShipmentHeader:
+      type: object
+      required:
+        - id
+        - shipmentNumber
+        - shipmentReferences
+        - shipmentStatus
+      properties:
+        id:
+          type: string
+          format: uuid
+        shipmentNumber:
+          type: string
+          minLength: 1
+        shipmentReferences:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/shipmentReference'
+        shipmentStatus:
+          type: string
+          # Enumeration for 'shipmentStatus':
+          enum:
+            - Active
+            - Rejected
+            - Completed
+        shipmentArrivalStatus:
+          type: string
+          # Enumeration for 'shipmentArrivalStatus'
+          enum:
+            - OnTime
+            - Early
+            - Delayed
+        scheduledDateTimeOfArrival:
+          type: string
+          format: date-time
+        estimatedDateTimeOfArrival:
+          type: string
+          format: date-time
+        actualDateTimeOfArrival:
+          type: string
+          format: date-time
+
+    shipmentReference:
+      type: object
+      required:
+        - type
+        - assignedBy
+        - value
+      properties:
+        type:
+          type: string
+          enum:
+            - ShipmentNumber
+            - DeliveryInstructionNumber
+            - DeliveryInstructionSequenceNumber
+            - OrderNumber
+            - OrderLineItemNumber
+        assignedBy:
+          type: string
+          enum:
+            - Supplier
+            - Forwarder
+            - Carrier
+            - OrderIssuer
+        value:
+          type: string
+          minLength: 1
+
+    ListOfShipments:
+      type: object
+      required:
+        - numberOfShipments
+        - shipments
+        # links is not required
+      properties:
+        numberOfShipments:
+          type: integer
+          minimum: 1
+        shipments:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ShipmentHeader'
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetShipment:
+      $ref: '#/components/schemas/Shipment'
+
+    Shipment:
+      allOf:
+        - $ref: '#/components/schemas/ShipmentHeader'
+        - properties:
+            latestEvent:
+              $ref: '#/components/schemas/Event'
