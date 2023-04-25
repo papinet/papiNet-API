@@ -2,11 +2,11 @@
 
 ## Context
 
-This use case is designed for Paper business.
+This use case is designed for _Paper and Board_ business.
 
-> Recovered paper is not included within our definition of Paper business.
+> _Paper For Recycling_ and _Pulp_ are not included within our definition of _Paper and Board_, they are raw materials for _Paper and Board_.
 
-## Definition
+## Definitions
 
 The distinction we make between the concepts _product_ and _article_ is essential to the understanding of our papiNet API endpoints.
 
@@ -20,31 +20,39 @@ While the hyphenated terms _seller-product_ and _customer-article_ may sound red
 
 A **_location_** is defined as a physical place where a business process or activity takes place or where a physical asset is located. A _location_ can be a building, room, area, or geographic region, and can be associated with various types of assets, such as equipment, inventory, or people.
 
-A **_party_** is defined as any individual, organization, or system that has a relationship or role in a particular business process or activity. _Parties_ can include customers, suppliers, partners, employees, and other stakeholders who participate in the business process.
+A **_party_** is defined as any individual or organization that has a relationship or role in a particular business process or activity. _Parties_ can include customers, suppliers, partners, employees, and other stakeholders who participate in the business process.
 
 ## Preconditions
 
-Our initial approach will be to start with a simplified operational structure, which assumes that the _seller_ has already defined the necessary _customer-articles_, _parties_, and _locations_ required for the business transactions, by another means than API.
+Our initial approach will be to start with a simplified operational structure, which assumes that the _seller_ has already defined the necessary _customer-articles_, _parties_, and _locations_ required for the business transactions, by another means than papiNet API.
 
 It should be noted that for now, this simplified operational structure excludes the step of defining _customer-articles_ from _seller-products_, which is assumed to have already been completed by the _seller_ prior to the start of the business transactions.
 
-## Process
+## Processes
 
-And authenticated _customer_ requests to the _seller_ the list of _customer-articles_ that have been created.
+An authenticated _customer_ requests the _seller_ to provide the list of _customer-articles_ that have been created.
 
-The authenticated _customer_ requests to the _seller_ the details of a specific _customer-article_ that have been created.
+The authenticated _customer_ requests the _seller_ to provide the details of a specific _customer-article_ that has been created.
 
-The authenticated _customer_ requests to the _seller_ the list of _locations_ that have been defined.
+The authenticated _customer_ requests the _seller_ to provide the list of _locations_ that have been defined.
 
-The authenticated _customer_ requests to the _seller_ the details of a specific _location_ that have been defined.
+The authenticated _customer_ requests the _seller_ to provide the details of a specific _location_ that has been defined.
 
-The authenticated _customer_ requests to the _seller_ the list of _parties_ that have been defined.
+The authenticated _customer_ requests the _seller_ to provide the list of _parties_ that have been defined.
 
-The authenticated _customer_ requests to the _seller_ the details of a specific _party_ that have been defined.
+The authenticated _customer_ requests the _seller_ to provide the details of a specific _party_ that has been defined.
 
 ## Domain Name
 
 We suggest that the _seller_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _seller_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+
+## papiNet Stub Service
+
+You can run locally the papiNet stub service using the following command:
+
+```text
+./mock/pact-stub-server --file ./mock/papiNet.PACT.json --port 3020 --provider-state-header-name X-Provider-State
+```
 
 ## Authentication
 
@@ -54,7 +62,7 @@ The _customer_ sends an API request to create a session, and gets its associated
 
 ```text
 curl --request POST \
-  --URL http://localhost:2000/tokens \
+  --URL http://localhost:3020/tokens \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -72,13 +80,15 @@ If all goes well, the _customer_ will receive a response like this:
 
 ## Scenarios
 
-* Scenario A - An authenticated _customer_ gets the list of all _customer-articles_ created for that _customer_ and then gets the details of a specific _customer-article_.
+* Scenario A - An authenticated _customer_ gets the list of all (active) _customer-articles_ created for that _customer_ and then gets the details of a specific _customer-article_.
 
 * Scenario B - An authenticated _customer_ gets the list of all _locations_ defined for that _customer_ and then gets the details of a specific _location_.
 
 * Scenario C - An authenticated _customer_ gets the list of all _parties_ defined for that _customer_ and then gets the details of a specific _party_.
 
-### Scenario A
+* Scenario D - An authenticated _customer_ retrieves the UUID of a _customer-article_ based on its `customerArticleNumber`.
+
+### Scenario A: Customer-Articles
 
 An authenticated _customer_ gets the list of all _customer-articles_ created for that _customer_ and then gets the details of a specific _customer-article_.
 
@@ -88,7 +98,7 @@ The _customer_ sends an API request to the _seller_ in order to be authenticated
 
 ```text
 curl --request POST \
-  --URL http://localhost:2000/tokens \
+  --URL http://localhost:3020/tokens \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -108,7 +118,7 @@ In order to re-use the value of the `access_token` in subsequent API requests, i
 
 ```text
 ACCESS_TOKEN=$(curl --request POST \
-  --URL http://localhost:2000/tokens \
+  --URL http://localhost:3020/tokens \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials' | jq -r '.access_token')
@@ -117,7 +127,7 @@ ACCESS_TOKEN=$(curl --request POST \
 You can easily verify the value of the `ACCESS_TOKEN` environment variable using:
 
 ```text
-$ echo $ACCESS_TOKEN
+echo $ACCESS_TOKEN
 a4f071c3-fe1f-4a45-9eae-07ddcb5bed26
 ```
 
@@ -127,7 +137,7 @@ The authenticated _customer_ sends an API request in order to get the list of al
 
 ```text
 curl --request GET \
-  --URL http://localhost:2000/customer-articles \
+  --URL http://localhost:3020/customer-articles?customerArticles.status=Active \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
@@ -135,16 +145,48 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "numberOfCustomerArticle": 2,
-  "customerArticle": [
+  "numberOfCustomerArticles": 17,
+  "customerArticles": [
     {
-      "id": "/customer-articles/7bfd8a6-edde-48ab-b304-b7d4f1d007a6",
+      "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+      "status": "Active",
       "sellerProductBrandName": "Galerie",
-      "sellerProductName": "Galerie Brite",
-      "customerArticleNumber: "My-Galerie-Brite-54",
+      "sellerProductName": "Galerie Lite",
+      "customerArticleNumber": "ERP-GA-L-35-900-1000",
       "productType": "Paper"
     },
-    {}
+    {
+      "id": "/customer-articles/b10d0a30-ce23-405b-8176-67452ea2ef6c",
+      "status": "Active",
+      "sellerProductBrandName": "Galerie",
+      "sellerProductName": "Galerie Lite",
+      "customerArticleNumber": "ERP-GA-L-35-2100-1250",
+      "productType": "Paper"
+    },
+    {
+      "id": "/customer-articles/a9c15fde-f410-46f7-b16c-43678d414ea3",
+      "status": "Active",
+      "sellerProductBrandName": "Galerie",
+      "sellerProductName": "Galerie Lite",
+      "customerArticleNumber": "ERP-GA-L-51-1800-1250",
+      "productType": "Paper"
+    },
+    {
+      "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+      "status": "Active",
+      "sellerProductBrandName": "Galerie",
+      "sellerProductName": "Galerie Brite",
+      "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
+      "productType": "Paper"
+    },
+    {
+      "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486",
+      "status": "Active",
+      "sellerProductBrandName": "Magno",
+      "sellerProductName": "Magno Gloss",
+      "customerArticleNumber": "ERP-MA-G-100",
+      "productType": "Paper"
+    }
   ],
   "links": {
     "self": {
@@ -153,6 +195,267 @@ If all goes well, the _customer_ will receive a response like this:
     "next": {
       "href": "/customer-articles?offset=5&limit=5"
     }
+  }
+}
+```
+
+#### Interaction 3 of Scenario A (Get the Details of a Specific Customer-Article)
+
+At any time, the _customer_ can send an API request in order to get the details of a specific _customer-article_ that has been created:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "status": "Active",
+  "sellerProductBrandName": "Galerie",
+  "sellerProductName": "Galerie Brite",
+  "customerArticleNumber": "ERP-GAL-35-900-1000",
+  "paper": {
+    "finishType": "Gloss",
+    "printType": "HeatsetOffset",
+    "paperCharacteristics": [
+      {
+        "basisWeight": {
+          "value": 35,
+          "UOM": "GramsPerSquareMeter"
+        },
+        "bulk": {
+          "value": 1.02,
+          "UOM": "CubicCentimeterPerGram"
+        }
+      }
+    ],
+    "format": "Reel",
+    "width": {
+      "value": 900,
+      "UOM": "Millimeter"
+    },
+    "diameter": {
+      "value": 1000,
+      "UOM": "Millimeter"
+    },
+    "coreDiameter": {
+      "value": 76,
+      "UOM": "Millimeter"
+    }
+  }
+}
+```
+
+### Scenario B: Locations
+
+An authenticated _customer_ gets the list of all _locations_ defined for that _customer_ and then gets the details of a specific _location_.
+
+#### Interaction 1 of Scenario B (Authentication)
+
+See above.
+
+#### Interaction 2 of Scenario B (List of Locations)
+
+The authenticated _customer_ sends an API request in order to get the list of all _locations_ defined:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/locations \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "numberOfLocations": 9,
+  "locations": [
+    {
+      "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "locationIdentifier": "ERP-L-DE-SAPPI-01",
+      "nameLines": [
+        "Sappi Alfeld GmbH"
+      ],
+      "countryCode": "DE"
+    },
+    {
+      "id": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "locationIdentifier": "ERP-L-IT-SAPPI-01",
+      "nameLines": [
+        "Sappi Carmignano Mill"
+      ],
+      "countryCode": "IT"
+    },
+    {
+      "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "locationIdentifier": "ERP-L-BE-SAPPI-01",
+      "nameLines": [
+        "Sappi Lanaken Mill"
+      ],
+      "countryCode": "BE"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/locations?offset=0&limit=5"
+    },
+    "next": {
+      "href": "/locations?offset=5&limit=5"
+    }
+  }
+}
+```
+
+#### Interaction 3 of Scenario B (Get the Details of a Specific Location)
+
+At any time, the _customer_ can send an API request in order to get the details of a specific _location_ that has been defined:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+  "locationIdentifier": "ERP-L-DE-SAPPI-01",
+  "nameLines": [
+    "Sappi Alfeld GmbH"
+  ],
+  "address": {
+    "addressLines": [
+      "Mühlenmasch 1"
+    ],
+    "city": "Alfeld",
+    "postalCode": "31061",
+    "countryCode": "DE"
+  },
+  "coordinatesWGS84": {
+    "latitude": 51.9840695,
+    "longitude": 9.8236417
+  }
+}
+```
+
+### Scenario C: Parties
+
+An authenticated _customer_ gets the list of all _parties_ defined for that _customer_ and then gets the details of a specific _party_.
+
+#### Interaction 1 of Scenario C (Authentication)
+
+See above.
+
+#### Interaction 2 of Scenario C (List of Parties)
+
+The authenticated _customer_ sends an API request in order to get the list of all _parties_ defined:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/parties \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "numberOfParties": 1,
+  "parties": [
+    {
+      "id": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "partyIdentifier": "ERP-P-NL-SAPPI-01",
+      "nameLines": [
+        "Sales Office Benelux",
+        "Sappi Netherlands Services BV"
+      ],
+      "countryCode": "NL"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/parties?offset=0&limit=5"
+    },
+    "next": {}
+  }
+}
+```
+
+#### Interaction 3 of Scenario C (Get the Details of a Specific Party)
+
+At any time, the _customer_ can send an API request in order to get the details of a specific _location_ that has been defined:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "id": "/locations/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "partyIdentifier": "ERP-P-NL-SAPPI-01",
+  "nameLines": [
+    "Sales Office Benelux",
+    "Sappi Netherlands Services BV"
+  ],
+  "address": {
+    "addressLines": [
+      "Biesenweg 16"
+    ],
+    "city": "Maastricht",
+    "postalCode": " 6211 AA",
+    "countryCode": "NL"
+  }
+}
+```
+
+### Scenario D: Customer-Articles (by customerArticleNumber)
+
+An authenticated _customer_ retrieves the UUID of a _customer-article_ based on its `customerArticleNumber`.
+
+#### Interaction 1 of Scenario D (Authentication)
+
+See above.
+
+#### Interaction 2 of Scenario D (Retrieve UUID by customerArticleNumber)
+
+The authenticated _customer_ sends an API request in order to retreive the UUID of a _customer-article_ based on its `customerArticleNumber`:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/customer-articles?customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9 \
+  --header 'Authorization: Bearer '$ACCESS_TOKEN
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "numberOfCustomerArticles": 1,
+  "customerArticles": [
+    {
+      "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+      "status": "Active",
+      "sellerProductBrandName": "Galerie",
+      "sellerProductName": "Galerie Brite",
+      "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
+      "productType": "Paper"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/customer-articles?customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9"
+    },
+    "next": {}
   }
 }
 ```

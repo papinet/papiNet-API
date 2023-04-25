@@ -1,0 +1,337 @@
+{
+  "consumer": {
+    "name": "Customer"
+  },
+  "provider": {
+    "name": "Seller"
+  },
+  "interactions": [
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Authentication",
+      "providerState": "Unauthenticated",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+          "token_type": "bearer", 
+          "expires_in": 3600
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 2 of Scenario A (List of Customer-Articles)",
+      "providerState": "Interaction 2 of Scenario A (List of Customer-Articles)",
+      "request": {
+        "method": "GET",
+        "path": "/customer-articles",
+        "query": "customerArticles.status=Active"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "numberOfCustomerArticles": 17,
+          "customerArticles": [
+            {
+              "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+              "status": "Active",
+              "sellerProductBrandName": "Galerie",
+              "sellerProductName": "Galerie Lite",
+              "customerArticleNumber": "ERP-GA-L-35-900-1000",
+              "productType": "Paper"
+            },
+            {
+              "id": "/customer-articles/b10d0a30-ce23-405b-8176-67452ea2ef6c",
+              "status": "Active",
+              "sellerProductBrandName": "Galerie",
+              "sellerProductName": "Galerie Lite",
+              "customerArticleNumber": "ERP-GA-L-35-2100-1250",
+              "productType": "Paper"
+            },
+            {
+              "id": "/customer-articles/a9c15fde-f410-46f7-b16c-43678d414ea3",
+              "status": "Active",
+              "sellerProductBrandName": "Galerie",
+              "sellerProductName": "Galerie Lite",
+              "customerArticleNumber": "ERP-GA-L-51-1800-1250",
+              "productType": "Paper"
+            },
+            {
+              "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+              "status": "Active",
+              "sellerProductBrandName": "Galerie",
+              "sellerProductName": "Galerie Brite",
+              "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
+              "productType": "Paper"
+            },
+            {
+              "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486",
+              "status": "Active",
+              "sellerProductBrandName": "Magno",
+              "sellerProductName": "Magno Gloss",
+              "customerArticleNumber": "ERP-MA-G-100",
+              "productType": "Paper"
+            }
+          ],
+          "links": {
+            "self": {
+              "href": "/customer-articles?offset=0&limit=5"
+            },
+            "next": {
+              "href": "/customer-articles?offset=5&limit=5"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 3 of Scenario A (Get the Details of a Specific Customer-Article)",
+      "providerState": "Interaction 3 of Scenario A (Get the Details of a Specific Customer-Article)",
+      "request": {
+        "method": "GET",
+        "path": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+          "status": "Active",
+          "sellerProductBrandName": "Galerie",
+          "sellerProductName": "Galerie Brite",
+          "customerArticleNumber": "ERP-GAL-35-900-1000",
+          "paper": {
+            "finishType": "Gloss",
+            "printType": "HeatsetOffset",
+            "paperCharacteristics": [
+              {
+                "basisWeight": {
+                  "value": 35,
+                  "UOM": "GramsPerSquareMeter"
+                },
+                "bulk": {
+                  "value": 1.02,
+                  "UOM": "CubicCentimeterPerGram"
+                }
+              }
+            ],
+            "format": "Reel",
+            "width": {
+              "value": 900,
+              "UOM": "Millimeter"
+            },
+            "diameter": {
+              "value": 1000,
+              "UOM": "Millimeter"
+            },
+            "coreDiameter": {
+              "value": 76,
+              "UOM": "Millimeter"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 2 of Scenario B (List of Locations)",
+      "providerState": "Interaction 2 of Scenario B (List of Locations)",
+      "request": {
+        "method": "GET",
+        "path": "/locations"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "numberOfLocations": 9,
+          "locations": [
+            {
+              "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "locationIdentifier": "ERP-DE-SAPPI-01",
+              "nameLines": [
+                "Sappi Alfeld GmbH"
+              ],
+              "countryCode": "DE"
+            },
+            {
+              "id": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+              "locationIdentifier": "ERP-IT-SAPPI-01",
+              "nameLines": [
+                "Sappi Carmignano Mill"
+              ],
+              "countryCode": "IT"
+            },
+            {
+              "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "locationIdentifier": "ERP-BE-SAPPI-01",
+              "nameLines": [
+                "Sappi Lanaken Mill"
+              ],
+              "countryCode": "BE"
+            }
+          ],
+          "links": {
+            "self": {
+              "href": "/locations?offset=0&limit=5"
+            },
+            "next": {
+              "href": "/locations?offset=5&limit=5"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 3 of Scenario B (Get the Details of a Specific Location)",
+      "providerState": "Interaction 3 of Scenario B (Get the Details of a Specific Location)",
+      "request": {
+        "method": "GET",
+        "path": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+          "locationIdentifier": "ERP-L-DE-SAPPI-01",
+          "nameLines": [
+            "Sappi Alfeld GmbH"
+          ],
+          "address": {
+            "addressLines": [
+              "Mühlenmasch 1"
+            ],
+            "city": "Alfeld",
+            "postalCode": "31061",
+            "countryCode": "DE"
+          },
+          "coordinatesWGS84": {
+            "latitude": 51.9840695,
+            "longitude": 9.8236417
+          }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 2 of Scenario C (List of Parties)",
+      "providerState": "Interaction 2 of Scenario C (List of Parties)",
+      "request": {
+        "method": "GET",
+        "path": "/parties"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "numberOfParties": 1,
+          "parties": [
+            {
+              "id": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+              "partyIdentifier": "ERP-P-NL-SAPPI-01",
+              "nameLines": [
+                "Sales Office Benelux",
+                "Sappi Netherlands Services BV"
+              ],
+              "countryCode": "NL"
+            }
+          ],
+          "links": {
+            "self": {
+              "href": "/parties?offset=0&limit=5"
+            },
+            "next": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 3 of Scenario C (Get the Details of a Specific Party)",
+      "providerState": "Interaction 3 of Scenario C (Get the Details of a Specific Party)",
+      "request": {
+        "method": "GET",
+        "path": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/locations/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "partyIdentifier": "ERP-P-NL-SAPPI-01",
+          "nameLines": [
+            "Sales Office Benelux",
+            "Sappi Netherlands Services BV"
+          ],
+          "address": {
+            "addressLines": [
+              "Biesenweg 16"
+            ],
+            "city": "Maastricht",
+            "postalCode": " 6211 AA",
+            "countryCode": "NL"
+          }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 2 of Scenario D (Retrieve UUID by customerArticleNumber)",
+      "providerState": "Interaction 2 of Scenario D (Retrieve UUID by customerArticleNumber)",
+      "request": {
+        "method": "GET",
+        "path": "/customer-articles",
+        "query": "customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "numberOfCustomerArticles": 1,
+          "customerArticles": [
+            {
+              "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+              "status": "Active",
+              "sellerProductBrandName": "Galerie",
+              "sellerProductName": "Galerie Brite",
+              "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
+              "productType": "Paper"
+            }
+          ],
+          "links": {
+            "self": {
+              "href": "/customer-articles?customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9"
+            },
+            "next": {}
+          }
+        }
+      }
+    }
+  ]
+}
