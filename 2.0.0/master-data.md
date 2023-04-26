@@ -150,40 +150,40 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
       "status": "Active",
-      "sellerProductBrandName": "Galerie",
-      "sellerProductName": "Galerie Lite",
+      "sellerProductBrandName": "Advertising Paper",
+      "sellerProductName": "Advertising Paper Lite",
       "customerArticleNumber": "ERP-GA-L-35-900-1000",
       "productType": "Paper"
     },
     {
       "id": "/customer-articles/b10d0a30-ce23-405b-8176-67452ea2ef6c",
       "status": "Active",
-      "sellerProductBrandName": "Galerie",
-      "sellerProductName": "Galerie Lite",
+      "sellerProductBrandName": "Advertising Paper",
+      "sellerProductName": "Advertising Paper Lite",
       "customerArticleNumber": "ERP-GA-L-35-2100-1250",
       "productType": "Paper"
     },
     {
       "id": "/customer-articles/a9c15fde-f410-46f7-b16c-43678d414ea3",
       "status": "Active",
-      "sellerProductBrandName": "Galerie",
-      "sellerProductName": "Galerie Lite",
+      "sellerProductBrandName": "Advertising Paper",
+      "sellerProductName": "Advertising Paper Lite",
       "customerArticleNumber": "ERP-GA-L-51-1800-1250",
       "productType": "Paper"
     },
     {
       "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
       "status": "Active",
-      "sellerProductBrandName": "Galerie",
-      "sellerProductName": "Galerie Brite",
+      "sellerProductBrandName": "Advertising Paper",
+      "sellerProductName": "Advertising Paper Brite",
       "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
       "productType": "Paper"
     },
     {
       "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486",
       "status": "Active",
-      "sellerProductBrandName": "Magno",
-      "sellerProductName": "Magno Gloss",
+      "sellerProductBrandName": "Brilliant Paper",
+      "sellerProductName": "Brilliant Paper Gloss",
       "customerArticleNumber": "ERP-MA-G-100",
       "productType": "Paper"
     }
@@ -215,8 +215,8 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
   "status": "Active",
-  "sellerProductBrandName": "Galerie",
-  "sellerProductName": "Galerie Brite",
+  "sellerProductBrandName": "Advertising Paper",
+  "sellerProductName": "Advertising Paper Brite",
   "customerArticleNumber": "ERP-GAL-35-900-1000",
   "paper": {
     "finishType": "Gloss",
@@ -281,7 +281,7 @@ If all goes well, the _customer_ will receive a response like this:
       "status": "Active",
       "locationIdentifier": "ERP-L-DE-SAPPI-01",
       "nameLines": [
-        "Sappi Alfeld GmbH"
+        "Acme Alfeld GmbH"
       ],
       "countryCode": "DE"
     },
@@ -290,7 +290,7 @@ If all goes well, the _customer_ will receive a response like this:
       "status": "Active",
       "locationIdentifier": "ERP-L-IT-SAPPI-01",
       "nameLines": [
-        "Sappi Carmignano Mill"
+        "Acme Carmignano Mill"
       ],
       "countryCode": "IT"
     },
@@ -299,7 +299,7 @@ If all goes well, the _customer_ will receive a response like this:
       "status": "Active",
       "locationIdentifier": "ERP-L-BE-SAPPI-01",
       "nameLines": [
-        "Sappi Lanaken Mill"
+        "Acme Lanaken Mill"
       ],
       "countryCode": "BE"
     }
@@ -333,7 +333,7 @@ If all goes well, the _customer_ will receive a response like this:
   "status": "Active",
   "locationIdentifier": "ERP-L-DE-SAPPI-01",
   "nameLines": [
-    "Sappi Alfeld GmbH"
+    "Acme Alfeld GmbH"
   ],
   "address": {
     "addressLines": [
@@ -384,7 +384,7 @@ If all goes well, the _customer_ will receive a response like this:
       "partyIdentifier": "ERP-P-NL-SAPPI-01",
       "nameLines": [
         "Sales Office Benelux",
-        "Sappi Netherlands Services BV"
+        "Acme Netherlands Services BV"
       ],
       "countryCode": "NL"
     }
@@ -417,7 +417,7 @@ If all goes well, the _customer_ will receive a response like this:
   "partyIdentifier": "ERP-P-NL-SAPPI-01",
   "nameLines": [
     "Sales Office Benelux",
-    "Sappi Netherlands Services BV"
+    "Acme Netherlands Services BV"
   ],
   "address": {
     "addressLines": [
@@ -459,8 +459,8 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
       "status": "Active",
-      "sellerProductBrandName": "Galerie",
-      "sellerProductName": "Galerie Brite",
+      "sellerProductBrandName": "Advertising Paper",
+      "sellerProductName": "Advertising Paper Brite",
       "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
       "productType": "Paper"
     }
