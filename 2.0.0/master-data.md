@@ -12,7 +12,7 @@ The distinction we make between the concepts _product_ and _article_ is essentia
 
 A **_product_** is owned and defined by the _seller_. It has several properties such as the `basisWeight`, the `width`, a certain percentage of `recycled` material, and so on. Usually, some of these properties may have multiple possible values, for instance you could choose the `basisWeight` of your paper from a list of values: 35 g/m², 39 g/m², 42 g/m², ...
 
-An **_article_** is owned and defined by the _customer_. Typically, a _customer_ specifies an individual _article_ from a _product_ in order to narrow down the various properties that may have multiple potential values, ultimately settling on a single value for each. For now, our assumption is that each property of the _article_ will have only one value, but this may change in the future.
+An **_article_** is owned and defined by the _customer_. Typically, a _customer_ specifies an individual _article_ from a _product_ in order to narrow down the various properties that may have multiple potential values, ultimately settling on a single value for each.
 
 In order to show that important distinction within the API itself, we will always use the word _product_ together with _seller_ creating the hyphenated word **_seller-product_**, and the word _article_ will always be used with _customer_ creating **_customer-article_**.
 
@@ -26,19 +26,19 @@ A **_party_** is defined as any individual or organization that has a relationsh
 
 Our initial approach will be to start with a simplified operational structure, which assumes that the _seller_ has already defined the necessary _customer-articles_, _parties_, and _locations_ required for the business transactions, by another means than papiNet API.
 
-It should be noted that for now, this simplified operational structure excludes the step of defining _customer-articles_ from _seller-products_, which is assumed to have already been completed by the _seller_ prior to the start of the business transactions.
+It should be noted that, for now, this simplified operational structure excludes the step of defining _customer-articles_ from _seller-products_, which is assumed to have already been completed by the _seller_ prior to the start of the business transactions. In addition to that, our assumption is that each property of the _customer-article_ has only one value, but this restriction will change in the future.
 
 ## Processes
 
-An authenticated _customer_ requests the _seller_ to provide the list of _customer-articles_ that have been created.
+An authenticated _customer_ requests the _seller_ to provide the list of active _customer-articles_ that have been created.
 
 The authenticated _customer_ requests the _seller_ to provide the details of a specific _customer-article_ that has been created.
 
-The authenticated _customer_ requests the _seller_ to provide the list of _locations_ that have been defined.
+The authenticated _customer_ requests the _seller_ to provide the list of active _locations_ that have been defined.
 
 The authenticated _customer_ requests the _seller_ to provide the details of a specific _location_ that has been defined.
 
-The authenticated _customer_ requests the _seller_ to provide the list of _parties_ that have been defined.
+The authenticated _customer_ requests the _seller_ to provide the list of active _parties_ that have been defined.
 
 The authenticated _customer_ requests the _seller_ to provide the details of a specific _party_ that has been defined.
 
@@ -80,11 +80,11 @@ If all goes well, the _customer_ will receive a response like this:
 
 ## Scenarios
 
-* Scenario A - An authenticated _customer_ gets the list of all (active) _customer-articles_ created for that _customer_ and then gets the details of a specific _customer-article_.
+* Scenario A - An authenticated _customer_ gets the list of all active _customer-articles_ created for that _customer_ and then gets the details of a specific _customer-article_.
 
-* Scenario B - An authenticated _customer_ gets the list of all _locations_ defined for that _customer_ and then gets the details of a specific _location_.
+* Scenario B - An authenticated _customer_ gets the list of all active _locations_ defined for that _customer_ and then gets the details of a specific _location_.
 
-* Scenario C - An authenticated _customer_ gets the list of all _parties_ defined for that _customer_ and then gets the details of a specific _party_.
+* Scenario C - An authenticated _customer_ gets the list of all active _parties_ defined for that _customer_ and then gets the details of a specific _party_.
 
 * Scenario D - An authenticated _customer_ retrieves the UUID of a _customer-article_ based on its `customerArticleNumber`.
 
@@ -133,7 +133,7 @@ a4f071c3-fe1f-4a45-9eae-07ddcb5bed26
 
 #### Interaction 2 of Scenario A (List of Customer-Articles)
 
-The authenticated _customer_ sends an API request in order to get the list of all _customer-articles_ created:
+The authenticated _customer_ sends an API request in order to get the list of all active _customer-articles_ created:
 
 ```text
 curl --request GET \
@@ -250,6 +250,8 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
+***WARNING.*** The properties of a _customer-articles_ SHOULD NOT change once defined, they SHOULD be immutable, with the exception of of the `status` property that can be switched from `Active` to `Inactive`.
+
 ### Scenario B: Locations
 
 An authenticated _customer_ gets the list of all _locations_ defined for that _customer_ and then gets the details of a specific _location_.
@@ -260,11 +262,11 @@ See above.
 
 #### Interaction 2 of Scenario B (List of Locations)
 
-The authenticated _customer_ sends an API request in order to get the list of all _locations_ defined:
+The authenticated _customer_ sends an API request in order to get the list of all active _locations_ defined:
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/locations \
+  --URL http://localhost:3020/locations?locations.status=Active \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
@@ -275,7 +277,8 @@ If all goes well, the _customer_ will receive a response like this:
   "numberOfLocations": 9,
   "locations": [
     {
-      "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "status": "Active",
       "locationIdentifier": "ERP-L-DE-SAPPI-01",
       "nameLines": [
         "Sappi Alfeld GmbH"
@@ -283,7 +286,8 @@ If all goes well, the _customer_ will receive a response like this:
       "countryCode": "DE"
     },
     {
-      "id": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "id": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "status": "Active",
       "locationIdentifier": "ERP-L-IT-SAPPI-01",
       "nameLines": [
         "Sappi Carmignano Mill"
@@ -291,7 +295,8 @@ If all goes well, the _customer_ will receive a response like this:
       "countryCode": "IT"
     },
     {
-      "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "id": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "status": "Active",
       "locationIdentifier": "ERP-L-BE-SAPPI-01",
       "nameLines": [
         "Sappi Lanaken Mill"
@@ -325,6 +330,7 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+  "status": "Active",
   "locationIdentifier": "ERP-L-DE-SAPPI-01",
   "nameLines": [
     "Sappi Alfeld GmbH"
@@ -344,9 +350,13 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
+***WARNING.*** The properties of a _location_ SHOULD NOT change once defined, they SHOULD be immutable, with the exception of of the `status` property that can be switched from `Active` to `Inactive`.
+
+***IMPORTANT NOTICE.*** The _customer_ is responsible to retrieve the time zone (including UTC offsets and daylight saving time), of the _location_ if it would want to present a date and/or time in the local time zone of that _location_. As a reminder, dates and/or times within papiNet API are in UTC (formatted as in ISO 8601).
+
 ### Scenario C: Parties
 
-An authenticated _customer_ gets the list of all _parties_ defined for that _customer_ and then gets the details of a specific _party_.
+An authenticated _customer_ gets the list of all active _parties_ defined for that _customer_ and then gets the details of a specific _party_.
 
 #### Interaction 1 of Scenario C (Authentication)
 
@@ -354,11 +364,11 @@ See above.
 
 #### Interaction 2 of Scenario C (List of Parties)
 
-The authenticated _customer_ sends an API request in order to get the list of all _parties_ defined:
+The authenticated _customer_ sends an API request in order to get the list of all active _parties_ defined:
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/parties \
+  --URL http://localhost:3020/parties?parties.status=Active \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
@@ -369,7 +379,8 @@ If all goes well, the _customer_ will receive a response like this:
   "numberOfParties": 1,
   "parties": [
     {
-      "id": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "status": "Active",
       "partyIdentifier": "ERP-P-NL-SAPPI-01",
       "nameLines": [
         "Sales Office Benelux",
@@ -401,7 +412,8 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/locations/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "status": "Active",
   "partyIdentifier": "ERP-P-NL-SAPPI-01",
   "nameLines": [
     "Sales Office Benelux",
@@ -417,6 +429,8 @@ If all goes well, the _customer_ will receive a response like this:
   }
 }
 ```
+
+***WARNING.*** The properties of a _party_ SHOULD NOT change once defined, they SHOULD be immutable, with the exception of of the `status` property that can be switched from `Active` to `Inactive`.
 
 ### Scenario D: Customer-Articles (by customerArticleNumber)
 
