@@ -6,6 +6,10 @@ This use case is designed for _Paper and Board_ business.
 
 > _Paper For Recycling_ and _Pulp_ are not included within our definition of _Paper and Board_, they are raw materials for _Paper and Board_.
 
+## Simplification
+
+For now, we only consider a simplified version of the business interactions between only two types of parties: the _customer_ and the _seller_, where the _customer_ will host the HTTP client calling the papiNet API endpoints implemented by the _seller_.
+
 ## Definitions
 
 The distinction we make between the concepts _product_ and _article_ is essential to the understanding of our papiNet API endpoints.
@@ -87,6 +91,10 @@ If all goes well, the _customer_ will receive a response like this:
 * Scenario C - An authenticated _customer_ gets the list of all active _parties_ defined for that _customer_ and then gets the details of a specific _party_.
 
 * Scenario D - An authenticated _customer_ retrieves the UUID of a _customer-article_ based on its `customerArticleNumber`.
+
+* Scenario E - An authenticated _customer_ retrieves the UUID of a _location_ based on its `locationIdentifier`.
+
+* Scenario F - An authenticated _customer_ retrieves the UUID of a _party_ based on its `partyIdentifier`.
 
 ### Scenario A: Customer-Articles
 
@@ -279,7 +287,7 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "status": "Active",
-      "locationIdentifier": "ERP-L-DE-SAPPI-01",
+      "locationIdentifier": "ERP-L-DE-ACME-01",
       "nameLines": [
         "Acme Alfeld GmbH"
       ],
@@ -288,7 +296,7 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
       "status": "Active",
-      "locationIdentifier": "ERP-L-IT-SAPPI-01",
+      "locationIdentifier": "ERP-L-IT-ACME-01",
       "nameLines": [
         "Acme Carmignano Mill"
       ],
@@ -297,7 +305,7 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "status": "Active",
-      "locationIdentifier": "ERP-L-BE-SAPPI-01",
+      "locationIdentifier": "ERP-L-BE-ACME-01",
       "nameLines": [
         "Acme Lanaken Mill"
       ],
@@ -331,7 +339,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
   "status": "Active",
-  "locationIdentifier": "ERP-L-DE-SAPPI-01",
+  "locationIdentifier": "ERP-L-DE-ACME-01",
   "nameLines": [
     "Acme Alfeld GmbH"
   ],
@@ -381,7 +389,7 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
       "status": "Active",
-      "partyIdentifier": "ERP-P-NL-SAPPI-01",
+      "partyIdentifier": "ERP-P-NL-ACME-01",
       "nameLines": [
         "Sales Office Benelux",
         "Acme Netherlands Services BV"
@@ -414,7 +422,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "status": "Active",
-  "partyIdentifier": "ERP-P-NL-SAPPI-01",
+  "partyIdentifier": "ERP-P-NL-ACME-01",
   "nameLines": [
     "Sales Office Benelux",
     "Acme Netherlands Services BV"
@@ -446,7 +454,7 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/customer-articles?customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9 \
+  --URL http://localhost:3020/customer-articles?customerArticles.customerArticleNumber=ERP-GA-BS-65-1000-1000 \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 

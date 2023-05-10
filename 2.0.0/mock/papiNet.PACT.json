@@ -305,7 +305,7 @@
       "request": {
         "method": "GET",
         "path": "/customer-articles",
-        "query": "customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9"
+        "query": "customerArticles.customerArticleNumber=ERP-GA-BS-65-1000-1000"
       },
       "response": {
         "status": 200,
@@ -330,6 +330,63 @@
             },
             "next": {}
           }
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 2 of Scenario A (Create a Purchase Order)",
+      "providerState": "Interaction 2 of Scenario A (Create a Purchase Order)",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-001",
+          "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
+          "supplierOrderTimestamp": "2022-02-02T09:00:05Z",
+          "purchaseOrderStatus": "Original",
+          "supplierOrderStatus": "Pending",
+          "productionStatus": "NotStarted",
+          "shipmentStatus": "NotStarted",
+          "invoiceStatus": "NotStarted",
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "supplierOrderNumber": "SU-XYZ-456",
+              "supplierOrderLineItemNumber": "10",
+              "supplierOrderLineItemStatus": "Pending",
+              "lastDateTimeForChange": "2022-02-02T15:00:00Z",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "shipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-06T22:00:00Z/2022-02-07T21:59:59Z",
+              "Quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
         }
       }
     }
