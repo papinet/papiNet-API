@@ -1,0 +1,317 @@
+openapi: 3.0.3
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forst and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 2.0.0
+servers:
+  - url: http://localhost:3020
+    description: papiNet Mock Server
+paths:
+
+   ## MARSTER DATA
+
+  '/customer-articles':
+    # GET /customer-articles
+    # => ListOfCustomerArticles
+    get:
+      summary: List `customer-articles`
+      description: Gets a paginated list of all `customer-articles` defined by the `customer`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: productType
+          description: Filter by productType
+          required: false
+          schema:
+            type: string
+            enum:
+              - Paper
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfCustomerArticles'
+        '204':
+          description: No Content
+
+  '/customer-articles/{customerArticleId}':
+    # GET /customer-articles/{customerArticleId}
+    # => GetCustomerArticleById
+    get:
+      summary: Get a `customer-article`
+      description: Gets the details of a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+        '404':
+          description: Not Found
+
+  '/locations':
+    # GET /locations
+    # => ListOfLocations
+    get:
+      summary: List `locations`
+      description: Gets a paginated list of all `locations`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: countryCode
+          description: Filter by countryCode
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfLocations'
+        '204':
+          description: No Content
+
+  '/locations/{locationId}':
+    # GET /locations/{locationId}
+    # => GetLocationById
+    get:
+      summary: Get a `location`
+      description: Gets the details of a specific `location`.
+      parameters:
+        - in: path
+          name: locationId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `location` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLocationById'
+        '404':
+          description: Not Found
+
+  '/parties':
+    # GET /parties
+    # => ListOfParties
+    get:
+      summary: List `parties`
+      description: Gets a paginated list of all `parties`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: countryCode
+          description: Filter by countryCode
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfParties'
+        '204':
+          description: No Content
+
+  '/parties/{partyId}':
+    # GET /parties/{partyId}
+    # => GetPartyById
+    get:
+      summary: Get a `party`
+      description: Gets the details of a specific `party`.
+      parameters:
+        - in: path
+          name: partyId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `party` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPartyById'
+        '404':
+          description: Not Found
+
+  ## PURCHASE ORDER
+
+  '/purchase-orders':
+    # POST /purchase-orders
+    # PurchaseOrderCreation => GetPurchaseOrderById
+    post:
+      summary: Create a `purchase-order`
+      description: Creates a `purchase-order`.
+      requestBody:
+        description: The definition of the `purchase-order` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderCreation'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPurchaseOrderById'
+
+  '/purchase-orders/{purchaseOrderId}':
+    # GET /purchase-orders/{purchaseOrderId}
+    # => GetPurchaseOrderById
+    get:
+      summary: Get a `purchase-order`
+      description: Gets the details of a specific `purchase-order`.
+      parameters:
+        - in: path
+          name: purchaseOrderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `purchase-order` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPurchaseOrderById'
+
+    # PATCH /purchase-orders/{purchaseOrderId}
+    # PurchaseOrderModification => GetPurchaseOrderById
+    patch:
+      summary: Modify a `purchase-order`
+      description: Modifies of a specific `purchase-order`.
+      parameters:
+        - in: path
+          name: purchaseOrderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `purchase-order` to modify
+      requestBody:
+        description: The definition of the `purchase-order` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderModification'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPurchaseOrderById'
+
+components:
+  schemas:
+
+    ListOfCustomerArticles: {}
+
+    GetCustomerArticleById: {}
+
+    ListOfLocations: {}
+
+    GetLocationById: {}
+
+    ListOfParties: {}
+
+    GetPartyById: {}
+
+    PurchaseOrderCreation: {}
+
+    GetPurchaseOrderById: {}
+
+    PurchaseOrderModification: {}
