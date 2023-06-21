@@ -8,7 +8,7 @@
   "interactions": [
     {
       "type": "Synchronous/HTTP",
-        "description": "Authentication",
+      "description": "Authentication",
       "providerState": "Unauthenticated",
       "request": {
         "method": "POST",
@@ -335,8 +335,28 @@
     },
     {
       "type": "Synchronous/HTTP",
-        "description": "Interaction 2 of Scenario A (Create a Purchase Order)",
-      "providerState": "Interaction 2 of Scenario A (Create a Purchase Order)",
+      "description": "Interaction 0 of Scenario A (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_A",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "accessToken": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario A (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_A",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -349,29 +369,30 @@
         "body": {
           "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
           "purchaseOrderNumber": "ERP-PO-001",
-          "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
-          "supplierOrderTimestamp": "2022-02-02T09:00:05Z",
+          "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
           "purchaseOrderStatus": "Original",
-          "supplierOrderStatus": "Pending",
-          "productionStatus": "NotStarted",
-          "shipmentStatus": "NotStarted",
-          "invoiceStatus": "NotStarted",
+          "active": true,
           "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
           "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
           "purchaseOrderLineItems": [
             {
               "purchaseOrderLineItemNumber": "1",
               "purchaseOrderLineItemStatus": "Original",
-              "supplierOrderNumber": "SU-XYZ-456",
-              "supplierOrderLineItemNumber": "10",
-              "supplierOrderLineItemStatus": "Pending",
-              "lastDateTimeForChange": "2022-02-02T15:00:00Z",
+              "salesOrderNumber": "SU-XYZ-010",
+              "salesOrderTimestamp": "2022-02-01T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-02T10:00:00",
               "customerArticle": {
                 "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
               },
-              "shipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-              "requestedDeliveryDateTime": "2022-02-06T22:00:00Z/2022-02-07T21:59:59Z",
-              "Quantities": [
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-11T11:30:00",
+              "quantities": [
                 {
                   "quantityContext": "Ordered",
                   "quantityType": "GrossWeight",
@@ -382,6 +403,2010 @@
                   "quantityContext": "Ordered",
                   "quantityType": "Count",
                   "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario A (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_A",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-001",
+          "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-010",
+              "salesOrderTimestamp": "2022-02-01T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-02T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-11T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-11T13:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 0 of Scenario B (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_B",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "accessToken": "b6b9430b-f552-43c9-a3cd-98c0fa46bcf7",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario B (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_B",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-002",
+          "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-020",
+              "salesOrderTimestamp": "2022-02-02T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-03T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-12T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario B (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_B",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-002",
+          "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-020",
+              "salesOrderTimestamp": "2022-02-02T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-03T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "",
+              "requestedDeliveryDateTime": "2022-02-12T11:30:00",
+              "confirmedDeliveryDateTime": "",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 0 of Scenario C (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_C",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "accessToken": "c5553526-3756-493b-9bdd-6d54e33329b8",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario C (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_C",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-003",
+          "purchaseOrderTimestamp": "2022-02-03T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-13T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "2",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "20",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 2 of Scenario C (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_C",
+      "request": {
+        "method": "PATCH",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-003",
+          "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-13T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "2",
+              "purchaseOrderLineItemStatus": "Cancelled",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "20",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "3",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "30",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 3 of Scenario C (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_C",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-003",
+          "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-13T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-13T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "3",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-030",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "30",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 0 of Scenario D (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_D",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "accessToken": "d7c0d82e-5619-43cc-8459-9611371b2c1b",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario D (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_D",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-004",
+          "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-040",
+              "salesOrderTimestamp": "2022-02-04T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-14T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario D (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_D",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-004",
+          "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-040",
+              "salesOrderTimestamp": "2022-02-04T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-14T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-14T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 3 of Scenario D (Update the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_D",
+      "request": {
+        "method": "PATCH",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-004",
+          "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-040",
+              "salesOrderTimestamp": "2022-02-04T09:45:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-14T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-14T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 16000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 5,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 4 of Scenario D (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_4_of_Scenario_D",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-004",
+          "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-040",
+              "salesOrderTimestamp": "2022-02-04T09:45:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-14T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-14T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 16000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 5,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 16000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 5,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 0 of Scenario E (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_E",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "accessToken": "e0601314-434f-4aac-b719-6dfb2c21d24f",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario E (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_E",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-005",
+          "purchaseOrderTimestamp": "pOT:2022-02-05T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-050",
+              "salesOrderTimestamp": "2022-02-05T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario E (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_E",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-005",
+          "purchaseOrderTimestamp": "pOT:2022-02-05T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-050",
+              "salesOrderTimestamp": "2022-02-05T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 3 of Scenario E (Update the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_E",
+      "request": {
+        "method": "PATCH",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-005",
+          "purchaseOrderTimestamp": "2022-02-05T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-050",
+              "salesOrderTimestamp": "2022-02-05T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-15T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 16000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 5,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 0 of Scenario F (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_F",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "accessToken": "f3c7e67a-6871-4b5c-ae68-5697b3f3c2e4",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario F (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_F",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-006",
+          "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-060",
+              "salesOrderTimestamp": "2022-02-06T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-16T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario F (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_F",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-006",
+          "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-060",
+              "salesOrderTimestamp": "2022-02-06T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-16T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-16T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 3 of Scenario F (Update the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_F",
+      "request": {
+        "method": "PATCH",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-006",
+          "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-060",
+              "salesOrderTimestamp": "2022-02-06T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-17T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-16T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 4 of Scenario F (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_4_of_Scenario_F",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-006",
+          "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-060",
+              "salesOrderTimestamp": "2022-02-06T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-17T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-16T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 0 of Scenario G (Authentication)",
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_G",
+      "request": {
+        "method": "POST",
+        "path": "/tokens"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": { 
+          "accessToken": "60cb6ce4-3ab3-42c0-a5c2-e365750352c3",
+          "expiresIn": 86400, 
+          "tokenType": "bearer"
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+        "description": "Interaction 1 of Scenario G (Create a Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_1_of_Scenario_G",
+      "request": {
+        "method": "POST",
+        "path": "/purchase-orders"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-007",
+          "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-17T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "2",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "20",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-19T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "3",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "30",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-18T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario G (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_G",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-007",
+          "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
+          "purchaseOrderStatus": "Original",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-17T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-17T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "2",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "20",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-19T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-19T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "3",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "30",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-18T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-18T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 3 of Scenario F (Update the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_G",
+      "request": {
+        "method": "PATCH",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-007",
+          "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-17T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-17T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "2",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:45:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "20",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-19T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-19T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 16000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 5,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "3",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:45:05Z",
+              "salesOrderStatus": "Pending",
+              "salesOrderLineItemNumber": "30",
+              "salesOrderLineItemStatus": "Pending",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+              "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-20T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-18T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 4 of Scenario G (Get the Status of the Purchase Order)",
+      "providerState": "Purchase_Order_Interaction_4_of_Scenario_G",
+      "request": {
+        "method": "GET",
+        "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+          "purchaseOrderNumber": "ERP-PO-007",
+          "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
+          "purchaseOrderStatus": "Amended",
+          "active": true,
+          "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
+          "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+          "purchaseOrderLineItems": [
+            {
+              "purchaseOrderLineItemNumber": "1",
+              "purchaseOrderLineItemStatus": "Original",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:00:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "10",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+              },
+              "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+              "requestedDeliveryDateTime": "2022-02-17T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-17T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 12800,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 4,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "2",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:45:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "20",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+              "requestedDeliveryDateTime": "2022-02-19T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-19T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 16000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 5,
+                  "quantityUOM": "Reel"
+                }
+              ]
+            },
+            {
+              "purchaseOrderLineItemNumber": "3",
+              "purchaseOrderLineItemStatus": "Amended",
+              "salesOrderNumber": "SU-XYZ-070",
+              "salesOrderTimestamp": "2022-02-07T09:45:05Z",
+              "salesOrderStatus": "Confirmed",
+              "salesOrderLineItemNumber": "30",
+              "salesOrderLineItemStatus": "Confirmed",
+              "productionStatus": "NotStarted",
+              "shipmentStatus": "NotStarted",
+              "invoiceStatus": "NotStarted",
+              "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
+              "customerArticle": {
+                "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+              },
+              "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+              "confirmedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+              "requestedDeliveryDateTime": "2022-02-20T11:30:00",
+              "confirmedDeliveryDateTime": "2022-02-20T11:30:00",
+              "quantities": [
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Ordered",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
+                  "quantityUOM": "Reel"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "GrossWeight",
+                  "quantityValue": 6000,
+                  "quantityUOM": "Kilogram"
+                },
+                {
+                  "quantityContext": "Confirmed",
+                  "quantityType": "Count",
+                  "quantityValue": 2,
                   "quantityUOM": "Reel"
                 }
               ]
