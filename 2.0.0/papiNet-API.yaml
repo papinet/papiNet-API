@@ -14,7 +14,7 @@ servers:
     description: papiNet Mock Server
 paths:
 
-   ## MARSTER DATA
+   ## MASTER DATA
 
   '/customer-articles':
     # GET /customer-articles
@@ -40,6 +40,12 @@ paths:
             type: string
             enum:
               - Paper
+        - in: query
+          name: customerArticleNumber
+          description: Filter by customerArticleNumber
+          required: false
+          schema:
+            type: string
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.
