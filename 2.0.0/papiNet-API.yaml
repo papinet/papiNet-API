@@ -14,11 +14,11 @@ servers:
     description: papiNet Mock Server
 paths:
 
-   ## MASTER DATA
+   ## MASTER DATA (6)
 
   '/customer-articles':
     # GET /customer-articles
-    # => ListOfCustomerArticles
+    # None => ListOfCustomerArticles
     get:
       summary: List `customer-articles`
       description: Gets a paginated list of all `customer-articles` defined by the `customer`.
@@ -70,7 +70,7 @@ paths:
 
   '/customer-articles/{customerArticleId}':
     # GET /customer-articles/{customerArticleId}
-    # => GetCustomerArticleById
+    # None => GetCustomerArticleById
     get:
       summary: Get a `customer-article`
       description: Gets the details of a specific `customer-article`.
@@ -94,7 +94,7 @@ paths:
 
   '/locations':
     # GET /locations
-    # => ListOfLocations
+    # None => ListOfLocations
     get:
       summary: List `locations`
       description: Gets a paginated list of all `locations`.
@@ -138,7 +138,7 @@ paths:
 
   '/locations/{locationId}':
     # GET /locations/{locationId}
-    # => GetLocationById
+    # None => GetLocationById
     get:
       summary: Get a `location`
       description: Gets the details of a specific `location`.
@@ -162,7 +162,7 @@ paths:
 
   '/parties':
     # GET /parties
-    # => ListOfParties
+    # None => ListOfParties
     get:
       summary: List `parties`
       description: Gets a paginated list of all `parties`.
@@ -206,7 +206,7 @@ paths:
 
   '/parties/{partyId}':
     # GET /parties/{partyId}
-    # => GetPartyById
+    # None => GetListOfParties
     get:
       summary: Get a `party`
       description: Gets the details of a specific `party`.
@@ -228,11 +228,11 @@ paths:
         '404':
           description: Not Found
 
-  ## PURCHASE ORDER
+  ## PURCHASE ORDER (3)
 
   '/purchase-orders':
     # POST /purchase-orders
-    # PurchaseOrderCreation => GetPurchaseOrderById
+    # CreatePurchaseOrder => GetPurchaseOrderById
     post:
       summary: Create a `purchase-order`
       description: Creates a `purchase-order`.
@@ -242,7 +242,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PurchaseOrderCreation'
+              $ref: '#/components/schemas/CreatePurchaseOrder'
       responses:
         '201':
           description: Created
@@ -253,7 +253,7 @@ paths:
 
   '/purchase-orders/{purchaseOrderId}':
     # GET /purchase-orders/{purchaseOrderId}
-    # => GetPurchaseOrderById
+    # None  => GetPurchaseOrderById
     get:
       summary: Get a `purchase-order`
       description: Gets the details of a specific `purchase-order`.
@@ -274,10 +274,10 @@ paths:
                 $ref: '#/components/schemas/GetPurchaseOrderById'
 
     # PATCH /purchase-orders/{purchaseOrderId}
-    # PurchaseOrderModification => GetPurchaseOrderById
+    # ModifyPurchaseOrder => GetPurchaseOrderById
     patch:
       summary: Modify a `purchase-order`
-      description: Modifies of a specific `purchase-order`.
+      description: Modifies a specific `purchase-order`.
       parameters:
         - in: path
           name: purchaseOrderId
@@ -292,7 +292,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PurchaseOrderModification'
+              $ref: '#/components/schemas/ModifyPurchaseOrder'
       responses:
         '200':
           description: OK
@@ -304,20 +304,169 @@ paths:
 components:
   schemas:
 
-    ListOfCustomerArticles: {}
+    PaginationLinks:
+      type: object
+      # none of the properties are required.
+      properties:
+        first:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        prev:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        next:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        last:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
 
-    GetCustomerArticleById: {}
+    ListOfCustomerArticles:
+      type: object
+      required:
+        - numberOfCustomerArticles
+        - customerArticles
+      properties:
+        numberOfCustomerArticles:
+          type: integer
+          minimum: 0
+        customerArticles:
+          type: array
+          minItems: 0
+          items:
+            type: object
+            required:
+              - id
+              - customerArticleTimestamp
+            properties:
+              id:
+                type: string
+              customerArticleTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
 
-    ListOfLocations: {}
+    GetCustomerArticleById:
+      type: object
+      required:
+        - id
+        - customerArticleTimestamp
+      properties:
+        id:
+          type: string
+        customerArticleTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
 
-    GetLocationById: {}
+    ListOfLocations:
+      type: object
+      required:
+        - numberOfLocations
+        - locations
+      properties:
+        numberOfLocations:
+          type: integer
+          minimum: 0
+        locations:
+          type: array
+          minItems: 0
+          items:
+            type: object
+            required:
+              - id
+              - locationTimestamp
+            properties:
+              id:
+                type: string
+              locationTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
 
-    ListOfParties: {}
+    GetLocationById:
+      type: object
+      required:
+        - id
+        - locationTimestamp
+      properties:
+        id:
+          type: string
+        locationTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
 
-    GetPartyById: {}
+    ListOfParties:
+      type: object
+      required:
+        - numberOfParties
+        - parties
+      properties:
+        numberOfParties:
+          type: integer
+          minimum: 0
+        parties:
+          type: array
+          minItems: 0
+          items:
+            type: object
+            required:
+              - id
+              - partyTimestamp
+            properties:
+              id:
+                type: string
+              partyTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
 
-    PurchaseOrderCreation: {}
+    GetPartyById:
+      type: object
+      required:
+        - id
+        - partyTimestamp
+      properties:
+        id:
+          type: string
+        partyTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
 
-    GetPurchaseOrderById: {}
+    CreatePurchaseOrder: {}
 
-    PurchaseOrderModification: {}
+    GetPurchaseOrderById:
+      type: object
+      required:
+        - id
+        - purchaseOrderTimestamp
+      properties:
+        id:
+          type: string
+        purchaseOrderTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+
+    ModifyPurchaseOrder: {}
