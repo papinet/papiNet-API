@@ -157,6 +157,7 @@ If all goes well, the _customer_ will receive a response like this:
   "customerArticles": [
     {
       "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+      "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "sellerProductBrandName": "Advertising Paper",
       "sellerProductName": "Advertising Paper Lite",
@@ -166,6 +167,7 @@ If all goes well, the _customer_ will receive a response like this:
     {
       "id": "/customer-articles/b10d0a30-ce23-405b-8176-67452ea2ef6c",
       "status": "Active",
+      "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "sellerProductBrandName": "Advertising Paper",
       "sellerProductName": "Advertising Paper Lite",
       "customerArticleNumber": "ERP-GA-L-35-2100-1250",
@@ -173,6 +175,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "/customer-articles/a9c15fde-f410-46f7-b16c-43678d414ea3",
+      "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "sellerProductBrandName": "Advertising Paper",
       "sellerProductName": "Advertising Paper Lite",
@@ -181,6 +184,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+      "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "sellerProductBrandName": "Advertising Paper",
       "sellerProductName": "Advertising Paper Brite",
@@ -189,6 +193,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486",
+      "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "sellerProductBrandName": "Brilliant Paper",
       "sellerProductName": "Brilliant Paper Gloss",
@@ -222,6 +227,7 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "customerArticleTimestamp": "2023-06-21T13:45:00Z",
   "status": "Active",
   "sellerProductBrandName": "Advertising Paper",
   "sellerProductName": "Advertising Paper Brite",
@@ -286,6 +292,7 @@ If all goes well, the _customer_ will receive a response like this:
   "locations": [
     {
       "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "locationTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "locationIdentifier": "ERP-L-DE-ACME-01",
       "nameLines": [
@@ -295,6 +302,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "locationTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "locationIdentifier": "ERP-L-IT-ACME-01",
       "nameLines": [
@@ -304,6 +312,7 @@ If all goes well, the _customer_ will receive a response like this:
     },
     {
       "id": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "locationTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "locationIdentifier": "ERP-L-BE-ACME-01",
       "nameLines": [
@@ -338,6 +347,7 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+  "locationTimestamp": "2023-06-21T13:45:00Z",
   "status": "Active",
   "locationIdentifier": "ERP-L-DE-ACME-01",
   "nameLines": [
@@ -388,6 +398,7 @@ If all goes well, the _customer_ will receive a response like this:
   "parties": [
     {
       "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "partyTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "partyIdentifier": "ERP-P-NL-ACME-01",
       "nameLines": [
@@ -421,6 +432,7 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "partyTimestamp": "2023-06-21T13:45:00Z",
   "status": "Active",
   "partyIdentifier": "ERP-P-NL-ACME-01",
   "nameLines": [
@@ -454,7 +466,7 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/customer-articles?customerArticles.customerArticleNumber=ERP-GA-BS-65-1000-1000 \
+  --URL http://localhost:3020/customer-articles?customerArticleNumber=ERP-GA-BS-65-1000-1000 \
   --header 'Authorization: Bearer '$ACCESS_TOKEN
 ```
 
@@ -466,6 +478,7 @@ If all goes well, the _customer_ will receive a response like this:
   "customerArticles": [
     {
       "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+      "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
       "sellerProductBrandName": "Advertising Paper",
       "sellerProductName": "Advertising Paper Brite",
