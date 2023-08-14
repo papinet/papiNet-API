@@ -358,12 +358,34 @@ components:
             required:
               - id
               - customerArticleTimestamp
+              - status
+              - sellerProductBrandName
+              - sellerProductName
+              - customerArticleNumber
+              - productType
             properties:
               id:
                 type: string
               customerArticleTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              sellerProductBrandName:
+                type: string
+              sellerProductName:
+                type: string
+              customerArticleNumber:
+                type: string
+              productType:
+                type: string
+                enum:
+                  - Paper
+                  - Pulp 
+
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
