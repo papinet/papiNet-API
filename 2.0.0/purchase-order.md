@@ -1,4 +1,4 @@
-# Purcahse Order Use Case
+# Purchase Order Use Case
 
 ## Context
 
@@ -72,12 +72,12 @@ You can run locally the papiNet stub service using the following command:
 3. The _customer_ requests a delivery date-time change and a ship-to change;
 4. The _seller_ rejects the delivery date-time change and/or a ship-to change change, the _customer_ gets the details of previously confirmed _purchase order_ without any changes.
 
-**Scenario G:** Purchase Order with 3 Lines, 1 Quantity Change on the 2nd Line Rejected, and 2 Changes (Delievery Data-Time and Ship-To) on the 3rd Line Confirmed
+**Scenario G:** Purchase Order with 3 Lines, 1 Quantity Change on the 2nd Line Rejected, and 2 Changes (Delivery Date-Time and Ship-To) on the 3rd Line Confirmed
 
 1. An authenticated _customer_ creates a _purchase order_ with 3 _lines_;
 2. The _seller_ confirms the 3 _lines_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
-3. The _customer_ requests a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change change in the 3rd line;
-4. The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, the _customer_ is notified and gets the details of the confirmed _purchase order_ with the quantity change in the 2nd _line_, but without the delivery date-time change and the ship-to change change in the 3rd line.
+3. The _customer_ requests a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change in the 3rd line;
+4. The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change in the 3rd line, the _customer_ is notified and gets the details of the confirmed _purchase order_ with the quantity change in the 2nd _line_, but without the delivery date-time change and the ship-to change in the 3rd line.
 
 ### Scenario A: Purchase Order with 1 Line, Confirmed
 
@@ -129,7 +129,7 @@ curl --request POST \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
         "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
-        "requestedDeliveryDateTime": "2022-02-11T11:30:00", \
+        "requestedDeliveryDateTime": "2022-02-11", \
         "quantities": [ \
           { \
             "quantityContext": "Ordered", \
@@ -172,12 +172,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-02T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-11T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-11",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -239,8 +238,8 @@ If all goes well, the _customer_ will receive a response like this:
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-11T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-11T13:30:00",
+      "requestedDeliveryDateTime": "2022-02-11",
+      "confirmedDeliveryDateTime": "2022-02-11",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -322,7 +321,7 @@ curl --request POST \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
         "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
-        "requestedDeliveryDateTime": "2022-02-12T11:30:00", \
+        "requestedDeliveryDateTime": "2022-02-12T11:30", \
         "quantities": [ \
           { \
             "quantityContext": "Ordered", \
@@ -365,12 +364,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-03T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-12T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-12T11:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -420,20 +418,17 @@ If all goes well, the _customer_ will receive a response like this:
       "purchaseOrderLineItemStatus": "Original",
       "salesOrderNumber": "SU-XYZ-020",
       "salesOrderTimestamp": "2022-02-02T09:00:05Z",
-      "salesOrderStatus": "Confirmed",
+      "salesOrderStatus": "Rejected",
       "salesOrderLineItemNumber": "10",
-      "salesOrderLineItemStatus": "Confirmed",
+      "salesOrderLineItemStatus": "Rejected",
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-03T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "",
-      "requestedDeliveryDateTime": "2022-02-12T11:30:00",
-      "confirmedDeliveryDateTime": "",
+      "requestedDeliveryDateTime": "2022-02-12T11:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -503,7 +498,7 @@ curl --request POST \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
         "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
-        "requestedDeliveryDateTime": "2022-02-13T11:30:00", \
+        "requestedDeliveryDateTime": "2022-02-14/2022-02-18", \
         "quantities": [ \
           { \
             "quantityContext": "Ordered", \
@@ -526,7 +521,7 @@ curl --request POST \
           "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486" \
         }, \
         "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
-        "requestedDeliveryDateTime": "2022-02-15T11:30:00", \
+        "requestedDeliveryDateTime": "2022-02-14/2022-02-18", \
         "quantities": [ \
           { \
             "quantityContext": "Ordered", \
@@ -569,12 +564,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-13T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -601,12 +595,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
       "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -695,12 +688,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-13T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -727,12 +719,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
       "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -759,12 +750,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
       "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "requestedDeliveryDateTime": "2022-02-15T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -826,8 +816,8 @@ If all goes well, the _customer_ will receive a response like this:
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-13T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-13T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
+      "confirmedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -856,6 +846,37 @@ If all goes well, the _customer_ will receive a response like this:
       ]
     },
     {
+      "purchaseOrderLineItemNumber": "2",
+      "purchaseOrderLineItemStatus": "Cancelled",
+      "salesOrderNumber": "SU-XYZ-030",
+      "salesOrderTimestamp": "2022-02-03T09:00:05Z",
+      "salesOrderStatus": "Cancelled",
+      "salesOrderLineItemNumber": "20",
+      "salesOrderLineItemStatus": "Cancelled",
+      "productionStatus": "NotStarted",
+      "shipmentStatus": "NotStarted",
+      "invoiceStatus": "NotStarted",
+      "customerArticle": {
+        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+      },
+      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
+      "quantities": [
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "GrossWeight",
+          "quantityValue": 6000,
+          "quantityUOM": "Kilogram"
+        },
+        {
+          "quantityContext": "Ordered",
+          "quantityType": "Count",
+          "quantityValue": 2,
+          "quantityUOM": "Reel"
+        }
+      ]
+    },
+    {
       "purchaseOrderLineItemNumber": "3",
       "purchaseOrderLineItemStatus": "Original",
       "salesOrderNumber": "SU-XYZ-030",
@@ -872,8 +893,8 @@ If all goes well, the _customer_ will receive a response like this:
       },
       "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "requestedDeliveryDateTime": "2022-02-15T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-15T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
+      "confirmedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -955,7 +976,7 @@ curl --request POST \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
         "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
-        "requestedDeliveryDateTime": "2022-02-14T11:30:00", \
+        "requestedDeliveryDateTime": "2022-02-14T11:30/18:30", \
         "quantities": [ \
           { \
             "quantityContext": "Ordered", \
@@ -998,12 +1019,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-14T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1065,8 +1085,8 @@ If all goes well, the _customer_ will receive a response like this:
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-14T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-14T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14T11:30/18:30",
+      "confirmedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1239,8 +1259,8 @@ If all goes well, the _customer_ will receive a response like this:
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-14T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-14T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-14T11:30/18:30",
+      "confirmedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1614,7 +1634,7 @@ curl --request POST \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
         "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
-        "requestedDeliveryDateTime": "2022-02-16T11:30:00", \
+        "requestedDeliveryDateTime": "2022-02-16T11:30", \
         "quantities": [ \
           { \
             "quantityContext": "Ordered", \
@@ -1657,12 +1677,11 @@ If all goes well, the _customer_ will receive a response like this:
       "productionStatus": "NotStarted",
       "shipmentStatus": "NotStarted",
       "invoiceStatus": "NotStarted",
-      "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-16T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-16T11:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1724,8 +1743,8 @@ If all goes well, the _customer_ will receive a response like this:
       },
       "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "requestedDeliveryDateTime": "2022-02-16T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-16T11:30:00",
+      "requestedDeliveryDateTime": "2022-02-16T11:30",
+      "confirmedDeliveryDateTime": "2022-02-16T11:30/12:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1796,7 +1815,7 @@ If all goes well, the _customer_ will receive a response like this:
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
-      "purchaseOrderLineItemStatus": "Original",
+      "purchaseOrderLineItemStatus": "Amended",
       "salesOrderNumber": "SU-XYZ-060",
       "salesOrderTimestamp": "2022-02-06T09:00:05Z",
       "salesOrderStatus": "Pending",
@@ -1812,7 +1831,7 @@ If all goes well, the _customer_ will receive a response like this:
       "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-16T11:30:00",
+      "confirmedDeliveryDateTime": "2022-02-16T11:30/12:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1871,7 +1890,7 @@ If all goes well, the _customer_ will receive a response like this:
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
-      "purchaseOrderLineItemStatus": "Original",
+      "purchaseOrderLineItemStatus": "Amended",
       "salesOrderNumber": "SU-XYZ-060",
       "salesOrderTimestamp": "2022-02-06T09:00:05Z",
       "salesOrderStatus": "Confirmed",
@@ -1887,7 +1906,7 @@ If all goes well, the _customer_ will receive a response like this:
       "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
       "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
-      "confirmedDeliveryDateTime": "2022-02-16T11:30:00",
+      "confirmedDeliveryDateTime": "2022-02-16T11:30/12:30",
       "quantities": [
         {
           "quantityContext": "Ordered",
@@ -1919,7 +1938,9 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-### Scenario G: Purchase Order with 3 Lines, 1 Quantity Change on the 2nd Line Rejected, and 2 Changes (Delievery Data-Time and Ship-To) on the 3rd Line Confirmed
+If the _customer_ is not satisfied with the rejection from the _seller_, he should probably call the _seller_ by phone.
+
+### Scenario G: Purchase Order with 3 Lines, 1 Quantity Change on the 2nd Line Rejected, and 2 Changes (Delivery Date-Time and Ship-To) on the 3rd Line Confirmed
 
 #### Interaction 0 of Scenario G (Authentication)
 
@@ -2677,3 +2698,5 @@ If all goes well, the _customer_ will receive a response like this:
   ]
 }
 ```
+
+If the _customer_ is not satisfied with the rejection from the _seller_, he should probably call the _seller_ by phone.
