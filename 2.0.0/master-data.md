@@ -76,9 +76,9 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 { 
-  "accessToken": "1a27ae3f-02f3-4355-8a70-9ed547d0ccf8",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
+  "access_token": "1a27ae3f-02f3-4355-8a70-9ed547d0ccf8",
+  "token_type": "bearer",
+  "expires_in_": 86400
 }
 ```
 
@@ -100,13 +100,14 @@ If all goes well, the _customer_ will receive a response like this:
 
 An authenticated _customer_ gets the list of all _customer-articles_ created for that _customer_ and then gets the details of a specific _customer-article_.
 
-#### Interaction 1 of Scenario A (Authentication)
+#### Interaction 0 of Scenario A (Authentication)
 
-The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
+The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access token_:
 
 ```text
 curl --request POST \
   --URL http://localhost:3020/tokens \
+  --header 'X-Provider-State: Master_Data_Interaction_0_of_Scenario_A' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -115,38 +116,22 @@ curl --request POST \
 If all goes well, the _customer_ will receive a response like this:
 
 ```json
-{ 
-  "accessToken": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
+{
+  "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+  "token_type": "bearer",
+  "expires_in_": 86400
 }
 ```
 
-In order to re-use the value of the `access_token` in subsequent API requests, it is convenient to save it into an environment variable:
-
-```text
-ACCESS_TOKEN=$(curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials' | jq -r '.access_token')
-```
-
-You can easily verify the value of the `ACCESS_TOKEN` environment variable using:
-
-```text
-echo $ACCESS_TOKEN
-a4f071c3-fe1f-4a45-9eae-07ddcb5bed26
-```
-
-#### Interaction 2 of Scenario A (List of Customer-Articles)
+#### Interaction 1 of Scenario A (List of Customer-Articles)
 
 The authenticated _customer_ sends an API request in order to get the list of all active _customer-articles_ created:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/customer-articles?customerArticles.status=Active \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_A' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:
@@ -212,14 +197,15 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Interaction 3 of Scenario A (Get the Details of a Specific Customer-Article)
+#### Interaction 2 of Scenario A (Get the Details of a Specific Customer-Article)
 
 At any time, the _customer_ can send an API request in order to get the details of a specific _customer-article_ that has been created:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_2_of_Scenario_A' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:
@@ -270,18 +256,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 An authenticated _customer_ gets the list of all _locations_ defined for that _customer_ and then gets the details of a specific _location_.
 
-#### Interaction 1 of Scenario B (Authentication)
+#### Interaction 0 of Scenario B (Authentication)
 
-See above.
+See [above](#interaction-0-of-scenario-a-authentication).
 
-#### Interaction 2 of Scenario B (List of Locations)
+#### Interaction 1 of Scenario B (List of Locations)
 
 The authenticated _customer_ sends an API request in order to get the list of all active _locations_ defined:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/locations?locations.status=Active \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:
@@ -332,14 +319,15 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Interaction 3 of Scenario B (Get the Details of a Specific Location)
+#### Interaction 2 of Scenario B (Get the Details of a Specific Location)
 
 At any time, the _customer_ can send an API request in order to get the details of a specific _location_ that has been defined:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_2_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:
@@ -376,18 +364,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 An authenticated _customer_ gets the list of all active _parties_ defined for that _customer_ and then gets the details of a specific _party_.
 
-#### Interaction 1 of Scenario C (Authentication)
+#### Interaction 0 of Scenario C (Authentication)
 
-See above.
+See [above](#interaction-0-of-scenario-a-authentication).
 
-#### Interaction 2 of Scenario C (List of Parties)
+#### Interaction 1 of Scenario C (List of Parties)
 
 The authenticated _customer_ sends an API request in order to get the list of all active _parties_ defined:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/parties?parties.status=Active \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_C' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:
@@ -417,14 +406,15 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Interaction 3 of Scenario C (Get the Details of a Specific Party)
+#### Interaction 2 of Scenario C (Get the Details of a Specific Party)
 
 At any time, the _customer_ can send an API request in order to get the details of a specific _location_ that has been defined:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_2_of_Scenario_C' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:
@@ -456,18 +446,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 An authenticated _customer_ retrieves the UUID of a _customer-article_ based on its `customerArticleNumber`.
 
-#### Interaction 1 of Scenario D (Authentication)
+#### Interaction 0 of Scenario D (Authentication)
 
-See above.
+See [above](#interaction-0-of-scenario-a-authentication).
 
-#### Interaction 2 of Scenario D (Retrieve UUID by customerArticleNumber)
+#### Interaction 1 of Scenario D (Retrieve UUID by customerArticleNumber)
 
 The authenticated _customer_ sends an API request in order to retreive the UUID of a _customer-article_ based on its `customerArticleNumber`:
 
 ```text
 curl --request GET \
   --URL http://localhost:3020/customer-articles?customerArticleNumber=ERP-GA-BS-65-1000-1000 \
-  --header 'Authorization: Bearer '$ACCESS_TOKEN
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_D' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
 If all goes well, the _customer_ will receive a response like this:

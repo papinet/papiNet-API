@@ -83,7 +83,7 @@ You can run locally the papiNet stub service using the following command:
 
 #### Interaction 0 of Scenario A (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
+The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access token_:
 
 ```text
 curl --request POST \
@@ -97,10 +97,10 @@ curl --request POST \
 If all goes well, the _customer_ will receive a response like this:
 
 ```json
-{ 
-  "accessToken": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
+{
+  "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+  "token_type": "bearer",
+  "expires_in_": 86400
 }
 ```
 
@@ -275,26 +275,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 0 of Scenario B (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
-
-```text
-curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --header 'X-Provider-State: Purchase_Order_Interaction_0_of_Scenario_B' \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials'
-```
-
-If all goes well, the _customer_ will receive a response like this:
-
-```json
-{ 
-  "accessToken": "b6b9430b-f552-43c9-a3cd-98c0fa46bcf7",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
-}
-```
+See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario B (Create a Purchase Order)
 
@@ -452,26 +433,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 0 of Scenario C (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
-
-```text
-curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --header 'X-Provider-State: Purchase_Order_Interaction_0_of_Scenario_C' \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials'
-```
-
-If all goes well, the _customer_ will receive a response like this:
-
-```json
-{ 
-  "accessToken": "c5553526-3756-493b-9bdd-6d54e33329b8",
-  "expiresIn": 86400, 
-  "tokenType": "bearer"
-}
-```
+See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario C (Create a Purchase Order)
 
@@ -930,26 +892,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 0 of Scenario D (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
-
-```text
-curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --header 'X-Provider-State: Purchase_Order_Interaction_0_of_Scenario_D' \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials'
-```
-
-If all goes well, the _customer_ will receive a response like this:
-
-```json
-{ 
-  "accessToken": "d7c0d82e-5619-43cc-8459-9611371b2c1b",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
-}
-```
+See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario D (Create a Purchase Order)
 
@@ -1296,26 +1239,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 0 of Scenario E (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
-
-```text
-curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --header 'X-Provider-State: Purchase_Order_Interaction_0_of_Scenario_E' \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials'
-```
-
-If all goes well, the _customer_ will receive a response like this:
-
-```json
-{ 
-  "accessToken": "e0601314-434f-4aac-b719-6dfb2c21d24f",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
-}
-```
+See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario E (Create a Purchase Order)
 
@@ -1418,7 +1342,7 @@ The _seller_ confirms the _line_ and notifies the _customer_. Then, the authenti
 curl --silent --show-error --request GET \
   --URL http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0 \
   --header 'X-Provider-State: Purchase_Order_Interaction_2_of_Scenario_E' \
-  --header 'Authorization: Bearer d7c0d82e-5619-43cc-8459-9611371b2c1b' \
+  --header 'Authorization: Bearer e0601314-434f-4aac-b719-6dfb2c21d24f' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
 ```
@@ -1485,7 +1409,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-#### Interaction 3 of Scenario  (Update the Purchase Order)
+#### Interaction 3 of Scenario E (Update the Purchase Order)
 
 The autenticated _customer_ sends an API request to the _seller_ in order to request a quantity change:
 
@@ -1493,7 +1417,7 @@ The autenticated _customer_ sends an API request to the _seller_ in order to req
 curl --request PATCH \
   --URL 'http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0' \
   --header 'X-Provider-State: Purchase_Order_Interaction_3_of_Scenario_E' \
-  --header 'Authorization: Bearer d7c0d82e-5619-43cc-8459-9611371b2c1b' \
+  --header 'Authorization: Bearer e0601314-434f-4aac-b719-6dfb2c21d24f' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
@@ -1588,26 +1512,7 @@ but, this time, the _seller_ immediately rejects the quantity change and the _cu
 
 #### Interaction 0 of Scenario F (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
-
-```text
-curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --header 'X-Provider-State: Purchase_Order_Interaction_0_of_Scenario_F' \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials'
-```
-
-If all goes well, the _customer_ will receive a response like this:
-
-```json
-{ 
-  "accessToken": "f3c7e67a-6871-4b5c-ae68-5697b3f3c2e4",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
-}
-```
+See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario F (Create a Purchase Order)
 
@@ -1944,26 +1849,7 @@ If the _customer_ is not satisfied with the rejection from the _seller_, he shou
 
 #### Interaction 0 of Scenario G (Authentication)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access_token_:
-
-```text
-curl --request POST \
-  --URL http://localhost:3020/tokens \
-  --header 'X-Provider-State: Purchase_Order_Interaction_0_of_Scenario_G' \
-  --user 'public-36297346:private-ce2d3cf4' \
-  --header 'Content-Type: application/x-www-form-urlencoded' \
-  --data 'grant_type=client_credentials'
-```
-
-If all goes well, the _customer_ will receive a response like this:
-
-```json
-{ 
-  "accessToken": "60cb6ce4-3ab3-42c0-a5c2-e365750352c3",
-  "expiresIn": 86400, 
-  "tokenType": "bearer", 
-}
-```
+See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario G (Create a Purchase Order)
 
