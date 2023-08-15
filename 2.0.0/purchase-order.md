@@ -12,17 +12,21 @@ For now, we only consider a simplified version of the business interactions betw
 
 ## Definitions
 
-...
+N/A.
 
 ## Preconditions
 
+N/A.
+
 ## Notifications
 
-...
+When the _seller_ needs to notify the _customer_, we recommend to use the CloudEvents specification putting directly the URL that the _customer_ should call within the `source` property and the value `org.papinet.notification` within the `type` property.
 
 ## Processes
 
 ## Domain Name
+
+We suggest that the _seller_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _seller_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
 ## papiNet Stub Service
 
@@ -33,6 +37,28 @@ You can run locally the papiNet stub service using the following command:
 ```
 
 ## Authentication
+
+For authenticating the _customer_, we recommend to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
+
+The _customer_ sends an API request to create a session, and gets its associated _access token_:
+
+```text
+curl --request POST \
+  --URL http://localhost:3020/tokens \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{ 
+  "access_token": "1a27ae3f-02f3-4355-8a70-9ed547d0ccf8",
+  "token_type": "bearer",
+  "expires_in_": 86400
+}
+```
 
 ## Scenarios
 
@@ -193,7 +219,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario A (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "7bb555e2-3217-4c65-9d28-26b2c71ef5a3",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-01T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -358,7 +396,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario B (Get the Status of the Purchase Order)
 
-The _seller_ rejects the _line_ and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ rejects the _line_ and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "370a0fc8-8219-4c9f-8f4f-53769b57beac",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-02T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -704,7 +754,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario C (Get the Status of the Purchase Order)
 
-The _seller_ confirms the 1st _line_ and the newly created _line_, the _seller_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation and finally notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the 1st _line_ and the newly created _line_, the _seller_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation and finally notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "0bec2c63-8966-486c-9020-7627c99efe7e",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-03T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -940,7 +1002,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario D (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "1065daa9-c703-4501-8e42-28d96df37a1d",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-04T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1108,7 +1182,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario D (Get the Status of the Purchase Order)
 
-The _seller_ confirms the quantity change and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the quantity change and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "2eef4e87-7610-45a5-9caa-30fb7e7dad32",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-04T09:45:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1274,7 +1360,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario E (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "cf3bd488-29ca-49e8-a686-f6948bee2dc5",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-05T09:00:05Z"
+}
+```
+
+ Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1535,7 +1633,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario F (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "99ce6b70-1e6e-49e7-be00-f1f2bc3308b5",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-06T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1691,7 +1801,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario F (Get the Status of the Purchase Order)
 
-The _seller_ rejects the delivery date-time change and/or a ship-to change change and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ rejects the delivery date-time change and/or a ship-to change change and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "2f0e03d4-abf7-4845-bc4c-c1217b2d09ba",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-06T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1961,7 +2083,19 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario G (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "ffc19d5e-0596-4789-a771-f7f54f6754ec",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-07T09:00:05Z"
+}
+```
+
+Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -2307,7 +2441,18 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario G (Get the Status of the Purchase Order)
 
-The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, and then notifies the _customer_. Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, and then notifies the _customer_ by sending an event:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "517f8636-e792-44a1-926b-d586ae082717",
+    "source" : "http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-07T09:00:05Z"
+}
+```
+ Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
