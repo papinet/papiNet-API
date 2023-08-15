@@ -221,18 +221,14 @@ If all goes well, the _customer_ will receive a response like this:
   "paper": {
     "finishType": "Gloss",
     "printType": "HeatsetOffset",
-    "paperCharacteristics": [
-      {
-        "basisWeight": {
-          "value": 35,
-          "UOM": "GramsPerSquareMeter"
-        },
-        "bulk": {
-          "value": 1.02,
-          "UOM": "CubicCentimeterPerGram"
-        }
-      }
-    ],
+    "basisWeight": {
+      "value": 35,
+      "UOM": "GramsPerSquareMeter"
+    },
+    "bulk": {
+      "value": 1.02,
+      "UOM": "CubicCentimeterPerGram"
+    },
     "format": "Reel",
     "width": {
       "value": 900,

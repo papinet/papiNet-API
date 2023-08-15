@@ -352,6 +352,299 @@ components:
         longitude:
           type: number
 
+    Paper:
+      type: object
+      properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        coatingBottom:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        finishType:
+          type: string
+          enum:
+            - Dull
+            - English
+            - Gloss
+            - Laid
+            - Linen
+            - Machine
+            - Matte
+            - Satin
+            - SCA
+            - SCB
+            - SCC
+            - Silk
+            - Smooth
+            - SoftGloss
+            - Vellum
+            - Velvet
+        printType:
+          type: string
+          enum:
+            - ColdsetOffset
+            - ContinuousForms
+            - Digital
+            - Flexography
+            - FoilPrint
+            - Forms
+            - Gravure
+            - HeatsetOffset
+            - InkJet
+            - InstantOffset
+            - Laser
+            - Letterpress
+            - LightPrint
+            - MiniWeb
+            - RotoFlexography
+            - RotoGravure
+            - RotoLetterpress
+            - RotoSilkScreen
+            - SheetfedOffset
+            - SilkScreen
+            - WebOffset
+        basisWeight: # This is the result of a nice compromise between EU and US usage.
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            sizeType:
+              type: string
+              enum:
+                - 24x36
+                - 25x38
+            value:
+              type: number
+              minimum: 0
+            UOM:
+              type: string
+              enum:
+                - GramsPerSquareMeter
+                - Pound
+        bulk:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - CubicCentimeterPerGram
+        caliper:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Micron
+                - Millimeter
+        colourShade:
+          type: object
+          required:
+            - value
+            - agency
+          properties:
+            value:
+              type: string
+              minLength: 1
+            agency:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        colourDescriptions:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+        recycled:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+              - UOM
+            properties:
+              value:
+                type: number
+              UOM:
+                type: string
+                enum:
+                  - Percentage
+        format:
+          type: string
+          enum:
+            - Reel
+            - Sheet
+        # Properties that are common to reel or sheet format:
+        width:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        length:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Foot
+                - Inch
+                - Meter
+                - Millimeter
+                - Yard
+        # Properties that are specific to reel format:
+        windingDirection:
+          type: string
+          enum:
+            - WireSideIn
+            - WireSideOut
+        reelMakeToConstraint:
+          type: string
+          enum:
+            - Length
+            - Diameter
+        reelDiameter:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreEndType:
+          type: string
+          enum:
+            - Adaptor
+            - Bevelled
+            - Bridge
+            - Notched
+            - NotchedFullMetal
+            - Plain
+            - PlainFullMetal
+            - Tapered
+        coreMaterialType:
+          type: string
+          enum:
+            - Aluminium
+            - Composite
+            - Fibre
+            - Iron
+            - Paper
+            - Plastic
+            - Steel
+        coreDiameterInside:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreStrengthCode:
+          type: object
+          required:
+            - value
+            - agency
+          properties:
+            value:
+              type: string
+              minLength: 1
+            agency:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        # Properties that are specific to sheet format:
+        grainDirection:
+          type: string
+          enum:
+            - Long
+            - Short
+
+    Pulp:
+      type: object # This is just a placeholder for now.
+
+    # API endpoints
+
     ListOfCustomerArticles:
       type: object
       required:
@@ -396,21 +689,47 @@ components:
                 enum:
                   - Paper
                   - Pulp 
-
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
     GetCustomerArticleById:
-      type: object
-      required:
-        - id
-        - customerArticleTimestamp
-      properties:
-        id:
-          type: string
-        customerArticleTimestamp:
-          type: string
-          format: date-time # UTC MUST be used!
+      allOf:
+        - type: object
+          required:
+            - id
+            - customerArticleTimestamp
+            - status
+            - sellerProductBrandName
+            - sellerProductName
+            - customerArticleNumber
+          properties:
+            id:
+              type: string
+            customerArticleTimestamp:
+              type: string
+              format: date-time # UTC MUST be used!
+            status:
+              type: string
+              enum:
+                - Active
+                - Inactive
+            sellerProductBrandName:
+              type: string
+            sellerProductName:
+              type: string
+            customerArticleNumber:
+              type: string
+        - oneOf:
+            - required:
+                 - paper
+              properties:
+                paper:
+                  $ref: '#/components/schemas/Paper'
+            - required:
+                 - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
 
     ListOfLocations:
       type: object
