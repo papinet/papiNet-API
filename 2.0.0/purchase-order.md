@@ -124,7 +124,6 @@ curl --request POST \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
