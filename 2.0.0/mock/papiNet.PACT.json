@@ -6,10 +6,11 @@
     "name": "Seller"
   },
   "interactions": [
+    "Master_Data_Interaction_0_of_Scenario_A",
     {
+      "providerState": "Master_Data_Interaction_0_of_Scenario_A",
       "type": "Synchronous/HTTP",
-      "description": "Authentication",
-      "providerState": "Unauthenticated",
+      "description": "Interaction 0 of Scenario A (Authentication)",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -19,17 +20,18 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "body": { 
+        "body": {
           "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
-          "token_type": "bearer", 
-          "expires_in": 3600
+          "token_type": "bearer",
+          "expires_in": 86400
         }
       }
     },
+    "Master_Data_Interaction_1_of_Scenario_A",
     {
+      "providerState": "Master_Data_Interaction_1_of_Scenario_A",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 2 of Scenario A (List of Customer-Articles)",
-      "providerState": "Interaction 2 of Scenario A (List of Customer-Articles)",
+      "description": "Interaction 1 of Scenario A (List of Customer-Articles)",
       "request": {
         "method": "GET",
         "path": "/customer-articles",
@@ -95,10 +97,11 @@
         }
       }
     },
+    "Master_Data_Interaction_2_of_Scenario_A",
     {
+      "providerState": "Master_Data_Interaction_2_of_Scenario_A",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 3 of Scenario A (Get the Details of a Specific Customer-Article)",
-      "providerState": "Interaction 3 of Scenario A (Get the Details of a Specific Customer-Article)",
+      "description": "Interaction 2 of Scenario A (Get the Details of a Specific Customer-Article)",
       "request": {
         "method": "GET",
         "path": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -146,10 +149,11 @@
         }
       }
     },
+    "Master_Data_Interaction_1_of_Scenario_B",
     {
+      "providerState": "Master_Data_Interaction_1_of_Scenario_B",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 2 of Scenario B (List of Locations)",
-      "providerState": "Interaction 2 of Scenario B (List of Locations)",
+      "description": "Interaction 1 of Scenario B (List of Locations)",
       "request": {
         "method": "GET",
         "path": "/locations"
@@ -198,10 +202,11 @@
         }
       }
     },
+    "Master_Data_Interaction_2_of_Scenario_B",
     {
+      "providerState": "Master_Data_Interaction_2_of_Scenario_B",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 3 of Scenario B (Get the Details of a Specific Location)",
-      "providerState": "Interaction 3 of Scenario B (Get the Details of a Specific Location)",
+      "description": "Interaction 2 of Scenario B (Get the Details of a Specific Location)",
       "request": {
         "method": "GET",
         "path": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73"
@@ -232,10 +237,11 @@
         }
       }
     },
+    "Master_Data_Interaction_1_of_Scenario_C",
     {
+      "providerState": "Master_Data_Interaction_1_of_Scenario_C",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 2 of Scenario C (List of Parties)",
-      "providerState": "Interaction 2 of Scenario C (List of Parties)",
+      "description": "Interaction 1 of Scenario C (List of Parties)",
       "request": {
         "method": "GET",
         "path": "/parties"
@@ -267,10 +273,11 @@
         }
       }
     },
+    "Master_Data_Interaction_2_of_Scenario_C",
     {
+      "providerState": "Master_Data_Interaction_2_of_Scenario_C",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 3 of Scenario C (Get the Details of a Specific Party)",
-      "providerState": "Interaction 3 of Scenario C (Get the Details of a Specific Party)",
+      "description": "Interaction 2 of Scenario C (Get the Details of a Specific Party)",
       "request": {
         "method": "GET",
         "path": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65"
@@ -298,10 +305,11 @@
         }
       }
     },
+    "Master_Data_Interaction_1_of_Scenario_D",
     {
+      "providerState": "Master_Data_Interaction_1_of_Scenario_D",
       "type": "Synchronous/HTTP",
-        "description": "Interaction 2 of Scenario D (Retrieve UUID by customerArticleNumber)",
-      "providerState": "Interaction 2 of Scenario D (Retrieve UUID by customerArticleNumber)",
+      "description": "Interaction 1 of Scenario D (Retrieve UUID by customerArticleNumber)",
       "request": {
         "method": "GET",
         "path": "/customer-articles",
@@ -333,10 +341,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_A",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_A",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario A (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_A",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -346,17 +355,18 @@
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
-        "body": { 
-          "accessToken": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
-          "expiresIn": 86400, 
-          "tokenType": "bearer"
+        "body": {
+          "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+          "token_type": "bearer",
+          "expires_in": 86400
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_A",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario A (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_A",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario A (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -411,10 +421,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_A",
     {
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_A",
       "type": "Synchronous/HTTP",
       "description": "Interaction 2 of Scenario A (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_2_of_Scenario_A",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -483,10 +494,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_B",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_B",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario B (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_B",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -503,10 +515,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_B",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario B (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_B",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario B (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -561,10 +574,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_B",
     {
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_B",
       "type": "Synchronous/HTTP",
       "description": "Interaction 2 of Scenario B (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_2_of_Scenario_B",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -621,10 +635,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_C",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_C",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario C (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_C",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -641,10 +656,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_C",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario C (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_C",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario C (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -731,10 +747,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_C",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 2 of Scenario C (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_2_of_Scenario_C",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 2 of Scenario C (Create a Purchase Order)",
       "request": {
         "method": "PATCH",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -853,10 +870,12 @@
         }
       }
     },
+    "Purchase_Order_Interaction_3_of_Scenario_C",
     {
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_C",
       "type": "Synchronous/HTTP",
       "description": "Interaction 3 of Scenario C (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_3_of_Scenario_C",
+
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -971,10 +990,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_D",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_D",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario D (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_D",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -991,10 +1011,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_D",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario D (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_D",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario D (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -1049,10 +1070,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_D",
     {
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_D",
       "type": "Synchronous/HTTP",
       "description": "Interaction 2 of Scenario D (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_2_of_Scenario_D",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1121,10 +1143,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_3_of_Scenario_D",
     {
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_D",
       "type": "Synchronous/HTTP",
       "description": "Interaction 3 of Scenario D (Update the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_3_of_Scenario_D",
       "request": {
         "method": "PATCH",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1193,10 +1216,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_4_of_Scenario_D",
     {
+      "providerState": "Purchase_Order_Interaction_4_of_Scenario_D",
       "type": "Synchronous/HTTP",
       "description": "Interaction 4 of Scenario D (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_4_of_Scenario_D",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1265,10 +1289,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_E",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_E",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario E (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_E",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -1285,10 +1310,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_E",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario E (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_E",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario E (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -1343,10 +1369,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_E",
     {
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_E",
       "type": "Synchronous/HTTP",
       "description": "Interaction 2 of Scenario E (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_2_of_Scenario_E",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1415,10 +1442,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_3_of_Scenario_E",
     {
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_E",
       "type": "Synchronous/HTTP",
       "description": "Interaction 3 of Scenario E (Update the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_3_of_Scenario_E",
       "request": {
         "method": "PATCH",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1487,10 +1515,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_F",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_F",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario F (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_F",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -1507,10 +1536,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_F",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario F (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_F",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario F (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -1565,10 +1595,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_F",
     {
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_F",
       "type": "Synchronous/HTTP",
       "description": "Interaction 2 of Scenario F (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_2_of_Scenario_F",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1637,10 +1668,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_3_of_Scenario_F",
     {
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_F",
       "type": "Synchronous/HTTP",
       "description": "Interaction 3 of Scenario F (Update the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_3_of_Scenario_F",
       "request": {
         "method": "PATCH",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1709,10 +1741,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_4_of_Scenario_F",
     {
+      "providerState": "Purchase_Order_Interaction_4_of_Scenario_F",
       "type": "Synchronous/HTTP",
       "description": "Interaction 4 of Scenario F (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_4_of_Scenario_F",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -1781,10 +1814,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_0_of_Scenario_G",
     {
+      "providerState": "Purchase_Order_Interaction_0_of_Scenario_G",
       "type": "Synchronous/HTTP",
       "description": "Interaction 0 of Scenario G (Authentication)",
-      "providerState": "Purchase_Order_Interaction_0_of_Scenario_G",
       "request": {
         "method": "POST",
         "path": "/tokens"
@@ -1801,10 +1835,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_1_of_Scenario_G",
     {
-      "type": "Synchronous/HTTP",
-        "description": "Interaction 1 of Scenario G (Create a Purchase Order)",
       "providerState": "Purchase_Order_Interaction_1_of_Scenario_G",
+      "type": "Synchronous/HTTP",
+      "description": "Interaction 1 of Scenario G (Create a Purchase Order)",
       "request": {
         "method": "POST",
         "path": "/purchase-orders"
@@ -1923,10 +1958,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_2_of_Scenario_G",
     {
+      "providerState": "Purchase_Order_Interaction_2_of_Scenario_G",
       "type": "Synchronous/HTTP",
       "description": "Interaction 2 of Scenario G (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_2_of_Scenario_G",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -2087,10 +2123,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_3_of_Scenario_G",
     {
+      "providerState": "Purchase_Order_Interaction_3_of_Scenario_G",
       "type": "Synchronous/HTTP",
       "description": "Interaction 3 of Scenario F (Update the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_3_of_Scenario_G",
       "request": {
         "method": "PATCH",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"
@@ -2251,10 +2288,11 @@
         }
       }
     },
+    "Purchase_Order_Interaction_4_of_Scenario_G",
     {
+      "providerState": "Purchase_Order_Interaction_4_of_Scenario_G",
       "type": "Synchronous/HTTP",
       "description": "Interaction 4 of Scenario G (Get the Status of the Purchase Order)",
-      "providerState": "Purchase_Order_Interaction_4_of_Scenario_G",
       "request": {
         "method": "GET",
         "path": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0"

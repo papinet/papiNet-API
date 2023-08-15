@@ -2312,7 +2312,7 @@ The _seller_ rejects the quantity change in the 2nd _line_, but confirms the del
 ```text
 curl --silent --show-error --request GET \
   --URL http://localhost:3020/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0 \
-  --header 'X-Provider-State: Purchase_Order_Interaction_2_of_Scenario_G' \
+  --header 'X-Provider-State: Purchase_Order_Interaction_4_of_Scenario_G' \
   --header 'Authorization: Bearer 60cb6ce4-3ab3-42c0-a5c2-e365750352c3' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
