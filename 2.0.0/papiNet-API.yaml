@@ -1172,4 +1172,72 @@ components:
                     quantityUOM:
                       $ref: '#/components/schemas/QuantityUOM'
 
-    ModifyPurchaseOrder: {}
+    ModifyPurchaseOrder:
+      type: object
+      required:
+        - purchaseOrderTimestamp
+        - purchaseOrderStatus
+        - purchaseOrderLineItems
+      properties:
+        purchaseOrderTimestamp:
+          type: string
+          format: date-time
+        purchaseOrderStatus:
+          type: string
+          enum:
+            - Amended
+            - Cancelled
+        purchaseOrderLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - purchaseOrderLineItemNumber
+              - purchaseOrderLineItemStatus
+              # customerArticle is not required
+              # requestedShipTo is not required
+              # requestedDeliveryDateTime is not required
+              # quantities is not required
+            properties:
+              purchaseOrderLineItemNumber:
+                type: string
+              purchaseOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original # Needed if you add a new line!
+                  - Amended
+                  - Cancelled
+              customerArticle:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+              requestedShipTo:
+                type: string
+              requestedDeliveryDateTime:
+                type: string
+                format: date-time
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUOM
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Ordered # the only allowed value!
+                    quantityType:
+                      $ref: '#/components/schemas/QuantityType'
+                    quantityValue:
+                      type: number
+                    quantityUOM:
+                      $ref: '#/components/schemas/QuantityUOM'
