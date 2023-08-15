@@ -985,11 +985,15 @@ components:
     CreatePurchaseOrder:
       type: object
       required:
+        - purchaseOrderTimestamp
         - purchaseOrderNumber
         - buyer
         - billTo
         - purchaseOrderLineItems
       properties:
+        purchaseOrderTimestamp:
+          type: string
+          format: date-time
         purchaseOrderNumber:
           type: string
         buyer:
@@ -1049,11 +1053,123 @@ components:
       required:
         - id
         - purchaseOrderTimestamp
+        - purchaseOrderNumber
+        - purchaseOrderStatus
+        - active
+        - buyer
+        - billTo
+        - purchaseOrderLineItems
       properties:
         id:
           type: string
         purchaseOrderTimestamp:
           type: string
           format: date-time # UTC MUST be used!
+        purchaseOrderNumber:
+          type: string
+        purchaseOrderStatus:
+          type: string
+          enum:
+            - Original
+            - Amended
+            - Cancelled
+        active:
+          type: boolean
+        buyer:
+          type: string
+        billTo:
+          type: string
+        purchaseOrderLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - purchaseOrderLineItemNumber
+              - purchaseOrderLineItemStatus
+              # salesOrderNumber is not required
+              # salesOrderTimestamp is not required
+              # salesOrderStatus is not required
+              # salesOrderLineItemNumber is not required
+              # salesOrderLineItemStatus is not required
+              # latestAllowedDateTimeForChange is not required
+              - customerArticle
+              - requestedShipTo
+              # confirmedShipTo is not required
+              - requestedDeliveryDateTime
+              # confirmedDeliveryDateTime is not required
+              - quantities
+            properties:
+              purchaseOrderLineItemNumber:
+                type: string
+              purchaseOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original
+                  - Amended
+                  - Cancelled
+              salesOrderNumber:
+                type: string
+              salesOrderTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              salesOrderStatus:
+                type: string
+                enum:
+                  - Pending
+                  - Confirmed
+                  - Rejected
+                  - Cancelled
+              salesOrderLineItemNumber:
+                type: string
+              salesOrderLineItemStatus:
+                type: string
+                enum:
+                  - Pending
+                  - Confirmed
+                  - Rejected
+                  - Cancelled
+              latestAllowedDateTimeForChange:
+                type: string
+                format: date-time
+              customerArticle:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+              requestedShipTo:
+                type: string
+              confirmedShipTo:
+                type: string
+              requestedDeliveryDateTime:
+                type: string
+                format: date-time
+              confirmedDeliveryDateTime:
+                type: string
+                format: date-time
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUOM
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Ordered
+                        - Confirmed
+                    quantityType:
+                      $ref: '#/components/schemas/QuantityType'
+                    quantityValue:
+                      type: number
+                    quantityUOM:
+                      $ref: '#/components/schemas/QuantityUOM'
 
     ModifyPurchaseOrder: {}

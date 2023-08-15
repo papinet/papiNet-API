@@ -100,7 +100,7 @@ If all goes well, the _customer_ will receive a response like this:
 {
   "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
   "token_type": "bearer",
-  "expires_in_": 86400
+  "expires_in": 86400
 }
 ```
 
@@ -116,9 +116,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderNumber": "ERP-PO-001", \
     "purchaseOrderTimestamp": "2022-02-01T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
+    "purchaseOrderNumber": "ERP-PO-001", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -153,8 +152,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -168,9 +167,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -213,8 +209,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -228,9 +224,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-02T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -288,15 +281,13 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderNumber": "ERP-PO-002", \
     "purchaseOrderTimestamp": "2022-02-02T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
+    "purchaseOrderNumber": "ERP-PO-002", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
@@ -326,8 +317,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-002",
   "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-002",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -341,9 +332,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -386,8 +374,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-002",
   "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-002",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -401,9 +389,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Rejected",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Rejected",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -446,15 +431,13 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderNumber": "ERP-PO-003", \
     "purchaseOrderTimestamp": "2022-02-03T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
+    "purchaseOrderNumber": "ERP-PO-003", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
@@ -477,7 +460,6 @@ curl --request POST \
       }, \
       { \
         "purchaseOrderLineItemNumber": "2", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486" \
         }, \
@@ -507,8 +489,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderTimestamp": "2022-02-03T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -522,9 +504,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -553,9 +532,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
@@ -631,8 +607,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -646,9 +622,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -677,9 +650,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
@@ -708,9 +678,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
@@ -753,8 +720,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -768,9 +735,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -814,9 +778,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Cancelled",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Cancelled",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
       },
@@ -845,9 +806,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -905,15 +863,13 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderNumber": "ERP-PO-004", \
     "purchaseOrderTimestamp": "2022-02-04T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
+    "purchaseOrderNumber": "ERP-PO-004", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
@@ -943,8 +899,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -958,9 +914,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -1003,8 +956,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1018,9 +971,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1102,8 +1052,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1117,9 +1067,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1177,8 +1124,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1192,9 +1139,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1252,15 +1196,13 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
+    "purchaseOrderTimestamp": "2022-02-05T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-005", \
-    "purchaseOrderTimestamp": "pOT:2022-02-05T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
@@ -1290,8 +1232,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-005",
-  "purchaseOrderTimestamp": "pOT:2022-02-05T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1305,9 +1247,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1351,8 +1290,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-005",
-  "purchaseOrderTimestamp": "pOT:2022-02-05T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1366,9 +1305,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1450,8 +1386,8 @@ but, this time, the _seller_ immediately rejects the quantity change and the _cu
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-005",
   "purchaseOrderTimestamp": "2022-02-05T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-005",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1465,9 +1401,6 @@ but, this time, the _seller_ immediately rejects the quantity change and the _cu
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1525,15 +1458,13 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderNumber": "ERP-PO-006", \
     "purchaseOrderTimestamp": "2022-02-06T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
+    "purchaseOrderNumber": "ERP-PO-006", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
@@ -1563,8 +1494,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1578,9 +1509,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
@@ -1623,8 +1551,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1638,9 +1566,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1710,8 +1635,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1725,9 +1650,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1785,8 +1707,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1800,9 +1722,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1862,15 +1781,13 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderNumber": "ERP-PO-007", \
     "purchaseOrderTimestamp": "2022-02-07T09:00:00Z", \
-    "purchaseOrderStatus": "Original", \
+    "purchaseOrderNumber": "ERP-PO-007", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
@@ -1893,7 +1810,6 @@ curl --request POST \
       }, \
       { \
         "purchaseOrderLineItemNumber": "2", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486" \
         }, \
@@ -1916,7 +1832,6 @@ curl --request POST \
       }, \
       { \
         "purchaseOrderLineItemNumber": "3", \
-        "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
           "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9" \
         }, \
@@ -1946,8 +1861,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1961,9 +1876,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -1993,9 +1905,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2025,9 +1934,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2071,8 +1977,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
+  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2086,9 +1992,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -2132,9 +2035,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2178,9 +2078,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2268,8 +2165,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2283,9 +2180,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -2329,9 +2223,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2375,9 +2266,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Pending",
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Pending",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2435,8 +2323,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
+  "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2450,9 +2338,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
@@ -2496,9 +2381,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
@@ -2542,9 +2424,6 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderStatus": "Confirmed",
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Confirmed",
-      "productionStatus": "NotStarted",
-      "shipmentStatus": "NotStarted",
-      "invoiceStatus": "NotStarted",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
         "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
