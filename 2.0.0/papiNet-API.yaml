@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: papiNet API
   description: papinet API is a global initiative for the Forst and Paper supply chain.
@@ -304,7 +304,7 @@ paths:
 components:
   schemas:
 
-    # Re-usable schemas:
+    # Re-usable schema(s):
 
     PaginationLinks:
       type: object
@@ -343,16 +343,7 @@ components:
               type: string
               format: uri-reference
 
-    CoordinatesWGS84:
-      type: object
-      required:
-        - latitude
-        - longitude
-      properties:
-        latitude:
-          type: number
-        longitude:
-          type: number
+    # 'Big' structure schema(s):
 
     Paper:
       type: object
@@ -645,58 +636,6 @@ components:
     Pulp:
       type: object # This is just a placeholder for now.
 
-    QuantityType:
-      # This enumeration does NOT depend on the context!
-      # If it would not be the case anymore, we would go back to an in-line definition.
-      type: string
-      enum:
-        - Area
-        - Count
-        - GrossWeight
-        - Length
-        - NetNetWeight
-        - NetWeight
-        - NominalWeight
-        - TareWeight
-
-    QuantityUOM:
-      # This enumeration does NOT depend on the context!
-      # If it would not be the case anymore, we would go back to an in-line definition.
-      type: string
-      enum:
-        - Bale
-        - Box
-        - Centimeter
-        - Decimeter
-        - Foot
-        - Gram
-        - HundredPounds
-        - Inch
-        - Kilogram
-        - Kilometer
-        - Meter
-        - MetricTon
-        - Millimeter
-        - Package
-        - PalletUnit
-        - Piece
-        - Pound
-        - PulpUnit
-        - Ream
-        - Reel
-        - Sheet
-        - ShortTon
-        - Skid
-        - SquareDecimeter
-        - SquareFoot
-        - SquareInch
-        - SquareMeter
-        - ThousandPieces
-        - ThousandSquareCentimeters
-        - ThousandSquareFeet
-        - ThousandSquareInches
-        - Yard
-
     # API endpoint schemas:
 
     ListOfCustomerArticles:
@@ -883,7 +822,15 @@ components:
                 maxLength: 2
                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         coordinatesWGS84:
-          $ref: '#/components/schemas/CoordinatesWGS84'
+          type: object
+          required:
+            - latitude
+            - longitude
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
 
     ListOfParties:
       type: object
@@ -1042,11 +989,53 @@ components:
                       enum:
                         - Ordered # the only allowed value!
                     quantityType:
-                      $ref: '#/components/schemas/QuantityType'
+                      type: string
+                      enum:
+                      - Area
+                      - Count
+                      - GrossWeight
+                      - Length
+                      - NetNetWeight
+                      - NetWeight
+                      - NominalWeight
+                      - TareWeight
                     quantityValue:
                       type: number
                     quantityUOM:
-                      $ref: '#/components/schemas/QuantityUOM'
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
 
     GetPurchaseOrderById:
       type: object
@@ -1166,11 +1155,53 @@ components:
                         - Ordered
                         - Confirmed
                     quantityType:
-                      $ref: '#/components/schemas/QuantityType'
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
                     quantityValue:
                       type: number
                     quantityUOM:
-                      $ref: '#/components/schemas/QuantityUOM'
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
 
     ModifyPurchaseOrder:
       type: object
@@ -1236,8 +1267,50 @@ components:
                       enum:
                         - Ordered # the only allowed value!
                     quantityType:
-                      $ref: '#/components/schemas/QuantityType'
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
                     quantityValue:
                       type: number
                     quantityUOM:
-                      $ref: '#/components/schemas/QuantityUOM'
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard

@@ -14,7 +14,7 @@ For this new flavour of the papiNet standard, we have decided to adopt an agile 
 
 ### Master Data Use Case
 
-The following API endpoints allows a _customer_ to get master data information such as _customer-articles_, _locations_ and parties_ from a _seller_:
+The following API endpoints allows a _customer_ to get master data information such as _customer-articles_, _locations_ and _parties_ from a _seller_:
 
 * `GET /customer-articles`
 * `GET /customer-articles/{customerArticleId}`
