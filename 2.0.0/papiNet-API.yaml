@@ -646,10 +646,10 @@ components:
       properties:
         numberOfCustomerArticles:
           type: integer
-          minimum: 0
+          minimum: 1
         customerArticles:
           type: array
-          minItems: 0
+          minItems: 1
           items:
             type: object
             required:
@@ -732,10 +732,10 @@ components:
       properties:
         numberOfLocations:
           type: integer
-          minimum: 0
+          minimum: 1
         locations:
           type: array
-          minItems: 0
+          minItems: 1
           items:
             type: object
             required:
@@ -840,10 +840,10 @@ components:
       properties:
         numberOfParties:
           type: integer
-          minimum: 0
+          minimum: 1
         parties:
           type: array
-          minItems: 0
+          minItems: 1
           items:
             type: object
             required:
