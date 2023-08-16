@@ -142,8 +142,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-01T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-001", \
+    "purchaseOrderTimestamp": "2022-02-01T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -178,8 +178,9 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-001",
+  "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
+
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -247,8 +248,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-001",
+  "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -319,8 +320,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-02T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-002", \
+    "purchaseOrderTimestamp": "2022-02-02T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -355,8 +356,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-002",
+  "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -424,8 +425,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-002",
+  "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -481,8 +482,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-03T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-003", \
+    "purchaseOrderTimestamp": "2022-02-03T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -539,8 +540,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-03T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-003",
+  "purchaseOrderTimestamp": "2022-02-03T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -657,8 +658,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-003",
+  "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -782,8 +783,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-003",
+  "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -925,8 +926,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-04T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-004", \
+    "purchaseOrderTimestamp": "2022-02-04T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -961,8 +962,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-004",
+  "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1030,8 +1031,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-004",
+  "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1126,8 +1127,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-004",
+  "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1210,8 +1211,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-004",
+  "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1282,8 +1283,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-05T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-005", \
+    "purchaseOrderTimestamp": "2022-02-05T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -1318,8 +1319,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-005",
+  "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1388,8 +1389,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-005",
+  "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1484,8 +1485,8 @@ but, this time, the _seller_ immediately rejects the quantity change and the _cu
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-05T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-005",
+  "purchaseOrderTimestamp": "2022-02-05T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1556,8 +1557,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-06T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-006", \
+    "purchaseOrderTimestamp": "2022-02-06T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -1592,8 +1593,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-006",
+  "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1661,8 +1662,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-006",
+  "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1745,8 +1746,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-006",
+  "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1829,8 +1830,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-006",
+  "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -1903,8 +1904,8 @@ curl --request POST \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
   --data-raw '{ \
-    "purchaseOrderTimestamp": "2022-02-07T09:00:00Z", \
     "purchaseOrderNumber": "ERP-PO-007", \
+    "purchaseOrderTimestamp": "2022-02-07T09:00:00Z", \
     "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
     "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
@@ -1983,8 +1984,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-007",
+  "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2111,8 +2112,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
   "purchaseOrderNumber": "ERP-PO-007",
+  "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2299,8 +2300,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-007",
+  "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2468,8 +2469,8 @@ If all goes well, the _customer_ will receive a response like this:
 ```json
 {
   "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
-  "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
   "purchaseOrderNumber": "ERP-PO-007",
+  "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
   "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",

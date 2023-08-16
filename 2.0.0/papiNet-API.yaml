@@ -654,14 +654,16 @@ components:
             type: object
             required:
               - id
+              - customerArticleNumber
               - customerArticleTimestamp
               - status
               - sellerProductBrandName
               - sellerProductName
-              - customerArticleNumber
               - productType
             properties:
               id:
+                type: string
+              customerArticleNumber:
                 type: string
               customerArticleTimestamp:
                 type: string
@@ -674,8 +676,6 @@ components:
               sellerProductBrandName:
                 type: string
               sellerProductName:
-                type: string
-              customerArticleNumber:
                 type: string
               productType:
                 type: string
@@ -690,13 +690,15 @@ components:
         - type: object
           required:
             - id
+            - customerArticleNumber
             - customerArticleTimestamp
             - status
             - sellerProductBrandName
             - sellerProductName
-            - customerArticleNumber
           properties:
             id:
+              type: string
+            customerArticleNumber:
               type: string
             customerArticleTimestamp:
               type: string
@@ -709,8 +711,6 @@ components:
             sellerProductBrandName:
               type: string
             sellerProductName:
-              type: string
-            customerArticleNumber:
               type: string
         - oneOf:
             - required:
@@ -740,13 +740,15 @@ components:
             type: object
             required:
               - id
+              - locationIdentifier
               - locationTimestamp
               - status
-              - locationIdentifier
               - nameLines
               - countryCode
             properties:
               id:
+                type: string
+              locationIdentifier:
                 type: string
               locationTimestamp:
                 type: string
@@ -756,8 +758,6 @@ components:
                 enum:
                   - Active
                   - Inactive
-              locationIdentifier:
-                type: string
               nameLines:
                 type: array
                 minItems: 1
@@ -775,14 +775,16 @@ components:
       type: object
       required:
         - id
+        - locationIdentifier
         - locationTimestamp
         - status
-        - locationIdentifier
         - nameLines
         - address # as only the country is required within it
         # coordinatesWGS84 is not required
       properties:
         id:
+          type: string
+        locationIdentifier:
           type: string
         locationTimestamp:
           type: string
@@ -792,8 +794,6 @@ components:
           enum:
             - Active
             - Inactive
-        locationIdentifier:
-          type: string
         nameLines:
           type: array
           minItems: 1
@@ -848,13 +848,15 @@ components:
             type: object
             required:
               - id
+              - partyIdentifier
               - partyTimestamp
               - status
-              - partyIdentifier
               - nameLines
               - countryCode
             properties:
               id:
+                type: string
+              partyIdentifier:
                 type: string
               partyTimestamp:
                 type: string
@@ -864,8 +866,6 @@ components:
                 enum:
                   - Active
                   - Inactive
-              partyIdentifier:
-                type: string
               nameLines:
                 type: array
                 minItems: 1
@@ -883,13 +883,15 @@ components:
       type: object
       required:
         - id
+        - partyIdentifier
         - partyTimestamp
         - status
-        - partyIdentifier
         - nameLines
         - address # as only the country is required within it
       properties:
         id:
+          type: string
+        partyIdentifier:
           type: string
         partyTimestamp:
           type: string
@@ -899,8 +901,6 @@ components:
           enum:
             - Active
             - Inactive
-        partyIdentifier:
-          type: string
         nameLines:
           type: array
           minItems: 1
@@ -932,17 +932,17 @@ components:
     CreatePurchaseOrder:
       type: object
       required:
-        - purchaseOrderTimestamp
         - purchaseOrderNumber
+        - purchaseOrderTimestamp
         - buyer
         - billTo
         - purchaseOrderLineItems
       properties:
+        purchaseOrderNumber:
+          type: string
         purchaseOrderTimestamp:
           type: string
           format: date-time
-        purchaseOrderNumber:
-          type: string
         buyer:
           type: string
         billTo:
@@ -1041,8 +1041,8 @@ components:
       type: object
       required:
         - id
-        - purchaseOrderTimestamp
         - purchaseOrderNumber
+        - purchaseOrderTimestamp
         - purchaseOrderStatus
         - active
         - buyer
@@ -1051,11 +1051,11 @@ components:
       properties:
         id:
           type: string
+        purchaseOrderNumber:
+          type: string
         purchaseOrderTimestamp:
           type: string
           format: date-time # UTC MUST be used!
-        purchaseOrderNumber:
-          type: string
         purchaseOrderStatus:
           type: string
           enum:
