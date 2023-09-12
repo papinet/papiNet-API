@@ -33,7 +33,7 @@ papiNet restrict enumerated values to the minimum list that applies within the c
 
 ### Rule 2 - How to handle empty collection
 
-An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. This rule will be enforced by not allowing empty array in the non-empty response's body using `minContains: 1` (new in JSON Schema New in draft 2019-09) when it will be supported by OpenAPI.
+An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. This rule will be enforced by not allowing empty array in the non-empty response's body using `minItems: 1`.
 
 ### Rule 3 - minLength of property with type `string`
 
@@ -41,7 +41,7 @@ When papiNet defines a property with type `string` required, papiNet ALWAYS mean
 
 When a property with type `string` is not required and there is no information to be communicated, the property MUST NOT appear in the response's body. That rule will be enforced by always add the constraint `minLength: 1` to all properties with type `string`.
 
-This `minLength: 1` constraint will not be added to the property with type `string` that already has such a contraint via `enum` or `format`. Of course, more restrictive constraint with more than 1 character minimum can be defined, but not less!
+This `minLength: 1` constraint will not be added to the property with type `string` that already has such a constraint via `enum` or `format`. Of course, more restrictive constraint with more than 1 character minimum can be defined, but not less!
 
 ### Rule 4 - maxLength of property with type `string`
 
@@ -59,6 +59,12 @@ When a response contains the reference to something (e.g. a _seller-product_), i
 
 When papiNet defines a property of type `array`, papiNet ALWAYS means that this array MUST have at least one element; therefore the constraint `minItems: 1` will always be added.
 
-### Rule 8 - Response paylod size SHOUD always be minimized
+### Rule 8 - Response payload size SHOULD always be minimized
 
 ... (with the execption of the `id`)
+
+### Rule 9 - UUID (only) as resource IDs
+
+We MUST use UUID (only) for resource ID defined by the `id` property of every resource/entity/object.
+
+When referring to another resource/entity/object we MUST also use this UUID only, therefore, to be able to know which type of resource/entity/object this UUID refers to, we MUST name of property or one of its ancestors including the type of resource/entity/object.

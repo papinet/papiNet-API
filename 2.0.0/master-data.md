@@ -141,7 +141,7 @@ If all goes well, the _customer_ will receive a response like this:
   "numberOfCustomerArticles": 17,
   "customerArticles": [
     {
-      "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+      "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
       "customerArticleNumber": "ERP-GA-L-35-900-1000",
       "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -150,7 +150,7 @@ If all goes well, the _customer_ will receive a response like this:
       "productType": "Paper"
     },
     {
-      "id": "/customer-articles/b10d0a30-ce23-405b-8176-67452ea2ef6c",
+      "id": "b10d0a30-ce23-405b-8176-67452ea2ef6c",
       "customerArticleNumber": "ERP-GA-L-35-2100-1250",
       "status": "Active",
       "customerArticleTimestamp": "2023-06-21T13:45:00Z",
@@ -159,7 +159,7 @@ If all goes well, the _customer_ will receive a response like this:
       "productType": "Paper"
     },
     {
-      "id": "/customer-articles/a9c15fde-f410-46f7-b16c-43678d414ea3",
+      "id": "a9c15fde-f410-46f7-b16c-43678d414ea3",
       "customerArticleNumber": "ERP-GA-L-51-1800-1250",
       "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -168,7 +168,7 @@ If all goes well, the _customer_ will receive a response like this:
       "productType": "Paper"
     },
     {
-      "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+      "id": "b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
       "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
       "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -177,7 +177,7 @@ If all goes well, the _customer_ will receive a response like this:
       "productType": "Paper"
     },
     {
-      "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486",
+      "id": "3b034825-6908-4bef-8c43-e7a424a2c486",
       "customerArticleNumber": "ERP-MA-G-100",
       "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -212,7 +212,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971",
+  "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971",
   "customerArticleNumber": "ERP-GAL-35-900-1000",
   "customerArticleTimestamp": "2023-06-21T13:45:00Z",
   "status": "Active",
@@ -274,7 +274,7 @@ If all goes well, the _customer_ will receive a response like this:
   "numberOfLocations": 9,
   "locations": [
     {
-      "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "locationIdentifier": "ERP-L-DE-ACME-01",
       "locationTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -284,7 +284,7 @@ If all goes well, the _customer_ will receive a response like this:
       "countryCode": "DE"
     },
     {
-      "id": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "id": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
       "locationIdentifier": "ERP-L-IT-ACME-01",
       "locationTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -294,7 +294,7 @@ If all goes well, the _customer_ will receive a response like this:
       "countryCode": "IT"
     },
     {
-      "id": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "id": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "locationIdentifier": "ERP-L-BE-ACME-01",
       "locationTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -331,7 +331,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+  "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
   "locationIdentifier": "ERP-L-DE-ACME-01",
   "locationTimestamp": "2023-06-21T13:45:00Z",
   "status": "Active",
@@ -383,7 +383,7 @@ If all goes well, the _customer_ will receive a response like this:
   "numberOfParties": 1,
   "parties": [
     {
-      "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "id": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
       "partyIdentifier": "ERP-P-NL-ACME-01",
       "partyTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -418,7 +418,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "id": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "partyIdentifier": "ERP-P-NL-ACME-01",
   "partyTimestamp": "2023-06-21T13:45:00Z",
   "status": "Active",
@@ -439,7 +439,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 ***WARNING.*** The properties of a _party_ SHOULD NOT change once defined, they SHOULD be immutable, with the exception of of the `status` property that can be switched from `Active` to `Inactive`.
 
-### Scenario D: Customer-Articles (by customerArticleNumber)
+### Scenario D: Customer-Article (by customerArticleNumber)
 
 An authenticated _customer_ retrieves the UUID of a _customer-article_ based on its `customerArticleNumber`.
 
@@ -465,7 +465,7 @@ If all goes well, the _customer_ will receive a response like this:
   "numberOfCustomerArticles": 1,
   "customerArticles": [
     {
-      "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
+      "id": "b4a28c7e-95d9-43a6-a82a-ed1c807124b9",
       "customerArticleNumber": "ERP-GA-BS-65-1000-1000",
       "customerArticleTimestamp": "2023-06-21T13:45:00Z",
       "status": "Active",
@@ -476,9 +476,94 @@ If all goes well, the _customer_ will receive a response like this:
   ],
   "links": {
     "self": {
-      "href": "/customer-articles?customerArticles.id=/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9"
+      "href": "/customer-articles?customerArticles.id=b4a28c7e-95d9-43a6-a82a-ed1c807124b9"
     },
     "next": {}
+  }
+}
+```
+
+### Scenario E: Location (by locationIdentifier)
+
+#### Interaction 0 of Scenario BE (Authentication)
+
+See [above](#interaction-0-of-scenario-a-authentication).
+
+#### Interaction 1 of Scenario E (Retrieve UUID by locationIdentifier)
+
+The authenticated _customer_ sends an API request in order to retreive the UUID of a _location_ based on its `locationIdentifer`:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/locations?locations.locationsIdentifier=ERP-L-DE-ACME-01 \
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_E' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "numberOfLocations": 1,
+  "locations": [
+    {
+      "id": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "locationIdentifier": "ERP-L-DE-ACME-01",
+      "locationTimestamp": "2023-06-21T13:45:00Z",
+      "status": "Active",
+      "nameLines": [
+        "Acme Alfeld GmbH"
+      ],
+      "countryCode": "DE"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/locations?locationsIdentifier=ERP-L-DE-ACME-01"
+    }
+  }
+}
+```
+
+### Scenario F: Party (by locationIdentifier)
+
+#### Interaction 0 of Scenario E (Authentication)
+
+See [above](#interaction-0-of-scenario-a-authentication).
+
+#### Interaction 1 of Scenario F (Retrieve UUID by partyIdentifier)
+
+The authenticated _customer_ sends an API request in order to retreive the UUID of a _party_ based on its `partyIdentifer`:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/parties?parties.partieIdentifier=ERP-P-NL-ACME-01 \
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_F' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "numberOfParties": 1,
+  "parties": [
+    {
+      "id": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "partyIdentifier": "ERP-P-NL-ACME-01",
+      "partyTimestamp": "2023-06-21T13:45:00Z",
+      "status": "Active",
+      "nameLines": [
+        "Sales Office Benelux",
+        "Acme Netherlands Services BV"
+      ],
+      "countryCode": "NL"
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/parties?partieIdentifier=ERP-P-NL-ACME-01"
+    }
   }
 }
 ```

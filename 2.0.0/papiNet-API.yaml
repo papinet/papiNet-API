@@ -665,6 +665,7 @@ components:
             properties:
               id:
                 type: string
+                format: uuid
               customerArticleNumber:
                 type: string
               customerArticleTimestamp:
@@ -700,6 +701,7 @@ components:
           properties:
             id:
               type: string
+              format: uuid
             customerArticleNumber:
               type: string
             customerArticleTimestamp:
@@ -750,6 +752,7 @@ components:
             properties:
               id:
                 type: string
+                format: uuid
               locationIdentifier:
                 type: string
               locationTimestamp:
@@ -786,6 +789,7 @@ components:
       properties:
         id:
           type: string
+          format: uuid
         locationIdentifier:
           type: string
         locationTimestamp:
@@ -893,6 +897,7 @@ components:
       properties:
         id:
           type: string
+          format: uuid
         partyIdentifier:
           type: string
         partyTimestamp:
@@ -937,8 +942,8 @@ components:
         - purchaseOrderNumber
         - purchaseOrderTimestamp
         - purchaseOrderStatus
-        - buyer
-        - billTo
+        - buyerParty
+        - billToParty
         - purchaseOrderLineItems
       properties:
         purchaseOrderNumber:
@@ -950,10 +955,12 @@ components:
           type: string
           enum:
             - Original
-        buyer:
+        buyerParty:
           type: string
-        billTo:
+          format: uuid
+        billToParty:
           type: string
+          format: uuid
         purchaseOrderLineItems:
           type: array
           minItems: 1
@@ -963,7 +970,7 @@ components:
               - purchaseOrderLineItemNumber
               - purchaseOrderLineItemStatus
               - customerArticle
-              - requestedShipTo
+              - requestedShipToLocation
               - requestedDeliveryDateTime
               - quantities
             properties:
@@ -980,8 +987,10 @@ components:
                 properties:
                   id:
                     type: string
-              requestedShipTo:
+                    format: uuid
+              requestedShipToLocation:
                 type: string
+                format: uuid
               requestedDeliveryDateTime:
                 type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
                              # excluding duration alone,
@@ -1062,12 +1071,13 @@ components:
         - purchaseOrderTimestamp
         - purchaseOrderStatus
         - active
-        - buyer
-        - billTo
+        - buyerParty
+        - billToParty
         - purchaseOrderLineItems
       properties:
         id:
           type: string
+          format: uuid
         purchaseOrderNumber:
           type: string
         purchaseOrderTimestamp:
@@ -1081,10 +1091,12 @@ components:
             - Cancelled
         active:
           type: boolean
-        buyer:
+        buyerParty:
           type: string
-        billTo:
+          format: uuid
+        billToParty:
           type: string
+          format: uuid
         purchaseOrderLineItems:
           type: array
           minItems: 1
@@ -1100,8 +1112,8 @@ components:
               # salesOrderLineItemStatus is not required
               # latestAllowedDateTimeForChange is not required
               - customerArticle
-              - requestedShipTo
-              # confirmedShipTo is not required
+              - requestedShipToLocation
+              # confirmedShipToLocation is not required
               - requestedDeliveryDateTime
               # confirmedDeliveryDateTime is not required
               - quantities
@@ -1150,10 +1162,13 @@ components:
                 properties:
                   id:
                     type: string
-              requestedShipTo:
+                    format: uuid
+              requestedShipToLocation:
                 type: string
-              confirmedShipTo:
+                format: uuid
+              confirmedShipToLocation:
                 type: string
+                format: uuid
               requestedDeliveryDateTime:
                 type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
                              # excluding duration alone,
@@ -1259,7 +1274,7 @@ components:
               - purchaseOrderLineItemNumber
               - purchaseOrderLineItemStatus
               # customerArticle is not required
-              # requestedShipTo is not required
+              # requestedShipToLocation is not required
               # requestedDeliveryDateTime is not required
               # quantities is not required
             properties:
@@ -1278,8 +1293,10 @@ components:
                 properties:
                   id:
                     type: string
-              requestedShipTo:
+                    format: uuid
+              requestedShipToLocation:
                 type: string
+                format: uuid
               requestedDeliveryDateTime:
                 type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
                              # excluding duration alone,

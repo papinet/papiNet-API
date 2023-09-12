@@ -145,16 +145,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-001", \
     "purchaseOrderTimestamp": "2022-02-01T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-11", \
         "quantities": [ \
           { \
@@ -179,14 +179,14 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
 
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -197,9 +197,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-11",
       "quantities": [
         {
@@ -249,13 +249,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -267,10 +267,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-02T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-11",
       "confirmedDeliveryDateTime": "2022-02-11",
       "quantities": [
@@ -325,16 +325,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-002", \
     "purchaseOrderTimestamp": "2022-02-02T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-12T11:30", \
         "quantities": [ \
           { \
@@ -359,13 +359,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-002",
   "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -376,9 +376,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-12T11:30",
       "quantities": [
         {
@@ -428,13 +428,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-002",
   "purchaseOrderTimestamp": "2022-02-02T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -445,9 +445,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Rejected",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-12T11:30",
       "quantities": [
         {
@@ -489,16 +489,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-003", \
     "purchaseOrderTimestamp": "2022-02-03T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-14/2022-02-18", \
         "quantities": [ \
           { \
@@ -518,9 +518,9 @@ curl --request POST \
       { \
         "purchaseOrderLineItemNumber": "2", \
         "customerArticle": { \
-          "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486" \
+          "id": "3b034825-6908-4bef-8c43-e7a424a2c486" \
         }, \
-        "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
+        "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
         "requestedDeliveryDateTime": "2022-02-14/2022-02-18", \
         "quantities": [ \
           { \
@@ -545,13 +545,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderTimestamp": "2022-02-03T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -562,9 +562,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
@@ -590,9 +590,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
@@ -636,9 +636,9 @@ curl --request PATCH \
         "purchaseOrderLineItemNumber": "3", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9" \
+          "id": "b4a28c7e-95d9-43a6-a82a-ed1c807124b9" \
         }, \
-        "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
+        "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
         "requestedDeliveryDateTime": "2022-02-15T11:30:00", \
         "quantities": [ \
           { \
@@ -663,13 +663,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -680,9 +680,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
@@ -708,9 +708,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
@@ -736,9 +736,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "30",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
@@ -788,13 +788,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-003",
   "purchaseOrderTimestamp": "2022-02-03T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -806,10 +806,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "confirmedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
@@ -848,9 +848,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "20",
       "salesOrderLineItemStatus": "Cancelled",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
         {
@@ -877,10 +877,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-04T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "confirmedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-14/2022-02-18",
       "confirmedDeliveryDateTime": "2022-02-14/2022-02-18",
       "quantities": [
@@ -935,16 +935,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-004", \
     "purchaseOrderTimestamp": "2022-02-04T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-14T11:30/18:30", \
         "quantities": [ \
           { \
@@ -969,13 +969,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -986,9 +986,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "quantities": [
         {
@@ -1038,13 +1038,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1056,10 +1056,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "confirmedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "quantities": [
@@ -1134,13 +1134,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1152,10 +1152,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-14T11:30:00",
       "quantities": [
@@ -1218,13 +1218,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-004",
   "purchaseOrderTimestamp": "2022-02-04T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1236,10 +1236,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-05T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "confirmedDeliveryDateTime": "2022-02-14T11:30/18:30",
       "quantities": [
@@ -1294,16 +1294,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-005", \
     "purchaseOrderTimestamp": "2022-02-05T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-15T11:30:00", \
         "quantities": [ \
           { \
@@ -1328,13 +1328,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-005",
   "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1346,9 +1346,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-15T11:30:00",
       "quantities": [
         {
@@ -1398,13 +1398,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-005",
   "purchaseOrderTimestamp": "2022-02-05T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1416,10 +1416,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-15T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-15T11:30:00",
       "quantities": [
@@ -1494,13 +1494,13 @@ but, this time, the _seller_ immediately rejects the quantity change and the _cu
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-005",
   "purchaseOrderTimestamp": "2022-02-05T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1512,10 +1512,10 @@ but, this time, the _seller_ immediately rejects the quantity change and the _cu
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-06T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-15T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-15T11:30:00",
       "quantities": [
@@ -1570,16 +1570,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-006", \
     "purchaseOrderTimestamp": "2022-02-06T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-16T11:30", \
         "quantities": [ \
           { \
@@ -1604,13 +1604,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1621,9 +1621,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemNumber": "10",
       "salesOrderLineItemStatus": "Pending",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-16T11:30",
       "quantities": [
         {
@@ -1673,13 +1673,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1691,10 +1691,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-16T11:30",
       "confirmedDeliveryDateTime": "2022-02-16T11:30/12:30",
       "quantities": [
@@ -1746,7 +1746,7 @@ curl --request PATCH \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Amended", \
-        "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd", \
+        "requestedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd", \
         "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       }
     ] \
@@ -1757,13 +1757,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1775,10 +1775,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-16T11:30/12:30",
       "quantities": [
@@ -1841,13 +1841,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-006",
   "purchaseOrderTimestamp": "2022-02-06T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -1859,10 +1859,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-07T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-16T11:30/12:30",
       "quantities": [
@@ -1919,16 +1919,16 @@ curl --request POST \
     "purchaseOrderNumber": "ERP-PO-007", \
     "purchaseOrderTimestamp": "2022-02-07T09:00:00Z", \
     "purchaseOrderStatus": "Original", \
-    "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904", \
-    "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
+    "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904", \
+    "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65", \
     "purchaseOrderLineItems": [ \
       { \
         "purchaseOrderLineItemNumber": "1", \
         "purchaseOrderLineItemStatus": "Original", \
         "customerArticle": { \
-          "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
+          "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971" \
         }, \
-        "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
+        "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73", \
         "requestedDeliveryDateTime": "2022-02-17T11:30:00", \
         "quantities": [ \
           { \
@@ -1948,9 +1948,9 @@ curl --request POST \
       { \
         "purchaseOrderLineItemNumber": "2", \
         "customerArticle": { \
-          "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486" \
+          "id": "3b034825-6908-4bef-8c43-e7a424a2c486" \
         }, \
-        "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
+        "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
         "requestedDeliveryDateTime": "2022-02-19T11:30:00", \
         "quantities": [ \
           { \
@@ -1970,9 +1970,9 @@ curl --request POST \
       { \
         "purchaseOrderLineItemNumber": "3", \
         "customerArticle": { \
-          "id": "/customer-articles/b4a28c7e-95d9-43a6-a82a-ed1c807124b9" \
+          "id": "b4a28c7e-95d9-43a6-a82a-ed1c807124b9" \
         }, \
-        "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
+        "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008", \
         "requestedDeliveryDateTime": "2022-02-18T11:30:00", \
         "quantities": [ \
           { \
@@ -1997,13 +1997,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -2015,9 +2015,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       "quantities": [
         {
@@ -2044,9 +2044,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-19T11:30:00",
       "quantities": [
         {
@@ -2073,9 +2073,9 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-18T11:30:00",
       "quantities": [
         {
@@ -2125,13 +2125,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:00:00Z",
   "purchaseOrderStatus": "Original",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -2143,10 +2143,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-17T11:30:00",
       "quantities": [
@@ -2186,10 +2186,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "confirmedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-19T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-19T11:30:00",
       "quantities": [
@@ -2229,10 +2229,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "confirmedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-18T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-18T11:30:00",
       "quantities": [
@@ -2302,7 +2302,7 @@ curl --request PATCH \
       { \
         "purchaseOrderLineItemNumber": "3", \
         "purchaseOrderLineItemStatus": "Amended", \
-        "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd", \
+        "requestedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd", \
         "requestedDeliveryDateTime": "2022-02-20T11:30:00",
       }
     ] \
@@ -2313,13 +2313,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -2331,10 +2331,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-17T11:30:00",
       "quantities": [
@@ -2374,10 +2374,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "confirmedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-19T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-19T11:30:00",
       "quantities": [
@@ -2417,10 +2417,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Pending",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
-      "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "confirmedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-20T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-18T11:30:00",
       "quantities": [
@@ -2482,13 +2482,13 @@ If all goes well, the _customer_ will receive a response like this:
 
 ```json
 {
-  "id": "/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+  "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-007",
   "purchaseOrderTimestamp": "2022-02-07T09:45:00Z",
   "purchaseOrderStatus": "Amended",
   "active": true,
-  "buyer": "/parties/3b76fbc6-8324-4d7d-a230-da9398bb2904",
-  "billTo": "/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+  "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+  "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
   "purchaseOrderLineItems": [
     {
       "purchaseOrderLineItemNumber": "1",
@@ -2500,10 +2500,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971"
+        "id": "fd345ee7-ba9a-4856-8fcb-a912b10ea971"
       },
-      "requestedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
-      "confirmedShipTo": "/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "requestedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
+      "confirmedShipToLocation": "8a69e22b-9a8c-4585-a8f9-7fbce8de7c73",
       "requestedDeliveryDateTime": "2022-02-17T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-17T11:30:00",
       "quantities": [
@@ -2543,10 +2543,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
-      "confirmedShipTo": "/locations/4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "requestedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
+      "confirmedShipToLocation": "4cc7b1ba-6278-4a56-9ee2-ad316950c008",
       "requestedDeliveryDateTime": "2022-02-19T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-19T11:30:00",
       "quantities": [
@@ -2586,10 +2586,10 @@ If all goes well, the _customer_ will receive a response like this:
       "salesOrderLineItemStatus": "Confirmed",
       "latestAllowedDateTimeForChange": "2022-02-08T10:00:00",
       "customerArticle": {
-        "id": "/customer-articles/3b034825-6908-4bef-8c43-e7a424a2c486"
+        "id": "3b034825-6908-4bef-8c43-e7a424a2c486"
       },
-      "requestedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
-      "confirmedShipTo": "/locations/0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "requestedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
+      "confirmedShipToLocation": "0c7ef7cc-27d7-4d14-a8d2-c8da0eba1ecd",
       "requestedDeliveryDateTime": "2022-02-20T11:30:00",
       "confirmedDeliveryDateTime": "2022-02-20T11:30:00",
       "quantities": [
