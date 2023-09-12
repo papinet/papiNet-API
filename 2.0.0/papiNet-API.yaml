@@ -936,6 +936,7 @@ components:
       required:
         - purchaseOrderNumber
         - purchaseOrderTimestamp
+        - purchaseOrderStatus
         - buyer
         - billTo
         - purchaseOrderLineItems
@@ -945,6 +946,10 @@ components:
         purchaseOrderTimestamp:
           type: string
           format: date-time
+        purchaseOrderStatus:
+          type: string
+          enum:
+            - Original
         buyer:
           type: string
         billTo:
@@ -956,6 +961,7 @@ components:
             type: object
             required:
               - purchaseOrderLineItemNumber
+              - purchaseOrderLineItemStatus
               - customerArticle
               - requestedShipTo
               - requestedDeliveryDateTime
@@ -963,6 +969,10 @@ components:
             properties:
               purchaseOrderLineItemNumber:
                 type: string
+              purchaseOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original
               customerArticle:
                 type: object
                 required:
