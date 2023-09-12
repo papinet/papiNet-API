@@ -141,7 +141,7 @@ The authenticated _customer_ sends an API request to the _seller_ in order to cr
 ```text
 curl --request POST \
   --URL 'http://localhost:3020/purchase-orders' \
-  --header 'X-Provider-Sate: Purchase_Order_Interaction_1_of_Scenario_A' \
+  --header 'X-Provider-State: Purchase_Order_Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
@@ -320,7 +320,7 @@ The authenticated _customer_ sends an API request to the _seller_ in order to cr
 ```text
 curl --request POST \
   --URL 'http://localhost:3020/purchase-orders' \
-  --header 'X-Provider-Sate: Purchase_Order_Interaction_1_of_Scenario_B' \
+  --header 'X-Provider-State: Purchase_Order_Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer b6b9430b-f552-43c9-a3cd-98c0fa46bcf7' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
@@ -2641,7 +2641,7 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 ```text
 curl --request GET \
   --URL http://localhost:3020/purchase-orders?purchaseOrderNumber=ERP-PO-001 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_H' \
+  --header 'X-Provider-State: Purchase_Order_Interaction_1_of_Scenario_H' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -2668,6 +2668,5 @@ If all goes well, the _customer_ will receive a response like this:
     },
     "next": {}
   }
-
 }
 ```

@@ -129,8 +129,8 @@ The authenticated _customer_ sends an API request in order to get the list of al
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/customer-articles?customerArticles.status=Active \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_A' \
+  --URL http://localhost:3020/customer-articles?status=Active \
+  --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -204,7 +204,7 @@ At any time, the _customer_ can send an API request in order to get the details 
 ```text
 curl --request GET \
   --URL http://localhost:3020/customer-articles/fd345ee7-ba9a-4856-8fcb-a912b10ea971 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_2_of_Scenario_A' \
+  --header 'X-Provider-State: Master_Data_Interaction_2_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -262,8 +262,8 @@ The authenticated _customer_ sends an API request in order to get the list of al
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/locations?locations.status=Active \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_B' \
+  --URL http://localhost:3020/locations?status=Active \
+  --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -323,7 +323,7 @@ At any time, the _customer_ can send an API request in order to get the details 
 ```text
 curl --request GET \
   --URL http://localhost:3020/locations/8a69e22b-9a8c-4585-a8f9-7fbce8de7c73 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_2_of_Scenario_B' \
+  --header 'X-Provider-State: Master_Data_Interaction_2_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -371,8 +371,8 @@ The authenticated _customer_ sends an API request in order to get the list of al
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/parties?parties.status=Active \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_C' \
+  --URL http://localhost:3020/parties?status=Active \
+  --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_C' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -410,7 +410,7 @@ At any time, the _customer_ can send an API request in order to get the details 
 ```text
 curl --request GET \
   --URL http://localhost:3020/parties/1e3e727b-815d-4b92-b6e8-5db3deb17c65 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_2_of_Scenario_C' \
+  --header 'X-Provider-State: Master_Data_Interaction_2_of_Scenario_C' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -454,7 +454,7 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 ```text
 curl --request GET \
   --URL http://localhost:3020/customer-articles?customerArticleNumber=ERP-GA-BS-65-1000-1000 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_D' \
+  --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_D' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -485,7 +485,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 ### Scenario E: Location (by locationIdentifier)
 
-#### Interaction 0 of Scenario BE (Authentication)
+#### Interaction 0 of Scenario E (Authentication)
 
 See [above](#interaction-0-of-scenario-a-authentication).
 
@@ -495,8 +495,8 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/locations?locations.locationsIdentifier=ERP-L-DE-ACME-01 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_E' \
+  --URL http://localhost:3020/locations?locationsIdentifier=ERP-L-DE-ACME-01 \
+  --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_E' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
@@ -527,7 +527,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 ### Scenario F: Party (by locationIdentifier)
 
-#### Interaction 0 of Scenario E (Authentication)
+#### Interaction 0 of Scenario F (Authentication)
 
 See [above](#interaction-0-of-scenario-a-authentication).
 
@@ -537,8 +537,8 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/parties?parties.partieIdentifier=ERP-P-NL-ACME-01 \
-  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_F' \
+  --URL http://localhost:3020/parties?partieIdentifier=ERP-P-NL-ACME-01 \
+  --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_F' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
 
