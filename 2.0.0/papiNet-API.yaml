@@ -250,6 +250,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetPurchaseOrderById'
+        '400':
+          description: Bad Request
 
   '/purchase-orders/{purchaseOrderId}':
     # GET /purchase-orders/{purchaseOrderId}
