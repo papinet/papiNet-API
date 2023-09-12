@@ -46,18 +46,21 @@ paths:
           required: false
           schema:
             type: string
+            minLength: 1
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: string
+            minLength: 1
         - in: query
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: string
+            minLength: 1
       responses:
         '200':
           description: OK
@@ -114,18 +117,23 @@ paths:
           required: false
           schema:
             type: string
+            minLength: 2
+            maxLength: 2
+            description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: string
+            minLength: 1
         - in: query
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: string
+            minLength: 1
       responses:
         '200':
           description: OK
@@ -182,18 +190,22 @@ paths:
           required: false
           schema:
             type: string
+            minLength: 2
+            maxLength: 2
         - in: query
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: string
+            minLength: 1
         - in: query
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: string
+            minLength: 1
       responses:
         '200':
           description: OK
@@ -668,6 +680,7 @@ components:
                 format: uuid
               customerArticleNumber:
                 type: string
+                minLength: 1
               customerArticleTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
@@ -678,8 +691,10 @@ components:
                   - Inactive
               sellerProductBrandName:
                 type: string
+                minLength: 1
               sellerProductName:
                 type: string
+                minLength: 1
               productType:
                 type: string
                 enum:
@@ -704,6 +719,7 @@ components:
               format: uuid
             customerArticleNumber:
               type: string
+              minLength: 1
             customerArticleTimestamp:
               type: string
               format: date-time # UTC MUST be used!
@@ -714,8 +730,10 @@ components:
                 - Inactive
             sellerProductBrandName:
               type: string
+              minLength: 1
             sellerProductName:
               type: string
+              minLength: 1
         - oneOf:
             - required:
                  - paper
@@ -755,6 +773,7 @@ components:
                 format: uuid
               locationIdentifier:
                 type: string
+                minLength: 1
               locationTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
@@ -768,6 +787,7 @@ components:
                 minItems: 1
                 items:
                   type: string
+                  minLength: 1
               countryCode:
                 type: string
                 minLength: 2
@@ -792,6 +812,7 @@ components:
           format: uuid
         locationIdentifier:
           type: string
+          minLength: 1
         locationTimestamp:
           type: string
           format: date-time # UTC MUST be used!
@@ -805,6 +826,7 @@ components:
           minItems: 1
           items:
             type: string
+            minLength: 1
         address:
           type: object
           required:
@@ -818,10 +840,13 @@ components:
               minItems: 1
               items:
                 type: string
+                minLength: 1
             city:
               type: string
+              minLength: 1
             postalCode:
               type: string
+              minLength: 1
             countryCode:
                 type: string
                 minLength: 2
@@ -862,8 +887,10 @@ components:
             properties:
               id:
                 type: string
+                format: uuid
               partyIdentifier:
                 type: string
+                minLength: 1
               partyTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
@@ -877,6 +904,7 @@ components:
                 minItems: 1
                 items:
                   type: string
+                  minLength: 2
               countryCode:
                 type: string
                 minLength: 2
@@ -900,6 +928,7 @@ components:
           format: uuid
         partyIdentifier:
           type: string
+          minLength: 1
         partyTimestamp:
           type: string
           format: date-time # UTC MUST be used!
@@ -913,6 +942,7 @@ components:
           minItems: 1
           items:
             type: string
+            minLength: 1
         address:
           type: object
           required:
@@ -926,10 +956,13 @@ components:
               minItems: 1
               items:
                 type: string
+                minLength: 1
             city:
               type: string
+              minLength: 1
             postalCode:
               type: string
+              minLength: 1
             countryCode:
                 type: string
                 minLength: 2
@@ -948,6 +981,7 @@ components:
       properties:
         purchaseOrderNumber:
           type: string
+          minLength: 1
         purchaseOrderTimestamp:
           type: string
           format: date-time
@@ -976,6 +1010,7 @@ components:
             properties:
               purchaseOrderLineItemNumber:
                 type: string
+                minLength: 1
               purchaseOrderLineItemStatus:
                 type: string
                 enum:
@@ -1080,6 +1115,7 @@ components:
           format: uuid
         purchaseOrderNumber:
           type: string
+          minLength: 1
         purchaseOrderTimestamp:
           type: string
           format: date-time # UTC MUST be used!
@@ -1120,6 +1156,7 @@ components:
             properties:
               purchaseOrderLineItemNumber:
                 type: string
+                minLength: 1
               purchaseOrderLineItemStatus:
                 type: string
                 enum:
@@ -1128,6 +1165,7 @@ components:
                   - Cancelled
               salesOrderNumber:
                 type: string
+                minLength: 1
               salesOrderTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
@@ -1140,6 +1178,7 @@ components:
                   - Cancelled
               salesOrderLineItemNumber:
                 type: string
+                minLength: 1
               salesOrderLineItemStatus:
                 type: string
                 enum:
@@ -1280,6 +1319,7 @@ components:
             properties:
               purchaseOrderLineItemNumber:
                 type: string
+                minLength: 1
               purchaseOrderLineItemStatus:
                 type: string
                 enum:
