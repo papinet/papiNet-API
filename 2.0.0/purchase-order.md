@@ -105,6 +105,10 @@ If all goes well, the _customer_ will receive a response like this:
 3. The _customer_ requests a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change in the 3rd line;
 4. The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change in the 3rd line, the _customer_ is notified and gets the details of the confirmed _purchase order_ with the quantity change in the 2nd _line_, but without the delivery date-time change and the ship-to change in the 3rd line.
 
+**Scenario H:** Retrieve the UUID of a Purchase Order based on its `purchaseOrderNumber`
+
+1. An authenticated _customer_ retrieves the UUID of a Purchase Order based on its `purchaseOrderNumber`.
+
 ### Scenario A: Purchase Order with 1 Line, Confirmed
 
 #### Interaction 0 of Scenario A (Authentication)
@@ -182,7 +186,6 @@ If all goes well, the _customer_ will receive a response like this:
   "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
   "purchaseOrderNumber": "ERP-PO-001",
   "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
-
   "purchaseOrderStatus": "Original",
   "active": true,
   "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
@@ -2624,3 +2627,47 @@ If all goes well, the _customer_ will receive a response like this:
 ```
 
 If the _customer_ is not satisfied with the rejection from the _seller_, he should probably call the _seller_ by phone.
+
+### Scenario H: Retrieve the UUID of a Purchase Order based on its `purchaseOrderNumber`
+
+#### Interaction 0 of Scenario H (Authentication)
+
+See [above](#interaction-0-of-scenario-a-authentication).
+
+#### Interaction 1 of Scenario H (Retreive the UUID)
+
+The authenticated _customer_ sends an API request in order to retreive the UUID of a _customer-article_ based on its `customerArticleNumber`:
+
+```text
+curl --request GET \
+  --URL http://localhost:3020/purchase-orders?purchaseOrderNumber=ERP-PO-001 \
+  --header 'X-Provider-Sate: Master_Data_Interaction_1_of_Scenario_H' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
+```
+
+If all goes well, the _customer_ will receive a response like this:
+
+```json
+{
+  "numberOfPurchaseOrders": 1,
+  "purchaseOrders": [
+    {
+      "id": "ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+      "purchaseOrderNumber": "ERP-PO-001",
+      "purchaseOrderTimestamp": "2022-02-01T09:00:00Z",
+      "purchaseOrderStatus": "Original",
+      "active": true,
+      "buyerParty": "3b76fbc6-8324-4d7d-a230-da9398bb2904",
+      "billToParty": "1e3e727b-815d-4b92-b6e8-5db3deb17c65",
+      "numberOfLines": 1
+    }
+  ],
+  "links": {
+    "self": {
+      "href": "/purchase-orders?purchaseOrderNumber=ERP-PO-001"
+    },
+    "next": {}
+  }
+
+}
+```
