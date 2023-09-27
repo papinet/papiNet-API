@@ -6,10 +6,6 @@ This use case is designed for _Paper and Board_ business.
 
 > _Paper For Recycling_ and _Pulp_ are not included within our definition of _Paper and Board_, they are raw materials for _Paper and Board_.
 
-## Simplification
-
-For now, we only consider a simplified version of the business interactions between only two types of parties: the _customer_ and the _seller_, where the _customer_ will host the HTTP client calling the papiNet API endpoints implemented by the _seller_.
-
 ## Definitions
 
 The distinction we make between the concepts _product_ and _article_ is essential to the understanding of our papiNet API endpoints.
@@ -22,33 +18,41 @@ In order to show that important distinction within the API itself, we will alway
 
 While the hyphenated terms _seller-product_ and _customer-article_ may sound redundant, we have found them to be a useful tool for reinforcing the distinction between _product_ and _article_ within the API endpoints.
 
-A **_location_** is defined as a physical place where a business process or activity takes place or where a physical asset is located. A _location_ can be a building, room, area, or geographic region, and can be associated with various types of assets, such as equipment, inventory, or people.
+A **_location_** is defined as a physical place where a business process or activity takes place or where a physical asset is located. _Locations_ can have the following types when being part in the business process:
 
-A **_party_** is defined as any individual or organization that has a relationship or role in a particular business process or activity. _Parties_ can include customers, suppliers, partners, employees, and other stakeholders who participate in the business process.
+* **_shipToLocation_**: the _location_ the _customer-article_ should be shipped to.
+
+A **_party_** is defined as any organization that has a relationship or role in a particular business process or activity. _Parties_ can have the following roles when participating in the business process:
+
+* **_customerParty_**: a _party_ acting for the _buyer_ in the transaction.
+* **_supplierPatry_**: a _party_ responsible for providing the _customer-article_.
+* **_sellerParty_**: a legal entity selling the _customer-article_.
+* **_buyerParty_**: a legal entity to which the _customer-article_ is sold.
+* **_billToParty_**: a _party_ receiving the _invoice_.
 
 ## Preconditions
 
-Our initial approach will be to start with a simplified operational structure, which assumes that the _seller_ has already defined the necessary _customer-articles_, _parties_, and _locations_ required for the business transactions, by another means than papiNet API.
+Our initial approach will be to start with a simplified operational structure, which assumes that the _seller_ has already created the necessary _customer-articles_ (based on _customer_ requirements), _parties_, and _locations_ required for the business transactions, by another means than papiNet API. The creation of _customer-articles_, _parties_, and _locations_ will be part of the scope of the papiNet API in the future.
 
-It should be noted that, for now, this simplified operational structure excludes the step of defining _customer-articles_ from _seller-products_, which is assumed to have already been completed by the _seller_ prior to the start of the business transactions. In addition to that, our assumption is that each property of the _customer-article_ has only one value, but this restriction will change in the future.
+It should be noted that, for now, this simplified operational structure excludes the step of defining _customer-articles_ from _seller-products_, which is assumed to have already been completed by the _seller_ prior to the start of the business transactions. In addition to that, our assumption is that each property of the _customer-article_, required to order it, has only one value, meaning that the _customer-article_ is fully defined. But this restriction will change in the future.
 
 ## Processes
 
-An authenticated _customer_ requests the _seller_ to provide the list of active _customer-articles_ that have been created.
+An authenticated _customer_ requests the _supplier_ to provide the list of active _customer-articles_ that have been created.
 
-The authenticated _customer_ requests the _seller_ to provide the details of a specific _customer-article_ that has been created.
+The authenticated _customer_ requests the _supplier_ to provide the details of a specific _customer-article_ that has been created.
 
-The authenticated _customer_ requests the _seller_ to provide the list of active _locations_ that have been defined.
+The authenticated _customer_ requests the _supplier_ to provide the list of active _locations_ that have been defined.
 
-The authenticated _customer_ requests the _seller_ to provide the details of a specific _location_ that has been defined.
+The authenticated _customer_ requests the _supplier_ to provide the details of a specific _location_ that has been defined.
 
-The authenticated _customer_ requests the _seller_ to provide the list of active _parties_ that have been defined.
+The authenticated _customer_ requests the _supplier_ to provide the list of active _parties_ that have been defined.
 
-The authenticated _customer_ requests the _seller_ to provide the details of a specific _party_ that has been defined.
+The authenticated _customer_ requests the _supplier_ to provide the details of a specific _party_ that has been defined.
 
 ## Domain Name
 
-We suggest that the _seller_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _seller_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+We suggest that the _supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
 ## papiNet Stub Service
 
@@ -102,7 +106,7 @@ An authenticated _customer_ gets the list of all _customer-articles_ created for
 
 #### Interaction 0 of Scenario A (Authentication)
 
-The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access token_:
+The _customer_ sends an API request to the _supplier_ in order to be authenticated, and gets an _access token_:
 
 ```text
 curl --request POST \

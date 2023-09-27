@@ -6,27 +6,23 @@ This use case is designed for _Paper and Board_ business.
 
 > _Paper For Recycling_ and _Pulp_ are not included within our definition of _Paper and Board_, they are raw materials for _Paper and Board_.
 
-## Simplification
-
-For now, we only consider a simplified version of the business interactions between only two types of parties: the _customer_ and the _seller_, where the _customer_ will host the HTTP client calling the papiNet API endpoints implemented by the _seller_.
-
 ## Definitions
 
-N/A.
+See the [Definitions](master-data#definitions) section of the Master Data use case.
 
 ## Preconditions
 
-N/A.
+See the [Preconditions](master-data#preconditions) section of the Master Data use case.
+
+Our initial approach will be to start with a simplified operational structure in which the _purchase-order_ is limited to direct delivery to the _shipToLocation_.
 
 ## Notifications
 
-When the _seller_ needs to notify the _customer_, we recommend to use the CloudEvents specification putting directly the URL that the _customer_ should call within the `source` property and the value `org.papinet.notification` within the `type` property.
-
-## Processes
+When the _supplier_ needs to notify the _customer_, we recommend to use the CloudEvents specification putting directly the URL that the _customer_ should call within the `source` property and the value `org.papinet.notification` within the `type` property.
 
 ## Domain Name
 
-We suggest that the _seller_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _seller_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+We suggest that the _supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
 ## papiNet Stub Service
 
@@ -65,45 +61,45 @@ If all goes well, the _customer_ will receive a response like this:
 **Scenario A:** Purchase Order with 1 Line, Confirmed
 
 1. An authenticated _customer_ creates a _purchase order_ with 1 _line_;
-2. The _seller_ confirms the _line_, the _customer_ is notified (1) and gets the details of the confirmed _purchase order_.
+2. The _supplier_ confirms the _line_, the _customer_ is notified (1) and gets the details of the confirmed _purchase order_.
 
 **Scenario B:** Purchase Order with 1 Line, Rejected
 
 1. An authenticated _customer_ creates a _purchase order_ with 1 _line_;
-2. The _seller_ rejects the _line_, the _customer_ is notified and gets the details of the rejected _purchase order_.
+2. The _supplier_ rejects the _line_, the _customer_ is notified and gets the details of the rejected _purchase order_.
 
 **Scenario C:** Purchase Order with 2 Lines, Cancel 1 Line and Create 1 New Line, Both Confirmed
 
 1. An authenticated _customer_ creates a _purchase order_ with 2 _lines_;
 2. The _customer_ cancels the 2nd _line_ and creates a new _line_;
-3. The _seller_ confirms the 1st _line_ and the newly created _line_, the _seller_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation, the _customer_ is notified and gets the details of the confirmed _purchase order_.
+3. The _supplier_ confirms the 1st _line_ and the newly created _line_, the _supplier_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation, the _customer_ is notified and gets the details of the confirmed _purchase order_.
 
 **Scenario D:** Purchase Order with 1 Line, and 1 Quantity Change Confirmed
 
 1. An authenticated _customer_ creates a _purchase order_ with 1 _line_;
-2. The _seller_ confirms the _line_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
+2. The _supplier_ confirms the _line_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
 3. The _customer_ requests a quantity change;
-4. The _seller_ confirms the quantity change, the _customer_ is notified and and gets the details of the confirmed _purchase order_ with the quantity change.
+4. The _supplier_ confirms the quantity change, the _customer_ is notified and and gets the details of the confirmed _purchase order_ with the quantity change.
 
 **Scenario E:** Purchase Order with 1 Line, and 1 Quantity Change Immediately Rejected
 
 1. An authenticated _customer_ creates a _purchase order_ with 1 _line_;
-2. The _seller_ confirms the _line_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
-3. The _customer_ requests a quantity change, the _seller_ immediately rejects the quantity change and the _customer_ gets the details of the previously confirmed _purchase order_ without the quantity change.
+2. The _supplier_ confirms the _line_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
+3. The _customer_ requests a quantity change, the _supplier_ immediately rejects the quantity change and the _customer_ gets the details of the previously confirmed _purchase order_ without the quantity change.
 
 **Scenario F:** Purchase Order with 1 Line, and 2 Changes (Delivery Date-Time and Ship-To) From Which 1 (at least) is Rejected
 
 1. An authenticated _customer_ creates a _purchase order_ with 1 _line_;
-2. The _seller_ confirms the _line_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
+2. The _supplier_ confirms the _line_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
 3. The _customer_ requests a delivery date-time change and a ship-to change;
-4. The _seller_ rejects the delivery date-time change and/or a ship-to change change, the _customer_ gets the details of previously confirmed _purchase order_ without any changes.
+4. The _supplier_ rejects the delivery date-time change and/or a ship-to change change, the _customer_ gets the details of previously confirmed _purchase order_ without any changes.
 
 **Scenario G:** Purchase Order with 3 Lines, 1 Quantity Change on the 2nd Line Rejected, and 2 Changes (Delivery Date-Time and Ship-To) on the 3rd Line Confirmed
 
 1. An authenticated _customer_ creates a _purchase order_ with 3 _lines_;
-2. The _seller_ confirms the 3 _lines_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
+2. The _supplier_ confirms the 3 _lines_, the _customer_ is notified and gets the details of the confirmed _purchase order_.
 3. The _customer_ requests a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change in the 3rd line;
-4. The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change in the 3rd line, the _customer_ is notified and gets the details of the confirmed _purchase order_ with the quantity change in the 2nd _line_, but without the delivery date-time change and the ship-to change in the 3rd line.
+4. The _supplier_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change in the 3rd line, the _customer_ is notified and gets the details of the confirmed _purchase order_ with the quantity change in the 2nd _line_, but without the delivery date-time change and the ship-to change in the 3rd line.
 
 **Scenario H:** Retrieve the UUID of a Purchase Order based on its `purchaseOrderNumber`
 
@@ -113,7 +109,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 0 of Scenario A (Authentication)
 
-The _customer_ sends an API request to the _seller_ in order to be authenticated, and gets an _access token_:
+The _customer_ sends an API request to the _supplier_ in order to be authenticated, and gets an _access token_:
 
 ```text
 curl --request POST \
@@ -136,7 +132,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 1 of Scenario A (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 1 _line_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 1 _line_:
 
 ```text
 curl --request POST \
@@ -225,7 +221,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario A (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -237,7 +233,7 @@ The _seller_ confirms the _line_ and notifies the _customer_ by sending an event
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -315,7 +311,7 @@ See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario B (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 1 _line_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 1 _line_:
 
 ```text
 curl --request POST \
@@ -404,7 +400,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario B (Get the Status of the Purchase Order)
 
-The _seller_ rejects the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ rejects the _line_ and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -416,7 +412,7 @@ The _seller_ rejects the _line_ and notifies the _customer_ by sending an event:
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -479,7 +475,7 @@ See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario C (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 2 _lines_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 2 _lines_:
 
 ```text
 curl --request POST \
@@ -618,7 +614,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario C (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _seller_ in order to cancel the 2nd _line_ and creates a new _line_:
+The autenticated _customer_ sends an API request to the _supplier_ in order to cancel the 2nd _line_ and creates a new _line_:
 
 ```text
 curl --request PATCH \
@@ -764,7 +760,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario C (Get the Status of the Purchase Order)
 
-The _seller_ confirms the 1st _line_ and the newly created _line_, the _seller_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation and finally notifies the _customer_ by sending an event:
+The _supplier_ confirms the 1st _line_ and the newly created _line_, the _supplier_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation and finally notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -776,7 +772,7 @@ The _seller_ confirms the 1st _line_ and the newly created _line_, the _seller_ 
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -925,7 +921,7 @@ See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario D (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 1 _line_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 1 _line_:
 
 ```text
 curl --request POST \
@@ -1014,7 +1010,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario D (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1026,7 +1022,7 @@ The _seller_ confirms the _line_ and notifies the _customer_ by sending an event
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1098,7 +1094,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario D (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _seller_ in order to request a quantity change:
+The autenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change:
 
 ```text
 curl --request PATCH \
@@ -1194,7 +1190,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario D (Get the Status of the Purchase Order)
 
-The _seller_ confirms the quantity change and notifies the _customer_ by sending an event:
+The _supplier_ confirms the quantity change and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1206,7 +1202,7 @@ The _seller_ confirms the quantity change and notifies the _customer_ by sending
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1284,7 +1280,7 @@ See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario E (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 1 _line_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 1 _line_:
 
 ```text
 curl --request POST \
@@ -1374,7 +1370,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario E (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1386,7 +1382,7 @@ The _seller_ confirms the _line_ and notifies the _customer_ by sending an event
 }
 ```
 
- Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+ Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1458,7 +1454,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario E (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _seller_ in order to request a quantity change:
+The autenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change:
 
 ```text
 curl --request PATCH \
@@ -1493,7 +1489,7 @@ curl --request PATCH \
   }'
 ```
 
-but, this time, the _seller_ immediately rejects the quantity change and the _customer_ gets the details of the previously confirmed _purchase order_ without the quantity change:
+but, this time, the _supplier_ immediately rejects the quantity change and the _customer_ gets the details of the previously confirmed _purchase order_ without the quantity change:
 
 ```json
 {
@@ -1560,7 +1556,7 @@ See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario F (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 1 _line_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 1 _line_:
 
 ```text
 curl --request POST \
@@ -1649,7 +1645,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario F (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1661,7 +1657,7 @@ The _seller_ confirms the _line_ and notifies the _customer_ by sending an event
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1733,7 +1729,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario F (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _seller_ in order to request a delivery date-time change and a ship-to change:
+The autenticated _customer_ sends an API request to the _supplier_ in order to request a delivery date-time change and a ship-to change:
 
 ```text
 curl --request PATCH \
@@ -1817,7 +1813,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario F (Get the Status of the Purchase Order)
 
-The _seller_ rejects the delivery date-time change and/or a ship-to change change and notifies the _customer_ by sending an event:
+The _supplier_ rejects the delivery date-time change and/or a ship-to change change and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1829,7 +1825,7 @@ The _seller_ rejects the delivery date-time change and/or a ship-to change chang
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -1899,7 +1895,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-If the _customer_ is not satisfied with the rejection from the _seller_, he should probably call the _seller_ by phone.
+If the _customer_ is not satisfied with the rejection from the _supplier_, he should probably call the _supplier_ by phone.
 
 ### Scenario G: Purchase Order with 3 Lines, 1 Quantity Change on the 2nd Line Rejected, and 2 Changes (Delivery Date-Time and Ship-To) on the 3rd Line Confirmed
 
@@ -1909,7 +1905,7 @@ See [above](#interaction-0-of-scenario-a-authentication).
 
 #### Interaction 1 of Scenario G (Create a Purchase Order)
 
-The authenticated _customer_ sends an API request to the _seller_ in order to creates a _purchase order_ with 3 _lines_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to creates a _purchase order_ with 3 _lines_:
 
 ```text
 curl --request POST \
@@ -2101,7 +2097,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario G (Get the Status of the Purchase Order)
 
-The _seller_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -2113,7 +2109,7 @@ The _seller_ confirms the _line_ and notifies the _customer_ by sending an event
 }
 ```
 
-Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -2271,7 +2267,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario G (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _seller_ in order to request a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change change in the 3rd line:
+The autenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change change in the 3rd line:
 
 ```text
 curl --request PATCH \
@@ -2459,7 +2455,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario G (Get the Status of the Purchase Order)
 
-The _seller_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, and then notifies the _customer_ by sending an event:
+The _supplier_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, and then notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -2470,7 +2466,7 @@ The _seller_ rejects the quantity change in the 2nd _line_, but confirms the del
     "time" : "2022-02-07T09:00:05Z"
 }
 ```
- Then, the authenticated _customer_ sends an API request to the _seller_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
+ Then, the authenticated _customer_ sends an API request to the _supplier_ in order to get the details of the _purchase order_ `ffe7552a-19c5-409c-9d9f-a00a9bf095f0`:
 
 ```text
 curl --silent --show-error --request GET \
@@ -2626,7 +2622,7 @@ If all goes well, the _customer_ will receive a response like this:
 }
 ```
 
-If the _customer_ is not satisfied with the rejection from the _seller_, he should probably call the _seller_ by phone.
+If the _customer_ is not satisfied with the rejection from the _supplier_, he should probably call the _supplier_ by phone.
 
 ### Scenario H: Retrieve the UUID of a Purchase Order based on its `purchaseOrderNumber`
 

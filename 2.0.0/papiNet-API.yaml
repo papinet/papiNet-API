@@ -1040,8 +1040,10 @@ components:
               - purchaseOrderTimestamp
               - purchaseOrderStatus
               - active
-              - buyerParty
-              - billToParty
+              # supplierParty is not required
+              # sellerParty is not required
+              # buyerParty is not required
+              # billToParty is not required
               - numberOfLineItems
             properties:
               id:
@@ -1061,6 +1063,12 @@ components:
                   - Cancelled
               active:
                 type: boolean
+              supplierToParty:
+                type: string
+                format: uuid
+              sellerToParty:
+                type: string
+                format: uuid
               buyerParty:
                 type: string
                 format: uuid
@@ -1077,8 +1085,10 @@ components:
         - purchaseOrderNumber
         - purchaseOrderTimestamp
         - purchaseOrderStatus
-        - buyerParty
-        - billToParty
+        # supplierParty is not required
+        # sellerParty is not required
+        # buyerParty is not required
+        # billToParty is not required
         - purchaseOrderLineItems
       properties:
         purchaseOrderNumber:
@@ -1091,6 +1101,12 @@ components:
           type: string
           enum:
             - Original
+        supplierToParty:
+          type: string
+          format: uuid
+        sellerToParty:
+          type: string
+          format: uuid
         buyerParty:
           type: string
           format: uuid
@@ -1209,8 +1225,10 @@ components:
         - purchaseOrderTimestamp
         - purchaseOrderStatus
         - active
-        - buyerParty
-        - billToParty
+        # supplierParty is not required
+        # sellerParty is not required
+        # buyerParty is not required
+        # billToParty is not required
         - purchaseOrderLineItems
       properties:
         id:
@@ -1230,6 +1248,12 @@ components:
             - Cancelled
         active:
           type: boolean
+        supplierToParty:
+          type: string
+          format: uuid
+        sellerToParty:
+          type: string
+          format: uuid
         buyerParty:
           type: string
           format: uuid
@@ -1399,6 +1423,7 @@ components:
       required:
         - purchaseOrderTimestamp
         - purchaseOrderStatus
+        # billToParty is not required
         - purchaseOrderLineItems
       properties:
         purchaseOrderTimestamp:
@@ -1409,6 +1434,9 @@ components:
           enum:
             - Amended
             - Cancelled
+        billToParty:
+          type: string
+          format: uuid
         purchaseOrderLineItems:
           type: array
           minItems: 1
