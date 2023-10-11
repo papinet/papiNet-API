@@ -68,3 +68,10 @@ When papiNet defines a property of type `array`, papiNet ALWAYS means that this 
 We MUST use UUID (only) for resource ID defined by the `id` property of every resource/entity/object.
 
 When referring to another resource/entity/object we MUST also use this UUID only, therefore, to be able to know which type of resource/entity/object this UUID refers to, we MUST name of property or one of its ancestors including the type of resource/entity/object.
+
+### Rule 10 - "...Timestamp" and "...DateTime" suffixes
+
+We have two types of properties capturing date and time:
+
+* The properties ending with the suffix "...Timestamp" MUST contain a date and time using UTC.
+* The properties ending with the suffix "...DateTime" SHOULD a local date and time, formatted with the ISO 8601, for which the locally is defined by the business context.
