@@ -52,6 +52,14 @@ The following example shows such a CloudEvent serialized as JSON:
 }
 ```
 
+## PATCH Responses with State Information
+
+When the _customer_ will request an update on its _purchase-order_, e.g. a change of a _quantity_, via an API endpoint using the PATCH method, the _supplier_ API response will not contain an explicit answer to that request, but it will give the new state of  _purchase-order_ resulting of that update request. The _customer_ will then be able to deduct the answer to its request by analyzing the difference between the states before and after its request.
+
+This way to communicate the answer to update requests may seem more "complicated" than an explicit answer, however taking into account all the possibilities of changes, as well as their combinations, defining a JSON structure rich enough to convey all these possibilities would probably lead to a too complex, unreadable, structure.
+
+Let's illustrate our "reply with state" technique with an example. When the _customer_ requests a quantity change, the _supplier_ response will not directly indicate if the change has been accepted or rejected. It will just reply with the quantity that results from this change request. So, if the quantity reflects the quantity within the change request, the _customer_ can deduct that its request has been accepted, and on the contrary, if the quantity remains at its value prior the request, the _customer_ can deduct that its request has been rejected.
+
 ## papiNet Stub Service
 
 You can run locally the papiNet stub service using the following command:
@@ -642,7 +650,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario C (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _supplier_ in order to cancel the 2nd _line_ and creates a new _line_:
+The authenticated _customer_ sends an API request to the _supplier_ in order to cancel the 2nd _line_ and creates a new _line_:
 
 ```text
 curl --request PATCH \
@@ -1122,7 +1130,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario D (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change:
+The authenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change:
 
 ```text
 curl --request PATCH \
@@ -1482,7 +1490,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario E (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change:
+The authenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change:
 
 ```text
 curl --request PATCH \
@@ -1757,7 +1765,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario F (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _supplier_ in order to request a delivery date-time change and a ship-to change:
+The authenticated _customer_ sends an API request to the _supplier_ in order to request a delivery date-time change and a ship-to change:
 
 ```text
 curl --request PATCH \
@@ -2295,7 +2303,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario G (Update the Purchase Order)
 
-The autenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change change in the 3rd line:
+The authenticated _customer_ sends an API request to the _supplier_ in order to request a quantity change in the 2nd _line_, and a delivery date-time change and a ship-to change change in the 3rd line:
 
 ```text
 curl --request PATCH \
@@ -2658,9 +2666,9 @@ If the _customer_ is not satisfied with the rejection from the _supplier_, he sh
 
 See [above](#interaction-0-of-scenario-a-authentication).
 
-#### Interaction 1 of Scenario H (Retreive the UUID)
+#### Interaction 1 of Scenario H (Retrieve the UUID)
 
-The authenticated _customer_ sends an API request in order to retreive the UUID of a _customer-article_ based on its `customerArticleNumber`:
+The authenticated _customer_ sends an API request in order to retrieve the UUID of a _customer-article_ based on its `customerArticleNumber`:
 
 ```text
 curl --request GET \
