@@ -26,18 +26,18 @@ In order to get updated information on its _purchase-order_ the _customer_ has t
 
 This polling mechanism is not optimal from an IT resources point of view, that's why we recommend the usage of notifications from the _supplier_ to the _customer_. However, as the usage of these notifications would require additional investment on the _customer_ side, they remain an optional optimization.
 
-For the implementation of these notifications, we recommend to use the [CloudEvents](https://cloudevents.io/) specification, which is a vendor-neutral specification for defining the format of event data. In order to ensure the decoupling between this notification mechanism and the papiNet API, we will use the CloudEvents specification following the **_thin event_** pattern. It means that the notification event will not contain any data/information of the _purchase-order_, it will just contain the URL of the _supplier_ API endpoint that needs to be called to get updated information (this URL will contain the UUID of the _purchase-order_). The _customer_ will call this API endpoint, in the same way it would have called it following the polling patter, to get updated information on its _purchase-order_. It also means that there is no need to setup any additional security mechanisms for the notifications (as they do not contain any sensitive information) and entirely rely on the security mechanism of the API endpoint.
+For the implementation of these notifications, we recommend to use the [CloudEvents](https://cloudevents.io/) specification, which is a vendor-neutral specification for defining the format of event data. In order to ensure the decoupling between this notification mechanism and the papiNet API, we will use the CloudEvents specification following the **_thin event_** pattern. It means that the notification event will not contain any data/information of the _purchase-order_, it will just contain the URL of the _supplier_ API endpoint that needs to be called to get updated information (this URL will contain the UUID of the _purchase-order_). The _customer_ will call this API endpoint, in the same way it would have called it following the polling pattern, to get updated information on its _purchase-order_. It also means that there is no need to setup any additional security mechanisms for the notifications (as they do not contain any sensitive information) and entirely rely on the security mechanism of the API endpoint.
 
-We will use the [version 1.0.2 of the CloudEvents specification](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md) as follow:
+We will use the [version 1.0.2 of the CloudEvents specification](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md) as follows:
 
 * The [Producer](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#producer) of the notification event is the _supplier_.
 * The [Consumer](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#consumer) of the notification event is the _customer_.
-* The [Event Data](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#event-data) will not be present. We will only use the [Context](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#context) metadata as follow:
+* The [Event Data](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#event-data) will not be present. We will only use the [Context](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#context) metadata as follows:
 
   * the `specversion` attribute MUST contain the version `1.0`.
-  * The `id` attribute MUST contain an UUID that identifies the notification event. You MUST NOT re-use the UUID of the _purchase-order_!
+  * The `id` attribute MUST contain a UUID that identifies the notification event. You MUST NOT re-use the UUID of the _purchase-order_!
   * The `source` attribute MUST contain the full URL of the API endpoint that needs to be called to get updated information (this URL will contain the UUID of the _purchase-order_). So, the _customer_ can directly use this URL without with a GET method.
-  * The `type` attribute MUST contain the string `org.papinet.notification`, using using a reverse-DNS name style as recommended.
+  * The `type` attribute MUST contain the string `org.papinet.notification`, using a reverse-DNS name style as recommended.
   * Finally, the `time` attribute SHOULD the Timestamp of when the occurrence (update of the _purchase-order_ information) happened.
 
 The following example shows such a CloudEvent serialized as JSON:
@@ -54,11 +54,15 @@ The following example shows such a CloudEvent serialized as JSON:
 
 ## PATCH Responses with State Information
 
-When the _customer_ will request an update on its _purchase-order_, e.g. a change of a _quantity_, via an API endpoint using the PATCH method, the _supplier_ API response will not contain an explicit answer to that request, but it will give the new state of  _purchase-order_ resulting of that update request. The _customer_ will then be able to deduct the answer to its request by analyzing the difference between the states before and after its request.
+When the _customer_ will request an update on its _purchase-order_, e.g. a change of a _quantity_, via an API endpoint using the PATCH method, the _supplier_ API response will not contain an explicit answer to that request, but it will give the new state of  _purchase-order_ resulting of that update request.
+The _customer_ will then be able to deduce the answer to its request by analyzing the difference between the states before and after its request.
 
-This way to communicate the answer to update requests may seem more "complicated" than an explicit answer, however taking into account all the possibilities of changes, as well as their combinations, defining a JSON structure rich enough to convey all these possibilities would probably lead to a too complex, unreadable, structure.
+This way to communicate the answer to update requests may seem more "complicated" than an explicit answer, however taking into account all the possibilities of changes, as well as their combinations, defining a JSON structure rich enough to convey all these possibilities would probably lead to a too complex, unreadable structure.
 
-Let's illustrate our "reply with state" technique with an example. When the _customer_ requests a quantity change, the _supplier_ response will not directly indicate if the change has been accepted or rejected. It will just reply with the quantity that results from this change request. So, if the quantity reflects the quantity within the change request, the _customer_ can deduct that its request has been accepted, and on the contrary, if the quantity remains at its value prior the request, the _customer_ can deduct that its request has been rejected.
+Let's illustrate our "reply with state" technique with an example:
+Suppose the _customer_ requests a quantity change, the _supplier_ response will not directly indicate if the change has been accepted or rejected.
+It will just reply with the quantity that results from this change request.
+So, if the quantity reflects the quantity within the change request, the _customer_ can deduce that its request has been accepted, and on the contrary, if the quantity remains at its value prior the request, the _customer_ can deduce that its request has been rejected.
 
 ## papiNet Stub Service
 
