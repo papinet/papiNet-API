@@ -25,7 +25,7 @@ The following API endpoints allows a _customer_ to get master data information s
 
 ### Purchase Order Use Case
 
-The following API endpoints allows a _customer_ to send, list, reterieve and modify _purchase-orders_ for the _seller_:
+The following API endpoints allows a _customer_ to send, list, retrieve and modify _purchase-orders_ for the _seller_:
 
 * `POST /purchase-orders`
 * `GET /purchase-orders`
