@@ -249,7 +249,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario A (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -428,7 +428,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario B (Get the Status of the Purchase Order)
 
-The _supplier_ rejects the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ rejects the _line_ and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -788,7 +788,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 3 of Scenario C (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the 1st _line_ and the newly created _line_, the _supplier_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation and finally notifies the _customer_ by sending an event:
+The _supplier_ confirms the 1st _line_ and the newly created _line_, the _supplier_ forgets the 2nd _line_ from the original _purchase order_ acknowledging its cancellation and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1038,7 +1038,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario D (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1218,7 +1218,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario D (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the quantity change and notifies the _customer_ by sending an event:
+The _supplier_ confirms the quantity change and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1398,7 +1398,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario E (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1673,7 +1673,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario F (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -1841,7 +1841,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario F (Get the Status of the Purchase Order)
 
-The _supplier_ rejects the delivery date-time change and/or a ship-to change change and notifies the _customer_ by sending an event:
+The _supplier_ rejects the delivery date-time change and/or a ship-to change change and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -2125,7 +2125,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 2 of Scenario G (Get the Status of the Purchase Order)
 
-The _supplier_ confirms the _line_ and notifies the _customer_ by sending an event:
+The _supplier_ confirms the _line_ and, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
@@ -2483,7 +2483,7 @@ If all goes well, the _customer_ will receive a response like this:
 
 #### Interaction 4 of Scenario G (Get the Status of the Purchase Order)
 
-The _supplier_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, and then notifies the _customer_ by sending an event:
+The _supplier_ rejects the quantity change in the 2nd _line_, but confirms the delivery date-time change and the ship-to change change in the 3rd line, and then, optionally, notifies the _customer_ by sending an event:
 
 ```json
 {
