@@ -16,13 +16,41 @@ See the [Preconditions](master-data#preconditions) section of the Master Data us
 
 Our initial approach will be to start with a simplified operational structure in which the _purchase-order_ is limited to direct delivery to the _shipToLocation_.
 
-## Notifications
-
-When the _supplier_ needs to notify the _customer_, we recommend to use the CloudEvents specification putting directly the URL that the _customer_ should call within the `source` property and the value `org.papinet.notification` within the `type` property.
-
 ## Domain Name
 
 We suggest that the _supplier_ exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+
+## Notifications
+
+In order to get updated information on its _purchase-order_ the _customer_ has to call an API endpoint of the _supplier_. As the _customer_ does not know when its _purchase-order_ is getting updated, it should normally poll this API endpoint on a regular basis.
+
+This polling mechanism is not optimal from an IT resources point of view, that's why we recommend the usage of notifications from the _supplier_ to the _customer_. However, as the usage of these notifications would require additional investment on the _customer_ side, they remain an optional optimization.
+
+For the implementation of these notifications, we recommend to use the [CloudEvents](https://cloudevents.io/) specification, which is a vendor-neutral specification for defining the format of event data. In order to ensure the decoupling between this notification mechanism and the papiNet API, we will use the CloudEvents specification following the **_thin event_** pattern. It means that the notification event will not contain any data/information of the _purchase-order_, it will just contain the URL of the _supplier_ API endpoint that needs to be called to get updated information (this URL will contain the UUID of the _purchase-order_). The _customer_ will call this API endpoint, in the same way it would have called it following the polling patter, to get updated information on its _purchase-order_. It also means that there is no need to setup any additional security mechanisms for the notifications (as they do not contain any sensitive information) and entirely rely on the security mechanism of the API endpoint.
+
+We will use the [version 1.0.2 of the CloudEvents specification](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md) as follow:
+
+* The [Producer](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#producer) of the notification event is the _supplier_.
+* The [Consumer](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#consumer) of the notification event is the _customer_.
+* The [Event Data](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#event-data) will not be present. We will only use the [Context](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#context) metadata as follow:
+
+  * the `specversion` attribute MUST contain the version `1.0`.
+  * The `id` attribute MUST contain an UUID that identifies the notification event. You MUST NOT re-use the UUID of the _purchase-order_!
+  * The `source` attribute MUST contain the full URL of the API endpoint that needs to be called to get updated information (this URL will contain the UUID of the _purchase-order_). So, the _customer_ can directly use this URL without with a GET method.
+  * The `type` attribute MUST contain the string `org.papinet.notification`, using using a reverse-DNS name style as recommended.
+  * Finally, the `time` attribute SHOULD the Timestamp of when the occurrence (update of the _purchase-order_ information) happened.
+
+The following example shows such a CloudEvent serialized as JSON:
+
+```json
+{
+    "specversion" : "1.0",
+    "id" : "517f8636-e792-44a1-926b-d586ae082717",
+    "source" : "https://papinet.acme.com/purchase-orders/ffe7552a-19c5-409c-9d9f-a00a9bf095f0",
+    "type" : "org.papinet.notification",
+    "time" : "2022-02-07T09:00:05Z"
+}
+```
 
 ## papiNet Stub Service
 
