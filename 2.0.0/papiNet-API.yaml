@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: papiNet API
-  description: papinet API is a global initiative for the Forst and Paper supply chain.
+  description: papinet API is a global initiative for the Forest and Paper supply chain.
   contact:
     name: papiNet API CWG
     url: https://github.com/papinet/papiNet-API/issues
