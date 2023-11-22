@@ -1040,7 +1040,7 @@ components:
               - purchaseOrderTimestamp
               - purchaseOrderStatus
               - active
-              # supplierParty is not required
+              # supplierParty is not required, but it is of course unavoidable when multiple suppliers are using the same domain name.
               # sellerParty is not required
               # buyerParty is not required
               # billToParty is not required
