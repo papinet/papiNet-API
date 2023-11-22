@@ -1,0 +1,1544 @@
+openapi: 3.1.0
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forest and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 3.0.0
+servers:
+  - url: http://localhost:3020
+    description: papiNet Mock Server
+paths:
+
+   ## MASTER DATA (6)
+
+  '/customer-articles':
+    # GET /customer-articles
+    # None => ListOfCustomerArticles
+    get:
+      summary: List `customer-articles`
+      description: Gets a paginated list of all `customer-articles` defined by the `customer`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: productType
+          description: Filter by productType
+          required: false
+          schema:
+            type: string
+            enum:
+              - Paper
+        - in: query
+          name: customerArticleNumber
+          description: Filter by customerArticleNumber
+          required: false
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfCustomerArticles'
+        '204':
+          description: No Content
+
+  '/customer-articles/{customerArticleId}':
+    # GET /customer-articles/{customerArticleId}
+    # None => GetCustomerArticleById
+    get:
+      summary: Get a `customer-article`
+      description: Gets the details of a specific `customer-article`.
+      parameters:
+        - in: path
+          name: customerArticleId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `customer-article` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomerArticleById'
+        '404':
+          description: Not Found
+
+  '/locations':
+    # GET /locations
+    # None => ListOfLocations
+    get:
+      summary: List `locations`
+      description: Gets a paginated list of all `locations`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: countryCode
+          description: Filter by countryCode
+          required: false
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 2
+            description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfLocations'
+        '204':
+          description: No Content
+
+  '/locations/{locationId}':
+    # GET /locations/{locationId}
+    # None => GetLocationById
+    get:
+      summary: Get a `location`
+      description: Gets the details of a specific `location`.
+      parameters:
+        - in: path
+          name: locationId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `location` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLocationById'
+        '404':
+          description: Not Found
+
+  '/parties':
+    # GET /parties
+    # None => ListOfParties
+    get:
+      summary: List `parties`
+      description: Gets a paginated list of all `parties`.
+      parameters:
+        - in: query
+          name: status
+          description: Filter by status
+          required: false
+          schema:
+            type: string
+            enum:
+              - Active
+              - Inactive
+        - in: query
+          name: countryCode
+          description: Filter by countryCode
+          required: false
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 2
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfParties'
+        '204':
+          description: No Content
+
+  '/parties/{partyId}':
+    # GET /parties/{partyId}
+    # None => GetPartyById
+    get:
+      summary: Get a `party`
+      description: Gets the details of a specific `party`.
+      parameters:
+        - in: path
+          name: partyId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `party` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPartyById'
+        '404':
+          description: Not Found
+
+  ## PURCHASE ORDER (3)
+
+  '/purchase-orders':
+    # POST /purchase-orders
+    # CreatePurchaseOrder => GetPurchaseOrderById
+    post:
+      summary: Create a `purchase-order`
+      description: Creates a `purchase-order`.
+      requestBody:
+        description: The definition of the `purchase-order` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePurchaseOrder'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPurchaseOrderById'
+        '400':
+          description: Bad Request
+
+    # GET /purchase-orders
+    # None => ListOfPurchaseOrders
+    get:
+      summary: List `purchase-orders`
+      description: Gets a paginated list of all `purchase-orders`.
+      parameters:
+        - in: query
+          name: purchaseOrderNumber
+          description: Filter by purchaseOrderNumber
+          required: false
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: purchaseOrderStatus
+          description: Filter by purchaseOrderStatus
+          required: false
+          schema:
+            type: string
+            enum:
+            - Original
+            - Amended
+            - Cancelled
+        - in: query
+          name: active
+          description: Filter by active purchase-orders
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: buyerParty
+          description: Filter by buyerParty
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - in: query
+          name: billToParty
+          description: Filter by billToParty
+          required: false
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfPurchaseOrders'
+
+  '/purchase-orders/{purchaseOrderId}':
+    # GET /purchase-orders/{purchaseOrderId}
+    # None => GetPurchaseOrderById
+    get:
+      summary: Get a `purchase-order`
+      description: Gets the details of a specific `purchase-order`.
+      parameters:
+        - in: path
+          name: purchaseOrderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `purchase-order` to get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPurchaseOrderById'
+
+    # PATCH /purchase-orders/{purchaseOrderId}
+    # ModifyPurchaseOrder => GetPurchaseOrderById
+    patch:
+      summary: Modify a `purchase-order`
+      description: Modifies a specific `purchase-order`.
+      parameters:
+        - in: path
+          name: purchaseOrderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `purchase-order` to modify
+      requestBody:
+        description: The definition of the `purchase-order` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModifyPurchaseOrder'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPurchaseOrderById'
+
+components:
+  schemas:
+
+    # Re-usable schema(s):
+
+    PaginationLinks:
+      type: object
+      # none of the properties are required.
+      properties:
+        first:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        prev:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        next:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        last:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+
+    # 'Big' structure schema(s):
+
+    Paper:
+      type: object
+      properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        coatingBottom:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        finishType:
+          type: string
+          enum:
+            - Dull
+            - English
+            - Gloss
+            - Laid
+            - Linen
+            - Machine
+            - Matte
+            - Satin
+            - SCA
+            - SCB
+            - SCC
+            - Silk
+            - Smooth
+            - SoftGloss
+            - Vellum
+            - Velvet
+        printType:
+          type: string
+          enum:
+            - ColdsetOffset
+            - ContinuousForms
+            - Digital
+            - Flexography
+            - FoilPrint
+            - Forms
+            - Gravure
+            - HeatsetOffset
+            - InkJet
+            - InstantOffset
+            - Laser
+            - Letterpress
+            - LightPrint
+            - MiniWeb
+            - RotoFlexography
+            - RotoGravure
+            - RotoLetterpress
+            - RotoSilkScreen
+            - SheetfedOffset
+            - SilkScreen
+            - WebOffset
+        basisWeight: # This is the result of a nice compromise between EU and US usage.
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            sizeType:
+              type: string
+              enum:
+                - 24x36
+                - 25x38
+            value:
+              type: number
+              minimum: 0
+            UOM:
+              type: string
+              enum:
+                - GramsPerSquareMeter
+                - Pound
+        bulk:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - CubicCentimeterPerGram
+        caliper:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Micron
+                - Millimeter
+        colourShade:
+          type: object
+          required:
+            - value
+            - agency
+          properties:
+            value:
+              type: string
+              minLength: 1
+            agency:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        colourDescriptions:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+        recycled:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+              - UOM
+            properties:
+              value:
+                type: number
+              UOM:
+                type: string
+                enum:
+                  - Percentage
+        format:
+          type: string
+          enum:
+            - Reel
+            - Sheet
+        # Properties that are common to reel or sheet format:
+        width:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        length:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Foot
+                - Inch
+                - Meter
+                - Millimeter
+                - Yard
+        # Properties that are specific to reel format:
+        windingDirection:
+          type: string
+          enum:
+            - WireSideIn
+            - WireSideOut
+        reelMakeToConstraint:
+          type: string
+          enum:
+            - Length
+            - Diameter
+        reelDiameter:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreEndType:
+          type: string
+          enum:
+            - Adaptor
+            - Bevelled
+            - Bridge
+            - Notched
+            - NotchedFullMetal
+            - Plain
+            - PlainFullMetal
+            - Tapered
+        coreMaterialType:
+          type: string
+          enum:
+            - Aluminium
+            - Composite
+            - Fibre
+            - Iron
+            - Paper
+            - Plastic
+            - Steel
+        coreDiameterInside:
+          type: object
+          required:
+            - value
+            - UOM
+          properties:
+            value:
+              type: number
+            UOM:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreStrengthCode:
+          type: object
+          required:
+            - value
+            - agency
+          properties:
+            value:
+              type: string
+              minLength: 1
+            agency:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        # Properties that are specific to sheet format:
+        grainDirection:
+          type: string
+          enum:
+            - Long
+            - Short
+
+    Pulp:
+      type: object # This is just a placeholder for now.
+
+    # API endpoint schemas:
+
+    ListOfCustomerArticles:
+      type: object
+      required:
+        - numberOfCustomerArticles
+        - customerArticles
+      properties:
+        numberOfCustomerArticles:
+          type: integer
+          minimum: 1
+        customerArticles:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - customerArticleNumber
+              - customerArticleTimestamp
+              - status
+              - sellerProductBrandName
+              - sellerProductName
+              - productType
+            properties:
+              id:
+                type: string
+                format: uuid
+              customerArticleNumber:
+                type: string
+                minLength: 1
+              customerArticleTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              sellerProductBrandName:
+                type: string
+                minLength: 1
+              sellerProductName:
+                type: string
+                minLength: 1
+              productType:
+                type: string
+                enum:
+                  - Paper
+                  - Pulp 
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetCustomerArticleById:
+      allOf:
+        - type: object
+          required:
+            - id
+            - customerArticleNumber
+            - customerArticleTimestamp
+            - status
+            - sellerProductBrandName
+            - sellerProductName
+          properties:
+            id:
+              type: string
+              format: uuid
+            customerArticleNumber:
+              type: string
+              minLength: 1
+            customerArticleTimestamp:
+              type: string
+              format: date-time # UTC MUST be used!
+            status:
+              type: string
+              enum:
+                - Active
+                - Inactive
+            sellerProductBrandName:
+              type: string
+              minLength: 1
+            sellerProductName:
+              type: string
+              minLength: 1
+        - oneOf:
+            - required:
+                 - paper
+              properties:
+                paper:
+                  $ref: '#/components/schemas/Paper'
+            - required:
+                 - pulp
+              properties:
+                pulp:
+                  $ref: '#/components/schemas/Pulp'
+
+    ListOfLocations:
+      type: object
+      required:
+        - numberOfLocations
+        - locations
+      properties:
+        numberOfLocations:
+          type: integer
+          minimum: 1
+        locations:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - locationIdentifier
+              - locationTimestamp
+              - status
+              - nameLines
+              - countryCode
+            properties:
+              id:
+                type: string
+                format: uuid
+              locationIdentifier:
+                type: string
+                minLength: 1
+              locationTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              nameLines:
+                type: array
+                minItems: 1
+                items:
+                  type: string
+                  minLength: 1
+              countryCode:
+                type: string
+                minLength: 2
+                maxLength: 2
+                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetLocationById:
+      type: object
+      required:
+        - id
+        - locationIdentifier
+        - locationTimestamp
+        - status
+        - nameLines
+        - address # as only the country is required within it
+        # coordinatesWGS84 is not required
+      properties:
+        id:
+          type: string
+          format: uuid
+        locationIdentifier:
+          type: string
+          minLength: 1
+        locationTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        nameLines:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          required:
+            # addressLines is not required
+            # city is not required
+            # postalCode is not required
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              items:
+                type: string
+                minLength: 1
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            countryCode:
+                type: string
+                minLength: 2
+                maxLength: 2
+                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        coordinatesWGS84:
+          type: object
+          required:
+            - latitude
+            - longitude
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+
+    ListOfParties:
+      type: object
+      required:
+        - numberOfParties
+        - parties
+      properties:
+        numberOfParties:
+          type: integer
+          minimum: 1
+        parties:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - partyIdentifier
+              - partyTimestamp
+              - status
+              - nameLines
+              - countryCode
+            properties:
+              id:
+                type: string
+                format: uuid
+              partyIdentifier:
+                type: string
+                minLength: 1
+              partyTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Active
+                  - Inactive
+              nameLines:
+                type: array
+                minItems: 1
+                items:
+                  type: string
+                  minLength: 2
+              countryCode:
+                type: string
+                minLength: 2
+                maxLength: 2
+                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    GetPartyById:
+      type: object
+      required:
+        - id
+        - partyIdentifier
+        - partyTimestamp
+        - status
+        - nameLines
+        - address # as only the country is required within it
+      properties:
+        id:
+          type: string
+          format: uuid
+        partyIdentifier:
+          type: string
+          minLength: 1
+        partyTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        nameLines:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          required:
+            # addressLines is not required
+            # city is not required
+            # postalCode is not required
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              items:
+                type: string
+                minLength: 1
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            countryCode:
+                type: string
+                minLength: 2
+                maxLength: 2
+                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+
+    ListOfPurchaseOrders:
+      type: object
+      required:
+        - numberOfPurchaseOrders
+        - purchaseOrders
+      properties:
+        numberOfPurchaseOrders:
+          type: integer
+          minimum: 1
+        purchaseOrders:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - purchaseOrderNumber
+              - purchaseOrderTimestamp
+              - purchaseOrderStatus
+              - active
+              # supplierParty is not required, but it is of course unavoidable when multiple suppliers are using the same domain name.
+              # sellerParty is not required
+              # buyerParty is not required
+              # billToParty is not required
+              - numberOfLineItems
+            properties:
+              id:
+                type: string
+                format: uuid
+              purchaseOrderNumber:
+                type: string
+                minLength: 1
+              purchaseOrderTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              purchaseOrderStatus:
+                type: string
+                enum:
+                  - Original
+                  - Amended
+                  - Cancelled
+              active:
+                type: boolean
+              supplierToParty:
+                type: string
+                format: uuid
+              sellerToParty:
+                type: string
+                format: uuid
+              buyerParty:
+                type: string
+                format: uuid
+              billToParty:
+                type: string
+                format: uuid
+              numberOfLineItems:
+                format: integer
+                minimum: 1
+
+    CreatePurchaseOrder:
+      type: object
+      required:
+        - purchaseOrderNumber
+        - purchaseOrderTimestamp
+        - purchaseOrderStatus
+        # supplierParty is not required
+        # sellerParty is not required
+        # buyerParty is not required
+        # billToParty is not required
+        - purchaseOrderLineItems
+      properties:
+        purchaseOrderNumber:
+          type: string
+          minLength: 1
+        purchaseOrderTimestamp:
+          type: string
+          format: date-time
+        purchaseOrderStatus:
+          type: string
+          enum:
+            - Original
+        supplierToParty:
+          type: string
+          format: uuid
+        sellerToParty:
+          type: string
+          format: uuid
+        buyerParty:
+          type: string
+          format: uuid
+        billToParty:
+          type: string
+          format: uuid
+        purchaseOrderLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - purchaseOrderLineItemNumber
+              - purchaseOrderLineItemStatus
+              - customerArticle
+              - requestedShipToLocation
+              - requestedDeliveryDateTime
+              - quantities
+            properties:
+              purchaseOrderLineItemNumber:
+                type: string
+                minLength: 1
+              purchaseOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original
+              customerArticle:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+              requestedShipToLocation:
+                type: string
+                format: uuid
+              requestedDeliveryDateTime:
+                type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                             # excluding duration alone,
+                             # but including intervals such as the following:
+                             # - 2023-08-16T13:00/2023-08-18T13:00
+                             # - 2023-08-16/2023-08-18
+                             # - 2023-08-16T13:00/P2D
+                             # - P2D/2023-08-18T13:00
+                minLength: 4
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUOM
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Ordered # the only allowed value!
+                    quantityType:
+                      type: string
+                      enum:
+                      - Area
+                      - Count
+                      - GrossWeight
+                      - Length
+                      - NetNetWeight
+                      - NetWeight
+                      - NominalWeight
+                      - TareWeight
+                    quantityValue:
+                      type: number
+                    quantityUOM:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+
+    GetPurchaseOrderById:
+      type: object
+      required:
+        - id
+        - purchaseOrderNumber
+        - purchaseOrderTimestamp
+        - purchaseOrderStatus
+        - active
+        # supplierParty is not required
+        # sellerParty is not required
+        # buyerParty is not required
+        # billToParty is not required
+        - purchaseOrderLineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        purchaseOrderNumber:
+          type: string
+          minLength: 1
+        purchaseOrderTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        purchaseOrderStatus:
+          type: string
+          enum:
+            - Original
+            - Amended
+            - Cancelled
+        active:
+          type: boolean
+        supplierToParty:
+          type: string
+          format: uuid
+        sellerToParty:
+          type: string
+          format: uuid
+        buyerParty:
+          type: string
+          format: uuid
+        billToParty:
+          type: string
+          format: uuid
+        purchaseOrderLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - purchaseOrderLineItemNumber
+              - purchaseOrderLineItemStatus
+              # salesOrderNumber is not required
+              # salesOrderTimestamp is not required
+              # salesOrderStatus is not required
+              # salesOrderLineItemNumber is not required
+              # salesOrderLineItemStatus is not required
+              # latestAllowedDateTimeForChange is not required
+              - customerArticle
+              - requestedShipToLocation
+              # confirmedShipToLocation is not required
+              - requestedDeliveryDateTime
+              # confirmedDeliveryDateTime is not required
+              - quantities
+            properties:
+              purchaseOrderLineItemNumber:
+                type: string
+                minLength: 1
+              purchaseOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original
+                  - Amended
+                  - Cancelled
+              salesOrderNumber:
+                type: string
+                minLength: 1
+              salesOrderTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              salesOrderStatus:
+                type: string
+                enum:
+                  - Pending
+                  - Confirmed
+                  - Rejected
+                  - Cancelled
+              salesOrderLineItemNumber:
+                type: string
+                minLength: 1
+              salesOrderLineItemStatus:
+                type: string
+                enum:
+                  - Pending
+                  - Confirmed
+                  - Rejected
+                  - Cancelled
+              latestAllowedDateTimeForChange:
+                type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                             # excluding duration alone,
+                             # but including intervals such as the following:
+                             # - 2023-08-16T13:00/2023-08-18T13:00
+                             # - 2023-08-16/2023-08-18
+                             # - 2023-08-16T13:00/P2D
+                             # - P2D/2023-08-18T13:00
+              customerArticle:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+              requestedShipToLocation:
+                type: string
+                format: uuid
+              confirmedShipToLocation:
+                type: string
+                format: uuid
+              requestedDeliveryDateTime:
+                type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                             # excluding duration alone,
+                             # but including intervals such as the following:
+                             # - 2023-08-16T13:00/2023-08-18T13:00
+                             # - 2023-08-16/2023-08-18
+                             # - 2023-08-16T13:00/P2D
+                             # - P2D/2023-08-18T13:00
+                minLength: 4
+              confirmedDeliveryDateTime:
+                type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                             # excluding duration alone,
+                             # but including intervals such as the following:
+                             # - 2023-08-16T13:00/2023-08-18T13:00
+                             # - 2023-08-16/2023-08-18
+                             # - 2023-08-16T13:00/P2D
+                             # - P2D/2023-08-18T13:00
+                minLength: 4
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUOM
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Ordered
+                        - Confirmed
+                    quantityType:
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    quantityValue:
+                      type: number
+                    quantityUOM:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+
+    ModifyPurchaseOrder:
+      type: object
+      required:
+        - purchaseOrderTimestamp
+        - purchaseOrderStatus
+        # billToParty is not required
+        - purchaseOrderLineItems
+      properties:
+        purchaseOrderTimestamp:
+          type: string
+          format: date-time
+        purchaseOrderStatus:
+          type: string
+          enum:
+            - Amended
+            - Cancelled
+        billToParty:
+          type: string
+          format: uuid
+        purchaseOrderLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - purchaseOrderLineItemNumber
+              - purchaseOrderLineItemStatus
+              # customerArticle is not required
+              # requestedShipToLocation is not required
+              # requestedDeliveryDateTime is not required
+              # quantities is not required
+            properties:
+              purchaseOrderLineItemNumber:
+                type: string
+                minLength: 1
+              purchaseOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original # Needed if you add a new line!
+                  - Amended
+                  - Cancelled
+              customerArticle:
+                type: object
+                required:
+                  - id
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+              requestedShipToLocation:
+                type: string
+                format: uuid
+              requestedDeliveryDateTime:
+                type: string # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                             # excluding duration alone,
+                             # but including intervals such as the following:
+                             # - 2023-08-16T13:00/2023-08-18T13:00
+                             # - 2023-08-16/2023-08-18
+                             # - 2023-08-16T13:00/P2D
+                             # - P2D/2023-08-18T13:00
+                minLength: 4
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUOM
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Ordered # the only allowed value!
+                    quantityType:
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    quantityValue:
+                      type: number
+                    quantityUOM:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
