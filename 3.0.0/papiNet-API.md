@@ -1,5 +1,9 @@
 # papiNet API Semantic Specification
 
+product.gradeCode: The product identifier for a not-fully-defined product.
+
+product.articleNumber: The product identifier for a fully-defined product.
+
 quantityContext:
 
 * _**Confirmed**_: The quantity is confirmed.
