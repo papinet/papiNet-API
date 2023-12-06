@@ -14,7 +14,7 @@ quantityContext:
 * _**PlannedProduction**_: The quantity is planned for production.
 * _**Produced**_: The quantity is added to stock through a production or conversion process.
 * _**Reserved**_: The quantity is reserved for one or multiple customers, but might be freed up later in the future.
-* _**Shipped**_: The quantity is shipped, it has left the _Supplier_'s location and goes to an _End User_'s location.
+* _**Shipped**_: The quantity is shipped, it has departed the _Supplier_'s location.
 
 quantityType:
 
