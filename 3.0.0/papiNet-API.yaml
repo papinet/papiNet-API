@@ -543,12 +543,12 @@ components:
           type: object
           required:
             - value
-            - agency
+            - assignedBy
           properties:
             value:
               type: string
               minLength: 1
-            agency:
+            assignedBy:
               type: string
               enum:
                 - Buyer
@@ -672,12 +672,12 @@ components:
           type: object
           required:
             - value
-            - agency
+            - assignedBy
           properties:
             value:
               type: string
               minLength: 1
-            agency:
+            assignedBy:
               type: string
               enum:
                 - Buyer
