@@ -189,7 +189,7 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             sizeType:
               type: string
@@ -199,7 +199,7 @@ components:
             value:
               type: number
               minimum: 0
-            UOM:
+            uom:
               type: string
               enum:
                 - GramsPerSquareMeter
@@ -208,11 +208,11 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             value:
               type: number
-            UOM:
+            uom:
               type: string
               enum:
                 - CubicCentimeterPerGram
@@ -220,11 +220,11 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             value:
               type: number
-            UOM:
+            uom:
               type: string
               enum:
                 - Micron
@@ -259,11 +259,11 @@ components:
             type: object
             required:
               - value
-              - UOM
+              - uom
             properties:
               value:
                 type: number
-              UOM:
+              uom:
                 type: string
                 enum:
                   - Percentage
@@ -277,11 +277,11 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             value:
               type: number
-            UOM:
+            uom:
               type: string
               enum:
                 - Centimeter
@@ -291,11 +291,11 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             value:
               type: number
-            UOM:
+            uom:
               type: string
               enum:
                 - Centimeter
@@ -319,11 +319,11 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             value:
               type: number
-            UOM:
+            uom:
               type: string
               enum:
                 - Centimeter
@@ -354,11 +354,11 @@ components:
           type: object
           required:
             - value
-            - UOM
+            - uom
           properties:
             value:
               type: number
-            UOM:
+            uom:
               type: string
               enum:
                 - Centimeter
@@ -984,7 +984,7 @@ components:
                           - quantityContext
                           - quantityType
                           - quantityValue
-                          - quantityUOM
+                          - quantityUom
                         properties:
                           quantityContext:
                             type: string
@@ -1004,7 +1004,7 @@ components:
                               - TareWeight
                           quantityValue:
                             type: number
-                          quantityUOM:
+                          quantityUom:
                             type: string
                             enum:
                               - Bale
