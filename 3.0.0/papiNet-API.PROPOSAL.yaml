@@ -397,6 +397,17 @@ components:
 
     GetSupplierOrderById:
       type: object
+      required:
+        - id
+        - supplierOrderNumber
+        - supplierOrderTimestamp
+        - active
+        # supplierParty is not required
+        # customerParty is not required
+        # buyerParty is not required
+        # purchaseOrderNumber is not required
+        # salesOrderNumber is not required
+        - supplierOrderLineItems
       properties:
         id:
           type: string
@@ -416,3 +427,481 @@ components:
         active:
           type: boolean
         supplierParty:
+          type: object
+          required:
+            - partyIdentifiers
+          properties:
+            partyIdentifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  # id is not required
+                  # value is not required
+                  # assignedBy is not required
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type:
+                      string
+                    enum:
+                      - Supplier
+                      - Customer
+        customerParty:
+          type: object
+          required:
+            - partyIdentifiers
+          properties:
+            partyIdentifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  # id is not required
+                  # value is not required
+                  # assignedBy is not required
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type:
+                      string
+                    enum:
+                      - Supplier
+                      - Customer
+        buyerParty:
+          type: object
+          required:
+            - partyIdentifiers
+          properties:
+            partyIdentifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  # id is not required
+                  # value is not required
+                  # assignedBy is not required
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type:
+                      string
+                    enum:
+                      - Supplier
+                      - Customer
+        purchaseOrderNumber:
+          type: string
+          minLength: 1
+        salesOrderNumber:
+          type: string
+          minLength: 1
+        supplierOrderLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - supplierOrderLineItemNumber
+              - supplierOrderLineItemStatus
+              - confirmedShipToLocation
+              - sellerProduct
+              # customerArticleReference is not required
+              # warehouseOperatorParty is not required
+              # routeLegs is not mandatory
+            properties:
+              supplierOrderLineItemNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemStatus:
+                type: string
+                enum:
+                  - Original
+                  - Amended
+                  - Cancelled
+              confirmedShipToLocation:
+                type: object
+                required:
+                  - partyIdentifiers
+                properties:
+                  partyIdentifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        # id is not required
+                        # value is not required
+                        # assignedBy is not required
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type:
+                            string
+                          enum:
+                            - Supplier
+                            - Customer
+              sellerProduct:
+                type: object
+                allOf:
+                  - required:
+                      # id is not required
+                      # brandName is not required
+                      # gradeCode is not required
+                      # gradeCodeName is not required
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      brandName:
+                        type: object
+                        required:
+                          - value
+                          - assignedBy
+                        properties:
+                          value:
+                            type: string
+                            minLength: 1
+                          assignedBy:
+                            type:
+                              string
+                            enum:
+                              - Supplier
+                              - Customer
+                      gradeCode:
+                        type: object
+                        required:
+                          - value
+                          - assignedBy
+                        properties:
+                          value:
+                            type: string
+                            minLength: 1
+                          assignedBy:
+                            type:
+                              string
+                            enum:
+                              - Supplier
+                              - Customer
+                      gradeCodeName:
+                        type: object
+                        required:
+                          - value
+                          - assignedBy
+                        properties:
+                          value:
+                            type: string
+                            minLength: 1
+                          assignedBy:
+                            type:
+                              string
+                            enum:
+                              - Supplier
+                              - Customer
+                  - oneOf:
+                      - required:
+                          - paper
+                        properties:
+                          paper:
+                            $ref: '#/components/schemas/Paper'
+                      - required:
+                          - pulp
+                        properties:
+                          pulp:
+                            $ref: '#/components/schemas/Pulp'
+              customerArticleReference:
+                type: object
+                required:
+                  # id is not required
+                  # articleNumber is not required
+                  # articleName is not required
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  articleNumber:
+                    type: object
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type:
+                          string
+                        enum:
+                          - Supplier
+                          - Customer
+                  articleName:
+                    type: object
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type:
+                          string
+                        enum:
+                          - Supplier
+                          - Customer
+              warehouseOperatorParty:
+                type: object
+                required:
+                  - partyIdentifiers
+                properties:
+                  partyIdentifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        # id is not required
+                        # value is not required
+                        # assignedBy is not required
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type:
+                            string
+                          enum:
+                            - Supplier
+                            - Customer
+              routeLegs:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - fromLocation
+                    - toLocation
+                    # loadingDateTime is not required
+                    # departureDateTime is not required
+                    # arrivalDateTime is not required
+                    # transport is not required
+                  properties:
+                    fromLocation:
+                      type: object
+                      required:
+                        # type is not required
+                        - locationIdentifiers
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - Mill
+                            - Terminal
+                        locationIdentifiers:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              # id is not required
+                              # value is not required
+                              # assignedBy is not required
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type:
+                                  string
+                                enum:
+                                  - Supplier
+                                  - Customer
+                    toLocation:
+                      type: object
+                      required:
+                        # type is not required
+                        - locationIdentifiers
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - Mill
+                            - Terminal
+                        locationIdentifiers:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              # id is not required
+                              # value is not required
+                              # assignedBy is not required
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type:
+                                  string
+                                enum:
+                                  - Supplier
+                                  - Customer
+                    loadingDateTime:
+                      type: string
+                      # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                      # excluding duration alone,
+                      # but including intervals such as the following:
+                      # - 2023-08-16T13:00/2023-08-18T13:00
+                      # - 2023-08-16/2023-08-18
+                      # - 2023-08-16T13:00/P2D
+                      # - P2D/2023-08-18T13:00
+                      minLength: 4
+                    departureDateTime:
+                      type: string
+                      # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                      # excluding duration alone,
+                      # but including intervals such as the following:
+                      # - 2023-08-16T13:00/2023-08-18T13:00
+                      # - 2023-08-16/2023-08-18
+                      # - 2023-08-16T13:00/P2D
+                      # - P2D/2023-08-18T13:00
+                      minLength: 4
+                    arrivalDateTime:
+                      type: string
+                      # It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone),
+                      # excluding duration alone,
+                      # but including intervals such as the following:
+                      # - 2023-08-16T13:00/2023-08-18T13:00
+                      # - 2023-08-16/2023-08-18
+                      # - 2023-08-16T13:00/P2D
+                      # - P2D/2023-08-18T13:00
+                      minLength: 4
+                    transport:
+                      type: object
+                      required:
+                        - modeType
+                        - unitType
+                      properties:
+                        modeType:
+                          type: string
+                          enum:
+                            - Air
+                            - Floating
+                            - InlandWaterway
+                            - Intermodal
+                            - Mail
+                            - Multimodal
+                            - OffRoad
+                            - Rail
+                            - Road
+                            - Sea
+                            - Other
+                        unitType:
+                          type: string
+                          enum:
+                            - Barge
+                            - Cassette
+                            - Container
+                            - DrawBarCombination
+                            - ForestryForwarderUnit
+                            - RailCar
+                            - RigidLorry
+                            - Trailer
+                            - VesselUnit
+                            - Wagon
+                            - Other
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - quantityContext
+                          - quantityType
+                          - quantityValue
+                          - quantityUOM
+                        properties:
+                          quantityContext:
+                            type: string
+                            enum:
+                              - Ordered
+                              - Confirmed
+                          quantityType:
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          quantityValue:
+                            type: number
+                          quantityUOM:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - Package
+                              - PalletUnit
+                              - Piece
+                              - Pound
+                              - PulpUnit
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - Skid
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
