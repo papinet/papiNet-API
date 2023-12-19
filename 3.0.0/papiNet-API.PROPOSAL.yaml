@@ -248,29 +248,23 @@ components:
                 - EndUser
                 - Seller
                 - Supplier
-        colourDescriptions:
-          type: array
-          minItems: 1
-          items:
-            type: string
-            minLength: 1
-        recycled:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            required:
-              - value
-              - uom
-            properties:
-              value:
-                type: number
-                minimum: 0
-                maximum: 100
-              uom:
-                type: string
-                enum:
-                  - Percentage
+        colourDescription:
+          type: string
+          minLength: 1
+        recycledContent:
+          type: object
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+              minimum: 0
+              maximum: 100
+            uom:
+              type: string
+              enum:
+                - Percentage
         format:
           type: string
           enum:
