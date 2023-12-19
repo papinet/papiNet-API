@@ -198,7 +198,7 @@ components:
                 - 25x38
             value:
               type: number
-              minimum: 0
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -212,6 +212,7 @@ components:
           properties:
             value:
               type: number
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -224,6 +225,7 @@ components:
           properties:
             value:
               type: number
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -263,6 +265,8 @@ components:
             properties:
               value:
                 type: number
+                minimum: 0
+                maximum: 100
               uom:
                 type: string
                 enum:
@@ -281,6 +285,7 @@ components:
           properties:
             value:
               type: number
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -295,6 +300,7 @@ components:
           properties:
             value:
               type: number
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -323,6 +329,7 @@ components:
           properties:
             value:
               type: number
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -358,6 +365,7 @@ components:
           properties:
             value:
               type: number
+              exclusiveMinimum: 0
             uom:
               type: string
               enum:
@@ -1004,6 +1012,7 @@ components:
                               - TareWeight
                           quantityValue:
                             type: number
+                            exclusiveMinimum: 0
                           quantityUom:
                             type: string
                             enum:
