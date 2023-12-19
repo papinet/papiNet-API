@@ -441,21 +441,21 @@ components:
               supplierParty:
                 type: object
                 required:
-                  - partyIdentifiers
+                  # id is not required
+                  # partyIdentifiers is not required
                 properties:
+                  id:
+                    type: string
+                    format: uuid
                   partyIdentifiers:
                     type: array
                     minItems: 1
                     items:
                       type: object
                       required:
-                        # id is not required
-                        # value is not required
-                        # assignedBy is not required
+                        - value
+                        - assignedBy
                       properties:
-                        id:
-                          type: string
-                          format: uuid
                         value:
                           type: string
                           minLength: 1
@@ -468,21 +468,21 @@ components:
               customerParty:
                 type: object
                 required:
-                  - partyIdentifiers
+                  # id is not required
+                  # partyIdentifiers is not required
                 properties:
+                  id:
+                    type: string
+                    format: uuid
                   partyIdentifiers:
                     type: array
                     minItems: 1
                     items:
                       type: object
                       required:
-                        # id is not required
-                        # value is not required
-                        # assignedBy is not required
+                        - value
+                        - assignedBy
                       properties:
-                        id:
-                          type: string
-                          format: uuid
                         value:
                           type: string
                           minLength: 1
@@ -495,21 +495,21 @@ components:
               buyerParty:
                 type: object
                 required:
-                  - partyIdentifiers
+                  # id is not required
+                  # partyIdentifiers is not required
                 properties:
+                  id:
+                    type: string
+                    format: uuid
                   partyIdentifiers:
                     type: array
                     minItems: 1
                     items:
                       type: object
                       required:
-                        # id is not required
-                        # value is not required
-                        # assignedBy is not required
+                        - value
+                        - assignedBy
                       properties:
-                        id:
-                          type: string
-                          format: uuid
                         value:
                           type: string
                           minLength: 1
@@ -565,21 +565,21 @@ components:
         supplierParty:
           type: object
           required:
-            - partyIdentifiers
+            # id is not required
+            # partyIdentifiers is not required
           properties:
+            id:
+              type: string
+              format: uuid
             partyIdentifiers:
               type: array
               minItems: 1
               items:
                 type: object
                 required:
-                  # id is not required
-                  # value is not required
-                  # assignedBy is not required
+                  - value
+                  - assignedBy
                 properties:
-                  id:
-                    type: string
-                    format: uuid
                   value:
                     type: string
                     minLength: 1
@@ -592,21 +592,21 @@ components:
         customerParty:
           type: object
           required:
-            - partyIdentifiers
+            # id is not required
+            # partyIdentifiers is not required
           properties:
+            id:
+              type: string
+              format: uuid
             partyIdentifiers:
               type: array
               minItems: 1
               items:
                 type: object
                 required:
-                  # id is not required
-                  # value is not required
-                  # assignedBy is not required
+                  - value
+                  - assignedBy
                 properties:
-                  id:
-                    type: string
-                    format: uuid
                   value:
                     type: string
                     minLength: 1
@@ -619,21 +619,21 @@ components:
         buyerParty:
           type: object
           required:
-            - partyIdentifiers
+            # id is not required
+            # partyIdentifiers is not required
           properties:
+            id:
+              type: string
+              format: uuid
             partyIdentifiers:
               type: array
               minItems: 1
               items:
                 type: object
                 required:
-                  # id is not required
-                  # value is not required
-                  # assignedBy is not required
+                  - value
+                  - assignedBy
                 properties:
-                  id:
-                    type: string
-                    format: uuid
                   value:
                     type: string
                     minLength: 1
@@ -810,21 +810,21 @@ components:
               warehouseOperatorParty:
                 type: object
                 required:
-                  - partyIdentifiers
+                  # id is not required
+                  # partyIdentifiers is not required
                 properties:
+                  id:
+                    type: string
+                    format: uuid
                   partyIdentifiers:
                     type: array
                     minItems: 1
                     items:
                       type: object
                       required:
-                        # id is not required
-                        # value is not required
-                        # assignedBy is not required
+                        - value
+                        - assignedBy
                       properties:
-                        id:
-                          type: string
-                          format: uuid
                         value:
                           type: string
                           minLength: 1
