@@ -393,7 +393,141 @@ components:
 
     # API endpoint schemas:
 
-    ListOfSupplierOrders: {}
+    ListOfSupplierOrders:
+      type: object
+      required:
+        - numberOfSupplierOrders
+        - supplierOrders
+        # links is not required
+      properties:
+        numberOfSupplierOrders:
+          type: integer
+          minimum: 1
+        supplierOrders:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - supplierOrderNumber
+              - supplierOrderTimestamp
+              - active
+              # supplierParty is not required
+              # customerParty is not required
+              # buyerParty is not required
+              # purchaseOrderNumber is not required
+              # salesOrderNumber is not required
+            properties:
+              id:
+                type: string
+                format: uuid
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderTimestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              supplierOrderStatus:
+                type: string
+                enum:
+                  - Original
+                  - Amended
+                  - Cancelled
+              active:
+                type: boolean
+              supplierParty:
+                type: object
+                required:
+                  - partyIdentifiers
+                properties:
+                  partyIdentifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        # id is not required
+                        # value is not required
+                        # assignedBy is not required
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type:
+                            string
+                          enum:
+                            - Supplier
+                            - Customer
+              customerParty:
+                type: object
+                required:
+                  - partyIdentifiers
+                properties:
+                  partyIdentifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        # id is not required
+                        # value is not required
+                        # assignedBy is not required
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type:
+                            string
+                          enum:
+                            - Supplier
+                            - Customer
+              buyerParty:
+                type: object
+                required:
+                  - partyIdentifiers
+                properties:
+                  partyIdentifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        # id is not required
+                        # value is not required
+                        # assignedBy is not required
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type:
+                            string
+                          enum:
+                            - Supplier
+                            - Customer
+              purchaseOrderNumber:
+                type: string
+                minLength: 1
+              salesOrderNumber:
+                type: string
+                minLength: 1
+              numberOfLines:
+                type: integer
+                minimum: 1
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
 
     GetSupplierOrderById:
       type: object
