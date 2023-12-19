@@ -24,14 +24,12 @@ paths:
       description: Gets a paginated list of all `customer-articles` defined by the `customer`.
       parameters:
         - in: query
-          name: status
-          description: Filter by status
+          name: active
+          description: Filter active
           required: false
           schema:
-            type: string
-            enum:
-              - Active
-              - Inactive
+            type: boolean
+            default: true
         - in: query
           name: productType
           description: Filter by productType
@@ -103,14 +101,12 @@ paths:
       description: Gets a paginated list of all `locations`.
       parameters:
         - in: query
-          name: status
-          description: Filter by status
+          name: active
+          description: Filter active
           required: false
           schema:
-            type: string
-            enum:
-              - Active
-              - Inactive
+            type: boolean
+            default: true
         - in: query
           name: countryCode
           description: Filter by countryCode
@@ -176,14 +172,12 @@ paths:
       description: Gets a paginated list of all `parties`.
       parameters:
         - in: query
-          name: status
-          description: Filter by status
+          name: active
+          description: Filter active
           required: false
           schema:
-            type: string
-            enum:
-              - Active
-              - Inactive
+            type: boolean
+            default: true
         - in: query
           name: countryCode
           description: Filter by countryCode
@@ -715,7 +709,7 @@ components:
               - id
               - customerArticleNumber
               - customerArticleTimestamp
-              - status
+              - active
               - sellerProductBrandName
               - sellerProductName
               - productType
@@ -729,11 +723,8 @@ components:
               customerArticleTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              status:
-                type: string
-                enum:
-                  - Active
-                  - Inactive
+              active:
+                type: boolean
               sellerProductBrandName:
                 type: string
                 minLength: 1
@@ -744,7 +735,7 @@ components:
                 type: string
                 enum:
                   - Paper
-                  - Pulp 
+                  - Pulp
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
@@ -755,7 +746,7 @@ components:
             - id
             - customerArticleNumber
             - customerArticleTimestamp
-            - status
+            - active
             - sellerProductBrandName
             - sellerProductName
           properties:
@@ -768,11 +759,8 @@ components:
             customerArticleTimestamp:
               type: string
               format: date-time # UTC MUST be used!
-            status:
-              type: string
-              enum:
-                - Active
-                - Inactive
+            active:
+              type: boolean
             sellerProductBrandName:
               type: string
               minLength: 1
@@ -809,7 +797,7 @@ components:
               - id
               - locationIdentifier
               - locationTimestamp
-              - status
+              - active
               - nameLines
               - countryCode
             properties:
@@ -822,11 +810,8 @@ components:
               locationTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              status:
-                type: string
-                enum:
-                  - Active
-                  - Inactive
+              active:
+                type: boolean
               nameLines:
                 type: array
                 minItems: 1
@@ -847,7 +832,7 @@ components:
         - id
         - locationIdentifier
         - locationTimestamp
-        - status
+        - active
         - nameLines
         - address # as only the country is required within it
         # coordinatesWGS84 is not required
@@ -861,11 +846,8 @@ components:
         locationTimestamp:
           type: string
           format: date-time # UTC MUST be used!
-        status:
-          type: string
-          enum:
-            - Active
-            - Inactive
+        active:
+          type: boolean
         nameLines:
           type: array
           minItems: 1
@@ -926,7 +908,7 @@ components:
               - id
               - partyIdentifier
               - partyTimestamp
-              - status
+              - active
               - nameLines
               - countryCode
             properties:
@@ -939,11 +921,8 @@ components:
               partyTimestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              status:
-                type: string
-                enum:
-                  - Active
-                  - Inactive
+              active:
+                type: boolean
               nameLines:
                 type: array
                 minItems: 1
@@ -964,7 +943,7 @@ components:
         - id
         - partyIdentifier
         - partyTimestamp
-        - status
+        - active
         - nameLines
         - address # as only the country is required within it
       properties:
@@ -977,11 +956,8 @@ components:
         partyTimestamp:
           type: string
           format: date-time # UTC MUST be used!
-        status:
-          type: string
-          enum:
-            - Active
-            - Inactive
+        active:
+          type: boolean
         nameLines:
           type: array
           minItems: 1
