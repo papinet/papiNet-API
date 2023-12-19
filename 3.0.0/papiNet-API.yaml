@@ -949,7 +949,7 @@ components:
                 minItems: 1
                 items:
                   type: string
-                  minLength: 2
+                  minLength: 1
               countryCode:
                 type: string
                 minLength: 2
