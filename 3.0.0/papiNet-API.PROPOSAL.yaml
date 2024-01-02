@@ -535,6 +535,7 @@ components:
         - id
         - supplierOrderNumber
         - supplierOrderTimestamp
+        - supplierOrderStatus
         - active
         # supplierParty is not required
         # customerParty is not required
@@ -673,21 +674,21 @@ components:
               confirmedShipToLocation:
                 type: object
                 required:
-                  - partyIdentifiers
+                  # id is not required
+                  # locationIdentifiers is not required
                 properties:
-                  partyIdentifiers:
+                  id:
+                    type: string
+                    format: uuid
+                  locationIdentifiers:
                     type: array
                     minItems: 1
                     items:
                       type: object
                       required:
-                        # id is not required
-                        # value is not required
-                        # assignedBy is not required
+                        - value
+                        - assignedBy
                       properties:
-                        id:
-                          type: string
-                          format: uuid
                         value:
                           type: string
                           minLength: 1
@@ -849,26 +850,26 @@ components:
                       type: object
                       required:
                         # type is not required
-                        - locationIdentifiers
+                        # id is not required
+                        # locationIdentifiers is not required
                       properties:
                         type:
                           type: string
                           enum:
                             - Mill
                             - Terminal
+                        id:
+                          type: string
+                          format: uuid
                         locationIdentifiers:
                           type: array
                           minItems: 1
                           items:
                             type: object
                             required:
-                              # id is not required
-                              # value is not required
-                              # assignedBy is not required
+                              - value
+                              - assignedBy
                             properties:
-                              id:
-                                type: string
-                                format: uuid
                               value:
                                 type: string
                                 minLength: 1
@@ -882,26 +883,26 @@ components:
                       type: object
                       required:
                         # type is not required
-                        - locationIdentifiers
+                        # id is not required
+                        # locationIdentifiers is not required
                       properties:
                         type:
                           type: string
                           enum:
                             - Mill
                             - Terminal
+                        id:
+                          type: string
+                          format: uuid
                         locationIdentifiers:
                           type: array
                           minItems: 1
                           items:
                             type: object
                             required:
-                              # id is not required
-                              # value is not required
-                              # assignedBy is not required
+                              - value
+                              - assignedBy
                             properties:
-                              id:
-                                type: string
-                                format: uuid
                               value:
                                 type: string
                                 minLength: 1
@@ -950,17 +951,12 @@ components:
                         modeType:
                           type: string
                           enum:
-                            - Air
-                            - Floating
                             - InlandWaterway
                             - Intermodal
-                            - Mail
                             - Multimodal
-                            - OffRoad
                             - Rail
                             - Road
                             - Sea
-                            - Other
                         unitType:
                           type: string
                           enum:
@@ -968,13 +964,10 @@ components:
                             - Cassette
                             - Container
                             - DrawBarCombination
-                            - ForestryForwarderUnit
                             - RailCar
                             - RigidLorry
                             - Trailer
                             - VesselUnit
-                            - Wagon
-                            - Other
                     quantities:
                       type: array
                       minItems: 1
