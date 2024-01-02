@@ -414,12 +414,13 @@ components:
               - id
               - supplierOrderNumber
               - supplierOrderTimestamp
+              - supplierOrderStatus
               - active
               # supplierParty is not required
               # customerParty is not required
               # buyerParty is not required
               # purchaseOrderNumber is not required
-              # salesOrderNumber is not required
+              - numberOfLineItems
             properties:
               id:
                 type: string
@@ -522,10 +523,7 @@ components:
               purchaseOrderNumber:
                 type: string
                 minLength: 1
-              salesOrderNumber:
-                type: string
-                minLength: 1
-              numberOfLines:
+              numberOfLineItems:
                 type: integer
                 minimum: 1
         links:
