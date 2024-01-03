@@ -658,6 +658,7 @@ components:
               # customerArticleReference is not required
               # warehouseOperatorParty is not required
               # routeLegs is not mandatory
+              - quantities
             properties:
               supplierOrderLineItemNumber:
                 type: string
@@ -968,68 +969,68 @@ components:
                             - RigidLorry
                             - Trailer
                             - VesselUnit
-                    quantities:
-                      type: array
-                      minItems: 1
-                      items:
-                        type: object
-                        required:
-                          - quantityContext
-                          - quantityType
-                          - quantityValue
-                          - quantityUom
-                        properties:
-                          quantityContext:
-                            type: string
-                            enum:
-                              - Ordered
-                              - Confirmed
-                          quantityType:
-                            type: string
-                            enum:
-                              - Area
-                              - Count
-                              - GrossWeight
-                              - Length
-                              - NetNetWeight
-                              - NetWeight
-                              - NominalWeight
-                              - TareWeight
-                          quantityValue:
-                            type: number
-                            exclusiveMinimum: 0
-                          quantityUom:
-                            type: string
-                            enum:
-                              - Bale
-                              - Box
-                              - Centimeter
-                              - Decimeter
-                              - Foot
-                              - Gram
-                              - HundredPounds
-                              - Inch
-                              - Kilogram
-                              - Kilometer
-                              - Meter
-                              - MetricTon
-                              - Millimeter
-                              - Package
-                              - PalletUnit
-                              - Piece
-                              - Pound
-                              - PulpUnit
-                              - Ream
-                              - Reel
-                              - Sheet
-                              - ShortTon
-                              - Skid
-                              - SquareDecimeter
-                              - SquareFoot
-                              - SquareInch
-                              - SquareMeter
-                              - ThousandPieces
-                              - ThousandSquareCentimeters
-                              - ThousandSquareFeet
-                              - ThousandSquareInches
-                              - Yard
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUom
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Ordered
+                        - Confirmed
+                    quantityType:
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    quantityValue:
+                      type: number
+                      exclusiveMinimum: 0
+                    quantityUom:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
