@@ -983,7 +983,7 @@ components:
                         - TareWeight
                     quantityValue:
                       type: number
-                      exclusiveMinimum: 0
+                      minimum: 0
                     quantityUom:
                       type: string
                       enum:
