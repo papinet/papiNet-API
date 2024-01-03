@@ -461,8 +461,7 @@ components:
                           type: string
                           minLength: 1
                         assignedBy:
-                          type:
-                            string
+                          type: string
                           enum:
                             - Supplier
                             - Customer
@@ -488,8 +487,7 @@ components:
                           type: string
                           minLength: 1
                         assignedBy:
-                          type:
-                            string
+                          type: string
                           enum:
                             - Supplier
                             - Customer
@@ -515,8 +513,7 @@ components:
                           type: string
                           minLength: 1
                         assignedBy:
-                          type:
-                            string
+                          type: string
                           enum:
                             - Supplier
                             - Customer
@@ -582,8 +579,7 @@ components:
                     type: string
                     minLength: 1
                   assignedBy:
-                    type:
-                      string
+                    type: string
                     enum:
                       - Supplier
                       - Customer
@@ -609,8 +605,7 @@ components:
                     type: string
                     minLength: 1
                   assignedBy:
-                    type:
-                      string
+                    type: string
                     enum:
                       - Supplier
                       - Customer
@@ -636,8 +631,7 @@ components:
                     type: string
                     minLength: 1
                   assignedBy:
-                    type:
-                      string
+                    type: string
                     enum:
                       - Supplier
                       - Customer
@@ -694,8 +688,7 @@ components:
                           type: string
                           minLength: 1
                         assignedBy:
-                          type:
-                            string
+                          type: string
                           enum:
                             - Supplier
                             - Customer
@@ -721,8 +714,7 @@ components:
                             type: string
                             minLength: 1
                           assignedBy:
-                            type:
-                              string
+                            type: string
                             enum:
                               - Supplier
                               - Customer
@@ -736,8 +728,7 @@ components:
                             type: string
                             minLength: 1
                           assignedBy:
-                            type:
-                              string
+                            type: string
                             enum:
                               - Supplier
                               - Customer
@@ -751,8 +742,7 @@ components:
                             type: string
                             minLength: 1
                           assignedBy:
-                            type:
-                              string
+                            type: string
                             enum:
                               - Supplier
                               - Customer
@@ -787,8 +777,7 @@ components:
                         type: string
                         minLength: 1
                       assignedBy:
-                        type:
-                          string
+                        type: string
                         enum:
                           - Supplier
                           - Customer
@@ -802,8 +791,7 @@ components:
                         type: string
                         minLength: 1
                       assignedBy:
-                        type:
-                          string
+                        type: string
                         enum:
                           - Supplier
                           - Customer
@@ -829,8 +817,7 @@ components:
                           type: string
                           minLength: 1
                         assignedBy:
-                          type:
-                            string
+                          type: string
                           enum:
                             - Supplier
                             - Customer
@@ -875,8 +862,7 @@ components:
                                 type: string
                                 minLength: 1
                               assignedBy:
-                                type:
-                                  string
+                                type: string
                                 enum:
                                   - Supplier
                                   - Customer
@@ -908,8 +894,7 @@ components:
                                 type: string
                                 minLength: 1
                               assignedBy:
-                                type:
-                                  string
+                                type: string
                                 enum:
                                   - Supplier
                                   - Customer
