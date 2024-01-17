@@ -699,53 +699,20 @@ components:
                       # id is not required
                       # brandName is not required
                       # gradeCode is not required
-                      # gradeCodeName is not required
+                      # partNumber is not required
+                      # name is not required
                     properties:
                       id:
                         type: string
                         format: uuid
                       brandName:
-                        type: object
-                        required:
-                          - value
-                          - assignedBy
-                        properties:
-                          value:
-                            type: string
-                            minLength: 1
-                          assignedBy:
-                            type: string
-                            enum:
-                              - Supplier
-                              - Customer
+                        type: string
                       gradeCode:
-                        type: object
-                        required:
-                          - value
-                          - assignedBy
-                        properties:
-                          value:
-                            type: string
-                            minLength: 1
-                          assignedBy:
-                            type: string
-                            enum:
-                              - Supplier
-                              - Customer
-                      gradeCodeName:
-                        type: object
-                        required:
-                          - value
-                          - assignedBy
-                        properties:
-                          value:
-                            type: string
-                            minLength: 1
-                          assignedBy:
-                            type: string
-                            enum:
-                              - Supplier
-                              - Customer
+                        type: string
+                      partNumber:
+                        type: string
+                      name:
+                        type: string
                   - oneOf:
                       - required:
                           - paper
@@ -761,40 +728,22 @@ components:
                 type: object
                 required:
                   # id is not required
-                  # articleNumber is not required
-                  # articleName is not required
+                  # brandName is not required
+                  # gradeCode is not required
+                  # partNumber is not required
+                  # name is not required
                 properties:
                   id:
                     type: string
                     format: uuid
-                  articleNumber:
-                    type: object
-                    required:
-                      - value
-                      - assignedBy
-                    properties:
-                      value:
-                        type: string
-                        minLength: 1
-                      assignedBy:
-                        type: string
-                        enum:
-                          - Supplier
-                          - Customer
-                  articleName:
-                    type: object
-                    required:
-                      - value
-                      - assignedBy
-                    properties:
-                      value:
-                        type: string
-                        minLength: 1
-                      assignedBy:
-                        type: string
-                        enum:
-                          - Supplier
-                          - Customer
+                  brandName:
+                    type: string
+                  gradeCode:
+                    type: string
+                  partNumber:
+                    type: string
+                  name:
+                    type: string
               warehouseOperatorParty:
                 type: object
                 required:
