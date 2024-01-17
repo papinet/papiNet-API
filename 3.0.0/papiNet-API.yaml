@@ -851,6 +851,7 @@ components:
         nameLines:
           type: array
           minItems: 1
+          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
           items:
             type: string
             minLength: 1
@@ -860,11 +861,14 @@ components:
             # addressLines is not required
             # city is not required
             # postalCode is not required
+            # stateOrProvince is not required
+            # county is not required
             - countryCode
           properties:
             addressLines:
               type: array
               minItems: 1
+              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -872,6 +876,12 @@ components:
               type: string
               minLength: 1
             postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
               type: string
               minLength: 1
             countryCode:
@@ -961,6 +971,7 @@ components:
         nameLines:
           type: array
           minItems: 1
+          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
           items:
             type: string
             minLength: 1
@@ -970,11 +981,14 @@ components:
             # addressLines is not required
             # city is not required
             # postalCode is not required
+            # stateOrProvince is not required
+            # county is not required
             - countryCode
           properties:
             addressLines:
               type: array
               minItems: 1
+              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -982,6 +996,12 @@ components:
               type: string
               minLength: 1
             postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
               type: string
               minLength: 1
             countryCode:
