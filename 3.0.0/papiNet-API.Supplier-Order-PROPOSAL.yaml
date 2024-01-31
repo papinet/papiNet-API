@@ -705,12 +705,16 @@ components:
                         format: uuid
                       brandName:
                         type: string
+                        minLength: 1
                       gradeCode:
                         type: string
+                        minLength: 1
                       partNumber:
                         type: string
+                        minLength: 1
                       name:
                         type: string
+                        minLength: 1
                   - oneOf:
                       - required:
                           - paper
@@ -736,12 +740,16 @@ components:
                     format: uuid
                   brandName:
                     type: string
+                    minLength: 1
                   gradeCode:
                     type: string
+                    minLength: 1
                   partNumber:
                     type: string
+                    minLength: 1
                   name:
                     type: string
+                    minLength: 1
               warehouseOperatorParty:
                 type: object
                 required:
