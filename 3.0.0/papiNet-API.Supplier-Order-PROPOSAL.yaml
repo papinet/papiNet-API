@@ -648,7 +648,6 @@ components:
             required:
               - supplierOrderLineItemNumber
               - supplierOrderLineItemStatus
-              # salesOrderNumber is not required
               - confirmedShipToLocation
               - sellerProduct
               # customerArticleReference is not required
@@ -665,9 +664,6 @@ components:
                   - Original
                   - Amended
                   - Cancelled
-              salesOrderNumber:
-                type: string
-                minLength: 1
               confirmedShipToLocation:
                 type: object
                 required:
