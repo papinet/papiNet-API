@@ -520,6 +520,8 @@ components:
               purchaseOrderNumber:
                 type: string
                 minLength: 1
+                description: |
+                  This is the identifier of the _purchase order_ as assigned by the _customer_.
               numberOfLineItems:
                 type: integer
                 minimum: 1
