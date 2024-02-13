@@ -398,11 +398,11 @@ components:
     ListOfSupplierOrders:
       type: object
       required:
-        - numberOfSupplierOrders
+        - supplierOrderCount
         - supplierOrders
         # links is not required
       properties:
-        numberOfSupplierOrders:
+        supplierOrderCount:
           type: integer
           minimum: 1
         supplierOrders:
@@ -420,7 +420,7 @@ components:
               # customerParty is not required
               # buyerParty is not required
               # purchaseOrderNumber is not required
-              - numberOfLineItems
+              - lineItemCount
             properties:
               id:
                 type: string
@@ -522,7 +522,7 @@ components:
                 minLength: 1
                 description: |
                   This is the identifier of the _purchase order_ as assigned by the _customer_.
-              numberOfLineItems:
+              lineItemCount:
                 type: integer
                 minimum: 1
         links:
