@@ -648,7 +648,6 @@ components:
             required:
               - supplierOrderLineItemNumber
               - supplierOrderLineItemStatus
-              - confirmedShipToLocation
               - sellerProduct
               # customerArticleReference is not required
               # warehouseOperatorParty is not required
@@ -664,32 +663,6 @@ components:
                   - Original
                   - Amended
                   - Cancelled
-              confirmedShipToLocation:
-                type: object
-                required:
-                  # id is not required
-                  # locationIdentifiers is not required
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-                  locationIdentifiers:
-                    type: array
-                    minItems: 1
-                    items:
-                      type: object
-                      required:
-                        - value
-                        - assignedBy
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
-                        assignedBy:
-                          type: string
-                          enum:
-                            - Supplier
-                            - Customer
               sellerProduct:
                 type: object
                 allOf:
