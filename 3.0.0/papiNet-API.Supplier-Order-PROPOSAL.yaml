@@ -652,7 +652,7 @@ components:
               - sellerProduct
               # customerArticleReference is not required
               # warehouseOperatorParty is not required
-              # routeLegs is not mandatory
+              # deliveryLegs is not mandatory
               - quantities
             properties:
               supplierOrderLineItemNumber:
@@ -776,20 +776,20 @@ components:
                           enum:
                             - Supplier
                             - Customer
-              routeLegs:
+              deliveryLegs:
                 type: array
                 minItems: 1
                 items:
                   type: object
                   required:
-                    - fromLocation
-                    - toLocation
+                    - shipFromLocation
+                    - shipToLocation
                     # loadingDateTime is not required
                     # departureDateTime is not required
                     # arrivalDateTime is not required
                     # transport is not required
                   properties:
-                    fromLocation:
+                    shipFromLocation:
                       type: object
                       required:
                         # type is not required
@@ -821,7 +821,7 @@ components:
                                 enum:
                                   - Supplier
                                   - Customer
-                    toLocation:
+                    shipToLocation:
                       type: object
                       required:
                         # type is not required
