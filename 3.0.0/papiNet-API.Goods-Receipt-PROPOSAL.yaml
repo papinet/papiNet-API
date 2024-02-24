@@ -1,0 +1,289 @@
+openapi: 3.1.0
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forest and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 3.0.0
+servers:
+  - url: http://localhost:3020
+    description: papiNet Mock Server
+paths:
+  ## GOODS RECEIPT
+
+  '/goods-receipt':
+    # POST /goods-receipts
+    # CreateGoodsReceipt => GoodsReceiptWithId
+    post:
+      summary: Create a `goods-receipt`
+      description: Creates a `goods-receipt`.
+      requestBody:
+        description: The definition of the `goods-receipt` to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGoodsReceipt'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoodsReceiptWithId'
+        '400':
+          description: Bad Request
+
+components:
+  schemas:
+
+    CreateGoodsReceipt:
+      type: object
+      required:
+        - goodsReceiptNumber
+        - goodsReceiptTimestamp
+        - goodsReceiptStatus
+        - goodsReceiptAcceptance
+        - supplierOrderNumber
+          # deliveryNoteNumber is not required
+          # deliveryNoteTimeStamp is not required
+          # deliveryNoteStatus is not required
+          # arrivalDateTime is not required
+          # unloadingDateTime is not required
+        - shipToLocation
+          # transportationComment is not required
+          # goodsReceiptLineItems is not required
+      properties:
+        goodsReceiptNumber:
+          type: string
+          minLength: 1
+        goodsReceiptTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        goodsReceiptStatus:
+          type: string
+          enum:
+            - Original
+        goodsReceiptAcceptance:
+          type: string
+          enum:
+            - GoodsReceivedAsIs
+            - GoodsReceivedAsSpecified 
+            - GoodsReceivedCancelled
+            - GoodsReceivedRejected
+            - GoodsReceivedWithDamage
+            - GoodsReceivedWithoutDeliveryNote
+            - GoodsReceivedWithVariance
+            - GoodsReceivedWithVarianceAndDamage
+        supplierOrderNumber:
+          type: string
+          minLength: 1            
+        deliveryNoteNumber:
+          type: string
+          description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
+          minLength: 1
+        deliveryNoteTimestamp:
+          type: string
+          description: deliveryNoteTimeStamp is required if a DeliveryNote is received for the goods
+          format: date-time # UTC MUST be used!
+        deliveryNoteStatus:
+          type: string
+          enum:
+            - Original
+            - Replaced      
+        arrivalDateTime:
+          type: string
+          description: |
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+          minLength: 4
+        unloadingDateTime:
+          type: string
+          description: |
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+          minLength: 4        
+        shipToLocation:
+          type: object
+          anyOf:
+            - required:
+                - id
+            - required:
+                - partyIdentifiers
+          properties:
+            id:
+              type: string
+              format: uuid
+            locationIdentifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  - value
+                  - assignedBy
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Supplier        
+        transportationComment:
+          type: string
+          minLength: 1
+        goodsReceiptLineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - goodsReceiptLineItemNumber
+                # goodsReceiptAcceptance is not required
+              - supplierOrderLineItemNumber
+              - # deliveryNoteLineItemNumber is not required
+              - quantities
+                # goodsReceiptPackageCount is not required
+                # goodsReceiptPackages is not required
+            properties:
+              goodsReceiptLineItemNumber:
+                type: integer
+                minimum: 0
+              goodsReceiptAcceptance:
+                type: string
+                enum:
+                  - GoodsReceivedAsIs
+                  - GoodsReceivedAsSpecified 
+                  - GoodsReceivedCancelled
+                  - GoodsReceivedRejected
+                  - GoodsReceivedWithDamage
+                  - GoodsReceivedWithVariance
+                  - GoodsReceivedWithVarianceAndDamage
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0                     
+              deliveryNoteLineItemNumber:
+                type: integer
+                description: deliveryNoteLineItemNumber is required if a DeliveryNote is received for the goods
+                minimum: 0
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - quantityContext
+                    - quantityType
+                    - quantityValue
+                    - quantityUOM
+                  properties:
+                    quantityContext:
+                      type: string
+                      enum:
+                        - Confirmed
+                        - Invoiced
+                        - Ordered
+                        - Produced
+                        - Shipped
+                    quantityType:
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    quantityValue:
+                      type: number
+                    quantityUom:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+              GoodsReceiptPackageCount:
+                type: integer
+                exclusiveminimum: 0
+              goodsReceiptPackages:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - goodsReceiptAcceptance
+                    - quantities
+                    # itemCount is not required
+                  properties:
+                    goodsReceiptAcceptance:
+                      type: string
+                      enum:
+                        - GoodsReceivedAsIs
+                        - GoodsReceivedAsSpecified 
+                        - GoodsReceivedCancelled
+                        - GoodsReceivedRejected
+                        - GoodsReceivedWithDamage
+                        - GoodsReceivedWithVariance
+                        - GoodsReceivedWithVarianceAndDamage
+
+                    # Insert here all properties in deliveryNoteLineItems.packages and specify if properties are required or not
+                    itemCount:
+                      type: integer
+                      minimum: 0
+                      description: Number of items in a goodsReceiptPackage
+
+    GoodsReceiptWithId:
+      AllOf:
+        - type: object
+          required:
+             # id is not required
+          properties:
+            id:
+              type: string
+              format: uuid
+        - $ref: '#/components/schemas/CreateGoodsReceipt'
+                
