@@ -857,7 +857,7 @@ components:
                       type: object
                       required:
                         - modeType
-                        - unitType
+                        # unitType is not required
                       properties:
                         modeType:
                           type: string
