@@ -13,7 +13,8 @@ servers:
   - url: http://localhost:3020
     description: papiNet Mock Server
 paths:
-  ## GOODS RECEIPT
+
+  ## GOODS RECEIPT (1)
 
   '/goods-receipt':
     # POST /goods-receipts
@@ -48,15 +49,14 @@ components:
         - goodsReceiptTimestamp
         - goodsReceiptStatus
         - goodsReceiptAcceptance
-        - supplierOrderNumber
-          # deliveryNoteNumber is not required
-          # deliveryNoteTimeStamp is not required
-          # deliveryNoteStatus is not required
-          # arrivalDateTime is not required
-          # unloadingDateTime is not required
+        # deliveryNoteNumber is not required
+        # deliveryNoteTimeStamp is not required
+        # deliveryNoteStatus is not required
+        # arrivalDateTime is not required (maybe only `unloadingDateTime` is important)
+        # unloadingDateTime is not required
         - shipToLocation
-          # transportationComment is not required
-          # goodsReceiptLineItems is not required
+        # transportationComment is not required (do we really want human-readable comment into a machine-to-machine communication protocol? -> goodsReceiptAcceptanceReason (?))
+        # goodsReceiptLineItems is not required
       properties:
         goodsReceiptNumber:
           type: string
@@ -79,9 +79,6 @@ components:
             - GoodsReceivedWithoutDeliveryNote
             - GoodsReceivedWithVariance
             - GoodsReceivedWithVarianceAndDamage
-        supplierOrderNumber:
-          type: string
-          minLength: 1            
         deliveryNoteNumber:
           type: string
           description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
@@ -94,7 +91,7 @@ components:
           type: string
           enum:
             - Original
-            - Replaced      
+            - Replaced
         arrivalDateTime:
           type: string
           description: |
@@ -114,7 +111,7 @@ components:
             - 2023-08-16/2023-08-18
             - 2023-08-16T13:00/P2D
             - P2D/2023-08-18T13:00
-          minLength: 4        
+          minLength: 4
         shipToLocation:
           type: object
           anyOf:
@@ -141,7 +138,7 @@ components:
                   assignedBy:
                     type: string
                     enum:
-                      - Supplier        
+                      - Supplier
         transportationComment:
           type: string
           minLength: 1
@@ -152,12 +149,14 @@ components:
             type: object
             required:
               - goodsReceiptLineItemNumber
-                # goodsReceiptAcceptance is not required
-              - supplierOrderLineItemNumber
-              - # deliveryNoteLineItemNumber is not required
+              # goodsReceiptAcceptance is not required
+              # deliveryNoteLineItemNumber is not required
+              # supplierOrderNumber is not required
+              # supplierOrderLineItemNumber is not required
+              # sellerProduct is not required
               - quantities
-                # goodsReceiptPackageCount is not required
-                # goodsReceiptPackages is not required
+              # goodsReceiptPackageCount is not required (deffered to decision)
+              # goodReceiptPackages (instead of goodsReceiptPackages) is not required
             properties:
               goodsReceiptLineItemNumber:
                 type: integer
@@ -172,13 +171,52 @@ components:
                   - GoodsReceivedWithDamage
                   - GoodsReceivedWithVariance
                   - GoodsReceivedWithVarianceAndDamage
-              supplierOrderLineItemNumber:
-                type: integer
-                minimum: 0                     
               deliveryNoteLineItemNumber:
                 type: integer
                 description: deliveryNoteLineItemNumber is required if a DeliveryNote is received for the goods
                 minimum: 0
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              sellerProduct:
+                type: object
+                allOf:
+                  - required:
+                      # id is not required
+                      # brandName is not required
+                      # gradeCode is not required
+                      # partNumber is not required
+                      # name is not required
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      brandName:
+                        type: string
+                        minLength: 1
+                      gradeCode:
+                        type: string
+                        minLength: 1
+                      partNumber:
+                        type: string
+                        minLength: 1
+                      name:
+                        type: string
+                        minLength: 1
+                  - oneOf:
+                      - required:
+                          - paper
+                        properties:
+                          paper:
+                            $ref: '#/components/schemas/Paper'
+                      - required:
+                          - pulp
+                        properties:
+                          pulp:
+                            $ref: '#/components/schemas/Pulp'
               quantities:
                 type: array
                 minItems: 1
@@ -249,16 +287,42 @@ components:
               GoodsReceiptPackageCount:
                 type: integer
                 exclusiveminimum: 0
-              goodsReceiptPackages:
+              goodReceiptPackages:
                 type: array
                 minItems: 1
                 items:
                   type: object
                   required:
-                    - goodsReceiptAcceptance
+                    - packageType
+                    - packageIdentifiers
                     - quantities
-                    # itemCount is not required
+                    - goodsReceiptAcceptance
                   properties:
+                    packageType:
+                      type: string
+                      enum:
+                        - ReelPackage
+                        - Pallet
+                        - PulpUnit
+                    packageIdentifiers:
+                      type: object
+                      required:
+                        - type
+                        - codeType
+                        - value
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - Barcode
+                        codeType:
+                          type: string
+                          enum:
+                            - UIC14
+                        value:
+                          type: string
+                          minLength: 1
+                    quantities:
                     goodsReceiptAcceptance:
                       type: string
                       enum:
@@ -270,12 +334,6 @@ components:
                         - GoodsReceivedWithVariance
                         - GoodsReceivedWithVarianceAndDamage
 
-                    # Insert here all properties in deliveryNoteLineItems.packages and specify if properties are required or not
-                    itemCount:
-                      type: integer
-                      minimum: 0
-                      description: Number of items in a goodsReceiptPackage
-
     GoodsReceiptWithId:
       AllOf:
         - type: object
@@ -286,4 +344,3 @@ components:
               type: string
               format: uuid
         - $ref: '#/components/schemas/CreateGoodsReceipt'
-                

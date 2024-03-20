@@ -557,7 +557,7 @@ components:
         - deliveryNoteNumber
         - deliveryNoteTimestamp
         - deliveryNoteStatus
-        - shipmentStatus
+        # shipmentStatus is not required
         # transport is not required
         # carrierParty is not required
         - shipFromLocation
@@ -583,6 +583,7 @@ components:
           type : string
           enum:
             - Planned
+            - Loaded
             - Departed
             - Arrived
         transport:
@@ -698,9 +699,9 @@ components:
               - supplierOrderLineItemNumber
               - purchaseOrderNumber
               - purchaseOrderLineItemNumber
-              - sellerProduct
+              # sellerProduct is not required
               - quantities
-              - packages
+              - deliveryNotePackages
             properties:
               deliveryNoteLineItemNumber:
                 type: string
@@ -824,17 +825,17 @@ components:
                         - ThousandSquareFeet
                         - ThousandSquareInches
                         - Yard
-              pacakages:
+              deliveryNotePackages:
                 type: array
                 minItems: 1
                 items:
                   type: object
                   required:
-                    - type
+                    - packageType
                     - packageIdentifiers
                     - quantities
                   properties:
-                    type:
+                    packageType:
                       type: string
                       enum:
                         - ReelPackage
