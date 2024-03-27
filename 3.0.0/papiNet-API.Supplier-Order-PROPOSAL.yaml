@@ -667,7 +667,7 @@ components:
                 type: object
                 allOf:
                   - required:
-                      # id is not required
+                      # id is not required (placeholder)
                       # brandName is not required
                       # gradeCode is not required
                       # partNumber is not required

@@ -434,15 +434,17 @@ components:
               deliveryNoteStatus:
                 type: string
                 enum:
-                  - Original
-                  - Replaced
                   - Cancelled
+                  - Original
+                  - Replaced # It can't be 'Amended'
               shipmentStatus:
                 type : string
                 enum:
-                  - Planned
-                  - Departed
                   - Arrived
+                  - Cancelled
+                  - Departed
+                  - Planned
+                  - Unloaded
               transport:
                 type: object
                 required:

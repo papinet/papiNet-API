@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forest and Paper supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 3.0.0
+servers:
+  - url: http://localhost:3020
+    description: papiNet Mock Server
+paths:
+
+  ## DELIVERY INSTRUCTION (2)
+
+  '/delivery-instructions':
+    # GET /delivery-instructions
+    # None => ListOfDeliveryInstructions
+    get:
+      summary: List `delivery-instructions`
+      description: Get a paginated list of all `delivery-instructions`.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfDeliveryInstructions'
+        '204':
+          description: No Content
+
+    ListOfDeliveryInstructions:
+      type: object
+      required:
+        - deliveryInstructionCount
+        - deliveryInstructions
+        # links is not required
+      properties:
+        deliveryInstructionCount:
+          type: integer
+          minimum: 1 # If there is no 'delivery-instruction', papiNet uses the '204 No Content' HTTP status code with no response payload.
+        deliveryInstructions:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - deliveryInstructionNumber
+              - deliveryInstructionTimestamp
+              - deliveryInstructionStatus
+              - deliveryInstructionStatus2
+              # transport is not required
+              # carrierParty is not required
+              - shipFromLocation
+              - shipToLocation
+              - LineItemCount
