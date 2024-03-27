@@ -305,23 +305,39 @@ components:
                         - Pallet
                         - PulpUnit
                     packageIdentifiers:
-                      type: object
-                      required:
-                        - type
-                        - codeType
-                        - value
-                      properties:
-                        type:
-                          type: string
-                          enum:
-                            - Barcode
-                        codeType:
-                          type: string
-                          enum:
-                            - UIC14
-                        value:
-                          type: string
-                          minLength: 1
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - role
+                          - type
+                          - codeType
+                          - value
+                        properties:
+                          role:
+                            type: string
+                            enum:
+                              - Primary
+                              - Secondary
+                          type:
+                            type: string
+                            enum:
+                              - Barcode
+                              - RFTag
+                              - Number
+                              - QRCode
+                          codeType:
+                            type: string
+                            enum:
+                              - IFRA
+                              - NARI
+                              - Supplier
+                              - UIC14
+                              - UIC16
+                          value:
+                            type: string
+                            minLength: 1
                     quantities:
                     goodsReceiptAcceptance:
                       type: string
