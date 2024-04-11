@@ -115,9 +115,9 @@ If all goes well, the _logistic supplier_ will receive a response like this:
         "partyIdentifiers": [
           {
             "value": "string",
-            "assignedBy": "Supplier"
-"date": "string",
-"time": "string",
+            "assignedBy": "Supplier",
+            "date": "string",
+            "time": "string",
           }
         ]
       },
@@ -130,8 +130,9 @@ If all goes well, the _logistic supplier_ will receive a response like this:
           }
         ]
       },
-
+    }
   ],
+  
   "links": {
     "first": {
       "href": "string"
