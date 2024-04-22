@@ -52,8 +52,8 @@ If all goes well, the _logistic supplier_ will receive a response like this:
 
 **Scenario A:** Supplier Order
 
-1. An authenticated _logistics supplier_ gets the list of all active _supplier-orders_.
-2. An authenticated _logistics supplier_ gets the details of a specific _supplier-order_.
+1. An authenticated _logistics supplier_ requests the list of all active _supplier-orders_.
+2. An authenticated _logistics supplier_ requests the details of a specific _supplier-order_.
 
 ### Scenario A: 
 
@@ -79,7 +79,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 1 of Scenario A (Get the list Supplier Orders)
+#### Interaction 1 of Scenario A (Get the list of Supplier Orders)
 ```text
 curl --request GET \
   --URL 'http://localhost:3020/supplier-orders? active=true \ 
@@ -147,10 +147,10 @@ If all goes well, the _logistic supplier_ will receive a response like this:
   }
 }
 ```
-You can see that the supplier has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
+You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
 
 
-### Interaction 2 of Scenario A (Get a Supplier Order detail)
+### Interaction 2 of Scenario A (Get a Supplier Order details)
 
 The step 2 of the scenario A will simulate the situation in which the _logistics supplier_ requests to get the full order information. The _logistics supplier_ sends an API get request to the _supplier_ in order to get the details of the order 3fa85f64-5717-4562-b3fc-2c963f66afa6
 
