@@ -52,9 +52,14 @@ paths:
               - deliveryInstructionNumber
               - deliveryInstructionTimestamp
               - deliveryInstructionStatus
-              - deliveryInstructionStatus2
+              - deliveryInstructionSequences
+            properties:
+              transport:
+                type: object
+
+
               # transport is not required
               # carrierParty is not required
               - shipFromLocation
               - shipToLocation
-              - LineItemCount
+              - lineItemCount

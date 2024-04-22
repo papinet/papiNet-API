@@ -584,7 +584,6 @@ components:
         shipmentStatus:
           type : string
           enum:
-            - Planned
             - Loaded
             - Departed
             - Arrived

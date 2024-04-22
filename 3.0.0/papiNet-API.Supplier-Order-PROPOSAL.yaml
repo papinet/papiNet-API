@@ -412,10 +412,11 @@ components:
             type: object
             required:
               - id
-              - supplierOrderNumber
-              - supplierOrderTimestamp
-              - supplierOrderStatus
+              - number
+              - timestamp
+              - status
               - active
+              # sellerParty is not required
               # supplierParty is not required
               # customerParty is not required
               # buyerParty is not required
@@ -425,25 +426,57 @@ components:
               id:
                 type: string
                 format: uuid
-              supplierOrderNumber:
+              number:
                 type: string
                 minLength: 1
-              supplierOrderTimestamp:
+                description: |
+                  This is the identifier of the supplier order assigned by the supplier.
+              timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              supplierOrderStatus:
+              status:
                 type: string
                 enum:
-                  - Original
                   - Amended
                   - Cancelled
+                  - Original
               active:
                 type: boolean
+              sellerParty:
+                type: object
+                anyOf:
+                  - required:
+                      - id
+                  - required:
+                      - identifiers
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  identifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Customer
+                            - Supplier
               supplierParty:
                 type: object
-                required:
-                  # id is not required
-                  # partyIdentifiers is not required
+                anyOf:
+                  - required:
+                      - id
+                  - required:
+                      - identifiers
                 properties:
                   id:
                     type: string
@@ -463,13 +496,15 @@ components:
                         assignedBy:
                           type: string
                           enum:
-                            - Supplier
                             - Customer
+                            - Supplier
               customerParty:
                 type: object
-                required:
-                  # id is not required
-                  # partyIdentifiers is not required
+                anyOf:
+                  - required:
+                      - id
+                  - required:
+                      - identifiers
                 properties:
                   id:
                     type: string
@@ -489,13 +524,15 @@ components:
                         assignedBy:
                           type: string
                           enum:
-                            - Supplier
                             - Customer
+                            - Supplier
               buyerParty:
                 type: object
-                required:
-                  # id is not required
-                  # partyIdentifiers is not required
+                anyOf:
+                  - required:
+                      - id
+                  - required:
+                      - identifiers
                 properties:
                   id:
                     type: string
@@ -515,8 +552,8 @@ components:
                         assignedBy:
                           type: string
                           enum:
-                            - Supplier
                             - Customer
+                            - Supplier
               purchaseOrderNumber:
                 type: string
                 minLength: 1
@@ -532,43 +569,76 @@ components:
       type: object
       required:
         - id
-        - supplierOrderNumber
-        - supplierOrderTimestamp
-        - supplierOrderStatus
+        - number
+        - timestamp
+        - status
         - active
+        # sellerParty is not required
         # supplierParty is not required
         # customerParty is not required
         # buyerParty is not required
         # purchaseOrderNumber is not required
-        - supplierOrderLineItems
+        - lineItems
       properties:
         id:
           type: string
           format: uuid
-        supplierOrderNumber:
+        number:
           type: string
           minLength: 1
-        supplierOrderTimestamp:
+          description: |
+            This is the identifier of the supplier order assigned by the supplier.
+        timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        supplierOrderStatus:
+        status:
           type: string
           enum:
-            - Original
             - Amended
             - Cancelled
+            - Original
         active:
           type: boolean
+        sellerParty:
+          type: object
+          anyOf:
+            - required:
+                - id
+            - required:
+                - identifiers
+          properties:
+            id:
+              type: string
+              format: uuid
+            identifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  - value
+                  - assignedBy
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Customer
+                      - Supplier
         supplierParty:
           type: object
-          required:
-            # id is not required
-            # partyIdentifiers is not required
+          anyOf:
+            - required:
+                - id
+            - required:
+                - identifiers
           properties:
             id:
               type: string
               format: uuid
-            partyIdentifiers:
+            identifiers:
               type: array
               minItems: 1
               items:
@@ -583,13 +653,15 @@ components:
                   assignedBy:
                     type: string
                     enum:
-                      - Supplier
                       - Customer
+                      - Supplier
         customerParty:
           type: object
-          required:
-            # id is not required
-            # partyIdentifiers is not required
+          anyOf:
+            - required:
+                - id
+            - required:
+                - identifiers
           properties:
             id:
               type: string
@@ -609,13 +681,15 @@ components:
                   assignedBy:
                     type: string
                     enum:
-                      - Supplier
                       - Customer
+                      - Supplier
         buyerParty:
           type: object
-          required:
-            # id is not required
-            # partyIdentifiers is not required
+          anyOf:
+            - required:
+                - id
+            - required:
+                - identifiers
           properties:
             id:
               type: string
@@ -635,34 +709,36 @@ components:
                   assignedBy:
                     type: string
                     enum:
-                      - Supplier
                       - Customer
+                      - Supplier
         purchaseOrderNumber:
           type: string
           minLength: 1
-        supplierOrderLineItems:
+          description: |
+                  This is the identifier of the _purchase order_ as assigned by the _customer_.
+        lineItems:
           type: array
           minItems: 1
           items:
             type: object
             required:
-              - supplierOrderLineItemNumber
-              - supplierOrderLineItemStatus
+              - number
+              - status
               - sellerProduct
               # customerArticleReference is not required
-              # warehouseOperatorParty is not required
+              # millParty is not required
               # deliveryLegs is not mandatory
               - quantities
             properties:
-              supplierOrderLineItemNumber:
+              number:
                 type: string
                 minLength: 1
-              supplierOrderLineItemStatus:
+              status:
                 type: string
                 enum:
-                  - Original
                   - Amended
                   - Cancelled
+                  - Original
               sellerProduct:
                 type: object
                 allOf:
@@ -723,16 +799,18 @@ components:
                   name:
                     type: string
                     minLength: 1
-              warehouseOperatorParty:
+              millParty:
                 type: object
-                required:
-                  # id is not required
-                  # partyIdentifiers is not required
+                anyOf:
+                  - required:
+                      - id
+                  - required:
+                      - identifiers
                 properties:
                   id:
                     type: string
                     format: uuid
-                  partyIdentifiers:
+                  identifiers:
                     type: array
                     minItems: 1
                     items:
@@ -747,27 +825,37 @@ components:
                         assignedBy:
                           type: string
                           enum:
-                            - Supplier
                             - Customer
+                            - Supplier
               deliveryLegs:
                 type: array
                 minItems: 1
                 items:
                   type: object
                   required:
+                    - number
                     - shipFromLocation
+                    # shipFromParty is not required
                     - shipToLocation
-                    # loadingDateTime is not required
-                    # departureDateTime is not required
-                    # arrivalDateTime is not required
+                    # shipToParty is not required
+                    # carrierParty is not required
+                    # estimatedLoadingDateTime is not required
+                    # estimatedDepartureDateTime is not required
+                    # estimatedArrivalDateTime is not required
                     # transport is not required
                   properties:
+                    number:
+                      type: string
+                      minLength: 1
                     shipFromLocation:
                       type: object
                       required:
                         # type is not required
-                        # id is not required
-                        # locationIdentifiers is not required
+                        anyOf:
+                          - required:
+                              - id
+                          - required:
+                              - identifiers
                       properties:
                         type:
                           type: string
@@ -777,7 +865,7 @@ components:
                         id:
                           type: string
                           format: uuid
-                        locationIdentifiers:
+                        identifiers:
                           type: array
                           minItems: 1
                           items:
@@ -792,14 +880,45 @@ components:
                               assignedBy:
                                 type: string
                                 enum:
-                                  - Supplier
                                   - Customer
+                                  - Supplier
+                    shipFromParty:
+                      type: object
+                      anyOf:
+                        - required:
+                            - id
+                        - required:
+                            - identifiers
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        identifiers:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - value
+                              - assignedBy
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Customer
+                                  - Supplier
                     shipToLocation:
                       type: object
                       required:
                         # type is not required
-                        # id is not required
-                        # locationIdentifiers is not required
+                        anyOf:
+                          - required:
+                              - id
+                          - required:
+                              - identifiers
                       properties:
                         type:
                           type: string
@@ -809,7 +928,7 @@ components:
                         id:
                           type: string
                           format: uuid
-                        locationIdentifiers:
+                        identifiers:
                           type: array
                           minItems: 1
                           items:
@@ -824,40 +943,68 @@ components:
                               assignedBy:
                                 type: string
                                 enum:
-                                  - Supplier
                                   - Customer
-                    loadingDateTime:
+                                  - Supplier
+                    shipToParty:
+                      type: object
+                      anyOf:
+                        - required:
+                            - id
+                        - required:
+                            - identifiers
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        identifiers:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - value
+                              - assignedBy
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Customer
+                                  - Supplier
+                    estimatedLoadingDateTime:
                       type: string
+                      minLength: 4
                       description: |
                         It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
                         - 2023-08-16T13:00/2023-08-18T13:00
                         - 2023-08-16/2023-08-18
                         - 2023-08-16T13:00/P2D
                         - P2D/2023-08-18T13:00
-                      minLength: 4
-                    departureDateTime:
+                    estimatedDepartureDateTime:
                       type: string
+                      minLength: 4
                       description: |
                         It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
                         - 2023-08-16T13:00/2023-08-18T13:00
                         - 2023-08-16/2023-08-18
                         - 2023-08-16T13:00/P2D
                         - P2D/2023-08-18T13:00
-                      minLength: 4
-                    arrivalDateTime:
+                    estimatedArrivalDateTime:
                       type: string
+                      minLength: 4
                       description: |
                         It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
                         - 2023-08-16T13:00/2023-08-18T13:00
                         - 2023-08-16/2023-08-18
                         - 2023-08-16T13:00/P2D
                         - P2D/2023-08-18T13:00
-                      minLength: 4
                     transport:
                       type: object
                       required:
                         - modeType
-                        # unitType is not required
+                        # units is not required
                       properties:
                         modeType:
                           type: string
@@ -868,34 +1015,177 @@ components:
                             - Rail
                             - Road
                             - Sea
-                        unitType:
-                          type: string
-                          enum:
-                            - Barge
-                            - Cassette
-                            - Container
-                            - DrawBarCombination
-                            - RailCar
-                            - RigidLorry
-                            - Trailer
-                            - VesselUnit
+                        units:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - level
+                              - type
+                              - code
+                              - identifiers
+                              - measurements
+                              - unitReferences
+                            properties:
+                              level:
+                                type: integer
+                                minimum: 1
+                              type:
+                                type: string
+                                enum:
+                                  - Barge
+                                  - Cassette
+                                  - Container
+                                  - DrawBarCombination
+                                  - RailCar
+                                  - RigidLorry
+                                  - Trailer
+                                  - VesselUnit
+                              code:
+                                type: object
+                                required:
+                                  - value
+                                  - assignedBy
+                                properties:
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Customer
+                                      - Supplier
+                              identifiers:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - type
+                                    - value
+                                    - assignedBy
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - ContainerID
+                                    value:
+                                      type: string
+                                      minLength: 1
+                                    assignedBy:
+                                      type: string
+                                      enum:
+                                        - Customer
+                                        - Supplier
+                              measurements:
+                                type: object
+                                required:
+                                  # length is not required
+                                  # width is not required
+                                  # height is not required
+                                  # weight is not required
+                                properties:
+                                  length:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        minimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  width:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        minimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  height:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        minimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  weight:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        minimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Gram
+                                          - HundredPounds
+                                          - Kilogram
+                                          - MetricTon
+                                          - Pound
+                                          - ShortTon
+                              unitReferences:
+                                type: array
+                                minItems: 1
+                                items:
+                                
               quantities:
                 type: array
                 minItems: 1
                 items:
                   type: object
                   required:
-                    - quantityContext
-                    - quantityType
-                    - quantityValue
-                    - quantityUom
+                    - context
+                    - type
+                    - value
+                    - unitOfMeasure
                   properties:
-                    quantityContext:
+                    context:
                       type: string
                       enum:
-                        - Ordered
                         - Confirmed
-                    quantityType:
+                        - Ordered
+                    type:
                       type: string
                       enum:
                         - Area
@@ -906,10 +1196,10 @@ components:
                         - NetWeight
                         - NominalWeight
                         - TareWeight
-                    quantityValue:
+                    value:
                       type: number
                       minimum: 0
-                    quantityUom:
+                    unitOfMeasure:
                       type: string
                       enum:
                         - Bale

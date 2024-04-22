@@ -16,7 +16,7 @@ paths:
 
   ## GOODS RECEIPT (1)
 
-  '/goods-receipt':
+  '/goods-receipts':
     # POST /goods-receipts
     # CreateGoodsReceipt => GoodsReceiptWithId
     post:
@@ -287,7 +287,7 @@ components:
               GoodsReceiptPackageCount:
                 type: integer
                 exclusiveminimum: 0
-              goodReceiptPackages:
+              goodsReceiptPackages:
                 type: array
                 minItems: 1
                 items:
