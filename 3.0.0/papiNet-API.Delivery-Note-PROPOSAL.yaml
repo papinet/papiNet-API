@@ -837,6 +837,8 @@ components:
                     packageType:
                       type: string
                       enum:
+                        - Bale
+                        - Box
                         - ReelPackage
                         - Pallet
                         - PulpUnit
