@@ -726,20 +726,20 @@ components:
               - deliveryNotePackages
             properties:
               deliveryNoteLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               supplierOrderNumber:
                 type: string
                 minLength: 1
               supplierOrderLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               purchaseOrderNumber:
                 type: string
                 minLength: 1
               purchaseOrderLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               sellerProduct:
                 type: object
                 allOf:

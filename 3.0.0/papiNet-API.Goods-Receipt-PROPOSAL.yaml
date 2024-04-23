@@ -174,8 +174,8 @@ components:
                   - GoodsReceivedWithVarianceAndDamage
               deliveryNoteLineItemNumber:
                 type: integer
-                description: deliveryNoteLineItemNumber is required if a DeliveryNote is received for the goods
                 minimum: 0
+                description: deliveryNoteLineItemNumber is required if a Delivery Note is received for the goods
               supplierOrderNumber:
                 type: string
                 minLength: 1

@@ -1117,8 +1117,8 @@ components:
               - quantities
             properties:
               purchaseOrderLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               purchaseOrderLineItemStatus:
                 type: string
                 enum:
@@ -1272,8 +1272,8 @@ components:
               - quantities
             properties:
               purchaseOrderLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               purchaseOrderLineItemStatus:
                 type: string
                 enum:
@@ -1294,8 +1294,8 @@ components:
                   - Rejected
                   - Cancelled
               salesOrderLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               salesOrderLineItemStatus:
                 type: string
                 enum:
@@ -1442,8 +1442,8 @@ components:
               # quantities is not required
             properties:
               purchaseOrderLineItemNumber:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               purchaseOrderLineItemStatus:
                 type: string
                 enum:
