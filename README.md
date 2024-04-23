@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD041 -->
 
-![papiNet Logo](./papinet-logo.jpg)
+![papiNet Logo](./papinet-logo.png)
 
 # papiNet API
 
