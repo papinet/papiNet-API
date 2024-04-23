@@ -415,12 +415,12 @@ components:
               - deliveryNoteNumber
               - deliveryNoteTimestamp
               - deliveryNoteStatus
-              - shipmentStatus
+              # shipmentStatus is not required
               # transport is not required
               # carrierParty is not required
               - shipFromLocation
               - shipToLocation
-              - LineItemCount
+              - lineItemCount
             properties:
               id:
                 type: string
@@ -443,6 +443,7 @@ components:
                   - Arrived
                   - Cancelled
                   - Departed
+                  - Loaded
                   - Planned
                   - Unloaded
               transport:
@@ -546,7 +547,7 @@ components:
                           type: string
                           enum:
                             - Supplier
-              LineItemCount:
+              lineItemCount:
                 type: integer
                 minimum: 1
         links:
@@ -584,9 +585,12 @@ components:
         shipmentStatus:
           type : string
           enum:
-            - Loaded
-            - Departed
             - Arrived
+            - Cancelled
+            - Departed
+            - Loaded
+            - Planned
+            - Unloaded
         transport:
           type: object
           required:
