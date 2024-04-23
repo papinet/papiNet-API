@@ -2,7 +2,7 @@
 
 * Al Ivan [@robertalivan](https://github.com/robertalivan)
 * Bengt Wentus [@bengtwentus](https://github.com/bengtwentus)
-* Björn Jonsson Dannetun [@bjdannetun](https://github.com/bjdannetun)
+* Niklas Danell (waiting for GitHub account...)
 * Jens Nordenberg [@MrNordenberg](https://github.com/MrNordenberg)
 * Lars Olofsson [@larsolofsson](https://github.com/larsolofsson)
 * Matthew Oberpriller [@maoberpriller](https://github.com/maoberpriller)
@@ -16,6 +16,8 @@
 ## Non-Voting Maintainer
 
 * Patrice Krakow [@patricekrakow](https://github.com/patricekrakow)
+* Bo-Göran Skansen [@4boge](https://github.com/4boge)
+* Petter Thyberg [@PetterThy](https://github.com/PetterThy)
 
 ## Non-Active Maintainer
 
