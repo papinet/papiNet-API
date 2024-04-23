@@ -578,6 +578,7 @@ components:
         # customerParty is not required
         # buyerParty is not required
         # purchaseOrderNumber is not required
+        # purchaseOrderLineItemNumber is not required
         - lineItems
       properties:
         id:
@@ -714,8 +715,11 @@ components:
         purchaseOrderNumber:
           type: string
           minLength: 1
-          description: |
-                  This is the identifier of the _purchase order_ as assigned by the _customer_.
+          description: |-
+            This is the identifier of the _purchase order_ as assigned by the _customer_.
+        purchaseOrderLineItemNumber:
+          type: integer
+          minimum: 0
         lineItems:
           type: array
           minItems: 1
