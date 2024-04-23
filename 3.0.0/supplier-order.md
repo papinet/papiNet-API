@@ -238,15 +238,15 @@ If all goes well, the logistics supplier will receive a response like this:
           "basisWeight": {
             "sizeType": "24x36",
             "value": 0,
-            "uom": "GramsPerSquareMeter"
+            "unitOfMeasure": "GramsPerSquareMeter"
           },
           "bulk": {
             "value": 0,
-            "uom": "CubicCentimeterPerGram"
+            "unitOfMeasure": "CubicCentimeterPerGram"
           },
           "caliper": {
             "value": 0,
-            "uom": "Micron"
+            "unitOfMeasure": "Micron"
           },
           "colourShade": {
             "value": "string",
@@ -255,28 +255,28 @@ If all goes well, the logistics supplier will receive a response like this:
           "colourDescription": "string",
           "recycledContent": {
             "value": 100,
-            "uom": "Percentage"
+            "unitOfMeasure": "Percentage"
           },
           "format": "Reel",
           "width": {
             "value": 0,
-            "uom": "Centimeter"
+            "unitOfMeasure": "Centimeter"
           },
           "length": {
             "value": 0,
-            "uom": "Centimeter"
+            "unitOfMeasure": "Centimeter"
           },
           "windingDirection": "WireSideIn",
           "reelMakeToConstraint": "Length",
           "reelDiameter": {
             "value": 0,
-            "uom": "Centimeter"
+            "unitOfMeasure": "Centimeter"
           },
           "coreEndType": "Adaptor",
           "coreMaterialType": "Aluminium",
           "coreDiameterInside": {
             "value": 0,
-            "uom": "Centimeter"
+            "unitOfMeasure": "Centimeter"
           },
           "coreStrengthCode": {
             "value": "string",
@@ -338,10 +338,10 @@ If all goes well, the logistics supplier will receive a response like this:
       ],
       "quantities": [
         {
-          "quantityContext": "Ordered",
-          "quantityType": "Area",
-          "quantityValue": 0,
-          "quantityUom": "Bale"
+          "context": "Ordered",
+          "type": "Area",
+          "value": 0,
+          "unitOfMeasure": "Bale"
         }
       ]
     }

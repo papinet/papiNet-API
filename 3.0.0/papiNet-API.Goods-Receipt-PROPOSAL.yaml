@@ -42,13 +42,349 @@ paths:
 components:
   schemas:
 
+    # Re-usable schema(s):
+
+    PaginationLinks:
+      type: object
+      # none of the properties are required.
+      properties:
+        first:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        prev:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        next:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        last:
+          type: object
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+
+    # 'Big' structure schema(s):
+
+    Paper:
+      type: object
+      properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        coatingBottom:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        finishType:
+          type: string
+          enum:
+            - Dull
+            - English
+            - Gloss
+            - Laid
+            - Linen
+            - Machine
+            - Matte
+            - Satin
+            - SCA
+            - SCB
+            - SCC
+            - Silk
+            - Smooth
+            - SoftGloss
+            - Vellum
+            - Velvet
+        printType:
+          type: string
+          enum:
+            - ColdsetOffset
+            - ContinuousForms
+            - Digital
+            - Flexography
+            - FoilPrint
+            - Forms
+            - Gravure
+            - HeatsetOffset
+            - InkJet
+            - InstantOffset
+            - Laser
+            - Letterpress
+            - LightPrint
+            - MiniWeb
+            - RotoFlexography
+            - RotoGravure
+            - RotoLetterpress
+            - RotoSilkScreen
+            - SheetfedOffset
+            - SilkScreen
+            - WebOffset
+        basisWeight: # This is the result of a nice compromise between EU and US usage.
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            sizeType:
+              type: string
+              enum:
+                - 24x36
+                - 25x38
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - GramsPerSquareMeter
+                - Pound
+        bulk:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - CubicCentimeterPerGram
+        caliper:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - Micron
+                - Millimeter
+        colourShade:
+          type: object
+          required:
+            - value
+            - assignedBy
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        colourDescription:
+          type: string
+          minLength: 1
+        recycledContent:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              minimum: 0
+              maximum: 100
+            unitOfMeasure:
+              type: string
+              enum:
+                - Percentage
+        format:
+          type: string
+          enum:
+            - Reel
+            - Sheet
+        # Properties that are common to reel or sheet format:
+        width:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        length:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - Centimeter
+                - Foot
+                - Inch
+                - Meter
+                - Millimeter
+                - Yard
+        # Properties that are specific to reel format:
+        windingDirection:
+          type: string
+          enum:
+            - WireSideIn
+            - WireSideOut
+        reelMakeToConstraint:
+          type: string
+          enum:
+            - Length
+            - Diameter
+        reelDiameter:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreEndType:
+          type: string
+          enum:
+            - Adaptor
+            - Bevelled
+            - Bridge
+            - Notched
+            - NotchedFullMetal
+            - Plain
+            - PlainFullMetal
+            - Tapered
+        coreMaterialType:
+          type: string
+          enum:
+            - Aluminium
+            - Composite
+            - Fibre
+            - Iron
+            - Paper
+            - Plastic
+            - Steel
+        coreDiameterInside:
+          type: object
+          required:
+            - value
+            - unitOfMeasure
+          properties:
+            value:
+              type: number
+              exclusiveMinimum: 0
+            unitOfMeasure:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreStrengthCode:
+          type: object
+          required:
+            - value
+            - assignedBy
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Buyer
+                - Customer
+                - EndUser
+                - Seller
+                - Supplier
+        # Properties that are specific to sheet format:
+        grainDirection:
+          type: string
+          enum:
+            - Long
+            - Short
+
+    Pulp:
+      type: object # This is just a placeholder for now.
+
+    # API endpoint schemas:
+
     CreateGoodsReceipt:
       type: object
       required:
-        - goodsReceiptNumber
-        - goodsReceiptTimestamp
-        - goodsReceiptStatus
-        - goodsReceiptAcceptance
+        - number
+        - timestamp
+        - status
+        - acceptance
         # deliveryNoteNumber is not required
         # deliveryNoteTimeStamp is not required
         # deliveryNoteStatus is not required
@@ -56,37 +392,37 @@ components:
         # unloadingDateTime is not required
         - shipToLocation
         # transportationComment is not required (do we really want human-readable comment into a machine-to-machine communication protocol? -> goodsReceiptAcceptanceReason (?))
-        # goodsReceiptLineItems is not required
+        # lineItems is not required
       properties:
-        goodsReceiptNumber:
+        number:
           type: string
           minLength: 1
-        goodsReceiptTimestamp:
+        timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        goodsReceiptStatus:
+        status:
           type: string
           enum:
             - Original
-        goodsReceiptAcceptance:
+        acceptance:
           type: string
           enum:
-            - GoodsReceivedAsIs
-            - GoodsReceivedAsSpecified 
-            - GoodsReceivedCancelled
-            - GoodsReceivedRejected
-            - GoodsReceivedWithDamage
-            - GoodsReceivedWithoutDeliveryNote
-            - GoodsReceivedWithVariance
-            - GoodsReceivedWithVarianceAndDamage
+            - AsIs
+            - AsSpecified 
+            - Cancelled
+            - Rejected
+            - WithDamage
+            - WithoutDeliveryNote
+            - WithVariance
+            - WithVarianceAndDamage
         deliveryNoteNumber:
           type: string
-          description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
           minLength: 1
+          description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
         deliveryNoteTimestamp:
           type: string
-          description: deliveryNoteTimeStamp is required if a DeliveryNote is received for the goods
           format: date-time # UTC MUST be used!
+          description: deliveryNoteTimeStamp is required if a DeliveryNote is received for the goods
         deliveryNoteStatus:
           type: string
           enum:
@@ -94,36 +430,36 @@ components:
             - Replaced
         arrivalDateTime:
           type: string
-          description: |
+          minLength: 4
+          description: |-
             It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
             - 2023-08-16T13:00
             - 2023-08-16T13:00/2023-08-18T13:00
             - 2023-08-16/2023-08-18
             - 2023-08-16T13:00/P2D
             - P2D/2023-08-18T13:00
-          minLength: 4
         unloadingDateTime:
           type: string
-          description: |
+          minLength: 4
+          description: |-
             It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
             - 2023-08-16T13:00
             - 2023-08-16T13:00/2023-08-18T13:00
             - 2023-08-16/2023-08-18
             - 2023-08-16T13:00/P2D
             - P2D/2023-08-18T13:00
-          minLength: 4
         shipToLocation:
           type: object
           anyOf:
             - required:
                 - id
             - required:
-                - locationIdentifiers
+                - identifiers
           properties:
             id:
               type: string
               format: uuid
-            locationIdentifiers:
+            identifiers:
               type: array
               minItems: 1
               items:
@@ -143,35 +479,35 @@ components:
         transportationComment:
           type: string
           minLength: 1
-        goodsReceiptLineItems:
+        lineItems:
           type: array
           minItems: 1
           items:
             type: object
             required:
-              - goodsReceiptLineItemNumber
-              # goodsReceiptAcceptance is not required
+              - number
+              # acceptance is not required
               # deliveryNoteLineItemNumber is not required
               # supplierOrderNumber is not required
               # supplierOrderLineItemNumber is not required
               # sellerProduct is not required
               - quantities
-              # goodsReceiptPackageCount is not required (deffered to decision)
-              # goodReceiptPackages (instead of goodsReceiptPackages) is not required
+              # packageCount is not required (deffered to decision)
+              # packages (instead of goodsReceiptPackages) is not required
             properties:
-              goodsReceiptLineItemNumber:
+              number:
                 type: integer
                 minimum: 0
-              goodsReceiptAcceptance:
+              acceptance:
                 type: string
                 enum:
-                  - GoodsReceivedAsIs
-                  - GoodsReceivedAsSpecified 
-                  - GoodsReceivedCancelled
-                  - GoodsReceivedRejected
-                  - GoodsReceivedWithDamage
-                  - GoodsReceivedWithVariance
-                  - GoodsReceivedWithVarianceAndDamage
+                  - AsIs
+                  - AsSpecified 
+                  - Cancelled
+                  - Rejected
+                  - WithDamage
+                  - WithVariance
+                  - WithVarianceAndDamage
               deliveryNoteLineItemNumber:
                 type: integer
                 minimum: 0
@@ -224,12 +560,12 @@ components:
                 items:
                   type: object
                   required:
-                    - quantityContext
-                    - quantityType
-                    - quantityValue
-                    - quantityUOM
+                    - context
+                    - type
+                    - value
+                    - unitOfMeasure
                   properties:
-                    quantityContext:
+                    context:
                       type: string
                       enum:
                         - Confirmed
@@ -237,7 +573,7 @@ components:
                         - Ordered
                         - Produced
                         - Shipped
-                    quantityType:
+                    type:
                       type: string
                       enum:
                         - Area
@@ -248,9 +584,9 @@ components:
                         - NetWeight
                         - NominalWeight
                         - TareWeight
-                    quantityValue:
+                    value:
                       type: number
-                    quantityUom:
+                    unitOfMeasure:
                       type: string
                       enum:
                         - Bale
@@ -285,27 +621,27 @@ components:
                         - ThousandSquareFeet
                         - ThousandSquareInches
                         - Yard
-              GoodsReceiptPackageCount:
+              packageCount:
                 type: integer
                 exclusiveminimum: 0
-              goodsReceiptPackages:
+              packages:
                 type: array
                 minItems: 1
                 items:
                   type: object
                   required:
-                    - packageType
-                    - packageIdentifiers
+                    - type
+                    - identifiers
                     - quantities
-                    - goodsReceiptAcceptance
+                    - acceptance
                   properties:
-                    packageType:
+                    type:
                       type: string
                       enum:
                         - ReelPackage
                         - Pallet
                         - PulpUnit
-                    packageIdentifiers:
+                    identifiers:
                       type: array
                       minItems: 1
                       items:
@@ -340,22 +676,88 @@ components:
                             type: string
                             minLength: 1
                     quantities:
-                    goodsReceiptAcceptance:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - context
+                          - type
+                          - value
+                          - unitOfMeasure
+                        properties:
+                          context:
+                            type: string
+                            enum:
+                              - Confirmed
+                              - Invoiced
+                              - Ordered
+                              - Produced
+                              - Shipped
+                          type:
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                          unitOfMeasure:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - Package
+                              - PalletUnit
+                              - Piece
+                              - Pound
+                              - PulpUnit
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - Skid
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+                    acceptance:
                       type: string
                       enum:
-                        - GoodsReceivedAsIs
-                        - GoodsReceivedAsSpecified 
-                        - GoodsReceivedCancelled
-                        - GoodsReceivedRejected
-                        - GoodsReceivedWithDamage
-                        - GoodsReceivedWithVariance
-                        - GoodsReceivedWithVarianceAndDamage
+                        - AsIs
+                        - AsSpecified 
+                        - Cancelled
+                        - Rejected
+                        - WithDamage
+                        - WithVariance
+                        - WithVarianceAndDamage
 
     GoodsReceiptWithId:
-      AllOf:
+      allOf:
         - type: object
-          required:
-             # id is not required
+          required: []
+              # id is not required
           properties:
             id:
               type: string

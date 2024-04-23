@@ -27,6 +27,16 @@ It's the `"propertyName": "propertyValue"` part, that papiNet calls a _property_
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
+### Rule 0 - Naming convention for properties
+
+If the context is clearly given by the parent, DO NOT repeat the context in the property name; If the context is NOT adequately given by the parent, then DO give the context in the property name up to what is necessary.
+
+Let's give an example of each case:
+
+* within `supplierOrders[]`, `supplierOrderNumber` should become `number` because its parent `supplierOrders[]` is giving the context.
+
+* within `supplierOrders[]`, `purchaseOrderNumber` should NOT become `number` because its parent `supplierOrders[]` is NOT giving the right context, it is not the `number` (identifier) of the `supplierOrders[]`, but of the `number` (identifier) of `purchaseOrders[]`.
+
 ### Rule 1
 
 papiNet restrict enumerated values to the minimum list that applies within the context. As a consequence, objects will be usually be defined **locally**! However, if a structure can be reuse whatever the context is, it could be defined globally.

@@ -189,7 +189,7 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             sizeType:
               type: string
@@ -199,7 +199,7 @@ components:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - GramsPerSquareMeter
@@ -208,12 +208,12 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - CubicCentimeterPerGram
@@ -221,12 +221,12 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - Micron
@@ -255,13 +255,13 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               minimum: 0
               maximum: 100
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - Percentage
@@ -275,12 +275,12 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - Centimeter
@@ -290,12 +290,12 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - Centimeter
@@ -319,12 +319,12 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - Centimeter
@@ -355,12 +355,12 @@ components:
           type: object
           required:
             - value
-            - uom
+            - unitOfMeasure
           properties:
             value:
               type: number
               exclusiveMinimum: 0
-            uom:
+            unitOfMeasure:
               type: string
               enum:
                 - Centimeter
@@ -1272,18 +1272,18 @@ components:
                       items:
                         type: object
                         required:
-                          - quantityContext
-                          - quantityType
-                          - quantityValue
-                          - quantityUom
+                          - context
+                          - type
+                          - value
+                          - unitOfMeasure
                         properties:
-                          quantityContext:
+                          context:
                             type: string
                             enum:
                               - Loaded
                               - Planned
                               - Shipped
-                          quantityType:
+                          type:
                             type: string
                             enum:
                               - Area
@@ -1294,10 +1294,10 @@ components:
                               - NetWeight
                               - NominalWeight
                               - TareWeight
-                          quantityValue:
+                          value:
                             type: number
                             minimum: 0
-                          quantityUom:
+                          unitOfMeasure:
                             type: string
                             enum:
                               - Bale
@@ -1390,18 +1390,18 @@ components:
                             items:
                               type: object
                               required:
-                                - quantityContext
-                                - quantityType
-                                - quantityValue
-                                - quantityUom
+                                - context
+                                - type
+                                - value
+                                - unitOfMeasure
                               properties:
-                                quantityContext:
+                                context:
                                   type: string
                                   enum:
                                     - Loaded  # when shipmentStatus = Loaded
                                     - Planned # when shipmentStatus = Planned
                                     - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
-                                quantityType:
+                                type:
                                   type: string
                                   enum:
                                     - Area
@@ -1412,10 +1412,10 @@ components:
                                     - NetWeight
                                     - NominalWeight
                                     - TareWeight
-                                quantityValue:
+                                value:
                                   type: number
                                   minimum: 0
-                                quantityUom:
+                                unitOfMeasure:
                                   type: string
                                   enum:
                                     - Bale

@@ -4,7 +4,7 @@ product.gradeCode: The product identifier for a not-fully-defined product.
 
 product.articleNumber: The product identifier for a fully-defined product.
 
-quantityContext:
+quantities[].context:
 
 * _**Confirmed**_: The quantity is confirmed.
 * _**InTransit**: The quantity is transported to a stock location and has not yet arrived.
@@ -16,7 +16,7 @@ quantityContext:
 * _**Reserved**_: The quantity is reserved for one or multiple customers, but might be freed up later in the future.
 * _**Shipped**_: The quantity is shipped, it has departed the _Supplier_'s location.
 
-quantityType:
+quantities[].type:
 
 * _**Area**_: The area that is the length multiplied by the width of the item.
 * _**Count**_: The number of items.
@@ -27,7 +27,7 @@ quantityType:
 * _**NominalWeight**_: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
 * _**TareWeight**_: The weight of the packaging and the furnishing materials.
 
-quantityUOM:
+quantities[].unitOfMeasure:
 
 * _**Bale**_: The value is expressed in number of bales.
 * _**Box**_: The value is expressed in number of boxes.
