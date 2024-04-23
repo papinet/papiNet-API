@@ -476,7 +476,7 @@ components:
                   - required:
                       - id
                   - required:
-                      - identifiers
+                      - partyIdentifiers
                 properties:
                   id:
                     type: string
@@ -504,7 +504,7 @@ components:
                   - required:
                       - id
                   - required:
-                      - identifiers
+                      - partyIdentifiers
                 properties:
                   id:
                     type: string
@@ -532,7 +532,7 @@ components:
                   - required:
                       - id
                   - required:
-                      - identifiers
+                      - partyIdentifiers
                 properties:
                   id:
                     type: string
@@ -662,7 +662,7 @@ components:
             - required:
                 - id
             - required:
-                - identifiers
+                - partyIdentifiers
           properties:
             id:
               type: string
@@ -690,7 +690,7 @@ components:
             - required:
                 - id
             - required:
-                - identifiers
+                - partyIdentifiers
           properties:
             id:
               type: string

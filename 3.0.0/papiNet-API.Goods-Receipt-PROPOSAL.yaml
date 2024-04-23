@@ -118,7 +118,7 @@ components:
             - required:
                 - id
             - required:
-                - partyIdentifiers
+                - locationIdentifiers
           properties:
             id:
               type: string
@@ -138,6 +138,7 @@ components:
                   assignedBy:
                     type: string
                     enum:
+                      - Customer
                       - Supplier
         transportationComment:
           type: string

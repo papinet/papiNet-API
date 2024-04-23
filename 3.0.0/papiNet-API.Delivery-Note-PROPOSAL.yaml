@@ -474,9 +474,11 @@ components:
                       - VesselUnit
               carrierParty:
                 type: object
-                required:
-                  # id is not required
-                  # partyIdentifiers is not required
+                anyOf:
+                - required:
+                    - id
+                - required:
+                    - partyIdentifiers
                 properties:
                   id:
                     type: string
@@ -496,12 +498,15 @@ components:
                         assignedBy:
                           type: string
                           enum:
+                            - Customer
                             - Supplier
               shipFromLocation:
                 type: object
-                required:
-                  # id is not required
-                  # locationIdentifiers is not required
+                anyOf:
+                - required:
+                    - id
+                - required:
+                    - locationIdentifiers
                 properties:
                   id:
                     type: string
@@ -521,12 +526,15 @@ components:
                         assignedBy:
                           type: string
                           enum:
+                            - Customer
                             - Supplier
               shipToLocation:
                 type: object
-                required:
-                  # id is not required
-                  # locationIdentifiers is not required
+                anyOf:
+                - required:
+                    - id
+                - required:
+                    - locationIdentifiers
                 properties:
                   id:
                     type: string
@@ -546,6 +554,7 @@ components:
                         assignedBy:
                           type: string
                           enum:
+                            - Customer
                             - Supplier
               lineItemCount:
                 type: integer
@@ -619,9 +628,11 @@ components:
                 - VesselUnit
         carrierParty:
           type: object
-          required:
-            # id is not required
-            # partyIdentifiers is not required
+          anyOf:
+          - required:
+              - id
+          - required:
+              - partyIdentifiers
           properties:
             id:
               type: string
@@ -641,12 +652,15 @@ components:
                   assignedBy:
                     type: string
                     enum:
+                      - Customer
                       - Supplier
         shipFromLocation:
           type: object
-          required:
-            # id is not required
-            # locationIdentifiers is not required
+          anyOf:
+            - required:
+                - id
+            - required:
+                - locationIdentifiers
           properties:
             id:
               type: string
@@ -666,12 +680,15 @@ components:
                   assignedBy:
                     type: string
                     enum:
+                      - Customer
                       - Supplier
         shipToLocation:
           type: object
-          required:
-            # id is not required
-            # locationIdentifiers is not required
+          anyOf:
+            - required:
+                - id
+            - required:
+                - locationIdentifiers
           properties:
             id:
               type: string
@@ -691,6 +708,7 @@ components:
                   assignedBy:
                     type: string
                     enum:
+                      - Customer
                       - Supplier
         deliveryNoteLineItems:
           type: array
