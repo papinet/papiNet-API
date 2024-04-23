@@ -699,7 +699,6 @@ components:
             type: object
             required:
               - deliveryNoteLineItemNumber
-              - deliveryNoteLineItemStatus
               - supplierOrderNumber
               - supplierOrderLineItemNumber
               - purchaseOrderNumber
@@ -711,12 +710,6 @@ components:
               deliveryNoteLineItemNumber:
                 type: string
                 minLength: 1
-              deliveryNoteLineItemStatus:
-                type: string
-                enum:
-                  - Original
-                  - Amended
-                  - Cancelled
               supplierOrderNumber:
                 type: string
                 minLength: 1
