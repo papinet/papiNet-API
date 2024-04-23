@@ -772,8 +772,9 @@ components:
                     quantityContext:
                       type: string
                       enum:
-                        - Ordered
-                        - Confirmed
+                        - Loaded  # when shipmentStatus = Loaded
+                        - Planned # when shipmentStatus = Planned
+                        - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
                     quantityType:
                       type: string
                       enum:
@@ -887,8 +888,9 @@ components:
                           quantityContext:
                             type: string
                             enum:
-                              - Ordered
-                              - Confirmed
+                              - Loaded  # when shipmentStatus = Loaded
+                              - Planned # when shipmentStatus = Planned
+                              - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
                           quantityType:
                             type: string
                             enum:
