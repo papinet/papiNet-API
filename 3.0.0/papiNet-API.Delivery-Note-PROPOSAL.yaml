@@ -701,8 +701,8 @@ components:
               - deliveryNoteLineItemNumber
               - supplierOrderNumber
               - supplierOrderLineItemNumber
-              - purchaseOrderNumber
-              - purchaseOrderLineItemNumber
+              # purchaseOrderNumber is not required
+              # purchaseOrderLineItemNumber is not required
               # sellerProduct is not required
               - quantities
               - deliveryNotePackages
