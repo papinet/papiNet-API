@@ -1,3 +1,5 @@
+<!-- papiNet materials are covered by the following copyright statements Copyright 2021-2024 papiNet G.I.E (papiNet). All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. -->
+
 # Supplier Order Use case
 
 ## Context
