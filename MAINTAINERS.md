@@ -2,9 +2,9 @@
 
 * Al Ivan [@robertalivan](https://github.com/robertalivan)
 * Bengt Wentus [@bengtwentus](https://github.com/bengtwentus)
-* Niklas Danell (waiting for GitHub account...)
 * Jens Nordenberg [@MrNordenberg](https://github.com/MrNordenberg)
 * Lars Olofsson [@larsolofsson](https://github.com/larsolofsson)
+* Niklas Danell [@NiklasDanellHP](https://github.com/NiklasDanellHP)
 * Matthew Oberpriller [@maoberpriller](https://github.com/maoberpriller)
 * Per Hammarström [@t02phf](https://github.com/t02phf)
 * Tom Meniga [@tommeniga](https://github.com/tommeniga)
