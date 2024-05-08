@@ -568,8 +568,8 @@ components:
                     - shipToLocation
                     # shipToParty is not required
                     # termsOfDelivery is not required
-                    # carrierParty is not required
-                    # carrierReferenceNumber is not required
+                    # mainCarrierParty is not required
+                    # mainCarrierReferenceNumber is not required
                     # requestedLoadingDateTime is not required
                     # requestedDepartureDateTime is not required
                     # requestedArrivalDateTime is not required
