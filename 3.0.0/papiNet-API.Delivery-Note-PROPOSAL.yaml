@@ -773,9 +773,10 @@ components:
         status:
           type: string
           enum:
+            - Amended
+            - Cancelled
             - Original
             - Replaced
-            - Cancelled
         shipmentStatus:
           type : string
           enum:
