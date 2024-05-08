@@ -734,8 +734,8 @@ components:
               - quantities
             properties:
               number:
-                type: string
-                minLength: 1
+                type: integer
+                minimum: 0
               status:
                 type: string
                 enum:
@@ -855,8 +855,8 @@ components:
                     # transport is not required
                   properties:
                     number:
-                      type: string
-                      minLength: 1
+                      type: integer
+                      minimum: 0
                     shipFromLocation:
                       type: object
                       anyOf:
