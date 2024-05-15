@@ -387,12 +387,13 @@ components:
         - timestamp
         - status
         - acceptance
+        - isComplete
         # deliveryNoteNumber is not required
         # deliveryNoteTimeStamp is not required
         # deliveryNoteStatus is not required
         # arrivalDateTime is not required (maybe only `unloadingDateTime` is important)
         # unloadingDateTime is not required
-        - shipToLocation
+        # shipToLocation is not required
         # transportationComment is not required (do we really want human-readable comment into a machine-to-machine communication protocol? -> goodsReceiptAcceptanceReason (?))
         # lineItems is not required
       properties:
@@ -406,17 +407,20 @@ components:
           type: string
           enum:
             - Original
+            - Replaced
         acceptance:
           type: string
           enum:
-            - AsIs
-            - AsSpecified 
+            - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
+            - AsSpecified
             - Cancelled
             - Rejected
             - WithDamage
             - WithoutDeliveryNote
             - WithVariance
             - WithVarianceAndDamage
+        isComplete:
+          type: boolean
         deliveryNoteNumber:
           type: string
           minLength: 1
@@ -478,9 +482,6 @@ components:
                     enum:
                       - Customer
                       - Supplier
-        transportationComment:
-          type: string
-          minLength: 1
         lineItems:
           type: array
           minItems: 1
@@ -493,7 +494,7 @@ components:
               # supplierOrderNumber is not required
               # supplierOrderLineItemNumber is not required
               # sellerProduct is not required
-              - quantities
+              # quantities is not required
               # packageCount is not required (deffered to decision)
               # packages (instead of goodsReceiptPackages) is not required
             properties:
@@ -503,12 +504,12 @@ components:
               acceptance:
                 type: string
                 enum:
-                  - AsIs
+                  - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
                   - AsSpecified 
                   - Cancelled
                   - Rejected
                   - WithDamage
-                  - WithVariance
+                  - WithVariance # then, we give ALL the packages!
                   - WithVarianceAndDamage
               deliveryNoteLineItemNumber:
                 type: integer
@@ -634,7 +635,7 @@ components:
                   required:
                     - type
                     - identifiers
-                    - quantities
+                    # quantities is not required
                     - acceptance
                   properties:
                     type:
@@ -747,13 +748,19 @@ components:
                     acceptance:
                       type: string
                       enum:
-                        - AsIs
+                        - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
                         - AsSpecified 
                         - Cancelled
                         - Rejected
                         - WithDamage
                         - WithVariance
                         - WithVarianceAndDamage
+                    varianceType:
+                      type: string
+                      enum:
+                        - DifferingWeights
+                        - NotReceived
+                        - ReceivedNotSpecified
 
     GoodsReceiptWithId:
       allOf:

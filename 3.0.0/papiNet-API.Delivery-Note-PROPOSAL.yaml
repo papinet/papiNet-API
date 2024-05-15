@@ -542,7 +542,7 @@ components:
                               properties:
                                 value:
                                   type: number
-                                  minimum: 0
+                                  exclusiveMinimum: 0
                                 unitOfMeasure:
                                   type: string
                                   enum:
@@ -562,7 +562,7 @@ components:
                               properties:
                                 value:
                                   type: number
-                                  minimum: 0
+                                  exclusiveMinimum: 0
                                 unitOfMeasure:
                                   type: string
                                   enum:
@@ -582,7 +582,7 @@ components:
                               properties:
                                 value:
                                   type: number
-                                  minimum: 0
+                                  exclusiveMinimum: 0
                                 unitOfMeasure:
                                   type: string
                                   enum:
@@ -602,7 +602,7 @@ components:
                               properties:
                                 value:
                                   type: number
-                                  minimum: 0
+                                  exclusiveMinimum: 0
                                 unitOfMeasure:
                                   type: string
                                   enum:
@@ -755,6 +755,8 @@ components:
         - timestamp
         - status
         # shipmentStatus is not required
+        # deliveryInstructionNumber
+        # deliveryInstructionSequenceNumber
         - deliveryLegs
         - lineItems
       properties:
@@ -770,7 +772,6 @@ components:
         status:
           type: string
           enum:
-            - Amended
             - Cancelled
             - Original
             - Replaced
@@ -783,6 +784,12 @@ components:
             - Loaded
             - Planned
             - Unloaded
+        deliveryInstructionNumber:
+          type: string
+          minLength: 1
+        deliveryInstructionSequenceNumber:
+          type: integer
+          minimum: 0
         deliveryLegs:
           type: array
           minItems: 1
@@ -1208,225 +1215,207 @@ components:
                   - 2023-08-16T13:00/P2D
                   - P2D/2023-08-18T13:00
               transport:
+                type: object
+                required:
+                  - modeType
+                  # units is not required
+                properties:
+                  modeType:
+                    type: string
+                    enum:
+                      - InlandWaterway
+                      - Intermodal
+                      - Multimodal
+                      - Rail
+                      - Road
+                      - Sea
+                  units:
+                    type: array
+                    minItems: 1
+                    items:
                       type: object
                       required:
-                        - modeType
-                        # vehicule is not required
-                        # units is not required
+                        # level
+                        - type
+                        # detailCode
+                        - identifiers
+                        # measurements
+                        # unitReferences
                       properties:
-                        modeType:
+                        level:
+                          type: integer
+                          minimum: 1
+                        type:
                           type: string
                           enum:
-                            - InlandWaterway
-                            - Intermodal
-                            - Multimodal
-                            - Rail
-                            - Road
-                            - Sea
-                        vehicule:
+                            - Barge
+                            - Cassette
+                            - Container
+                            - DrawBarCombination
+                            - RailCar
+                            - RigidLorry
+                            - Trailer
+                            - VesselUnit
+                        detailCode:
                           type: object
-                        units:
+                          required:
+                            - value
+                            - assignedBy
+                          properties:
+                            value:
+                              type: string
+                              minLength: 1
+                            assignedBy:
+                              type: string
+                              enum:
+                                - Customer
+                                - Supplier
+                        identifiers:
                           type: array
                           minItems: 1
                           items:
                             type: object
                             required:
-                              - level
                               - type
-                              - detailCode
-                              - identifiers
-                              - measurements
-                              - unitReferences
+                              - value
+                              # assignedBy not required
+                              # countryCode not required
                             properties:
-                              level:
-                                type: integer
-                                minimum: 1
                               type:
                                 type: string
                                 enum:
-                                  - Barge
-                                  - Cassette
-                                  - Container
-                                  - DrawBarCombination
-                                  - RailCar
-                                  - RigidLorry
-                                  - Trailer
-                                  - VesselUnit
-                              detailCode:
-                                type: object
-                                required:
-                                  - value
-                                  - assignedBy
-                                properties:
-                                  value:
-                                    type: string
-                                    minLength: 1
-                                  assignedBy:
-                                    type: string
-                                    enum:
-                                      - Customer
-                                      - Supplier
-                              identifiers:
-                                type: array
-                                minItems: 1
-                                items:
-                                  type: object
-                                  required:
-                                    - type
-                                    - value
-                                    # assignedBy not required
-                                    # countryCode not required
-                                  properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        - ContainerID
-                                        - LicencePlateNumber
-                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
-                                    value:
-                                      type: string
-                                      minLength: 1
-                                    assignedBy:
-                                      type: string
-                                      enum:
-                                        - Customer
-                                        - Supplier
-                                    countryCode:
-                                      type: string
-                                      minLength: 2
-                                      maxLength: 2
-                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                              measurements:
-                                type: object
-                                required:
-                                  # length is not required
-                                  # width is not required
-                                  # height is not required
-                                  # weight is not required
-                                properties:
-                                  length:
-                                    type: object
-                                    required:
-                                      - value
-                                      - unitOfMeasure
-                                    properties:
-                                      value:
-                                        type: number
-                                        minimum: 0
-                                      unitOfMeasure:
-                                        type: string
-                                        enum:
-                                          - Centimeter
-                                          - Decimeter
-                                          - Foot
-                                          - Inch
-                                          - Kilometer
-                                          - Meter
-                                          - Millimeter
-                                          - Yard
-                                  width:
-                                    type: object
-                                    required:
-                                      - value
-                                      - unitOfMeasure
-                                    properties:
-                                      value:
-                                        type: number
-                                        minimum: 0
-                                      unitOfMeasure:
-                                        type: string
-                                        enum:
-                                          - Centimeter
-                                          - Decimeter
-                                          - Foot
-                                          - Inch
-                                          - Kilometer
-                                          - Meter
-                                          - Millimeter
-                                          - Yard
-                                  height:
-                                    type: object
-                                    required:
-                                      - value
-                                      - unitOfMeasure
-                                    properties:
-                                      value:
-                                        type: number
-                                        minimum: 0
-                                      unitOfMeasure:
-                                        type: string
-                                        enum:
-                                          - Centimeter
-                                          - Decimeter
-                                          - Foot
-                                          - Inch
-                                          - Kilometer
-                                          - Meter
-                                          - Millimeter
-                                          - Yard
-                                  weight:
-                                    type: object
-                                    required:
-                                      - value
-                                      - unitOfMeasure
-                                    properties:
-                                      value:
-                                        type: number
-                                        minimum: 0
-                                      unitOfMeasure:
-                                        type: string
-                                        enum:
-                                          - Gram
-                                          - HundredPounds
-                                          - Kilogram
-                                          - MetricTon
-                                          - Pound
-                                          - ShortTon
-                              unitReferences:
-                                type: array
-                                minItems: 1
-                                items:
-                                  type: object
-                                  required:
-                                    - unitLevel
-                                    - unitType
-                                    - unitIdentifiers
-                                  unitLevel:
-                                    type: integer
-                                    minimum: 1
-                                  unitType:
-                                    type: string
-                                    enum:
-                                      - Barge
-                                      - Cassette
-                                      - Container
-                                      - DrawBarCombination
-                                      - RailCar
-                                      - RigidLorry
-                                      - Trailer
-                                      - VesselUnit
-                                  unitIdentifiers:
-                                    type: array
-                                    minItems: 1
-                                    items:
-                                      type: object
-                                      required:
-                                        - type
-                                        - value
-                                        - assignedBy
-                                      properties:
-                                        type:
-                                          type: string
-                                          enum:
-                                            - ContainerID
-                                        value:
-                                          type: string
-                                          minLength: 1
-                                        assignedBy:
-                                          type: string
-                                          enum:
-                                            - Customer
-                                            - Supplier
+                                  - ContainerID
+                                  - LicencePlateNumber
+                                  # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Customer
+                                  - Supplier
+                              countryCode:
+                                type: string
+                                minLength: 2
+                                maxLength: 2
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        measurements:
+                          type: object
+                          required:
+                            # length is not required
+                            # width is not required
+                            # height is not required
+                            # weight is not required
+                          properties:
+                            length:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Kilometer
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            width:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Kilometer
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            height:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Kilometer
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            weight:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Gram
+                                    - HundredPounds
+                                    - Kilogram
+                                    - MetricTon
+                                    - Pound
+                                    - ShortTon
+                        unitReferences:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - type
+                              - value
+                              # assignedBy not required
+                              # countryCode not required
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - ContainerID
+                                  - LicencePlateNumber
+                                  # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Customer
+                                  - Supplier
+                              countryCode:
+                                type: string
+                                minLength: 2
+                                maxLength: 2
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         lineItems:
           type: array
           minItems: 1
@@ -1437,6 +1426,9 @@ components:
               - status
               - supplierOrderNumber
               - supplierOrderLineItemNumber
+              # callOffNumber is not required
+              # callOffLineItemNumber is not required
+              # deliveryInstructionSequenceLineItemNumber
               # purchaseOrderNumber is not required
               # purchaseOrderLineItemNumber is not required
               # sellerProduct is not required
@@ -1449,7 +1441,6 @@ components:
               status:
                 type: string
                 enum:
-                  - Amended
                   - Cancelled
                   - Original
                   - Replaced
@@ -1457,6 +1448,15 @@ components:
                 type: string
                 minLength: 1
               supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              callOffNumber:
+                type: string
+                minLength: 1
+              callOffLineItemNumber:
+                type: integer
+                minimum: 0
+              deliveryInstructionSequenceLineItemNumber:
                 type: integer
                 minimum: 0
               purchaseOrderNumber:
@@ -1481,12 +1481,15 @@ components:
                       brandName:
                         type: string
                         minLength: 1
+                        decsription: ... asssigned by the _seller_
                       gradeCode:
                         type: string
                         minLength: 1
+                        description: The identifier of a _seller-product_, asssigned by the _supplier_, which is NOT fully defined.
                       partNumber:
                         type: string
                         minLength: 1
+                        description: The identifier of a _seller-product_, asssigned by the _supplier_, which is fully defined.
                       name:
                         type: string
                         minLength: 1
@@ -1531,7 +1534,7 @@ components:
                         - TareWeight
                     value:
                       type: number
-                      minimum: 0
+                      exclusiveMinimum: 0
                     unitOfMeasure:
                       type: string
                       enum:
@@ -1649,7 +1652,7 @@ components:
                               - TareWeight
                           value:
                             type: number
-                            minimum: 0
+                            exclusiveMinimum: 0
                           unitOfMeasure:
                             type: string
                             enum:
