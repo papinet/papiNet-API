@@ -159,7 +159,7 @@ paths:
         '400':
           description: Bad Request
 
-  '/goods-receipts':
+  '/goods-receipts/{goodsReceiptId}':
     # POST /goods-receipts/{goodsReceiptId}
     # GoodsReceiptById => None
     post:
@@ -799,7 +799,6 @@ components:
         # supplierParty is not required
         # customerParty is not required
         # buyerParty is not required
-        # purchaseOrderNumber is not required
         - lineItems
       properties:
         id:
@@ -829,11 +828,6 @@ components:
           $ref: '#/components/schemas/Party'
         buyerParty:
           $ref: '#/components/schemas/Party'
-        purchaseOrderNumber:
-          type: string
-          minLength: 1
-          description: |-
-            This is the identifier of the _purchase order_ as assigned by the _customer_.
         lineItems:
           type: array
           minItems: 1
@@ -842,6 +836,7 @@ components:
             required:
               - number
               - status
+              # purchaseOrderNumber is not required
               # purchaseOrderLineItemNumber is not required
               - sellerProduct
               # customerArticleReference is not required
@@ -858,6 +853,11 @@ components:
                   - Amended
                   - Cancelled
                   - Original
+              purchaseOrderNumber:
+                type: string
+                minLength: 1
+                description: |-
+                  This is the identifier of the _purchase order_ as assigned by the _customer_.
               purchaseOrderLineItemNumber:
                 type: integer
                 minimum: 0
@@ -2156,7 +2156,7 @@ components:
           type: array
           minItems: 1
           items:
-            type: object:
+            type: object
             required:
               - id
               - number
@@ -2562,9 +2562,9 @@ components:
                       type: integer
                       minimum: 0
                     sellerProduct:
-                      $ref: '#/components/schemas/PRoduct'
+                      $ref: '#/components/schemas/Product'
                     customerArticleReference:
-                      $ref: '#/components/schemas/PRoduct'
+                      $ref: '#/components/schemas/Product'
                     quantities:
                       type: array
                       minItems: 1
