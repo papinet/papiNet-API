@@ -1,4 +1,4 @@
-# papiNet materials are covered by the following copyright statements Copyright 2021-2024 papiNet G.I.E (papiNet). All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign.
+# Copyright 2000-2024 Papinet SNC ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
 
 openapi: 3.1.0
 info:
@@ -16,356 +16,245 @@ servers:
     description: papiNet Mock Server
 paths:
 
-   ## MASTER DATA (6)
+   ## LOGISTICS (10)
 
-  '/customer-articles':
-    # GET /customer-articles
-    # None => ListOfCustomerArticles
+   #  GET /supplier-orders
+   #  GET /supplier-orders/{supplierOrderId}
+   #  GET /logistic-delivery-notes
+   #  GET /logistic-delivery-notes/{logisticDeliveryNoteId}
+   # POST /logistic-delivery-notes/{logisticDeliveryNoteId}
+   #  PUT /logistic-delivery-notes/{logisticDeliveryNoteId}
+   # POST /goods-receipts/{goodsReceiptId}
+   #  PUT /goods-receipts/{goodsReceiptId}
+   #  GET /delivery-instructions
+   #  GET /delivery-instructions/{deliveryInstructionId}
+
+  '/supplier-orders':
+    # GET /supplier-orders
+    # None => ListOfSupplierOrders
     get:
-      summary: List `customer-articles`
-      description: Gets a paginated list of all `customer-articles` defined by the `customer`.
-      parameters:
-        - in: query
-          name: active
-          description: Filter active
-          required: false
-          schema:
-            type: boolean
-            default: true
-        - in: query
-          name: productType
-          description: Filter by productType
-          required: false
-          schema:
-            type: string
-            enum:
-              - Paper
-        - in: query
-          name: customerArticleNumber
-          description: Filter by customerArticleNumber
-          required: false
-          schema:
-            type: string
-            minLength: 1
-        - in: query
-          name: offset
-          description: The number of items to skip before starting to collect the result set.
-          required: false
-          schema:
-            type: string
-            minLength: 1
-        - in: query
-          name: limit
-          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
-          required: false
-          schema:
-            type: string
-            minLength: 1
+      summary: List `supplier-orders`
+      description: Get a paginated list of all `supplier-orders`.
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfCustomerArticles'
+                $ref: '#/components/schemas/ListOfSupplierOrders'
         '204':
           description: No Content
 
-  '/customer-articles/{customerArticleId}':
-    # GET /customer-articles/{customerArticleId}
-    # None => GetCustomerArticleById
+  '/supplier-orders/{supplierOrderId}':
+    # GET /supplier-orders/{supplierOrderId}
+    # None => SupplierOrderById
     get:
-      summary: Get a `customer-article`
-      description: Gets the details of a specific `customer-article`.
+      summary: Get a `supplier-order`
+      description: Gets the details of a specific `supplier-order`.
       parameters:
         - in: path
-          name: customerArticleId
+          name: supplierOrderId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `customer-article` to get
+          description: UUID of the `supplier-order` to get
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetCustomerArticleById'
+                $ref: '#/components/schemas/SupplierOrderById'
         '404':
           description: Not Found
 
-  '/locations':
-    # GET /locations
-    # None => ListOfLocations
+  '/logistic-delivery-notes':
+    # GET /logistic-delivery-notes
+    # None => ListOfLogisticDeliveryNotes
     get:
-      summary: List `locations`
-      description: Gets a paginated list of all `locations`.
-      parameters:
-        - in: query
-          name: active
-          description: Filter active
-          required: false
-          schema:
-            type: boolean
-            default: true
-        - in: query
-          name: countryCode
-          description: Filter by countryCode
-          required: false
-          schema:
-            type: string
-            minLength: 2
-            maxLength: 2
-            description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-        - in: query
-          name: offset
-          description: The number of items to skip before starting to collect the result set.
-          required: false
-          schema:
-            type: string
-            minLength: 1
-        - in: query
-          name: limit
-          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
-          required: false
-          schema:
-            type: string
-            minLength: 1
+      summary: List `logistic-delivery-notes`
+      description: Get a paginated list of all `logistic-delivery-notes`.
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfLocations'
+                $ref: '#/components/schemas/ListOfLogisticDeliveryNotes'
         '204':
           description: No Content
 
-  '/locations/{locationId}':
-    # GET /locations/{locationId}
-    # None => GetLocationById
+  '/logistic-delivery-notes/{logisticDeliveryNoteId}':
+    # GET /logistic-delivery-notes/{logisticDeliveryNoteId}
+    # None => LogisticDeliveryNoteById
     get:
-      summary: Get a `location`
-      description: Gets the details of a specific `location`.
+      summary: Get a `logistic-delivery-note`
+      description: Gets the details of a specific `logistic-delivery-note`.
       parameters:
         - in: path
-          name: locationId
+          name: logisticDeliveryNoteId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `location` to get
+          description: UUID of the `logistic-delivery-note` to get
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetLocationById'
+                $ref: '#/components/schemas/LogisticDeliveryNoteById'
         '404':
           description: Not Found
-
-  '/parties':
-    # GET /parties
-    # None => ListOfParties
-    get:
-      summary: List `parties`
-      description: Gets a paginated list of all `parties`.
-      parameters:
-        - in: query
-          name: active
-          description: Filter active
-          required: false
-          schema:
-            type: boolean
-            default: true
-        - in: query
-          name: countryCode
-          description: Filter by countryCode
-          required: false
-          schema:
-            type: string
-            minLength: 2
-            maxLength: 2
-        - in: query
-          name: offset
-          description: The number of items to skip before starting to collect the result set.
-          required: false
-          schema:
-            type: string
-            minLength: 1
-        - in: query
-          name: limit
-          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
-          required: false
-          schema:
-            type: string
-            minLength: 1
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListOfParties'
-        '204':
-          description: No Content
-
-  '/parties/{partyId}':
-    # GET /parties/{partyId}
-    # None => GetPartyById
-    get:
-      summary: Get a `party`
-      description: Gets the details of a specific `party`.
-      parameters:
-        - in: path
-          name: partyId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: UUID of the `party` to get
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPartyById'
-        '404':
-          description: Not Found
-
-  ## PURCHASE ORDER (3)
-
-  '/purchase-orders':
-    # POST /purchase-orders
-    # CreatePurchaseOrder => GetPurchaseOrderById
+    # POST /logistic-delivery-notes/{logisticDeliveryNoteId}
+    # LogisticDeliveryNoteById => None
     post:
-      summary: Create a `purchase-order`
-      description: Creates a `purchase-order`.
+      summary: Push an _Original_ `logistic-delivery-note`
+      description: Pushes the details of a specific _Original_ `logistic-delivery-note`.
+      parameters:
+        - in: path
+          name: logisticDeliveryNoteId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the _Original_ `logistic-delivery-note` to push.
       requestBody:
-        description: The definition of the `purchase-order` to create.
+        description: The details of the _Original_ `logistic-delivery-note` to push.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreatePurchaseOrder'
+              $ref: '#/components/schemas/LogisticDeliveryNoteById'
       responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPurchaseOrderById'
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+    # PUT /logistic-delivery-notes/{logisticDeliveryNoteId}
+    # LogisticDeliveryNoteById => None
+    put:
+      summary: Push a _Replaced_ `logistic-delivery-note`
+      description: Pushes the details of a specific _Replaced_ `logistic-delivery-note`.
+      parameters:
+        - in: path
+          name: logisticDeliveryNoteId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the _Replaced_ `logistic-delivery-note` to push
+      requestBody:
+        description: The details of the _Replaced_ `logistic-delivery-note` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogisticDeliveryNoteById'
+      responses:
+        '200':
+          description: OK
         '400':
           description: Bad Request
 
-    # GET /purchase-orders
-    # None => ListOfPurchaseOrders
-    get:
-      summary: List `purchase-orders`
-      description: Gets a paginated list of all `purchase-orders`.
-      parameters:
-        - in: query
-          name: purchaseOrderNumber
-          description: Filter by purchaseOrderNumber
-          required: false
-          schema:
-            type: string
-            minLength: 1
-        - in: query
-          name: purchaseOrderStatus
-          description: Filter by purchaseOrderStatus
-          required: false
-          schema:
-            type: string
-            enum:
-            - Original
-            - Amended
-            - Cancelled
-        - in: query
-          name: active
-          description: Filter by active purchase-orders
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: buyerParty
-          description: Filter by buyerParty
-          required: false
-          schema:
-            type: string
-            format: uuid
-        - in: query
-          name: billToParty
-          description: Filter by billToParty
-          required: false
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListOfPurchaseOrders'
-
-  '/purchase-orders/{purchaseOrderId}':
-    # GET /purchase-orders/{purchaseOrderId}
-    # None => GetPurchaseOrderById
-    get:
-      summary: Get a `purchase-order`
-      description: Gets the details of a specific `purchase-order`.
+  '/goods-receipts':
+    # POST /goods-receipts/{goodsReceiptId}
+    # GoodsReceiptById => None
+    post:
+      summary: Push an _Original_ `goods-receipt`
+      description: Pushes the details of a specific _Original_ `goods-receipt`.
       parameters:
         - in: path
-          name: purchaseOrderId
+          name: goodsReceiptId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `purchase-order` to get
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPurchaseOrderById'
-
-    # PATCH /purchase-orders/{purchaseOrderId}
-    # ModifyPurchaseOrder => GetPurchaseOrderById
-    patch:
-      summary: Modify a `purchase-order`
-      description: Modifies a specific `purchase-order`.
-      parameters:
-        - in: path
-          name: purchaseOrderId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: UUID of the `purchase-order` to modify
+          description: UUID of the _Original_ `goods-receipt` to push.
       requestBody:
-        description: The definition of the `purchase-order` to create.
+        description: The details of the _Original_ `goods-receipt` to push.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ModifyPurchaseOrder'
+              $ref: '#/components/schemas/GoodsReceiptById'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+    # PUT /goods-receipts/{goodsReceiptId}
+    # GoodsReceiptById => None
+    put:
+      summary: Push an _Replaced_ `goods-receipt`
+      description: Pushes the details of a specific _Replaced_ `goods-receipt`.
+      parameters:
+        - in: path
+          name: goodsReceiptId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the _Replaced_ `goods-receipt` to push.
+      requestBody:
+        description: The details of the _Replaced_ `goods-receipt` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoodsReceiptById'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+
+  '/delivery-instructions':
+    # GET /delivery-instructions
+    # None => ListOfDeliveryInstructions
+    get:
+      summary: List `delivery-instructions`
+      description: Get a paginated list of all `delivery-instructions`.
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetPurchaseOrderById'
+                $ref: '#/components/schemas/ListOfDeliveryInstructions'
+        '204':
+          description: No Content
+
+  '/delivery-instructions/{deliveryInstructionId}':
+    # GET /delivery-instructions/{deliveryInstructionId}
+    # None => DeliveryInstructionById
+    get:
+      summary: Get a `delivery-instruction`
+      description: Gets the details of a specific `delivery-instruction`.
+      parameters:
+        - in: path
+          name: deliveryInstructionId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `delivery-instruction` to get.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryInstructionById'
+        '404':
+          description: Not Found
 
 components:
   schemas:
 
-    # Re-usable schema(s):
+    # Re-usable schemas (6)
 
     PaginationLinks:
       type: object
@@ -403,8 +292,6 @@ components:
             href:
               type: string
               format: uri-reference
-
-    # 'Big' structure schema(s):
 
     Paper:
       type: object
@@ -691,165 +578,95 @@ components:
     Pulp:
       type: object # This is just a placeholder for now.
 
-    # API endpoint schemas:
+    Product:
+      type: object
 
-    ListOfCustomerArticles:
+    Party:
       type: object
       required:
-        - numberOfCustomerArticles
-        - customerArticles
+        - identifiers
       properties:
-        numberOfCustomerArticles:
-          type: integer
-          minimum: 1
-        customerArticles:
+        identifiers:
           type: array
           minItems: 1
           items:
             type: object
             required:
-              - id
-              - customerArticleNumber
-              - customerArticleTimestamp
-              - active
-              - sellerProductBrandName
-              - sellerProductName
-              - productType
+              - value
+              - assignedBy
             properties:
-              id:
-                type: string
-                format: uuid
-              customerArticleNumber:
+              value:
                 type: string
                 minLength: 1
-              customerArticleTimestamp:
-                type: string
-                format: date-time # UTC MUST be used!
-              active:
-                type: boolean
-              sellerProductBrandName:
-                type: string
-                minLength: 1
-              sellerProductName:
-                type: string
-                minLength: 1
-              productType:
+              assignedBy:
                 type: string
                 enum:
-                  - Paper
-                  - Pulp
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-
-    GetCustomerArticleById:
-      allOf:
-        - type: object
-          required:
-            - id
-            - customerArticleNumber
-            - customerArticleTimestamp
-            - active
-            - sellerProductBrandName
-            - sellerProductName
-          properties:
-            id:
-              type: string
-              format: uuid
-            customerArticleNumber:
-              type: string
-              minLength: 1
-            customerArticleTimestamp:
-              type: string
-              format: date-time # UTC MUST be used!
-            active:
-              type: boolean
-            sellerProductBrandName:
-              type: string
-              minLength: 1
-            sellerProductName:
-              type: string
-              minLength: 1
-        - oneOf:
-            - required:
-                 - paper
-              properties:
-                paper:
-                  $ref: '#/components/schemas/Paper'
-            - required:
-                 - pulp
-              properties:
-                pulp:
-                  $ref: '#/components/schemas/Pulp'
-
-    ListOfLocations:
-      type: object
-      required:
-        - numberOfLocations
-        - locations
-      properties:
-        numberOfLocations:
-          type: integer
-          minimum: 1
-        locations:
+                  - Customer
+                  - Supplier
+        nameLines:
           type: array
           minItems: 1
+          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
           items:
-            type: object
-            required:
-              - id
-              - locationIdentifier
-              - locationTimestamp
-              - active
-              - nameLines
-              - countryCode
-            properties:
-              id:
-                type: string
-                format: uuid
-              locationIdentifier:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          required:
+            # addressLines is not required
+            # city is not required
+            # postalCode is not required
+            # stateOrProvince is not required
+            # county is not required
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+              items:
                 type: string
                 minLength: 1
-              locationTimestamp:
-                type: string
-                format: date-time # UTC MUST be used!
-              active:
-                type: boolean
-              nameLines:
-                type: array
-                minItems: 1
-                items:
-                  type: string
-                  minLength: 1
-              countryCode:
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
+              type: string
+              minLength: 1
+            countryCode:
                 type: string
                 minLength: 2
                 maxLength: 2
                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
 
-    GetLocationById:
+    Location:
       type: object
       required:
-        - id
-        - locationIdentifier
-        - locationTimestamp
-        - active
-        - nameLines
-        - address # as only the country is required within it
-        # coordinatesWGS84 is not required
+        - identifiers
       properties:
-        id:
-          type: string
-          format: uuid
-        locationIdentifier:
-          type: string
-          minLength: 1
-        locationTimestamp:
-          type: string
-          format: date-time # UTC MUST be used!
-        active:
-          type: boolean
+        identifiers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+              - assignedBy
+            properties:
+              value:
+                type: string
+                minLength: 1
+              assignedBy:
+                type: string
+                enum:
+                  - Customer
+                  - Supplier
         nameLines:
           type: array
           minItems: 1
@@ -902,450 +719,413 @@ components:
             longitude:
               type: number
 
-    ListOfParties:
+    # API endpoint schemas (7):
+
+    ListOfSupplierOrders:
       type: object
       required:
-        - numberOfParties
-        - parties
+        - count
+        - items
+        # links is not required
       properties:
-        numberOfParties:
+        count:
           type: integer
           minimum: 1
-        parties:
+        items:
           type: array
           minItems: 1
           items:
             type: object
             required:
               - id
-              - partyIdentifier
-              - partyTimestamp
+              - number
+              - timestamp
+              - status
               - active
-              - nameLines
-              - countryCode
+              # sellerParty is not required
+              # supplierParty is not required
+              # customerParty is not required
+              # buyerParty is not required
+              # purchaseOrderNumber is not required
+              - lineItemCount
             properties:
               id:
                 type: string
                 format: uuid
-              partyIdentifier:
+              number:
                 type: string
                 minLength: 1
-              partyTimestamp:
+                description: |-
+                  This is the identifier of the supplier order assigned by the supplier.
+              timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Amended
+                  - Cancelled
+                  - Original
               active:
                 type: boolean
-              nameLines:
-                type: array
-                minItems: 1
-                items:
-                  type: string
-                  minLength: 1
-              countryCode:
-                type: string
-                minLength: 2
-                maxLength: 2
-                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-        links:
-          $ref: '#/components/schemas/PaginationLinks'
-
-    GetPartyById:
-      type: object
-      required:
-        - id
-        - partyIdentifier
-        - partyTimestamp
-        - active
-        - nameLines
-        - address # as only the country is required within it
-      properties:
-        id:
-          type: string
-          format: uuid
-        partyIdentifier:
-          type: string
-          minLength: 1
-        partyTimestamp:
-          type: string
-          format: date-time # UTC MUST be used!
-        active:
-          type: boolean
-        nameLines:
-          type: array
-          minItems: 1
-          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
-          items:
-            type: string
-            minLength: 1
-        address:
-          type: object
-          required:
-            # addressLines is not required
-            # city is not required
-            # postalCode is not required
-            # stateOrProvince is not required
-            # county is not required
-            - countryCode
-          properties:
-            addressLines:
-              type: array
-              minItems: 1
-              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
-              items:
-                type: string
-                minLength: 1
-            city:
-              type: string
-              minLength: 1
-            postalCode:
-              type: string
-              minLength: 1
-            stateOrProvince:
-              type: string
-              minLength: 1
-            county:
-              type: string
-              minLength: 1
-            countryCode:
-                type: string
-                minLength: 2
-                maxLength: 2
-                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-
-    ListOfPurchaseOrders:
-      type: object
-      required:
-        - numberOfPurchaseOrders
-        - purchaseOrders
-      properties:
-        numberOfPurchaseOrders:
-          type: integer
-          minimum: 1
-        purchaseOrders:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            required:
-              - id
-              - purchaseOrderNumber
-              - purchaseOrderTimestamp
-              - purchaseOrderStatus
-              - active
-              # supplierParty is not required, but it is of course unavoidable when multiple suppliers are using the same domain name.
-              # sellerParty is not required
-              # buyerParty is not required
-              # billToParty is not required
-              - numberOfLineItems
-            properties:
-              id:
-                type: string
-                format: uuid
+              sellerParty:
+                $ref: '#/components/schemas/Party'
+              supplierParty:
+                $ref: '#/components/schemas/Party'
+              customerParty:
+                $ref: '#/components/schemas/Party'
+              buyerParty:
+                $ref: '#/components/schemas/Party'
               purchaseOrderNumber:
                 type: string
                 minLength: 1
-              purchaseOrderTimestamp:
-                type: string
-                format: date-time # UTC MUST be used!
-              purchaseOrderStatus:
-                type: string
-                enum:
-                  - Original
-                  - Amended
-                  - Cancelled
-              active:
-                type: boolean
-              supplierToParty:
-                type: string
-                format: uuid
-              sellerToParty:
-                type: string
-                format: uuid
-              buyerParty:
-                type: string
-                format: uuid
-              billToParty:
-                type: string
-                format: uuid
-              numberOfLineItems:
-                format: integer
-                minimum: 1
-
-    CreatePurchaseOrder:
-      type: object
-      required:
-        - purchaseOrderNumber
-        - purchaseOrderTimestamp
-        - purchaseOrderStatus
-        # supplierParty is not required
-        # sellerParty is not required
-        # buyerParty is not required
-        # billToParty is not required
-        - purchaseOrderLineItems
-      properties:
-        purchaseOrderNumber:
-          type: string
-          minLength: 1
-        purchaseOrderTimestamp:
-          type: string
-          format: date-time
-        purchaseOrderStatus:
-          type: string
-          enum:
-            - Original
-        supplierToParty:
-          type: string
-          format: uuid
-        sellerToParty:
-          type: string
-          format: uuid
-        buyerParty:
-          type: string
-          format: uuid
-        billToParty:
-          type: string
-          format: uuid
-        purchaseOrderLineItems:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            required:
-              - purchaseOrderLineItemNumber
-              - purchaseOrderLineItemStatus
-              - customerArticle
-              - requestedShipToLocation
-              - requestedDeliveryDateTime
-              - quantities
-            properties:
-              purchaseOrderLineItemNumber:
+                description: |-
+                  This is the identifier of the _purchase order_ as assigned by the _customer_.
+              lineItemCount:
                 type: integer
-                minimum: 0
-              purchaseOrderLineItemStatus:
-                type: string
-                enum:
-                  - Original
-              customerArticle:
-                type: object
-                required:
-                  - id
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-              requestedShipToLocation:
-                type: string
-                format: uuid
-              requestedDeliveryDateTime:
-                type: string
-                description: |
-                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
-                  - 2023-08-16T13:00/2023-08-18T13:00
-                  - 2023-08-16/2023-08-18
-                  - 2023-08-16T13:00/P2D
-                  - P2D/2023-08-18T13:00
-                minLength: 4
-              quantities:
-                type: array
-                minItems: 1
-                items:
-                  type: object
-                  required:
-                    - context
-                    - type
-                    - value
-                    - unitOfMeasure
-                  properties:
-                    context:
-                      type: string
-                      enum:
-                        - Ordered # the only allowed value!
-                    type:
-                      type: string
-                      enum:
-                      - Area
-                      - Count
-                      - GrossWeight
-                      - Length
-                      - NetNetWeight
-                      - NetWeight
-                      - NominalWeight
-                      - TareWeight
-                    value:
-                      type: number
-                    unitOfMeasure:
-                      type: string
-                      enum:
-                        - Bale
-                        - Box
-                        - Centimeter
-                        - Decimeter
-                        - Foot
-                        - Gram
-                        - HundredPounds
-                        - Inch
-                        - Kilogram
-                        - Kilometer
-                        - Meter
-                        - MetricTon
-                        - Millimeter
-                        - Package
-                        - PalletUnit
-                        - Piece
-                        - Pound
-                        - PulpUnit
-                        - Ream
-                        - Reel
-                        - Sheet
-                        - ShortTon
-                        - Skid
-                        - SquareDecimeter
-                        - SquareFoot
-                        - SquareInch
-                        - SquareMeter
-                        - ThousandPieces
-                        - ThousandSquareCentimeters
-                        - ThousandSquareFeet
-                        - ThousandSquareInches
-                        - Yard
+                minimum: 1
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
 
-    GetPurchaseOrderById:
+    SupplierOrderById:
       type: object
       required:
         - id
-        - purchaseOrderNumber
-        - purchaseOrderTimestamp
-        - purchaseOrderStatus
+        - number
+        - timestamp
+        - status
         - active
-        # supplierParty is not required
         # sellerParty is not required
+        # supplierParty is not required
+        # customerParty is not required
         # buyerParty is not required
-        # billToParty is not required
-        - purchaseOrderLineItems
+        # purchaseOrderNumber is not required
+        - lineItems
       properties:
         id:
           type: string
           format: uuid
+        number:
+          type: string
+          minLength: 1
+          description: |-
+            This is the identifier of the supplier order assigned by the supplier.
+        timestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        status:
+          type: string
+          enum:
+            - Amended
+            - Cancelled
+            - Original
+        active:
+          type: boolean
+        sellerParty:
+          $ref: '#/components/schemas/Party'
+        supplierParty:
+          $ref: '#/components/schemas/Party'
+        customerParty:
+          $ref: '#/components/schemas/Party'
+        buyerParty:
+          $ref: '#/components/schemas/Party'
         purchaseOrderNumber:
           type: string
           minLength: 1
-        purchaseOrderTimestamp:
-          type: string
-          format: date-time # UTC MUST be used!
-        purchaseOrderStatus:
-          type: string
-          enum:
-            - Original
-            - Amended
-            - Cancelled
-        active:
-          type: boolean
-        supplierToParty:
-          type: string
-          format: uuid
-        sellerToParty:
-          type: string
-          format: uuid
-        buyerParty:
-          type: string
-          format: uuid
-        billToParty:
-          type: string
-          format: uuid
-        purchaseOrderLineItems:
+          description: |-
+            This is the identifier of the _purchase order_ as assigned by the _customer_.
+        lineItems:
           type: array
           minItems: 1
           items:
             type: object
             required:
-              - purchaseOrderLineItemNumber
-              - purchaseOrderLineItemStatus
-              # salesOrderNumber is not required
-              # salesOrderTimestamp is not required
-              # salesOrderStatus is not required
-              # salesOrderLineItemNumber is not required
-              # salesOrderLineItemStatus is not required
-              # latestAllowedDateTimeForChange is not required
-              - customerArticle
-              - requestedShipToLocation
-              # confirmedShipToLocation is not required
-              - requestedDeliveryDateTime
-              # confirmedDeliveryDateTime is not required
+              - number
+              - status
+              # purchaseOrderLineItemNumber is not required
+              - sellerProduct
+              # customerArticleReference is not required
+              # millParty is not required
+              # deliveryLegs is not mandatory
               - quantities
             properties:
+              number:
+                type: integer
+                minimum: 0
+              status:
+                type: string
+                enum:
+                  - Amended
+                  - Cancelled
+                  - Original
               purchaseOrderLineItemNumber:
                 type: integer
                 minimum: 0
-              purchaseOrderLineItemStatus:
-                type: string
-                enum:
-                  - Original
-                  - Amended
-                  - Cancelled
-              salesOrderNumber:
-                type: string
-                minLength: 1
-              salesOrderTimestamp:
-                type: string
-                format: date-time # UTC MUST be used!
-              salesOrderStatus:
-                type: string
-                enum:
-                  - Pending
-                  - Confirmed
-                  - Rejected
-                  - Cancelled
-              salesOrderLineItemNumber:
-                type: integer
-                minimum: 0
-              salesOrderLineItemStatus:
-                type: string
-                enum:
-                  - Pending
-                  - Confirmed
-                  - Rejected
-                  - Cancelled
-              latestAllowedDateTimeForChange:
-                type: string
-                description: |
-                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
-                  - 2023-08-16T13:00/2023-08-18T13:00
-                  - 2023-08-16/2023-08-18
-                  - 2023-08-16T13:00/P2D
-                  - P2D/2023-08-18T13:00
-                minLength: 4
-              customerArticle:
-                type: object
-                required:
-                  - id
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-              requestedShipToLocation:
-                type: string
-                format: uuid
-              confirmedShipToLocation:
-                type: string
-                format: uuid
-              requestedDeliveryDateTime:
-                type: string
-                description: |
-                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
-                  - 2023-08-16T13:00/2023-08-18T13:00
-                  - 2023-08-16/2023-08-18
-                  - 2023-08-16T13:00/P2D
-                  - P2D/2023-08-18T13:00
-                minLength: 4
-              confirmedDeliveryDateTime:
-                type: string
-                description: |
-                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
-                  - 2023-08-16T13:00/2023-08-18T13:00
-                  - 2023-08-16/2023-08-18
-                  - 2023-08-16T13:00/P2D
-                  - P2D/2023-08-18T13:00
-                minLength: 4
+              sellerProduct:
+                $ref: '#/components/schemas/Product'
+              customerArticleReference:
+                $ref: '#/components/schemas/Product'
+              millParty:
+                $ref: '#/components/schemas/Party'
+              deliveryLegs:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - number
+                    - shipFromLocation
+                    # shipFromParty is not required
+                    - shipToLocation
+                    # shipToParty is not required
+                    # mainCarrierParty is not required
+                    # estimatedLoadingDateTime is not required
+                    # estimatedDepartureDateTime is not required
+                    # estimatedArrivalDateTime is not required
+                    # transport is not required
+                  properties:
+                    number:
+                      type: integer
+                      minimum: 0
+                    shipFromLocation:
+                      $ref: '#/components/schemas/Location'
+                    shipFromParty:
+                      $ref: '#/components/schemas/Party'
+                    shipToLocation:
+                      $ref: '#/components/schemas/Location'
+                    shipToParty:
+                      $ref: '#/components/schemas/Party'
+                    mainCarrierParty:
+                      $ref: '#/components/schemas/Party'
+                    estimatedLoadingDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    estimatedDepartureDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    estimatedArrivalDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    transport:
+                      type: object
+                      required:
+                        - modeType
+                        # units is not required
+                      properties:
+                        modeType:
+                          type: string
+                          enum:
+                            - InlandWaterway
+                            - Intermodal
+                            - Multimodal
+                            - Rail
+                            - Road
+                            - Sea
+                        units:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              # level
+                              - type
+                              # detailCode
+                              - identifiers
+                              # measurements
+                              # unitReferences
+                            properties:
+                              level:
+                                type: integer
+                                minimum: 1
+                              type:
+                                type: string
+                                enum:
+                                  - Barge
+                                  - Cassette
+                                  - Container
+                                  - DrawBarCombination
+                                  - RailCar
+                                  - RigidLorry
+                                  - Trailer
+                                  - VesselUnit
+                              detailCode:
+                                type: object
+                                required:
+                                  - value
+                                  - assignedBy
+                                properties:
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Customer
+                                      - Supplier
+                              identifiers:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - type
+                                    - value
+                                    # assignedBy not required
+                                    # countryCode not required
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - ContainerID
+                                        - LicencePlateNumber
+                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                    value:
+                                      type: string
+                                      minLength: 1
+                                    assignedBy:
+                                      type: string
+                                      enum:
+                                        - Customer
+                                        - Supplier
+                                    countryCode:
+                                      type: string
+                                      minLength: 2
+                                      maxLength: 2
+                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              measurements:
+                                type: object
+                                required:
+                                  # length is not required
+                                  # width is not required
+                                  # height is not required
+                                  # weight is not required
+                                properties:
+                                  length:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  width:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  height:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  weight:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Gram
+                                          - HundredPounds
+                                          - Kilogram
+                                          - MetricTon
+                                          - Pound
+                                          - ShortTon
+                              unitReferences:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - type
+                                    - value
+                                    # assignedBy not required
+                                    # countryCode not required
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - ContainerID
+                                        - LicencePlateNumber
+                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                    value:
+                                      type: string
+                                      minLength: 1
+                                    assignedBy:
+                                      type: string
+                                      enum:
+                                        - Customer
+                                        - Supplier
+                                    countryCode:
+                                      type: string
+                                      minLength: 2
+                                      maxLength: 2
+                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               quantities:
                 type: array
                 minItems: 1
@@ -1360,8 +1140,8 @@ components:
                     context:
                       type: string
                       enum:
-                        - Ordered
                         - Confirmed
+                        - Ordered
                     type:
                       type: string
                       enum:
@@ -1375,6 +1155,7 @@ components:
                         - TareWeight
                     value:
                       type: number
+                      minimum: 0
                     unitOfMeasure:
                       type: string
                       enum:
@@ -1411,67 +1192,449 @@ components:
                         - ThousandSquareInches
                         - Yard
 
-    ModifyPurchaseOrder:
+    ListOfLogisticDeliveryNotes:
       type: object
       required:
-        - purchaseOrderTimestamp
-        - purchaseOrderStatus
-        # billToParty is not required
-        - purchaseOrderLineItems
+        - count
+        - items
+        # links is not required
       properties:
-        purchaseOrderTimestamp:
-          type: string
-          format: date-time
-        purchaseOrderStatus:
-          type: string
-          enum:
-            - Amended
-            - Cancelled
-        billToParty:
-          type: string
-          format: uuid
-        purchaseOrderLineItems:
+        count:
+          type: integer
+          minimum: 1
+        items:
           type: array
           minItems: 1
           items:
             type: object
             required:
-              - purchaseOrderLineItemNumber
-              - purchaseOrderLineItemStatus
-              # customerArticle is not required
-              # requestedShipToLocation is not required
-              # requestedDeliveryDateTime is not required
-              # quantities is not required
+              - id
+              - number
+              - timestamp
+              - status
+              # shipmentStatus is not required
+              # deliveryInstructionNumber
+              # deliveryInstructionSequenceNumber
+              - shipFromLocation # from the first `deliveryLeg[]`
+              - shipToLocation   # from the  last `deliveryLeg[]`
+              - lineItemCount
             properties:
-              purchaseOrderLineItemNumber:
-                type: integer
-                minimum: 0
-              purchaseOrderLineItemStatus:
-                type: string
-                enum:
-                  - Original # Needed if you add a new line!
-                  - Amended
-                  - Cancelled
-              customerArticle:
-                type: object
-                required:
-                  - id
-                properties:
-                  id:
-                    type: string
-                    format: uuid
-              requestedShipToLocation:
+              id:
                 type: string
                 format: uuid
-              requestedDeliveryDateTime:
+              number:
                 type: string
-                description: |
+                minLength: 1
+              timestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Cancelled
+                  - Original
+                  - Replaced
+              shipmentStatus:
+                type : string
+                enum:
+                  - Arrived
+                  - Cancelled
+                  - Departed
+                  - Loaded
+                  - Planned
+                  - Unloaded
+              deliveryInstructionNumber:
+                type: string
+                minLength: 1
+              deliveryInstructionSequenceNumber:
+                type: integer
+                minimum: 0
+              shipFromLocation:
+                $ref: '#/components/schemas/Location'
+              shipToLocation:
+                $ref: '#/components/schemas/Location'
+              lineItemCount:
+                type: integer
+                minimum: 1
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    LogisticDeliveryNoteById:
+      type: object
+      required:
+        - id
+        - number
+        - timestamp
+        - status
+        # shipmentStatus is not required
+        # deliveryInstructionNumber
+        # deliveryInstructionSequenceNumber
+        - deliveryLegs
+        - lineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        status:
+          type: string
+          enum:
+            - Cancelled
+            - Original
+            - Replaced
+        shipmentStatus:
+          type : string
+          enum:
+            - Arrived
+            - Cancelled
+            - Departed
+            - Loaded
+            - Planned
+            - Unloaded
+        deliveryInstructionNumber:
+          type: string
+          minLength: 1
+        deliveryInstructionSequenceNumber:
+          type: integer
+          minimum: 0
+        deliveryLegs:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - number
+              - shipFromLocation
+              # shipFromParty is not required
+              - shipToLocation
+              # shipToParty is not required
+              # carrierParty is not required
+              # estimatedLoadingDateTime is not required
+              # actualLoadingDateTime is not required
+              # estimatedDepartureDateTime is not required
+              # actualDepartureDateTime is not required
+              # estimatedArrivalDateTime is not required
+              # transport is not required
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              shipFromLocation:
+                $ref: '#/components/schemas/Location'
+              shipFromParty:
+                $ref: '#/components/schemas/Party'
+              shipToLocation:
+                $ref: '#/components/schemas/Location'
+              shipToParty:
+                $ref: '#/components/schemas/Party'
+              mainCarrierParty:
+                $ref: '#/components/schemas/Party'
+              estimatedLoadingDateTime:
+                type: string
+                minLength: 4
+                description: |-
                   It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
                   - 2023-08-16T13:00/2023-08-18T13:00
                   - 2023-08-16/2023-08-18
                   - 2023-08-16T13:00/P2D
                   - P2D/2023-08-18T13:00
+              actualLoadingDateTime:
+                type: string
                 minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              estimatedDepartureDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              actualDepartureDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              estimatedArrivalDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              transport:
+                type: object
+                required:
+                  - modeType
+                  # units is not required
+                properties:
+                  modeType:
+                    type: string
+                    enum:
+                      - InlandWaterway
+                      - Intermodal
+                      - Multimodal
+                      - Rail
+                      - Road
+                      - Sea
+                  units:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        # level
+                        - type
+                        # detailCode
+                        - identifiers
+                        # measurements
+                        # unitReferences
+                      properties:
+                        level:
+                          type: integer
+                          minimum: 1
+                        type:
+                          type: string
+                          enum:
+                            - Barge
+                            - Cassette
+                            - Container
+                            - DrawBarCombination
+                            - RailCar
+                            - RigidLorry
+                            - Trailer
+                            - VesselUnit
+                        detailCode:
+                          type: object
+                          required:
+                            - value
+                            - assignedBy
+                          properties:
+                            value:
+                              type: string
+                              minLength: 1
+                            assignedBy:
+                              type: string
+                              enum:
+                                - Customer
+                                - Supplier
+                        identifiers:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - type
+                              - value
+                              # assignedBy not required
+                              # countryCode not required
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - ContainerID
+                                  - LicencePlateNumber
+                                  # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Customer
+                                  - Supplier
+                              countryCode:
+                                type: string
+                                minLength: 2
+                                maxLength: 2
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        measurements:
+                          type: object
+                          required:
+                            # length is not required
+                            # width is not required
+                            # height is not required
+                            # weight is not required
+                          properties:
+                            length:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Kilometer
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            width:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Kilometer
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            height:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Kilometer
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            weight:
+                              type: object
+                              required:
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Gram
+                                    - HundredPounds
+                                    - Kilogram
+                                    - MetricTon
+                                    - Pound
+                                    - ShortTon
+                        unitReferences:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - type
+                              - value
+                              # assignedBy not required
+                              # countryCode not required
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - ContainerID
+                                  - LicencePlateNumber
+                                  # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Customer
+                                  - Supplier
+                              countryCode:
+                                type: string
+                                minLength: 2
+                                maxLength: 2
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        lineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - number
+              - status
+              - supplierOrderNumber
+              - supplierOrderLineItemNumber
+              # callOffNumber is not required
+              # callOffLineItemNumber is not required
+              # deliveryInstructionSequenceLineItemNumber
+              # purchaseOrderNumber is not required
+              # purchaseOrderLineItemNumber is not required
+              # sellerProduct is not required
+              # customerArticleReference is not required
+              - quantities
+              - packages
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              status:
+                type: string
+                enum:
+                  - Cancelled
+                  - Original
+                  - Replaced
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              callOffNumber:
+                type: string
+                minLength: 1
+              callOffLineItemNumber:
+                type: integer
+                minimum: 0
+              deliveryInstructionSequenceLineItemNumber:
+                type: integer
+                minimum: 0
+              purchaseOrderNumber:
+                type: string
+                minLength: 1
+              purchaseOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              sellerProduct:
+                $ref: '#/components/schemas/Product'
+              customerArticleReference:
+                $ref: '#/components/schemas/Product'
               quantities:
                 type: array
                 minItems: 1
@@ -1486,7 +1649,315 @@ components:
                     context:
                       type: string
                       enum:
-                        - Ordered # the only allowed value!
+                        - Loaded  # when shipmentStatus = Loaded
+                        - Planned # when shipmentStatus = Planned
+                        - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
+                    type:
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    value:
+                      type: number
+                      exclusiveMinimum: 0
+                    unitOfMeasure:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - Package
+                        - PalletUnit
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - Skid
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+              packages:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - type
+                    - identifiers
+                    - quantities
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Pallet
+                        - PulpUnit
+                        - ReelPackage
+                    identifiers:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - role
+                          - type
+                          - codeType
+                          - value
+                        properties:
+                          role:
+                            type: string
+                            enum:
+                              - Primary
+                              - Secondary
+                          type:
+                            type: string
+                            enum:
+                              - Barcode
+                              - RFTag
+                              - Number
+                              - QRCode
+                          codeType:
+                            type: string
+                            enum:
+                              - IFRA
+                              - NARI
+                              - Supplier
+                              - UIC14
+                              - UIC16
+                          value:
+                            type: string
+                            minLength: 1
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - context
+                          - type
+                          - value
+                          - unitOfMeasure
+                        properties:
+                          context:
+                            type: string
+                            enum:
+                              - Loaded  # when shipmentStatus = Loaded
+                              - Planned # when shipmentStatus = Planned
+                              - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
+                          type:
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                            exclusiveMinimum: 0
+                          unitOfMeasure:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - Package
+                              - PalletUnit
+                              - Piece
+                              - Pound
+                              - PulpUnit
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - Skid
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+
+    GoodsReceiptById:
+      type: object
+      required:
+        - id
+        - number
+        - timestamp
+        - status
+        - acceptance
+        - isComplete
+        # deliveryNoteNumber is not required
+        # deliveryNoteTimeStamp is not required
+        # deliveryNoteStatus is not required
+        # arrivalDateTime is not required
+        # unloadingDateTime is not required
+        # shipToLocation is not required
+        # lineItems is not required
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        status:
+          type: string
+          enum:
+            - Original
+            - Replaced
+        acceptance:
+          type: string
+          enum:
+            - AsSpecified
+            - Cancelled
+            - Rejected
+            - WithDamage
+            - WithoutDeliveryNote
+            - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
+            - WithVariance
+            - WithVarianceAndDamage
+        isComplete:
+          type: boolean
+        deliveryNoteNumber:
+          type: string
+          minLength: 1
+          description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
+        deliveryNoteTimestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        deliveryNoteStatus:
+          type: string
+          enum:
+            - Cancelled
+            - Original
+            - Replaced
+        arrivalDateTime:
+          type: string
+          minLength: 4
+          description: |-
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+        unloadingDateTime:
+          type: string
+          minLength: 4
+          description: |-
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+        shipToLocation:
+          $ref: '#/components/schemas/Location'
+        lineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - number
+              # acceptance is not required
+              # deliveryNoteLineItemNumber is not required
+              # supplierOrderNumber is not required
+              # supplierOrderLineItemNumber is not required
+              # sellerProduct is not required
+              # quantities is not required
+              # packages is not required
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              acceptance:
+                type: string
+                enum:
+                  - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
+                  - AsSpecified 
+                  - Cancelled
+                  - Rejected
+                  - WithDamage
+                  - WithVariance # then, we give ALL the packages!
+                  - WithVarianceAndDamage
+              deliveryNoteLineItemNumber:
+                type: integer
+                minimum: 0
+                description: deliveryNoteLineItemNumber is required if a Delivery Note is received for the goods
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              sellerProduct:
+                $ref: '#/components/schemas/Product'
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - context
+                    - type
+                    - value
+                    - unitOfMeasure
+                  properties:
+                    context:
+                      type: string
+                      enum:
+                        - Confirmed
+                        - Invoiced
+                        - Ordered
+                        - Produced
+                        - Shipped
                     type:
                       type: string
                       enum:
@@ -1535,3 +2006,742 @@ components:
                         - ThousandSquareFeet
                         - ThousandSquareInches
                         - Yard
+              packages:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - type
+                    - identifiers
+                    # quantities is not required
+                    - acceptance
+                    # varianceType is not required
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ReelPackage
+                        - Pallet
+                        - PulpUnit
+                    identifiers:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - role
+                          - type
+                          - codeType
+                          - value
+                        properties:
+                          role:
+                            type: string
+                            enum:
+                              - Primary
+                              - Secondary
+                          type:
+                            type: string
+                            enum:
+                              - Barcode
+                              - RFTag
+                              - Number
+                              - QRCode
+                          codeType:
+                            type: string
+                            enum:
+                              - IFRA
+                              - NARI
+                              - Supplier
+                              - UIC14
+                              - UIC16
+                          value:
+                            type: string
+                            minLength: 1
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - context
+                          - type
+                          - value
+                          - unitOfMeasure
+                        properties:
+                          context:
+                            type: string
+                            enum:
+                              - Confirmed
+                              - Invoiced
+                              - Ordered
+                              - Produced
+                              - Shipped
+                          type:
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                          unitOfMeasure:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - Package
+                              - PalletUnit
+                              - Piece
+                              - Pound
+                              - PulpUnit
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - Skid
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+                    acceptance:
+                      type: string
+                      enum:
+                        - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
+                        - AsSpecified 
+                        - Cancelled
+                        - Rejected
+                        - WithDamage
+                        - WithVariance
+                        - WithVarianceAndDamage
+                    varianceType:
+                      type: string
+                      enum:
+                        - DifferingWeights
+                        - NotReceived
+                        - ReceivedNotSpecified
+
+    ListOfDeliveryInstructions:
+      type: object
+      required:
+        - count
+        - items
+        # links is not required
+      properties:
+        count:
+          type: integer
+          minimum: 1
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object:
+            required:
+              - id
+              - number
+              - timestamp
+              - status
+              - sequenceCount
+            properties:
+              id:
+                type: string
+                format: uuid
+              number:
+                type: string
+                minLength: 1
+              timestamp:
+                type: string
+                format: date-time # UTC MUST be used!
+              status:
+                type: string
+                enum:
+                  - Amended
+                  - Cancelled
+                  - Original
+              sequenceCount:
+                type: integer
+                minimum: 1
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+
+    DeliveryInstructionById:
+      type: object
+      required:
+        - id
+        - number
+        - timestamp
+        - status
+        - sequences
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time # UTC MUST be used!
+        status:
+          type: string
+          enum:
+            - Amended
+            - Cancelled
+            - Original
+        sequences:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - number
+              - status
+              # supplierParty is not required
+              # buyerParty is not required
+              - deliveryLegs
+              - lineItems
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              status:
+                type: string
+                enum:
+                  - Cancelled
+                  - New
+                  - NoAction
+                  - Replaced
+              supplierParty:
+                $ref: '#/components/schemas/Party'
+              buyerParty:
+                $ref: '#/components/schemas/Party'
+              deliveryLegs:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - number
+                    - shipFromLocation
+                    # shipFromParty is not required
+                    - shipToLocation
+                    # shipToParty is not required
+                    # termsOfDelivery is not required
+                    # mainCarrierParty is not required
+                    # mainCarrierReferenceNumber is not required
+                    # requestedLoadingDateTime is not required
+                    # requestedDepartureDateTime is not required
+                    # requestedArrivalDateTime is not required
+                    # transport is not required
+                  properties:
+                    number:
+                      type: integer
+                      minimum: 0
+                    shipFromLocation:
+                      $ref: '#/components/schemas/Location'
+                    shipFromParty:
+                      $ref: '#/components/schemas/Party'
+                    shipToLocation:
+                      $ref: '#/components/schemas/Location'
+                    shipToParty:
+                      $ref: '#/components/schemas/Party'
+                    termsOfDelivery:
+                      type: object
+                      required:
+                        - incoterms
+                      properties:
+                        incoterms:
+                          type: object
+                          required:
+                            - location
+                            - code
+                            - version
+                          properties:
+                            location:
+                              type: string
+                              minLength: 1
+                            code:
+                              type: string
+                              enum:
+                                - CFR
+                                # copy Incoterms [attribute] from data dictionary, expect "Others"!
+                            version:
+                              type: string
+                              enum:
+                                - 1980
+                                - 1990
+                                - 2000
+                                - 2010
+                                - 2020
+                    mainCarrierParty:
+                      description: |-
+                        The _main carrier_ is the party that is **contracted** to handle the transport.
+                      $ref: '#/components/schemas/Party'
+                    mainCarrierReferenceNumber:
+                      type: string
+                      minLength: 1
+                    requestedLoadingDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    requestedDepartureDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    requestedArrivalDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    transport:
+                      type: object
+                      required:
+                        - modeType
+                        # units is not required
+                      properties:
+                        modeType:
+                          type: string
+                          enum:
+                            - InlandWaterway
+                            - Intermodal
+                            - Multimodal
+                            - Rail
+                            - Road
+                            - Sea
+                        units:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              # level
+                              - type
+                              # detailCode
+                              - identifiers
+                              # measurements
+                              # unitReferences
+                            properties:
+                              level:
+                                type: integer
+                                minimum: 1
+                              type:
+                                type: string
+                                enum:
+                                  - Barge
+                                  - Cassette
+                                  - Container
+                                  - DrawBarCombination
+                                  - RailCar
+                                  - RigidLorry
+                                  - Trailer
+                                  - VesselUnit
+                              detailCode:
+                                type: object
+                                required:
+                                  - value
+                                  - assignedBy
+                                properties:
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Customer
+                                      - Supplier
+                              identifiers:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - type
+                                    - value
+                                    # assignedBy not required
+                                    # countryCode not required
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - ContainerID
+                                        - LicencePlateNumber
+                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                    value:
+                                      type: string
+                                      minLength: 1
+                                    assignedBy:
+                                      type: string
+                                      enum:
+                                        - Customer
+                                        - Supplier
+                                    countryCode:
+                                      type: string
+                                      minLength: 2
+                                      maxLength: 2
+                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              measurements:
+                                type: object
+                                required:
+                                  # length is not required
+                                  # width is not required
+                                  # height is not required
+                                  # weight is not required
+                                properties:
+                                  length:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  width:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  height:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Kilometer
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  weight:
+                                    type: object
+                                    required:
+                                      - value
+                                      - unitOfMeasure
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      unitOfMeasure:
+                                        type: string
+                                        enum:
+                                          - Gram
+                                          - HundredPounds
+                                          - Kilogram
+                                          - MetricTon
+                                          - Pound
+                                          - ShortTon
+                              unitReferences:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  required:
+                                    - type
+                                    - value
+                                    # assignedBy not required
+                                    # countryCode not required
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - ContainerID
+                                        - LicencePlateNumber
+                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                    value:
+                                      type: string
+                                      minLength: 1
+                                    assignedBy:
+                                      type: string
+                                      enum:
+                                        - Customer
+                                        - Supplier
+                                    countryCode:
+                                      type: string
+                                      minLength: 2
+                                      maxLength: 2
+                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+              lineItems:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - number
+                    # supplierOrderNumber is not required
+                    # supplierOrderLineItemNumber is not required
+                    # callOffNumber is not required
+                    # callOffLineItemNumber is not required
+                    # sellerProduct is not mandatory
+                    # customerArticleReference
+                    - quantities
+                    # packages is not required
+                  properties:
+                    number:
+                      type: integer
+                      minimum: 0
+                    supplierOrderNumber:
+                      type: string
+                      minLength: 1
+                    supplierOrderLineItemNumber:
+                      type: integer
+                      minimum: 0
+                    callOffNumber:
+                      type: string
+                      minLength: 1
+                    callOffLineItemNumber:
+                      type: integer
+                      minimum: 0
+                    sellerProduct:
+                      $ref: '#/components/schemas/PRoduct'
+                    customerArticleReference:
+                      $ref: '#/components/schemas/PRoduct'
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - context
+                          - type
+                          - value
+                          - unitOfMeasure
+                        properties:
+                          context:
+                            type: string
+                            enum:
+                              - Instructed
+                          type:
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                            minimum: 0
+                          unitOfMeasure:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - Package
+                              - PalletUnit
+                              - Piece
+                              - Pound
+                              - PulpUnit
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - Skid
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+                    packages:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - type
+                          - identifiers
+                          - quantities
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - ReelPackage
+                              - Pallet
+                              - PulpUnit
+                          identifiers:
+                            type: array
+                            minItems: 1
+                            items:
+                              type: object
+                              required:
+                                - role
+                                - type
+                                - codeType
+                                - value
+                              properties:
+                                role:
+                                  type: string
+                                  enum:
+                                    - Primary
+                                    - Secondary
+                                type:
+                                  type: string
+                                  enum:
+                                    - Barcode
+                                    - RFTag
+                                    - Number
+                                    - QRCode
+                                codeType:
+                                  type: string
+                                  enum:
+                                    - IFRA
+                                    - NARI
+                                    - Supplier
+                                    - UIC14
+                                    - UIC16
+                                value:
+                                  type: string
+                                  minLength: 1
+                          quantities:
+                            type: array
+                            minItems: 1
+                            items:
+                              type: object
+                              required:
+                                - context
+                                - type
+                                - value
+                                - unitOfMeasure
+                              properties:
+                                context:
+                                  type: string
+                                  enum:
+                                    - Instructed
+                                type:
+                                  type: string
+                                  enum:
+                                    - Area
+                                    - Count
+                                    - GrossWeight
+                                    - Length
+                                    - NetNetWeight
+                                    - NetWeight
+                                    - NominalWeight
+                                    - TareWeight
+                                value:
+                                  type: number
+                                  minimum: 0
+                                unitOfMeasure:
+                                  type: string
+                                  enum:
+                                    - Bale
+                                    - Box
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Gram
+                                    - HundredPounds
+                                    - Inch
+                                    - Kilogram
+                                    - Kilometer
+                                    - Meter
+                                    - MetricTon
+                                    - Millimeter
+                                    - Package
+                                    - PalletUnit
+                                    - Piece
+                                    - Pound
+                                    - PulpUnit
+                                    - Ream
+                                    - Reel
+                                    - Sheet
+                                    - ShortTon
+                                    - Skid
+                                    - SquareDecimeter
+                                    - SquareFoot
+                                    - SquareInch
+                                    - SquareMeter
+                                    - ThousandPieces
+                                    - ThousandSquareCentimeters
+                                    - ThousandSquareFeet
+                                    - ThousandSquareInches
+                                    - Yard
