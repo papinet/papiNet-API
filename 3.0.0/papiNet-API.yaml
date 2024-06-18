@@ -24,8 +24,8 @@ paths:
    #  GET /logistic-delivery-notes/{logisticDeliveryNoteId}
    # POST /logistic-delivery-notes/{logisticDeliveryNoteId}
    #  PUT /logistic-delivery-notes/{logisticDeliveryNoteId}
-   # POST /goods-receipts/{goodsReceiptId}
-   #  PUT /goods-receipts/{goodsReceiptId}
+   # POST /logistic-goods-receipts/{goodsReceiptId}
+   #  PUT /logistic-goods-receipts/{goodsReceiptId}
    #  GET /delivery-instructions
    #  GET /delivery-instructions/{deliveryInstructionId}
 
@@ -580,6 +580,38 @@ components:
 
     Product:
       type: object
+      allOf:
+        - oneOf:
+            - required:
+                - gradeCode
+            - required:
+                - partNumber
+        - oneOf:
+            - required:
+                - paper
+            - required:
+                - pulp
+            - not:
+                required:
+                  - paper
+                  - pulp
+      properties:
+        gradeCode:
+          type: string
+          minLength: 1
+        partNumber:
+          type: string
+          minLength: 1
+        brandName:
+          type: string
+          minLength: 1
+        name:
+          type: string
+          minLength: 1
+        paper:
+          type: string
+        pulp:
+          type: string
 
     Party:
       type: object
