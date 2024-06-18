@@ -609,9 +609,9 @@ components:
           type: string
           minLength: 1
         paper:
-          type: string
+          $ref: '#/components/schemas/Paper'
         pulp:
-          type: string
+          $ref: '#/components/schemas/Pulp'
 
     Party:
       type: object
