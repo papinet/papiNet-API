@@ -24,8 +24,8 @@ paths:
    #  GET /logistic-delivery-notes/{logisticDeliveryNoteId}
    # POST /logistic-delivery-notes/{logisticDeliveryNoteId}
    #  PUT /logistic-delivery-notes/{logisticDeliveryNoteId}
-   # POST /logistic-goods-receipts/{goodsReceiptId}
-   #  PUT /logistic-goods-receipts/{goodsReceiptId}
+   # POST /logistic-goods-receipts/{logisticGoodsReceiptId}
+   #  PUT /logistic-goods-receipts/{logisticGoodsReceiptId}
    #  GET /delivery-instructions
    #  GET /delivery-instructions/{deliveryInstructionId}
 
@@ -254,7 +254,81 @@ paths:
 components:
   schemas:
 
-    # Re-usable schemas (6)
+    # Re-usable schemas (6) in alphabetical order:
+
+    Location:
+      type: object
+      required:
+        - identifiers
+      properties:
+        identifiers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - value
+              - assignedBy
+            properties:
+              value:
+                type: string
+                minLength: 1
+              assignedBy:
+                type: string
+                enum:
+                  - Customer
+                  - Supplier
+        nameLines:
+          type: array
+          minItems: 1
+          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+          items:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          required:
+            # addressLines is not required
+            # city is not required
+            # postalCode is not required
+            # stateOrProvince is not required
+            # county is not required
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+              items:
+                type: string
+                minLength: 1
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
+              type: string
+              minLength: 1
+            countryCode:
+                type: string
+                minLength: 2
+                maxLength: 2
+                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        coordinatesWGS84:
+          type: object
+          required:
+            - latitude
+            - longitude
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
 
     PaginationLinks:
       type: object
@@ -575,44 +649,6 @@ components:
             - Long
             - Short
 
-    Pulp:
-      type: object # This is just a placeholder for now.
-
-    Product:
-      type: object
-      allOf:
-        - oneOf:
-            - required:
-                - gradeCode
-            - required:
-                - partNumber
-        - oneOf:
-            - required:
-                - paper
-            - required:
-                - pulp
-            - not:
-                required:
-                  - paper
-                  - pulp
-      properties:
-        gradeCode:
-          type: string
-          minLength: 1
-        partNumber:
-          type: string
-          minLength: 1
-        brandName:
-          type: string
-          minLength: 1
-        name:
-          type: string
-          minLength: 1
-        paper:
-          $ref: '#/components/schemas/Paper'
-        pulp:
-          $ref: '#/components/schemas/Pulp'
-
     Party:
       type: object
       required:
@@ -677,81 +713,10 @@ components:
                 maxLength: 2
                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
 
-    Location:
-      type: object
-      required:
-        - identifiers
-      properties:
-        identifiers:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            required:
-              - value
-              - assignedBy
-            properties:
-              value:
-                type: string
-                minLength: 1
-              assignedBy:
-                type: string
-                enum:
-                  - Customer
-                  - Supplier
-        nameLines:
-          type: array
-          minItems: 1
-          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
-          items:
-            type: string
-            minLength: 1
-        address:
-          type: object
-          required:
-            # addressLines is not required
-            # city is not required
-            # postalCode is not required
-            # stateOrProvince is not required
-            # county is not required
-            - countryCode
-          properties:
-            addressLines:
-              type: array
-              minItems: 1
-              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
-              items:
-                type: string
-                minLength: 1
-            city:
-              type: string
-              minLength: 1
-            postalCode:
-              type: string
-              minLength: 1
-            stateOrProvince:
-              type: string
-              minLength: 1
-            county:
-              type: string
-              minLength: 1
-            countryCode:
-                type: string
-                minLength: 2
-                maxLength: 2
-                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-        coordinatesWGS84:
-          type: object
-          required:
-            - latitude
-            - longitude
-          properties:
-            latitude:
-              type: number
-            longitude:
-              type: number
+    Pulp:
+      type: object # This is just a placeholder for now.
 
-    # API endpoint schemas (7):
+    # API endpoint schemas (7) in order of appearance:
 
     ListOfSupplierOrders:
       type: object
@@ -894,9 +859,55 @@ components:
                 type: integer
                 minimum: 0
               sellerProduct:
-                $ref: '#/components/schemas/Product'
+                type: object
+                allOf:
+                  - oneOf:
+                      - required:
+                          - gradeCode
+                      - required:
+                          - partNumber
+                  - oneOf:
+                      - required:
+                          - paper
+                      - required:
+                          - pulp
+                properties:
+                  gradeCode:
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  paper:
+                    $ref: '#/components/schemas/Paper'
+                  pulp:
+                    $ref: '#/components/schemas/Pulp'
               customerArticleReference:
-                $ref: '#/components/schemas/Product'
+                type: object
+                oneOf:
+                  - required:
+                      - gradeCode
+                  - required:
+                      - partNumber
+                properties:
+                  gradeCode:
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
               millParty:
                 $ref: '#/components/schemas/Party'
               deliveryLegs:
@@ -1664,9 +1675,55 @@ components:
                 type: integer
                 minimum: 0
               sellerProduct:
-                $ref: '#/components/schemas/Product'
+                type: object
+                allOf:
+                  - oneOf:
+                      - required:
+                          - gradeCode
+                      - required:
+                          - partNumber
+                  - oneOf:
+                      - required:
+                          - paper
+                      - required:
+                          - pulp
+                properties:
+                  gradeCode:
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  paper:
+                    $ref: '#/components/schemas/Paper'
+                  pulp:
+                    $ref: '#/components/schemas/Pulp'
               customerArticleReference:
-                $ref: '#/components/schemas/Product'
+                type: object
+                oneOf:
+                  - required:
+                      - gradeCode
+                  - required:
+                      - partNumber
+                properties:
+                  gradeCode:
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
               quantities:
                 type: array
                 minItems: 1
@@ -1970,7 +2027,35 @@ components:
                 type: integer
                 minimum: 0
               sellerProduct:
-                $ref: '#/components/schemas/Product'
+                type: object
+                allOf:
+                  - oneOf:
+                      - required:
+                          - gradeCode
+                      - required:
+                          - partNumber
+                  - oneOf:
+                      - required:
+                          - paper
+                      - required:
+                          - pulp
+                properties:
+                  gradeCode:
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  paper:
+                    $ref: '#/components/schemas/Paper'
+                  pulp:
+                    $ref: '#/components/schemas/Pulp'
               quantities:
                 type: array
                 minItems: 1
@@ -2631,9 +2716,55 @@ components:
                       type: integer
                       minimum: 0
                     sellerProduct:
-                      $ref: '#/components/schemas/Product'
+                      type: object
+                      allOf:
+                        - oneOf:
+                            - required:
+                                - gradeCode
+                            - required:
+                                - partNumber
+                        - oneOf:
+                            - required:
+                                - paper
+                            - required:
+                                - pulp
+                      properties:
+                        gradeCode:
+                          type: string
+                          minLength: 1
+                        partNumber:
+                          type: string
+                          minLength: 1
+                        brandName:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                        paper:
+                          $ref: '#/components/schemas/Paper'
+                        pulp:
+                          $ref: '#/components/schemas/Pulp'
                     customerArticleReference:
-                      $ref: '#/components/schemas/Product'
+                      type: object
+                      oneOf:
+                        - required:
+                            - gradeCode
+                        - required:
+                            - partNumber
+                      properties:
+                        gradeCode:
+                          type: string
+                          minLength: 1
+                        partNumber:
+                          type: string
+                          minLength: 1
+                        brandName:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
                     quantities:
                       type: array
                       minItems: 1
