@@ -20,12 +20,12 @@ paths:
 
    #  GET /supplier-orders
    #  GET /supplier-orders/{supplierOrderId}
-   #  GET /logistic-delivery-notes
-   #  GET /logistic-delivery-notes/{logisticDeliveryNoteId}
-   # POST /logistic-delivery-notes/{logisticDeliveryNoteId}
-   #  PUT /logistic-delivery-notes/{logisticDeliveryNoteId}
-   # POST /logistic-goods-receipts/{logisticGoodsReceiptId}
-   #  PUT /logistic-goods-receipts/{logisticGoodsReceiptId}
+   #  GET /logistics-delivery-notes
+   #  GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
+   # POST /logistics-delivery-notes/{logisticsDeliveryNoteId}
+   #  PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
+   # POST /logistics-goods-receipts/{logisticsGoodsReceiptId}
+   #  PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
    #  GET /delivery-instructions
    #  GET /delivery-instructions/{deliveryInstructionId}
 
@@ -69,142 +69,142 @@ paths:
         '404':
           description: Not Found
 
-  '/logistic-delivery-notes':
-    # GET /logistic-delivery-notes
-    # None => ListOfLogisticDeliveryNotes
+  '/logistics-delivery-notes':
+    # GET /logistics-delivery-notes
+    # None => ListOfLogisticsDeliveryNotes
     get:
-      summary: List `logistic-delivery-notes`
-      description: Get a paginated list of all `logistic-delivery-notes`.
+      summary: List `logistics-delivery-notes`
+      description: Get a paginated list of all `logistics-delivery-notes`.
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfLogisticDeliveryNotes'
+                $ref: '#/components/schemas/ListOfLogisticsDeliveryNotes'
         '204':
           description: No Content
 
-  '/logistic-delivery-notes/{logisticDeliveryNoteId}':
-    # GET /logistic-delivery-notes/{logisticDeliveryNoteId}
-    # None => LogisticDeliveryNoteById
+  '/logistics-delivery-notes/{logisticsDeliveryNoteId}':
+    # GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
+    # None => LogisticsDeliveryNoteById
     get:
-      summary: Get a `logistic-delivery-note`
-      description: Gets the details of a specific `logistic-delivery-note`.
+      summary: Get a `logistics-delivery-note`
+      description: Gets the details of a specific `logistics-delivery-note`.
       parameters:
         - in: path
-          name: logisticDeliveryNoteId
+          name: logisticsDeliveryNoteId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `logistic-delivery-note` to get
+          description: UUID of the `logistics-delivery-note` to get
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LogisticDeliveryNoteById'
+                $ref: '#/components/schemas/LogisticsDeliveryNoteById'
         '404':
           description: Not Found
-    # POST /logistic-delivery-notes/{logisticDeliveryNoteId}
-    # LogisticDeliveryNoteById => None
+    # POST /logistics-delivery-notes/{logisticsDeliveryNoteId}
+    # LogisticsDeliveryNoteById => None
     post:
-      summary: Push an _Original_ `logistic-delivery-note`
-      description: Pushes the details of a specific _Original_ `logistic-delivery-note`.
+      summary: Push an _Original_ `logistics-delivery-note`
+      description: Pushes the details of a specific _Original_ `logistics-delivery-note`.
       parameters:
         - in: path
-          name: logisticDeliveryNoteId
+          name: logisticsDeliveryNoteId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the _Original_ `logistic-delivery-note` to push.
+          description: UUID of the _Original_ `logistics-delivery-note` to push.
       requestBody:
-        description: The details of the _Original_ `logistic-delivery-note` to push.
+        description: The details of the _Original_ `logistics-delivery-note` to push.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticDeliveryNoteById'
+              $ref: '#/components/schemas/LogisticsDeliveryNoteById'
       responses:
         '200':
           description: OK
         '400':
           description: Bad Request
-    # PUT /logistic-delivery-notes/{logisticDeliveryNoteId}
-    # LogisticDeliveryNoteById => None
+    # PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
+    # LogisticsDeliveryNoteById => None
     put:
-      summary: Push a _Replaced_ `logistic-delivery-note`
-      description: Pushes the details of a specific _Replaced_ `logistic-delivery-note`.
+      summary: Push a _Replaced_ `logistics-delivery-note`
+      description: Pushes the details of a specific _Replaced_ `logistics-delivery-note`.
       parameters:
         - in: path
-          name: logisticDeliveryNoteId
+          name: logisticsDeliveryNoteId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the _Replaced_ `logistic-delivery-note` to push
+          description: UUID of the _Replaced_ `logistics-delivery-note` to push
       requestBody:
-        description: The details of the _Replaced_ `logistic-delivery-note` to push.
+        description: The details of the _Replaced_ `logistics-delivery-note` to push.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticDeliveryNoteById'
+              $ref: '#/components/schemas/LogisticsDeliveryNoteById'
       responses:
         '200':
           description: OK
         '400':
           description: Bad Request
 
-  '/logistic-goods-receipts/{logisticGoodsReceiptId}':
-    # POST /logistic-goods-receipts/{logisticGoodsReceiptId}
-    # LogisticGoodsReceiptById => None
+  '/logistics-goods-receipts/{logisticsGoodsReceiptId}':
+    # POST /logistics-goods-receipts/{logisticsGoodsReceiptId}
+    # LogisticsGoodsReceiptById => None
     post:
-      summary: Push an _Original_ `logistic-goods-receipt`
-      description: Pushes the details of a specific _Original_ `logistic-goods-receipt`.
+      summary: Push an _Original_ `logistics-goods-receipt`
+      description: Pushes the details of a specific _Original_ `logistics-goods-receipt`.
       parameters:
         - in: path
-          name: logisticGoodsReceiptId
+          name: logisticsGoodsReceiptId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the _Original_ `logistic-goods-receipt` to push.
+          description: UUID of the _Original_ `logistics-goods-receipt` to push.
       requestBody:
-        description: The details of the _Original_ `logistic-goods-receipt` to push.
+        description: The details of the _Original_ `logistics-goods-receipt` to push.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticGoodsReceiptById'
+              $ref: '#/components/schemas/LogisticsGoodsReceiptById'
       responses:
         '200':
           description: OK
         '400':
           description: Bad Request
-    # PUT /logistic-goods-receipts/{logisticGoodsReceiptId}
-    # LogisticGoodsReceiptById => None
+    # PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
+    # LogisticsGoodsReceiptById => None
     put:
-      summary: Push an _Replaced_ `logistic-goods-receipt`
-      description: Pushes the details of a specific _Replaced_ `logistic-goods-receipt`.
+      summary: Push an _Replaced_ `logistics-goods-receipt`
+      description: Pushes the details of a specific _Replaced_ `logistics-goods-receipt`.
       parameters:
         - in: path
-          name: logisticGoodsReceiptId
+          name: logisticsGoodsReceiptId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the _Replaced_ `logistic-goods-receipt` to push.
+          description: UUID of the _Replaced_ `logistics-goods-receipt` to push.
       requestBody:
-        description: The details of the _Replaced_ `logistic-goods-receipt` to push.
+        description: The details of the _Replaced_ `logistics-goods-receipt` to push.
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticGoodsReceiptById'
+              $ref: '#/components/schemas/LogisticsGoodsReceiptById'
       responses:
         '200':
           description: OK
@@ -1235,7 +1235,7 @@ components:
                         - ThousandSquareInches
                         - Yard
 
-    ListOfLogisticDeliveryNotes:
+    ListOfLogisticsDeliveryNotes:
       type: object
       required:
         - count
@@ -1302,7 +1302,7 @@ components:
         links:
           $ref: '#/components/schemas/PaginationLinks'
 
-    LogisticDeliveryNoteById:
+    LogisticsDeliveryNoteById:
       type: object
       required:
         - id
@@ -1909,7 +1909,7 @@ components:
                               - ThousandSquareInches
                               - Yard
 
-    LogisticGoodsReceiptById:
+    LogisticsGoodsReceiptById:
       type: object
       required:
         - id
