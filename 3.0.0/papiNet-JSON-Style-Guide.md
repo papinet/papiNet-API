@@ -92,3 +92,12 @@ We have two types of properties capturing date and time:
   - `2023-08-16T13:00/P2D`
   - `P2D/2023-08-18T13:00 `
 
+### Rule 11 - JSON properties format
+
+JSON properties MUST be written in lowerCamelCase names capitalize the first letter of each word, except the first which is always lowercase, **even if it's an acronym**.
+
+### Rule 12 - Avoid abbreviations
+
+All names specified in path and query parameters, resource names, and JSON input and output fields and pre-defined values SHOULD NOT use abbreviations or acronyms.
+
+However, we have decided, during papiNet CWG meeting 2024-06-19 (Wed), to make an exception with "unit of measure" that we will write `uom` or `(...)Uom`, instead of `unitOfMeasure` or `(...)UnitOfMeasure`.
