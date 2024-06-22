@@ -35,6 +35,36 @@ paths:
     get:
       summary: List `supplier-orders`
       description: Get a paginated list of all `supplier-orders`.
+      parameters:
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string # ISO 8601
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - Amended
+              - Cancelled
+              - Original
+          required: false
+          description: filter based on `status` (Amended|Cancelled|Original)
+        - in: query
+          name: active
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `active` (true|false)
       responses:
         '200':
           description: OK
@@ -75,6 +105,43 @@ paths:
     get:
       summary: List `logistics-delivery-notes`
       description: Get a paginated list of all `logistics-delivery-notes`.
+      parameters:
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string # ISO 8601
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - Amended
+              - Cancelled
+              - Original
+          required: false
+          description: filter based on `status` (Cancelled|Original|Replaced)
+        - in: query
+          name: shipmentStatus
+          schema:
+            type: string
+            enum:
+              - Arrived
+              - Cancelled
+              - Departed
+              - Loaded
+              - Planned
+              - Unloaded
+          required: false
+          description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
       responses:
         '200':
           description: OK
@@ -217,6 +284,36 @@ paths:
     get:
       summary: List `delivery-instructions`
       description: Get a paginated list of all `delivery-instructions`.
+      parameters:
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string # ISO 8601
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - Amended
+              - Cancelled
+              - Original
+          required: false
+          description: filter based on `status` (Amended|Cancelled|Original)
+        - in: query
+          name: active
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `active` (true|false)
       responses:
         '200':
           description: OK
