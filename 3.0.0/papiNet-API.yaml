@@ -702,7 +702,6 @@ components:
               # supplierParty is not required
               # customerParty is not required
               # buyerParty is not required
-              # purchaseOrderNumber is not required
               - lineItemCount
             properties:
               id:
@@ -972,11 +971,6 @@ components:
                           minLength: 2
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-              purchaseOrderNumber:
-                type: string
-                minLength: 1
-                description: |-
-                  This is the identifier of the _purchase order_ as assigned by the _customer_.
               lineItemCount:
                 type: integer
                 minimum: 1
