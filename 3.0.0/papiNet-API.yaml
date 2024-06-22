@@ -2279,6 +2279,7 @@ components:
               - number
               - timestamp
               - status
+              - active
               - sequenceCount
             properties:
               id:
@@ -2296,6 +2297,8 @@ components:
                   - Amended
                   - Cancelled
                   - Original
+              active:
+                type: boolean
               sequenceCount:
                 type: integer
                 minimum: 1
@@ -2309,6 +2312,7 @@ components:
         - number
         - timestamp
         - status
+        - active
         - sequences
       properties:
         id:
@@ -2326,6 +2330,8 @@ components:
             - Amended
             - Cancelled
             - Original
+        active:
+          type: boolean
         sequences:
           type: array
           minItems: 1
