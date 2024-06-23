@@ -1804,7 +1804,7 @@ components:
                               # level
                               - type
                               # detailCode
-                              - identifiers
+                              - identifier
                               # measurements
                               # unitReferences
                             properties:
@@ -1835,35 +1835,32 @@ components:
                                     type: string
                                     enum:
                                       - Supplier
-                              identifiers:
-                                type: array
-                                minItems: 1
-                                items:
-                                  type: object
-                                  required:
-                                    - type
-                                    - value
-                                    # assignedBy not required
-                                    # countryCode not required
-                                  properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        - ContainerID
-                                        - LicencePlateNumber
-                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
-                                    value:
-                                      type: string
-                                      minLength: 1
-                                    assignedBy:
-                                      type: string
-                                      enum:
-                                        - Supplier
-                                    countryCode:
-                                      type: string
-                                      minLength: 2
-                                      maxLength: 2
-                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              identifier:
+                                type: object
+                                required:
+                                  - type
+                                  - value
+                                  # assignedBy not required
+                                  # countryCode not required
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                      - ContainerID
+                                      - LicencePlateNumber
+                                      # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Supplier
+                                  countryCode:
+                                    type: string
+                                    minLength: 2
+                                    maxLength: 2
+                                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                               measurements:
                                 type: object
                                 required: []
@@ -2716,7 +2713,7 @@ components:
                         # level
                         - type
                         # detailCode
-                        - identifiers
+                        - identifier
                         # measurements
                         # unitReferences
                       properties:
@@ -2747,35 +2744,32 @@ components:
                               type: string
                               enum:
                                 - Supplier
-                        identifiers:
-                          type: array
-                          minItems: 1
-                          items:
-                            type: object
-                            required:
-                              - type
-                              - value
-                              # assignedBy not required
-                              # countryCode not required
-                            properties:
-                              type:
-                                type: string
-                                enum:
-                                  - ContainerID
-                                  - LicencePlateNumber
-                                  # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
-                              value:
-                                type: string
-                                minLength: 1
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
-                              countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        identifier:
+                          type: object
+                          required:
+                            - type
+                            - value
+                            # assignedBy not required
+                            # countryCode not required
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - ContainerID
+                                - LicencePlateNumber
+                                # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                            value:
+                              type: string
+                              minLength: 1
+                            assignedBy:
+                              type: string
+                              enum:
+                                - Supplier
+                            countryCode:
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         measurements:
                           type: object
                           required: []
@@ -3065,6 +3059,7 @@ components:
                   required:
                     - type
                     - identifiers
+                    # transportUnitIdentifierReference is not required
                     - quantities
                   properties:
                     type:
@@ -3109,6 +3104,14 @@ components:
                           value:
                             type: string
                             minLength: 1
+                    transportUnitIdentifierReference:
+                      type: object
+                      required:
+                        - value
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
                     quantities:
                       type: array
                       minItems: 1
@@ -3468,6 +3471,7 @@ components:
                   required:
                     - type
                     - identifiers
+                    # transportUnitIdentifierReference is not required
                     # quantities is not required
                     - acceptance
                     # varianceType is not required
@@ -3512,6 +3516,14 @@ components:
                           value:
                             type: string
                             minLength: 1
+                    transportUnitIdentifierReference:
+                      type: object
+                      required:
+                        - value
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
                     quantities:
                       type: array
                       minItems: 1
@@ -4289,7 +4301,7 @@ components:
                               # level
                               - type
                               # detailCode
-                              - identifiers
+                              - identifier
                               # measurements
                               # unitReferences
                             properties:
@@ -4320,35 +4332,32 @@ components:
                                     type: string
                                     enum:
                                       - Supplier
-                              identifiers:
-                                type: array
-                                minItems: 1
-                                items:
-                                  type: object
-                                  required:
-                                    - type
-                                    - value
-                                    # assignedBy not required
-                                    # countryCode not required
-                                  properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        - ContainerID
-                                        - LicencePlateNumber
-                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
-                                    value:
-                                      type: string
-                                      minLength: 1
-                                    assignedBy:
-                                      type: string
-                                      enum:
-                                        - Supplier
-                                    countryCode:
-                                      type: string
-                                      minLength: 2
-                                      maxLength: 2
-                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              identifier:
+                                type: object
+                                required:
+                                  - type
+                                  - value
+                                  # assignedBy not required
+                                  # countryCode not required
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                      - ContainerID
+                                      - LicencePlateNumber
+                                      # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Supplier
+                                  countryCode:
+                                    type: string
+                                    minLength: 2
+                                    maxLength: 2
+                                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                               measurements:
                                 type: object
                                 required: []
@@ -4617,6 +4626,7 @@ components:
                         required:
                           - type
                           - identifiers
+                          # transportUnitIdentifierReference is not required
                           - quantities
                         properties:
                           type:
@@ -4661,6 +4671,14 @@ components:
                                 value:
                                   type: string
                                   minLength: 1
+                          transportUnitIdentifierReference:
+                            type: object
+                            required:
+                              - value
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
                           quantities:
                             type: array
                             minItems: 1
