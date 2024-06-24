@@ -2902,6 +2902,7 @@ components:
               # purchaseOrderLineItemNumber is not required
               # sellerProduct is not required
               # customerArticleReference is not required
+              # safetyAndEnvironmentalInformationDetails is not required
               - quantities
               - packages
             properties:
@@ -2985,6 +2986,170 @@ components:
                   name:
                     type: string
                     minLength: 1
+              safetyAndEnvironmentalInformationDetails:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required:
+                    - type
+                    - assignedBy
+                    # chainOfCustody
+                  properties:
+                    type:
+                      description: |
+                        - **Agricultural**
+                        - **Biodegradable**
+                        - **CarbonFootprint**: Total greenhouse gas (GHG) emissions caused by an organization, event, product or person, usually expressed in equivalent tonnes of carbon dioxide (tCO2e).
+                        - **Certified**
+                        - **Chemical**
+                        - **CSA**: Canadian Standards Authority
+                        - **Deforestation**: Regulation for prevention of deforestation.
+                        - **EMAS**: The Eco-Management and Audit Scheme, EMAS, is a voluntary environmental management tool for companies and other organisations to evaluate, report and improve their environmental performance. EMAS promotes continuous evaluation and improvements in the environmental performance of participating organisations. (<http://ec.europa.eu/environment/emas/>)
+                        - **Energy**
+                        - **FlamabilityReactivity**
+                        - **FSC100%**: FSC-certified virgin material originating in FSC-certified forests or plantations that has not been mixed with material of another material category throughout the supply chain. FSC 100% products are eligible to be used in FSC 100% or FSC Mix product groups. (Forest Stewardship Council, <http://www.fsc.org>).
+                        - **FSCControlledWood**: Material originating in non FSC-certified forests or plantations supplied with an FSC claim by a supplier which has been assessed by an FSC-accredited certification body for conformity with FSC Chain of Custody and/or FSC Controlled Wood requirements (FSC-STD-40-005 or FSC-STD-30-010). (Forest Stewardship Council, <http://www.fsc.org>).
+                        - **FSCMix_x%**: FSC-certified virgin material based on input from FSC-certified, controlled and/or reclaimed sources, and supplied with a percentage claim. FSC Mix material is only eligible to be used in FSC Mix product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                        - **FSCMixCredit**: FSC-certified virgin material based on input from FSC-certified, controlled and/or reclaimed sources, and supplied with a credit claim. FSC Mix material is only eligible to be used in FSC Mix product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                        - **FSCRecycled_x%**: FSC-certified reclaimed material based on exclusive input from reclaimed sources, and supplied with a percentage claim. FSC Recycled material or products are eligible to be used in FSC Mix or FSC Recycled product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                        - **FSCRecycledCredit**: FSC-certified reclaimed material based on exclusive input from reclaimed sources, and supplied with a credit claim. FSC Recycled material or products are eligible to be used in FSC Mix or FSC Recycled product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                        - **HazardousMaterial**
+                        - **ISO14001**: ISO 14001 specifies the actual requirements for an environmental management system. It applies to those environmental aspects which the organization has control and over which it can be expected to have an influence. ISO 14001 is often seen as the corner stone standard of the ISO 14000 series. However, it is not only the most well known, but is the only ISO 14000 standard against which it is currently possible to be certified by an external certification authority. Having stated this, it does not itself state specific environmental performance criteria. This standard is applicable to any organization that wishes to:
+                          - implement, maintain and improve an environmental management system
+                          - assure itself of its conformance with its own stated environmental policy (those policy commitments of course must be made)
+                          - demonstrate conformance
+                          - ensure compliance with environmental laws and regulations
+                          - seek certification of its environmental management system by an external third party organization
+                          - make a self-determination of conformance
+                          (<http://www.iso14000-iso14001-environmental-management.com/>)
+                        - **MaterialSafetyData**
+                        - **MTCC**: Malaysian Timber Certification Council
+                        - **PEFCControlledSources**: Material originating in non PEFC certified forests or plantations. ”PEFC Controlled Sources” is material category ”other material” and not ”certified material” in PEFC due diligence system. Basic principle is to use ”PEFC Controlled Sources” for all output products that cannot be sold as ”X% PEFC Certified”. Selling products as ”PEFC Controlled Sources” requires full Chain of Custody certification. It also demonstrates that the PEFC due diligence system has been implemented and compliance with EU Timber Regulation.(PEFC, <http://pefc.org>)
+                        - **PlantHealthInspection**: Product is subject to plant health inspection. Samples may be taken of the material in order to inspect possible harmful insects or plant diseases.
+                        - **Recycled**
+                        - **SFI**: Sustainable Forestry Initiative
+                        - **TransportationSafetyAlert**
+                        - **WasteMovement**: Regulation for transboundary movements of waste.
+                        - **X%_PEFCcertified**: The claim “x % PEFC certified” shall be used when communicating the content of PEFC certified material. Programme for the Endorsement of Forest Certification, <http://www.pefc.org>).
+                      type: string
+                      enum:
+                        - Agricultural
+                        - Biodegradable
+                        - CarbonFootprint
+                        - Certified
+                        - Chemical
+                        - CSA
+                        - Deforestation
+                        - EMAS
+                        - Energy
+                        - FlamabilityReactivity
+                        - FSC100%
+                        - FSCControlledWood
+                        - FSCMix_x%
+                        - FSCMixCredit
+                        - FSCRecycled_x%
+                        - FSCRecycledCredit
+                        - HazardousMaterial
+                        - ISO14001
+                        - MaterialSafetyData
+                        - MTCC
+                        - PEFCControlledSources
+                        - PlantHealthInspection
+                        - Recycled
+                        - SFI
+                        - TransportationSafetyAlert
+                        - WasteMovement
+                        - X%_PEFCcertified
+                    assignedBy:
+                      type: string
+                      enum:
+                        - AFNOR
+                        - AFPA
+                        - AmericanChemicalSociety
+                        - ANSI
+                        - APPITA
+                        - ASTM
+                        - ASTM 
+                        - ATA
+                        - BISAC
+                        - Bowker
+                        - BSI
+                        - Buyer
+                        - Carrier
+                        - CCTI
+                        - CEN
+                        - CEPI
+                        - ContractParty
+                        - CoSe
+                        - Customs
+                        - DUNS
+                        - EAN
+                        - ECTA-EPCA-CEFIC
+                        - eMOBOIS
+                        - EndUser
+                        - EU
+                        - FINFO
+                        - ForestForwarder
+                        - ForestForwardingRequestor
+                        - ForestHarvester
+                        - ForestHub
+                        - ForestHarvestingRequestor
+                        - Forwarder
+                        - FSC
+                        - GCA
+                        - GCA-CCTI
+                        - GOST
+                        - GS1
+                        - IFRA
+                        - Intrastat
+                        - ISO
+                        - ISRI
+                        - KpDC
+                        - LoadingOperator
+                        - LogisticsBuyer
+                        - LogisticsSeller
+                        - LogisticsSupplier
+                        - MeasuringParty
+                        - Mill
+                        - NMFTA
+                        - NOBB
+                        - NorwegianEnvironmentAgency
+                        - NPTA
+                        - Ondule
+                        - PEFC
+                        - PMS
+                        - PPPC
+                        - Publisher
+                        - PWO
+                        - RASI
+                        - RevenueCanada
+                        - RVR
+                        - SD
+                        - SDC
+                        - Seller
+                        - Supplier
+                        - SwedishEnvironmentalProtectionAgency
+                        - TAPPI
+                        - UCC
+                        - UIC
+                        - UN/ECE
+                        - WarehouseOperator
+                        - WCO
+                        - XBITS
+                        - Other
+                    chainOfCustody:
+                      type: object
+                      required:
+                        - value
+                        # assignedBy is not required
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          minLength: 1
               quantities:
                 type: array
                 minItems: 1
@@ -4486,6 +4651,7 @@ components:
                     # callOffLineItemNumber is not required
                     # sellerProduct is not mandatory
                     # customerArticleReference
+                    # safetyAndEnvironmentalInformationDetails is not required
                     - quantities
                     # packages is not required
                   properties:
@@ -4554,6 +4720,170 @@ components:
                         name:
                           type: string
                           minLength: 1
+                    safetyAndEnvironmentalInformationDetails:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required:
+                          - type
+                          - assignedBy
+                          # chainOfCustody
+                        properties:
+                          type:
+                            description: |
+                              - **Agricultural**
+                              - **Biodegradable**
+                              - **CarbonFootprint**: Total greenhouse gas (GHG) emissions caused by an organization, event, product or person, usually expressed in equivalent tonnes of carbon dioxide (tCO2e).
+                              - **Certified**
+                              - **Chemical**
+                              - **CSA**: Canadian Standards Authority
+                              - **Deforestation**: Regulation for prevention of deforestation.
+                              - **EMAS**: The Eco-Management and Audit Scheme, EMAS, is a voluntary environmental management tool for companies and other organisations to evaluate, report and improve their environmental performance. EMAS promotes continuous evaluation and improvements in the environmental performance of participating organisations. (<http://ec.europa.eu/environment/emas/>)
+                              - **Energy**
+                              - **FlamabilityReactivity**
+                              - **FSC100%**: FSC-certified virgin material originating in FSC-certified forests or plantations that has not been mixed with material of another material category throughout the supply chain. FSC 100% products are eligible to be used in FSC 100% or FSC Mix product groups. (Forest Stewardship Council, <http://www.fsc.org>).
+                              - **FSCControlledWood**: Material originating in non FSC-certified forests or plantations supplied with an FSC claim by a supplier which has been assessed by an FSC-accredited certification body for conformity with FSC Chain of Custody and/or FSC Controlled Wood requirements (FSC-STD-40-005 or FSC-STD-30-010). (Forest Stewardship Council, <http://www.fsc.org>).
+                              - **FSCMix_x%**: FSC-certified virgin material based on input from FSC-certified, controlled and/or reclaimed sources, and supplied with a percentage claim. FSC Mix material is only eligible to be used in FSC Mix product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                              - **FSCMixCredit**: FSC-certified virgin material based on input from FSC-certified, controlled and/or reclaimed sources, and supplied with a credit claim. FSC Mix material is only eligible to be used in FSC Mix product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                              - **FSCRecycled_x%**: FSC-certified reclaimed material based on exclusive input from reclaimed sources, and supplied with a percentage claim. FSC Recycled material or products are eligible to be used in FSC Mix or FSC Recycled product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                              - **FSCRecycledCredit**: FSC-certified reclaimed material based on exclusive input from reclaimed sources, and supplied with a credit claim. FSC Recycled material or products are eligible to be used in FSC Mix or FSC Recycled product groups. (Forest Stewardship Council, <http://www.fsc.org>)
+                              - **HazardousMaterial**
+                              - **ISO14001**: ISO 14001 specifies the actual requirements for an environmental management system. It applies to those environmental aspects which the organization has control and over which it can be expected to have an influence. ISO 14001 is often seen as the corner stone standard of the ISO 14000 series. However, it is not only the most well known, but is the only ISO 14000 standard against which it is currently possible to be certified by an external certification authority. Having stated this, it does not itself state specific environmental performance criteria. This standard is applicable to any organization that wishes to:
+                                - implement, maintain and improve an environmental management system
+                                - assure itself of its conformance with its own stated environmental policy (those policy commitments of course must be made)
+                                - demonstrate conformance
+                                - ensure compliance with environmental laws and regulations
+                                - seek certification of its environmental management system by an external third party organization
+                                - make a self-determination of conformance
+                                (<http://www.iso14000-iso14001-environmental-management.com/>)
+                              - **MaterialSafetyData**
+                              - **MTCC**: Malaysian Timber Certification Council
+                              - **PEFCControlledSources**: Material originating in non PEFC certified forests or plantations. ”PEFC Controlled Sources” is material category ”other material” and not ”certified material” in PEFC due diligence system. Basic principle is to use ”PEFC Controlled Sources” for all output products that cannot be sold as ”X% PEFC Certified”. Selling products as ”PEFC Controlled Sources” requires full Chain of Custody certification. It also demonstrates that the PEFC due diligence system has been implemented and compliance with EU Timber Regulation.(PEFC, <http://pefc.org>)
+                              - **PlantHealthInspection**: Product is subject to plant health inspection. Samples may be taken of the material in order to inspect possible harmful insects or plant diseases.
+                              - **Recycled**
+                              - **SFI**: Sustainable Forestry Initiative
+                              - **TransportationSafetyAlert**
+                              - **WasteMovement**: Regulation for transboundary movements of waste.
+                              - **X%_PEFCcertified**: The claim “x % PEFC certified” shall be used when communicating the content of PEFC certified material. Programme for the Endorsement of Forest Certification, <http://www.pefc.org>).
+                            type: string
+                            enum:
+                              - Agricultural
+                              - Biodegradable
+                              - CarbonFootprint
+                              - Certified
+                              - Chemical
+                              - CSA
+                              - Deforestation
+                              - EMAS
+                              - Energy
+                              - FlamabilityReactivity
+                              - FSC100%
+                              - FSCControlledWood
+                              - FSCMix_x%
+                              - FSCMixCredit
+                              - FSCRecycled_x%
+                              - FSCRecycledCredit
+                              - HazardousMaterial
+                              - ISO14001
+                              - MaterialSafetyData
+                              - MTCC
+                              - PEFCControlledSources
+                              - PlantHealthInspection
+                              - Recycled
+                              - SFI
+                              - TransportationSafetyAlert
+                              - WasteMovement
+                              - X%_PEFCcertified
+                          assignedBy:
+                            type: string
+                            enum:
+                              - AFNOR
+                              - AFPA
+                              - AmericanChemicalSociety
+                              - ANSI
+                              - APPITA
+                              - ASTM
+                              - ASTM 
+                              - ATA
+                              - BISAC
+                              - Bowker
+                              - BSI
+                              - Buyer
+                              - Carrier
+                              - CCTI
+                              - CEN
+                              - CEPI
+                              - ContractParty
+                              - CoSe
+                              - Customs
+                              - DUNS
+                              - EAN
+                              - ECTA-EPCA-CEFIC
+                              - eMOBOIS
+                              - EndUser
+                              - EU
+                              - FINFO
+                              - ForestForwarder
+                              - ForestForwardingRequestor
+                              - ForestHarvester
+                              - ForestHub
+                              - ForestHarvestingRequestor
+                              - Forwarder
+                              - FSC
+                              - GCA
+                              - GCA-CCTI
+                              - GOST
+                              - GS1
+                              - IFRA
+                              - Intrastat
+                              - ISO
+                              - ISRI
+                              - KpDC
+                              - LoadingOperator
+                              - LogisticsBuyer
+                              - LogisticsSeller
+                              - LogisticsSupplier
+                              - MeasuringParty
+                              - Mill
+                              - NMFTA
+                              - NOBB
+                              - NorwegianEnvironmentAgency
+                              - NPTA
+                              - Ondule
+                              - PEFC
+                              - PMS
+                              - PPPC
+                              - Publisher
+                              - PWO
+                              - RASI
+                              - RevenueCanada
+                              - RVR
+                              - SD
+                              - SDC
+                              - Seller
+                              - Supplier
+                              - SwedishEnvironmentalProtectionAgency
+                              - TAPPI
+                              - UCC
+                              - UIC
+                              - UN/ECE
+                              - WarehouseOperator
+                              - WCO
+                              - XBITS
+                              - Other
+                          chainOfCustody:
+                            type: object
+                            required:
+                              - value
+                              # assignedBy is not required
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                minLength: 1
                     quantities:
                       type: array
                       minItems: 1
