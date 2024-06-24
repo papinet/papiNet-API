@@ -1268,6 +1268,7 @@ components:
               - status
               # purchaseOrderNumber is not required
               # purchaseOrderLineItemNumber is not required
+              # customerReferenceNumber is not required
               - sellerProduct
               # customerArticleReference is not required
               # millParty is not required
@@ -1291,6 +1292,9 @@ components:
               purchaseOrderLineItemNumber:
                 type: integer
                 minimum: 0
+              customerReferenceNumber:
+                type: string
+                minLength: 1
               sellerProduct:
                 type: object
                 allOf:
@@ -2933,6 +2937,7 @@ components:
               # deliveryInstructionSequenceLineItemNumber
               # purchaseOrderNumber is not required
               # purchaseOrderLineItemNumber is not required
+              # customerReferenceNumber is not required
               # sellerProduct is not required
               # customerArticleReference is not required
               # safetyAndEnvironmentalInformationDetails is not required
@@ -2969,6 +2974,9 @@ components:
               purchaseOrderLineItemNumber:
                 type: integer
                 minimum: 0
+              customerReferenceNumber:
+                type: string
+                minLength: 1
               sellerProduct:
                 type: object
                 allOf:
@@ -3136,7 +3144,6 @@ components:
                         - ANSI
                         - APPITA
                         - ASTM
-                        - ASTM 
                         - ATA
                         - BISAC
                         - Bowker
@@ -4748,6 +4755,7 @@ components:
                     # supplierOrderLineItemNumber is not required
                     # callOffNumber is not required
                     # callOffLineItemNumber is not required
+                    # customerReferenceNumber is not required
                     # sellerProduct is not mandatory
                     # customerArticleReference
                     # safetyAndEnvironmentalInformationDetails is not required
@@ -4769,6 +4777,9 @@ components:
                     callOffLineItemNumber:
                       type: integer
                       minimum: 0
+                    customerReferenceNumber:
+                      type: string
+                      minLength: 1
                     sellerProduct:
                       type: object
                       allOf:
@@ -4936,7 +4947,6 @@ components:
                               - ANSI
                               - APPITA
                               - ASTM
-                              - ASTM 
                               - ATA
                               - BISAC
                               - Bowker
