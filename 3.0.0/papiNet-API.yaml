@@ -1317,6 +1317,39 @@ components:
                   name:
                     type: string
                     minLength: 1
+                  classification:
+                    type: object
+                    required:
+                      - type
+                      - value
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - BrandName
+                          - CASNumber
+                          - CatalogueNumber
+                          - CustomsTariffNumber
+                          - EWCNumber
+                          - ExportHarmonisedSystemCode
+                          - FinishedGoodIdentifier
+                          - GradeCode
+                          - GradeName
+                          - GTIN8
+                          - GTIN12
+                          - GTIN13
+                          - GTIN14
+                          - ImportHarmonisedSystemCode
+                          - ManufacturingGradeCode
+                          - ManufacturingGradeName
+                          - Ondule
+                          - PartNumber
+                          - RFQPartNumber
+                          - SKU
+                          - Other
+                      value:
+                        type: string
+                        minLength: 1
                   paper:
                     $ref: '#/components/schemas/Paper'
                   pulp:
@@ -2962,6 +2995,39 @@ components:
                   name:
                     type: string
                     minLength: 1
+                  classification:
+                    type: object
+                    required:
+                      - type
+                      - value
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - BrandName
+                          - CASNumber
+                          - CatalogueNumber
+                          - CustomsTariffNumber
+                          - EWCNumber
+                          - ExportHarmonisedSystemCode
+                          - FinishedGoodIdentifier
+                          - GradeCode
+                          - GradeName
+                          - GTIN8
+                          - GTIN12
+                          - GTIN13
+                          - GTIN14
+                          - ImportHarmonisedSystemCode
+                          - ManufacturingGradeCode
+                          - ManufacturingGradeName
+                          - Ondule
+                          - PartNumber
+                          - RFQPartNumber
+                          - SKU
+                          - Other
+                      value:
+                        type: string
+                        minLength: 1
                   paper:
                     $ref: '#/components/schemas/Paper'
                   pulp:
@@ -3557,6 +3623,39 @@ components:
                   name:
                     type: string
                     minLength: 1
+                  classification:
+                    type: object
+                    required:
+                      - type
+                      - value
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - BrandName
+                          - CASNumber
+                          - CatalogueNumber
+                          - CustomsTariffNumber
+                          - EWCNumber
+                          - ExportHarmonisedSystemCode
+                          - FinishedGoodIdentifier
+                          - GradeCode
+                          - GradeName
+                          - GTIN8
+                          - GTIN12
+                          - GTIN13
+                          - GTIN14
+                          - ImportHarmonisedSystemCode
+                          - ManufacturingGradeCode
+                          - ManufacturingGradeName
+                          - Ondule
+                          - PartNumber
+                          - RFQPartNumber
+                          - SKU
+                          - Other
+                      value:
+                        type: string
+                        minLength: 1
                   paper:
                     $ref: '#/components/schemas/Paper'
                   pulp:
@@ -4696,6 +4795,39 @@ components:
                         name:
                           type: string
                           minLength: 1
+                        classification:
+                          type: object
+                          required:
+                            - type
+                            - value
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - BrandName
+                                - CASNumber
+                                - CatalogueNumber
+                                - CustomsTariffNumber
+                                - EWCNumber
+                                - ExportHarmonisedSystemCode
+                                - FinishedGoodIdentifier
+                                - GradeCode
+                                - GradeName
+                                - GTIN8
+                                - GTIN12
+                                - GTIN13
+                                - GTIN14
+                                - ImportHarmonisedSystemCode
+                                - ManufacturingGradeCode
+                                - ManufacturingGradeName
+                                - Ondule
+                                - PartNumber
+                                - RFQPartNumber
+                                - SKU
+                                - Other
+                            value:
+                              type: string
+                              minLength: 1
                         paper:
                           $ref: '#/components/schemas/Paper'
                         pulp:
