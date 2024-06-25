@@ -2941,6 +2941,8 @@ components:
               # sellerProduct is not required
               # customerArticleReference is not required
               # safetyAndEnvironmentalInformationDetails is not required
+              # loadingCharacteristics is not required
+              # unloadingCharacteristics is not required
               - quantities
               - packages
             properties:
@@ -3223,6 +3225,92 @@ components:
                         assignedBy:
                           type: string
                           minLength: 1
+              loadingCharacteristics:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required: []
+                    # type is not required
+                    # code is not required
+                    # labelOrientation is not required
+                    # text is not required
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ByLoadingCode
+                        - Lying
+                        - Standing
+                        - StandingUpsideDown
+                        - Other
+                    code:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            -Supplier
+                    labelOrientation:
+                      type: string
+                      enum:
+                        - BackEndSide
+                        - FrontEndSide
+                        - LeftAndRightSide
+                        - LeftSide
+                        - RightSide
+                    text:
+                      type: string
+                      minLength: 1
+              unloadingCharacteristics:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  required: []
+                    # type is not required
+                    # code is not required
+                    # labelOrientation is not required
+                    # text is not required
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ByLoadingCode
+                        - Lying
+                        - Standing
+                        - StandingUpsideDown
+                        - Other
+                    code:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            -Supplier
+                    labelOrientation:
+                      type: string
+                      enum:
+                        - BackEndSide
+                        - FrontEndSide
+                        - LeftAndRightSide
+                        - LeftSide
+                        - RightSide
+                    text:
+                      type: string
+                      minLength: 1
               quantities:
                 type: array
                 minItems: 1
@@ -4759,6 +4847,8 @@ components:
                     # sellerProduct is not mandatory
                     # customerArticleReference
                     # safetyAndEnvironmentalInformationDetails is not required
+                    # loadingCharacteristics is not required
+                    # unloadingCharacteristics is not required
                     - quantities
                     # packages is not required
                   properties:
@@ -5026,6 +5116,92 @@ components:
                               assignedBy:
                                 type: string
                                 minLength: 1
+                    loadingCharacteristics:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required: []
+                          # type is not required
+                          # code is not required
+                          # labelOrientation is not required
+                          # text is not required
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - ByLoadingCode
+                              - Lying
+                              - Standing
+                              - StandingUpsideDown
+                              - Other
+                          code:
+                            type: object
+                            required:
+                              - value
+                              - assignedBy
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  -Supplier
+                          labelOrientation:
+                            type: string
+                            enum:
+                              - BackEndSide
+                              - FrontEndSide
+                              - LeftAndRightSide
+                              - LeftSide
+                              - RightSide
+                          text:
+                            type: string
+                            minLength: 1
+                    unloadingCharacteristics:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        required: []
+                          # type is not required
+                          # code is not required
+                          # labelOrientation is not required
+                          # text is not required
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - ByLoadingCode
+                              - Lying
+                              - Standing
+                              - StandingUpsideDown
+                              - Other
+                          code:
+                            type: object
+                            required:
+                              - value
+                              - assignedBy
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  -Supplier
+                          labelOrientation:
+                            type: string
+                            enum:
+                              - BackEndSide
+                              - FrontEndSide
+                              - LeftAndRightSide
+                              - LeftSide
+                              - RightSide
+                          text:
+                            type: string
+                            minLength: 1
                     quantities:
                       type: array
                       minItems: 1
