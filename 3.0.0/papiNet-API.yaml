@@ -351,7 +351,7 @@ paths:
 components:
   schemas:
 
-    # Re-usable schemas (6) in alphabetical order:
+    # Re-usable schemas (3) in alphabetical order:
 
     PaginationLinks:
       type: object
@@ -1883,9 +1883,23 @@ components:
                                   type:
                                     type: string
                                     enum:
+                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
+                                      - AssignedByAgencyID
+                                      - AssignedByMachineOwnerID
                                       - ContainerID
+                                      - CassetteID
+                                      - GlobalIndividualAssetIdentifier
+                                      - GlobalReturnableAssetIdentifier
                                       - LicencePlateNumber
-                                      # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                      - MachineID
+                                      - RailCarID
+                                      - RFTag
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - SerialShippingContainerCode
+                                      - TrailerID
+                                      - WagonID
+                                      # Other (deprecated)
                                   value:
                                     type: string
                                     minLength: 1
@@ -1998,9 +2012,23 @@ components:
                                     type:
                                       type: string
                                       enum:
-                                        - ContainerID
-                                        - LicencePlateNumber
-                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
+                                      - AssignedByAgencyID
+                                      - AssignedByMachineOwnerID
+                                      - ContainerID
+                                      - CassetteID
+                                      - GlobalIndividualAssetIdentifier
+                                      - GlobalReturnableAssetIdentifier
+                                      - LicencePlateNumber
+                                      - MachineID
+                                      - RailCarID
+                                      - RFTag
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - SerialShippingContainerCode
+                                      - TrailerID
+                                      - WagonID
+                                      # Other (deprecated)
                                     value:
                                       type: string
                                       minLength: 1
@@ -2340,7 +2368,7 @@ components:
               # shipFromParty is not required
               - shipToLocation
               # shipToParty is not required
-              # carrierParty is not required
+              # mainCarrierParty is not required
               # estimatedLoadingDateTime is not required
               # actualLoadingDateTime is not required
               # estimatedDepartureDateTime is not required
@@ -2792,9 +2820,23 @@ components:
                             type:
                               type: string
                               enum:
+                                # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
+                                - AssignedByAgencyID
+                                - AssignedByMachineOwnerID
                                 - ContainerID
+                                - CassetteID
+                                - GlobalIndividualAssetIdentifier
+                                - GlobalReturnableAssetIdentifier
                                 - LicencePlateNumber
-                                # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                - MachineID
+                                - RailCarID
+                                - RFTag
+                                - RFTagSerialNumber
+                                - SealNumber
+                                - SerialShippingContainerCode
+                                - TrailerID
+                                - WagonID
+                                # Other (deprecated)
                             value:
                               type: string
                               minLength: 1
@@ -2907,9 +2949,23 @@ components:
                               type:
                                 type: string
                                 enum:
-                                  - ContainerID
-                                  - LicencePlateNumber
-                                  # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
+                                - AssignedByAgencyID
+                                - AssignedByMachineOwnerID
+                                - ContainerID
+                                - CassetteID
+                                - GlobalIndividualAssetIdentifier
+                                - GlobalReturnableAssetIdentifier
+                                - LicencePlateNumber
+                                - MachineID
+                                - RailCarID
+                                - RFTag
+                                - RFTagSerialNumber
+                                - SealNumber
+                                - SerialShippingContainerCode
+                                - TrailerID
+                                - WagonID
+                                # Other (deprecated)
                               value:
                                 type: string
                                 minLength: 1
@@ -4702,9 +4758,23 @@ components:
                                   type:
                                     type: string
                                     enum:
+                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
+                                      - AssignedByAgencyID
+                                      - AssignedByMachineOwnerID
                                       - ContainerID
+                                      - CassetteID
+                                      - GlobalIndividualAssetIdentifier
+                                      - GlobalReturnableAssetIdentifier
                                       - LicencePlateNumber
-                                      # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                      - MachineID
+                                      - RailCarID
+                                      - RFTag
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - SerialShippingContainerCode
+                                      - TrailerID
+                                      - WagonID
+                                      # Other (deprecated)
                                   value:
                                     type: string
                                     minLength: 1
@@ -4817,9 +4887,23 @@ components:
                                     type:
                                       type: string
                                       enum:
-                                        - ContainerID
-                                        - LicencePlateNumber
-                                        # copy TransportUnitIdentifierType [attribute], except "Other" (and deprecated)
+                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
+                                      - AssignedByAgencyID
+                                      - AssignedByMachineOwnerID
+                                      - ContainerID
+                                      - CassetteID
+                                      - GlobalIndividualAssetIdentifier
+                                      - GlobalReturnableAssetIdentifier
+                                      - LicencePlateNumber
+                                      - MachineID
+                                      - RailCarID
+                                      - RFTag
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - SerialShippingContainerCode
+                                      - TrailerID
+                                      - WagonID
+                                      # Other (deprecated)
                                     value:
                                       type: string
                                       minLength: 1
