@@ -3226,7 +3226,7 @@ components:
                         - Lying
                         - Standing
                         - StandingUpsideDown
-                        - Other
+                        # Other (removed)
                     code:
                       type: object
                       required:
@@ -3269,7 +3269,7 @@ components:
                         - Lying
                         - Standing
                         - StandingUpsideDown
-                        - Other
+                        # Other (removed)
                     code:
                       type: object
                       required:
@@ -5073,7 +5073,7 @@ components:
                               - Lying
                               - Standing
                               - StandingUpsideDown
-                              - Other
+                              # Other (removed)
                           code:
                             type: object
                             required:
@@ -5116,7 +5116,7 @@ components:
                               - Lying
                               - Standing
                               - StandingUpsideDown
-                              - Other
+                              # Other (removed)
                           code:
                             type: object
                             required:
