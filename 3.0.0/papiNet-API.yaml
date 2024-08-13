@@ -3752,10 +3752,6 @@ components:
                     context:
                       type: string
                       enum:
-                        - Confirmed
-                        - Invoiced
-                        - Ordered
-                        - Produced
                         - Shipped
                     type:
                       type: string
