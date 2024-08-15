@@ -11,11 +11,11 @@ function dumpKeys(context, current) {
 
       if (current[key].type == 'object') {
         if (key != 'items') {
-          newContext = context + "." + key;
+          newContext = context + (context.length != 0?".":"") + key;
         }
       }
       if (current[key].type == 'array') {
-        newContext = context + "." + key + "[]";
+        newContext = context + (context.length != 0?".":"") + key + "[]";
       }
 
       if (current[key].properties && current[key].properties.uom) {
