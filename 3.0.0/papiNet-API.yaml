@@ -2186,8 +2186,8 @@ components:
               # shipmentStatus is not required
               # deliveryInstructionNumber
               # deliveryInstructionSequenceNumber
-              - shipFromLocation # from the first `deliveryLeg[]`
-              - shipToLocation   # from the  last `deliveryLeg[]`
+              - shipFromLocation # of the **first** `.deliveryLeg[]`
+              - shipToLocation   # of the  **last** `.deliveryLeg[]`
               - lineItemCount
             properties:
               id:
@@ -2225,6 +2225,7 @@ components:
                 required:
                   - identifiers
                 properties:
+                  description: It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
                   identifiers:
                     type: array
                     minItems: 1
@@ -2297,6 +2298,7 @@ components:
                 required:
                   - identifiers
                 properties:
+                  description: It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
                   identifiers:
                     type: array
                     minItems: 1
