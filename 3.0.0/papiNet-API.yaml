@@ -36,20 +36,20 @@ paths:
       summary: List `supplier-orders`
       description: Get a paginated list of all `supplier-orders`.
       parameters:
-        - in: query
+        - in: query # ?number={string}
           name: number
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `number` (string)
-        - in: query
+        - in: query # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query
+        - in: query # ?status={Amended|Cancelled|Original}
           name: status
           schema:
             type: string
@@ -59,12 +59,84 @@ paths:
               - Original
           required: false
           description: filter based on `status` (Amended|Cancelled|Original)
-        - in: query
+        - in: query # ?active={true|false}
           name: active
           schema:
             type: boolean
           required: false
           description: filter based on `active` (true|false)
+        - in: query # ?sellerParty.value={string}
+          name: sellerParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
+        - in: query # ?sellerParty.assignedBy={string}
+          name: sellerParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
+        - in: query # ?supplierParty.value={string}
+          name: supplierParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?supplierParty.assignedBy={string}
+          name: supplierParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?customerParty.value={string}
+          name: customerParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
+        - in: query # ?customerParty.assignedBy={string}
+          name: customerParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
+        - in: query # ?buyerParty.value={string}
+          name: buyerParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
+        - in: query # ?buyerParty.assignedBy={string}
+          name: buyerParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
+        - in: query # ?shipFromLocation.value={string}
+          name: shipFromLocation.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
+        - in: query # ?shipFromLocation.assignedBy={string}
+          name: shipFromLocation.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
+        - in: query # ?shipToLocation.value={string}
+          name: shipToLocation.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
+        - in: query # ?shipToLocation.assignedBy={string}
+          name: shipToLocation.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
       responses:
         '200':
           description: OK
