@@ -1,3 +1,5 @@
+<!-- Copyright 2000-2024 Papinet SNC ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet. -->
+
 # Trademark and Logo Policies
 
 We are excited about our new logo and slogan. The papiNet® powered concept not only is catchy but accurately reflects the importance that papiNet can play in your e-commerce initiatives.

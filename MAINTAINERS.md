@@ -1,3 +1,5 @@
+<!-- Copyright 2000-2024 Papinet SNC ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet. -->
+
 ## Voting Maintainers
 
 * Al Ivan [@robertalivan](https://github.com/robertalivan)
