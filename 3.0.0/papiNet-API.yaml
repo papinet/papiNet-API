@@ -1925,7 +1925,6 @@ components:
                                           - Decimeter
                                           - Foot
                                           - Inch
-                                          - Kilometer
                                           - Meter
                                           - Millimeter
                                           - Yard
@@ -1945,7 +1944,6 @@ components:
                                           - Decimeter
                                           - Foot
                                           - Inch
-                                          - Kilometer
                                           - Meter
                                           - Millimeter
                                           - Yard
@@ -1965,7 +1963,6 @@ components:
                                           - Decimeter
                                           - Foot
                                           - Inch
-                                          - Kilometer
                                           - Meter
                                           - Millimeter
                                           - Yard
@@ -2072,12 +2069,11 @@ components:
                         - HundredPounds
                         - Inch
                         - Kilogram
-                        - Kilometer
                         - Meter
                         - MetricTon
                         - Millimeter
-                        - Package
-                        - PalletUnit
+                        - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
+                        - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
                         - Piece
                         - Pound
                         - PulpUnit
@@ -2085,7 +2081,6 @@ components:
                         - Reel
                         - Sheet
                         - ShortTon
-                        - Skid
                         - SquareDecimeter
                         - SquareFoot
                         - SquareInch
@@ -2862,7 +2857,6 @@ components:
                                     - Decimeter
                                     - Foot
                                     - Inch
-                                    - Kilometer
                                     - Meter
                                     - Millimeter
                                     - Yard
@@ -2882,7 +2876,6 @@ components:
                                     - Decimeter
                                     - Foot
                                     - Inch
-                                    - Kilometer
                                     - Meter
                                     - Millimeter
                                     - Yard
@@ -2902,7 +2895,6 @@ components:
                                     - Decimeter
                                     - Foot
                                     - Inch
-                                    - Kilometer
                                     - Meter
                                     - Millimeter
                                     - Yard
@@ -3315,12 +3307,11 @@ components:
                         - HundredPounds
                         - Inch
                         - Kilogram
-                        - Kilometer
                         - Meter
                         - MetricTon
                         - Millimeter
-                        - Package
-                        - PalletUnit
+                        - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
+                        - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
                         - Piece
                         - Pound
                         - PulpUnit
@@ -3328,7 +3319,6 @@ components:
                         - Reel
                         - Sheet
                         - ShortTon
-                        - Skid
                         - SquareDecimeter
                         - SquareFoot
                         - SquareInch
@@ -3442,20 +3432,16 @@ components:
                               - HundredPounds
                               - Inch
                               - Kilogram
-                              - Kilometer
                               - Meter
                               - MetricTon
                               - Millimeter
-                              - Package
-                              - PalletUnit
+                              - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
                               - Piece
                               - Pound
-                              - PulpUnit
                               - Ream
                               - Reel
                               - Sheet
                               - ShortTon
-                              - Skid
                               - SquareDecimeter
                               - SquareFoot
                               - SquareInch
@@ -3745,12 +3731,11 @@ components:
                         - HundredPounds
                         - Inch
                         - Kilogram
-                        - Kilometer
                         - Meter
                         - MetricTon
                         - Millimeter
-                        - Package
-                        - PalletUnit
+                        - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
+                        - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
                         - Piece
                         - Pound
                         - PulpUnit
@@ -3758,7 +3743,6 @@ components:
                         - Reel
                         - Sheet
                         - ShortTon
-                        - Skid
                         - SquareDecimeter
                         - SquareFoot
                         - SquareInch
@@ -3873,20 +3857,16 @@ components:
                               - HundredPounds
                               - Inch
                               - Kilogram
-                              - Kilometer
                               - Meter
                               - MetricTon
                               - Millimeter
-                              - Package
-                              - PalletUnit
+                              - ReelPackage # Issue #137: Renamed form "Package" (2024-08-15)
                               - Piece
                               - Pound
-                              - PulpUnit
                               - Ream
                               - Reel
                               - Sheet
                               - ShortTon
-                              - Skid
                               - SquareDecimeter
                               - SquareFoot
                               - SquareInch
@@ -4701,7 +4681,6 @@ components:
                                           - Decimeter
                                           - Foot
                                           - Inch
-                                          - Kilometer
                                           - Meter
                                           - Millimeter
                                           - Yard
@@ -4721,7 +4700,6 @@ components:
                                           - Decimeter
                                           - Foot
                                           - Inch
-                                          - Kilometer
                                           - Meter
                                           - Millimeter
                                           - Yard
@@ -4741,7 +4719,6 @@ components:
                                           - Decimeter
                                           - Foot
                                           - Inch
-                                          - Kilometer
                                           - Meter
                                           - Millimeter
                                           - Yard
@@ -5006,7 +4983,6 @@ components:
                                       value:
                                         type: string
                                         minLength: 1
-
                     loadingCharacteristics:
                       type: array
                       minItems: 1
@@ -5134,12 +5110,11 @@ components:
                               - HundredPounds
                               - Inch
                               - Kilogram
-                              - Kilometer
                               - Meter
                               - MetricTon
                               - Millimeter
-                              - Package
-                              - PalletUnit
+                              - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
+                              - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
                               - Piece
                               - Pound
                               - PulpUnit
@@ -5147,7 +5122,6 @@ components:
                               - Reel
                               - Sheet
                               - ShortTon
-                              - Skid
                               - SquareDecimeter
                               - SquareFoot
                               - SquareInch
@@ -5259,20 +5233,16 @@ components:
                                     - HundredPounds
                                     - Inch
                                     - Kilogram
-                                    - Kilometer
                                     - Meter
                                     - MetricTon
                                     - Millimeter
-                                    - Package
-                                    - PalletUnit
+                                    - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
                                     - Piece
                                     - Pound
-                                    - PulpUnit
                                     - Ream
                                     - Reel
                                     - Sheet
                                     - ShortTon
-                                    - Skid
                                     - SquareDecimeter
                                     - SquareFoot
                                     - SquareInch
