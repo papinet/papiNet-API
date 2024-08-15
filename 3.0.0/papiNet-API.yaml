@@ -178,20 +178,20 @@ paths:
       summary: List `logistics-delivery-notes`
       description: Get a paginated list of all `logistics-delivery-notes`.
       parameters:
-        - in: query
+        - in: query # ?number={string}
           name: number
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `number` (string)
-        - in: query
+        - in: query # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query
+        - in: query # ?status={Amended|Cancelled|Original}
           name: status
           schema:
             type: string
@@ -201,7 +201,7 @@ paths:
               - Original
           required: false
           description: filter based on `status` (Cancelled|Original|Replaced)
-        - in: query
+        - in: query # ?shipmentStatus={Arrived|Cancelled|Departed|Loaded|Planned|Unloaded}
           name: shipmentStatus
           schema:
             type: string
@@ -214,6 +214,44 @@ paths:
               - Unloaded
           required: false
           description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
+        - in: query # ?deliveryInstructionNumber={string}
+          name: deliveryInstructionNumber
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `deliveryInstructionNumber` (string)
+        - in: query # ?deliveryInstructionSequenceNumber={integer}
+          name: deliveryInstructionSequenceNumber
+          schema:
+            type: integer
+            minimum: 0
+          required: false
+          description: filter based on `deliveryInstructionNumber` (string) and `deliveryInstructionSequenceNumber` (integer)
+        - in: query # ?shipFromLocation.value={string}
+          name: shipFromLocation.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
+        - in: query # ?shipFromLocation.assignedBy={string}
+          name: shipFromLocation.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
+        - in: query # ?shipToLocation.value={string}
+          name: shipToLocation.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
+        - in: query # ?shipToLocation.assignedBy={string}
+          name: shipToLocation.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
       responses:
         '200':
           description: OK
