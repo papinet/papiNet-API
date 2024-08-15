@@ -1321,39 +1321,28 @@ components:
                   name:
                     type: string
                     minLength: 1
-                  classification:
-                    type: object
-                    required:
-                      - type
-                      - value
-                    properties:
-                      type:
-                        type: string
-                        enum:
-                          - BrandName
-                          - CASNumber
-                          - CatalogueNumber
-                          - CustomsTariffNumber
-                          - EWCNumber
-                          - ExportHarmonisedSystemCode
-                          - FinishedGoodIdentifier
-                          - GradeCode
-                          - GradeName
-                          - GTIN8
-                          - GTIN12
-                          - GTIN13
-                          - GTIN14
-                          - ImportHarmonisedSystemCode
-                          - ManufacturingGradeCode
-                          - ManufacturingGradeName
-                          - Ondule
-                          - PartNumber
-                          - RFQPartNumber
-                          - SKU
-                          - Other
-                      value:
-                        type: string
-                        minLength: 1
+                  classifications:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - type
+                        - value
+                        # countryCode is not required
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ExportHarmonisedSystemCode
+                        value:
+                          type: string
+                          minLength: 1
+                        countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   paper:
                     $ref: '#/components/schemas/Paper'
                   pulp:
@@ -3061,39 +3050,28 @@ components:
                   name:
                     type: string
                     minLength: 1
-                  classification:
-                    type: object
-                    required:
-                      - type
-                      - value
-                    properties:
-                      type:
-                        type: string
-                        enum:
-                          - BrandName
-                          - CASNumber
-                          - CatalogueNumber
-                          - CustomsTariffNumber
-                          - EWCNumber
-                          - ExportHarmonisedSystemCode
-                          - FinishedGoodIdentifier
-                          - GradeCode
-                          - GradeName
-                          - GTIN8
-                          - GTIN12
-                          - GTIN13
-                          - GTIN14
-                          - ImportHarmonisedSystemCode
-                          - ManufacturingGradeCode
-                          - ManufacturingGradeName
-                          - Ondule
-                          - PartNumber
-                          - RFQPartNumber
-                          - SKU
-                          - Other
-                      value:
-                        type: string
-                        minLength: 1
+                  classifications:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - type
+                        - value
+                        # countryCode is not required
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ExportHarmonisedSystemCode
+                        value:
+                          type: string
+                          minLength: 1
+                        countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   paper:
                     $ref: '#/components/schemas/Paper'
                   pulp:
@@ -3701,39 +3679,28 @@ components:
                   name:
                     type: string
                     minLength: 1
-                  classification:
-                    type: object
-                    required:
-                      - type
-                      - value
-                    properties:
-                      type:
-                        type: string
-                        enum:
-                          - BrandName
-                          - CASNumber
-                          - CatalogueNumber
-                          - CustomsTariffNumber
-                          - EWCNumber
-                          - ExportHarmonisedSystemCode
-                          - FinishedGoodIdentifier
-                          - GradeCode
-                          - GradeName
-                          - GTIN8
-                          - GTIN12
-                          - GTIN13
-                          - GTIN14
-                          - ImportHarmonisedSystemCode
-                          - ManufacturingGradeCode
-                          - ManufacturingGradeName
-                          - Ondule
-                          - PartNumber
-                          - RFQPartNumber
-                          - SKU
-                          - Other
-                      value:
-                        type: string
-                        minLength: 1
+                  classifications:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - type
+                        - value
+                        # countryCode is not required
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ExportHarmonisedSystemCode
+                        value:
+                          type: string
+                          minLength: 1
+                        countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   paper:
                     $ref: '#/components/schemas/Paper'
                   pulp:
@@ -4903,39 +4870,28 @@ components:
                         name:
                           type: string
                           minLength: 1
-                        classification:
-                          type: object
-                          required:
-                            - type
-                            - value
-                          properties:
-                            type:
-                              type: string
-                              enum:
-                                - BrandName
-                                - CASNumber
-                                - CatalogueNumber
-                                - CustomsTariffNumber
-                                - EWCNumber
-                                - ExportHarmonisedSystemCode
-                                - FinishedGoodIdentifier
-                                - GradeCode
-                                - GradeName
-                                - GTIN8
-                                - GTIN12
-                                - GTIN13
-                                - GTIN14
-                                - ImportHarmonisedSystemCode
-                                - ManufacturingGradeCode
-                                - ManufacturingGradeName
-                                - Ondule
-                                - PartNumber
-                                - RFQPartNumber
-                                - SKU
-                                - Other
-                            value:
-                              type: string
-                              minLength: 1
+                        classifications:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            required:
+                              - type
+                              - value
+                              # countryCode is not required
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - ExportHarmonisedSystemCode
+                              value:
+                                type: string
+                                minLength: 1
+                              countryCode:
+                                type: string
+                                minLength: 2
+                                maxLength: 2
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         paper:
                           $ref: '#/components/schemas/Paper'
                         pulp:
