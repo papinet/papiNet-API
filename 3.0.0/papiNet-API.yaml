@@ -89,6 +89,18 @@ paths:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?logisticsSupplierParty.value={string}
+          name: logisticsSupplierParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+        - in: query # ?logisticsSupplierParty.assignedBy={string}
+          name: logisticsSupplierParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query # ?customerParty.value={string}
           name: customerParty.value
           schema:
@@ -214,6 +226,30 @@ paths:
               - Unloaded
           required: false
           description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
+        - in: query # ?supplierParty.value={string}
+          name: supplierParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?supplierParty.assignedBy={string}
+          name: supplierParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?logisticsSupplierParty.value={string}
+          name: logisticsSupplierParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+        - in: query # ?logisticsSupplierParty.assignedBy={string}
+          name: logisticsSupplierParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query # ?deliveryInstructionNumber={string}
           name: deliveryInstructionNumber
           schema:
@@ -411,6 +447,42 @@ paths:
             type: boolean
           required: false
           description: filter based on `active` (true|false)
+        - in: query # ?supplierParty.value={string}
+          name: supplierParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?supplierParty.assignedBy={string}
+          name: supplierParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+        - in: query # ?logisticsSupplierParty.value={string}
+          name: logisticsSupplierParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+        - in: query # ?logisticsSupplierParty.assignedBy={string}
+          name: logisticsSupplierParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+        - in: query # ?buyerParty.value={string}
+          name: buyerParty.value
+          schema:
+            type: string
+          required: false
+          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
+        - in: query # ?buyerParty.assignedBy={string}
+          name: buyerParty.assignedBy
+          schema:
+            type: string
+          required: false
+          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
         - in: query # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
