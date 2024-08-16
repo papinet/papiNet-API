@@ -22,9 +22,9 @@ paths:
    #  GET /supplier-orders/{supplierOrderId}
    #  GET /logistics-delivery-notes
    #  GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-   # POST /logistics-delivery-notes/{logisticsDeliveryNoteId}
+   # POST /logistics-delivery-notes
    #  PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
-   # POST /logistics-goods-receipts/{logisticsGoodsReceiptId}
+   # POST /logistics-goods-receipts
    #  PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
    #  GET /delivery-instructions
    #  GET /delivery-instructions/{deliveryInstructionId}
@@ -261,6 +261,23 @@ paths:
                 $ref: '#/components/schemas/ListOfLogisticsDeliveryNotes'
         '204':
           description: No Content
+    # POST /logistics-delivery-notes
+    # LogisticsDeliveryNoteById => None
+    post:
+      summary: Push an _Original_ `logistics-delivery-note`
+      description: Pushes the details of a specific _Original_ `logistics-delivery-note`.
+      requestBody:
+        description: The details of the _Original_ `logistics-delivery-note` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogisticsDeliveryNoteById'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
 
   '/logistics-delivery-notes/{logisticsDeliveryNoteId}':
     # GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
@@ -285,31 +302,7 @@ paths:
                 $ref: '#/components/schemas/LogisticsDeliveryNoteById'
         '404':
           description: Not Found
-    # POST /logistics-delivery-notes/{logisticsDeliveryNoteId}
-    # LogisticsDeliveryNoteById => None
-    post:
-      summary: Push an _Original_ `logistics-delivery-note`
-      description: Pushes the details of a specific _Original_ `logistics-delivery-note`.
-      parameters:
-        - in: path
-          name: logisticsDeliveryNoteId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: UUID of the _Original_ `logistics-delivery-note` to push.
-      requestBody:
-        description: The details of the _Original_ `logistics-delivery-note` to push.
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LogisticsDeliveryNoteById'
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad Request
+    
     # PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
     # LogisticsDeliveryNoteById => None
     put:
@@ -336,20 +329,12 @@ paths:
         '400':
           description: Bad Request
 
-  '/logistics-goods-receipts/{logisticsGoodsReceiptId}':
-    # POST /logistics-goods-receipts/{logisticsGoodsReceiptId}
+  '/logistics-goods-receipts':
+    # POST /logistics-goods-receipts
     # LogisticsGoodsReceiptById => None
     post:
       summary: Push an _Original_ `logistics-goods-receipt`
       description: Pushes the details of a specific _Original_ `logistics-goods-receipt`.
-      parameters:
-        - in: path
-          name: logisticsGoodsReceiptId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: UUID of the _Original_ `logistics-goods-receipt` to push.
       requestBody:
         description: The details of the _Original_ `logistics-goods-receipt` to push.
         required: true
@@ -362,6 +347,8 @@ paths:
           description: OK
         '400':
           description: Bad Request
+
+  '/logistics-goods-receipts/{logisticsGoodsReceiptId}':
     # PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
     # LogisticsGoodsReceiptById => None
     put:
@@ -2689,7 +2676,7 @@ components:
     LogisticsDeliveryNoteById:
       type: object
       required:
-        - id
+        # id is not required
         - number
         - timestamp
         - status
@@ -3969,7 +3956,7 @@ components:
     LogisticsGoodsReceiptById:
       type: object
       required:
-        - id
+        # id is not required
         - number
         - timestamp
         - status
