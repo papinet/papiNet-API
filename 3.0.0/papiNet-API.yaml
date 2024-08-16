@@ -3880,6 +3880,7 @@ components:
                         - HundredPounds
                         - Inch
                         - Kilogram
+                        - Kilometer
                         - Meter
                         - MetricTon
                         - Millimeter
@@ -4005,6 +4006,7 @@ components:
                               - HundredPounds
                               - Inch
                               - Kilogram
+                              - Kilometer
                               - Meter
                               - MetricTon
                               - Millimeter
@@ -4304,6 +4306,7 @@ components:
                         - HundredPounds
                         - Inch
                         - Kilogram
+                        - Kilometer
                         - Meter
                         - MetricTon
                         - Millimeter
@@ -4430,6 +4433,7 @@ components:
                               - HundredPounds
                               - Inch
                               - Kilogram
+                              - Kilometer
                               - Meter
                               - MetricTon
                               - Millimeter
@@ -5746,6 +5750,7 @@ components:
                               - HundredPounds
                               - Inch
                               - Kilogram
+                              - Kilometer
                               - Meter
                               - MetricTon
                               - Millimeter
@@ -5869,6 +5874,7 @@ components:
                                     - HundredPounds
                                     - Inch
                                     - Kilogram
+                                    - Kilometer
                                     - Meter
                                     - MetricTon
                                     - Millimeter
