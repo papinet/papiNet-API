@@ -834,6 +834,7 @@ components:
               - active
               # sellerParty is not required
               # supplierParty is not required
+              # logisticsSupplierParty is not required
               # customerParty is not required
               # buyerParty is not required
               - lineItemCount
@@ -920,6 +921,68 @@ components:
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               supplierParty:
+                type: object
+                required:
+                  - identifiers
+                properties:
+                  identifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Supplier
+                  nameLines:
+                    type: array
+                    minItems: 1
+                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    items:
+                      type: string
+                      minLength: 1
+                  address:
+                    type: object
+                    required:
+                      # addressLines is not required
+                      # city is not required
+                      # postalCode is not required
+                      # stateOrProvince is not required
+                      # county is not required
+                      - countryCode
+                    properties:
+                      addressLines:
+                        type: array
+                        minItems: 1
+                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        items:
+                          type: string
+                          minLength: 1
+                      city:
+                        type: string
+                        minLength: 1
+                      postalCode:
+                        type: string
+                        minLength: 1
+                      stateOrProvince:
+                        type: string
+                        minLength: 1
+                      county:
+                        type: string
+                        minLength: 1
+                      countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+              logisticsSupplierParty:
                 type: object
                 required:
                   - identifiers
@@ -1121,6 +1184,7 @@ components:
         - active
         # sellerParty is not required
         # supplierParty is not required
+        # logisticsSupplierParty is not required
         # customerParty is not required
         # buyerParty is not required
         - lineItems
@@ -1207,6 +1271,68 @@ components:
                     maxLength: 2
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         supplierParty:
+          type: object
+          required:
+            - identifiers
+          properties:
+            identifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  - value
+                  - assignedBy
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Supplier
+            nameLines:
+              type: array
+              minItems: 1
+              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              items:
+                type: string
+                minLength: 1
+            address:
+              type: object
+              required:
+                # addressLines is not required
+                # city is not required
+                # postalCode is not required
+                # stateOrProvince is not required
+                # county is not required
+                - countryCode
+              properties:
+                addressLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                city:
+                  type: string
+                  minLength: 1
+                postalCode:
+                  type: string
+                  minLength: 1
+                stateOrProvince:
+                  type: string
+                  minLength: 1
+                county:
+                  type: string
+                  minLength: 1
+                countryCode:
+                    type: string
+                    minLength: 2
+                    maxLength: 2
+                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        logisticsSupplierParty:
           type: object
           required:
             - identifiers
@@ -2246,6 +2372,8 @@ components:
               - timestamp
               - status
               # shipmentStatus is not required
+              # supplierParty is not required
+              # logisticsSupplierParty is not required
               # deliveryInstructionNumber
               # deliveryInstructionSequenceNumber
               - shipFromLocation # of the **first** `.deliveryLeg[]`
@@ -2276,6 +2404,130 @@ components:
                   - Loaded
                   - Planned
                   - Unloaded
+              supplierParty:
+                type: object
+                required:
+                  - identifiers
+                properties:
+                  identifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Supplier
+                  nameLines:
+                    type: array
+                    minItems: 1
+                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    items:
+                      type: string
+                      minLength: 1
+                  address:
+                    type: object
+                    required:
+                      # addressLines is not required
+                      # city is not required
+                      # postalCode is not required
+                      # stateOrProvince is not required
+                      # county is not required
+                      - countryCode
+                    properties:
+                      addressLines:
+                        type: array
+                        minItems: 1
+                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        items:
+                          type: string
+                          minLength: 1
+                      city:
+                        type: string
+                        minLength: 1
+                      postalCode:
+                        type: string
+                        minLength: 1
+                      stateOrProvince:
+                        type: string
+                        minLength: 1
+                      county:
+                        type: string
+                        minLength: 1
+                      countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+              logisticsSupplierParty:
+                type: object
+                required:
+                  - identifiers
+                properties:
+                  identifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Supplier
+                  nameLines:
+                    type: array
+                    minItems: 1
+                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    items:
+                      type: string
+                      minLength: 1
+                  address:
+                    type: object
+                    required:
+                      # addressLines is not required
+                      # city is not required
+                      # postalCode is not required
+                      # stateOrProvince is not required
+                      # county is not required
+                      - countryCode
+                    properties:
+                      addressLines:
+                        type: array
+                        minItems: 1
+                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        items:
+                          type: string
+                          minLength: 1
+                      city:
+                        type: string
+                        minLength: 1
+                      postalCode:
+                        type: string
+                        minLength: 1
+                      stateOrProvince:
+                        type: string
+                        minLength: 1
+                      county:
+                        type: string
+                        minLength: 1
+                      countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               deliveryInstructionNumber:
                 type: string
                 minLength: 1
@@ -2442,6 +2694,8 @@ components:
         - timestamp
         - status
         # shipmentStatus is not required
+        # supplierParty is not required
+        # logisticsSupplierParty is not required
         # deliveryInstructionNumber
         # deliveryInstructionSequenceNumber
         - deliveryLegs
@@ -2471,6 +2725,130 @@ components:
             - Loaded
             - Planned
             - Unloaded
+        supplierParty:
+          type: object
+          required:
+            - identifiers
+          properties:
+            identifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  - value
+                  - assignedBy
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Supplier
+            nameLines:
+              type: array
+              minItems: 1
+              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              items:
+                type: string
+                minLength: 1
+            address:
+              type: object
+              required:
+                # addressLines is not required
+                # city is not required
+                # postalCode is not required
+                # stateOrProvince is not required
+                # county is not required
+                - countryCode
+              properties:
+                addressLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                city:
+                  type: string
+                  minLength: 1
+                postalCode:
+                  type: string
+                  minLength: 1
+                stateOrProvince:
+                  type: string
+                  minLength: 1
+                county:
+                  type: string
+                  minLength: 1
+                countryCode:
+                    type: string
+                    minLength: 2
+                    maxLength: 2
+                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        logisticsSupplierParty:
+          type: object
+          required:
+            - identifiers
+          properties:
+            identifiers:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required:
+                  - value
+                  - assignedBy
+                properties:
+                  value:
+                    type: string
+                    minLength: 1
+                  assignedBy:
+                    type: string
+                    enum:
+                      - Supplier
+            nameLines:
+              type: array
+              minItems: 1
+              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              items:
+                type: string
+                minLength: 1
+            address:
+              type: object
+              required:
+                # addressLines is not required
+                # city is not required
+                # postalCode is not required
+                # stateOrProvince is not required
+                # county is not required
+                - countryCode
+              properties:
+                addressLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                city:
+                  type: string
+                  minLength: 1
+                postalCode:
+                  type: string
+                  minLength: 1
+                stateOrProvince:
+                  type: string
+                  minLength: 1
+                county:
+                  type: string
+                  minLength: 1
+                countryCode:
+                    type: string
+                    minLength: 2
+                    maxLength: 2
+                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         deliveryInstructionNumber:
           type: string
           minLength: 1
@@ -4111,6 +4489,7 @@ components:
               - number
               - status
               # supplierParty is not required
+              # logisticsSupplierParty is not required
               # buyerParty is not required
               - deliveryLegs
               - lineItems
@@ -4126,6 +4505,68 @@ components:
                   - NoAction
                   - Replaced
               supplierParty:
+                type: object
+                required:
+                  - identifiers
+                properties:
+                  identifiers:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Supplier
+                  nameLines:
+                    type: array
+                    minItems: 1
+                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    items:
+                      type: string
+                      minLength: 1
+                  address:
+                    type: object
+                    required:
+                      # addressLines is not required
+                      # city is not required
+                      # postalCode is not required
+                      # stateOrProvince is not required
+                      # county is not required
+                      - countryCode
+                    properties:
+                      addressLines:
+                        type: array
+                        minItems: 1
+                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        items:
+                          type: string
+                          minLength: 1
+                      city:
+                        type: string
+                        minLength: 1
+                      postalCode:
+                        type: string
+                        minLength: 1
+                      stateOrProvince:
+                        type: string
+                        minLength: 1
+                      county:
+                        type: string
+                        minLength: 1
+                      countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+              logisticsSupplierParty:
                 type: object
                 required:
                   - identifiers
