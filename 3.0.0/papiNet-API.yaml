@@ -2191,22 +2191,24 @@ components:
                                   type:
                                     type: string
                                     enum:
-                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
-                                      - AssignedByAgencyID
-                                      - AssignedByMachineOwnerID
+                                      # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
+                                      #
+                                      # AssignedByAgencyID not applicable in Paper, Board and Pulp business
+                                      # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                       - ContainerID
                                       - CassetteID
-                                      - GlobalIndividualAssetIdentifier
-                                      - GlobalReturnableAssetIdentifier
+                                      # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
+                                      # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
+                                      - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
                                       - LicencePlateNumber
-                                      - MachineID
+                                      # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
-                                      - RFTag
+                                      # RFTag (deprecated)
                                       - RFTagSerialNumber
                                       - SealNumber
-                                      - SerialShippingContainerCode
+                                      # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
-                                      - WagonID
+                                      # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
                                     type: string
@@ -2214,6 +2216,7 @@ components:
                                   assignedBy:
                                     type: string
                                     enum:
+                                      - LogisticsSupplier
                                       - Supplier
                                   countryCode:
                                     type: string
@@ -2317,29 +2320,32 @@ components:
                                     type:
                                       type: string
                                       enum:
-                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
-                                      - AssignedByAgencyID
-                                      - AssignedByMachineOwnerID
-                                      - ContainerID
-                                      - CassetteID
-                                      - GlobalIndividualAssetIdentifier
-                                      - GlobalReturnableAssetIdentifier
-                                      - LicencePlateNumber
-                                      - MachineID
-                                      - RailCarID
-                                      - RFTag
-                                      - RFTagSerialNumber
-                                      - SealNumber
-                                      - SerialShippingContainerCode
-                                      - TrailerID
-                                      - WagonID
-                                      # Other (deprecated)
+                                        # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
+                                        #
+                                        # AssignedByAgencyID not applicable in Paper, Board and Pulp business
+                                        # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
+                                        - ContainerID
+                                        - CassetteID
+                                        # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
+                                        # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
+                                        - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                        - LicencePlateNumber
+                                        # MachineID not applicable in Paper, Board and Pulp business
+                                        - RailCarID
+                                        # RFTag (deprecated)
+                                        - RFTagSerialNumber
+                                        - SealNumber
+                                        # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
+                                        - TrailerID
+                                        # WagonID (deprecated)
+                                        # Other (deprecated)
                                     value:
                                       type: string
                                       minLength: 1
                                     assignedBy:
                                       type: string
                                       enum:
+                                        - LogisticsSupplier
                                         - Supplier
                                     countryCode:
                                       type: string
@@ -3377,22 +3383,24 @@ components:
                             type:
                               type: string
                               enum:
-                                # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
-                                - AssignedByAgencyID
-                                - AssignedByMachineOwnerID
+                                # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
+                                #
+                                # AssignedByAgencyID not applicable in Paper, Board and Pulp business
+                                # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                 - ContainerID
                                 - CassetteID
-                                - GlobalIndividualAssetIdentifier
-                                - GlobalReturnableAssetIdentifier
+                                # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
+                                # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
+                                - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
                                 - LicencePlateNumber
-                                - MachineID
+                                # MachineID not applicable in Paper, Board and Pulp business
                                 - RailCarID
-                                - RFTag
+                                # RFTag (deprecated)
                                 - RFTagSerialNumber
                                 - SealNumber
-                                - SerialShippingContainerCode
+                                # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                 - TrailerID
-                                - WagonID
+                                # WagonID (deprecated)
                                 # Other (deprecated)
                             value:
                               type: string
@@ -3400,6 +3408,7 @@ components:
                             assignedBy:
                               type: string
                               enum:
+                                - LogisticsSupplier
                                 - Supplier
                             countryCode:
                               type: string
@@ -3503,29 +3512,32 @@ components:
                               type:
                                 type: string
                                 enum:
-                                # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
-                                - AssignedByAgencyID
-                                - AssignedByMachineOwnerID
-                                - ContainerID
-                                - CassetteID
-                                - GlobalIndividualAssetIdentifier
-                                - GlobalReturnableAssetIdentifier
-                                - LicencePlateNumber
-                                - MachineID
-                                - RailCarID
-                                - RFTag
-                                - RFTagSerialNumber
-                                - SealNumber
-                                - SerialShippingContainerCode
-                                - TrailerID
-                                - WagonID
-                                # Other (deprecated)
+                                  # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
+                                  #
+                                  # AssignedByAgencyID not applicable in Paper, Board and Pulp business
+                                  # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
+                                  - ContainerID
+                                  - CassetteID
+                                  # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
+                                  # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
+                                  - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                  - LicencePlateNumber
+                                  # MachineID not applicable in Paper, Board and Pulp business
+                                  - RailCarID
+                                  # RFTag (deprecated)
+                                  - RFTagSerialNumber
+                                  - SealNumber
+                                  # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
+                                  - TrailerID
+                                  # WagonID (deprecated)
+                                  # Other (deprecated)
                               value:
                                 type: string
                                 minLength: 1
                               assignedBy:
                                 type: string
                                 enum:
+                                  - LogisticsSupplier
                                   - Supplier
                               countryCode:
                                 type: string
@@ -5268,22 +5280,24 @@ components:
                                   type:
                                     type: string
                                     enum:
-                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
-                                      - AssignedByAgencyID
-                                      - AssignedByMachineOwnerID
+                                      # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
+                                      #
+                                      # AssignedByAgencyID not applicable in Paper, Board and Pulp business
+                                      # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                       - ContainerID
                                       - CassetteID
-                                      - GlobalIndividualAssetIdentifier
-                                      - GlobalReturnableAssetIdentifier
+                                      # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
+                                      # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
+                                      - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
                                       - LicencePlateNumber
-                                      - MachineID
+                                      # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
-                                      - RFTag
+                                      # RFTag (deprecated)
                                       - RFTagSerialNumber
                                       - SealNumber
-                                      - SerialShippingContainerCode
+                                      # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
-                                      - WagonID
+                                      # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
                                     type: string
@@ -5291,6 +5305,7 @@ components:
                                   assignedBy:
                                     type: string
                                     enum:
+                                      - LogisticsSupplier
                                       - Supplier
                                   countryCode:
                                     type: string
@@ -5394,29 +5409,32 @@ components:
                                     type:
                                       type: string
                                       enum:
-                                      # copy of enumeration for "TransportUnitIdentifierType" [attribute], except "Other" (deprecated)
-                                      - AssignedByAgencyID
-                                      - AssignedByMachineOwnerID
-                                      - ContainerID
-                                      - CassetteID
-                                      - GlobalIndividualAssetIdentifier
-                                      - GlobalReturnableAssetIdentifier
-                                      - LicencePlateNumber
-                                      - MachineID
-                                      - RailCarID
-                                      - RFTag
-                                      - RFTagSerialNumber
-                                      - SealNumber
-                                      - SerialShippingContainerCode
-                                      - TrailerID
-                                      - WagonID
-                                      # Other (deprecated)
+                                        # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
+                                        #
+                                        # AssignedByAgencyID not applicable in Paper, Board and Pulp business
+                                        # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
+                                        - ContainerID
+                                        - CassetteID
+                                        # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
+                                        # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
+                                        - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                        - LicencePlateNumber
+                                        # MachineID not applicable in Paper, Board and Pulp business
+                                        - RailCarID
+                                        # RFTag (deprecated)
+                                        - RFTagSerialNumber
+                                        - SealNumber
+                                        # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
+                                        - TrailerID
+                                        # WagonID (deprecated)
+                                        # Other (deprecated)
                                     value:
                                       type: string
                                       minLength: 1
                                     assignedBy:
                                       type: string
                                       enum:
+                                        - LogisticsSupplier
                                         - Supplier
                                     countryCode:
                                       type: string
