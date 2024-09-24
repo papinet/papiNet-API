@@ -2208,6 +2208,7 @@ components:
                                       - SealNumber
                                       # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
+                                      - VesselUnitID # Added
                                       # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
@@ -2312,46 +2313,16 @@ components:
                                 items:
                                   type: object
                                   required:
-                                    - type
-                                    - value
-                                    # assignedBy not required
-                                    # countryCode not required
+                                    # transportUnitLevel is not required (as in `units[]`)
+                                    - transportUnitType
+                                    - transportUnitIdentifier
                                   properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                        #
-                                        # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                        # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
-                                        - ContainerID
-                                        - CassetteID
-                                        # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                        # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
-                                        - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
-                                        - LicencePlateNumber
-                                        # MachineID not applicable in Paper, Board and Pulp business
-                                        - RailCarID
-                                        # RFTag (deprecated)
-                                        - RFTagSerialNumber
-                                        - SealNumber
-                                        # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
-                                        - TrailerID
-                                        # WagonID (deprecated)
-                                        # Other (deprecated)
-                                    value:
-                                      type: string
-                                      minLength: 1
-                                    assignedBy:
-                                      type: string
-                                      enum:
-                                        - LogisticsSupplier
-                                        - Supplier
-                                    countryCode:
-                                      type: string
-                                      minLength: 2
-                                      maxLength: 2
-                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                                    transportUnitLevel:
+                                      $ref: '#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level'
+                                    transportUnitType:
+                                      $ref: '#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type'
+                                    transportUnitIdentifier:
+                                      $ref: '#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier'
               quantities:
                 type: array
                 minItems: 1
@@ -3400,6 +3371,7 @@ components:
                                 - SealNumber
                                 # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                 - TrailerID
+                                - VesselUnitID # Added
                                 # WagonID (deprecated)
                                 # Other (deprecated)
                             value:
@@ -3504,46 +3476,16 @@ components:
                           items:
                             type: object
                             required:
-                              - type
-                              - value
-                              # assignedBy not required
-                              # countryCode not required
+                              # transportUnitLevel is not required (as in `units[]`)
+                              - transportUnitType
+                              - transportUnitIdentifier
                             properties:
-                              type:
-                                type: string
-                                enum:
-                                  # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                  #
-                                  # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                  # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
-                                  - ContainerID
-                                  - CassetteID
-                                  # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                  # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
-                                  - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
-                                  - LicencePlateNumber
-                                  # MachineID not applicable in Paper, Board and Pulp business
-                                  - RailCarID
-                                  # RFTag (deprecated)
-                                  - RFTagSerialNumber
-                                  - SealNumber
-                                  # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
-                                  - TrailerID
-                                  # WagonID (deprecated)
-                                  # Other (deprecated)
-                              value:
-                                type: string
-                                minLength: 1
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - LogisticsSupplier
-                                  - Supplier
-                              countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              transportUnitLevel:
+                                $ref: '#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level'
+                              transportUnitType:
+                                $ref: '#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type'
+                              transportUnitIdentifier:
+                                $ref: '#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier'
         lineItems:
           type: array
           minItems: 1
@@ -5297,6 +5239,7 @@ components:
                                       - SealNumber
                                       # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
+                                      - VesselUnitID # Added
                                       # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
@@ -5401,46 +5344,16 @@ components:
                                 items:
                                   type: object
                                   required:
-                                    - type
-                                    - value
-                                    # assignedBy not required
-                                    # countryCode not required
+                                    # transportUnitLevel is not required (as in `units[]`)
+                                    - transportUnitType
+                                    - transportUnitIdentifier
                                   properties:
-                                    type:
-                                      type: string
-                                      enum:
-                                        # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                        #
-                                        # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                        # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
-                                        - ContainerID
-                                        - CassetteID
-                                        # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                        # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
-                                        - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
-                                        - LicencePlateNumber
-                                        # MachineID not applicable in Paper, Board and Pulp business
-                                        - RailCarID
-                                        # RFTag (deprecated)
-                                        - RFTagSerialNumber
-                                        - SealNumber
-                                        # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
-                                        - TrailerID
-                                        # WagonID (deprecated)
-                                        # Other (deprecated)
-                                    value:
-                                      type: string
-                                      minLength: 1
-                                    assignedBy:
-                                      type: string
-                                      enum:
-                                        - LogisticsSupplier
-                                        - Supplier
-                                    countryCode:
-                                      type: string
-                                      minLength: 2
-                                      maxLength: 2
-                                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                                    transportUnitLevel:
+                                      $ref: '#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level'
+                                    transportUnitType:
+                                      $ref: '#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type'
+                                    transportUnitIdentifier:
+                                      $ref: '#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier'
               lineItems:
                 type: array
                 minItems: 1
