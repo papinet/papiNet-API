@@ -724,10 +724,6 @@ components:
             assignedBy:
               type: string
               enum:
-                - Buyer
-                - Customer
-                - EndUser
-                - Seller
                 - Supplier
         colourDescription:
           type: string
@@ -853,10 +849,6 @@ components:
             assignedBy:
               type: string
               enum:
-                - Buyer
-                - Customer
-                - EndUser
-                - Seller
                 - Supplier
         # Properties that are specific to sheet format:
         grainDirection:
