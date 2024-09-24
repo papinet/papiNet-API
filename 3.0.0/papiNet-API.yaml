@@ -548,10 +548,12 @@ components:
 
     PaginationLinks:
       type: object
+      unevaluatedProperties: false
       # none of the properties are required.
       properties:
         first:
           type: object
+          unevaluatedProperties: false
           required:
             - href
           properties:
@@ -560,6 +562,7 @@ components:
               format: uri-reference
         prev:
           type: object
+          unevaluatedProperties: false
           required:
             - href
           properties:
@@ -568,6 +571,7 @@ components:
               format: uri-reference
         next:
           type: object
+          unevaluatedProperties: false
           required:
             - href
           properties:
@@ -576,6 +580,7 @@ components:
               format: uri-reference
         last:
           type: object
+          unevaluatedProperties: false
           required:
             - href
           properties:
@@ -585,6 +590,7 @@ components:
 
     PaperAndBoard:
       type: object
+      unevaluatedProperties: false
       properties:
         # Properties that do not depend on the reel or sheet format:
         coatingTop:
@@ -670,6 +676,7 @@ components:
             - WebOffset
         basisWeight: # This is the result of a nice compromise between EU and US usage.
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -689,6 +696,7 @@ components:
                 - Pound
         bulk:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -701,6 +709,7 @@ components:
                 - CubicCentimeterPerGram
         caliper:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -714,6 +723,7 @@ components:
                 - Millimeter
         colourShade:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - assignedBy
@@ -730,6 +740,7 @@ components:
           minLength: 1
         recycledContent:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -748,6 +759,7 @@ components:
         # Properties that are common to reel or sheet format:
         width:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -762,6 +774,7 @@ components:
                 - Millimeter
         length:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -790,6 +803,7 @@ components:
             - Diameter
         reelDiameter:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -825,6 +839,7 @@ components:
             - Steel
         coreDiameterInside:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - uom
@@ -839,6 +854,7 @@ components:
                 - Millimeter
         coreStrengthCode:
           type: object
+          unevaluatedProperties: false
           required:
             - value
             - assignedBy
@@ -858,12 +874,14 @@ components:
             - Short
 
     Pulp:
-      type: object # And empty object is good enough for now :-)
+      type: object
+      unevaluatedProperties: false # And empty object is good enough for now :-)
 
     # API endpoint schemas (7) in order of appearance:
 
     ListOfSupplierOrders:
       type: object
+      unevaluatedProperties: false
       required:
         - count
         - items
@@ -877,6 +895,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - id
               - number
@@ -911,6 +930,7 @@ components:
                 type: boolean
               sellerParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -919,6 +939,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -939,6 +960,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -973,6 +995,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               supplierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -981,6 +1004,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -1001,6 +1025,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -1035,6 +1060,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               logisticsSupplierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -1043,6 +1069,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -1063,6 +1090,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -1097,6 +1125,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               customerParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -1105,6 +1134,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -1125,6 +1155,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -1159,6 +1190,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               buyerParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -1167,6 +1199,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -1187,6 +1220,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -1227,6 +1261,7 @@ components:
 
     SupplierOrderById:
       type: object
+      unevaluatedProperties: false
       required:
         - id
         - number
@@ -1261,6 +1296,7 @@ components:
           type: boolean
         sellerParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -1269,6 +1305,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -1289,6 +1326,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -1323,6 +1361,7 @@ components:
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         supplierParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -1331,6 +1370,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -1351,6 +1391,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -1385,6 +1426,7 @@ components:
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         logisticsSupplierParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -1393,6 +1435,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -1413,6 +1456,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -1447,6 +1491,7 @@ components:
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         customerParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -1455,6 +1500,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -1475,6 +1521,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -1509,6 +1556,7 @@ components:
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         buyerParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -1517,6 +1565,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -1537,6 +1586,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -1574,6 +1624,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - number
               - status
@@ -1608,6 +1659,7 @@ components:
                 minLength: 1
               sellerProduct:
                 type: object
+                unevaluatedProperties: false
                 allOf:
                   - oneOf:
                       - required:
@@ -1637,6 +1689,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - type
                         - value
@@ -1660,6 +1713,7 @@ components:
                     $ref: '#/components/schemas/Pulp'
               customerArticleReference:
                 type: object
+                unevaluatedProperties: false
                 oneOf:
                   - required:
                       - gradeCode
@@ -1680,6 +1734,7 @@ components:
                     minLength: 1
               millParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -1688,6 +1743,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -1708,6 +1764,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -1745,6 +1802,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - number
                     - shipFromLocation
@@ -1762,6 +1820,7 @@ components:
                       minimum: 0
                     shipFromLocation:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         # type is not required
                         - identifiers
@@ -1794,6 +1853,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -1814,6 +1874,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -1848,6 +1909,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWGS84:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - latitude
                             - longitude
@@ -1858,6 +1920,7 @@ components:
                               type: number
                     shipFromParty:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - identifiers
                       properties:
@@ -1866,6 +1929,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -1886,6 +1950,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -1920,6 +1985,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     shipToLocation:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         # type is not required
                         - identifiers
@@ -1952,6 +2018,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -1972,6 +2039,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -2006,6 +2074,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWGS84:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - latitude
                             - longitude
@@ -2016,6 +2085,7 @@ components:
                               type: number
                     shipToParty:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - identifiers
                       properties:
@@ -2024,6 +2094,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -2044,6 +2115,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -2078,6 +2150,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     mainCarrierParty:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - identifiers
                       properties:
@@ -2086,6 +2159,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -2106,6 +2180,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -2167,6 +2242,7 @@ components:
                         - P2D/2023-08-18T13:00
                     transport:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - modeType
                         # units is not required
@@ -2185,6 +2261,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               # level
                               - type
@@ -2209,6 +2286,7 @@ components:
                                   - VesselUnit
                               detailCode:
                                 type: object
+                                unevaluatedProperties: false
                                 required:
                                   - value
                                   - assignedBy
@@ -2222,6 +2300,7 @@ components:
                                       - Supplier
                               identifier:
                                 type: object
+                                unevaluatedProperties: false
                                 required:
                                   - type
                                   - value
@@ -2266,6 +2345,7 @@ components:
                                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                               measurements:
                                 type: object
+                                unevaluatedProperties: false
                                 required: []
                                   # length is not required
                                   # width is not required
@@ -2274,6 +2354,7 @@ components:
                                 properties:
                                   length:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -2293,6 +2374,7 @@ components:
                                           - Yard
                                   width:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -2312,6 +2394,7 @@ components:
                                           - Yard
                                   height:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -2331,6 +2414,7 @@ components:
                                           - Yard
                                   weight:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -2352,6 +2436,7 @@ components:
                                 minItems: 1
                                 items:
                                   type: object
+                                  unevaluatedProperties: false
                                   required:
                                     # transportUnitLevel is not required (as in `units[]`)
                                     - transportUnitType
@@ -2368,6 +2453,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - context
                     - type
@@ -2429,6 +2515,7 @@ components:
 
     ListOfLogisticsDeliveryNotes:
       type: object
+      unevaluatedProperties: false
       required:
         - count
         - items
@@ -2442,6 +2529,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - id
               - number
@@ -2482,6 +2570,7 @@ components:
                   - Unloaded
               supplierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -2490,6 +2579,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -2510,6 +2600,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -2544,6 +2635,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               logisticsSupplierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -2552,6 +2644,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -2572,6 +2665,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -2613,6 +2707,7 @@ components:
               shipFromLocation:
                 description: It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
                 type: object
+                unevaluatedProperties: false
                 required:
                   # type is not required
                   - identifiers
@@ -2645,6 +2740,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -2665,6 +2761,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -2699,6 +2796,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWGS84:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       - latitude
                       - longitude
@@ -2710,6 +2808,7 @@ components:
               shipToLocation:
                 description: It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
                 type: object
+                unevaluatedProperties: false
                 required:
                   # type is not required
                   - identifiers
@@ -2742,6 +2841,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -2762,6 +2862,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -2796,6 +2897,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWGS84:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       - latitude
                       - longitude
@@ -2812,6 +2914,7 @@ components:
 
     LogisticsDeliveryNoteById:
       type: object
+      unevaluatedProperties: false
       required:
         # id is not required
         - number
@@ -2851,6 +2954,7 @@ components:
             - Unloaded
         supplierParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -2859,6 +2963,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -2879,6 +2984,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -2913,6 +3019,7 @@ components:
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         logisticsSupplierParty:
           type: object
+          unevaluatedProperties: false
           required:
             - identifiers
           properties:
@@ -2921,6 +3028,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -2941,6 +3049,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -2984,6 +3093,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - number
               - shipFromLocation
@@ -3003,6 +3113,7 @@ components:
                 minimum: 0
               shipFromLocation:
                 type: object
+                unevaluatedProperties: false
                 required:
                   # type is not required
                   - identifiers
@@ -3035,6 +3146,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3055,6 +3167,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -3089,6 +3202,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWGS84:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       - latitude
                       - longitude
@@ -3099,6 +3213,7 @@ components:
                         type: number
               shipFromParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -3107,6 +3222,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3127,6 +3243,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -3161,6 +3278,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               shipToLocation:
                 type: object
+                unevaluatedProperties: false
                 required:
                   # type is not required
                   - identifiers
@@ -3193,6 +3311,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3213,6 +3332,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -3247,6 +3367,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWGS84:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       - latitude
                       - longitude
@@ -3257,6 +3378,7 @@ components:
                         type: number
               shipToParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -3265,6 +3387,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3285,6 +3408,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -3319,6 +3443,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               mainCarrierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -3327,6 +3452,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3347,6 +3473,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -3426,6 +3553,7 @@ components:
                   - P2D/2023-08-18T13:00
               transport:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - modeType
                   # units is not required
@@ -3444,6 +3572,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         # level
                         - type
@@ -3468,6 +3597,7 @@ components:
                             - VesselUnit
                         detailCode:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - value
                             - assignedBy
@@ -3481,6 +3611,7 @@ components:
                                 - Supplier
                         identifier:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - type
                             - value
@@ -3525,6 +3656,7 @@ components:
                               description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         measurements:
                           type: object
+                          unevaluatedProperties: false
                           required: []
                             # length is not required
                             # width is not required
@@ -3533,6 +3665,7 @@ components:
                           properties:
                             length:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - value
                                 - uom
@@ -3552,6 +3685,7 @@ components:
                                     - Yard
                             width:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - value
                                 - uom
@@ -3571,6 +3705,7 @@ components:
                                     - Yard
                             height:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - value
                                 - uom
@@ -3590,6 +3725,7 @@ components:
                                     - Yard
                             weight:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - value
                                 - uom
@@ -3611,6 +3747,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               # transportUnitLevel is not required (as in `units[]`)
                               - transportUnitType
@@ -3627,6 +3764,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - number
               - status
@@ -3681,6 +3819,7 @@ components:
                 minLength: 1
               sellerProduct:
                 type: object
+                unevaluatedProperties: false
                 allOf:
                   - oneOf:
                       - required:
@@ -3710,6 +3849,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - type
                         - value
@@ -3733,6 +3873,7 @@ components:
                     $ref: '#/components/schemas/Pulp'
               customerArticleReference:
                 type: object
+                unevaluatedProperties: false
                 oneOf:
                   - required:
                       - gradeCode
@@ -3756,6 +3897,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - type
                     - assignedBy
@@ -3789,6 +3931,7 @@ components:
                       minLength: 1
                     chainOfCustody:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         # certificationBody is not required
                         - value
@@ -3807,12 +3950,14 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - identifier
                           # subReference is not required
                         properties:
                           identifier:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - type
                               - value
@@ -3826,10 +3971,12 @@ components:
                                 minlength: 1
                           subReference:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - identifier
                             identifier:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - type
                                 - value
@@ -3846,6 +3993,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required: []
                     # type is not required
                     # code is not required
@@ -3862,6 +4010,7 @@ components:
                         # Other (removed)
                     code:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3889,6 +4038,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required: []
                     # type is not required
                     # code is not required
@@ -3905,6 +4055,7 @@ components:
                         # Other (removed)
                     code:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -3932,6 +4083,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - context
                     - type
@@ -3997,6 +4149,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - type
                     - identifiers
@@ -4016,6 +4169,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - role
                           - type
@@ -4047,6 +4201,7 @@ components:
                             minLength: 1
                     transportUnitIdentifierReference:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                       properties:
@@ -4058,6 +4213,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - context
                           - type
@@ -4119,6 +4275,7 @@ components:
 
     LogisticsGoodsReceiptById:
       type: object
+      unevaluatedProperties: false
       required:
         # id is not required
         - number
@@ -4196,6 +4353,7 @@ components:
             - P2D/2023-08-18T13:00
         shipToLocation:
           type: object
+          unevaluatedProperties: false
           required:
             # type is not required
             - identifiers
@@ -4228,6 +4386,7 @@ components:
               minItems: 1
               items:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - value
                   - assignedBy
@@ -4248,6 +4407,7 @@ components:
                 minLength: 1
             address:
               type: object
+              unevaluatedProperties: false
               required:
                 # addressLines is not required
                 # city is not required
@@ -4282,6 +4442,7 @@ components:
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
             coordinatesWGS84:
               type: object
+              unevaluatedProperties: false
               required:
                 - latitude
                 - longitude
@@ -4295,6 +4456,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - number
               # acceptance is not required
@@ -4330,6 +4492,7 @@ components:
                 minimum: 0
               sellerProduct:
                 type: object
+                unevaluatedProperties: false
                 allOf:
                   - oneOf:
                       - required:
@@ -4359,6 +4522,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - type
                         - value
@@ -4385,6 +4549,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - context
                     - type
@@ -4447,6 +4612,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - type
                     - identifiers
@@ -4466,6 +4632,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - role
                           - type
@@ -4497,6 +4664,7 @@ components:
                             minLength: 1
                     transportUnitIdentifierReference:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                       properties:
@@ -4508,6 +4676,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - context
                           - type
@@ -4586,6 +4755,7 @@ components:
 
     ListOfDeliveryInstructions:
       type: object
+      unevaluatedProperties: false
       required:
         - count
         - items
@@ -4599,6 +4769,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - id
               - number
@@ -4632,6 +4803,7 @@ components:
 
     DeliveryInstructionById:
       type: object
+      unevaluatedProperties: false
       required:
         - id
         - number
@@ -4662,6 +4834,7 @@ components:
           minItems: 1
           items:
             type: object
+            unevaluatedProperties: false
             required:
               - number
               - status
@@ -4683,6 +4856,7 @@ components:
                   - Replaced
               supplierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -4691,6 +4865,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -4711,6 +4886,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -4745,6 +4921,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               logisticsSupplierParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -4753,6 +4930,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -4773,6 +4951,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -4807,6 +4986,7 @@ components:
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               buyerParty:
                 type: object
+                unevaluatedProperties: false
                 required:
                   - identifiers
                 properties:
@@ -4815,6 +4995,7 @@ components:
                     minItems: 1
                     items:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - value
                         - assignedBy
@@ -4835,6 +5016,7 @@ components:
                       minLength: 1
                   address:
                     type: object
+                    unevaluatedProperties: false
                     required:
                       # addressLines is not required
                       # city is not required
@@ -4872,6 +5054,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - number
                     - shipFromLocation
@@ -4891,6 +5074,7 @@ components:
                       minimum: 0
                     shipFromLocation:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         # type is not required
                         - identifiers
@@ -4923,6 +5107,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -4943,6 +5128,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -4977,6 +5163,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWGS84:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - latitude
                             - longitude
@@ -4987,6 +5174,7 @@ components:
                               type: number
                     shipFromParty:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - identifiers
                       properties:
@@ -4995,6 +5183,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -5015,6 +5204,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -5049,6 +5239,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     shipToLocation:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         # type is not required
                         - identifiers
@@ -5081,6 +5272,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -5101,6 +5293,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -5135,6 +5328,7 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWGS84:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - latitude
                             - longitude
@@ -5145,6 +5339,7 @@ components:
                               type: number
                     shipToParty:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - identifiers
                       properties:
@@ -5153,6 +5348,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -5173,6 +5369,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -5207,11 +5404,13 @@ components:
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     termsOfDelivery:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - incoterms
                       properties:
                         incoterms:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             - location
                             - code
@@ -5274,6 +5473,7 @@ components:
                       description: |-
                         The _main carrier_ is the party that is **contracted** to handle the transport.
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - identifiers
                       properties:
@@ -5282,6 +5482,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -5302,6 +5503,7 @@ components:
                             minLength: 1
                         address:
                           type: object
+                          unevaluatedProperties: false
                           required:
                             # addressLines is not required
                             # city is not required
@@ -5366,6 +5568,7 @@ components:
                         - P2D/2023-08-18T13:00
                     transport:
                       type: object
+                      unevaluatedProperties: false
                       required:
                         - modeType
                         # units is not required
@@ -5384,6 +5587,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               # level
                               - type
@@ -5408,6 +5612,7 @@ components:
                                   - VesselUnit
                               detailCode:
                                 type: object
+                                unevaluatedProperties: false
                                 required:
                                   - value
                                   - assignedBy
@@ -5421,6 +5626,7 @@ components:
                                       - Supplier
                               identifier:
                                 type: object
+                                unevaluatedProperties: false
                                 required:
                                   - type
                                   - value
@@ -5465,6 +5671,7 @@ components:
                                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                               measurements:
                                 type: object
+                                unevaluatedProperties: false
                                 required: []
                                   # length is not required
                                   # width is not required
@@ -5473,6 +5680,7 @@ components:
                                 properties:
                                   length:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -5492,6 +5700,7 @@ components:
                                           - Yard
                                   width:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -5511,6 +5720,7 @@ components:
                                           - Yard
                                   height:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -5530,6 +5740,7 @@ components:
                                           - Yard
                                   weight:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - value
                                       - uom
@@ -5551,6 +5762,7 @@ components:
                                 minItems: 1
                                 items:
                                   type: object
+                                  unevaluatedProperties: false
                                   required:
                                     # transportUnitLevel is not required (as in `units[]`)
                                     - transportUnitType
@@ -5567,6 +5779,7 @@ components:
                 minItems: 1
                 items:
                   type: object
+                  unevaluatedProperties: false
                   required:
                     - number
                     # supplierOrderNumber is not required
@@ -5602,6 +5815,7 @@ components:
                       minLength: 1
                     sellerProduct:
                       type: object
+                      unevaluatedProperties: false
                       allOf:
                         - oneOf:
                             - required:
@@ -5631,6 +5845,7 @@ components:
                           minItems: 1
                           items:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - type
                               - value
@@ -5654,6 +5869,7 @@ components:
                           $ref: '#/components/schemas/Pulp'
                     customerArticleReference:
                       type: object
+                      unevaluatedProperties: false
                       oneOf:
                         - required:
                             - gradeCode
@@ -5677,6 +5893,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - type
                           - assignedBy
@@ -5710,6 +5927,7 @@ components:
                             minLength: 1
                           chainOfCustody:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               # certificationBody is not required
                               - value
@@ -5728,12 +5946,14 @@ components:
                             minItems: 1
                             items:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - identifier
                                 # subReference is not required
                               properties:
                                 identifier:
                                   type: object
+                                  unevaluatedProperties: false
                                   required:
                                     - type
                                     - value
@@ -5747,10 +5967,12 @@ components:
                                       minlength: 1
                                 subReference:
                                   type: object
+                                  unevaluatedProperties: false
                                   required:
                                     - identifier
                                   identifier:
                                     type: object
+                                    unevaluatedProperties: false
                                     required:
                                       - type
                                       - value
@@ -5767,6 +5989,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required: []
                           # type is not required
                           # code is not required
@@ -5783,6 +6006,7 @@ components:
                               # Other (removed)
                           code:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -5810,6 +6034,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required: []
                           # type is not required
                           # code is not required
@@ -5826,6 +6051,7 @@ components:
                               # Other (removed)
                           code:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                               - assignedBy
@@ -5853,6 +6079,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - context
                           - type
@@ -5916,6 +6143,7 @@ components:
                       minItems: 1
                       items:
                         type: object
+                        unevaluatedProperties: false
                         required:
                           - type
                           - identifiers
@@ -5935,6 +6163,7 @@ components:
                             minItems: 1
                             items:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - role
                                 - type
@@ -5966,6 +6195,7 @@ components:
                                   minLength: 1
                           transportUnitIdentifierReference:
                             type: object
+                            unevaluatedProperties: false
                             required:
                               - value
                             properties:
@@ -5977,6 +6207,7 @@ components:
                             minItems: 1
                             items:
                               type: object
+                              unevaluatedProperties: false
                               required:
                                 - context
                                 - type
