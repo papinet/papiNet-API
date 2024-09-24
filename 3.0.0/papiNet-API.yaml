@@ -1763,8 +1763,32 @@ components:
                     shipFromLocation:
                       type: object
                       required:
+                        # type is not required
                         - identifiers
                       properties:
+                        type:
+                          type: string
+                          enum:
+                            - BorderCrossing # ?
+                            - CustomerFacility
+                            - CustomerStock
+                            # Laboratory
+                            # LoggingArea
+                            - Mill
+                            # PlaceFinalDestination
+                            # PlaceOfAccept
+                            # PlaceOfDespatch
+                            # PlaceOfDischarge
+                            # PlaceOfLoading
+                            # PlaceOfMeasuring
+                            # PlaceOfPassingThrough
+                            # PlaceOfReloading
+                            - Port
+                            - PrinterFacility
+                            # ShipFromLocation
+                            # ShipTo
+                            - Terminal
+                            - Warehouse
                         identifiers:
                           type: array
                           minItems: 1
@@ -1897,8 +1921,32 @@ components:
                     shipToLocation:
                       type: object
                       required:
+                        # type is not required
                         - identifiers
                       properties:
+                        type:
+                          type: string
+                          enum:
+                            - BorderCrossing # ?
+                            - CustomerFacility
+                            - CustomerStock
+                            # Laboratory
+                            # LoggingArea
+                            - Mill
+                            # PlaceFinalDestination
+                            # PlaceOfAccept
+                            # PlaceOfDespatch
+                            # PlaceOfDischarge
+                            # PlaceOfLoading
+                            # PlaceOfMeasuring
+                            # PlaceOfPassingThrough
+                            # PlaceOfReloading
+                            - Port
+                            - PrinterFacility
+                            # ShipFromLocation
+                            # ShipTo
+                            - Terminal
+                            - Warehouse
                         identifiers:
                           type: array
                           minItems: 1
@@ -2566,8 +2614,32 @@ components:
                 description: It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
                 type: object
                 required:
+                  # type is not required
                   - identifiers
                 properties:
+                  type:
+                    type: string
+                    enum:
+                      - BorderCrossing # ?
+                      - CustomerFacility
+                      - CustomerStock
+                      # Laboratory
+                      # LoggingArea
+                      - Mill
+                      # PlaceFinalDestination
+                      # PlaceOfAccept
+                      # PlaceOfDespatch
+                      # PlaceOfDischarge
+                      # PlaceOfLoading
+                      # PlaceOfMeasuring
+                      # PlaceOfPassingThrough
+                      # PlaceOfReloading
+                      - Port
+                      - PrinterFacility
+                      # ShipFromLocation
+                      # ShipTo
+                      - Terminal
+                      - Warehouse
                   identifiers:
                     type: array
                     minItems: 1
@@ -2639,8 +2711,32 @@ components:
                 description: It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
                 type: object
                 required:
+                  # type is not required
                   - identifiers
                 properties:
+                  type:
+                    type: string
+                    enum:
+                      - BorderCrossing # ?
+                      - CustomerFacility
+                      - CustomerStock
+                      # Laboratory
+                      # LoggingArea
+                      - Mill
+                      # PlaceFinalDestination
+                      # PlaceOfAccept
+                      # PlaceOfDespatch
+                      # PlaceOfDischarge
+                      # PlaceOfLoading
+                      # PlaceOfMeasuring
+                      # PlaceOfPassingThrough
+                      # PlaceOfReloading
+                      - Port
+                      - PrinterFacility
+                      # ShipFromLocation
+                      # ShipTo
+                      - Terminal
+                      - Warehouse
                   identifiers:
                     type: array
                     minItems: 1
@@ -2908,8 +3004,32 @@ components:
               shipFromLocation:
                 type: object
                 required:
+                  # type is not required
                   - identifiers
                 properties:
+                  type:
+                    type: string
+                    enum:
+                      - BorderCrossing # ?
+                      - CustomerFacility
+                      - CustomerStock
+                      # Laboratory
+                      # LoggingArea
+                      - Mill
+                      # PlaceFinalDestination
+                      # PlaceOfAccept
+                      # PlaceOfDespatch
+                      # PlaceOfDischarge
+                      # PlaceOfLoading
+                      # PlaceOfMeasuring
+                      # PlaceOfPassingThrough
+                      # PlaceOfReloading
+                      - Port
+                      - PrinterFacility
+                      # ShipFromLocation
+                      # ShipTo
+                      - Terminal
+                      - Warehouse
                   identifiers:
                     type: array
                     minItems: 1
@@ -3042,8 +3162,32 @@ components:
               shipToLocation:
                 type: object
                 required:
+                  # type is not required
                   - identifiers
                 properties:
+                  type:
+                    type: string
+                    enum:
+                      - BorderCrossing # ?
+                      - CustomerFacility
+                      - CustomerStock
+                      # Laboratory
+                      # LoggingArea
+                      - Mill
+                      # PlaceFinalDestination
+                      # PlaceOfAccept
+                      # PlaceOfDespatch
+                      # PlaceOfDischarge
+                      # PlaceOfLoading
+                      # PlaceOfMeasuring
+                      # PlaceOfPassingThrough
+                      # PlaceOfReloading
+                      - Port
+                      - PrinterFacility
+                      # ShipFromLocation
+                      # ShipTo
+                      - Terminal
+                      - Warehouse
                   identifiers:
                     type: array
                     minItems: 1
@@ -4053,8 +4197,32 @@ components:
         shipToLocation:
           type: object
           required:
+            # type is not required
             - identifiers
           properties:
+            type:
+              type: string
+              enum:
+                - BorderCrossing # ?
+                - CustomerFacility
+                - CustomerStock
+                # Laboratory
+                # LoggingArea
+                - Mill
+                # PlaceFinalDestination
+                # PlaceOfAccept
+                # PlaceOfDespatch
+                # PlaceOfDischarge
+                # PlaceOfLoading
+                # PlaceOfMeasuring
+                # PlaceOfPassingThrough
+                # PlaceOfReloading
+                - Port
+                - PrinterFacility
+                # ShipFromLocation
+                # ShipTo
+                - Terminal
+                - Warehouse
             identifiers:
               type: array
               minItems: 1
@@ -4724,8 +4892,32 @@ components:
                     shipFromLocation:
                       type: object
                       required:
+                        # type is not required
                         - identifiers
                       properties:
+                        type:
+                          type: string
+                          enum:
+                            - BorderCrossing # ?
+                            - CustomerFacility
+                            - CustomerStock
+                            # Laboratory
+                            # LoggingArea
+                            - Mill
+                            # PlaceFinalDestination
+                            # PlaceOfAccept
+                            # PlaceOfDespatch
+                            # PlaceOfDischarge
+                            # PlaceOfLoading
+                            # PlaceOfMeasuring
+                            # PlaceOfPassingThrough
+                            # PlaceOfReloading
+                            - Port
+                            - PrinterFacility
+                            # ShipFromLocation
+                            # ShipTo
+                            - Terminal
+                            - Warehouse
                         identifiers:
                           type: array
                           minItems: 1
@@ -4858,8 +5050,32 @@ components:
                     shipToLocation:
                       type: object
                       required:
+                        # type is not required
                         - identifiers
                       properties:
+                        type:
+                          type: string
+                          enum:
+                            - BorderCrossing # ?
+                            - CustomerFacility
+                            - CustomerStock
+                            # Laboratory
+                            # LoggingArea
+                            - Mill
+                            # PlaceFinalDestination
+                            # PlaceOfAccept
+                            # PlaceOfDespatch
+                            # PlaceOfDischarge
+                            # PlaceOfLoading
+                            # PlaceOfMeasuring
+                            # PlaceOfPassingThrough
+                            # PlaceOfReloading
+                            - Port
+                            - PrinterFacility
+                            # ShipFromLocation
+                            # ShipTo
+                            - Terminal
+                            - Warehouse
                         identifiers:
                           type: array
                           minItems: 1
