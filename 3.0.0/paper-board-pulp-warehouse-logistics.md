@@ -42,7 +42,7 @@ The _logistic supplier_ sends an API request to create a session, and gets its a
 
 ```text
 curl --request POST \
-  --URL http://localhost:3020/tokens \
+  --URL 'http://localhost:3020/tokens' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -93,7 +93,7 @@ The _logistic supplier_ sends an API request to the _supplier_ in order to be au
 <!-- Interaction: State_for_Interaction_0_of_Scenario_A_of_Logistics -->
 ```text
 curl --request POST \
-  --URL http://localhost:3020/tokens \
+  --URL 'http://localhost:3020/tokens' \
   --header 'X-Provider-State: Good_Weather_Flow' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -116,7 +116,7 @@ The authenticated _logistic supplier_ sends an API request to the _supplier_ in 
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/supplier-orders? active=true \ 
+  --URL 'http://localhost:3020/supplier-orders? active=true' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -152,7 +152,7 @@ The step 2 of the scenario A will simulate the situation in which the _logistic 
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6 \ 
+  --URL 'http://localhost:3020/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -357,7 +357,7 @@ In step 3 of the scenario A the _logistic supplier_ request to get all departed 
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/delivery-notes? shipmentStatus=Departed \ 
+  --URL 'http://localhost:3020/delivery-notes? shipmentStatus=Departed' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -426,7 +426,7 @@ In step 4 of the scenario A the _logistic supplier_ request to get details of th
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841 \ 
+  --URL 'http://localhost:3020/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -1050,7 +1050,7 @@ In step 6 of scenario A _logistic supplier_ request to get all open delivery ins
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/delivery-instructions? active=true \ 
+  --URL 'http://localhost:3020/delivery-instructions? active=true' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -1081,7 +1081,7 @@ In step 7 of scenario A _logistic supplier_ request to get details of the open d
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6 \ 
+  --URL 'http://localhost:3020/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -1723,7 +1723,7 @@ The _logistic supplier_ sends an API request to the _supplier_ in order to be au
 
 ```text
 curl --request POST \
-  --URL http://localhost:3020/tokens \
+  --URL 'http://localhost:3020/tokens' \
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -1746,7 +1746,7 @@ The authenticated _logistic supplier_ sends an API request to the _supplier_ in 
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/supplier-orders? active=true \ 
+  --URL 'http://localhost:3020/supplier-orders? active=true' \ 
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -1781,7 +1781,7 @@ The step 2 of the scenario B will simulate the situation in which the _logistic 
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6 \ 
+  --URL 'http://localhost:3020/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \ 
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -1985,7 +1985,7 @@ In step 3 of the scenario B the _logistic supplier_ request to get all departed 
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/delivery-notes? shipmentStatus=Departed \ 
+  --URL 'http://localhost:3020/delivery-notes? shipmentStatus=Departed' \ 
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -2054,7 +2054,7 @@ In step 4 of the scenario B the _logistic supplier_ request to get details of th
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841 \ 
+  --URL 'http://localhost:3020/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \ 
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -2890,7 +2890,7 @@ In step 7 of scenario B _logistic supplier_ request to get all open delivery ins
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/delivery-instructions? active=true \ 
+  --URL 'http://localhost:3020/delivery-instructions? active=true' \ 
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -2921,7 +2921,7 @@ In step 8 of scenario B _logistic supplier_ request to get details of the open d
 
 ```text
 curl --request GET \
-  --URL 'http://localhost:3020/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6 \ 
+  --URL 'http://localhost:3020/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \ 
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
