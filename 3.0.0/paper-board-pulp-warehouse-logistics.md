@@ -90,6 +90,7 @@ If all goes well, the _logistic supplier_ will receive a response like this:
 
 The _logistic supplier_ sends an API request to the _supplier_ in order to be authenticated, and gets an _access token_:
 
+<!-- Interaction: State_for_Interaction_0_of_Scenario_A_of_Logistics -->
 ```text
 curl --request POST \
   --URL http://localhost:3020/tokens \
@@ -120,10 +121,13 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
-  ```text
-  {
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+<!-- file: ../3.0.0/mock/01.get-supplier-orders.response.SE.json -->
+```json
+{
   "count": 1,
   "items": [
     {
@@ -136,9 +140,9 @@ curl --request GET \
     }
   ]
 }
-  ```
-  
-  You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
+```
+
+You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
   
   We have prepared the scenario A on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
   
@@ -153,10 +157,12 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
+```
 
-```text
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+<!-- file: ../3.0.0/mock/02.get-supplier-orders-supplierOrderId.response.SE.json -->
+```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "number": "ABCD-476408",
@@ -356,8 +362,10 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
 ```text
 {
   "count": 1,
@@ -423,10 +431,10 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  
-  If all goes well, the _logistic supplier_ will receive a response like this:
-  
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
 ```text
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
@@ -1047,8 +1055,10 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
 ```text
 {
     "count": 1,
@@ -1076,10 +1086,10 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  
-  If all goes well, the _logistic supplier_ will receive a response like this:
-  
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
 ```text
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
@@ -1741,10 +1751,12 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
-  ```text
-  {
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+```json
+{
   "count": 1,
   "items": [
     {
@@ -1757,12 +1769,12 @@ curl --request GET \
     }
   ]
 }
-  ```
-  
-  You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
-  
-  We have prepared the scenario B on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
-  
+```
+
+You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
+
+We have prepared the scenario B on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+
 #### Interaction 2 of Scenario B
 
 The step 2 of the scenario B will simulate the situation in which the _logistic supplier_ requests to get the full order information. The _logistic supplier_ sends an API get request to the supplier in order to get the details of the order 3fa85f64-5717-4562-b3fc-2c963f66afa6:
@@ -1774,10 +1786,11 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
+```
 
-```text
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "number": "ABCD-476408",
@@ -1977,9 +1990,11 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
-```text
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+```json
 {
   "count": 1,
   "items": [
@@ -2044,11 +2059,11 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  
-  If all goes well, the _logistic supplier_ will receive a response like this:
-  
-```text
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN12345",
@@ -2880,9 +2895,11 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  If all goes well, the _logistic supplier_ will receive a response like this:
-```text
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+```json
 {
     "count": 1,
     "items": [
@@ -2909,11 +2926,11 @@ curl --request GET \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json' \
-  ```
-  
-  If all goes well, the _logistic supplier_ will receive a response like this:
-  
-```text
+```
+
+If all goes well, the _logistic supplier_ will receive a response like this:
+
+```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
   "number": "123456SE",
@@ -4010,5 +4027,3 @@ curl -X 'POST' \
   ]
 }
 ```
-
-
