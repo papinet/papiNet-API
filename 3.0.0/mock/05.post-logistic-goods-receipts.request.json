@@ -1,0 +1,11 @@
+{
+  "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
+  "number": "GRIWMS-20240506-090833",
+  "timestamp": "2024-05-18T11:10:04Z",
+  "status": "Original",
+  "acceptance": "AsSpecified",
+  "isComplete": true,
+  "deliveryNoteNumber": "LDN12345",
+  "arrivalDateTime": "2024-05-18T11:08:36",
+  "unloadingDateTime": "2024-05-18T11:10:04"
+}

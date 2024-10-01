@@ -125,7 +125,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/01.get-supplier-orders.response.SE.json -->
+<!-- file: ../3.0.0/mock/01.get-supplier-orders.response.json -->
 ```json
 {
   "count": 1,
@@ -161,7 +161,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/02.get-supplier-orders-supplierOrderId.response.SE.json -->
+<!-- file: ../3.0.0/mock/02.get-supplier-orders-supplierOrderId.response.json -->
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -366,7 +366,8 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
-```text
+<!-- file: ../3.0.0/mock/03.get-logistic-delivery-notes.response.json -->
+```json
 {
   "count": 1,
   "items": [
@@ -435,7 +436,8 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
-```text
+<!-- file: ../3.0.0/mock/04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
+```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN12345",
@@ -1059,7 +1061,8 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
-```text
+<!-- file: ../3.0.0/mock/07.get-delivery-instructions.response.json -->
+```json
 {
     "count": 1,
     "items": [
@@ -1090,7 +1093,8 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
-```text
+<!-- file: ../3.0.0/mock/08.get-delivery-instructions-deliveryInstructionId.response.json -->
+```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
   "number": "123456SE",
@@ -1714,7 +1718,6 @@ curl -X 'POST' \
 }
 ```
 
-
 ### Scenario B: Bad Weather Flow
 
 #### Interaction 0 of Scenario B (Authentication)
@@ -1755,6 +1758,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/01.get-supplier-orders.response.json -->
 ```json
 {
   "count": 1,
@@ -1790,6 +1794,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/02.get-supplier-orders-supplierOrderId.response.json -->
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -1994,6 +1999,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/03.get-logistic-delivery-notes.response.json -->
 ```json
 {
   "count": 1,
@@ -2063,6 +2069,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
 ```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
@@ -2899,6 +2906,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/07.get-delivery-instructions.response.json -->
 ```json
 {
     "count": 1,
@@ -2930,6 +2938,7 @@ curl --request GET \
 
 If all goes well, the _logistic supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/08.get-delivery-instructions-deliveryInstructionId.response.json -->
 ```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
