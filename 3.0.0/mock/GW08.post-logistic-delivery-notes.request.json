@@ -59,13 +59,13 @@
         {
           "context": "Loaded",
           "type": "Count",
-          "value": 9,
+          "value": 10,
           "uom": "ReelPackage"
         },
         {
           "context": "Loaded",
           "type": "GrossWeight",
-          "value": 18000,
+          "value": 20000,
           "uom": "Kilogram"
         }
       ],
@@ -456,8 +456,51 @@
               "uom": "SquareMeter"
             }
           ]
+        },
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14781000131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00010"
+            }
+          ],
+          "quantities": [
+            {
+              "context": "Loaded",
+              "type": "GrossWeight",
+              "value": 2000,
+              "uom": "Kilogram"
+            },
+            {
+              "context": "Loaded",
+              "type": "NetWeight",
+              "value": 2000,
+              "uom": "Kilogram"
+            },
+            {
+              "context": "Loaded",
+              "type": "Length",
+              "value": 4000,
+              "uom": "Meter"
+            },
+            {
+              "context": "Loaded",
+              "type": "Area",
+              "value": 3500,
+              "uom": "SquareMeter"
+            }
+          ]
         }
       ]
     }
-  ] 
+  ]
 }
