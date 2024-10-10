@@ -98,7 +98,6 @@ instructions from _supplier_. _Logistics supplier_ **receives** a list of all ac
 
 The _logistics supplier_ sends an API request to the _supplier_ in order to be authenticated, and gets an _access token_:
 
-<!-- Interaction: State_for_Interaction_0_of_Scenario_A_of_Logistics -->
 ```text
 curl --request POST \
   --url 'http://localhost:3030/tokens' \
@@ -110,7 +109,7 @@ curl --request POST \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/00.post-tokens.response.json -->
+<!-- file: ../3.0.0/mock/GW00&BW00.post-tokens.response.json -->
 ```json
 {
   "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
@@ -134,7 +133,7 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/01.get-supplier-orders.response.json -->
+<!-- file: ../3.0.0/mock/GW01&BW01.get-supplier-orders.response.json -->
 ```json
 {
   "count": 1,
@@ -165,12 +164,12 @@ curl --request GET \
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/02.get-supplier-orders-supplierOrderId.response.json -->
+<!-- file: ../3.0.0/mock/GW02&BW02.get-supplier-orders-supplierOrderId.response.json -->
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -331,8 +330,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
               "countryCode": "SE"
             }
           },
-          "estimatedLoadingDateTime": "2024-05-16T12:00:00Z",
-          "estimatedArrivalDateTime": "2024-05-18T17:00:00Z",
+          "estimatedLoadingDateTime": "2024-05-16T12:00",
+          "estimatedArrivalDateTime": "2024-05-18T17:00",
           "transport": {
             "modeType": "Road",
             "units": [
@@ -366,16 +365,16 @@ In step 3 of the scenario A the _logistics supplier_ request to get all departed
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-notes? shipmentStatus=Departed' \ 
+  --url 'http://localhost:3030/delivery-notes? shipmentStatus=Departed' \
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/03.get-logistic-delivery-notes.response.json -->
+<!-- file: ../3.0.0/mock/GW03&BW03.get-logistic-delivery-notes.response.json -->
 ```json
 {
   "count": 1,
@@ -436,16 +435,16 @@ In step 4 of the scenario A the _logistics supplier_ request to get details of t
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \ 
+  --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
+<!-- file: ../3.0.0/mock/GW04&BW04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
 ```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
@@ -515,7 +514,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "actualLoadingDateTime": "2024-05-16T12:45:00",
-      "estimatedArrivalDateTime": "2024-05-18T12:45:00",
+      "estimatedArrivalDateTime": "2024-05-18T12:45",
       "transport": {
         "modeType": "Road",
         "units": [
@@ -1037,6 +1036,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 5 of scenario A _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
 
+<!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl -X 'POST' \
   'http://localhost:3030/logistics-goods-receipts' \
@@ -1061,16 +1061,16 @@ In step 6 of scenario A _logistics supplier_ request to get all open delivery in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions? active=true' \ 
+  --url 'http://localhost:3030/delivery-instructions? active=true' \
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/07.get-delivery-instructions.response.json -->
+<!-- file: ../3.0.0/mock/GW06&BW07.get-delivery-instructions.response.json -->
 ```json
 {
     "count": 1,
@@ -1093,16 +1093,16 @@ In step 7 of scenario A _logistics supplier_ request to get details of the open 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \ 
+  --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Good_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/08.get-delivery-instructions-deliveryInstructionId.response.json -->
+<!-- file: ../3.0.0/mock/GW07.get-delivery-instructions-deliveryInstructionId.response.json -->
 ```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
@@ -1209,7 +1209,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
               }
             ]
           },
-          "requestedArrivalDateTime": "2024-05-24T10:00:00",
+          "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
             "modeType": "Road"
           }
@@ -1257,6 +1257,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 8 of scenario A _logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 10 loaded packages towards the _supplier_.
 
+<!-- request-file: ../3.0.0/mock/GW08.post-logistic-delivery-notes.request.json -->
 ```text
 curl -X 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
@@ -1744,6 +1745,7 @@ curl --request POST \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
+<!-- file: ../3.0.0/mock/GW00&BW00.post-tokens.response.json -->
 ```json
 {
   "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
@@ -1767,7 +1769,7 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/01.get-supplier-orders.response.json -->
+<!-- file: ../3.0.0/mock/GW01&BW01.get-supplier-orders.response.json -->
 ```json
 {
   "count": 1,
@@ -1794,16 +1796,16 @@ The step 2 of the scenario B will simulate the situation in which the _logistics
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \ 
+  --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/02.get-supplier-orders-supplierOrderId.response.json -->
+<!-- file: ../3.0.0/mock/GW02&BW02.get-supplier-orders-supplierOrderId.response.json -->
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -1964,8 +1966,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
               "countryCode": "SE"
             }
           },
-          "estimatedLoadingDateTime": "2024-05-16T12:00:00Z",
-          "estimatedArrivalDateTime": "2024-05-18T17:00:00Z",
+          "estimatedLoadingDateTime": "2024-05-16T12:00",
+          "estimatedArrivalDateTime": "2024-05-18T17:00",
           "transport": {
             "modeType": "Road",
             "units": [
@@ -1999,16 +2001,16 @@ In step 3 of the scenario B the _logistics supplier_ request to get all departed
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-notes? shipmentStatus=Departed' \ 
+  --url 'http://localhost:3030/delivery-notes? shipmentStatus=Departed' \
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/03.get-logistic-delivery-notes.response.json -->
+<!-- file: ../3.0.0/mock/GW03&BW03.get-logistic-delivery-notes.response.json -->
 ```json
 {
   "count": 1,
@@ -2069,16 +2071,16 @@ In step 4 of the scenario B the _logistics supplier_ request to get details of t
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \ 
+  --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
+<!-- file: ../3.0.0/mock/GW04&BW04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
 ```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
@@ -2148,7 +2150,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "actualLoadingDateTime": "2024-05-16T12:45:00",
-      "estimatedArrivalDateTime": "2024-05-18T12:45:00",
+      "estimatedArrivalDateTime": "2024-05-18T12:45",
       "transport": {
         "modeType": "Road",
         "units": [
@@ -2670,6 +2672,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 5 of scenario B _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
 
+<!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl -X 'POST' \
   'http://localhost:3030/logistics-goods-receipts' \
@@ -2692,8 +2695,9 @@ curl -X 'POST' \
 
 In step 6 of scenario B _logistics supplier_ updates the inload of the delivery note and put logistic goods receipts towards the _supplier_ with one package indicated with variance = "Not Received", package no. 3.
 
+<!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
-curl -X 'POST' \
+curl -X 'PUT' \
   'http://localhost:3030/logistics-goods-receipts' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
@@ -2900,22 +2904,23 @@ curl -X 'POST' \
   ]
 }
 ```
+
 #### Interaction 7 of Scenario B
 
 In step 7 of scenario B _logistics supplier_ request to get all open delivery instructions from _supplier_.
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions? active=true' \ 
+  --url 'http://localhost:3030/delivery-instructions? active=true' \
   --header 'X-Provider-State: Bad_Weather_Flow' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/07.get-delivery-instructions.response.json -->
+<!-- file: ../3.0.0/mock/GW06&BW07.get-delivery-instructions.response.json -->
 ```json
 {
     "count": 1,
@@ -2947,7 +2952,7 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/08.get-delivery-instructions-deliveryInstructionId.response.json -->
+<!-- file: ../3.0.0/mock/BW08.get-delivery-instructions-deliveryInstructionId.response.json -->
 ```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
@@ -3054,7 +3059,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
               }
             ]
           },
-          "requestedArrivalDateTime": "2024-05-24T10:00:00",
+          "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
             "modeType": "Road"
           }
@@ -3102,6 +3107,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 9 of scenario B _logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 9 loaded packages towards the _supplier_.
 
+<!-- request-file: ../3.0.0/mock/BW09.post-logistic-delivery-notes.request.json -->
 ```text
 curl -X 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
@@ -3576,6 +3582,7 @@ curl -X 'POST' \
 
 In step 10 of scenario B the _logistics supplier_ updates the loading of the delivery instruction and put the delivery note towards the _supplier_ correcting loading, replacing package no. 3 (which has previously been reported as "NotReceived") with package no. 10.
 
+<!-- request-file: ../3.0.0/mock/BW10.put-logistic-delivery-notes-logisticDeliveryNoteId.request.json -->
 ```text
 curl -X 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
