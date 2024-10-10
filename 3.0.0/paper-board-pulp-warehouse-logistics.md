@@ -58,39 +58,69 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 **Scenario A:** Good Weather Flow
 
-Good weather flow covering end-to-end interactions between ...
+... to be completed by @Petter ...
 
-1. _Logistics supplier_ **requests** to get all active supplier orders from _supplier_. _Logistics supplier_ **receives** a list of all active supplier orders. In this scenario, there is 1 supplier order.
+1. _Logistics supplier_ **requests** to get all active _supplier-orders_ from _supplier_.
+_Logistics supplier_ **receives** a list of all active _supplier-orders_.
+In this scenario, there is 1 _supplier-order_.
 
-2. _Logistics supplier_ **requests** to get details of the one specific active supplier order from _supplier_. _Logistics supplier_ **receives** details of this supplier order, including the number of packages. In this scenario, there are 10 packages.
+2. _Logistics supplier_ **requests** to get details of the one specific active _supplier-order_ from _supplier_.
+_Logistics supplier_ **receives** details of this _supplier-order_, including the number of _packages_.
+In this scenario, there are 10 _packages_.
 
-3. _Logistics supplier_ **requests** to get all departed delivery notes from the _supplier_. _Logistics supplier_ **receives** a list of all departed delivery notes. In this scenario, there is 1 delivery note.
+3. _Logistics supplier_ **requests** to get all departed _delivery-notes_ from the _supplier_.
+_Logistics supplier_ **receives** a list of all departed _delivery-notes_.
+In this scenario, there is 1 _delivery-note_.
 
-4. _Logistics supplier_ **requests** to get details of the departed delivery note from _supplier_. _Logistics supplier_ **receives** details of the delivery note. In this scenario, there are 10 packages loaded on the delivery note.
+4. _Logistics supplier_ **requests** to get details of the one specific departed _delivery-note_ from _supplier_.
+_Logistics supplier_ **receives** details of this _delivery-note_.
+In this scenario, there are 10 _packages_ loaded on this _delivery-note_.
 
-5. _Logistics supplier_ completes the inload of the delivery described in the delivery note and **posts** a goods receipt to the _supplier_.
+5. _Logistics supplier_ completes the inload of the delivery described in the _delivery-note_ and **posts** a _goods-receipt_ to the _supplier_.
 
-6. _Logistics supplier_ **requests** to get all active delivery 
-instructions from _supplier_. _Logistics supplier_ **receives** a list of all active delivery instructions. In this scenario, there is 1 delivery instruction.
+6. _Logistics supplier_ **requests** to get all active _delivery-instructions_ from _supplier_.
+_Logistics supplier_ **receives** a list of all active _delivery-instructions_.
+In this scenario, there is 1 _delivery-instruction_.
 
-7. _Logistics supplier_ **requests** to get details of the one specific active active delivery instruction from _supplier_. _Logistics supplier_ **receives** details of this delivery instruction, including the quantities planned to be delivered.
+7. _Logistics supplier_ **requests** to get details of the one specific active _delivery-instruction_ from _supplier_.
+_Logistics supplier_ **receives** details of this _delivery-instruction_, including the quantities planned to be delivered.
 
-8. _Logistics supplier_ completes the loading of the delivery described in the delivery instruction and **posts** a delivery note, including 10 loaded packages, to the _supplier_.
+8. _Logistics supplier_ completes the loading of the delivery described in the _delivery-instruction_ and **posts** a _delivery-note_, including 10 loaded _packages_, to the _supplier_.
 
 **Scenario B:** Bad Weather Flow
 
-...
+... to be completed by @Petter ...
 
-1. _Logistics supplier_ request to get all open supplier orders from _supplier_. _Logistics supplier_ receives a list of all open supplier orders, in our scenario = 1. 
-2. _Logistics supplier_ request to get details of the open supplier order from _supplier_. _Logistics supplier_ receives details of the 10 packages associated with supplier order.
-3. _Logistics supplier_ request to get all departed delivery notes from _supplier_. _Logistics supplier_ receives a list of all departed delivery notes, in our scenario = 1. 
-4. _Logistics supplier_ request to get details of the departed delivery note from _supplier_. _Logistics supplier_ receives details of the 10 packages loaded on the delivery note.
-5. _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
-6. _Logistics supplier_ updates the inload of the delivery note and put logistic goods receipts towards the _supplier_ with one package indicated with variance = "Not Received", package no. 3.
-7. _Logistics supplier_ request to get all open delivery instructions from _supplier_. _Logistics supplier_ receives a list of all open delivery instructions, in our scenario = 1.
-8. _Logistics supplier_ request to get details of the open delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantiies planned to be delivered.
-9. _Logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 9 loaded packages towards the _supplier_.
-10. _Logistics supplier_ updates the loading of the delivery instruction and put the delivery note correcting loading replacing package no. 3 with package no. 10 towards _supplier_.
+1. _Logistics supplier_ **requests** to get all active _supplier-orders_ from _supplier_.
+_Logistics supplier_ **receives** a list of all active _supplier-orders_.
+In this scenario, there is 1 _supplier-order_.
+
+2. _Logistics supplier_ **requests** to get details of the one specific active _supplier-order_ from _supplier_.
+_Logistics supplier_ **receives** details of this _supplier-order_, including the number of _packages_.
+In this scenario, there are 10 _packages_.
+
+3. _Logistics supplier_ **requests** to get all departed _delivery-notes_ from the _supplier_.
+_Logistics supplier_ **receives** a list of all departed _delivery-notes_.
+In this scenario, there is 1 _delivery-note_.
+
+4. _Logistics supplier_ **requests** to get details of the one specific departed _delivery-note_ from _supplier_.
+_Logistics supplier_ **receives** details of this _delivery-note_.
+In this scenario, there are 10 _packages_ loaded on this _delivery-note_.
+
+5. _Logistics supplier_ completes the inload of the delivery described in the _delivery-note_ and **posts** a _goods-receipt_ to the _supplier_.
+
+6. _Logistics supplier_ updates the inload of the delivery note and **puts/updates** the _goods-receipt_ to the _supplier_ with the package no. 3 indicated with variance "Not Received".
+
+7. _Logistics supplier_ **requests** to get all active _delivery-instructions_ from _supplier_.
+_Logistics supplier_ **receives** a list of all active _delivery-instructions_.
+In this scenario, there is 1 _delivery-instruction_.
+
+8. _Logistics supplier_ **requests** to get details of the one specific active _delivery-instruction_ from _supplier_.
+_Logistics supplier_ **receives** details of this _delivery-instruction_, including the quantities planned to be delivered.
+
+9. _Logistics supplier_ completes the loading of the delivery described in the _delivery-instruction_ and **posts** a _delivery-note_, including 9 loaded _packages_, to the _supplier_. However, this _delivery_note_ wrongly report the package no. 3 as received, while it should be the package no. 10.
+
+10. _Logistics supplier_ updates the loading of the delivery instruction and **puts/updates** the delivery note correcting the loading replacing package no. 3 with package no. 10 to _supplier_.
 
 ### Scenario A: Good Weather Flow
 
@@ -120,7 +150,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 #### Interaction 1 of Scenario A (Get all active orders)
 
-The authenticated _logistics supplier_ sends an API request to the _supplier_ in order to receive all active orders according to the query parameters and orders containing logistics supplier location code within delivery leg:
+The authenticated _logistics supplier_ sends an API request to the _supplier_ in order to receive all active _supplier-orders_ according to the query parameters:
 
 ```text
 curl --request GET \
@@ -161,7 +191,7 @@ The step 2 of the scenario A will simulate the situation in which the _logistics
 ```text
 curl --request GET \
   --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
-  --header 'X-Provider-State: Good_Weather_Flow' \
+  --header 'X-Provider-State: Interaction_2_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -359,14 +389,15 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   ]
 }
 ```
+
 #### Interaction 3 of Scenario A
 
 In step 3 of the scenario A the _logistics supplier_ request to get all departed delivery notes from the _supplier_.:
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-notes? shipmentStatus=Departed' \
-  --header 'X-Provider-State: Good_Weather_Flow' \
+  --url 'http://localhost:3030/delivery-notes?shipmentStatus=Departed' \
+  --header 'X-Provider-State: Interaction_3_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -436,7 +467,7 @@ In step 4 of the scenario A the _logistics supplier_ request to get details of t
 ```text
 curl --request GET \
   --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \
-  --header 'X-Provider-State: Good_Weather_Flow' \
+  --header 'X-Provider-State: Interaction_4_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -1039,20 +1070,20 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl -X 'POST' \
-  'http://localhost:3030/logistics-goods-receipts' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
-  "number": "GRIWMS-20240506-090833",
-  "timestamp": "2024-05-18T11:10:04Z",
-  "status": "Original",
-  "acceptance": "AsSpecified",
-  "isComplete": true,
-  "deliveryNoteNumber": "LDN12345",
-  "arrivalDateTime": "2024-05-18T11:08:36",
-  "unloadingDateTime": "2024-05-18T11:10:04"
-}
+  -url 'http://localhost:3030/logistics-goods-receipts' \
+  --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
+  --header 'Content-Type: application/json'
+  --data '{
+    "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
+    "number": "GRIWMS-20240506-090833",
+    "timestamp": "2024-05-18T11:10:04Z",
+    "status": "Original",
+    "acceptance": "AsSpecified",
+    "isComplete": true,
+    "deliveryNoteNumber": "LDN12345",
+    "arrivalDateTime": "2024-05-18T11:08:36",
+    "unloadingDateTime": "2024-05-18T11:10:04"
+  }
 ```
 
 #### Interaction 6 of Scenario A
@@ -1061,8 +1092,8 @@ In step 6 of scenario A _logistics supplier_ request to get all open delivery in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions? active=true' \
-  --header 'X-Provider-State: Good_Weather_Flow' \
+  --url 'http://localhost:3030/delivery-instructions?active=true' \
+  --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -1094,7 +1125,7 @@ In step 7 of scenario A _logistics supplier_ request to get details of the open 
 ```text
 curl --request GET \
   --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \
-  --header 'X-Provider-State: Good_Weather_Flow' \
+  --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -1324,13 +1355,13 @@ curl -X 'POST' \
         {
           "context": "Loaded",
           "type": "Count",
-          "value": 9,
+          "value": 10,
           "uom": "ReelPackage"
         },
         {
           "context": "Loaded",
           "type": "GrossWeight",
-          "value": 18000,
+          "value": 20000,
           "uom": "Kilogram"
         }
       ],
@@ -1721,6 +1752,49 @@ curl -X 'POST' \
               "uom": "SquareMeter"
             }
           ]
+        },
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14781000131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00010"
+            }
+          ],
+          "quantities": [
+            {
+              "context": "Loaded",
+              "type": "GrossWeight",
+              "value": 2000,
+              "uom": "Kilogram"
+            },
+            {
+              "context": "Loaded",
+              "type": "NetWeight",
+              "value": 2000,
+              "uom": "Kilogram"
+            },
+            {
+              "context": "Loaded",
+              "type": "Length",
+              "value": 4000,
+              "uom": "Meter"
+            },
+            {
+              "context": "Loaded",
+              "type": "Area",
+              "value": 3500,
+              "uom": "SquareMeter"
+            }
+          ]
         }
       ]
     }
@@ -1737,7 +1811,7 @@ The _logistics supplier_ sends an API request to the _supplier_ in order to be a
 ```text
 curl --request POST \
   --url 'http://localhost:3030/tokens' \
-  --header 'X-Provider-State: Bad_Weather_Flow' \
+  --header 'X-Provider-State: Interaction_0_of_Scenario_B' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -1760,11 +1834,11 @@ The authenticated _logistics supplier_ sends an API request to the _supplier_ in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/supplier-orders? active=true' \ 
-  --header 'X-Provider-State: Bad_Weather_Flow' \
+  --url 'http://localhost:3030/supplier-orders?active=true' \
+  --header 'X-Provider-State: Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -1797,7 +1871,7 @@ The step 2 of the scenario B will simulate the situation in which the _logistics
 ```text
 curl --request GET \
   --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
-  --header 'X-Provider-State: Bad_Weather_Flow' \
+  --header 'X-Provider-State: Interaction_2_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -1995,14 +2069,15 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   ]
 }
 ```
+
 #### Interaction 3 of Scenario B
 
 In step 3 of the scenario B the _logistics supplier_ request to get all departed delivery notes from the _supplier_.:
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-notes? shipmentStatus=Departed' \
-  --header 'X-Provider-State: Bad_Weather_Flow' \
+  --url 'http://localhost:3030/delivery-notes?shipmentStatus=Departed' \
+  --header 'X-Provider-State: Interaction_3_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -2072,7 +2147,7 @@ In step 4 of the scenario B the _logistics supplier_ request to get details of t
 ```text
 curl --request GET \
   --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \
-  --header 'X-Provider-State: Bad_Weather_Flow' \
+  --header 'X-Provider-State: Interaction_4_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -2911,8 +2986,8 @@ In step 7 of scenario B _logistics supplier_ request to get all open delivery in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions? active=true' \
-  --header 'X-Provider-State: Bad_Weather_Flow' \
+  --url 'http://localhost:3030/delivery-instructions?active=true' \
+  --header 'X-Provider-State: Interaction_7_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
@@ -2943,11 +3018,11 @@ In step 8 of scenario B _logistics supplier_ request to get details of the open 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \ 
-  --header 'X-Provider-State: Good_Weather_Flow' \
+  --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --header 'X-Provider-State: Interaction_8_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json' \
+  --header 'Content-Type: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
