@@ -103,7 +103,7 @@
               }
             ]
           },
-          "requestedArrivalDateTime": "2024-05-24T10:00:00",
+          "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
             "modeType": "Road"
           }

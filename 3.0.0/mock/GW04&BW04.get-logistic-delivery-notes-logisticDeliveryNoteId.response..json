@@ -66,7 +66,7 @@
         }
       },
       "actualLoadingDateTime": "2024-05-16T12:45:00",
-      "estimatedArrivalDateTime": "2024-05-18T12:45:00",
+      "estimatedArrivalDateTime": "2024-05-18T12:45",
       "transport": {
         "modeType": "Road",
         "units": [

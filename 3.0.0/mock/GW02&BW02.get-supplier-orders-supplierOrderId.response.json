@@ -157,8 +157,8 @@
               "countryCode": "SE"
             }
           },
-          "estimatedLoadingDateTime": "2024-05-16T12:00:00Z",
-          "estimatedArrivalDateTime": "2024-05-18T17:00:00Z",
+          "estimatedLoadingDateTime": "2024-05-16T12",
+          "estimatedArrivalDateTime": "2024-05-18T17",
           "transport": {
             "modeType": "Road",
             "units": [
