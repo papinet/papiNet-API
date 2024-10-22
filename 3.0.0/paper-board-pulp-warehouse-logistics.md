@@ -58,7 +58,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 **Scenario A:** Good Weather Flow
 
-... to be completed by @Petter ...
+This should illustrate the information exchange between logistics supplier and the supplier, process start when goods is produced by the supplier and end when goods are dispatched towards the suppliers customer. Inbound delivery note, inloading as well as delivery instruction and outbound delivery note from the logistics supplier are covered in the scenario.
 
 1. _Logistics supplier_ **requests** to get all active _supplier-orders_ from _supplier_.
 _Logistics supplier_ **receives** a list of all active _supplier-orders_.
@@ -89,7 +89,7 @@ _Logistics supplier_ **receives** details of this _delivery-instruction_, includ
 
 **Scenario B:** Bad Weather Flow
 
-... to be completed by @Petter ...
+This should illustrate the same information exchange as in Scenario A – Good Weather flow, but in addition some common supply chain discrepancies have been added such as shortlanded reporting (package not received) as well as incorrect outbound delivery note reporting from the logistics supplier.   
 
 1. _Logistics supplier_ **requests** to get all active _supplier-orders_ from _supplier_.
 _Logistics supplier_ **receives** a list of all active _supplier-orders_.
