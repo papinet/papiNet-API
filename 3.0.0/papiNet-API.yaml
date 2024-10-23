@@ -732,6 +732,9 @@ components:
               type: number
               minimum: 0
             uom:
+              description: |
+                - **GramsPerSquareMeter**: ...
+                - **Pound**: The value is expressed in pounds.
               type: string
               enum:
                 - GramsPerSquareMeter
@@ -759,6 +762,9 @@ components:
             value:
               type: number
             uom:
+              description: |
+                - **Micron**: ...
+                - **Millimeter**: The value is expressed in millimetres.
               type: string
               enum:
                 - Micron
@@ -809,6 +815,10 @@ components:
             value:
               type: number
             uom:
+              description: |
+                - **Centimeter**: The value is expressed in centimetres.
+                - **Inch**: The value is expressed in inches.
+                - **Millimeter**: The value is expressed in millimetres.
               type: string
               enum:
                 - Centimeter
@@ -1715,6 +1725,7 @@ components:
                           - pulp
                 properties:
                   gradeCode:
+                    description: The product identifier for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
@@ -1763,6 +1774,7 @@ components:
                       - partNumber
                 properties:
                   gradeCode:
+                    description: The product identifier for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
@@ -2503,11 +2515,23 @@ components:
                     - uom
                   properties:
                     context:
+                      description: |
+                        - **Confirmed**: The quantity is confirmed.
+                        - **Ordered**: The quantity is the purchase order requested quantity.
                       type: string
                       enum:
                         - Confirmed
                         - Ordered
                     type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
                       type: string
                       enum:
                         - Area
@@ -3875,6 +3899,7 @@ components:
                           - pulp
                 properties:
                   gradeCode:
+                    description: The product identifier for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
@@ -3923,6 +3948,7 @@ components:
                       - partNumber
                 properties:
                   gradeCode:
+                    description: The product identifier for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
@@ -4133,12 +4159,25 @@ components:
                     - uom
                   properties:
                     context:
+                      description: |
+                        - **Loaded**: ...
+                        - **Planned**: ...
+                        - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
                       type: string
                       enum:
                         - Loaded  # when shipmentStatus = Loaded
                         - Planned # when shipmentStatus = Planned
                         - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
                     type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
                       type: string
                       enum:
                         - Area
@@ -4263,12 +4302,25 @@ components:
                           - uom
                         properties:
                           context:
+                            description: |
+                              - **Loaded**: ...
+                              - **Planned**: ...
+                              - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
                             type: string
                             enum:
                               - Loaded  # when shipmentStatus = Loaded
                               - Planned # when shipmentStatus = Planned
                               - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
                           type:
+                            description: |
+                              - **Area**: The area that is the length multiplied by the width of the item.
+                              - **Count**: The number of items.
+                              - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                              - **Length**: The length of the item.
+                              - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                              - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                              - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                              - **TareWeight**: The weight of the packaging and the furnishing materials.
                             type: string
                             enum:
                               - Area
@@ -4548,6 +4600,7 @@ components:
                           - pulp
                 properties:
                   gradeCode:
+                    description: The product identifier for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
@@ -4599,10 +4652,21 @@ components:
                     - uom
                   properties:
                     context:
+                      description: |
+                        - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
                       type: string
                       enum:
                         - Shipped
                     type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
                       type: string
                       enum:
                         - Area
@@ -4726,6 +4790,12 @@ components:
                           - uom
                         properties:
                           context:
+                            description: |
+                              - **Confirmed**: The quantity is confirmed.
+                              - **Invoiced**: The quantity is invoiced and qualified for compensation.
+                              - **Ordered**: The quantity is the purchase order requested quantity.
+                              - **Produced**: The quantity is added to stock through a production or conversion process.
+                              - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
                             type: string
                             enum:
                               - Confirmed
@@ -4734,6 +4804,15 @@ components:
                               - Produced
                               - Shipped
                           type:
+                            description: |
+                              - **Area**: The area that is the length multiplied by the width of the item.
+                              - **Count**: The number of items.
+                              - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                              - **Length**: The length of the item.
+                              - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                              - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                              - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                              - **TareWeight**: The weight of the packaging and the furnishing materials.
                             type: string
                             enum:
                               - Area
@@ -5871,6 +5950,7 @@ components:
                                 - pulp
                       properties:
                         gradeCode:
+                          description: The product identifier for a not-fully-defined product.
                           type: string
                           minLength: 1
                         partNumber:
@@ -5919,6 +5999,7 @@ components:
                             - partNumber
                       properties:
                         gradeCode:
+                          description: The product identifier for a not-fully-defined product.
                           type: string
                           minLength: 1
                         partNumber:
@@ -6129,10 +6210,21 @@ components:
                           - uom
                         properties:
                           context:
+                            description: |
+                              - **Instructed**: ...
                             type: string
                             enum:
                               - Instructed
                           type:
+                            description: |
+                              - **Area**: The area that is the length multiplied by the width of the item.
+                              - **Count**: The number of items.
+                              - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                              - **Length**: The length of the item.
+                              - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                              - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                              - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                              - **TareWeight**: The weight of the packaging and the furnishing materials.
                             type: string
                             enum:
                               - Area
@@ -6257,10 +6349,21 @@ components:
                                 - uom
                               properties:
                                 context:
+                                  description: |
+                                    - **Instructed**: ...
                                   type: string
                                   enum:
                                     - Instructed
                                 type:
+                                  description: |
+                                    - **Area**: The area that is the length multiplied by the width of the item.
+                                    - **Count**: The number of items.
+                                    - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                                    - **Length**: The length of the item.
+                                    - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                                    - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                                    - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                                    - **TareWeight**: The weight of the packaging and the furnishing materials.
                                   type: string
                                   enum:
                                     - Area
