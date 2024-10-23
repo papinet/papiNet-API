@@ -34,11 +34,25 @@ The following API endpoints allows a _customer_ to send, list, retrieve and modi
 * `GET /purchase-orders/{purchaseOrderId}`
 * `PATCH /purchase-orders/{purchaseOrderId}`
 
+### Warehouse Logistics Use Case
+
+The following API endpoints allows a _supplier_ to communicate to a _logistics supplier_:
+
+* `GET /supplier-orders`
+* `GET /supplier-orders/{supplierOrderId}`
+* `GET /logistics-delivery-notes`
+* `GET /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-delivery-notes`
+* `PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-goods-receipts`
+* `PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}`
+* `GET /delivery-instructions`
+* `GET /delivery-instructions/{deliveryInstructionId}`
+
 ## The papiNet API Standard
 
-The following normative documents are available:
+The following normative document is available:
 
-* [`papiNet-API.yaml`](2.0.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
-* [`papiNet-API.md`](2.0.0/papiNet-API.md) the semantic specification of the main objects and properties used within the OpenAPI document.
+* [`papiNet-API.yaml`](3.0.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
 
 In addition to these normative documents, we also have a papiNet mock service that provides live responses in line with the scenarios described within the use case documents.
