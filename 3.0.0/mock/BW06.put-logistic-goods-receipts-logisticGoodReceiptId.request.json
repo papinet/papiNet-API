@@ -1,0 +1,202 @@
+{
+  "id": "3aa556bb-7198-4107-8dd9-450845eb365b",
+  "number": "GRIWMS-20240506-090833",
+  "timestamp": "2024-05-18T11:16:49Z",
+  "status": "Replaced",
+  "acceptance": "WithVariance",
+  "isComplete": true,
+  "deliveryNoteNumber": "LDN12345",
+  "arrivalDateTime": "2024-05-18T11:08:36",
+  "unloadingDateTime": "2024-05-18T11:10:04",
+  "lineItems": [
+    {
+      "number": 1,
+      "acceptance": "WithVariance",
+      "supplierOrderNumber": "ABCD-476408",
+      "supplierOrderLineItemNumber": 1,
+      "packages": [
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780100131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00001"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780200131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00002"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780300131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00003"
+            }
+          ],
+          "acceptance": "WithVariance",
+          "varianceType": "NotReceived"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780400131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00004"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780500131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00005"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780600131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00006"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780700131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00007"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780800131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00008"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14780900131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00009"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        },  
+        {
+          "type": "ReelPackage",
+          "identifiers": [
+            {
+              "role": "Secondary",
+              "type": "Barcode",
+              "codeType": "UIC14",
+              "value": "14781000131814"
+            },
+            {
+              "role": "Primary",
+              "type": "Number",
+              "codeType": "Supplier",
+              "value": "00010"
+            }
+          ],
+          "acceptance": "AsSpecified"
+        }  
+      ]
+    }
+  ]
+}
