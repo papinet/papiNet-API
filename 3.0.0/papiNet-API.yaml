@@ -36,6 +36,20 @@ paths:
       summary: List `supplier-orders`
       description: Get a paginated list of all `supplier-orders`.
       parameters:
+        - in: query # ?offset={integer >= 0}
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query # ?limit={integer > 0}
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
         - in: query # ?number={string}
           name: number
           schema:
@@ -190,6 +204,20 @@ paths:
       summary: List `logistics-delivery-notes`
       description: Get a paginated list of all `logistics-delivery-notes`.
       parameters:
+        - in: query # ?offset={integer >= 0}
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query # ?limit={integer > 0}
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
         - in: query # ?number={string}
           name: number
           schema:
@@ -418,6 +446,20 @@ paths:
       summary: List `delivery-instructions`
       description: Get a paginated list of all `delivery-instructions`.
       parameters:
+        - in: query # ?offset={integer >= 0}
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query # ?limit={integer > 0}
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
         - in: query # ?number={string}
           name: number
           schema:
