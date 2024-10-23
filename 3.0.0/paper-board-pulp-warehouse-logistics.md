@@ -109,7 +109,7 @@ In this scenario, there are 10 _packages_ loaded on this _delivery-note_.
 
 5. _Logistics supplier_ completes the inload of the delivery described in the _delivery-note_ and **posts** a _goods-receipt_ to the _supplier_.
 
-6. _Logistics supplier_ updates the inload of the delivery note and **puts/updates** the _goods-receipt_ to the _supplier_ with the package no. 3 indicated with variance "Not Received".
+6. _Logistics supplier_ realises that one _package_ is missing and **puts/updates** the _goods-receipt_ to the _supplier_ with the package no. 3 indicated with variance "Not Received", while indicating all the other _packages_ as "AsSpecified".
 
 7. _Logistics supplier_ **requests** to get all active _delivery-instructions_ from _supplier_.
 _Logistics supplier_ **receives** a list of all active _delivery-instructions_.
@@ -118,9 +118,9 @@ In this scenario, there is 1 _delivery-instruction_.
 8. _Logistics supplier_ **requests** to get details of the one specific active _delivery-instruction_ from _supplier_.
 _Logistics supplier_ **receives** details of this _delivery-instruction_, including the quantities planned to be delivered.
 
-9. _Logistics supplier_ completes the loading of the delivery described in the _delivery-instruction_ and **posts** a _delivery-note_, including 9 loaded _packages_, to the _supplier_. However, this _delivery_note_ wrongly report the package no. 3 as received, while it should be the package no. 10.
+9. _Logistics supplier_ completes the loading of the delivery described in the _delivery-instruction_ and **posts** a _delivery-note_, including 9 loaded _packages_, to the _supplier_. However, this _delivery_note_ wrongly reports the package no. 3 as loaded, althought it should have been the package no. 10.
 
-10. _Logistics supplier_ updates the loading of the delivery instruction and **puts/updates** the delivery note correcting the loading replacing package no. 3 with package no. 10 to _supplier_.
+10. _Logistics supplier_ updates the loading of the delivery instruction and **puts/updates** the delivery note correcting the loading replacing _package_ no. 3 with package no. 10 to _supplier_.
 
 ### Scenario A: Good Weather Flow
 
