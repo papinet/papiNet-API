@@ -94,7 +94,7 @@ We have two types of properties capturing date and time:
 
 ### Rule 11 - JSON properties format
 
-JSON properties MUST be written in lowerCamelCase names capitalize the first letter of each word, except the first which is always lowercase, **even if it's an acronym**.
+JSON properties MUST be written in lowerCamelCase names capitalize the first letter of each word, except the first which is always lowercase, **even if it's an acronym**. For instance, we have the property `coordinatesWgs84:` where `Wgs` stands for "World Geodetic System".
 
 ### Rule 12 - Avoid abbreviations
 

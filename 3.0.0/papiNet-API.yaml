@@ -1961,7 +1961,7 @@ components:
                                 minLength: 2
                                 maxLength: 2
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                        coordinatesWGS84:
+                        coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
                           required:
@@ -2126,7 +2126,7 @@ components:
                                 minLength: 2
                                 maxLength: 2
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                        coordinatesWGS84:
+                        coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
                           required:
@@ -2860,7 +2860,7 @@ components:
                           minLength: 2
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                  coordinatesWGS84:
+                  coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
                     required:
@@ -2961,7 +2961,7 @@ components:
                           minLength: 2
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                  coordinatesWGS84:
+                  coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
                     required:
@@ -3266,7 +3266,7 @@ components:
                           minLength: 2
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                  coordinatesWGS84:
+                  coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
                     required:
@@ -3431,7 +3431,7 @@ components:
                           minLength: 2
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                  coordinatesWGS84:
+                  coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
                     required:
@@ -4534,7 +4534,7 @@ components:
                     minLength: 2
                     maxLength: 2
                     description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-            coordinatesWGS84:
+            coordinatesWgs84:
               type: object
               unevaluatedProperties: false
               required:
@@ -5282,7 +5282,7 @@ components:
                                 minLength: 2
                                 maxLength: 2
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                        coordinatesWGS84:
+                        coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
                           required:
@@ -5447,7 +5447,7 @@ components:
                                 minLength: 2
                                 maxLength: 2
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                        coordinatesWGS84:
+                        coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
                           required:
