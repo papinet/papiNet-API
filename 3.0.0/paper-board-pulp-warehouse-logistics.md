@@ -574,7 +574,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "classifications": [
         	{
         		"type": "ExportHarmonisedSystemCode",
-        		"value": "4505 94 80"
+        		"value": "4505 94 80",
+            "countryCode": "SE"
         	}
         ],
         "paperAndBoard": {
@@ -2254,7 +2255,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "classifications": [
         	{
         		"type": "ExportHarmonisedSystemCode",
-        		"value": "4505 94 80"
+        		"value": "4505 94 80",
+            "countryCode": "SE"
         	}
         ],
         "paperAndBoard": {

@@ -95,7 +95,8 @@
         "classifications": [
         	{
         		"type": "ExportHarmonisedSystemCode",
-        		"value": "4505 94 80"
+        		"value": "4505 94 80",
+            "countryCode": "SE"
         	}
         ],
         "paperAndBoard": {
