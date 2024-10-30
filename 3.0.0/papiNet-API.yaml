@@ -1720,7 +1720,7 @@ components:
                           - partNumber
                   - oneOf:
                       - required:
-                          - paper
+                          - paperAndBoard
                       - required:
                           - pulp
                 properties:
@@ -3894,7 +3894,7 @@ components:
                           - partNumber
                   - oneOf:
                       - required:
-                          - paper
+                          - paperAndBoard
                       - required:
                           - pulp
                 properties:
@@ -4595,7 +4595,7 @@ components:
                           - partNumber
                   - oneOf:
                       - required:
-                          - paper
+                          - paperAndBoard
                       - required:
                           - pulp
                 properties:
@@ -5945,7 +5945,7 @@ components:
                                 - partNumber
                         - oneOf:
                             - required:
-                                - paper
+                                - paperAndBoard
                             - required:
                                 - pulp
                       properties:

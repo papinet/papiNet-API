@@ -65,8 +65,8 @@ _Logistics supplier_ **receives** a list of all active _supplier-orders_.
 In this scenario, there is 1 _supplier-order_.
 
 2. _Logistics supplier_ **requests** to get details of the one specific active _supplier-order_ from _supplier_.
-_Logistics supplier_ **receives** details of this _supplier-order_, including the number of _packages_.
-In this scenario, there are 10 _packages_.
+_Logistics supplier_ **receives** details of this _supplier-order_, including the number of _reels_.
+In this scenario, there are 10 _reels_.
 
 3. _Logistics supplier_ **requests** to get all departed _delivery-notes_ from the _supplier_.
 _Logistics supplier_ **receives** a list of all departed _delivery-notes_.
@@ -273,7 +273,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "sellerProduct": {
         "gradeCode": "string",
         "brandName": "string",
-        "paper": {
+        "paperAndBoard": {
           "basisWeight": {
             "value": 370,
             "uom": "GramsPerSquareMeter",
@@ -289,7 +289,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "format": "Reel",
           "width": {
-            "value": 787,
+            "value": 875,
             "uom": "Millimeter"
           },
           "reelDiameter": {
@@ -577,7 +577,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         		"value": "4505 94 80"
         	}
         ],
-        "paper": {
+        "paperAndBoard": {
           "basisWeight": {
             "value": 370,
             "uom": "GramsPerSquareMeter",
@@ -593,7 +593,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "format": "Reel",
           "width": {
-            "value": 787,
+            "value": 875,
             "uom": "Millimeter"
           },
           "reelDiameter": {
@@ -1953,7 +1953,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "sellerProduct": {
         "gradeCode": "string",
         "brandName": "string",
-        "paper": {
+        "paperAndBoard": {
           "basisWeight": {
             "value": 370,
             "uom": "GramsPerSquareMeter",
@@ -1969,7 +1969,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "format": "Reel",
           "width": {
-            "value": 787,
+            "value": 875,
             "uom": "Millimeter"
           },
           "reelDiameter": {
@@ -2257,7 +2257,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         		"value": "4505 94 80"
         	}
         ],
-        "paper": {
+        "paperAndBoard": {
           "basisWeight": {
             "value": 370,
             "uom": "GramsPerSquareMeter",
@@ -2273,7 +2273,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "format": "Reel",
           "width": {
-            "value": 787,
+            "value": 875,
             "uom": "Millimeter"
           },
           "reelDiameter": {

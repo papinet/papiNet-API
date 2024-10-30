@@ -140,7 +140,7 @@
               "sellerProduct": {
                 "gradeCode": "string",
                 "brandName": "string",
-                "paper": {
+                "paperAndBoard": {
                   "basisWeight": {
                     "value": 370,
                     "uom": "GramsPerSquareMeter",
@@ -156,7 +156,7 @@
                   },
                   "format": "Reel",
                   "width": {
-                    "value": 787,
+                    "value": 875,
                     "uom": "Millimeter"
                   },
                   "reelDiameter": {
@@ -437,7 +437,7 @@
                     "value": "4505 94 80"
                   }
                 ],
-                "paper": {
+                "paperAndBoard": {
                   "basisWeight": {
                     "value": 370,
                     "uom": "GramsPerSquareMeter",
@@ -453,7 +453,7 @@
                   },
                   "format": "Reel",
                   "width": {
-                    "value": 787,
+                    "value": 875,
                     "uom": "Millimeter"
                   },
                   "reelDiameter": {
@@ -1258,7 +1258,7 @@
               "sellerProduct": {
                 "gradeCode": "string",
                 "brandName": "string",
-                "paper": {
+                "paperAndBoard": {
                   "basisWeight": {
                     "value": 370,
                     "uom": "GramsPerSquareMeter",
@@ -1274,7 +1274,7 @@
                   },
                   "format": "Reel",
                   "width": {
-                    "value": 787,
+                    "value": 875,
                     "uom": "Millimeter"
                   },
                   "reelDiameter": {
@@ -1555,7 +1555,7 @@
                     "value": "4505 94 80"
                   }
                 ],
-                "paper": {
+                "paperAndBoard": {
                   "basisWeight": {
                     "value": 370,
                     "uom": "GramsPerSquareMeter",
@@ -1571,7 +1571,7 @@
                   },
                   "format": "Reel",
                   "width": {
-                    "value": 787,
+                    "value": 875,
                     "uom": "Millimeter"
                   },
                   "reelDiameter": {
