@@ -1725,10 +1725,11 @@ components:
                           - pulp
                 properties:
                   gradeCode:
-                    description: The product identifier for a not-fully-defined product.
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -1759,7 +1760,7 @@ components:
                           type: string
                           minLength: 2
                           maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                   paperAndBoard:
                     $ref: '#/components/schemas/PaperAndBoard'
                   pulp:
@@ -1774,10 +1775,11 @@ components:
                       - partNumber
                 properties:
                   gradeCode:
-                    description: The product identifier for a not-fully-defined product.
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -2560,8 +2562,8 @@ components:
                         - Meter
                         - MetricTon
                         - Millimeter
-                        - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
-                        - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
+                        - ReelPackage
+                        - Pallet
                         - Piece
                         - Pound
                         - PulpUnit
@@ -3899,10 +3901,11 @@ components:
                           - pulp
                 properties:
                   gradeCode:
-                    description: The product identifier for a not-fully-defined product.
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -3933,7 +3936,7 @@ components:
                           type: string
                           minLength: 2
                           maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                   paperAndBoard:
                     $ref: '#/components/schemas/PaperAndBoard'
                   pulp:
@@ -3948,10 +3951,11 @@ components:
                       - partNumber
                 properties:
                   gradeCode:
-                    description: The product identifier for a not-fully-defined product.
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -4207,8 +4211,8 @@ components:
                         - Meter
                         - MetricTon
                         - Millimeter
-                        - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
-                        - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
+                        - ReelPackage
+                        - Pallet
                         - Piece
                         - Pound
                         - PulpUnit
@@ -4600,10 +4604,11 @@ components:
                           - pulp
                 properties:
                   gradeCode:
-                    description: The product identifier for a not-fully-defined product.
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -4634,7 +4639,7 @@ components:
                           type: string
                           minLength: 2
                           maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                   paperAndBoard:
                     $ref: '#/components/schemas/PaperAndBoard'
                   pulp:
@@ -4695,8 +4700,8 @@ components:
                         - Meter
                         - MetricTon
                         - Millimeter
-                        - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
-                        - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
+                        - ReelPackage
+                        - Pallet
                         - Piece
                         - Pound
                         - PulpUnit
@@ -5950,10 +5955,11 @@ components:
                                 - pulp
                       properties:
                         gradeCode:
-                          description: The product identifier for a not-fully-defined product.
+                          description: The product identifier assigned by the seller for a not-fully-defined product.
                           type: string
                           minLength: 1
                         partNumber:
+                          description: The product identifier assigned by the seller for a fully-defined product.
                           type: string
                           minLength: 1
                         brandName:
@@ -5984,7 +5990,7 @@ components:
                                 type: string
                                 minLength: 2
                                 maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                         paperAndBoard:
                           $ref: '#/components/schemas/PaperAndBoard'
                         pulp:
@@ -5999,10 +6005,11 @@ components:
                             - partNumber
                       properties:
                         gradeCode:
-                          description: The product identifier for a not-fully-defined product.
+                          description: The product identifier assigned by the seller for a not-fully-defined product.
                           type: string
                           minLength: 1
                         partNumber:
+                          description: The product identifier assigned by the seller for a fully-defined product.
                           type: string
                           minLength: 1
                         brandName:
@@ -6254,8 +6261,8 @@ components:
                               - Meter
                               - MetricTon
                               - Millimeter
-                              - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
-                              - Pallet      # Issue #137: Renamed from "PalletUnit" (2024-08-15)
+                              - ReelPackage
+                              - Pallet
                               - Piece
                               - Pound
                               - PulpUnit
