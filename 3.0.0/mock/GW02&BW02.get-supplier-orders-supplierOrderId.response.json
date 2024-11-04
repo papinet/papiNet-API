@@ -73,8 +73,7 @@
         "paperAndBoard": {
           "basisWeight": {
             "value": 370,
-            "uom": "GramsPerSquareMeter",
-            "sizeType": "24x36"
+            "uom": "GramsPerSquareMeter"
           },
           "bulk": {
             "value": 1,

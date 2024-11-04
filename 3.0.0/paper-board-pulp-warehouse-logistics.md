@@ -276,8 +276,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "paperAndBoard": {
           "basisWeight": {
             "value": 370,
-            "uom": "GramsPerSquareMeter",
-            "sizeType": "24x36"
+            "uom": "GramsPerSquareMeter"
           },
           "bulk": {
             "value": 1,
@@ -581,8 +580,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "paperAndBoard": {
           "basisWeight": {
             "value": 370,
-            "uom": "GramsPerSquareMeter",
-            "sizeType": "24x36"
+            "uom": "GramsPerSquareMeter"
           },
           "bulk": {
             "value": 1,
@@ -1957,8 +1955,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "paperAndBoard": {
           "basisWeight": {
             "value": 370,
-            "uom": "GramsPerSquareMeter",
-            "sizeType": "24x36"
+            "uom": "GramsPerSquareMeter"
           },
           "bulk": {
             "value": 1,
@@ -2262,8 +2259,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "paperAndBoard": {
           "basisWeight": {
             "value": 370,
-            "uom": "GramsPerSquareMeter",
-            "sizeType": "24x36"
+            "uom": "GramsPerSquareMeter"
           },
           "bulk": {
             "value": 1,
