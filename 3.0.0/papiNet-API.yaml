@@ -4392,6 +4392,7 @@ components:
         status:
           type: string
           enum:
+            - Cancelled
             - Original
             - Replaced
         acceptance:
