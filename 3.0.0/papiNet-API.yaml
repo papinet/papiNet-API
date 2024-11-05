@@ -4114,7 +4114,6 @@ components:
                   required: []
                     # type is not required
                     # code is not required
-                    # labelOrientation is not required
                     # text is not required
                   properties:
                     type:
@@ -4139,14 +4138,6 @@ components:
                           type: string
                           enum:
                             - Supplier
-                    labelOrientation:
-                      type: string
-                      enum:
-                        - BackEndSide
-                        - FrontEndSide
-                        - LeftAndRightSide
-                        - LeftSide
-                        - RightSide
                     text:
                       type: string
                       minLength: 1
@@ -6168,7 +6159,6 @@ components:
                         required: []
                           # type is not required
                           # code is not required
-                          # labelOrientation is not required
                           # text is not required
                         properties:
                           type:
@@ -6193,14 +6183,6 @@ components:
                                 type: string
                                 enum:
                                   - Supplier
-                          labelOrientation:
-                            type: string
-                            enum:
-                              - BackEndSide
-                              - FrontEndSide
-                              - LeftAndRightSide
-                              - LeftSide
-                              - RightSide
                           text:
                             type: string
                             minLength: 1
