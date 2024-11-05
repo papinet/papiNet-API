@@ -1087,7 +1087,7 @@ curl -X 'POST' \
 
 #### Interaction 6 of Scenario A
 
-In step 6 of scenario A _logistics supplier_ request to get all open delivery instructions from _supplier_.
+In step 6 of scenario A _logistics supplier_ request to get all active delivery instructions from _supplier_.
 
 ```text
 curl --request GET \
@@ -1119,7 +1119,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 #### Interaction 7 of Scenario A
 
-In step 7 of scenario A _logistics supplier_ request to get details of the open delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantities planned to be delivered.
+In step 7 of scenario A _logistics supplier_ request to get details of the active delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantities planned to be delivered.
 
 ```text
 curl --request GET \
@@ -2980,7 +2980,7 @@ curl -X 'PUT' \
 
 #### Interaction 7 of Scenario B
 
-In step 7 of scenario B _logistics supplier_ request to get all open delivery instructions from _supplier_.
+In step 7 of scenario B _logistics supplier_ request to get all active delivery instructions from _supplier_.
 
 ```text
 curl --request GET \
@@ -3012,7 +3012,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 #### Interaction 8 of Scenario B
 
-In step 8 of scenario B _logistics supplier_ request to get details of the open delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantities planned to be delivered. The _logistics supplier_ is requested to load 9 packages. 
+In step 8 of scenario B _logistics supplier_ request to get details of the active delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantities planned to be delivered. The _logistics supplier_ is requested to load 9 packages. 
 
 ```text
 curl --request GET \
