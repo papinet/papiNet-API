@@ -3972,7 +3972,7 @@ components:
                   unevaluatedProperties: false
                   required:
                     - type
-                    - assignedBy
+                    # assignedBy is not required
                     # licenceNumber is not required
                     # chainOfCustody is not required
                     # certificationPercentage is not required
@@ -6017,7 +6017,7 @@ components:
                         unevaluatedProperties: false
                         required:
                           - type
-                          - assignedBy
+                          # assignedBy is not required
                           # licenceNumber is not required
                           # chainOfCustody is not required
                           # certificationPercentage is not required
