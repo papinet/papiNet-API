@@ -1080,6 +1080,7 @@ curl -X 'POST' \
     "acceptance": "AsSpecified",
     "isComplete": true,
     "deliveryNoteNumber": "LDN12345",
+    "deliveryNoteLineItemNumber": 1,
     "arrivalDateTime": "2024-05-18T11:08:36",
     "unloadingDateTime": "2024-05-18T11:10:04"
   }
@@ -2759,6 +2760,7 @@ curl -X 'POST' \
   "acceptance": "AsSpecified",
   "isComplete": true,
   "deliveryNoteNumber": "LDN12345",
+  "deliveryNoteLineItemNumber": 1,
   "arrivalDateTime": "2024-05-18T11:08:36",
   "unloadingDateTime": "2024-05-18T11:10:04"
 }
@@ -2782,6 +2784,7 @@ curl -X 'PUT' \
   "acceptance": "WithVariance",
   "isComplete": true,
   "deliveryNoteNumber": "LDN12345",
+  "deliveryNoteLineItemNumber": 1,
   "arrivalDateTime": "2024-05-18T11:08:36",
   "unloadingDateTime": "2024-05-18T11:10:04",
   "lineItems": [
