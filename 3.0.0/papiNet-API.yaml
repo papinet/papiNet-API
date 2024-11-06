@@ -952,7 +952,7 @@ components:
               - id
               - number
               - timestamp
-              - status
+              - cancelled
               - active
               # sellerParty is not required
               # supplierParty is not required
@@ -972,12 +972,8 @@ components:
               timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              status:
-                type: string
-                enum:
-                  - Amended
-                  - Cancelled
-                  - Original
+              cancelled:
+                type: boolean
               active:
                 type: boolean
               sellerParty:
@@ -1318,7 +1314,7 @@ components:
         - id
         - number
         - timestamp
-        - status
+        - cancelled
         - active
         # sellerParty is not required
         # supplierParty is not required
@@ -1338,12 +1334,8 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        status:
-          type: string
-          enum:
-            - Amended
-            - Cancelled
-            - Original
+        cancelled:
+          type: boolean
         active:
           type: boolean
         sellerParty:
@@ -1679,7 +1671,7 @@ components:
             unevaluatedProperties: false
             required:
               - number
-              - status
+              - cancelled
               # purchaseOrderNumber is not required
               # purchaseOrderLineItemNumber is not required
               # customerReferenceNumber is not required
@@ -1692,12 +1684,8 @@ components:
               number:
                 type: integer
                 minimum: 0
-              status:
-                type: string
-                enum:
-                  - Amended
-                  - Cancelled
-                  - Original
+              cancelled:
+                type: boolean
               purchaseOrderNumber:
                 type: string
                 minLength: 1
@@ -2602,7 +2590,8 @@ components:
               - id
               - number
               - timestamp
-              - status
+              - cancelled
+              - active
               # shipmentStatus is not required
               # supplierParty is not required
               # logisticsSupplierParty is not required
@@ -2621,17 +2610,14 @@ components:
               timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              status:
-                type: string
-                enum:
-                  - Cancelled
-                  - Original
-                  - Replaced
+              cancelled:
+                type: boolean
+              active:
+                type: boolean
               shipmentStatus:
                 type : string
                 enum:
                   - Arrived
-                  - Cancelled
                   - Departed
                   - Loaded
                   - Planned
@@ -2987,7 +2973,8 @@ components:
         # id is not required
         - number
         - timestamp
-        - status
+        - cancelled
+        - active
         # shipmentStatus is not required
         # supplierParty is not required
         # logisticsSupplierParty is not required
@@ -3005,17 +2992,14 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        status:
-          type: string
-          enum:
-            - Cancelled
-            - Original
-            - Replaced
+        cancelled:
+          type: boolean
+        active:
+          type: boolean
         shipmentStatus:
           type : string
           enum:
             - Arrived
-            - Cancelled
             - Departed
             - Loaded
             - Planned
@@ -3835,7 +3819,6 @@ components:
             unevaluatedProperties: false
             required:
               - number
-              - status
               - supplierOrderNumber
               - supplierOrderLineItemNumber
               # callOffNumber is not required
@@ -3855,12 +3838,6 @@ components:
               number:
                 type: integer
                 minimum: 0
-              status:
-                type: string
-                enum:
-                  - Cancelled
-                  - Original
-                  - Replaced
               supplierOrderNumber:
                 type: string
                 minLength: 1
@@ -4369,12 +4346,12 @@ components:
         # id is not required
         - number
         - timestamp
-        - status
+        - cancelled
+        - active
         - acceptance
         - isComplete
         # deliveryNoteNumber is not required
         # deliveryNoteTimeStamp is not required
-        # deliveryNoteStatus is not required
         # arrivalDateTime is not required
         # unloadingDateTime is not required
         # shipToLocation is not required
@@ -4389,12 +4366,10 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        status:
-          type: string
-          enum:
-            - Cancelled
-            - Original
-            - Replaced
+        cancelled:
+          type: boolean
+        active:
+          type: boolean
         acceptance:
           type: string
           enum:
@@ -4415,12 +4390,6 @@ components:
         deliveryNoteTimestamp:
           type: string
           format: date-time # UTC MUST be used!
-        deliveryNoteStatus:
-          type: string
-          enum:
-            - Cancelled
-            - Original
-            - Replaced
         arrivalDateTime:
           type: string
           minLength: 4
@@ -4892,7 +4861,7 @@ components:
               - id
               - number
               - timestamp
-              - status
+              - cancelled
               - active
               - sequenceCount
             properties:
@@ -4905,12 +4874,8 @@ components:
               timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              status:
-                type: string
-                enum:
-                  - Amended
-                  - Cancelled
-                  - Original
+              cancelled:
+                type: boolean
               active:
                 type: boolean
               sequenceCount:
@@ -4926,7 +4891,7 @@ components:
         - id
         - number
         - timestamp
-        - status
+        - cancelled
         - active
         - sequences
       properties:
@@ -4939,12 +4904,8 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        status:
-          type: string
-          enum:
-            - Amended
-            - Cancelled
-            - Original
+        cancelled:
+          type: boolean
         active:
           type: boolean
         sequences:
@@ -4955,7 +4916,7 @@ components:
             unevaluatedProperties: false
             required:
               - number
-              - status
+              - cancelled
               # supplierParty is not required
               # logisticsSupplierParty is not required
               # buyerParty is not required
@@ -4965,13 +4926,8 @@ components:
               number:
                 type: integer
                 minimum: 0
-              status:
-                type: string
-                enum:
-                  - Cancelled
-                  - New
-                  - NoAction
-                  - Replaced
+              cancelled:
+                type: boolean
               supplierParty:
                 type: object
                 unevaluatedProperties: false

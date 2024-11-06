@@ -172,7 +172,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "number": "ABCD-476408",
       "timestamp": "2024-05-16T19:32:59.962Z",
-      "status": "Original",
+      "cancelled": false,
       "active": true,
       "lineItemCount": 1
     }
@@ -205,7 +205,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "number": "ABCD-476408",
   "timestamp": "2024-05-16T19:32:59.962Z",
-  "status": "Original",
+  "cancelled": false,
   "active": true,
   "supplierParty": {
     "identifiers": [
@@ -267,7 +267,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "lineItems": [
     {
       "number": 1,
-      "status": "Amended",
+      "cancelled": false,
       "purchaseOrderNumber": "924942493",
       "purchaseOrderLineItemNumber": 1,
       "sellerProduct": {
@@ -403,7 +403,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
       "number": "LDN12345",
       "timestamp": "2024-05-16T11:46:39Z",
-      "status": "Original",
+      "cancelled": false,
+      "active": true,
       "shipmentStatus": "Departed",
       "shipFromLocation": {
         "identifiers": [
@@ -470,7 +471,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN12345",
   "timestamp": "2024-05-16T11:46:39Z",
-  "status": "Original",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -553,7 +555,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "customerReferenceNumber": "924942493",
@@ -1066,7 +1067,8 @@ curl -X 'POST' \
     "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
     "number": "GRIWMS-20240506-090833",
     "timestamp": "2024-05-18T11:10:04Z",
-    "status": "Original",
+    "cancelled": false,
+    "active": true,
     "acceptance": "AsSpecified",
     "isComplete": true,
     "deliveryNoteNumber": "LDN12345",
@@ -1100,7 +1102,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
         "number": "123456SE",
         "timestamp": "2024-05-19T11:47:41Z",
-        "status": "Original",
+        "cancelled": false,
         "active": true,
         "sequenceCount": 1
       }
@@ -1129,12 +1131,12 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
   "number": "123456SE",
   "timestamp": "2024-05-19T11:47:41Z",
-  "status": "Original",
+  "cancelled": false,
   "active": true,
   "sequences": [
     {
       "number": 1,
-      "status": "New",
+      "cancelled": false,
       "supplierParty": {
         "identifiers": [
           {
@@ -1288,7 +1290,8 @@ curl -X 'POST' \
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN6789",
   "timestamp": "2024-05-23T12:26:16Z",
-  "status": "Original",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -1336,7 +1339,7 @@ curl -X 'POST' \
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
+      "cancelled": false,
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "callOffNumber": "123456SE",
@@ -1842,7 +1845,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "number": "ABCD-476408",
       "timestamp": "2024-05-16T19:32:59.962Z",
-      "status": "Original",
+      "cancelled": false,
       "active": true,
       "lineItemCount": 1
     }
@@ -1875,7 +1878,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "number": "ABCD-476408",
   "timestamp": "2024-05-16T19:32:59.962Z",
-  "status": "Original",
+  "cancelled": false,
   "active": true,
   "supplierParty": {
     "identifiers": [
@@ -1937,7 +1940,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "lineItems": [
     {
       "number": 1,
-      "status": "Amended",
+      "cancelled": false,
       "purchaseOrderNumber": "924942493",
       "purchaseOrderLineItemNumber": 1,
       "sellerProduct": {
@@ -2032,7 +2035,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "estimatedLoadingDateTime": "2024-05-16T12:00",
           "estimatedArrivalDateTime": "2024-05-18T17:00",
           "transport": {
-            "modeType": "Road",
+            "modeType": "Road"
           }
         }
       ],
@@ -2073,7 +2076,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
       "number": "LDN12345",
       "timestamp": "2024-05-16T11:46:39Z",
-      "status": "Original",
+      "cancelled": false,
+      "active": true,
       "shipmentStatus": "Departed",
       "shipFromLocation": {
         "identifiers": [
@@ -2140,7 +2144,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN12345",
   "timestamp": "2024-05-16T11:46:39Z",
-  "status": "Original",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -2223,7 +2228,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "customerReferenceNumber": "924942493",
@@ -2736,7 +2740,8 @@ curl -X 'POST' \
   "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
   "number": "GRIWMS-20240506-090833",
   "timestamp": "2024-05-18T11:10:04Z",
-  "status": "Original",
+  "cancelled": false,
+  "active": true,
   "acceptance": "AsSpecified",
   "isComplete": true,
   "deliveryNoteNumber": "LDN12345",
@@ -2760,7 +2765,8 @@ curl -X 'PUT' \
  "id": "3aa556bb-7198-4107-8dd9-450845eb365b",
   "number": "GRIWMS-20240506-090833",
   "timestamp": "2024-05-18T11:16:49Z",
-  "status": "Replaced",
+  "cancelled": false,
+  "active": true,
   "acceptance": "WithVariance",
   "isComplete": true,
   "deliveryNoteNumber": "LDN12345",
@@ -2985,7 +2991,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
         "number": "123456SE",
         "timestamp": "2024-05-19T11:47:41Z",
-        "status": "Original",
+        "cancelled": false,
         "active": true,
         "sequenceCount": 1
       }
@@ -3014,12 +3020,12 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
   "number": "123456SE",
   "timestamp": "2024-05-19T11:47:41Z",
-  "status": "Original",
+  "cancelled": false,
   "active": true,
   "sequences": [
     {
       "number": 1,
-      "status": "New",
+      "cancelled": false,
       "supplierParty": {
         "identifiers": [
           {
@@ -3173,7 +3179,8 @@ curl -X 'POST' \
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN6789",
   "timestamp": "2024-05-23T12:26:16Z",
-  "status": "Original",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -3221,7 +3228,7 @@ curl -X 'POST' \
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
+      "cancelled": false,
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "callOffNumber": "123456SE",
@@ -3648,7 +3655,8 @@ curl -X 'POST' \
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN6789",
   "timestamp": "2024-05-23T12:26:16Z",
-  "status": "Replaced",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -3696,7 +3704,7 @@ curl -X 'POST' \
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
+      "cancelled": false,
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "callOffNumber": "123456SE",

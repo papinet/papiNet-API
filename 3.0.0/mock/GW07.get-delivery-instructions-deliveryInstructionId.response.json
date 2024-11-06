@@ -2,12 +2,12 @@
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
   "number": "123456SE",
   "timestamp": "2024-05-19T11:47:41Z",
-  "status": "Original",
+  "cancelled": false,
   "active": true,
   "sequences": [
     {
       "number": 1,
-      "status": "New",
+      "cancelled": false,
       "supplierParty": {
         "identifiers": [
           {

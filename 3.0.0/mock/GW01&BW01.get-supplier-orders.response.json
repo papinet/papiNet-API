@@ -5,7 +5,7 @@
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "number": "ABCD-476408",
       "timestamp": "2024-05-16T19:32:59.962Z",
-      "status": "Original",
+      "cancelled": false,
       "active": true,
       "lineItemCount": 1
     }

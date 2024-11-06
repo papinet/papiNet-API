@@ -2,7 +2,8 @@
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN12345",
   "timestamp": "2024-05-16T11:46:39Z",
-  "status": "Original",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -85,7 +86,6 @@
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "customerReferenceNumber": "924942493",

@@ -2,7 +2,8 @@
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
   "number": "LDN6789",
   "timestamp": "2024-05-23T12:26:16Z",
-  "status": "Replaced",
+  "cancelled": false,
+  "active": true,
   "shipmentStatus": "Departed",
   "deliveryLegs": [
     {
@@ -50,7 +51,7 @@
   "lineItems": [
     {
       "number": 1,
-      "status": "Original",
+      "cancelled": false,
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "callOffNumber": "123456SE",
