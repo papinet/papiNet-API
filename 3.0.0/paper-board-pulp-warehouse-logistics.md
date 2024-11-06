@@ -362,17 +362,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "estimatedLoadingDateTime": "2024-05-16T12:00",
           "estimatedArrivalDateTime": "2024-05-18T17:00",
           "transport": {
-            "modeType": "Road",
-            "units": [
-              {
-                "type": "Trailer",
-                "identifier": {
-                  "type": "LicencePlateNumber",
-                  "value": "NotAllocated",
-                  "countryCode": "SE"
-                }
-              }
-            ]
+            "modeType": "Road"
           }
         }
       ],
@@ -2043,16 +2033,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "estimatedArrivalDateTime": "2024-05-18T17:00",
           "transport": {
             "modeType": "Road",
-            "units": [
-              {
-                "type": "Trailer",
-                "identifier": {
-                  "type": "LicencePlateNumber",
-                  "value": "NotAllocated",
-                  "countryCode": "SE"
-                }
-              }
-            ]
           }
         }
       ],
