@@ -132,7 +132,8 @@
           ],
           "loadingCharacteristics": [
             {
-              "text": "GBONENDS*reels on end (cheese)"
+              "type": "Standing",
+              "labelOrientation": "BackEndSide"
             }
           ],
           "unloadingCharacteristics": [

@@ -453,7 +453,8 @@
               },
               "loadingCharacteristics": [
                 {
-                  "text": "reels on end (cheese)"
+                  "type": "Standing",
+                  "labelOrientation": "BackEndSide"
                 }
               ],
               "unloadingCharacteristics": [
@@ -1093,7 +1094,8 @@
                   ],
                   "loadingCharacteristics": [
                     {
-                      "text": "GBONENDS*reels on end (cheese)"
+                      "type": "Standing",
+                      "labelOrientation": "BackEndSide"
                     }
                   ],
                   "unloadingCharacteristics": [
@@ -1560,7 +1562,8 @@
               },
               "loadingCharacteristics": [
                 {
-                  "text": "reels on end (cheese)"
+                  "type": "Standing",
+                  "labelOrientation": "BackEndSide"
                 }
               ],
               "unloadingCharacteristics": [
@@ -2205,7 +2208,8 @@
                   ],
                   "loadingCharacteristics": [
                     {
-                      "text": "GBONENDS*reels on end (cheese)"
+                      "type": "Standing",
+                      "labelOrientation": "BackEndSide"
                     }
                   ],
                   "unloadingCharacteristics": [

@@ -594,7 +594,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       },
       "loadingCharacteristics": [
         {
-          "text": "reels on end (cheese)"
+          "type": "Standing",
+          "labelOrientation": "BackEndSide"
         }
       ],
       "unloadingCharacteristics": [
@@ -1261,7 +1262,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           ],
           "loadingCharacteristics": [
             {
-              "text": "GBONENDS*reels on end (cheese)"
+              "type": "Standing",
+              "labelOrientation": "BackEndSide"
             }
           ],
           "unloadingCharacteristics": [
@@ -2267,7 +2269,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       },
       "loadingCharacteristics": [
         {
-          "text": "reels on end (cheese)"
+          "type": "Standing",
+          "labelOrientation": "BackEndSide"
         }
       ],
       "unloadingCharacteristics": [
@@ -3150,7 +3153,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           ],
           "loadingCharacteristics": [
             {
-              "text": "GBONENDS*reels on end (cheese)"
+              "type": "Standing",
+              "labelOrientation": "BackEndSide"
             }
           ],
           "unloadingCharacteristics": [

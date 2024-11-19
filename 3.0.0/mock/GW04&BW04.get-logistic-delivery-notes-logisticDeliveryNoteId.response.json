@@ -125,7 +125,8 @@
       },
       "loadingCharacteristics": [
         {
-          "text": "reels on end (cheese)"
+          "type": "Standing",
+          "labelOrientation": "BackEndSide"
         }
       ],
       "unloadingCharacteristics": [
