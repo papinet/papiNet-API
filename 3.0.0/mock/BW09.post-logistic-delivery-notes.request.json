@@ -58,13 +58,13 @@
       "callOffLineItemNumber": 1,
       "quantities": [
         {
-          "context": "Loaded",
+          "context": "Shipped",
           "type": "Count",
           "value": 9,
           "uom": "ReelPackage"
         },
         {
-          "context": "Loaded",
+          "context": "Shipped",
           "type": "GrossWeight",
           "value": 18000,
           "uom": "Kilogram"
@@ -89,25 +89,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -132,25 +132,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -175,25 +175,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -218,25 +218,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -261,25 +261,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -304,25 +304,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -347,25 +347,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -390,25 +390,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
@@ -433,25 +433,25 @@
           ],
           "quantities": [
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "GrossWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "NetWeight",
               "value": 2000,
               "uom": "Kilogram"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Length",
               "value": 4000,
               "uom": "Meter"
             },
             {
-              "context": "Loaded",
+              "context": "Shipped",
               "type": "Area",
               "value": 3500,
               "uom": "SquareMeter"
