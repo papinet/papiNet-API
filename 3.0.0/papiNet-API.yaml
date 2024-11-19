@@ -2970,7 +2970,7 @@ components:
       type: object
       unevaluatedProperties: false
       required:
-        # id is not required
+        - id
         - number
         - timestamp
         - cancelled
@@ -4343,7 +4343,7 @@ components:
       type: object
       unevaluatedProperties: false
       required:
-        # id is not required
+        - id
         - number
         - timestamp
         - cancelled
