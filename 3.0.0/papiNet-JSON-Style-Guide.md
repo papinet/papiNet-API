@@ -86,7 +86,7 @@ When referring to another resource/entity/object we MUST also use this UUID only
 We have two types of properties capturing date and time:
 
 * The properties ending with the suffix `...Timestamp`: the MUST contain a date and time expressed in UTC, ending with the letter "Z", e.g. `2024-04-23T13:24:26.000Z`.
-* The properties ending with the suffix `...DateTime`: they SHOULD contain a local date and time, in accordance with the ISO 8601 standard (preferably without explicit time-zone) for which the location is defined by the business context, excluding duration alone, but including intervals such as the following:
+* The properties ending with the suffix `...DateTime`: they MUST contain a local date and time, in accordance with the ISO 8601 standard (preferably without explicit time-zone) for which the location is defined by the business context, excluding duration alone, but including intervals such as the following:
   - `2023-08-16T13:00/2023-08-18T13:00`
   - `2023-08-16/2023-08-18`
   - `2023-08-16T13:00/P2D`
