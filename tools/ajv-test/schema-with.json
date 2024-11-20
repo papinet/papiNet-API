@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "unevaluatedProperties": false,
+  "properties": {
+    "foo": {
+      "type": "string"
+    }
+  }
+}

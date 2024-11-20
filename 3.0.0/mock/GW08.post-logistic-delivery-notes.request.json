@@ -51,7 +51,6 @@
   "lineItems": [
     {
       "number": 1,
-      "cancelled": false,
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "callOffNumber": "123456SE",
