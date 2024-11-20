@@ -72,7 +72,7 @@
         "brandName": "string",
         "paperAndBoard": {
           "basisWeight": {
-            "value": 370,
+            "value": 550,
             "uom": "GramsPerSquareMeter"
           },
           "bulk": {
