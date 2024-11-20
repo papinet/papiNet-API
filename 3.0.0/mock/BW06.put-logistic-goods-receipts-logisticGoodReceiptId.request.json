@@ -15,6 +15,7 @@
     {
       "number": 1,
       "acceptance": "WithVariance",
+      "deliveryNoteLineItemNumber": 1,
       "supplierOrderNumber": "ABCD-476408",
       "supplierOrderLineItemNumber": 1,
       "packages": [
