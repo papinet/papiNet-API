@@ -54,7 +54,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-## Scenarios
+## Scenarios 
 
 **Scenario A:** Good Weather Flow
 
@@ -183,7 +183,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
   
   We have prepared the scenario A on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
-  
+
 #### Interaction 2 of Scenario A
 
 The step 2 of the scenario A will simulate the situation in which the _logistics supplier_ requests to get the full order information. The _logistics supplier_ sends an API get request to the supplier in order to get the details of the order 3fa85f64-5717-4562-b3fc-2c963f66afa6:
@@ -275,7 +275,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "brandName": "string",
         "paperAndBoard": {
           "basisWeight": {
-            "value": 370,
+            "value": 550,
             "uom": "GramsPerSquareMeter"
           },
           "bulk": {
@@ -570,7 +570,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         ],
         "paperAndBoard": {
           "basisWeight": {
-            "value": 370,
+            "value": 550,
             "uom": "GramsPerSquareMeter"
           },
           "bulk": {
@@ -643,8 +643,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -686,8 +686,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -729,8 +729,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -772,8 +772,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -815,8 +815,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -858,8 +858,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -901,8 +901,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -944,8 +944,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -987,8 +987,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -1030,8 +1030,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -1060,23 +1060,22 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
-curl -X 'POST' \
+curl --request POST \
   -url 'http://localhost:3030/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
   --header 'Content-Type: application/json'
-  --data '{
-    "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
-    "number": "GRIWMS-20240506-090833",
-    "timestamp": "2024-05-18T11:10:04Z",
-    "cancelled": false,
-    "active": true,
-    "acceptance": "AsSpecified",
-    "isComplete": true,
-    "deliveryNoteNumber": "LDN12345",
-    "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
-    "deliveryNoteLineItemNumber": 1,
-    "arrivalDateTime": "2024-05-18T11:08:36",
-    "unloadingDateTime": "2024-05-18T11:10:04"
+  --data '{ \
+    "id": "3aa556bb-7198-4107-8dd9-450845eb365a", \
+    "number": "GRIWMS-20240506-090833", \
+    "timestamp": "2024-05-18T11:10:04Z", \
+    "cancelled": false, \
+    "active": true, \
+    "acceptance": "AsSpecified", \
+    "isComplete": true, \
+    "deliveryNoteNumber": "LDN12345", \
+    "deliveryNoteTimestamp": "2024-05-16T11:46:39Z", \
+    "arrivalDateTime": "2024-05-18T11:08:36", \
+    "unloadingDateTime": "2024-05-18T11:10:04" \
   }
 ```
 
@@ -1089,7 +1088,6 @@ curl --request GET \
   --url 'http://localhost:3030/delivery-instructions?active=true' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
 ```
 
@@ -1121,7 +1119,6 @@ curl --request GET \
   --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
   --header 'Content-Type: application/json'
 ```
 
@@ -1285,11 +1282,12 @@ In step 8 of scenario A _logistics supplier_ confirms the loading of the deliver
 
 <!-- request-file: ../3.0.0/mock/GW08.post-logistic-delivery-notes.request.json -->
 ```text
-curl -X 'POST' \
+curl --request 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --header 'X-Provider-State: Interaction_!_of_Scenario_A' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
     "number": "LDN6789",
     "timestamp": "2024-05-23T12:26:16Z",
@@ -1342,7 +1340,6 @@ curl -X 'POST' \
     "lineItems": [
       {
         "number": 1,
-        "cancelled": false,
         "supplierOrderNumber": "ABCD-476408",
         "supplierOrderLineItemNumber": 1,
         "callOffNumber": "123456SE",
@@ -1387,8 +1384,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1430,8 +1427,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1473,8 +1470,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1516,8 +1513,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1559,8 +1556,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1602,8 +1599,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1645,8 +1642,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1688,8 +1685,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1731,8 +1728,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1774,8 +1771,8 @@ curl -X 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -1795,7 +1792,7 @@ curl -X 'POST' \
         ]
       }
     ]
-  }'
+  }
 ```
 
 ### Scenario B: Bad Weather Flow
@@ -1951,7 +1948,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         "brandName": "string",
         "paperAndBoard": {
           "basisWeight": {
-            "value": 370,
+            "value": 550,
             "uom": "GramsPerSquareMeter"
           },
           "bulk": {
@@ -2246,7 +2243,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         ],
         "paperAndBoard": {
           "basisWeight": {
-            "value": 370,
+            "value": 550,
             "uom": "GramsPerSquareMeter"
           },
           "bulk": {
@@ -2319,8 +2316,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2362,8 +2359,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2405,8 +2402,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2448,8 +2445,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2491,8 +2488,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2534,8 +2531,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2577,8 +2574,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2620,8 +2617,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2663,8 +2660,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2706,8 +2703,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             },
             {
               "context": "Shipped",
-              "type": "NetWeight",
-              "value": 2000,
+              "type": "NetNetWeight",
+              "value": 1925,
               "uom": "Kilogram"
             },
             {
@@ -2736,24 +2733,23 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
-curl -X 'POST' \
+curl --request POST \
   'http://localhost:3030/logistics-goods-receipts' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
-  "number": "GRIWMS-20240506-090833",
-  "timestamp": "2024-05-18T11:10:04Z",
-  "cancelled": false,
-  "active": true,
-  "acceptance": "AsSpecified",
-  "isComplete": true,
-  "deliveryNoteNumber": "LDN12345",
-  "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
-  "deliveryNoteLineItemNumber": 1,
-  "arrivalDateTime": "2024-05-18T11:08:36",
-  "unloadingDateTime": "2024-05-18T11:10:04"
-}
+  --header 'accept: */*' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
+    "number": "GRIWMS-20240506-090833",
+    "timestamp": "2024-05-18T11:10:04Z",
+    "cancelled": false,
+    "active": true,
+    "acceptance": "AsSpecified",
+    "isComplete": true,
+    "deliveryNoteNumber": "LDN12345",
+    "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
+    "arrivalDateTime": "2024-05-18T11:08:36",
+    "unloadingDateTime": "2024-05-18T11:10:04"
+  }
 ```
 
 #### Interaction 6 of Scenario B
@@ -2762,215 +2758,215 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 
 <!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
-curl -X 'PUT' \
+curl --request PUT \
   'http://localhost:3030/logistics-goods-receipts' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
- "id": "3aa556bb-7198-4107-8dd9-450845eb365b",
-  "number": "GRIWMS-20240506-090833",
-  "timestamp": "2024-05-18T11:16:49Z",
-  "cancelled": false,
-  "active": true,
-  "acceptance": "WithVariance",
-  "isComplete": true,
-  "deliveryNoteNumber": "LDN12345",
-  "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
-  "deliveryNoteLineItemNumber": 1,
-  "arrivalDateTime": "2024-05-18T11:08:36",
-  "unloadingDateTime": "2024-05-18T11:10:04",
-  "lineItems": [
-    {
-      "number": 1,
-      "acceptance": "WithVariance",
-      "supplierOrderNumber": "ABCD-476408",
-      "supplierOrderLineItemNumber": 1,
-      "packages": [
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780100131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00001"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780200131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00002"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780300131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00003"
-            }
-          ],
-          "acceptance": "WithVariance",
-          "varianceType": "NotReceived"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780400131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00004"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780500131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00005"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780600131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00006"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780700131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00007"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780800131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00008"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14780900131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00009"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        },  
-        {
-          "type": "ReelPackage",
-          "identifiers": [
-            {
-              "role": "Secondary",
-              "type": "Barcode",
-              "codeType": "UIC14",
-              "value": "14781000131814"
-            },
-            {
-              "role": "Primary",
-              "type": "Number",
-              "codeType": "Supplier",
-              "value": "00010"
-            }
-          ],
-          "acceptance": "AsSpecified"
-        }  
-      ]
-    }
-  ]
-}
+  --header 'accept: */*' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "id": "3aa556bb-7198-4107-8dd9-450845eb365b",
+    "number": "GRIWMS-20240506-090833",
+    "timestamp": "2024-05-18T11:16:49Z",
+    "cancelled": false,
+    "active": true,
+    "acceptance": "WithVariance",
+    "isComplete": true,
+    "deliveryNoteNumber": "LDN12345",
+    "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
+    "arrivalDateTime": "2024-05-18T11:08:36",
+    "unloadingDateTime": "2024-05-18T11:10:04",
+    "lineItems": [
+      {
+        "number": 1,
+        "acceptance": "WithVariance",
+        "deliveryNoteLineItemNumber": 1,
+        "supplierOrderNumber": "ABCD-476408",
+        "supplierOrderLineItemNumber": 1,
+        "packages": [
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780100131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00001"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780200131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00002"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780300131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00003"
+              }
+            ],
+            "acceptance": "WithVariance",
+            "varianceType": "NotReceived"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780400131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00004"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780500131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00005"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780600131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00006"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780700131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00007"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780800131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00008"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14780900131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00009"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          },  
+          {
+            "type": "ReelPackage",
+            "identifiers": [
+              {
+                "role": "Secondary",
+                "type": "Barcode",
+                "codeType": "UIC14",
+                "value": "14781000131814"
+              },
+              {
+                "role": "Primary",
+                "type": "Number",
+                "codeType": "Supplier",
+                "value": "00010"
+              }
+            ],
+            "acceptance": "AsSpecified"
+          }  
+        ]
+      }
+    ]
+  }
 ```
 
 #### Interaction 7 of Scenario B
@@ -3178,11 +3174,11 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 
 <!-- request-file: ../3.0.0/mock/BW09.post-logistic-delivery-notes.request.json -->
 ```text
-curl -X 'POST' \
+curl --request 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --header 'accept: */*' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
     "number": "LDN6789",
     "timestamp": "2024-05-23T12:26:16Z",
@@ -3654,11 +3650,11 @@ In step 10 of scenario B the _logistics supplier_ updates the loading of the del
 
 <!-- request-file: ../3.0.0/mock/BW10.put-logistic-delivery-notes-logisticDeliveryNoteId.request.json -->
 ```text
-curl -X 'POST' \
+curl -request 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
+  --header 'accept: */*' \
+  --header 'Content-Type: application/json' \
+  --data '{
     "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
     "number": "LDN6789",
     "timestamp": "2024-05-23T12:26:16Z",

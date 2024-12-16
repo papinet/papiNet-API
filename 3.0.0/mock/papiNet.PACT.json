@@ -47,7 +47,7 @@
               "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
               "number": "ABCD-476408",
               "timestamp": "2024-05-16T19:32:59.962Z",
-              "status": "Original",
+              "cancelled": false,
               "active": true,
               "lineItemCount": 1
             }
@@ -72,7 +72,7 @@
           "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "number": "ABCD-476408",
           "timestamp": "2024-05-16T19:32:59.962Z",
-          "status": "Original",
+          "cancelled": false,
           "active": true,
           "supplierParty": {
             "identifiers": [
@@ -134,7 +134,7 @@
           "lineItems": [
             {
               "number": 1,
-              "status": "Amended",
+              "cancelled": false,
               "purchaseOrderNumber": "924942493",
               "purchaseOrderLineItemNumber": 1,
               "sellerProduct": {
@@ -142,7 +142,7 @@
                 "brandName": "string",
                 "paperAndBoard": {
                   "basisWeight": {
-                    "value": 370,
+                    "value": 550,
                     "uom": "GramsPerSquareMeter"
                   },
                   "bulk": {
@@ -172,15 +172,15 @@
                   }
                 ],
                 "nameLines": [
-                  "MillName"
+                    "MillName"
                 ],
                 "address": {
-                  "addressLines": [
+                    "addressLines": [
                     "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
+                    ],
+                    "city": "CITY",
+                    "postalCode": "12345",
+                    "countryCode": "SE"
                 }
               },
               "deliveryLegs": [
@@ -267,7 +267,8 @@
               "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
               "number": "LDN12345",
               "timestamp": "2024-05-16T11:46:39Z",
-              "status": "Original",
+              "cancelled": false,
+              "active": true,
               "shipmentStatus": "Departed",
               "shipFromLocation": {
                 "identifiers": [
@@ -311,6 +312,7 @@
             }
           ]
         }
+
       }
     },
     {
@@ -429,7 +431,7 @@
                 ],
                 "paperAndBoard": {
                   "basisWeight": {
-                    "value": 370,
+                    "value": 550,
                     "uom": "GramsPerSquareMeter"
                   },
                   "bulk": {
@@ -502,8 +504,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -545,8 +547,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -588,8 +590,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -631,8 +633,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -674,8 +676,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -717,8 +719,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -760,8 +762,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -803,8 +805,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -846,8 +848,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -889,8 +891,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -939,7 +941,7 @@
               "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
               "number": "123456SE",
               "timestamp": "2024-05-19T11:47:41Z",
-              "status": "Original",
+              "cancelled": false,
               "active": true,
               "sequenceCount": 1
             }
@@ -964,12 +966,12 @@
           "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
           "number": "123456SE",
           "timestamp": "2024-05-19T11:47:41Z",
-          "status": "Original",
+          "cancelled": false,
           "active": true,
           "sequences": [
             {
               "number": 1,
-              "status": "New",
+              "cancelled": false,
               "supplierParty": {
                 "identifiers": [
                   {
@@ -1156,7 +1158,7 @@
               "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
               "number": "ABCD-476408",
               "timestamp": "2024-05-16T19:32:59.962Z",
-              "status": "Original",
+              "cancelled": false,
               "active": true,
               "lineItemCount": 1
             }
@@ -1181,7 +1183,7 @@
           "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "number": "ABCD-476408",
           "timestamp": "2024-05-16T19:32:59.962Z",
-          "status": "Original",
+          "cancelled": false,
           "active": true,
           "supplierParty": {
             "identifiers": [
@@ -1243,7 +1245,7 @@
           "lineItems": [
             {
               "number": 1,
-              "status": "Amended",
+              "cancelled": false,
               "purchaseOrderNumber": "924942493",
               "purchaseOrderLineItemNumber": 1,
               "sellerProduct": {
@@ -1251,7 +1253,7 @@
                 "brandName": "string",
                 "paperAndBoard": {
                   "basisWeight": {
-                    "value": 370,
+                    "value": 550,
                     "uom": "GramsPerSquareMeter"
                   },
                   "bulk": {
@@ -1281,15 +1283,15 @@
                   }
                 ],
                 "nameLines": [
-                  "MillName"
+                    "MillName"
                 ],
                 "address": {
-                  "addressLines": [
+                    "addressLines": [
                     "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
+                    ],
+                    "city": "CITY",
+                    "postalCode": "12345",
+                    "countryCode": "SE"
                 }
               },
               "deliveryLegs": [
@@ -1376,7 +1378,8 @@
               "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
               "number": "LDN12345",
               "timestamp": "2024-05-16T11:46:39Z",
-              "status": "Original",
+              "cancelled": false,
+              "active": true,
               "shipmentStatus": "Departed",
               "shipFromLocation": {
                 "identifiers": [
@@ -1538,7 +1541,7 @@
                 ],
                 "paperAndBoard": {
                   "basisWeight": {
-                    "value": 370,
+                    "value": 550,
                     "uom": "GramsPerSquareMeter"
                   },
                   "bulk": {
@@ -1611,8 +1614,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1654,8 +1657,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1697,8 +1700,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1740,8 +1743,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1783,8 +1786,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1826,8 +1829,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1869,8 +1872,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1912,8 +1915,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1955,8 +1958,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -1998,8 +2001,8 @@
                     },
                     {
                       "context": "Shipped",
-                      "type": "NetWeight",
-                      "value": 2000,
+                      "type": "NetNetWeight",
+                      "value": 1925,
                       "uom": "Kilogram"
                     },
                     {
@@ -2053,7 +2056,7 @@
               "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
               "number": "123456SE",
               "timestamp": "2024-05-19T11:47:41Z",
-              "status": "Original",
+              "cancelled": false,
               "active": true,
               "sequenceCount": 1
             }
@@ -2078,12 +2081,12 @@
           "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
           "number": "123456SE",
           "timestamp": "2024-05-19T11:47:41Z",
-          "status": "Original",
+          "cancelled": false,
           "active": true,
           "sequences": [
             {
               "number": 1,
-              "status": "New",
+              "cancelled": false,
               "supplierParty": {
                 "identifiers": [
                   {
