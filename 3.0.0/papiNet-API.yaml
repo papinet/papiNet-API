@@ -1701,15 +1701,20 @@ components:
                 type: object
                 unevaluatedProperties: false
                 allOf:
-                  - oneOf:
-                      - required:
-                          - gradeCode
-                      - required:
-                          - partNumber
-                  - oneOf:
+                - oneOf:
+                    - required:
+                        - gradeCode
+                    - required:
+                        - partNumber
+                - anyOf:
+                    - oneOf:
                       - required:
                           - paperAndBoard
                       - required:
+                          - pulp
+                    - not:
+                        required:
+                          - paperAndBoard
                           - pulp
                 properties:
                   gradeCode:
@@ -3871,11 +3876,16 @@ components:
                           - gradeCode
                       - required:
                           - partNumber
-                  - oneOf:
-                      - required:
-                          - paperAndBoard
-                      - required:
-                          - pulp
+                  - anyOf:
+                      - oneOf:
+                        - required:
+                            - paperAndBoard
+                        - required:
+                            - pulp
+                      - not:
+                          required:
+                            - paperAndBoard
+                            - pulp
                 properties:
                   gradeCode:
                     description: The product identifier assigned by the seller for a not-fully-defined product.
@@ -4558,11 +4568,16 @@ components:
                           - gradeCode
                       - required:
                           - partNumber
-                  - oneOf:
-                      - required:
-                          - paperAndBoard
-                      - required:
-                          - pulp
+                  - anyOf:
+                      - oneOf:
+                        - required:
+                            - paperAndBoard
+                        - required:
+                            - pulp
+                      - not:
+                          required:
+                            - paperAndBoard
+                            - pulp
                 properties:
                   gradeCode:
                     description: The product identifier assigned by the seller for a not-fully-defined product.
@@ -5896,11 +5911,16 @@ components:
                                 - gradeCode
                             - required:
                                 - partNumber
-                        - oneOf:
-                            - required:
-                                - paperAndBoard
-                            - required:
-                                - pulp
+                        - anyOf:
+                            - oneOf:
+                              - required:
+                                  - paperAndBoard
+                              - required:
+                                  - pulp
+                            - not:
+                                required:
+                                  - paperAndBoard
+                                  - pulp
                       properties:
                         gradeCode:
                           description: The product identifier assigned by the seller for a not-fully-defined product.
