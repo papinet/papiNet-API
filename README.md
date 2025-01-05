@@ -1,10 +1,12 @@
+<!-- Copyright 2000-2024 Papinet SNC ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet. -->
+
 <!-- markdownlint-disable MD041 -->
 
-![papiNet Logo](./papinet-logo.jpg)
+![papiNet Logo](./papinet-logo.png)
 
 # papiNet API
 
-[papiNet](http://www.papinet.org) is a global paper, forest products and bioproducts industry **e-Business initiative**, which has started in October 2000! papiNet consists of an **XML set of standard electronic documents** that facilitates the flow of information among parties engaged in buying, selling, and distribution of paper, forest and bio related products.
+[papiNet](http://www.papinet.org) is a global paper, forest products and bioproducts industry **e-Business initiative**, started in year 2000. papiNet consists of an **XML set of standard electronic documents** that facilitates the flow of information among parties engaged in buying, selling, and distribution of paper, forest and bio related products.
 
 [papiNet API](https://github.com/papinet/papiNet-API) is a new initiative that aim to deliver a similar industry level standardization of a **REST API** that facilitates the flow of information among parties engaged in buying, selling, and distribution of paper, forest and bio related products.
 
@@ -32,11 +34,25 @@ The following API endpoints allows a _customer_ to send, list, retrieve and modi
 * `GET /purchase-orders/{purchaseOrderId}`
 * `PATCH /purchase-orders/{purchaseOrderId}`
 
+### Warehouse Logistics Use Case
+
+The following API endpoints allows a _supplier_ to communicate to a _logistics supplier_:
+
+* `GET /supplier-orders`
+* `GET /supplier-orders/{supplierOrderId}`
+* `GET /logistics-delivery-notes`
+* `GET /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-delivery-notes`
+* `PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-goods-receipts`
+* `PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}`
+* `GET /delivery-instructions`
+* `GET /delivery-instructions/{deliveryInstructionId}`
+
 ## The papiNet API Standard
 
-The following normative documents are available:
+The following normative document is available:
 
-* [`papiNet-API.yaml`](2.0.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
-* [`papiNet-API.md`](2.0.0/papiNet-API.md) the semantic specification of the main objects and properties used within the OpenAPI document.
+* [`papiNet-API.yaml`](3.0.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
 
 In addition to these normative documents, we also have a papiNet mock service that provides live responses in line with the scenarios described within the use case documents.

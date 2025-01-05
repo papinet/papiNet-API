@@ -1063,10 +1063,10 @@ components:
                   - Cancelled
               active:
                 type: boolean
-              supplierToParty:
+              supplierParty:
                 type: string
                 format: uuid
-              sellerToParty:
+              sellerParty:
                 type: string
                 format: uuid
               buyerParty:
@@ -1101,10 +1101,10 @@ components:
           type: string
           enum:
             - Original
-        supplierToParty:
+        supplierParty:
           type: string
           format: uuid
-        sellerToParty:
+        sellerParty:
           type: string
           format: uuid
         buyerParty:
@@ -1248,10 +1248,10 @@ components:
             - Cancelled
         active:
           type: boolean
-        supplierToParty:
+        supplierParty:
           type: string
           format: uuid
-        sellerToParty:
+        sellerParty:
           type: string
           format: uuid
         buyerParty:
