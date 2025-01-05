@@ -6,7 +6,7 @@ def main():
 	# Input file name:
 	input_file_name = "../3.0.0/paper-board-pulp-warehouse-logistics.md"
 	# Output file
-	output_file_name = "../3.0.0/mock/papiNet.PACT.json"
+	output_file_name = "../3.0.0/mock/papiNet.PACT.generated.json"
 
 	# Pact skeleton:
 	pact = {

@@ -1,9 +1,17 @@
+/*
+RUN: node analyse-uom.js
+PURPOSE: This script will list all the `uom` (unit of measure) within the
+         schemas of the papiNet API OpenAPI documentation.
+*/
+
 const fs = require('fs');
 const YAML = require('yaml');
 
 const file = fs.readFileSync('../3.0.0/papiNet-API.yaml', 'utf8');
 
 const doc = YAML.parse(file);
+
+dumpKeys('', doc.components.schemas);
 
 function dumpKeys(context, current) {
   for (key in current) {
@@ -35,6 +43,3 @@ function dumpKeys(context, current) {
     }
   }
 }
-
-dumpKeys('', doc.components.schemas);
-
