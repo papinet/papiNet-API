@@ -541,7 +541,7 @@ The authenticated _customer_ sends an API request in order to retreive the UUID 
 
 ```text
 curl --request GET \
-  --URL http://localhost:3020/parties?partieIdentifier=ERP-P-NL-ACME-01 \
+  --URL http://localhost:3020/parties?partyIdentifier=ERP-P-NL-ACME-01 \
   --header 'X-Provider-State: Master_Data_Interaction_1_of_Scenario_F' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
 ```
