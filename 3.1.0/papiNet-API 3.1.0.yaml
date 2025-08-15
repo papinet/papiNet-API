@@ -628,29 +628,6 @@ paths:
                 $ref: "#/components/schemas/DeliveryInstructionById"
         "404":
           description: Not Found
-  /logistics-inventory-changes/{logisticsInventoryChangesById}:
-    # GET /logistics-inventory-changes/{logisticsInventoryChangesId}
-    # None => LogisticsInventoryChangesById
-    get:
-      summary: Get a `logistics-inventory-changes`
-      description: Gets the details of a specific `logistics-inventory-changes`.
-      parameters:
-        - in: path
-          name: logisticsInventoryChangesId
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: UUID of the `logistics-inventory-changes` to get
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/LogisticsInventoryChangesById"
-        "404":
-          description: Not Found
   /logistics-inventory-changes:
     # GET /logistics-inventory-changes
     # None => ListOfLogisticsInventoryChanges
@@ -741,6 +718,29 @@ paths:
           description: OK
         "400":
           description: Bad Request
+  /logistics-inventory-changes/{logisticsInventoryChangesById}:
+    # GET /logistics-inventory-changes/{logisticsInventoryChangesId}
+    # None => LogisticsInventoryChangesById
+    get:
+      summary: Get a `logistics-inventory-changes`
+      description: Gets the details of a specific `logistics-inventory-changes`.
+      parameters:
+        - in: path
+          name: logisticsInventoryChangesId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `logistics-inventory-changes` to get
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogisticsInventoryChangesById"
+        "404":
+          description: Not Found
 components:
   schemas:
     # Re-usable schemas (3) in alphabetical order:
@@ -6644,6 +6644,240 @@ components:
                                     - ThousandSquareFeet
                                     - ThousandSquareInches
                                     - Yard
+    ListOfLogisticsInventoryChanges:
+          type: object
+          unevaluatedProperties: false
+          required:
+              - id
+              - number
+              - timestamp
+              - status
+              - logisticsSupplierParty
+              - supplierParty
+              - storageLocation
+              - supplierOrderNumber
+              - supplierOrderLineItemNumber
+          properties:
+            id:
+              type: string
+              format: uuid
+            number:
+              type: integer
+              minimum: 0
+            timestamp:
+              type: string
+              format: date-time
+              # UTC MUST be used!
+            status:
+              type: string
+              minLength: 1             
+            logisticsSupplierParty:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - identifiers
+              properties:
+                identifiers:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type: string
+                        enum:
+                          - Supplier
+                nameLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 3
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                address:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    # addressLines is not required
+                    # city is not required
+                    # postalCode is not required
+                    # stateOrProvince is not required
+                    # county is not required
+                    - countryCode
+                  properties:
+                    addressLines:
+                      type: array
+                      minItems: 1
+                      maxItems: 4
+                      # See <https://github.com/papinet/papiNet-API/issues/94>
+                      items:
+                        type: string
+                        minLength: 1
+                    city:
+                      type: string
+                      minLength: 1
+                    postalCode:
+                      type: string
+                      minLength: 1
+                    stateOrProvince:
+                      type: string
+                      minLength: 1
+                    county:
+                      type: string
+                      minLength: 1
+                    countryCode:
+                      type: string
+                      minLength: 2
+                      maxLength: 2
+                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            supplierParty:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - identifiers
+              properties:
+                identifiers:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type: string
+                        enum:
+                          - Supplier
+                nameLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 3
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                address:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    # addressLines is not required
+                    # city is not required
+                    # postalCode is not required
+                    # stateOrProvince is not required
+                    # county is not required
+                    - countryCode
+                  properties:
+                    addressLines:
+                      type: array
+                      minItems: 1
+                      maxItems: 4
+                      # See <https://github.com/papinet/papiNet-API/issues/94>
+                      items:
+                        type: string
+                        minLength: 1
+                    city:
+                      type: string
+                      minLength: 1
+                    postalCode:
+                      type: string
+                      minLength: 1
+                    stateOrProvince:
+                      type: string
+                      minLength: 1
+                    county:
+                      type: string
+                      minLength: 1
+                    countryCode:
+                      type: string
+                      minLength: 2
+                      maxLength: 2
+                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            storageLocation:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - identifiers
+              properties:
+                identifiers:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type: string
+                        enum:
+                          - Supplier
+                nameLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 3
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                address:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    # addressLines is not required
+                    # city is not required
+                    # postalCode is not required
+                    # stateOrProvince is not required
+                    # county is not required
+                    - countryCode
+                  properties:
+                    addressLines:
+                      type: array
+                      minItems: 1
+                      maxItems: 4
+                      # See <https://github.com/papinet/papiNet-API/issues/94>
+                      items:
+                        type: string
+                        minLength: 1
+                    city:
+                      type: string
+                      minLength: 1
+                    postalCode:
+                      type: string
+                      minLength: 1
+                    stateOrProvince:
+                      type: string
+                      minLength: 1
+                    county:
+                      type: string
+                      minLength: 1
+                    countryCode:
+                      type: string
+                      minLength: 2
+                      maxLength: 2
+                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            supplierOrderNumber:
+              type: string
+              minLength: 1
+            supplierOrderLineItemNumber:
+              type: integer
+              minimum: 0
     LogisticsInventoryChangesById:
           type: object
           unevaluatedProperties: false
@@ -6653,6 +6887,8 @@ components:
               - timestamp
               - status
               - logisticsSupplierParty
+              - supplierParty
+              - storageLocation
               - supplierOrderNumber
               - supplierOrderLineItemNumber
               - packages
@@ -6671,6 +6907,140 @@ components:
               type: string
               minLength: 1             
             logisticsSupplierParty:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - identifiers
+              properties:
+                identifiers:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type: string
+                        enum:
+                          - Supplier
+                nameLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 3
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                address:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    # addressLines is not required
+                    # city is not required
+                    # postalCode is not required
+                    # stateOrProvince is not required
+                    # county is not required
+                    - countryCode
+                  properties:
+                    addressLines:
+                      type: array
+                      minItems: 1
+                      maxItems: 4
+                      # See <https://github.com/papinet/papiNet-API/issues/94>
+                      items:
+                        type: string
+                        minLength: 1
+                    city:
+                      type: string
+                      minLength: 1
+                    postalCode:
+                      type: string
+                      minLength: 1
+                    stateOrProvince:
+                      type: string
+                      minLength: 1
+                    county:
+                      type: string
+                      minLength: 1
+                    countryCode:
+                      type: string
+                      minLength: 2
+                      maxLength: 2
+                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            supplierParty:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - identifiers
+              properties:
+                identifiers:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - value
+                      - assignedBy
+                    properties:
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type: string
+                        enum:
+                          - Supplier
+                nameLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 3
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
+                  items:
+                    type: string
+                    minLength: 1
+                address:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    # addressLines is not required
+                    # city is not required
+                    # postalCode is not required
+                    # stateOrProvince is not required
+                    # county is not required
+                    - countryCode
+                  properties:
+                    addressLines:
+                      type: array
+                      minItems: 1
+                      maxItems: 4
+                      # See <https://github.com/papinet/papiNet-API/issues/94>
+                      items:
+                        type: string
+                        minLength: 1
+                    city:
+                      type: string
+                      minLength: 1
+                    postalCode:
+                      type: string
+                      minLength: 1
+                    stateOrProvince:
+                      type: string
+                      minLength: 1
+                    county:
+                      type: string
+                      minLength: 1
+                    countryCode:
+                      type: string
+                      minLength: 2
+                      maxLength: 2
+                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            storageLocation:
               type: object
               unevaluatedProperties: false
               required:
@@ -6887,6 +7257,9 @@ components:
                           - dispatchStop
                           - shippingStop
                         properties:
+                          damage:
+                            type: boolean
+                            unevaluatedProperties: false
                           placeOfDamage:
                             type: object
                             unevaluatedProperties: false
@@ -6902,25 +7275,8 @@ components:
                               assignedBy:
                                 type: string
                                 enum:
-                                  - Supplier
                                   - LogisticsSupplier
-                          damage:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                enum: 
-                                  - Yes
-                                  - No
-                              assignedBy:
-                                type: string
-                                enum:
                                   - Supplier
-                                  - LogisticsSupplier
                           typeOfDamage:
                             type: object
                             unevaluatedProperties: false
@@ -6931,21 +7287,21 @@ components:
                               value:
                                 type: string
                                 enum: 
-                                  - EdgeDamage
-                                  - SideDamage
-                                  - EndDamage
-                                  - WrapperDamage/BrokenPalletBase
                                   - CoreDamage
                                   - Deformation
-                                  - WaterDamage
                                   - DirtAndContamination
-                                  - Shortage,NonDelivery
+                                  - EdgeDamage
+                                  - EndDamage
                                   - Other
+                                  - Shortage,NonDelivery
+                                  - SideDamage
+                                  - WaterDamage
+                                  - WrapperDamage/BrokenPalletBase
                               assignedBy:
                                 type: string
                                 enum:
-                                  - Supplier
                                   - LogisticsSupplier
+                                  - Supplier
                           causeOfDamage:
                             type: object
                             unevaluatedProperties: false
@@ -6956,184 +7312,30 @@ components:
                               value:
                                 type: string
                                 enum: 
-                                  - Handling
-                                  - Transportation
-                                  - Warehousing
+                                  - Condensation
                                   - DeficienciesOfHandlingEquipment
                                   - DeficienciesOfTransportEquipment
                                   - DeficienciesOfWarehouse
-                                  - InsufficientPackaging
+                                  - Handling
                                   - InsufficientLashing
-                                  - Condensation
+                                  - InsufficientPackaging
                                   - Other
+                                  - Transportation
+                                  - Warehousing
                               assignedBy:
                                 type: string
                                 enum:
-                                  - Supplier
                                   - LogisticsSupplier
+                                  - Supplier
                           rejected:
-                            type: object
+                            type: boolean
                             unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                enum: 
-                                  - Yes
-                                  - No
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
-                                  - LogisticsSupplier
                           refurbished:
-                            type: object
+                            type: boolean
                             unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                enum: 
-                                  - Yes
-                                  - No
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
-                                  - LogisticsSupplier
                           dispatchStop:
-                            type: object
+                            type: boolean
                             unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                enum: 
-                                  - Yes
-                                  - No
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
-                                  - LogisticsSupplier
                           shippingStop:
-                            type: object
+                            type: boolean
                             unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                enum: 
-                                  - Yes
-                                  - No
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
-                                  - LogisticsSupplier
-    ListOfLogisticsInventoryChanges:
-          type: object
-          unevaluatedProperties: false
-          required:
-              - id
-              - number
-              - timestamp
-              - status
-              - logisticsSupplierParty
-              - supplierOrderNumber
-              - supplierOrderLineItemNumber
-          properties:
-            id:
-              type: string
-              format: uuid
-            number:
-              type: integer
-              minimum: 0
-            timestamp:
-              type: string
-              format: date-time
-              # UTC MUST be used!
-            status:
-              type: string
-              minLength: 1             
-            logisticsSupplierParty:
-              type: object
-              unevaluatedProperties: false
-              required:
-                - identifiers
-              properties:
-                identifiers:
-                  type: array
-                  minItems: 1
-                  items:
-                    type: object
-                    unevaluatedProperties: false
-                    required:
-                      - value
-                      - assignedBy
-                    properties:
-                      value:
-                        type: string
-                        minLength: 1
-                      assignedBy:
-                        type: string
-                        enum:
-                          - Supplier
-                nameLines:
-                  type: array
-                  minItems: 1
-                  maxItems: 3
-                  # See <https://github.com/papinet/papiNet-API/issues/94>
-                  items:
-                    type: string
-                    minLength: 1
-                address:
-                  type: object
-                  unevaluatedProperties: false
-                  required:
-                    # addressLines is not required
-                    # city is not required
-                    # postalCode is not required
-                    # stateOrProvince is not required
-                    # county is not required
-                    - countryCode
-                  properties:
-                    addressLines:
-                      type: array
-                      minItems: 1
-                      maxItems: 4
-                      # See <https://github.com/papinet/papiNet-API/issues/94>
-                      items:
-                        type: string
-                        minLength: 1
-                    city:
-                      type: string
-                      minLength: 1
-                    postalCode:
-                      type: string
-                      minLength: 1
-                    stateOrProvince:
-                      type: string
-                      minLength: 1
-                    county:
-                      type: string
-                      minLength: 1
-                    countryCode:
-                      type: string
-                      minLength: 2
-                      maxLength: 2
-                      description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-            supplierOrderNumber:
-              type: string
-              minLength: 1
-            supplierOrderLineItemNumber:
-              type: integer
-              minimum: 0
