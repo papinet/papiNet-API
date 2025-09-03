@@ -63,16 +63,6 @@ paths:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?status={Amended|Cancelled|Original}
-          name: status
-          schema:
-            type: string
-            enum:
-              - Amended
-              - Cancelled
-              - Original
-          required: false
-          description: filter based on `status` (Amended|Cancelled|Original)
         - in: query # ?active={true|false}
           name: active
           schema:
@@ -231,16 +221,6 @@ paths:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?status={Amended|Cancelled|Original}
-          name: status
-          schema:
-            type: string
-            enum:
-              - Amended
-              - Cancelled
-              - Original
-          required: false
-          description: filter based on `status` (Cancelled|Original|Replaced)
         - in: query # ?shipmentStatus={Arrived|Cancelled|Departed|Loaded|Planned|Unloaded}
           name: shipmentStatus
           schema:
@@ -473,16 +453,6 @@ paths:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?status={Amended|Cancelled|Original}
-          name: status
-          schema:
-            type: string
-            enum:
-              - Amended
-              - Cancelled
-              - Original
-          required: false
-          description: filter based on `status` (Amended|Cancelled|Original)
         - in: query # ?active={true|false}
           name: active
           schema:
