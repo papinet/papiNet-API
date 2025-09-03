@@ -385,7 +385,7 @@ In step 3 of the scenario A the _logistics supplier_ request to get all departed
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-notes?shipmentStatus=Departed' \
+  --url 'http://localhost:3030/logistics-delivery-notes?shipmentStatus=Departed' \
   --header 'X-Provider-State: Interaction_3_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -456,7 +456,7 @@ In step 4 of the scenario A the _logistics supplier_ request to get details of t
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \
+  --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_4_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -1085,7 +1085,7 @@ In step 6 of scenario A _logistics supplier_ request to get all active delivery 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions?active=true' \
+  --url 'http://localhost:3030/logistics-delivery-instructions?active=true' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json'
@@ -1116,7 +1116,7 @@ In step 7 of scenario A _logistics supplier_ request to get details of the activ
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --url 'http://localhost:3030/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json'
@@ -1283,7 +1283,7 @@ In step 8 of scenario A _logistics supplier_ confirms the loading of the deliver
 <!-- request-file: ../3.0.0/mock/GW08.post-logistic-delivery-notes.request.json -->
 ```text
 curl --request 'POST' \
-  'http://localhost:3030/logistics-delivery-notes' \
+  --url 'http://localhost:3030/logistics-delivery-notes' \
   --header 'X-Provider-State: Interaction_!_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
@@ -2058,7 +2058,7 @@ In step 3 of the scenario B the _logistics supplier_ request to get all departed
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-notes?shipmentStatus=Departed' \
+  --url 'http://localhost:3030/logistics-delivery-notes?shipmentStatus=Departed' \
   --header 'X-Provider-State: Interaction_3_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -2129,7 +2129,7 @@ In step 4 of the scenario B the _logistics supplier_ request to get details of t
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841' \
+  --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_4_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -2734,7 +2734,7 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl --request POST \
-  'http://localhost:3030/logistics-goods-receipts' \
+  --url 'http://localhost:3030/logistics-goods-receipts' \
   --header 'accept: */*' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -2759,7 +2759,7 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 <!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
 curl --request PUT \
-  'http://localhost:3030/logistics-goods-receipts' \
+  --url'http://localhost:3030/logistics-goods-receipts' \
   --header 'accept: */*' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -2975,7 +2975,7 @@ In step 7 of scenario B _logistics supplier_ request to get all active delivery 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions?active=true' \
+  --url 'http://localhost:3030/logistics-delivery-instructions?active=true' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -3007,7 +3007,7 @@ In step 8 of scenario B _logistics supplier_ request to get details of the activ
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --url 'http://localhost:3030/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_8_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Host: papinet.papinet.io' \
@@ -3175,7 +3175,7 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 <!-- request-file: ../3.0.0/mock/BW09.post-logistic-delivery-notes.request.json -->
 ```text
 curl --request 'POST' \
-  'http://localhost:3030/logistics-delivery-notes' \
+  --url 'http://localhost:3030/logistics-delivery-notes' \
   --header 'accept: */*' \
   --header 'Content-Type: application/json' \
   --data '{
