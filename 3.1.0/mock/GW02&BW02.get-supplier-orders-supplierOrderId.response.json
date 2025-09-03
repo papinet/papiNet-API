@@ -1,0 +1,176 @@
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "number": "ABCD-476408",
+  "timestamp": "2024-05-16T19:32:59.962Z",
+  "cancelled": false,
+  "active": true,
+  "supplierParty": {
+    "identifiers": [
+      {
+        "value": "MILL",
+        "assignedBy": "Supplier"
+      }
+    ],
+    "nameLines": [
+      "MillName"
+    ],
+    "address": {
+      "addressLines": [
+        "Mill Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "12345",
+      "countryCode": "SE"
+    }
+  },
+  "customerParty": {
+    "identifiers": [
+      {
+        "value": "CUSTOMER",
+        "assignedBy": "Supplier"
+      }
+    ],
+    "nameLines": [
+      "CustomerName"
+    ],
+    "address": {
+      "addressLines": [
+        "Customer Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "23456",
+      "countryCode": "BE"
+    }
+  },
+  "buyerParty": {
+    "identifiers": [
+      {
+        "value": "CUSTOMER",
+        "assignedBy": "Supplier"
+      }
+    ],
+    "nameLines": [
+      "CustomerName"
+    ],
+    "address": {
+      "addressLines": [
+        "Customer Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "23456",
+      "countryCode": "BE"
+    }
+  },
+  "lineItems": [
+    {
+      "number": 1,
+      "cancelled": false,
+      "purchaseOrderNumber": "924942493",
+      "purchaseOrderLineItemNumber": 1,
+      "sellerProduct": {
+        "gradeCode": "string",
+        "brandName": "string",
+        "paperAndBoard": {
+          "basisWeight": {
+            "value": 550,
+            "uom": "GramsPerSquareMeter"
+          },
+          "bulk": {
+            "value": 1,
+            "uom": "CubicCentimeterPerGram"
+          },
+          "caliper": {
+            "value": 1,
+            "uom": "Micron"
+          },
+          "format": "Reel",
+          "width": {
+            "value": 875,
+            "uom": "Millimeter"
+          },
+          "reelDiameter": {
+            "value": 1500,
+            "uom": "Millimeter"
+          }
+        }
+      },
+      "millParty": {
+        "identifiers": [
+          {
+            "value": "MILL",
+            "assignedBy": "Supplier"
+          }
+        ],
+        "nameLines": [
+            "MillName"
+        ],
+        "address": {
+            "addressLines": [
+            "Mill Road 1"
+            ],
+            "city": "CITY",
+            "postalCode": "12345",
+            "countryCode": "SE"
+        }
+      },
+      "deliveryLegs": [
+        {
+          "number": 1,
+          "shipFromLocation": {
+            "type": "Mill",
+            "identifiers": [
+              {
+                "value": "MILL",
+                "assignedBy": "Supplier"
+              }
+            ],
+            "nameLines": [
+              "MillName"
+            ],
+            "address": {
+              "addressLines": [
+                "Mill Road 1"
+              ],
+              "city": "CITY",
+              "postalCode": "12345",
+              "countryCode": "SE"
+            }
+          },
+          "shipToLocation": {
+            "type": "Terminal",
+            "identifiers": [
+              {
+                "value": "TERM",
+                "assignedBy": "Supplier"
+              }
+            ],
+            "nameLines": [
+              "TermName"
+            ],
+            "address": {
+              "addressLines": [
+                "Term Road 1"
+              ],
+              "city": "CITY2",
+              "postalCode": "34567",
+              "countryCode": "SE"
+            }
+          },
+          "estimatedLoadingDateTime": "2024-05-16T12:00",
+          "estimatedArrivalDateTime": "2024-05-18T17:00",
+          "transport": {
+            "modeType": "Road"
+          }
+        }
+      ],
+      "quantities": [
+        {
+          "context": "Confirmed",
+          "type": "Count",
+          "value": 10,
+          "uom": "Reel"
+        }
+      ]
+    }
+  ]
+}
