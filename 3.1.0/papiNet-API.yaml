@@ -234,6 +234,12 @@ paths:
               - Unloaded
           required: false
           description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
+        - in: query # ?active={true|false}
+          name: active
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `active` (true|false)
         - in: query # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
