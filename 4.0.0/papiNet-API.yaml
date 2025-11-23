@@ -63,12 +63,12 @@ paths:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?active={true|false}
-          name: active
+        - in: query # ?isActive={true|false}
+          name: isActive
           schema:
             type: boolean
           required: false
-          description: filter based on `active` (true|false)
+          description: filter based on `isActive` (true|false)
         - in: query # ?sellerParty.value={string}
           name: sellerParty.value
           schema:
@@ -234,12 +234,12 @@ paths:
               - Unloaded
           required: false
           description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
-        - in: query # ?active={true|false}
-          name: active
+        - in: query # ?isActive={true|false}
+          name: isActive
           schema:
             type: boolean
           required: false
-          description: filter based on `active` (true|false)
+          description: filter based on `isActive` (true|false)
         - in: query # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
@@ -459,12 +459,12 @@ paths:
             type: string # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?active={true|false}
-          name: active
+        - in: query # ?isActive={true|false}
+          name: isActive
           schema:
             type: boolean
           required: false
-          description: filter based on `active` (true|false)
+          description: filter based on `isActive` (true|false)
         - in: query # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
@@ -928,8 +928,8 @@ components:
               - id
               - number
               - timestamp
-              - cancelled
-              - active
+              - isCancelled
+              - isActive
               # sellerParty is not required
               # supplierParty is not required
               # logisticsSupplierParty is not required
@@ -948,9 +948,9 @@ components:
               timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              cancelled:
+              isCancelled:
                 type: boolean
-              active:
+              isActive:
                 type: boolean
               sellerParty:
                 type: object
@@ -1290,8 +1290,8 @@ components:
         - id
         - number
         - timestamp
-        - cancelled
-        - active
+        - isCancelled
+        - isActive
         # sellerParty is not required
         # supplierParty is not required
         # logisticsSupplierParty is not required
@@ -1310,9 +1310,9 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        cancelled:
+        isCancelled:
           type: boolean
-        active:
+        isActive:
           type: boolean
         sellerParty:
           type: object
@@ -1647,7 +1647,7 @@ components:
             unevaluatedProperties: false
             required:
               - number
-              - cancelled
+              - isCancelled
               # purchaseOrderNumber is not required
               # purchaseOrderLineItemNumber is not required
               # customerReferenceNumber is not required
@@ -1660,7 +1660,7 @@ components:
               number:
                 type: integer
                 minimum: 0
-              cancelled:
+              isCancelled:
                 type: boolean
               purchaseOrderNumber:
                 type: string
@@ -2571,8 +2571,8 @@ components:
               - id
               - number
               - timestamp
-              - cancelled
-              - active
+              - isCancelled
+              - isActive
               # shipmentStatus is not required
               # supplierParty is not required
               # logisticsSupplierParty is not required
@@ -2591,9 +2591,9 @@ components:
               timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              cancelled:
+              isCancelled:
                 type: boolean
-              active:
+              isActive:
                 type: boolean
               shipmentStatus:
                 type : string
@@ -2954,8 +2954,8 @@ components:
         - id
         - number
         - timestamp
-        - cancelled
-        - active
+        - isCancelled
+        - isActive
         # shipmentStatus is not required
         # supplierParty is not required
         # logisticsSupplierParty is not required
@@ -2973,9 +2973,9 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        cancelled:
+        isCancelled:
           type: boolean
-        active:
+        isActive:
           type: boolean
         shipmentStatus:
           type : string
@@ -4332,8 +4332,8 @@ components:
         - id
         - number
         - timestamp
-        - cancelled
-        - active
+        - isCancelled
+        - isActive
         - acceptance
         - isComplete
         # deliveryNoteNumber is not required
@@ -4352,9 +4352,9 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        cancelled:
+        isCancelled:
           type: boolean
-        active:
+        isActive:
           type: boolean
         acceptance:
           type: string
@@ -4852,8 +4852,8 @@ components:
               - id
               - number
               - timestamp
-              - cancelled
-              - active
+              - isCancelled
+              - isActive
               - sequenceCount
             properties:
               id:
@@ -4865,9 +4865,9 @@ components:
               timestamp:
                 type: string
                 format: date-time # UTC MUST be used!
-              cancelled:
+              isCancelled:
                 type: boolean
-              active:
+              isActive:
                 type: boolean
               sequenceCount:
                 type: integer
@@ -4882,8 +4882,8 @@ components:
         - id
         - number
         - timestamp
-        - cancelled
-        - active
+        - isCancelled
+        - isActive
         - sequences
       properties:
         id:
@@ -4895,9 +4895,9 @@ components:
         timestamp:
           type: string
           format: date-time # UTC MUST be used!
-        cancelled:
+        isCancelled:
           type: boolean
-        active:
+        isActive:
           type: boolean
         sequences:
           type: array
@@ -4917,7 +4917,7 @@ components:
               number:
                 type: integer
                 minimum: 0
-              cancelled:
+              icCancelled:
                 type: boolean
               supplierParty:
                 type: object
