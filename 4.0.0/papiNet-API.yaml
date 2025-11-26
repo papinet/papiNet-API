@@ -3814,7 +3814,7 @@ components:
               # loadingCharacteristics is not required
               # unloadingCharacteristics is not required
               - quantities
-              - packages
+              # packages is not required
             properties:
               number:
                 type: integer
