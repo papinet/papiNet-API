@@ -1,5 +1,4 @@
 # Copyright 2000-2024 Papinet SNC ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
-
 openapi: 3.1.0
 info:
   title: papiNet API
@@ -15,155 +14,171 @@ servers:
   - url: http://localhost:3030
     description: papiNet Mock Server
 paths:
-
-   ## LOGISTICS (10)
-
-   #  GET /supplier-orders
-   #  GET /supplier-orders/{supplierOrderId}
-   #  GET /logistics-delivery-notes
-   #  GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-   # POST /logistics-delivery-notes
-   #  PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
-   # POST /logistics-goods-receipts
-   #  PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
-   #  GET /delivery-instructions
-   #  GET /delivery-instructions/{deliveryInstructionId}
-
-  '/supplier-orders':
+  ## LOGISTICS (10)
+  #  GET /supplier-orders
+  #  GET /supplier-orders/{supplierOrderId}
+  #  GET /logistics-delivery-notes
+  #  GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
+  # POST /logistics-delivery-notes
+  #  PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
+  # POST /logistics-goods-receipts
+  #  PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
+  #  GET /delivery-instructions
+  #  GET /delivery-instructions/{deliveryInstructionId}
+  /supplier-orders:
     # GET /supplier-orders
     # None => ListOfSupplierOrders
     get:
       summary: List `supplier-orders`
       description: Get a paginated list of all `supplier-orders`.
       parameters:
-        - in: query # ?offset={integer >= 0}
+        - in: query
+          # ?offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: integer
             minimum: 0
-        - in: query # ?limit={integer > 0}
+        - in: query
+          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: integer
             exclusiveMinimum: 0
-        - in: query # ?number={string}
+        - in: query
+          # ?number={string}
           name: number
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `number` (string)
-        - in: query # ?timestamp={ISO 8601 interval}
+        - in: query
+          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
-            type: string # ISO 8601
+            type: string
+            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?isActive={true|false}
+        - in: query
+          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
-        - in: query # ?sellerParty.value={string}
+        - in: query
+          # ?sellerParty.value={string}
           name: sellerParty.value
           schema:
             type: string
           required: false
           description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
-        - in: query # ?sellerParty.assignedBy={string}
+        - in: query
+          # ?sellerParty.assignedBy={string}
           name: sellerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
-        - in: query # ?supplierParty.value={string}
+        - in: query
+          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query # ?supplierParty.assignedBy={string}
+        - in: query
+          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query # ?logisticsSupplierParty.value={string}
+        - in: query
+          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query # ?logisticsSupplierParty.assignedBy={string}
+        - in: query
+          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query # ?customerParty.value={string}
+        - in: query
+          # ?customerParty.value={string}
           name: customerParty.value
           schema:
             type: string
           required: false
           description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
-        - in: query # ?customerParty.assignedBy={string}
+        - in: query
+          # ?customerParty.assignedBy={string}
           name: customerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
-        - in: query # ?buyerParty.value={string}
+        - in: query
+          # ?buyerParty.value={string}
           name: buyerParty.value
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query # ?buyerParty.assignedBy={string}
+        - in: query
+          # ?buyerParty.assignedBy={string}
           name: buyerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query # ?shipFromLocation.value={string}
+        - in: query
+          # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query # ?shipFromLocation.assignedBy={string}
+        - in: query
+          # ?shipFromLocation.assignedBy={string}
           name: shipFromLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query # ?shipToLocation.value={string}
+        - in: query
+          # ?shipToLocation.value={string}
           name: shipToLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
-        - in: query # ?shipToLocation.assignedBy={string}
+        - in: query
+          # ?shipToLocation.assignedBy={string}
           name: shipToLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfSupplierOrders'
-        '204':
+                $ref: "#/components/schemas/ListOfSupplierOrders"
+        "204":
           description: No Content
-
-  '/supplier-orders/{supplierOrderId}':
+  /supplier-orders/{supplierOrderId}:
     # GET /supplier-orders/{supplierOrderId}
     # None => SupplierOrderById
     get:
@@ -178,50 +193,55 @@ paths:
           required: true
           description: UUID of the `supplier-order` to get
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SupplierOrderById'
-        '404':
+                $ref: "#/components/schemas/SupplierOrderById"
+        "404":
           description: Not Found
-
-  '/logistics-delivery-notes':
+  /logistics-delivery-notes:
     # GET /logistics-delivery-notes
     # None => ListOfLogisticsDeliveryNotes
     get:
       summary: List `logistics-delivery-notes`
       description: Get a paginated list of all `logistics-delivery-notes`.
       parameters:
-        - in: query # ?offset={integer >= 0}
+        - in: query
+          # ?offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: integer
             minimum: 0
-        - in: query # ?limit={integer > 0}
+        - in: query
+          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: integer
             exclusiveMinimum: 0
-        - in: query # ?number={string}
+        - in: query
+          # ?number={string}
           name: number
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `number` (string)
-        - in: query # ?timestamp={ISO 8601 interval}
+        - in: query
+          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
-            type: string # ISO 8601
+            type: string
+            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?shipmentStatus={Arrived|Cancelled|Departed|Loaded|Planned|Unloaded}
+        - in: query
+          # ?shipmentStatus={Arrived|Cancelled|Departed|Loaded|Planned|Unloaded}
           name: shipmentStatus
           schema:
             type: string
@@ -234,82 +254,93 @@ paths:
               - Unloaded
           required: false
           description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
-        - in: query # ?isActive={true|false}
+        - in: query
+          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
-        - in: query # ?supplierParty.value={string}
+        - in: query
+          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query # ?supplierParty.assignedBy={string}
+        - in: query
+          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query # ?logisticsSupplierParty.value={string}
+        - in: query
+          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query # ?logisticsSupplierParty.assignedBy={string}
+        - in: query
+          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query # ?deliveryInstructionNumber={string}
+        - in: query
+          # ?deliveryInstructionNumber={string}
           name: deliveryInstructionNumber
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `deliveryInstructionNumber` (string)
-        - in: query # ?deliveryInstructionSequenceNumber={integer}
+        - in: query
+          # ?deliveryInstructionSequenceNumber={integer}
           name: deliveryInstructionSequenceNumber
           schema:
             type: integer
             minimum: 0
           required: false
           description: filter based on `deliveryInstructionNumber` (string) and `deliveryInstructionSequenceNumber` (integer)
-        - in: query # ?shipFromLocation.value={string}
+        - in: query
+          # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query # ?shipFromLocation.assignedBy={string}
+        - in: query
+          # ?shipFromLocation.assignedBy={string}
           name: shipFromLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query # ?shipToLocation.value={string}
+        - in: query
+          # ?shipToLocation.value={string}
           name: shipToLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
-        - in: query # ?shipToLocation.assignedBy={string}
+        - in: query
+          # ?shipToLocation.assignedBy={string}
           name: shipToLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfLogisticsDeliveryNotes'
-        '204':
+                $ref: "#/components/schemas/ListOfLogisticsDeliveryNotes"
+        "204":
           description: No Content
     # POST /logistics-delivery-notes
     # LogisticsDeliveryNoteById => None
@@ -322,14 +353,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticsDeliveryNoteById'
+              $ref: "#/components/schemas/LogisticsDeliveryNoteById"
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad Request
-
-  '/logistics-delivery-notes/{logisticsDeliveryNoteId}':
+  /logistics-delivery-notes/{logisticsDeliveryNoteId}:
     # GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
     # None => LogisticsDeliveryNoteById
     get:
@@ -344,15 +374,14 @@ paths:
           required: true
           description: UUID of the `logistics-delivery-note` to get
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LogisticsDeliveryNoteById'
-        '404':
+                $ref: "#/components/schemas/LogisticsDeliveryNoteById"
+        "404":
           description: Not Found
-    
     # PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
     # LogisticsDeliveryNoteById => None
     put:
@@ -372,14 +401,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticsDeliveryNoteById'
+              $ref: "#/components/schemas/LogisticsDeliveryNoteById"
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad Request
-
-  '/logistics-goods-receipts':
+  /logistics-goods-receipts:
     # POST /logistics-goods-receipts
     # LogisticsGoodsReceiptById => None
     post:
@@ -391,14 +419,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticsGoodsReceiptById'
+              $ref: "#/components/schemas/LogisticsGoodsReceiptById"
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad Request
-
-  '/logistics-goods-receipts/{logisticsGoodsReceiptId}':
+  /logistics-goods-receipts/{logisticsGoodsReceiptId}:
     # PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
     # LogisticsGoodsReceiptById => None
     put:
@@ -418,124 +445,138 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LogisticsGoodsReceiptById'
+              $ref: "#/components/schemas/LogisticsGoodsReceiptById"
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad Request
-
-  '/delivery-instructions':
+  /delivery-instructions:
     # GET /delivery-instructions
     # None => ListOfDeliveryInstructions
     get:
       summary: List `delivery-instructions`
       description: Get a paginated list of all `delivery-instructions`.
       parameters:
-        - in: query # ?offset={integer >= 0}
+        - in: query
+          # ?offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
           schema:
             type: integer
             minimum: 0
-        - in: query # ?limit={integer > 0}
+        - in: query
+          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
           schema:
             type: integer
             exclusiveMinimum: 0
-        - in: query # ?number={string}
+        - in: query
+          # ?number={string}
           name: number
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `number` (string)
-        - in: query # ?timestamp={ISO 8601 interval}
+        - in: query
+          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
-            type: string # ISO 8601
+            type: string
+            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
-        - in: query # ?isActive={true|false}
+        - in: query
+          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
-        - in: query # ?supplierParty.value={string}
+        - in: query
+          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query # ?supplierParty.assignedBy={string}
+        - in: query
+          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query # ?logisticsSupplierParty.value={string}
+        - in: query
+          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query # ?logisticsSupplierParty.assignedBy={string}
+        - in: query
+          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query # ?buyerParty.value={string}
+        - in: query
+          # ?buyerParty.value={string}
           name: buyerParty.value
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query # ?buyerParty.assignedBy={string}
+        - in: query
+          # ?buyerParty.assignedBy={string}
           name: buyerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query # ?shipFromLocation.value={string}
+        - in: query
+          # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query # ?shipFromLocation.assignedBy={string}
+        - in: query
+          # ?shipFromLocation.assignedBy={string}
           name: shipFromLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query # ?shipToLocation.value={string}
+        - in: query
+          # ?shipToLocation.value={string}
           name: shipToLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
-        - in: query # ?shipToLocation.assignedBy={string}
+        - in: query
+          # ?shipToLocation.assignedBy={string}
           name: shipToLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOfDeliveryInstructions'
-        '204':
+                $ref: "#/components/schemas/ListOfDeliveryInstructions"
+        "204":
           description: No Content
-
-  '/delivery-instructions/{deliveryInstructionId}':
+  /delivery-instructions/{deliveryInstructionId}:
     # GET /delivery-instructions/{deliveryInstructionId}
     # None => DeliveryInstructionById
     get:
@@ -550,20 +591,17 @@ paths:
           required: true
           description: UUID of the `delivery-instruction` to get.
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeliveryInstructionById'
-        '404':
+                $ref: "#/components/schemas/DeliveryInstructionById"
+        "404":
           description: Not Found
-
 components:
   schemas:
-
     # Re-usable schemas (3) in alphabetical order:
-
     PaginationLinks:
       type: object
       unevaluatedProperties: false
@@ -605,7 +643,6 @@ components:
             href:
               type: string
               format: uri-reference
-
     PaperAndBoard:
       type: object
       unevaluatedProperties: false
@@ -900,13 +937,11 @@ components:
           enum:
             - Long
             - Short
-
     Pulp:
       type: object
-      unevaluatedProperties: false # And empty object is good enough for now :-)
-
+      unevaluatedProperties: false
+      # And empty object is good enough for now :-)
     # API endpoint schemas (7) in order of appearance:
-
     ListOfSupplierOrders:
       type: object
       unevaluatedProperties: false
@@ -943,11 +978,11 @@ components:
               number:
                 type: string
                 minLength: 1
-                description: |-
-                  This is the identifier of the supplier order assigned by the supplier.
+                description: This is the identifier of the supplier order assigned by the supplier.
               timestamp:
                 type: string
-                format: date-time # UTC MUST be used!
+                format: date-time
+                # UTC MUST be used!
               isCancelled:
                 type: boolean
               isActive:
@@ -978,7 +1013,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -996,7 +1032,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -1013,10 +1050,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               supplierParty:
                 type: object
                 unevaluatedProperties: false
@@ -1043,7 +1080,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -1061,7 +1099,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -1078,10 +1117,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               logisticsSupplierParty:
                 type: object
                 unevaluatedProperties: false
@@ -1108,7 +1147,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -1126,7 +1166,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -1143,10 +1184,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               customerParty:
                 type: object
                 unevaluatedProperties: false
@@ -1173,7 +1214,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -1191,7 +1233,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -1208,10 +1251,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               buyerParty:
                 type: object
                 unevaluatedProperties: false
@@ -1238,7 +1281,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -1256,7 +1300,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -1273,16 +1318,15 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               lineItemCount:
                 type: integer
                 minimum: 1
         links:
-          $ref: '#/components/schemas/PaginationLinks'
-
+          $ref: "#/components/schemas/PaginationLinks"
     SupplierOrderById:
       type: object
       unevaluatedProperties: false
@@ -1305,11 +1349,11 @@ components:
         number:
           type: string
           minLength: 1
-          description: |-
-            This is the identifier of the supplier order assigned by the supplier.
+          description: This is the identifier of the supplier order assigned by the supplier.
         timestamp:
           type: string
-          format: date-time # UTC MUST be used!
+          format: date-time
+          # UTC MUST be used!
         isCancelled:
           type: boolean
         isActive:
@@ -1340,7 +1384,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -1358,7 +1403,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -1375,10 +1421,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         supplierParty:
           type: object
           unevaluatedProperties: false
@@ -1405,7 +1451,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -1423,7 +1470,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -1440,10 +1488,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         logisticsSupplierParty:
           type: object
           unevaluatedProperties: false
@@ -1470,7 +1518,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -1488,7 +1537,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -1505,10 +1555,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         customerParty:
           type: object
           unevaluatedProperties: false
@@ -1535,7 +1585,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -1553,7 +1604,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -1570,10 +1622,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         buyerParty:
           type: object
           unevaluatedProperties: false
@@ -1600,7 +1652,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -1618,7 +1671,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -1635,10 +1689,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         lineItems:
           type: array
           minItems: 1
@@ -1665,8 +1719,7 @@ components:
               purchaseOrderNumber:
                 type: string
                 minLength: 1
-                description: |-
-                  This is the identifier of the _purchase order_ as assigned by the _customer_.
+                description: This is the identifier of the _purchase order_ as assigned by the _customer_.
               purchaseOrderLineItemNumber:
                 type: integer
                 minimum: 0
@@ -1677,21 +1730,21 @@ components:
                 type: object
                 unevaluatedProperties: false
                 allOf:
-                - oneOf:
-                    - required:
-                        - gradeCode
-                    - required:
-                        - partNumber
-                - anyOf:
-                    - oneOf:
+                  - oneOf:
                       - required:
-                          - paperAndBoard
+                          - gradeCode
                       - required:
-                          - pulp
-                    - not:
-                        required:
-                          - paperAndBoard
-                          - pulp
+                          - partNumber
+                  - anyOf:
+                      - oneOf:
+                          - required:
+                              - paperAndBoard
+                          - required:
+                              - pulp
+                      - not:
+                          required:
+                            - paperAndBoard
+                            - pulp
                 properties:
                   gradeCode:
                     description: The product identifier assigned by the seller for a not-fully-defined product.
@@ -1731,9 +1784,9 @@ components:
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                   paperAndBoard:
-                    $ref: '#/components/schemas/PaperAndBoard'
+                    $ref: "#/components/schemas/PaperAndBoard"
                   pulp:
-                    $ref: '#/components/schemas/Pulp'
+                    $ref: "#/components/schemas/Pulp"
               customerArticleReference:
                 type: object
                 unevaluatedProperties: false
@@ -1783,7 +1836,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -1801,7 +1855,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -1818,10 +1873,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               deliveryLegs:
                 type: array
                 minItems: 1
@@ -1853,7 +1908,8 @@ components:
                         type:
                           type: string
                           enum:
-                            - BorderCrossing # ?
+                            - BorderCrossing
+                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -1893,7 +1949,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -1911,7 +1968,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -1928,10 +1986,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
@@ -1969,7 +2027,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -1987,7 +2046,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -2004,10 +2064,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     shipToLocation:
                       type: object
                       unevaluatedProperties: false
@@ -2018,7 +2078,8 @@ components:
                         type:
                           type: string
                           enum:
-                            - BorderCrossing # ?
+                            - BorderCrossing
+                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -2058,7 +2119,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -2076,7 +2138,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -2093,10 +2156,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
@@ -2134,7 +2197,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -2152,7 +2216,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -2169,10 +2234,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     mainCarrierParty:
                       type: object
                       unevaluatedProperties: false
@@ -2199,7 +2264,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -2217,7 +2283,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -2234,10 +2301,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     estimatedLoadingDateTime:
                       type: string
                       minLength: 4
@@ -2343,7 +2410,8 @@ components:
                                       - CassetteID
                                       # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
                                       # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
-                                      - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                      - ISO6346ContainerNumber
+                                      # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
                                       - LicencePlateNumber
                                       # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
@@ -2352,7 +2420,8 @@ components:
                                       - SealNumber
                                       # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
-                                      - VesselUnitID # Added
+                                      - VesselUnitID
+                                      # Added
                                       # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
@@ -2372,10 +2441,10 @@ components:
                                 type: object
                                 unevaluatedProperties: false
                                 required: []
-                                  # length is not required
-                                  # width is not required
-                                  # height is not required
-                                  # weight is not required
+                                # length is not required
+                                # width is not required
+                                # height is not required
+                                # weight is not required
                                 properties:
                                   length:
                                     type: object
@@ -2468,11 +2537,11 @@ components:
                                     - transportUnitIdentifier
                                   properties:
                                     transportUnitLevel:
-                                      $ref: '#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level'
+                                      $ref: "#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level"
                                     transportUnitType:
-                                      $ref: '#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type'
+                                      $ref: "#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type"
                                     transportUnitIdentifier:
-                                      $ref: '#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier'
+                                      $ref: "#/components/schemas/SupplierOrderById/properties/lineItems/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier"
               quantities:
                 type: array
                 minItems: 1
@@ -2549,7 +2618,6 @@ components:
                         - ThousandSquareFeet
                         - ThousandSquareInches
                         - Yard
-
     ListOfLogisticsDeliveryNotes:
       type: object
       unevaluatedProperties: false
@@ -2578,8 +2646,10 @@ components:
               # logisticsSupplierParty is not required
               # deliveryInstructionNumber
               # deliveryInstructionSequenceNumber
-              - shipFromLocation # of the **first** `.deliveryLeg[]`
-              - shipToLocation   # of the  **last** `.deliveryLeg[]`
+              - shipFromLocation
+              # of the **first** `.deliveryLeg[]`
+              - shipToLocation
+              # of the  **last** `.deliveryLeg[]`
               - lineItemCount
             properties:
               id:
@@ -2590,13 +2660,14 @@ components:
                 minLength: 1
               timestamp:
                 type: string
-                format: date-time # UTC MUST be used!
+                format: date-time
+                # UTC MUST be used!
               isCancelled:
                 type: boolean
               isActive:
                 type: boolean
               shipmentStatus:
-                type : string
+                type: string
                 enum:
                   - Arrived
                   - Departed
@@ -2629,7 +2700,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2647,7 +2719,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2664,10 +2737,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               logisticsSupplierParty:
                 type: object
                 unevaluatedProperties: false
@@ -2694,7 +2767,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2712,7 +2786,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2729,10 +2804,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               deliveryInstructionNumber:
                 type: string
                 minLength: 1
@@ -2750,7 +2825,8 @@ components:
                   type:
                     type: string
                     enum:
-                      - BorderCrossing # ?
+                      - BorderCrossing
+                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -2790,7 +2866,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2808,7 +2885,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2825,10 +2903,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
@@ -2851,7 +2929,8 @@ components:
                   type:
                     type: string
                     enum:
-                      - BorderCrossing # ?
+                      - BorderCrossing
+                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -2891,7 +2970,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2909,7 +2989,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2926,10 +3007,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
@@ -2945,8 +3026,7 @@ components:
                 type: integer
                 minimum: 1
         links:
-          $ref: '#/components/schemas/PaginationLinks'
-
+          $ref: "#/components/schemas/PaginationLinks"
     LogisticsDeliveryNoteById:
       type: object
       unevaluatedProperties: false
@@ -2972,13 +3052,14 @@ components:
           minLength: 1
         timestamp:
           type: string
-          format: date-time # UTC MUST be used!
+          format: date-time
+          # UTC MUST be used!
         isCancelled:
           type: boolean
         isActive:
           type: boolean
         shipmentStatus:
-          type : string
+          type: string
           enum:
             - Arrived
             - Departed
@@ -3011,7 +3092,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -3029,7 +3111,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -3046,10 +3129,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         logisticsSupplierParty:
           type: object
           unevaluatedProperties: false
@@ -3076,7 +3159,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -3094,7 +3178,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -3111,10 +3196,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
         deliveryInstructionNumber:
           type: string
           minLength: 1
@@ -3154,7 +3239,8 @@ components:
                   type:
                     type: string
                     enum:
-                      - BorderCrossing # ?
+                      - BorderCrossing
+                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -3194,7 +3280,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -3212,7 +3299,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -3229,10 +3317,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
@@ -3270,7 +3358,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -3288,7 +3377,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -3305,10 +3395,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               shipToLocation:
                 type: object
                 unevaluatedProperties: false
@@ -3319,7 +3409,8 @@ components:
                   type:
                     type: string
                     enum:
-                      - BorderCrossing # ?
+                      - BorderCrossing
+                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -3359,7 +3450,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -3377,7 +3469,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -3394,10 +3487,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                   coordinatesWgs84:
                     type: object
                     unevaluatedProperties: false
@@ -3435,7 +3528,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -3453,7 +3547,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -3470,10 +3565,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               mainCarrierParty:
                 type: object
                 unevaluatedProperties: false
@@ -3500,7 +3595,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -3518,7 +3614,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -3535,10 +3632,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               estimatedLoadingDateTime:
                 type: string
                 minLength: 4
@@ -3662,7 +3759,8 @@ components:
                                 - CassetteID
                                 # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
                                 # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
-                                - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                - ISO6346ContainerNumber
+                                # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
                                 - LicencePlateNumber
                                 # MachineID not applicable in Paper, Board and Pulp business
                                 - RailCarID
@@ -3671,7 +3769,8 @@ components:
                                 - SealNumber
                                 # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                 - TrailerID
-                                - VesselUnitID # Added
+                                - VesselUnitID
+                                # Added
                                 # WagonID (deprecated)
                                 # Other (deprecated)
                             value:
@@ -3691,10 +3790,10 @@ components:
                           type: object
                           unevaluatedProperties: false
                           required: []
-                            # length is not required
-                            # width is not required
-                            # height is not required
-                            # weight is not required
+                          # length is not required
+                          # width is not required
+                          # height is not required
+                          # weight is not required
                           properties:
                             length:
                               type: object
@@ -3787,11 +3886,11 @@ components:
                               - transportUnitIdentifier
                             properties:
                               transportUnitLevel:
-                                $ref: '#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level'
+                                $ref: "#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level"
                               transportUnitType:
-                                $ref: '#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type'
+                                $ref: "#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type"
                               transportUnitIdentifier:
-                                $ref: '#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier'
+                                $ref: "#/components/schemas/LogisticsDeliveryNoteById/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier"
         lineItems:
           type: array
           minItems: 1
@@ -3854,10 +3953,10 @@ components:
                           - partNumber
                   - anyOf:
                       - oneOf:
-                        - required:
-                            - paperAndBoard
-                        - required:
-                            - pulp
+                          - required:
+                              - paperAndBoard
+                          - required:
+                              - pulp
                       - not:
                           required:
                             - paperAndBoard
@@ -3901,9 +4000,9 @@ components:
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                   paperAndBoard:
-                    $ref: '#/components/schemas/PaperAndBoard'
+                    $ref: "#/components/schemas/PaperAndBoard"
                   pulp:
-                    $ref: '#/components/schemas/Pulp'
+                    $ref: "#/components/schemas/Pulp"
               customerArticleReference:
                 type: object
                 unevaluatedProperties: false
@@ -3943,7 +4042,7 @@ components:
                   properties:
                     # quantity and freeText existing in XML not added
                     # certification now limited to a percentage, in XML a measurement value.
-                    type: 
+                    type:
                       type: string
                       enum:
                         - Deforestation
@@ -3956,11 +4055,11 @@ components:
                         - PEFCControlledSources
                         - X%_PEFCcertified
                     assignedBy:
-                        type: string
-                        enum:
-                          - EU
-                          - FSC
-                          - PEFC
+                      type: string
+                      enum:
+                        - EU
+                        - FSC
+                        - PEFC
                     licenceNumber:
                       type: string
                       minLength: 1
@@ -4030,10 +4129,10 @@ components:
                   type: object
                   unevaluatedProperties: false
                   required: []
-                    # type is not required
-                    # code is not required
-                    # labelOrientation is not required
-                    # text is not required
+                  # type is not required
+                  # code is not required
+                  # labelOrientation is not required
+                  # text is not required
                   properties:
                     type:
                       type: string
@@ -4075,9 +4174,9 @@ components:
                   type: object
                   unevaluatedProperties: false
                   required: []
-                    # type is not required
-                    # code is not required
-                    # text is not required
+                  # type is not required
+                  # code is not required
+                  # text is not required
                   properties:
                     type:
                       type: string
@@ -4123,9 +4222,12 @@ components:
                         - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
                       type: string
                       enum:
-                        - Loaded  # when shipmentStatus = Loaded
-                        - Planned # when shipmentStatus = Planned
-                        - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
+                        - Loaded
+                        # when shipmentStatus = Loaded
+                        - Planned
+                        # when shipmentStatus = Planned
+                        - Shipped
+                        # when shipmentStatus = Arrived | Departed | Unloaded
                     type:
                       description: |
                         - **Area**: The area that is the length multiplied by the width of the item.
@@ -4266,9 +4368,12 @@ components:
                               - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
                             type: string
                             enum:
-                              - Loaded  # when shipmentStatus = Loaded
-                              - Planned # when shipmentStatus = Planned
-                              - Shipped # when shipmentStatus = Arrived | Departed | Unloaded
+                              - Loaded
+                              # when shipmentStatus = Loaded
+                              - Planned
+                              # when shipmentStatus = Planned
+                              - Shipped
+                              # when shipmentStatus = Arrived | Departed | Unloaded
                           type:
                             description: |
                               - **Area**: The area that is the length multiplied by the width of the item.
@@ -4308,7 +4413,8 @@ components:
                               - Meter
                               - MetricTon
                               - Millimeter
-                              - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
+                              - ReelPackage
+                              # Issue #137: Renamed from "Package" (2024-08-15)
                               - Piece
                               - Pound
                               - Ream
@@ -4324,7 +4430,6 @@ components:
                               - ThousandSquareFeet
                               - ThousandSquareInches
                               - Yard
-
     LogisticsGoodsReceiptById:
       type: object
       unevaluatedProperties: false
@@ -4351,7 +4456,8 @@ components:
           minLength: 1
         timestamp:
           type: string
-          format: date-time # UTC MUST be used!
+          format: date-time
+          # UTC MUST be used!
         isCancelled:
           type: boolean
         isActive:
@@ -4364,7 +4470,8 @@ components:
             - Rejected
             - WithDamage
             - WithoutDeliveryNote
-            - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
+            - WithoutInspection
+            # Changed compared to XML, formerly GoodsReceivedAsIs
             - WithVariance
             - WithVarianceAndDamage
         isComplete:
@@ -4375,7 +4482,8 @@ components:
           description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
         deliveryNoteTimestamp:
           type: string
-          format: date-time # UTC MUST be used!
+          format: date-time
+          # UTC MUST be used!
         arrivalDateTime:
           type: string
           minLength: 4
@@ -4406,7 +4514,8 @@ components:
             type:
               type: string
               enum:
-                - BorderCrossing # ?
+                - BorderCrossing
+                # ?
                 - CustomerFacility
                 - CustomerStock
                 # Laboratory
@@ -4446,7 +4555,8 @@ components:
             nameLines:
               type: array
               minItems: 1
-              maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+              maxItems: 3
+              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -4464,7 +4574,8 @@ components:
                 addressLines:
                   type: array
                   minItems: 1
-                  maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                  maxItems: 4
+                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -4481,10 +4592,10 @@ components:
                   type: string
                   minLength: 1
                 countryCode:
-                    type: string
-                    minLength: 2
-                    maxLength: 2
-                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
             coordinatesWgs84:
               type: object
               unevaluatedProperties: false
@@ -4518,12 +4629,14 @@ components:
               acceptance:
                 type: string
                 enum:
-                  - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
-                  - AsSpecified 
+                  - WithoutInspection
+                  # Changed compared to XML, formerly GoodsReceivedAsIs
+                  - AsSpecified
                   - Cancelled
                   - Rejected
                   - WithDamage
-                  - WithVariance # then, we give ALL the packages!
+                  - WithVariance
+                  # then, we give ALL the packages!
                   - WithVarianceAndDamage
               deliveryNoteLineItemNumber:
                 type: integer
@@ -4546,10 +4659,10 @@ components:
                           - partNumber
                   - anyOf:
                       - oneOf:
-                        - required:
-                            - paperAndBoard
-                        - required:
-                            - pulp
+                          - required:
+                              - paperAndBoard
+                          - required:
+                              - pulp
                       - not:
                           required:
                             - paperAndBoard
@@ -4593,9 +4706,9 @@ components:
                           maxLength: 2
                           description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                   paperAndBoard:
-                    $ref: '#/components/schemas/PaperAndBoard'
+                    $ref: "#/components/schemas/PaperAndBoard"
                   pulp:
-                    $ref: '#/components/schemas/Pulp'
+                    $ref: "#/components/schemas/Pulp"
               quantities:
                 type: array
                 minItems: 1
@@ -4798,7 +4911,8 @@ components:
                               - Meter
                               - MetricTon
                               - Millimeter
-                              - ReelPackage # Issue #137: Renamed form "Package" (2024-08-15)
+                              - ReelPackage
+                              # Issue #137: Renamed form "Package" (2024-08-15)
                               - Piece
                               - Pound
                               - Ream
@@ -4817,8 +4931,9 @@ components:
                     acceptance:
                       type: string
                       enum:
-                        - WithoutInspection # Changed compared to XML, formerly GoodsReceivedAsIs
-                        - AsSpecified 
+                        - WithoutInspection
+                        # Changed compared to XML, formerly GoodsReceivedAsIs
+                        - AsSpecified
                         - Cancelled
                         - Rejected
                         - WithDamage
@@ -4830,7 +4945,6 @@ components:
                         - DifferingWeights
                         - NotReceived
                         - ReceivedNotSpecified
-
     ListOfDeliveryInstructions:
       type: object
       unevaluatedProperties: false
@@ -4864,7 +4978,8 @@ components:
                 minLength: 1
               timestamp:
                 type: string
-                format: date-time # UTC MUST be used!
+                format: date-time
+                # UTC MUST be used!
               isCancelled:
                 type: boolean
               isActive:
@@ -4873,8 +4988,7 @@ components:
                 type: integer
                 minimum: 1
         links:
-          $ref: '#/components/schemas/PaginationLinks'
-
+          $ref: "#/components/schemas/PaginationLinks"
     DeliveryInstructionById:
       type: object
       unevaluatedProperties: false
@@ -4894,7 +5008,8 @@ components:
           minLength: 1
         timestamp:
           type: string
-          format: date-time # UTC MUST be used!
+          format: date-time
+          # UTC MUST be used!
         isCancelled:
           type: boolean
         isActive:
@@ -4945,7 +5060,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -4963,7 +5079,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -4980,10 +5097,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               logisticsSupplierParty:
                 type: object
                 unevaluatedProperties: false
@@ -5010,7 +5127,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -5028,7 +5146,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -5045,10 +5164,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               buyerParty:
                 type: object
                 unevaluatedProperties: false
@@ -5075,7 +5194,8 @@ components:
                   nameLines:
                     type: array
                     minItems: 1
-                    maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                    maxItems: 3
+                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -5093,7 +5213,8 @@ components:
                       addressLines:
                         type: array
                         minItems: 1
-                        maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                        maxItems: 4
+                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -5110,10 +5231,10 @@ components:
                         type: string
                         minLength: 1
                       countryCode:
-                          type: string
-                          minLength: 2
-                          maxLength: 2
-                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
               deliveryLegs:
                 type: array
                 minItems: 1
@@ -5147,7 +5268,8 @@ components:
                         type:
                           type: string
                           enum:
-                            - BorderCrossing # ?
+                            - BorderCrossing
+                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -5187,7 +5309,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -5205,7 +5328,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -5222,10 +5346,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
@@ -5263,7 +5387,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -5281,7 +5406,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -5298,10 +5424,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     shipToLocation:
                       type: object
                       unevaluatedProperties: false
@@ -5312,7 +5438,8 @@ components:
                         type:
                           type: string
                           enum:
-                            - BorderCrossing # ?
+                            - BorderCrossing
+                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -5352,7 +5479,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -5370,7 +5498,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -5387,10 +5516,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                         coordinatesWgs84:
                           type: object
                           unevaluatedProperties: false
@@ -5428,7 +5557,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -5446,7 +5576,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -5463,10 +5594,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     termsOfDelivery:
                       type: object
                       unevaluatedProperties: false
@@ -5504,22 +5635,38 @@ components:
                                 - **FOB**: FREE ON BOARD (... named port of shipment).
                               type: string
                               enum:
-                                - CFR # COST AND FREIGHT (... named port of destination)
-                                - CIF # COST, INSURANCE AND FREIGHT (... named port of destination).
-                                - CIP # CARRIAGE AND INSURANCE PAID TO (... named place of destination).
-                                - CPT # CARRIAGE PAID TO (... named place of destination).
-                                - DAF # DELIVERED AT FRONTIER (... named place).
-                                - DAP # DELIVERED AT PLACE (... named place of destination).
-                                - DAT # DELIVERED AT TERMINAL (... named place of destination).
-                                - DDP # DELIVERED DUTY PAID (... named place of destination).
-                                - DDU # DELIVERED DUTY UNPAID (... named place of destination).
-                                - DEQ # DELIVERED EX QUAY (... named port of destination).
-                                - DES # DELIVERED EX SHIP (... named port of destination).
-                                - DPU # DELIVERED AT PLACE UNLOADED (... named place of destination).
-                                - EXW # EX WORKS (... named place).
-                                - FAS # FREE ALONGSIDE SHIP (... named port of shipment).
-                                - FCA # FREE CARRIER (... named place).
-                                - FOB # FREE ON BOARD (... named port of shipment).
+                                - CFR
+                                # COST AND FREIGHT (... named port of destination)
+                                - CIF
+                                # COST, INSURANCE AND FREIGHT (... named port of destination).
+                                - CIP
+                                # CARRIAGE AND INSURANCE PAID TO (... named place of destination).
+                                - CPT
+                                # CARRIAGE PAID TO (... named place of destination).
+                                - DAF
+                                # DELIVERED AT FRONTIER (... named place).
+                                - DAP
+                                # DELIVERED AT PLACE (... named place of destination).
+                                - DAT
+                                # DELIVERED AT TERMINAL (... named place of destination).
+                                - DDP
+                                # DELIVERED DUTY PAID (... named place of destination).
+                                - DDU
+                                # DELIVERED DUTY UNPAID (... named place of destination).
+                                - DEQ
+                                # DELIVERED EX QUAY (... named port of destination).
+                                - DES
+                                # DELIVERED EX SHIP (... named port of destination).
+                                - DPU
+                                # DELIVERED AT PLACE UNLOADED (... named place of destination).
+                                - EXW
+                                # EX WORKS (... named place).
+                                - FAS
+                                # FREE ALONGSIDE SHIP (... named port of shipment).
+                                - FCA
+                                # FREE CARRIER (... named place).
+                                - FOB
+                                # FREE ON BOARD (... named port of shipment).
                             version:
                               description: |
                                 - **1980**: The incoterms definitions provided in 1980.
@@ -5535,8 +5682,7 @@ components:
                                 - "2010"
                                 - "2020"
                     mainCarrierParty:
-                      description: |-
-                        The _main carrier_ is the party that is **contracted** to handle the transport.
+                      description: The _main carrier_ is the party that is **contracted** to handle the transport.
                       type: object
                       unevaluatedProperties: false
                       required:
@@ -5562,7 +5708,8 @@ components:
                         nameLines:
                           type: array
                           minItems: 1
-                          maxItems: 3 # See <https://github.com/papinet/papiNet-API/issues/94>
+                          maxItems: 3
+                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -5580,7 +5727,8 @@ components:
                             addressLines:
                               type: array
                               minItems: 1
-                              maxItems: 4 # See <https://github.com/papinet/papiNet-API/issues/94>
+                              maxItems: 4
+                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -5597,10 +5745,10 @@ components:
                               type: string
                               minLength: 1
                             countryCode:
-                                type: string
-                                minLength: 2
-                                maxLength: 2
-                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
                     mainCarrierReferenceNumber:
                       type: string
                       minLength: 1
@@ -5709,7 +5857,8 @@ components:
                                       - CassetteID
                                       # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
                                       # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
-                                      - ISO6346ContainerNumber # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                      - ISO6346ContainerNumber
+                                      # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
                                       - LicencePlateNumber
                                       # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
@@ -5718,7 +5867,8 @@ components:
                                       - SealNumber
                                       # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
-                                      - VesselUnitID # Added
+                                      - VesselUnitID
+                                      # Added
                                       # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
@@ -5738,10 +5888,10 @@ components:
                                 type: object
                                 unevaluatedProperties: false
                                 required: []
-                                  # length is not required
-                                  # width is not required
-                                  # height is not required
-                                  # weight is not required
+                                # length is not required
+                                # width is not required
+                                # height is not required
+                                # weight is not required
                                 properties:
                                   length:
                                     type: object
@@ -5834,11 +5984,11 @@ components:
                                     - transportUnitIdentifier
                                   properties:
                                     transportUnitLevel:
-                                      $ref: '#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level'
+                                      $ref: "#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/level"
                                     transportUnitType:
-                                      $ref: '#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type'
+                                      $ref: "#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/type"
                                     transportUnitIdentifier:
-                                      $ref: '#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier'
+                                      $ref: "#/components/schemas/DeliveryInstructionById/properties/sequences/items/properties/deliveryLegs/items/properties/transport/properties/units/items/properties/identifier"
               lineItems:
                 type: array
                 minItems: 1
@@ -5889,10 +6039,10 @@ components:
                                 - partNumber
                         - anyOf:
                             - oneOf:
-                              - required:
-                                  - paperAndBoard
-                              - required:
-                                  - pulp
+                                - required:
+                                    - paperAndBoard
+                                - required:
+                                    - pulp
                             - not:
                                 required:
                                   - paperAndBoard
@@ -5936,9 +6086,9 @@ components:
                                 maxLength: 2
                                 description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
                         paperAndBoard:
-                          $ref: '#/components/schemas/PaperAndBoard'
+                          $ref: "#/components/schemas/PaperAndBoard"
                         pulp:
-                          $ref: '#/components/schemas/Pulp'
+                          $ref: "#/components/schemas/Pulp"
                     customerArticleReference:
                       type: object
                       unevaluatedProperties: false
@@ -5978,7 +6128,7 @@ components:
                         properties:
                           # quantity and freeText existing in XML not added
                           # certification now limited to a percentage, in XML a measurement value.
-                          type: 
+                          type:
                             type: string
                             enum:
                               - Deforestation
@@ -5991,11 +6141,11 @@ components:
                               - PEFCControlledSources
                               - X%_PEFCcertified
                           assignedBy:
-                              type: string
-                              enum:
-                                - EU
-                                - FSC
-                                - PEFC
+                            type: string
+                            enum:
+                              - EU
+                              - FSC
+                              - PEFC
                           licenceNumber:
                             type: string
                             minLength: 1
@@ -6065,10 +6215,10 @@ components:
                         type: object
                         unevaluatedProperties: false
                         required: []
-                          # type is not required
-                          # code is not required
-                          # labelOrientation is not required
-                          # text is not required
+                        # type is not required
+                        # code is not required
+                        # labelOrientation is not required
+                        # text is not required
                         properties:
                           type:
                             type: string
@@ -6110,9 +6260,9 @@ components:
                         type: object
                         unevaluatedProperties: false
                         required: []
-                          # type is not required
-                          # code is not required
-                          # text is not required
+                        # type is not required
+                        # code is not required
+                        # text is not required
                         properties:
                           type:
                             type: string
@@ -6335,7 +6485,8 @@ components:
                                     - Meter
                                     - MetricTon
                                     - Millimeter
-                                    - ReelPackage # Issue #137: Renamed from "Package" (2024-08-15)
+                                    - ReelPackage
+                                    # Issue #137: Renamed from "Package" (2024-08-15)
                                     - Piece
                                     - Pound
                                     - Ream
