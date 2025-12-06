@@ -1,4 +1,4 @@
-# Copyright 2000-2024 Papinet SNC ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
+# Copyright 2000 - 2025 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
 openapi: 3.1.0
 info:
   title: papiNet API
@@ -9,12 +9,12 @@ info:
   license:
     name: Apache 2.0
     url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
-  version: 3.0.0
+  version: 4.0.0
 servers:
-  - url: http://localhost:3030
+  - url: http://localhost:3031
     description: papiNet Mock Server
 paths:
-  ## LOGISTICS (10)
+  ## LOGISTICS (12)
   #  GET /supplier-orders
   #  GET /supplier-orders/{supplierOrderId}
   #  GET /logistics-delivery-notes
