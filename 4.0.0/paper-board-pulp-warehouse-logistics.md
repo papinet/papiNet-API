@@ -3642,8 +3642,10 @@ In step 10 of scenario B the _logistics supplier_ updates the loading of the del
 
 <!-- request-file: ../3.0.0/mock/BW10.put-logistic-delivery-notes-logisticDeliveryNoteId.request.json -->
 ```text
-curl -request 'POST' \
-  'http://localhost:3030/logistics-delivery-notes' \
+curl -request 'PUT' \
+  --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
+  --header 'X-Provider-State: Interaction_10_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
   --data '{
