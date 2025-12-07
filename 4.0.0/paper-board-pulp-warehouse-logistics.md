@@ -157,8 +157,7 @@ curl --request GET \
   --url 'http://localhost:3030/supplier-orders?isActive=true' \
   --header 'X-Provider-State: Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -193,8 +192,7 @@ curl --request GET \
   --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
   --header 'X-Provider-State: Interaction_2_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -388,8 +386,7 @@ curl --request GET \
   --url 'http://localhost:3030/logistics-delivery-notes?shipmentStatus=Departed' \
   --header 'X-Provider-State: Interaction_3_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -459,8 +456,7 @@ curl --request GET \
   --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_4_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -1063,7 +1059,8 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 curl --request POST \
   -url 'http://localhost:3030/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
-  --header 'Content-Type: application/json'
+  --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
   --data '{ \
     "id": "3aa556bb-7198-4107-8dd9-450845eb365a", \
     "number": "GRIWMS-20240506-090833", \
@@ -1088,7 +1085,7 @@ curl --request GET \
   --url 'http://localhost:3030/delivery-instructions?isActive=true' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -1119,7 +1116,7 @@ curl --request GET \
   --url 'http://localhost:3030/delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -1287,6 +1284,7 @@ curl --request 'POST' \
   --header 'X-Provider-State: Interaction_!_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
   --data '{
     "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
     "number": "LDN6789",
@@ -1830,8 +1828,7 @@ curl --request GET \
   --url 'http://localhost:3030/supplier-orders?isActive=true' \
   --header 'X-Provider-State: Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -1866,8 +1863,7 @@ curl --request GET \
   --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
   --header 'X-Provider-State: Interaction_2_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -2061,8 +2057,7 @@ curl --request GET \
   --url 'http://localhost:3030/logistics-delivery-notes?shipmentStatus=Departed' \
   --header 'X-Provider-State: Interaction_3_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -2132,8 +2127,7 @@ curl --request GET \
   --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_4_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -2735,8 +2729,8 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 ```text
 curl --request POST \
   --url 'http://localhost:3030/logistics-goods-receipts' \
-  --header 'accept: */*' \
   --header 'Content-Type: application/json' \
+   --header 'Accept: application/json' \
   --data '{
     "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
     "number": "GRIWMS-20240506-090833",
@@ -2760,8 +2754,8 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 ```text
 curl --request PUT \
   --url'http://localhost:3030/logistics-goods-receipts' \
-  --header 'accept: */*' \
   --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
   --data '{
     "id": "3aa556bb-7198-4107-8dd9-450845eb365b",
     "number": "GRIWMS-20240506-090833",
@@ -2978,8 +2972,7 @@ curl --request GET \
   --url 'http://localhost:3030/delivery-instructions?isActive=true' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -3010,8 +3003,7 @@ curl --request GET \
   --url 'http://localhost:3030/delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_8_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
-  --header 'Host: papinet.papinet.io' \
-  --header 'Content-Type: application/json'
+  --header 'Accept: application/json'
 ```
 
 If all goes well, the _logistics supplier_ will receive a response like this:
@@ -3176,8 +3168,8 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 ```text
 curl --request 'POST' \
   --url 'http://localhost:3030/logistics-delivery-notes' \
-  --header 'accept: */*' \
   --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
   --data '{
     "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
     "number": "LDN6789",
@@ -3652,8 +3644,8 @@ In step 10 of scenario B the _logistics supplier_ updates the loading of the del
 ```text
 curl -request 'POST' \
   'http://localhost:3030/logistics-delivery-notes' \
-  --header 'accept: */*' \
   --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
   --data '{
     "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
     "number": "LDN6789",
