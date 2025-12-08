@@ -1,2236 +1,3987 @@
 {
-  "consumer": {
-    "name": "Logistics Supplier"
-  },
-  "provider": {
-    "name": "Supplier"
-  },
-  "interactions": [
-    {
-      "providerState": "Interaction_0_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 0 of Scenario A (Authentication)",
-      "request": {
-        "method": "POST",
-        "path": "/tokens"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
-          "token_type": "bearer",
-          "expires_in": 86400
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_1_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 1 of Scenario A (Get all active orders)",
-      "request": {
-        "method": "GET",
-        "path": "/supplier-orders",
-        "query": "isActive=true"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "count": 1,
-          "items": [
-            {
-              "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-              "number": "ABCD-476408",
-              "timestamp": "2024-05-16T19:32:59.962Z",
-              "isCancelled": false,
-              "isActive": true,
-              "lineItemCount": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_2_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 2 of Scenario A",
-      "request": {
-        "method": "GET",
-        "path": "/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          "number": "ABCD-476408",
-          "timestamp": "2024-05-16T19:32:59.962Z",
-          "isCancelled": false,
-          "isActive": true,
-          "supplierParty": {
-            "identifiers": [
-              {
-                "value": "MILL",
-                "assignedBy": "Supplier"
-              }
-            ],
-            "nameLines": [
-              "MillName"
-            ],
-            "address": {
-              "addressLines": [
-                "Mill Road 1"
-              ],
-              "city": "CITY",
-              "postalCode": "12345",
-              "countryCode": "SE"
-            }
-          },
-          "customerParty": {
-            "identifiers": [
-              {
-                "value": "CUSTOMER",
-                "assignedBy": "Supplier"
-              }
-            ],
-            "nameLines": [
-              "CustomerName"
-            ],
-            "address": {
-              "addressLines": [
-                "Customer Road 1"
-              ],
-              "city": "CITY",
-              "postalCode": "23456",
-              "countryCode": "BE"
-            }
-          },
-          "buyerParty": {
-            "identifiers": [
-              {
-                "value": "CUSTOMER",
-                "assignedBy": "Supplier"
-              }
-            ],
-            "nameLines": [
-              "CustomerName"
-            ],
-            "address": {
-              "addressLines": [
-                "Customer Road 1"
-              ],
-              "city": "CITY",
-              "postalCode": "23456",
-              "countryCode": "BE"
-            }
-          },
-          "lineItems": [
-            {
-              "number": 1,
-              "isCancelled": false,
-              "purchaseOrderNumber": "924942493",
-              "purchaseOrderLineItemNumber": 1,
-              "sellerProduct": {
-                "gradeCode": "string",
-                "brandName": "string",
-                "paperAndBoard": {
-                  "basisWeight": {
-                    "value": 550,
-                    "uom": "GramsPerSquareMeter"
-                  },
-                  "bulk": {
-                    "value": 1,
-                    "uom": "CubicCentimeterPerGram"
-                  },
-                  "caliper": {
-                    "value": 1,
-                    "uom": "Micron"
-                  },
-                  "format": "Reel",
-                  "width": {
-                    "value": 875,
-                    "uom": "Millimeter"
-                  },
-                  "reelDiameter": {
-                    "value": 1500,
-                    "uom": "Millimeter"
-                  }
-                }
-              },
-              "millParty": {
-                "identifiers": [
-                  {
-                    "value": "MILL",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                    "MillName"
-                ],
-                "address": {
-                    "addressLines": [
-                    "Mill Road 1"
-                    ],
-                    "city": "CITY",
-                    "postalCode": "12345",
-                    "countryCode": "SE"
-                }
-              },
-              "deliveryLegs": [
-                {
-                  "number": 1,
-                  "shipFromLocation": {
-                    "type": "Mill",
-                    "identifiers": [
-                      {
-                        "value": "MILL",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "MillName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Mill Road 1"
-                      ],
-                      "city": "CITY",
-                      "postalCode": "12345",
-                      "countryCode": "SE"
-                    }
-                  },
-                  "shipToLocation": {
-                    "type": "Terminal",
-                    "identifiers": [
-                      {
-                        "value": "TERM",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "TermName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Term Road 1"
-                      ],
-                      "city": "CITY2",
-                      "postalCode": "34567",
-                      "countryCode": "SE"
-                    }
-                  },
-                  "estimatedLoadingDateTime": "2024-05-16T12:00",
-                  "estimatedArrivalDateTime": "2024-05-18T17:00",
-                  "transport": {
-                    "modeType": "Road"
-                  }
-                }
-              ],
-              "quantities": [
-                {
-                  "context": "Confirmed",
-                  "type": "Count",
-                  "value": 10,
-                  "uom": "Reel"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_3_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 3 of Scenario A",
-      "request": {
-        "method": "GET",
-        "path": "/delivery-notes",
-        "query": "shipmentStatus=Departed"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "count": 1,
-          "items": [
-            {
-              "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
-              "number": "LDN12345",
-              "timestamp": "2024-05-16T11:46:39Z",
-              "isCancelled": false,
-              "isActive": true,
-              "shipmentStatus": "Departed",
-              "shipFromLocation": {
-                "identifiers": [
-                  {
-                    "value": "MILL",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "MillName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
-                }
-              },
-              "shipToLocation": {
-                "identifiers": [
-                  {
-                    "value": "TERM",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "TermName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Term Road 1"
-                  ],
-                  "city": "CITY2",
-                  "postalCode": "34567",
-                  "countryCode": "SE"
-                }
-              },
-              "lineItemCount": 1
-            }
-          ]
-        }
-
-      }
-    },
-    {
-      "providerState": "Interaction_4_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 4 of Scenario A",
-      "request": {
-        "method": "GET",
-        "path": "/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
-          "number": "LDN12345",
-          "timestamp": "2024-05-16T11:46:39Z",
-          "isCancelled": false,
-          "isActive": true,
-          "shipmentStatus": "Departed",
-          "deliveryLegs": [
-            {
-              "number": 1,
-              "shipFromLocation": {
-                "identifiers": [
-                  {
-                    "value": "MILL",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "MillName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
-                }
-              },
-              "shipToLocation": {
-                "identifiers": [
-                  {
-                    "value": "TERM",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "TermName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Term Road 1"
-                  ],
-                  "city": "CITY2",
-                  "postalCode": "34567",
-                  "countryCode": "SE"
-                }
-              },
-              "mainCarrierParty": {
-                "identifiers": [
-                  {
-                    "value": "CARRIER",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "Transport Company 1"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Transport Road 1",
-                    "Box 12"
-                  ],
-                  "city": "CITY3",
-                  "postalCode": "45678",
-                  "countryCode": "SE"
-                }
-              },
-              "actualLoadingDateTime": "2024-05-16T12:45:00",
-              "estimatedArrivalDateTime": "2024-05-18T12:45",
-              "transport": {
-                "modeType": "Road",
-                "units": [
-                  {
-                    "type": "Trailer",
-                    "identifier": {
-                      "type": "LicencePlateNumber",
-                      "value": "ABC123",
-                      "countryCode": "SE"
-                    }
-                  }
-                ]
-              }
-            }
-          ],
-          "lineItems": [
-            {
-              "number": 1,
-              "supplierOrderNumber": "ABCD-476408",
-              "supplierOrderLineItemNumber": 1,
-              "customerReferenceNumber": "924942493",
-              "sellerProduct": {
-                "gradeCode": "string",
-                "brandName": "string",
-                "classifications": [
-                  {
-                    "type": "ExportHarmonisedSystemCode",
-                    "value": "4505 94 80",
-                    "countryCode": "SE"
-                  }
-                ],
-                "paperAndBoard": {
-                  "basisWeight": {
-                    "value": 550,
-                    "uom": "GramsPerSquareMeter"
-                  },
-                  "bulk": {
-                    "value": 1,
-                    "uom": "CubicCentimeterPerGram"
-                  },
-                  "caliper": {
-                    "value": 1,
-                    "uom": "Micron"
-                  },
-                  "format": "Reel",
-                  "width": {
-                    "value": 875,
-                    "uom": "Millimeter"
-                  },
-                  "reelDiameter": {
-                    "value": 1500,
-                    "uom": "Millimeter"
-                  }
-                }
-              },
-              "loadingCharacteristics": [
-                {
-                  "type": "Standing",
-                  "labelOrientation": "BackEndSide"
-                }
-              ],
-              "unloadingCharacteristics": [
-                {
-                  "text": "unloading from back of vehicle"
-                }
-              ],
-              "quantities": [
-                {
-                  "context": "Shipped",
-                  "type": "Count",
-                  "value": 10,
-                  "uom": "ReelPackage"
-                },
-                {
-                  "context": "Shipped",
-                  "type": "GrossWeight",
-                  "value": 20000,
-                  "uom": "Kilogram"
-                }
-              ],
-              "packages": [
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780100131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00001"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780200131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00002"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780300131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00003"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780400131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00004"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780500131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00005"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780600131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00006"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780700131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00007"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780800131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00008"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780900131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00009"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14781000131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00010"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_5_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 5 of Scenario A"
-    },
-    {
-      "providerState": "Interaction_6_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 6 of Scenario A",
-      "request": {
-        "method": "GET",
-        "path": "/delivery-instructions",
-        "query": "isActive=true"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "count": 1,
-          "items": [
-            {
-              "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
-              "number": "123456SE",
-              "timestamp": "2024-05-19T11:47:41Z",
-              "isCancelled": false,
-              "isActive": true,
-              "sequenceCount": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_7_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 7 of Scenario A",
-      "request": {
-        "method": "GET",
-        "path": "/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
-          "number": "123456SE",
-          "timestamp": "2024-05-19T11:47:41Z",
-          "isCancelled": false,
-          "isActive": true,
-          "sequences": [
-            {
-              "number": 1,
-              "isCancelled": false,
-              "supplierParty": {
-                "identifiers": [
-                  {
-                    "value": "AB",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "Company",
-                  "MillName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
-                }
-              },
-              "buyerParty": {
-                "identifiers": [
-                  {
-                    "value": "CUSTOMER",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "CustomerName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Customer Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "23456",
-                  "countryCode": "BE"
-                }
-              },
-              "deliveryLegs": [
-                {
-                  "number": 1,
-                  "shipFromLocation": {
-                    "identifiers": [
-                      {
-                        "value": "TERM",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "TermName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Term Road 1"
-                      ],
-                      "city": "CITY 2",
-                      "postalCode": "34567",
-                      "countryCode": "SE"
-                    }
-                  },
-                  "shipToLocation": {
-                    "identifiers": [
-                      {
-                        "value": "DEST1",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "CustomerName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Customer Road 1"
-                      ],
-                      "city": "CITY",
-                      "postalCode": "23456",
-                      "countryCode": "BE"
-                    }
-                  },
-                  "termsOfDelivery": {
-                    "incoterms": {
-                      "location": "DEST1",
-                      "code": "DAP",
-                      "version": "2020"
-                    }
-                  },
-                  "mainCarrierParty": {
-                    "identifiers": [
-                      {
-                        "value": "TERM",
-                        "assignedBy": "Supplier"
-                      }
-                    ]
-                  },
-                  "requestedArrivalDateTime": "2024-05-24T10:00",
-                  "transport": {
-                    "modeType": "Road"
-                  }
-                }
-              ],
-              "lineItems": [
-                {
-                  "number": 1,
-                  "supplierOrderNumber": "ABCD-476408",
-                  "supplierOrderLineItemNumber": 1,
-                  "callOffNumber": "123456SE",
-                  "callOffLineItemNumber": 1,
-                  "quantities": [
-                    {
-                      "context": "Instructed",
-                      "type": "Count",
-                      "value": 10,
-                      "uom": "ReelPackage"
-                    },
-                    {
-                      "context": "Instructed",
-                      "type": "GrossWeight",
-                      "value": 20000,
-                      "uom": "Kilogram"
-                    }
-                  ],
-                  "loadingCharacteristics": [
-                    {
-                      "type": "Standing",
-                      "labelOrientation": "BackEndSide"
-                    }
-                  ],
-                  "unloadingCharacteristics": [
-                    {
-                      "text": "GBUNREAR*unloading from back of vehicle Book in - 72h before delivery"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_8_of_Scenario_A",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 8 of Scenario A"
-    },
-    {
-      "providerState": "Interaction_0_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 0 of Scenario B (Authentication)",
-      "request": {
-        "method": "POST",
-        "path": "/tokens"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
-          "token_type": "bearer",
-          "expires_in": 86400
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_1_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 1 of Scenario B (Get all active orders)",
-      "request": {
-        "method": "GET",
-        "path": "/supplier-orders",
-        "query": "isActive=true"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "count": 1,
-          "items": [
-            {
-              "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-              "number": "ABCD-476408",
-              "timestamp": "2024-05-16T19:32:59.962Z",
-              "isCancelled": false,
-              "isActive": true,
-              "lineItemCount": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_2_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 2 of Scenario B",
-      "request": {
-        "method": "GET",
-        "path": "/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          "number": "ABCD-476408",
-          "timestamp": "2024-05-16T19:32:59.962Z",
-          "isCancelled": false,
-          "isActive": true,
-          "supplierParty": {
-            "identifiers": [
-              {
-                "value": "MILL",
-                "assignedBy": "Supplier"
-              }
-            ],
-            "nameLines": [
-              "MillName"
-            ],
-            "address": {
-              "addressLines": [
-                "Mill Road 1"
-              ],
-              "city": "CITY",
-              "postalCode": "12345",
-              "countryCode": "SE"
-            }
-          },
-          "customerParty": {
-            "identifiers": [
-              {
-                "value": "CUSTOMER",
-                "assignedBy": "Supplier"
-              }
-            ],
-            "nameLines": [
-              "CustomerName"
-            ],
-            "address": {
-              "addressLines": [
-                "Customer Road 1"
-              ],
-              "city": "CITY",
-              "postalCode": "23456",
-              "countryCode": "BE"
-            }
-          },
-          "buyerParty": {
-            "identifiers": [
-              {
-                "value": "CUSTOMER",
-                "assignedBy": "Supplier"
-              }
-            ],
-            "nameLines": [
-              "CustomerName"
-            ],
-            "address": {
-              "addressLines": [
-                "Customer Road 1"
-              ],
-              "city": "CITY",
-              "postalCode": "23456",
-              "countryCode": "BE"
-            }
-          },
-          "lineItems": [
-            {
-              "number": 1,
-              "isCancelled": false,
-              "purchaseOrderNumber": "924942493",
-              "purchaseOrderLineItemNumber": 1,
-              "sellerProduct": {
-                "gradeCode": "string",
-                "brandName": "string",
-                "paperAndBoard": {
-                  "basisWeight": {
-                    "value": 550,
-                    "uom": "GramsPerSquareMeter"
-                  },
-                  "bulk": {
-                    "value": 1,
-                    "uom": "CubicCentimeterPerGram"
-                  },
-                  "caliper": {
-                    "value": 1,
-                    "uom": "Micron"
-                  },
-                  "format": "Reel",
-                  "width": {
-                    "value": 875,
-                    "uom": "Millimeter"
-                  },
-                  "reelDiameter": {
-                    "value": 1500,
-                    "uom": "Millimeter"
-                  }
-                }
-              },
-              "millParty": {
-                "identifiers": [
-                  {
-                    "value": "MILL",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                    "MillName"
-                ],
-                "address": {
-                    "addressLines": [
-                    "Mill Road 1"
-                    ],
-                    "city": "CITY",
-                    "postalCode": "12345",
-                    "countryCode": "SE"
-                }
-              },
-              "deliveryLegs": [
-                {
-                  "number": 1,
-                  "shipFromLocation": {
-                    "type": "Mill",
-                    "identifiers": [
-                      {
-                        "value": "MILL",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "MillName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Mill Road 1"
-                      ],
-                      "city": "CITY",
-                      "postalCode": "12345",
-                      "countryCode": "SE"
-                    }
-                  },
-                  "shipToLocation": {
-                    "type": "Terminal",
-                    "identifiers": [
-                      {
-                        "value": "TERM",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "TermName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Term Road 1"
-                      ],
-                      "city": "CITY2",
-                      "postalCode": "34567",
-                      "countryCode": "SE"
-                    }
-                  },
-                  "estimatedLoadingDateTime": "2024-05-16T12:00",
-                  "estimatedArrivalDateTime": "2024-05-18T17:00",
-                  "transport": {
-                    "modeType": "Road"
-                  }
-                }
-              ],
-              "quantities": [
-                {
-                  "context": "Confirmed",
-                  "type": "Count",
-                  "value": 10,
-                  "uom": "Reel"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_3_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 3 of Scenario B",
-      "request": {
-        "method": "GET",
-        "path": "/delivery-notes",
-        "query": "shipmentStatus=Departed"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "count": 1,
-          "items": [
-            {
-              "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
-              "number": "LDN12345",
-              "timestamp": "2024-05-16T11:46:39Z",
-              "isCancelled": false,
-              "isActive": true,
-              "shipmentStatus": "Departed",
-              "shipFromLocation": {
-                "identifiers": [
-                  {
-                    "value": "MILL",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "MillName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
-                }
-              },
-              "shipToLocation": {
-                "identifiers": [
-                  {
-                    "value": "TERM",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "TermName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Term Road 1"
-                  ],
-                  "city": "CITY2",
-                  "postalCode": "34567",
-                  "countryCode": "SE"
-                }
-              },
-              "lineItemCount": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_4_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 4 of Scenario B",
-      "request": {
-        "method": "GET",
-        "path": "/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
-          "number": "LDN12345",
-          "timestamp": "2024-05-16T11:46:39Z",
-          "isCancelled": false,
-          "isActive": true,
-          "shipmentStatus": "Departed",
-          "deliveryLegs": [
-            {
-              "number": 1,
-              "shipFromLocation": {
-                "identifiers": [
-                  {
-                    "value": "MILL",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "MillName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
-                }
-              },
-              "shipToLocation": {
-                "identifiers": [
-                  {
-                    "value": "TERM",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "TermName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Term Road 1"
-                  ],
-                  "city": "CITY2",
-                  "postalCode": "34567",
-                  "countryCode": "SE"
-                }
-              },
-              "mainCarrierParty": {
-                "identifiers": [
-                  {
-                    "value": "CARRIER",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "Transport Company 1"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Transport Road 1",
-                    "Box 12"
-                  ],
-                  "city": "CITY3",
-                  "postalCode": "45678",
-                  "countryCode": "SE"
-                }
-              },
-              "actualLoadingDateTime": "2024-05-16T12:45:00",
-              "estimatedArrivalDateTime": "2024-05-18T12:45",
-              "transport": {
-                "modeType": "Road",
-                "units": [
-                  {
-                    "type": "Trailer",
-                    "identifier": {
-                      "type": "LicencePlateNumber",
-                      "value": "ABC123",
-                      "countryCode": "SE"
-                    }
-                  }
-                ]
-              }
-            }
-          ],
-          "lineItems": [
-            {
-              "number": 1,
-              "supplierOrderNumber": "ABCD-476408",
-              "supplierOrderLineItemNumber": 1,
-              "customerReferenceNumber": "924942493",
-              "sellerProduct": {
-                "gradeCode": "string",
-                "brandName": "string",
-                "classifications": [
-                  {
-                    "type": "ExportHarmonisedSystemCode",
-                    "value": "4505 94 80",
-                    "countryCode": "SE"
-                  }
-                ],
-                "paperAndBoard": {
-                  "basisWeight": {
-                    "value": 550,
-                    "uom": "GramsPerSquareMeter"
-                  },
-                  "bulk": {
-                    "value": 1,
-                    "uom": "CubicCentimeterPerGram"
-                  },
-                  "caliper": {
-                    "value": 1,
-                    "uom": "Micron"
-                  },
-                  "format": "Reel",
-                  "width": {
-                    "value": 875,
-                    "uom": "Millimeter"
-                  },
-                  "reelDiameter": {
-                    "value": 1500,
-                    "uom": "Millimeter"
-                  }
-                }
-              },
-              "loadingCharacteristics": [
-                {
-                  "type": "Standing",
-                  "labelOrientation": "BackEndSide"
-                }
-              ],
-              "unloadingCharacteristics": [
-                {
-                  "text": "unloading from back of vehicle"
-                }
-              ],
-              "quantities": [
-                {
-                  "context": "Shipped",
-                  "type": "Count",
-                  "value": 10,
-                  "uom": "ReelPackage"
-                },
-                {
-                  "context": "Shipped",
-                  "type": "GrossWeight",
-                  "value": 20000,
-                  "uom": "Kilogram"
-                }
-              ],
-              "packages": [
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780100131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00001"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780200131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00002"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780300131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00003"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780400131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00004"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780500131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00005"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780600131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00006"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780700131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00007"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780800131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00008"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14780900131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00009"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                },
-                {
-                  "type": "ReelPackage",
-                  "identifiers": [
-                    {
-                      "role": "Secondary",
-                      "type": "Barcode",
-                      "codeType": "UIC14",
-                      "value": "14781000131814"
-                    },
-                    {
-                      "role": "Primary",
-                      "type": "Number",
-                      "codeType": "Supplier",
-                      "value": "00010"
-                    }
-                  ],
-                  "quantities": [
-                    {
-                      "context": "Shipped",
-                      "type": "GrossWeight",
-                      "value": 2000,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "NetNetWeight",
-                      "value": 1925,
-                      "uom": "Kilogram"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Length",
-                      "value": 4000,
-                      "uom": "Meter"
-                    },
-                    {
-                      "context": "Shipped",
-                      "type": "Area",
-                      "value": 3500,
-                      "uom": "SquareMeter"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_5_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 5 of Scenario B"
-    },
-    {
-      "providerState": "Interaction_6_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 6 of Scenario B"
-    },
-    {
-      "providerState": "Interaction_7_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 7 of Scenario B",
-      "request": {
-        "method": "GET",
-        "path": "/delivery-instructions",
-        "query": "isActive=true"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "count": 1,
-          "items": [
-            {
-              "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
-              "number": "123456SE",
-              "timestamp": "2024-05-19T11:47:41Z",
-              "isCancelled": false,
-              "isActive": true,
-              "sequenceCount": 1
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_8_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 8 of Scenario B",
-      "request": {
-        "method": "GET",
-        "path": "/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
-          "number": "123456SE",
-          "timestamp": "2024-05-19T11:47:41Z",
-          "isCancelled": false,
-          "isActive": true,
-          "sequences": [
-            {
-              "number": 1,
-              "isCancelled": false,
-              "supplierParty": {
-                "identifiers": [
-                  {
-                    "value": "AB",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "Company",
-                  "MillName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Mill Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "12345",
-                  "countryCode": "SE"
-                }
-              },
-              "buyerParty": {
-                "identifiers": [
-                  {
-                    "value": "CUSTOMER",
-                    "assignedBy": "Supplier"
-                  }
-                ],
-                "nameLines": [
-                  "CustomerName"
-                ],
-                "address": {
-                  "addressLines": [
-                    "Customer Road 1"
-                  ],
-                  "city": "CITY",
-                  "postalCode": "23456",
-                  "countryCode": "BE"
-                }
-              },
-              "deliveryLegs": [
-                {
-                  "number": 1,
-                  "shipFromLocation": {
-                    "identifiers": [
-                      {
-                        "value": "TERM",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "TermName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Term Road 1"
-                      ],
-                      "city": "CITY 2",
-                      "postalCode": "34567",
-                      "countryCode": "SE"
-                    }
-                  },
-                  "shipToLocation": {
-                    "identifiers": [
-                      {
-                        "value": "DEST1",
-                        "assignedBy": "Supplier"
-                      }
-                    ],
-                    "nameLines": [
-                      "CustomerName"
-                    ],
-                    "address": {
-                      "addressLines": [
-                        "Customer Road 1"
-                      ],
-                      "city": "CITY",
-                      "postalCode": "23456",
-                      "countryCode": "BE"
-                    }
-                  },
-                  "termsOfDelivery": {
-                    "incoterms": {
-                      "location": "DEST1",
-                      "code": "DAP",
-                      "version": "2020"
-                    }
-                  },
-                  "mainCarrierParty": {
-                    "identifiers": [
-                      {
-                        "value": "TERM",
-                        "assignedBy": "Supplier"
-                      }
-                    ]
-                  },
-                  "requestedArrivalDateTime": "2024-05-24T10:00",
-                  "transport": {
-                    "modeType": "Road"
-                  }
-                }
-              ],
-              "lineItems": [
-                {
-                  "number": 1,
-                  "supplierOrderNumber": "ABCD-476408",
-                  "supplierOrderLineItemNumber": 1,
-                  "callOffNumber": "123456SE",
-                  "callOffLineItemNumber": 1,
-                  "quantities": [
-                    {
-                      "context": "Instructed",
-                      "type": "Count",
-                      "value": 9,
-                      "uom": "ReelPackage"
-                    },
-                    {
-                      "context": "Instructed",
-                      "type": "GrossWeight",
-                      "value": 18000,
-                      "uom": "Kilogram"
-                    }
-                  ],
-                  "loadingCharacteristics": [
-                    {
-                      "type": "Standing",
-                      "labelOrientation": "BackEndSide"
-                    }
-                  ],
-                  "unloadingCharacteristics": [
-                    {
-                      "text": "GBUNREAR*unloading from back of vehicle Book in - 72h before delivery"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "providerState": "Interaction_9_of_Scenario_B",
-      "type": "Synchronous/HTTP",
-      "description": "Interaction 9 of Scenario B"
-    }
-  ]
+	"consumer": {
+		"name": "Logistics Supplier"
+	},
+	"provider": {
+		"name": "Supplier"
+	},
+	"interactions": [
+		{
+			"providerState": "Interaction_0_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 0 of Scenario A (Authentication)",
+			"request": {
+				"method": "POST",
+				"path": "/tokens"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"token_type": "bearer",
+					"expires_in": 86400
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_1_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 1 of Scenario A (Get all active orders)",
+			"request": {
+				"method": "GET",
+				"path": "/supplier-orders",
+				"query": "isActive=true"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"count": 1,
+					"items": [
+						{
+							"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+							"number": "ABCD-476408",
+							"timestamp": "2024-05-16T19:32:59.962Z",
+							"isCancelled": false,
+							"isActive": true,
+							"lineItemCount": 1
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_2_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 2 of Scenario A",
+			"request": {
+				"method": "GET",
+				"path": "/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+					"number": "ABCD-476408",
+					"timestamp": "2024-05-16T19:32:59.962Z",
+					"isCancelled": false,
+					"isActive": true,
+					"supplierParty": {
+						"identifiers": [
+							{
+								"value": "MILL",
+								"assignedBy": "Supplier"
+							}
+						],
+						"nameLines": [
+							"MillName"
+						],
+						"address": {
+							"addressLines": [
+								"Mill Road 1"
+							],
+							"city": "CITY",
+							"postalCode": "12345",
+							"countryCode": "SE"
+						}
+					},
+					"customerParty": {
+						"identifiers": [
+							{
+								"value": "CUSTOMER",
+								"assignedBy": "Supplier"
+							}
+						],
+						"nameLines": [
+							"CustomerName"
+						],
+						"address": {
+							"addressLines": [
+								"Customer Road 1"
+							],
+							"city": "CITY",
+							"postalCode": "23456",
+							"countryCode": "BE"
+						}
+					},
+					"buyerParty": {
+						"identifiers": [
+							{
+								"value": "CUSTOMER",
+								"assignedBy": "Supplier"
+							}
+						],
+						"nameLines": [
+							"CustomerName"
+						],
+						"address": {
+							"addressLines": [
+								"Customer Road 1"
+							],
+							"city": "CITY",
+							"postalCode": "23456",
+							"countryCode": "BE"
+						}
+					},
+					"lineItems": [
+						{
+							"number": 1,
+							"isCancelled": false,
+							"purchaseOrderNumber": "924942493",
+							"purchaseOrderLineItemNumber": 1,
+							"sellerProduct": {
+								"gradeCode": "string",
+								"brandName": "string",
+								"paperAndBoard": {
+									"basisWeight": {
+										"value": 550,
+										"uom": "GramsPerSquareMeter"
+									},
+									"bulk": {
+										"value": 1,
+										"uom": "CubicCentimeterPerGram"
+									},
+									"caliper": {
+										"value": 1,
+										"uom": "Micron"
+									},
+									"format": "Reel",
+									"width": {
+										"value": 875,
+										"uom": "Millimeter"
+									},
+									"reelDiameter": {
+										"value": 1500,
+										"uom": "Millimeter"
+									}
+								}
+							},
+							"millParty": {
+								"identifiers": [
+									{
+										"value": "MILL",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"deliveryLegs": [
+								{
+									"number": 1,
+									"shipFromLocation": {
+										"type": "Mill",
+										"identifiers": [
+											{
+												"value": "MILL",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"MillName"
+										],
+										"address": {
+											"addressLines": [
+												"Mill Road 1"
+											],
+											"city": "CITY",
+											"postalCode": "12345",
+											"countryCode": "SE"
+										}
+									},
+									"shipToLocation": {
+										"type": "Terminal",
+										"identifiers": [
+											{
+												"value": "TERM",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"TermName"
+										],
+										"address": {
+											"addressLines": [
+												"Term Road 1"
+											],
+											"city": "CITY2",
+											"postalCode": "34567",
+											"countryCode": "SE"
+										}
+									},
+									"estimatedLoadingDateTime": "2024-05-16T12:00",
+									"estimatedArrivalDateTime": "2024-05-18T17:00",
+									"transport": {
+										"modeType": "Road"
+									}
+								}
+							],
+							"quantities": [
+								{
+									"context": "Confirmed",
+									"type": "Count",
+									"value": 10,
+									"uom": "Reel"
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_3_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 3 of Scenario A",
+			"request": {
+				"method": "GET",
+				"path": "/delivery-notes",
+				"query": "shipmentStatus=Departed"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"count": 1,
+					"items": [
+						{
+							"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+							"number": "LDN12345",
+							"timestamp": "2024-05-16T11:46:39Z",
+							"isCancelled": false,
+							"isActive": true,
+							"shipmentStatus": "Departed",
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "MILL",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"TermName"
+								],
+								"address": {
+									"addressLines": [
+										"Term Road 1"
+									],
+									"city": "CITY2",
+									"postalCode": "34567",
+									"countryCode": "SE"
+								}
+							},
+							"lineItemCount": 1
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_4_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 4 of Scenario A",
+			"request": {
+				"method": "GET",
+				"path": "/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+					"number": "LDN12345",
+					"timestamp": "2024-05-16T11:46:39Z",
+					"isCancelled": false,
+					"isActive": true,
+					"shipmentStatus": "Departed",
+					"deliveryLegs": [
+						{
+							"number": 1,
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "MILL",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"TermName"
+								],
+								"address": {
+									"addressLines": [
+										"Term Road 1"
+									],
+									"city": "CITY2",
+									"postalCode": "34567",
+									"countryCode": "SE"
+								}
+							},
+							"mainCarrierParty": {
+								"identifiers": [
+									{
+										"value": "CARRIER",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"Transport Company 1"
+								],
+								"address": {
+									"addressLines": [
+										"Transport Road 1",
+										"Box 12"
+									],
+									"city": "CITY3",
+									"postalCode": "45678",
+									"countryCode": "SE"
+								}
+							},
+							"actualLoadingDateTime": "2024-05-16T12:45:00",
+							"estimatedArrivalDateTime": "2024-05-18T12:45",
+							"transport": {
+								"modeType": "Road",
+								"units": [
+									{
+										"type": "Trailer",
+										"identifier": {
+											"type": "LicencePlateNumber",
+											"value": "ABC123",
+											"countryCode": "SE"
+										}
+									}
+								]
+							}
+						}
+					],
+					"lineItems": [
+						{
+							"number": 1,
+							"supplierOrderNumber": "ABCD-476408",
+							"supplierOrderLineItemNumber": 1,
+							"customerReferenceNumber": "924942493",
+							"sellerProduct": {
+								"gradeCode": "string",
+								"brandName": "string",
+								"classifications": [
+									{
+										"type": "ExportHarmonisedSystemCode",
+										"value": "4505 94 80",
+										"countryCode": "SE"
+									}
+								],
+								"paperAndBoard": {
+									"basisWeight": {
+										"value": 550,
+										"uom": "GramsPerSquareMeter"
+									},
+									"bulk": {
+										"value": 1,
+										"uom": "CubicCentimeterPerGram"
+									},
+									"caliper": {
+										"value": 1,
+										"uom": "Micron"
+									},
+									"format": "Reel",
+									"width": {
+										"value": 875,
+										"uom": "Millimeter"
+									},
+									"reelDiameter": {
+										"value": 1500,
+										"uom": "Millimeter"
+									}
+								}
+							},
+							"loadingCharacteristics": [
+								{
+									"type": "Standing",
+									"labelOrientation": "BackEndSide"
+								}
+							],
+							"unloadingCharacteristics": [
+								{
+									"text": "unloading from back of vehicle"
+								}
+							],
+							"quantities": [
+								{
+									"context": "Shipped",
+									"type": "Count",
+									"value": 10,
+									"uom": "ReelPackage"
+								},
+								{
+									"context": "Shipped",
+									"type": "GrossWeight",
+									"value": 20000,
+									"uom": "Kilogram"
+								}
+							],
+							"packages": [
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780100131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00001"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780200131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00002"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780300131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00003"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780400131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00004"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780500131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00005"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780600131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00006"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780700131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00007"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780800131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00008"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780900131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00009"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14781000131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00010"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_5_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 5 of Scenario A",
+			"request": {
+				"method": "POST",
+				"path": "/logistics-goods-receipts",
+				"headers": {
+					"Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"Content-Type": "application/json"
+				},
+				"body": {
+					"id": "3aa556bb-7198-4107-8dd9-450845eb365a",
+					"number": "GRIWMS-20240506-090833",
+					"timestamp": "2024-05-18T11:10:04Z",
+					"cancelled": false,
+					"active": true,
+					"acceptance": "AsSpecified",
+					"isComplete": true,
+					"deliveryNoteNumber": "LDN12345",
+					"deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
+					"arrivalDateTime": "2024-05-18T11:08:36",
+					"unloadingDateTime": "2024-05-18T11:10:04"
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_6_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 6 of Scenario A",
+			"request": {
+				"method": "GET",
+				"path": "/delivery-instructions",
+				"query": "isActive=true"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"count": 1,
+					"items": [
+						{
+							"id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
+							"number": "123456SE",
+							"timestamp": "2024-05-19T11:47:41Z",
+							"isCancelled": false,
+							"isActive": true,
+							"sequenceCount": 1
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_7_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 7 of Scenario A",
+			"request": {
+				"method": "GET",
+				"path": "/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
+					"number": "123456SE",
+					"timestamp": "2024-05-19T11:47:41Z",
+					"isCancelled": false,
+					"isActive": true,
+					"sequences": [
+						{
+							"number": 1,
+							"isCancelled": false,
+							"supplierParty": {
+								"identifiers": [
+									{
+										"value": "AB",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"Company",
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"buyerParty": {
+								"identifiers": [
+									{
+										"value": "CUSTOMER",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"CustomerName"
+								],
+								"address": {
+									"addressLines": [
+										"Customer Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "23456",
+									"countryCode": "BE"
+								}
+							},
+							"deliveryLegs": [
+								{
+									"number": 1,
+									"shipFromLocation": {
+										"identifiers": [
+											{
+												"value": "TERM",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"TermName"
+										],
+										"address": {
+											"addressLines": [
+												"Term Road 1"
+											],
+											"city": "CITY 2",
+											"postalCode": "34567",
+											"countryCode": "SE"
+										}
+									},
+									"shipToLocation": {
+										"identifiers": [
+											{
+												"value": "DEST1",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"CustomerName"
+										],
+										"address": {
+											"addressLines": [
+												"Customer Road 1"
+											],
+											"city": "CITY",
+											"postalCode": "23456",
+											"countryCode": "BE"
+										}
+									},
+									"termsOfDelivery": {
+										"incoterms": {
+											"location": "DEST1",
+											"code": "DAP",
+											"version": "2020"
+										}
+									},
+									"mainCarrierParty": {
+										"identifiers": [
+											{
+												"value": "TERM",
+												"assignedBy": "Supplier"
+											}
+										]
+									},
+									"requestedArrivalDateTime": "2024-05-24T10:00",
+									"transport": {
+										"modeType": "Road"
+									}
+								}
+							],
+							"lineItems": [
+								{
+									"number": 1,
+									"supplierOrderNumber": "ABCD-476408",
+									"supplierOrderLineItemNumber": 1,
+									"callOffNumber": "123456SE",
+									"callOffLineItemNumber": 1,
+									"quantities": [
+										{
+											"context": "Instructed",
+											"type": "Count",
+											"value": 10,
+											"uom": "ReelPackage"
+										},
+										{
+											"context": "Instructed",
+											"type": "GrossWeight",
+											"value": 20000,
+											"uom": "Kilogram"
+										}
+									],
+									"loadingCharacteristics": [
+										{
+											"type": "Standing",
+											"labelOrientation": "BackEndSide"
+										}
+									],
+									"unloadingCharacteristics": [
+										{
+											"text": "GBUNREAR*unloading from back of vehicle Book in - 72h before delivery"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_8_of_Scenario_A",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 8 of Scenario A",
+			"request": {
+				"method": "POST",
+				"path": "/logistics-delivery-notes",
+				"headers": {
+					"Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"Content-Type": "application/json"
+				},
+				"body": {
+					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+					"number": "LDN6789",
+					"timestamp": "2024-05-23T12:26:16Z",
+					"cancelled": false,
+					"active": true,
+					"shipmentStatus": "Departed",
+					"deliveryLegs": [
+						{
+							"number": 1,
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "DEST1",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"mainCarrierParty": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"actualDepartureDateTime": "2024-05-23T12:24:00",
+							"transport": {
+								"modeType": "Road",
+								"units": [
+									{
+										"type": "Trailer",
+										"identifier": {
+											"type": "LicencePlateNumber",
+											"value": "XX-XXX-XX",
+											"countryCode": "SE"
+										}
+									}
+								]
+							}
+						}
+					],
+					"lineItems": [
+						{
+							"number": 1,
+							"supplierOrderNumber": "ABCD-476408",
+							"supplierOrderLineItemNumber": 1,
+							"callOffNumber": "123456SE",
+							"callOffLineItemNumber": 1,
+							"quantities": [
+								{
+									"context": "Shipped",
+									"type": "Count",
+									"value": 10,
+									"uom": "ReelPackage"
+								},
+								{
+									"context": "Shipped",
+									"type": "GrossWeight",
+									"value": 20000,
+									"uom": "Kilogram"
+								}
+							],
+							"packages": [
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780100131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00001"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780200131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00002"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780300131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00003"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780400131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00004"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780500131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00005"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780600131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00006"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780700131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00007"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780800131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00008"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780900131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00009"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14781000131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00010"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_0_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 0 of Scenario B (Authentication)",
+			"request": {
+				"method": "POST",
+				"path": "/tokens"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"token_type": "bearer",
+					"expires_in": 86400
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_1_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 1 of Scenario B (Get all active orders)",
+			"request": {
+				"method": "GET",
+				"path": "/supplier-orders",
+				"query": "isActive=true"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"count": 1,
+					"items": [
+						{
+							"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+							"number": "ABCD-476408",
+							"timestamp": "2024-05-16T19:32:59.962Z",
+							"isCancelled": false,
+							"isActive": true,
+							"lineItemCount": 1
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_2_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 2 of Scenario B",
+			"request": {
+				"method": "GET",
+				"path": "/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+					"number": "ABCD-476408",
+					"timestamp": "2024-05-16T19:32:59.962Z",
+					"isCancelled": false,
+					"isActive": true,
+					"supplierParty": {
+						"identifiers": [
+							{
+								"value": "MILL",
+								"assignedBy": "Supplier"
+							}
+						],
+						"nameLines": [
+							"MillName"
+						],
+						"address": {
+							"addressLines": [
+								"Mill Road 1"
+							],
+							"city": "CITY",
+							"postalCode": "12345",
+							"countryCode": "SE"
+						}
+					},
+					"customerParty": {
+						"identifiers": [
+							{
+								"value": "CUSTOMER",
+								"assignedBy": "Supplier"
+							}
+						],
+						"nameLines": [
+							"CustomerName"
+						],
+						"address": {
+							"addressLines": [
+								"Customer Road 1"
+							],
+							"city": "CITY",
+							"postalCode": "23456",
+							"countryCode": "BE"
+						}
+					},
+					"buyerParty": {
+						"identifiers": [
+							{
+								"value": "CUSTOMER",
+								"assignedBy": "Supplier"
+							}
+						],
+						"nameLines": [
+							"CustomerName"
+						],
+						"address": {
+							"addressLines": [
+								"Customer Road 1"
+							],
+							"city": "CITY",
+							"postalCode": "23456",
+							"countryCode": "BE"
+						}
+					},
+					"lineItems": [
+						{
+							"number": 1,
+							"isCancelled": false,
+							"purchaseOrderNumber": "924942493",
+							"purchaseOrderLineItemNumber": 1,
+							"sellerProduct": {
+								"gradeCode": "string",
+								"brandName": "string",
+								"paperAndBoard": {
+									"basisWeight": {
+										"value": 550,
+										"uom": "GramsPerSquareMeter"
+									},
+									"bulk": {
+										"value": 1,
+										"uom": "CubicCentimeterPerGram"
+									},
+									"caliper": {
+										"value": 1,
+										"uom": "Micron"
+									},
+									"format": "Reel",
+									"width": {
+										"value": 875,
+										"uom": "Millimeter"
+									},
+									"reelDiameter": {
+										"value": 1500,
+										"uom": "Millimeter"
+									}
+								}
+							},
+							"millParty": {
+								"identifiers": [
+									{
+										"value": "MILL",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"deliveryLegs": [
+								{
+									"number": 1,
+									"shipFromLocation": {
+										"type": "Mill",
+										"identifiers": [
+											{
+												"value": "MILL",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"MillName"
+										],
+										"address": {
+											"addressLines": [
+												"Mill Road 1"
+											],
+											"city": "CITY",
+											"postalCode": "12345",
+											"countryCode": "SE"
+										}
+									},
+									"shipToLocation": {
+										"type": "Terminal",
+										"identifiers": [
+											{
+												"value": "TERM",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"TermName"
+										],
+										"address": {
+											"addressLines": [
+												"Term Road 1"
+											],
+											"city": "CITY2",
+											"postalCode": "34567",
+											"countryCode": "SE"
+										}
+									},
+									"estimatedLoadingDateTime": "2024-05-16T12:00",
+									"estimatedArrivalDateTime": "2024-05-18T17:00",
+									"transport": {
+										"modeType": "Road"
+									}
+								}
+							],
+							"quantities": [
+								{
+									"context": "Confirmed",
+									"type": "Count",
+									"value": 10,
+									"uom": "Reel"
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_3_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 3 of Scenario B",
+			"request": {
+				"method": "GET",
+				"path": "/delivery-notes",
+				"query": "shipmentStatus=Departed"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"count": 1,
+					"items": [
+						{
+							"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+							"number": "LDN12345",
+							"timestamp": "2024-05-16T11:46:39Z",
+							"isCancelled": false,
+							"isActive": true,
+							"shipmentStatus": "Departed",
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "MILL",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"TermName"
+								],
+								"address": {
+									"addressLines": [
+										"Term Road 1"
+									],
+									"city": "CITY2",
+									"postalCode": "34567",
+									"countryCode": "SE"
+								}
+							},
+							"lineItemCount": 1
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_4_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 4 of Scenario B",
+			"request": {
+				"method": "GET",
+				"path": "/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+					"number": "LDN12345",
+					"timestamp": "2024-05-16T11:46:39Z",
+					"isCancelled": false,
+					"isActive": true,
+					"shipmentStatus": "Departed",
+					"deliveryLegs": [
+						{
+							"number": 1,
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "MILL",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"TermName"
+								],
+								"address": {
+									"addressLines": [
+										"Term Road 1"
+									],
+									"city": "CITY2",
+									"postalCode": "34567",
+									"countryCode": "SE"
+								}
+							},
+							"mainCarrierParty": {
+								"identifiers": [
+									{
+										"value": "CARRIER",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"Transport Company 1"
+								],
+								"address": {
+									"addressLines": [
+										"Transport Road 1",
+										"Box 12"
+									],
+									"city": "CITY3",
+									"postalCode": "45678",
+									"countryCode": "SE"
+								}
+							},
+							"actualLoadingDateTime": "2024-05-16T12:45:00",
+							"estimatedArrivalDateTime": "2024-05-18T12:45",
+							"transport": {
+								"modeType": "Road",
+								"units": [
+									{
+										"type": "Trailer",
+										"identifier": {
+											"type": "LicencePlateNumber",
+											"value": "ABC123",
+											"countryCode": "SE"
+										}
+									}
+								]
+							}
+						}
+					],
+					"lineItems": [
+						{
+							"number": 1,
+							"supplierOrderNumber": "ABCD-476408",
+							"supplierOrderLineItemNumber": 1,
+							"customerReferenceNumber": "924942493",
+							"sellerProduct": {
+								"gradeCode": "string",
+								"brandName": "string",
+								"classifications": [
+									{
+										"type": "ExportHarmonisedSystemCode",
+										"value": "4505 94 80",
+										"countryCode": "SE"
+									}
+								],
+								"paperAndBoard": {
+									"basisWeight": {
+										"value": 550,
+										"uom": "GramsPerSquareMeter"
+									},
+									"bulk": {
+										"value": 1,
+										"uom": "CubicCentimeterPerGram"
+									},
+									"caliper": {
+										"value": 1,
+										"uom": "Micron"
+									},
+									"format": "Reel",
+									"width": {
+										"value": 875,
+										"uom": "Millimeter"
+									},
+									"reelDiameter": {
+										"value": 1500,
+										"uom": "Millimeter"
+									}
+								}
+							},
+							"loadingCharacteristics": [
+								{
+									"type": "Standing",
+									"labelOrientation": "BackEndSide"
+								}
+							],
+							"unloadingCharacteristics": [
+								{
+									"text": "unloading from back of vehicle"
+								}
+							],
+							"quantities": [
+								{
+									"context": "Shipped",
+									"type": "Count",
+									"value": 10,
+									"uom": "ReelPackage"
+								},
+								{
+									"context": "Shipped",
+									"type": "GrossWeight",
+									"value": 20000,
+									"uom": "Kilogram"
+								}
+							],
+							"packages": [
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780100131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00001"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780200131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00002"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780300131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00003"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780400131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00004"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780500131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00005"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780600131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00006"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780700131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00007"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780800131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00008"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780900131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00009"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14781000131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00010"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_5_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 5 of Scenario B",
+			"request": {
+				"method": "POST",
+				"path": "/logistics-goods-receipts",
+				"headers": {
+					"Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"Content-Type": "application/json"
+				},
+				"body": {
+					"id": "3aa556bb-7198-4107-8dd9-450845eb365a",
+					"number": "GRIWMS-20240506-090833",
+					"timestamp": "2024-05-18T11:10:04Z",
+					"cancelled": false,
+					"active": true,
+					"acceptance": "AsSpecified",
+					"isComplete": true,
+					"deliveryNoteNumber": "LDN12345",
+					"deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
+					"arrivalDateTime": "2024-05-18T11:08:36",
+					"unloadingDateTime": "2024-05-18T11:10:04"
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_6_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 6 of Scenario B",
+			"request": {
+				"method": "PUT",
+				"path": "/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a",
+				"headers": {
+					"Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"Content-Type": "application/json"
+				},
+				"body": {
+					"id": "3aa556bb-7198-4107-8dd9-450845eb365",
+					"number": "GRIWMS-20240506-090833",
+					"timestamp": "2024-05-18T11:16:49Z",
+					"cancelled": false,
+					"active": true,
+					"acceptance": "WithVariance",
+					"isComplete": true,
+					"deliveryNoteNumber": "LDN12345",
+					"deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
+					"arrivalDateTime": "2024-05-18T11:08:36",
+					"unloadingDateTime": "2024-05-18T11:10:04",
+					"lineItems": [
+						{
+							"number": 1,
+							"acceptance": "WithVariance",
+							"deliveryNoteLineItemNumber": 1,
+							"supplierOrderNumber": "ABCD-476408",
+							"supplierOrderLineItemNumber": 1,
+							"packages": [
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780100131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00001"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780200131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00002"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780300131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00003"
+										}
+									],
+									"acceptance": "WithVariance",
+									"varianceType": "NotReceived"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780400131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00004"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780500131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00005"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780600131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00006"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780700131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00007"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780800131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00008"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780900131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00009"
+										}
+									],
+									"acceptance": "AsSpecified"
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14781000131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00010"
+										}
+									],
+									"acceptance": "AsSpecified"
+								}
+							]
+						}
+					]
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_7_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 7 of Scenario B",
+			"request": {
+				"method": "GET",
+				"path": "/delivery-instructions",
+				"query": "isActive=true"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"count": 1,
+					"items": [
+						{
+							"id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
+							"number": "123456SE",
+							"timestamp": "2024-05-19T11:47:41Z",
+							"isCancelled": false,
+							"isActive": true,
+							"sequenceCount": 1
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_8_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 8 of Scenario B",
+			"request": {
+				"method": "GET",
+				"path": "/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				},
+				"body": {
+					"id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
+					"number": "123456SE",
+					"timestamp": "2024-05-19T11:47:41Z",
+					"isCancelled": false,
+					"isActive": true,
+					"sequences": [
+						{
+							"number": 1,
+							"isCancelled": false,
+							"supplierParty": {
+								"identifiers": [
+									{
+										"value": "AB",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"Company",
+									"MillName"
+								],
+								"address": {
+									"addressLines": [
+										"Mill Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "12345",
+									"countryCode": "SE"
+								}
+							},
+							"buyerParty": {
+								"identifiers": [
+									{
+										"value": "CUSTOMER",
+										"assignedBy": "Supplier"
+									}
+								],
+								"nameLines": [
+									"CustomerName"
+								],
+								"address": {
+									"addressLines": [
+										"Customer Road 1"
+									],
+									"city": "CITY",
+									"postalCode": "23456",
+									"countryCode": "BE"
+								}
+							},
+							"deliveryLegs": [
+								{
+									"number": 1,
+									"shipFromLocation": {
+										"identifiers": [
+											{
+												"value": "TERM",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"TermName"
+										],
+										"address": {
+											"addressLines": [
+												"Term Road 1"
+											],
+											"city": "CITY 2",
+											"postalCode": "34567",
+											"countryCode": "SE"
+										}
+									},
+									"shipToLocation": {
+										"identifiers": [
+											{
+												"value": "DEST1",
+												"assignedBy": "Supplier"
+											}
+										],
+										"nameLines": [
+											"CustomerName"
+										],
+										"address": {
+											"addressLines": [
+												"Customer Road 1"
+											],
+											"city": "CITY",
+											"postalCode": "23456",
+											"countryCode": "BE"
+										}
+									},
+									"termsOfDelivery": {
+										"incoterms": {
+											"location": "DEST1",
+											"code": "DAP",
+											"version": "2020"
+										}
+									},
+									"mainCarrierParty": {
+										"identifiers": [
+											{
+												"value": "TERM",
+												"assignedBy": "Supplier"
+											}
+										]
+									},
+									"requestedArrivalDateTime": "2024-05-24T10:00",
+									"transport": {
+										"modeType": "Road"
+									}
+								}
+							],
+							"lineItems": [
+								{
+									"number": 1,
+									"supplierOrderNumber": "ABCD-476408",
+									"supplierOrderLineItemNumber": 1,
+									"callOffNumber": "123456SE",
+									"callOffLineItemNumber": 1,
+									"quantities": [
+										{
+											"context": "Instructed",
+											"type": "Count",
+											"value": 9,
+											"uom": "ReelPackage"
+										},
+										{
+											"context": "Instructed",
+											"type": "GrossWeight",
+											"value": 18000,
+											"uom": "Kilogram"
+										}
+									],
+									"loadingCharacteristics": [
+										{
+											"type": "Standing",
+											"labelOrientation": "BackEndSide"
+										}
+									],
+									"unloadingCharacteristics": [
+										{
+											"text": "GBUNREAR*unloading from back of vehicle Book in - 72h before delivery"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_9_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 9 of Scenario B",
+			"request": {
+				"method": "POST",
+				"path": "/logistics-delivery-notes",
+				"headers": {
+					"Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"Content-Type": "application/json"
+				},
+				"body": {
+					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+					"number": "LDN6789",
+					"timestamp": "2024-05-23T12:26:16Z",
+					"cancelled": false,
+					"active": true,
+					"shipmentStatus": "Departed",
+					"deliveryLegs": [
+						{
+							"number": 1,
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "DEST1",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"mainCarrierParty": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"actualDepartureDateTime": "2024-05-23T12:24:00",
+							"transport": {
+								"modeType": "Road",
+								"units": [
+									{
+										"type": "Trailer",
+										"identifier": {
+											"type": "LicencePlateNumber",
+											"value": "XX-XXX-XX",
+											"countryCode": "SE"
+										}
+									}
+								]
+							}
+						}
+					],
+					"lineItems": [
+						{
+							"number": 1,
+							"supplierOrderNumber": "ABCD-476408",
+							"supplierOrderLineItemNumber": 1,
+							"callOffNumber": "123456SE",
+							"callOffLineItemNumber": 1,
+							"quantities": [
+								{
+									"context": "Shipped",
+									"type": "Count",
+									"value": 9,
+									"uom": "ReelPackage"
+								},
+								{
+									"context": "Shipped",
+									"type": "GrossWeight",
+									"value": 18000,
+									"uom": "Kilogram"
+								}
+							],
+							"packages": [
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780100131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00001"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780200131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00002"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780300131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00003"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780400131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00004"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780500131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00005"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780600131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00006"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780700131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00007"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780800131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00008"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780900131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00009"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetNetWeight",
+											"value": 1925,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				}
+			}
+		},
+		{
+			"providerState": "Interaction_10_of_Scenario_B",
+			"type": "Synchronous/HTTP",
+			"description": "Interaction 10 of Scenario B",
+			"request": {
+				"method": "PUT",
+				"path": "/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841",
+				"headers": {
+					"Authorization": "Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+					"Content-Type": "application/json"
+				},
+				"body": {
+					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
+					"number": "LDN6789",
+					"timestamp": "2024-05-23T12:26:16Z",
+					"cancelled": false,
+					"active": true,
+					"shipmentStatus": "Departed",
+					"deliveryLegs": [
+						{
+							"number": 1,
+							"shipFromLocation": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"shipToLocation": {
+								"identifiers": [
+									{
+										"value": "DEST1",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"mainCarrierParty": {
+								"identifiers": [
+									{
+										"value": "TERM",
+										"assignedBy": "Supplier"
+									}
+								]
+							},
+							"actualDepartureDateTime": "2024-05-23T12:24:00",
+							"transport": {
+								"modeType": "Road",
+								"units": [
+									{
+										"type": "Trailer",
+										"identifier": {
+											"type": "LicencePlateNumber",
+											"value": "XX-XXX-XX",
+											"countryCode": "SE"
+										}
+									}
+								]
+							}
+						}
+					],
+					"lineItems": [
+						{
+							"number": 1,
+							"supplierOrderNumber": "ABCD-476408",
+							"supplierOrderLineItemNumber": 1,
+							"callOffNumber": "123456SE",
+							"callOffLineItemNumber": 1,
+							"quantities": [
+								{
+									"context": "Shipped",
+									"type": "Count",
+									"value": 9,
+									"uom": "ReelPackage"
+								},
+								{
+									"context": "Shipped",
+									"type": "GrossWeight",
+									"value": 18000,
+									"uom": "Kilogram"
+								}
+							],
+							"packages": [
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780100131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00001"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780200131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00002"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14781000131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00010"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780400131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00004"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780500131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00005"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780600131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00006"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780700131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00007"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780800131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00008"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								},
+								{
+									"type": "ReelPackage",
+									"identifiers": [
+										{
+											"role": "Secondary",
+											"type": "Barcode",
+											"codeType": "UIC14",
+											"value": "14780900131814"
+										},
+										{
+											"role": "Primary",
+											"type": "Number",
+											"codeType": "Supplier",
+											"value": "00009"
+										}
+									],
+									"quantities": [
+										{
+											"context": "Shipped",
+											"type": "GrossWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "NetWeight",
+											"value": 2000,
+											"uom": "Kilogram"
+										},
+										{
+											"context": "Shipped",
+											"type": "Length",
+											"value": 4000,
+											"uom": "Meter"
+										},
+										{
+											"context": "Shipped",
+											"type": "Area",
+											"value": 3500,
+											"uom": "SquareMeter"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			"response": {
+				"status": 200,
+				"headers": {
+					"Content-Type": "application/json; charset=utf-8"
+				}
+			}
+		}
+	]
 }
