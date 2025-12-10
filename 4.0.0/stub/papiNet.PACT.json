@@ -929,8 +929,8 @@
 					"id": "3aa556bb-7198-4107-8dd9-450845eb365a",
 					"number": "GRIWMS-20240506-090833",
 					"timestamp": "2024-05-18T11:10:04Z",
-					"cancelled": false,
-					"active": true,
+					"isCancelled": false,
+					"isActive": true,
 					"acceptance": "AsSpecified",
 					"isComplete": true,
 					"deliveryNoteNumber": "LDN12345",
@@ -953,7 +953,7 @@
 			"request": {
 				"method": "GET",
 				"path": "/delivery-instructions",
-				"query": "isActive=true"
+				"query": "is=true"
 			},
 			"response": {
 				"status": 200,
@@ -1153,8 +1153,8 @@
 					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
 					"number": "LDN6789",
 					"timestamp": "2024-05-23T12:26:16Z",
-					"cancelled": false,
-					"active": true,
+					"isCancelled": false,
+					"isActive": true,
 					"shipmentStatus": "Departed",
 					"deliveryLegs": [
 						{
@@ -1686,7 +1686,7 @@
 		{
 			"providerState": "Interaction_1_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 1 of Scenario B (Get all active orders)",
+			"description": "Interaction 1 of Scenario B (Get all  orders)",
 			"request": {
 				"method": "GET",
 				"path": "/supplier-orders",
@@ -2586,8 +2586,8 @@
 					"id": "3aa556bb-7198-4107-8dd9-450845eb365a",
 					"number": "GRIWMS-20240506-090833",
 					"timestamp": "2024-05-18T11:10:04Z",
-					"cancelled": false,
-					"active": true,
+					"isCancelled": false,
+					"IActive": true,
 					"acceptance": "AsSpecified",
 					"isComplete": true,
 					"deliveryNoteNumber": "LDN12345",
@@ -2618,8 +2618,8 @@
 					"id": "3aa556bb-7198-4107-8dd9-450845eb365",
 					"number": "GRIWMS-20240506-090833",
 					"timestamp": "2024-05-18T11:16:49Z",
-					"cancelled": false,
-					"active": true,
+					"isCancelled": false,
+					"isActive": true,
 					"acceptance": "WithVariance",
 					"isComplete": true,
 					"deliveryNoteNumber": "LDN12345",
@@ -3034,8 +3034,8 @@
 					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
 					"number": "LDN6789",
 					"timestamp": "2024-05-23T12:26:16Z",
-					"cancelled": false,
-					"active": true,
+					"isCancelled": false,
+					"isActive": true,
 					"shipmentStatus": "Departed",
 					"deliveryLegs": [
 						{
@@ -3516,8 +3516,8 @@
 					"id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
 					"number": "LDN6789",
 					"timestamp": "2024-05-23T12:26:16Z",
-					"cancelled": false,
-					"active": true,
+					"isCancelled": false,
+					"isActive": true,
 					"shipmentStatus": "Departed",
 					"deliveryLegs": [
 						{
