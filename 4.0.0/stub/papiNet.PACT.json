@@ -953,7 +953,7 @@
 			"request": {
 				"method": "GET",
 				"path": "/delivery-instructions",
-				"query": "is=true"
+				"query": "isActive=true"
 			},
 			"response": {
 				"status": 200,
@@ -1686,7 +1686,7 @@
 		{
 			"providerState": "Interaction_1_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 1 of Scenario B (Get all  orders)",
+			"description": "Interaction 1 of Scenario B (Get all active orders)",
 			"request": {
 				"method": "GET",
 				"path": "/supplier-orders",
