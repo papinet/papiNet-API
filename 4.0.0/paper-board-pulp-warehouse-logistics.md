@@ -1060,21 +1060,22 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 curl --request POST \
   -url 'http://localhost:3030/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
-  --data '{ \
-    "id": "3aa556bb-7198-4107-8dd9-450845eb365a", \
-    "number": "GRIWMS-20240506-090833", \
-    "timestamp": "2024-05-18T11:10:04Z", \
-    "isCancelled": false, \
-    "isActive": true, \
-    "acceptance": "AsSpecified", \
-    "isComplete": true, \
-    "deliveryNoteNumber": "LDN12345", \
-    "deliveryNoteTimestamp": "2024-05-16T11:46:39Z", \
-    "arrivalDateTime": "2024-05-18T11:08:36", \
-    "unloadingDateTime": "2024-05-18T11:10:04" \
-  }
+  --data '{
+    "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
+    "number": "GRIWMS-20240506-090833",
+    "timestamp": "2024-05-18T11:10:04Z",
+    "isCancelled": false,
+    "isActive": true,
+    "acceptance": "AsSpecified",
+    "isComplete": true,
+    "deliveryNoteNumber": "LDN12345",
+    "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
+    "arrivalDateTime": "2024-05-18T11:08:36",
+    "unloadingDateTime": "2024-05-18T11:10:04"
+  }'
 ```
 
 #### Interaction 6 of Scenario A
@@ -1282,7 +1283,7 @@ In step 8 of scenario A _logistics supplier_ confirms the loading of the deliver
 ```text
 curl --request 'POST' \
   --url 'http://localhost:3030/logistics-delivery-notes' \
-  --header 'X-Provider-State: Interaction_!_of_Scenario_A' \
+  --header 'X-Provider-State: Interaction_8_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -1791,7 +1792,7 @@ curl --request 'POST' \
         ]
       }
     ]
-  }
+  }'
 ```
 
 ### Scenario B: Bad Weather Flow
@@ -2730,8 +2731,10 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 ```text
 curl --request POST \
   --url 'http://localhost:3030/logistics-goods-receipts' \
+  --header 'X-Provider-State: Interaction_5_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
   --header 'Content-Type: application/json' \
-   --header 'Accept: application/json' \
+  --header 'Accept: application/json' \
   --data '{
     "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
     "number": "GRIWMS-20240506-090833",
@@ -2744,7 +2747,7 @@ curl --request POST \
     "deliveryNoteTimestamp": "2024-05-16T11:46:39Z",
     "arrivalDateTime": "2024-05-18T11:08:36",
     "unloadingDateTime": "2024-05-18T11:10:04"
-  }
+  }'
 ```
 
 #### Interaction 6 of Scenario B
@@ -2754,11 +2757,13 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 <!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
 curl --request PUT \
-  --url'http://localhost:3030/logistics-goods-receipts' \
+  --url 'http://localhost:3030/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a' \
+  --header 'X-Provider-State: Interaction_6_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
   --data '{
-    "id": "3aa556bb-7198-4107-8dd9-450845eb365b",
+    "id": "3aa556bb-7198-4107-8dd9-450845eb365a",
     "number": "GRIWMS-20240506-090833",
     "timestamp": "2024-05-18T11:16:49Z",
     "isCancelled": false,
@@ -2961,7 +2966,7 @@ curl --request PUT \
         ]
       }
     ]
-  }
+  }'
 ```
 
 #### Interaction 7 of Scenario B
@@ -3169,6 +3174,8 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 ```text
 curl --request 'POST' \
   --url 'http://localhost:3030/logistics-delivery-notes' \
+  --header 'X-Provider-State: Interaction_9_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
   --data '{
