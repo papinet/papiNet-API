@@ -5148,7 +5148,7 @@ components:
             unevaluatedProperties: false
             required:
               - number
-              - cancelled
+              - isCancelled
               # supplierParty is not required
               # logisticsSupplierParty is not required
               # buyerParty is not required
@@ -5158,7 +5158,7 @@ components:
               number:
                 type: integer
                 minimum: 0
-              icCancelled:
+              isCancelled:
                 type: boolean
               supplierParty:
                 type: object
