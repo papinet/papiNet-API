@@ -11,8 +11,8 @@ info:
     url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
   version: 4.0.0
 servers:
-  - url: http://localhost:3031
-    description: papiNet Mock Server
+  - url: http://localhost:3040/
+    description: papiNet Pact Stub Server
 paths:
   ## LOGISTICS (13)
   #  GET /supplier-orders
