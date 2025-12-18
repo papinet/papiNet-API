@@ -1063,6 +1063,73 @@ components:
           enum:
             - Long
             - Short
+    Party:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - identifiers
+      properties:
+        identifiers:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - value
+              - assignedBy
+            properties:
+              value:
+                type: string
+                minLength: 1
+              assignedBy:
+                type: string
+                enum:
+                  - Supplier
+        nameLines:
+          type: array
+          minItems: 1
+          maxItems: 3
+          # See <https://github.com/papinet/papiNet-API/issues/94>
+          items:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          unevaluatedProperties: false
+          required:
+            # addressLines is not required
+            # city is not required
+            # postalCode is not required
+            # stateOrProvince is not required
+            # county is not required
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              maxItems: 4
+              # See <https://github.com/papinet/papiNet-API/issues/94>
+              items:
+                type: string
+                minLength: 1
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
+              type: string
+              minLength: 1
+            countryCode:
+              type: string
+              minLength: 2
+              maxLength: 2
+              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
     Pulp:
       type: object
       unevaluatedProperties: false
