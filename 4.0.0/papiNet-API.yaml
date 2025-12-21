@@ -36,7 +36,6 @@ paths:
       description: Get a paginated list of all `supplier-orders`.
       parameters:
         - in: query
-          offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
@@ -44,7 +43,6 @@ paths:
             type: integer
             minimum: 0
         - in: query
-          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
@@ -52,7 +50,6 @@ paths:
             type: integer
             exclusiveMinimum: 0
         - in: query
-          # ?number={string}
           name: number
           schema:
             type: string
@@ -60,113 +57,96 @@ paths:
           required: false
           description: filter based on `number` (string)
         - in: query
-          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
             type: string
-            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
         - in: query
-          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          # ?sellerParty.value={string}
           name: sellerParty.value
           schema:
             type: string
           required: false
           description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
         - in: query
-          # ?sellerParty.assignedBy={string}
           name: sellerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
         - in: query
-          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?customerParty.value={string}
           name: customerParty.value
           schema:
             type: string
           required: false
           description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
         - in: query
-          # ?customerParty.assignedBy={string}
           name: customerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
         - in: query
-          # ?buyerParty.value={string}
           name: buyerParty.value
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
         - in: query
-          # ?buyerParty.assignedBy={string}
           name: buyerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
         - in: query
-          # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipFromLocation.assignedBy={string}
           name: shipFromLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipToLocation.value={string}
           name: shipToLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipToLocation.assignedBy={string}
           name: shipToLocation.assignedBy
           schema:
             type: string
@@ -212,7 +192,6 @@ paths:
       description: Get a paginated list of all `logistics-delivery-notes`.
       parameters:
         - in: query
-          # ?offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
@@ -220,7 +199,6 @@ paths:
             type: integer
             minimum: 0
         - in: query
-          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
@@ -228,7 +206,6 @@ paths:
             type: integer
             exclusiveMinimum: 0
         - in: query
-          # ?number={string}
           name: number
           schema:
             type: string
@@ -236,15 +213,12 @@ paths:
           required: false
           description: filter based on `number` (string)
         - in: query
-          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
             type: string
-            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
         - in: query
-          # ?shipmentStatus={Arrived|Cancelled|Departed|Loaded|Planned|Unloaded}
           name: shipmentStatus
           schema:
             type: string
@@ -258,42 +232,36 @@ paths:
           required: false
           description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
         - in: query
-          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?deliveryInstructionNumber={string}
           name: deliveryInstructionNumber
           schema:
             type: string
@@ -301,7 +269,6 @@ paths:
           required: false
           description: filter based on `deliveryInstructionNumber` (string)
         - in: query
-          # ?deliveryInstructionSequenceNumber={integer}
           name: deliveryInstructionSequenceNumber
           schema:
             type: integer
@@ -309,28 +276,24 @@ paths:
           required: false
           description: filter based on `deliveryInstructionNumber` (string) and `deliveryInstructionSequenceNumber` (integer)
         - in: query
-          # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipFromLocation.assignedBy={string}
           name: shipFromLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipToLocation.value={string}
           name: shipToLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipToLocation.assignedBy={string}
           name: shipToLocation.assignedBy
           schema:
             type: string
@@ -462,7 +425,6 @@ paths:
       description: Get a paginated list of all `delivery-instructions`.
       parameters:
         - in: query
-          # ?offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
@@ -470,7 +432,6 @@ paths:
             type: integer
             minimum: 0
         - in: query
-          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
@@ -478,7 +439,6 @@ paths:
             type: integer
             exclusiveMinimum: 0
         - in: query
-          # ?number={string}
           name: number
           schema:
             type: string
@@ -486,85 +446,72 @@ paths:
           required: false
           description: filter based on `number` (string)
         - in: query
-          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
             type: string
-            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
         - in: query
-          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?buyerParty.value={string}
           name: buyerParty.value
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
         - in: query
-          # ?buyerParty.assignedBy={string}
           name: buyerParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
         - in: query
-          # ?shipFromLocation.value={string}
           name: shipFromLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipFromLocation.assignedBy={string}
           name: shipFromLocation.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipToLocation.value={string}
           name: shipToLocation.value
           schema:
             type: string
           required: false
           description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
         - in: query
-          # ?shipToLocation.assignedBy={string}
           name: shipToLocation.assignedBy
           schema:
             type: string
@@ -610,7 +557,6 @@ paths:
       description: Get a paginated list of all `logistics-inventory-changes`.
       parameters:
         - in: query
-          # ?offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
@@ -618,7 +564,6 @@ paths:
             type: integer
             minimum: 0
         - in: query
-          # ?limit={integer > 0}
           name: limit
           description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
           required: false
@@ -626,7 +571,6 @@ paths:
             type: integer
             exclusiveMinimum: 0
         - in: query
-          # ?number={string}
           name: number
           schema:
             type: string
@@ -634,43 +578,36 @@ paths:
           required: false
           description: filter based on `number` (string)
         - in: query
-          # ?timestamp={ISO 8601 interval}
           name: timestamp
           schema:
             type: string
-            # ISO 8601
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
         - in: query
-          # ?isActive={true|false}
           name: isActive
           schema:
             type: boolean
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          # ?supplierParty.value={string}
           name: supplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?supplierParty.assignedBy={string}
           name: supplierParty.assignedBy
           schema:
             type: string
           required: false
           description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.value={string}
           name: logisticsSupplierParty.value
           schema:
             type: string
           required: false
           description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
         - in: query
-          # ?logisticsSupplierParty.assignedBy={string}
           name: logisticsSupplierParty.assignedBy
           schema:
             type: string
