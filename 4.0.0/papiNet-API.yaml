@@ -36,7 +36,7 @@ paths:
       description: Get a paginated list of all `supplier-orders`.
       parameters:
         - in: query
-          # ?offset={integer >= 0}
+          offset={integer >= 0}
           name: offset
           description: The number of items to skip before starting to collect the result set.
           required: false
