@@ -25,10 +25,11 @@ For the implementation of these notifications, we recommend to use the [CloudEve
 
 ## papiNet Stub Service
 
+A Standalone Pact Stub Server can be downloaded from [Standalone Pact Stub Server](https://github.com/pact-foundation/pact-stub-server).
 You can run locally the papiNet stub service using the following command:
 
 ```text
-pact-stub-server --file ./mock/papiNet.PACT.json --port 3030 --provider-state-header-name X-Provider-State
+pact-stub-server --file ./stub/papiNet.PACT.json --port 3040 --provider-state-header-name X-Provider-State
 ```
 
 ## Authentication
