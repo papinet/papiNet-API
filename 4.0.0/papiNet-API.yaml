@@ -23,8 +23,8 @@ paths:
   #  PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
   # POST /logistics-goods-receipts
   #  PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
-  #  GET /delivery-instructions
-  #  GET /delivery-instructions/{deliveryInstructionId}
+  #  GET /logistics-delivery-instructions
+  #  GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
   #  GET /logistics-inventory-changes
   #  GET /logistics-inventory-changes/{logisticsInventoryChangeId}
   # POST /logistics-inventory-changes
@@ -417,12 +417,12 @@ paths:
           description: OK
         "400":
           description: Bad Request
-  /delivery-instructions:
-    # GET /delivery-instructions
-    # None => ListOfDeliveryInstructions
+  /logistics-delivery-instructions:
+    # GET /logistics-delivery-instructions
+    # None => ListOfLogisticsDeliveryInstructions
     get:
-      summary: List `delivery-instructions`
-      description: Get a paginated list of all `delivery-instructions`.
+      summary: List `logistics-delivery-instructions`
+      description: Get a paginated list of all `logistics-delivery-instructions`.
       parameters:
         - in: query
           name: offset
@@ -523,30 +523,30 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListOfDeliveryInstructions"
+                $ref: "#/components/schemas/ListOfLogisticsDeliveryInstructions"
         "204":
           description: No Content
-  /delivery-instructions/{deliveryInstructionId}:
-    # GET /delivery-instructions/{deliveryInstructionId}
-    # None => DeliveryInstructionById
+  /logistics-delivery-instructions/{logisticsDeliveryInstructionId}:
+    # GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
+    # None => LogisticsDeliveryInstructionById
     get:
-      summary: Get a `delivery-instruction`
-      description: Gets the details of a specific `delivery-instruction`.
+      summary: Get a `logistics-delivery-instruction`
+      description: Gets the details of a specific `logistics-delivery-instruction`.
       parameters:
         - in: path
-          name: deliveryInstructionId
+          name: logisticsDeliveryInstructionId
           schema:
             type: string
             format: uuid
           required: true
-          description: UUID of the `delivery-instruction` to get.
+          description: UUID of the `logistics-delivery-instruction` to get.
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DeliveryInstructionById"
+                $ref: "#/components/schemas/LogisticsDeliveryInstructionById"
         "404":
           description: Not Found
   /logistics-inventory-changes:
@@ -3710,7 +3710,7 @@ components:
                         - DifferingWeights
                         - NotReceived
                         - ReceivedNotSpecified
-    ListOfDeliveryInstructions:
+    ListOfLogisticsDeliveryInstructions:
       type: object
       unevaluatedProperties: false
       required:
@@ -3754,7 +3754,7 @@ components:
                 minimum: 1
         links:
           $ref: "#/components/schemas/PaginationLinks"
-    DeliveryInstructionById:
+    LogisticsDeliveryInstructionById:
       type: object
       unevaluatedProperties: false
       required:
