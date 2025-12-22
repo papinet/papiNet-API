@@ -17,7 +17,7 @@ We suggest that the _supplier_ (as well as the _logistics supplier_ if it uses t
 
 ## Notifications
 
-In order to get updated information on _suppier-orders_, _logistics delivery notes_ and _delivery instructions_ the _logistics suppliers_ have to call API endpoints of the _supplier_. As the _logistics suplliers_ do not know when these informations are getting updated, they should normally poll these API endpoints on a regular basis.
+In order to get updated information on _suppier-orders_, _logistics delivery notes_ and _Logistics delivery instructions_ the _logistics suppliers_ have to call API endpoints of the _supplier_. As the _logistics suplliers_ do not know when these informations are getting updated, they should normally poll these API endpoints on a regular basis.
 
 This polling mechanism is not optimal from an IT resources point of view, that's why we recommend the usage of notifications from the _logistics suppliers_ to the _supplier_. However, as the usage of these notifications would require additional investment on the _logistics supplier_ side, they remain an optional optimization.
 
@@ -1084,7 +1084,7 @@ In step 6 of scenario A _logistics supplier_ request to get all active delivery 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions?isActive=true' \
+  --url 'http://localhost:3030/logistics-delivery-instructions?isActive=true' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -1115,7 +1115,7 @@ In step 7 of scenario A _logistics supplier_ request to get details of the activ
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --url 'http://localhost:3030/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -2975,7 +2975,7 @@ In step 7 of scenario B _logistics supplier_ request to get all active delivery 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions?isActive=true' \
+  --url 'http://localhost:3030/logistics-delivery-instructions?isActive=true' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -3006,7 +3006,7 @@ In step 8 of scenario B _logistics supplier_ request to get details of the activ
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --url 'http://localhost:3030/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_8_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
