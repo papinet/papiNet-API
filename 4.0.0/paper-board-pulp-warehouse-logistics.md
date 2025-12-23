@@ -40,7 +40,7 @@ The _logistics supplier_ sends an API request to create a session, and gets its 
 
 ```text
 curl --request POST \
-  --url 'http://localhost:3030/tokens' \
+  --url 'http://localhost:3040/tokens' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -132,7 +132,7 @@ The _logistics supplier_ sends an API request to the _supplier_ in order to be a
 
 ```text
 curl --request POST \
-  --url 'http://localhost:3030/tokens' \
+  --url 'http://localhost:3040/tokens' \
   --header 'X-Provider-State: Interaction_0_of_Scenario_A' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -156,7 +156,7 @@ The authenticated _logistics supplier_ sends an API request to the _supplier_ in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/supplier-orders?isActive=true' \
+  --url 'http://localhost:3040/supplier-orders?isActive=true' \
   --header 'X-Provider-State: Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -191,7 +191,7 @@ The step 2 of the scenario A will simulate the situation in which the _logistics
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
+  --url 'http://localhost:3040/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
   --header 'X-Provider-State: Interaction_2_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -385,7 +385,7 @@ In step 3 of the scenario A the _logistics supplier_ request to get all departed
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-notes?shipmentStatus=Departed' \
+  --url 'http://localhost:3040/logistics-delivery-notes?shipmentStatus=Departed' \
   --header 'X-Provider-State: Interaction_3_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -455,7 +455,7 @@ In step 4 of the scenario A the _logistics supplier_ request to get details of t
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
+  --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_4_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -1059,7 +1059,7 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl --request POST \
-  -url 'http://localhost:3030/logistics-goods-receipts' \
+  --url 'http://localhost:3040/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
@@ -1085,7 +1085,7 @@ In step 6 of scenario A _logistics supplier_ request to get all active delivery 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-instructions?isActive=true' \
+  --url 'http://localhost:3040/logistics-delivery-instructions?isActive=true' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -1116,7 +1116,7 @@ In step 7 of scenario A _logistics supplier_ request to get details of the activ
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --url 'http://localhost:3040/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -1283,7 +1283,7 @@ In step 8 of scenario A _logistics supplier_ confirms the loading of the deliver
 <!-- request-file: ../3.0.0/mock/GW08.post-logistic-delivery-notes.request.json -->
 ```text
 curl --request 'POST' \
-  --url 'http://localhost:3030/logistics-delivery-notes' \
+  --url 'http://localhost:3040/logistics-delivery-notes' \
   --header 'X-Provider-State: Interaction_8_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
@@ -1804,7 +1804,7 @@ The _logistics supplier_ sends an API request to the _supplier_ in order to be a
 
 ```text
 curl --request POST \
-  --url 'http://localhost:3030/tokens' \
+  --url 'http://localhost:3040/tokens' \
   --header 'X-Provider-State: Interaction_0_of_Scenario_B' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -1828,7 +1828,7 @@ The authenticated _logistics supplier_ sends an API request to the _supplier_ in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/supplier-orders?isActive=true' \
+  --url 'http://localhost:3040/supplier-orders?isActive=true' \
   --header 'X-Provider-State: Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -1863,7 +1863,7 @@ The step 2 of the scenario B will simulate the situation in which the _logistics
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
+  --url 'http://localhost:3040/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
   --header 'X-Provider-State: Interaction_2_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -2057,7 +2057,7 @@ In step 3 of the scenario B the _logistics supplier_ request to get all departed
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-notes?shipmentStatus=Departed' \
+  --url 'http://localhost:3040/logistics-delivery-notes?shipmentStatus=Departed' \
   --header 'X-Provider-State: Interaction_3_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -2127,7 +2127,7 @@ In step 4 of the scenario B the _logistics supplier_ request to get details of t
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
+  --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_4_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -2731,7 +2731,7 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl --request POST \
-  --url 'http://localhost:3030/logistics-goods-receipts' \
+  --url 'http://localhost:3040/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
   --header 'Content-Type: application/json' \
@@ -2758,7 +2758,7 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 <!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
 curl --request PUT \
-  --url 'http://localhost:3030/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a' \
+  --url 'http://localhost:3040/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
@@ -2976,7 +2976,7 @@ In step 7 of scenario B _logistics supplier_ request to get all active delivery 
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-instructions?isActive=true' \
+  --url 'http://localhost:3040/logistics-delivery-instructions?isActive=true' \
   --header 'X-Provider-State: Interaction_7_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -3007,7 +3007,7 @@ In step 8 of scenario B _logistics supplier_ request to get details of the activ
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3030/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
+  --url 'http://localhost:3040/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
   --header 'X-Provider-State: Interaction_8_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -3174,7 +3174,7 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 <!-- request-file: ../3.0.0/mock/BW09.post-logistic-delivery-notes.request.json -->
 ```text
 curl --request 'POST' \
-  --url 'http://localhost:3030/logistics-delivery-notes' \
+  --url 'http://localhost:3040/logistics-delivery-notes' \
   --header 'X-Provider-State: Interaction_9_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
@@ -3652,7 +3652,7 @@ In step 10 of scenario B the _logistics supplier_ updates the loading of the del
 <!-- request-file: ../3.0.0/mock/BW10.put-logistic-delivery-notes-logisticDeliveryNoteId.request.json -->
 ```text
 curl -request 'PUT' \
-  --url 'http://localhost:3030/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
+  --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_10_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
