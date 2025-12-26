@@ -4056,37 +4056,21 @@ components:
                               type: string
                               enum:
                                 - CFR
-                                # COST AND FREIGHT (... named port of destination)
                                 - CIF
-                                # COST, INSURANCE AND FREIGHT (... named port of destination).
                                 - CIP
-                                # CARRIAGE AND INSURANCE PAID TO (... named place of destination).
                                 - CPT
-                                # CARRIAGE PAID TO (... named place of destination).
                                 - DAF
-                                # DELIVERED AT FRONTIER (... named place).
                                 - DAP
-                                # DELIVERED AT PLACE (... named place of destination).
-                                - DAT
-                                # DELIVERED AT TERMINAL (... named place of destination).
+                                - DAT.
                                 - DDP
-                                # DELIVERED DUTY PAID (... named place of destination).
                                 - DDU
-                                # DELIVERED DUTY UNPAID (... named place of destination).
                                 - DEQ
-                                # DELIVERED EX QUAY (... named port of destination).
                                 - DES
-                                # DELIVERED EX SHIP (... named port of destination).
                                 - DPU
-                                # DELIVERED AT PLACE UNLOADED (... named place of destination).
                                 - EXW
-                                # EX WORKS (... named place).
                                 - FAS
-                                # FREE ALONGSIDE SHIP (... named port of shipment).
                                 - FCA
-                                # FREE CARRIER (... named place).
                                 - FOB
-                                # FREE ON BOARD (... named port of shipment).
                             version:
                               description: |
                                 - **1980**: The incoterms definitions provided in 1980.
