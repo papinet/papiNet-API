@@ -1322,7 +1322,6 @@ components:
                           type: string
                           enum:
                             - BorderCrossing
-                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -1425,7 +1424,6 @@ components:
                           type: string
                           enum:
                             - BorderCrossing
-                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -1910,7 +1908,6 @@ components:
                     type: string
                     enum:
                       - BorderCrossing
-                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -2012,7 +2009,6 @@ components:
                     type: string
                     enum:
                       - BorderCrossing
-                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -2190,7 +2186,6 @@ components:
                     type: string
                     enum:
                       - BorderCrossing
-                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -2293,7 +2288,6 @@ components:
                     type: string
                     enum:
                       - BorderCrossing
-                      # ?
                       - CustomerFacility
                       - CustomerStock
                       # Laboratory
@@ -3266,7 +3260,6 @@ components:
               type: string
               enum:
                 - BorderCrossing
-                # ?
                 - CustomerFacility
                 - CustomerStock
                 # Laboratory
@@ -3823,7 +3816,6 @@ components:
                           type: string
                           enum:
                             - BorderCrossing
-                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
@@ -3926,7 +3918,6 @@ components:
                           type: string
                           enum:
                             - BorderCrossing
-                            # ?
                             - CustomerFacility
                             - CustomerStock
                             # Laboratory
