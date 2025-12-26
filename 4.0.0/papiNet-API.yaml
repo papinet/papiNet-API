@@ -1027,7 +1027,6 @@ components:
           type: array
           minItems: 1
           maxItems: 3
-          # See <https://github.com/papinet/papiNet-API/issues/94>
           items:
             type: string
             minLength: 1
@@ -1046,7 +1045,6 @@ components:
               type: array
               minItems: 1
               maxItems: 4
-              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -1365,7 +1363,6 @@ components:
                           type: array
                           minItems: 1
                           maxItems: 3
-                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -1384,7 +1381,6 @@ components:
                               type: array
                               minItems: 1
                               maxItems: 4
-                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -1470,7 +1466,6 @@ components:
                           type: array
                           minItems: 1
                           maxItems: 3
-                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -1489,7 +1484,6 @@ components:
                               type: array
                               minItems: 1
                               maxItems: 4
-                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -1957,7 +1951,6 @@ components:
                     type: array
                     minItems: 1
                     maxItems: 3
-                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -1976,7 +1969,6 @@ components:
                         type: array
                         minItems: 1
                         maxItems: 4
-                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2061,7 +2053,6 @@ components:
                     type: array
                     minItems: 1
                     maxItems: 3
-                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2080,7 +2071,6 @@ components:
                         type: array
                         minItems: 1
                         maxItems: 4
-                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2241,7 +2231,6 @@ components:
                     type: array
                     minItems: 1
                     maxItems: 3
-                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2260,7 +2249,6 @@ components:
                         type: array
                         minItems: 1
                         maxItems: 4
-                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -2346,7 +2334,6 @@ components:
                     type: array
                     minItems: 1
                     maxItems: 3
-                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -2365,7 +2352,6 @@ components:
                         type: array
                         minItems: 1
                         maxItems: 4
-                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -3321,7 +3307,6 @@ components:
               type: array
               minItems: 1
               maxItems: 3
-              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -3340,7 +3325,6 @@ components:
                   type: array
                   minItems: 1
                   maxItems: 4
-                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
@@ -3880,7 +3864,6 @@ components:
                           type: array
                           minItems: 1
                           maxItems: 3
-                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -3899,7 +3882,6 @@ components:
                               type: array
                               minItems: 1
                               maxItems: 4
-                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -3985,7 +3967,6 @@ components:
                           type: array
                           minItems: 1
                           maxItems: 3
-                          # See <https://github.com/papinet/papiNet-API/issues/94>
                           items:
                             type: string
                             minLength: 1
@@ -4004,7 +3985,6 @@ components:
                               type: array
                               minItems: 1
                               maxItems: 4
-                              # See <https://github.com/papinet/papiNet-API/issues/94>
                               items:
                                 type: string
                                 minLength: 1
@@ -4949,7 +4929,6 @@ components:
                     type: array
                     minItems: 1
                     maxItems: 3
-                    # See <https://github.com/papinet/papiNet-API/issues/94>
                     items:
                       type: string
                       minLength: 1
@@ -4968,7 +4947,6 @@ components:
                         type: array
                         minItems: 1
                         maxItems: 4
-                        # See <https://github.com/papinet/papiNet-API/issues/94>
                         items:
                           type: string
                           minLength: 1
@@ -5056,7 +5034,6 @@ components:
               type: array
               minItems: 1
               maxItems: 3
-              # See <https://github.com/papinet/papiNet-API/issues/94>
               items:
                 type: string
                 minLength: 1
@@ -5075,7 +5052,6 @@ components:
                   type: array
                   minItems: 1
                   maxItems: 4
-                  # See <https://github.com/papinet/papiNet-API/issues/94>
                   items:
                     type: string
                     minLength: 1
