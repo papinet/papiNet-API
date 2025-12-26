@@ -1623,7 +1623,7 @@ components:
                                       # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
                                       # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                       - ISO6346ContainerNumber
-                                      # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                      # Don't use `assignedBy` with this type!
                                       - LicencePlateNumber
                                       # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
@@ -1633,7 +1633,6 @@ components:
                                       # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
                                       - VesselUnitID
-                                      # Added
                                       # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
@@ -2505,7 +2504,7 @@ components:
                                 # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
                                 # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                 - ISO6346ContainerNumber
-                                # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                # Don't use `assignedBy` with this type!
                                 - LicencePlateNumber
                                 # MachineID not applicable in Paper, Board and Pulp business
                                 - RailCarID
@@ -2515,7 +2514,6 @@ components:
                                 # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                 - TrailerID
                                 - VesselUnitID
-                                # Added
                                 # WagonID (deprecated)
                                 # Other (deprecated)
                             value:
@@ -4187,7 +4185,7 @@ components:
                                       # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
                                       # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                       - ISO6346ContainerNumber
-                                      # New from 2024-09-11 (Wed) CWG -> don't use `assignedBy` with this type!
+                                      # Don't use `assignedBy` with this type!
                                       - LicencePlateNumber
                                       # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
@@ -4197,7 +4195,6 @@ components:
                                       # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
                                       - VesselUnitID
-                                      # Added
                                       # WagonID (deprecated)
                                       # Other (deprecated)
                                   value:
