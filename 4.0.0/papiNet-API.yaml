@@ -3159,7 +3159,6 @@ components:
                               - MetricTon
                               - Millimeter
                               - ReelPackage
-                              # Issue #137: Renamed from "Package" (2024-08-15)
                               - Piece
                               - Pound
                               - Ream
@@ -4816,7 +4815,6 @@ components:
                                     - MetricTon
                                     - Millimeter
                                     - ReelPackage
-                                    # Issue #137: Renamed from "Package" (2024-08-15)
                                     - Piece
                                     - Pound
                                     - Ream
@@ -5173,7 +5171,6 @@ components:
                         - MetricTon
                         - Millimeter
                         - ReelPackage
-                        # Issue #137: Renamed from "Package" (2024-08-15)
                         - Piece
                         - Pound
                         - Ream
