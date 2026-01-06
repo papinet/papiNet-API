@@ -2587,7 +2587,7 @@
 					"number": "GRIWMS-20240506-090833",
 					"timestamp": "2024-05-18T11:10:04Z",
 					"isCancelled": false,
-					"IActive": true,
+					"isActive": true,
 					"acceptance": "AsSpecified",
 					"isComplete": true,
 					"deliveryNoteNumber": "LDN12345",
