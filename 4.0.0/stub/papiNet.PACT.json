@@ -981,7 +981,7 @@
 			"description": "Interaction 7 of Scenario A",
 			"request": {
 				"method": "GET",
-				"path": "/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
+				"path": "/logistics-delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
 			},
 			"response": {
 				"status": 200,
