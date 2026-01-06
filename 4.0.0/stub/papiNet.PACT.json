@@ -3609,8 +3609,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3652,8 +3652,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3695,8 +3695,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3738,8 +3738,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3781,8 +3781,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3824,8 +3824,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3867,8 +3867,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3910,8 +3910,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
@@ -3953,8 +3953,8 @@
 										},
 										{
 											"context": "Shipped",
-											"type": "NetWeight",
-											"value": 2000,
+											"type": "NetNetWeight",
+											"value": 1925,
 											"uom": "Kilogram"
 										},
 										{
