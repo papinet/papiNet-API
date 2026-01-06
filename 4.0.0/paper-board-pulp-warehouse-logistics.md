@@ -3232,7 +3232,6 @@ curl --request 'POST' \
     "lineItems": [
       {
         "number": 1,
-        "isCancelled": false,
         "supplierOrderNumber": "ABCD-476408",
         "supplierOrderLineItemNumber": 1,
         "callOffNumber": "123456SE",
@@ -3277,8 +3276,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3320,8 +3319,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3363,8 +3362,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3406,8 +3405,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3449,8 +3448,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3492,8 +3491,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3535,8 +3534,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3578,8 +3577,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3621,8 +3620,8 @@ curl --request 'POST' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3710,7 +3709,6 @@ curl -request 'PUT' \
     "lineItems": [
       {
         "number": 1,
-        "isCancelled": false,
         "supplierOrderNumber": "ABCD-476408",
         "supplierOrderLineItemNumber": 1,
         "callOffNumber": "123456SE",
@@ -3755,8 +3753,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3798,8 +3796,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3841,8 +3839,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3884,8 +3882,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3927,8 +3925,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -3970,8 +3968,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -4013,8 +4011,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -4056,8 +4054,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
@@ -4099,8 +4097,8 @@ curl -request 'PUT' \
               },
               {
                 "context": "Shipped",
-                "type": "NetWeight",
-                "value": 2000,
+                "type": "NetNetWeight",
+                "value": 1925,
                 "uom": "Kilogram"
               },
               {
