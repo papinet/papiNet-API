@@ -252,7 +252,7 @@
 			"description": "Interaction 3 of Scenario A",
 			"request": {
 				"method": "GET",
-				"path": "/delivery-notes",
+				"path": "/logistics-delivery-notes",
 				"query": "shipmentStatus=Departed"
 			},
 			"response": {
@@ -320,7 +320,7 @@
 			"description": "Interaction 4 of Scenario A",
 			"request": {
 				"method": "GET",
-				"path": "/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841"
+				"path": "/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841"
 			},
 			"response": {
 				"status": 200,
@@ -952,7 +952,7 @@
 			"description": "Interaction 6 of Scenario A",
 			"request": {
 				"method": "GET",
-				"path": "/delivery-instructions",
+				"path": "/logistics-delivery-instructions",
 				"query": "isActive=true"
 			},
 			"response": {
@@ -1909,7 +1909,7 @@
 			"description": "Interaction 3 of Scenario B",
 			"request": {
 				"method": "GET",
-				"path": "/delivery-notes",
+				"path": "/logistics-delivery-notes",
 				"query": "shipmentStatus=Departed"
 			},
 			"response": {
@@ -1977,7 +1977,7 @@
 			"description": "Interaction 4 of Scenario B",
 			"request": {
 				"method": "GET",
-				"path": "/logistics-delivery-note/fc190dd0-d239-40db-8196-ea72ae5b4841"
+				"path": "/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841"
 			},
 			"response": {
 				"status": 200,
@@ -2615,7 +2615,7 @@
 					"Content-Type": "application/json"
 				},
 				"body": {
-					"id": "3aa556bb-7198-4107-8dd9-450845eb365",
+					"id": "3aa556bb-7198-4107-8dd9-450845eb365a",
 					"number": "GRIWMS-20240506-090833",
 					"timestamp": "2024-05-18T11:16:49Z",
 					"isCancelled": false,
@@ -2833,7 +2833,7 @@
 			"description": "Interaction 7 of Scenario B",
 			"request": {
 				"method": "GET",
-				"path": "/delivery-instructions",
+				"path": "/logistics-delivery-instructions",
 				"query": "isActive=true"
 			},
 			"response": {
@@ -2862,7 +2862,7 @@
 			"description": "Interaction 8 of Scenario B",
 			"request": {
 				"method": "GET",
-				"path": "/delivery-instruction/52c5caed-57c6-4a68-97ff-b2745a514af6"
+				"path": "/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6"
 			},
 			"response": {
 				"status": 200,
