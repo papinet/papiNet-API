@@ -126,14 +126,14 @@ _Logistics supplier_ **receives** details of this _delivery-instruction_, includ
 
 ### Scenario A: Good Weather Flow
 
-#### Interaction 0 of Scenario A (Authentication)
+#### UC1_Interaction 0 of Scenario A (Authentication)
 
 The _logistics supplier_ sends an API request to the _supplier_ in order to be authenticated, and gets an _access token_:
 
 ```text
 curl --request POST \
   --url 'http://localhost:3040/tokens' \
-  --header 'X-Provider-State: Interaction_0_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_0_of_Scenario_A' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -150,14 +150,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 1 of Scenario A (Get all active orders)
+#### UC1_Interaction 1 of Scenario A (Get all active orders)
 
 The authenticated _logistics supplier_ sends an API request to the _supplier_ in order to receive all active _supplier-orders_ according to the query parameters:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/supplier-orders?isActive=true' \
-  --header 'X-Provider-State: Interaction_1_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -185,14 +185,14 @@ You can see that the _supplier_ has 1 active order. The response only contains p
   
   We have prepared the scenario A on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
 
-#### Interaction 2 of Scenario A
+#### UC1_Interaction 2 of Scenario A
 
 The step 2 of the scenario A will simulate the situation in which the _logistics supplier_ requests to get the full order information. The _logistics supplier_ sends an API get request to the supplier in order to get the details of the order 3fa85f64-5717-4562-b3fc-2c963f66afa6:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
-  --header 'X-Provider-State: Interaction_2_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_2_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -379,14 +379,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 3 of Scenario A
+#### UC1_Interaction 3 of Scenario A
 
 In step 3 of the scenario A the _logistics supplier_ request to get all departed delivery notes from the _supplier_.:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-notes?shipmentStatus=Departed' \
-  --header 'X-Provider-State: Interaction_3_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_3_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -449,14 +449,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 4 of Scenario A
+#### UC1_Interaction 4 of Scenario A
 
 In step 4 of the scenario A the _logistics supplier_ request to get details of the departed delivery note from _supplier_. _Logistics supplier_ receives details of the 10 packages loaded on the delivery note.:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
-  --header 'X-Provider-State: Interaction_4_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_4_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -1052,7 +1052,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 5 of Scenario A
+#### UC1_Interaction 5 of Scenario A
 
 In step 5 of scenario A _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
 
@@ -1060,7 +1060,7 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts' \
-  --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_5_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -1079,14 +1079,14 @@ curl --request POST --verbose \
   }'
 ```
 
-#### Interaction 6 of Scenario A
+#### UC1_Interaction 6 of Scenario A
 
 In step 6 of scenario A _logistics supplier_ request to get all active delivery instructions from _supplier_.
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-instructions?isActive=true' \
-  --header 'X-Provider-State: Interaction_6_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_6_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -1110,14 +1110,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   }
 ```
 
-#### Interaction 7 of Scenario A
+#### UC1_Interaction 7 of Scenario A
 
 In step 7 of scenario A _logistics supplier_ request to get details of the active delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantities planned to be delivered.
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
-  --header 'X-Provider-State: Interaction_7_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_7_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -1276,7 +1276,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 8 of Scenario A
+#### UC1_Interaction 8 of Scenario A
 
 In step 8 of scenario A _logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 10 loaded packages towards the _supplier_.
 
@@ -1284,7 +1284,7 @@ In step 8 of scenario A _logistics supplier_ confirms the loading of the deliver
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes' \
-  --header 'X-Provider-State: Interaction_8_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_8_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -1798,14 +1798,14 @@ curl --request POST --verbose \
 
 ### Scenario B: Bad Weather Flow
 
-#### Interaction 0 of Scenario B (Authentication)
+#### UC1_Interaction 0 of Scenario B (Authentication)
 
 The _logistics supplier_ sends an API request to the _supplier_ in order to be authenticated, and gets an _access token_:
 
 ```text
 curl --request POST \
   --url 'http://localhost:3040/tokens' \
-  --header 'X-Provider-State: Interaction_0_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_0_of_Scenario_B' \
   --user 'public-36297346:private-ce2d3cf4' \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
@@ -1822,14 +1822,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 1 of Scenario B (Get all active orders)
+#### UC1_Interaction 1 of Scenario B (Get all active orders)
 
 The authenticated _logistics supplier_ sends an API request to the _supplier_ in order to receive all active orders according to the query parameters and orders containing logistics supplier location code within delivery leg:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/supplier-orders?isActive=true' \
-  --header 'X-Provider-State: Interaction_1_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -1857,14 +1857,14 @@ You can see that the _supplier_ has 1 active order. The response only contains p
 
 We have prepared the scenario B on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
 
-#### Interaction 2 of Scenario B
+#### UC1_Interaction 2 of Scenario B
 
 The step 2 of the scenario B will simulate the situation in which the _logistics supplier_ requests to get the full order information. The _logistics supplier_ sends an API get request to the supplier in order to get the details of the order 3fa85f64-5717-4562-b3fc-2c963f66afa6:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6' \
-  --header 'X-Provider-State: Interaction_2_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_2_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -2051,14 +2051,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 3 of Scenario B
+#### UC1_Interaction 3 of Scenario B
 
 In step 3 of the scenario B the _logistics supplier_ request to get all departed delivery notes from the _supplier_.:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-notes?shipmentStatus=Departed' \
-  --header 'X-Provider-State: Interaction_3_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_3_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -2121,14 +2121,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 4 of Scenario B
+#### UC1_Interaction 4 of Scenario B
 
 In step 4 of the scenario B the _logistics supplier_ request to get details of the departed delivery note from _supplier_. _Logistics supplier_ receives details of the 10 packages loaded on the delivery note.:
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
-  --header 'X-Provider-State: Interaction_4_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_4_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -2724,7 +2724,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 5 of Scenario B
+#### UC1_Interaction 5 of Scenario B
 
 In step 5 of scenario B _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
 
@@ -2732,7 +2732,7 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts' \
-  --header 'X-Provider-State: Interaction_5_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_5_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -2751,7 +2751,7 @@ curl --request POST --verbose \
   }'
 ```
 
-#### Interaction 6 of Scenario B
+#### UC1_Interaction 6 of Scenario B
 
 In step 6 of scenario B _logistics supplier_ updates the inload of the delivery note and put logistic goods receipts towards the _supplier_ with one package indicated with variance = "Not Received", package no. 3.
 
@@ -2759,7 +2759,7 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 ```text
 curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a' \
-  --header 'X-Provider-State: Interaction_6_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_6_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -2970,14 +2970,14 @@ curl --request PUT --verbose \
   }'
 ```
 
-#### Interaction 7 of Scenario B
+#### UC1_Interaction 7 of Scenario B
 
 In step 7 of scenario B _logistics supplier_ request to get all active delivery instructions from _supplier_.
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-instructions?isActive=true' \
-  --header 'X-Provider-State: Interaction_7_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_7_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -3001,14 +3001,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   }
 ```
 
-#### Interaction 8 of Scenario B
+#### UC1_Interaction 8 of Scenario B
 
 In step 8 of scenario B _logistics supplier_ request to get details of the active delivery instruction from _supplier_. _Logistics supplier_ receives details of the quantities planned to be delivered. The _logistics supplier_ is requested to load 9 packages. 
 
 ```text
 curl --request GET \
   --url 'http://localhost:3040/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6' \
-  --header 'X-Provider-State: Interaction_8_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_8_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -3167,7 +3167,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-#### Interaction 9 of Scenario B
+#### UC1_Interaction 9 of Scenario B
 
 In step 9 of scenario B _logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 9 loaded packages towards the _supplier_.
 
@@ -3175,7 +3175,7 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes' \
-  --header 'X-Provider-State: Interaction_9_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_9_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -3644,7 +3644,7 @@ curl --request POST --verbose \
   }'
 ```
 
-#### Interaction 10 of Scenario B
+#### UC1_Interaction 10 of Scenario B
 
 In step 10 of scenario B the _logistics supplier_ updates the loading of the delivery instruction and put the delivery note towards the _supplier_ correcting loading, replacing package no. 3 (which has previously been reported as "NotReceived") with package no. 10.
 
@@ -3652,7 +3652,7 @@ In step 10 of scenario B the _logistics supplier_ updates the loading of the del
 ```text
 curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
-  --header 'X-Provider-State: Interaction_10_of_Scenario_B' \
+  --header 'X-Provider-State: UC1_Interaction_10_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
