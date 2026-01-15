@@ -141,7 +141,6 @@ curl --request POST \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW00&BW00.post-tokens.response.json -->
 ```json
 {
   "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
@@ -164,7 +163,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW01&BW01.get-supplier-orders.response.json -->
 ```json
 {
   "count": 1,
@@ -199,7 +197,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW02&BW02.get-supplier-orders-supplierOrderId.response.json -->
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -393,7 +390,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW03&BW03.get-logistic-delivery-notes.response.json -->
 ```json
 {
   "count": 1,
@@ -463,7 +459,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW04&BW04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
 ```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
@@ -1056,7 +1051,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 5 of scenario A _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
 
-<!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts' \
@@ -1093,7 +1087,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW06&BW07.get-delivery-instructions.response.json -->
 ```json
 {
     "count": 1,
@@ -1124,7 +1117,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW07.get-delivery-instructions-deliveryInstructionId.response.json -->
 ```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
@@ -1280,7 +1272,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 8 of scenario A _logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 10 loaded packages towards the _supplier_.
 
-<!-- request-file: ../3.0.0/mock/GW08.post-logistic-delivery-notes.request.json -->
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes' \
@@ -1813,7 +1804,6 @@ curl --request POST \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW00&BW00.post-tokens.response.json -->
 ```json
 {
   "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
@@ -1836,7 +1826,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW01&BW01.get-supplier-orders.response.json -->
 ```json
 {
   "count": 1,
@@ -1871,7 +1860,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW02&BW02.get-supplier-orders-supplierOrderId.response.json -->
 ```json
 {
   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -2065,7 +2053,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW03&BW03.get-logistic-delivery-notes.response.json -->
 ```json
 {
   "count": 1,
@@ -2135,7 +2122,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW04&BW04.get-logistic-delivery-notes-logisticDeliveryNoteId.response.json -->
 ```json
 {
   "id": "fc190dd0-d239-40db-8196-ea72ae5b4841",
@@ -2728,7 +2714,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 5 of scenario B _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
 
-<!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts' \
@@ -2755,7 +2740,6 @@ curl --request POST --verbose \
 
 In step 6 of scenario B _logistics supplier_ updates the inload of the delivery note and put logistic goods receipts towards the _supplier_ with one package indicated with variance = "Not Received", package no. 3.
 
-<!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
 curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a' \
@@ -2984,7 +2968,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/GW06&BW07.get-delivery-instructions.response.json -->
 ```json
 {
     "count": 1,
@@ -3015,7 +2998,6 @@ curl --request GET \
 
 If all goes well, the _logistics supplier_ will receive a response like this:
 
-<!-- file: ../3.0.0/mock/BW08.get-delivery-instructions-deliveryInstructionId.response.json -->
 ```json
 {
   "id": "52c5caed-57c6-4a68-97ff-b2745a514af6",
@@ -3171,7 +3153,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 In step 9 of scenario B _logistics supplier_ confirms the loading of the delivery instruction and post the delivery note with 9 loaded packages towards the _supplier_.
 
-<!-- request-file: ../3.0.0/mock/BW09.post-logistic-delivery-notes.request.json -->
 ```text
 curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes' \
@@ -3648,7 +3629,6 @@ curl --request POST --verbose \
 
 In step 10 of scenario B the _logistics supplier_ updates the loading of the delivery instruction and put the delivery note towards the _supplier_ correcting loading, replacing package no. 3 (which has previously been reported as "NotReceived") with package no. 10.
 
-<!-- request-file: ../3.0.0/mock/BW10.put-logistic-delivery-notes-logisticDeliveryNoteId.request.json -->
 ```text
 curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
