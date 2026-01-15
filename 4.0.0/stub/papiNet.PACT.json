@@ -7,9 +7,9 @@
 	},
 	"interactions": [
 		{
-			"providerState": "Interaction_0_of_Scenario_A",
+			"providerState": "UC1_Interaction_0_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 0 of Scenario A (Authentication)",
+			"description": "UC1_Interaction 0 of Scenario A (Authentication)",
 			"request": {
 				"method": "POST",
 				"path": "/tokens"
@@ -27,9 +27,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_1_of_Scenario_A",
+			"providerState": "UC1_Interaction_1_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 1 of Scenario A (Get all active orders)",
+			"description": "UC1_Interaction 1 of Scenario A (Get all active orders)",
 			"request": {
 				"method": "GET",
 				"path": "/supplier-orders",
@@ -56,9 +56,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_2_of_Scenario_A",
+			"providerState": "UC1_Interaction_2_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 2 of Scenario A",
+			"description": "UC1_Interaction 2 of Scenario A",
 			"request": {
 				"method": "GET",
 				"path": "/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -247,9 +247,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_3_of_Scenario_A",
+			"providerState": "UC1_Interaction_3_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 3 of Scenario A",
+			"description": "UC1_Interaction 3 of Scenario A",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-notes",
@@ -315,9 +315,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_4_of_Scenario_A",
+			"providerState": "UC1_Interaction_4_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 4 of Scenario A",
+			"description": "UC1_Interaction 4 of Scenario A",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841"
@@ -915,9 +915,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_5_of_Scenario_A",
+			"providerState": "UC1_Interaction_5_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 5 of Scenario A",
+			"description": "UC1_Interaction 5 of Scenario A",
 			"request": {
 				"method": "POST",
 				"path": "/logistics-goods-receipts",
@@ -947,9 +947,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_6_of_Scenario_A",
+			"providerState": "UC1_Interaction_6_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 6 of Scenario A",
+			"description": "UC1_Interaction 6 of Scenario A",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-instructions",
@@ -976,9 +976,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_7_of_Scenario_A",
+			"providerState": "UC1_Interaction_7_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 7 of Scenario A",
+			"description": "UC1_Interaction 7 of Scenario A",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6"
@@ -1139,9 +1139,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_8_of_Scenario_A",
+			"providerState": "UC1_Interaction_8_of_Scenario_A",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 8 of Scenario A",
+			"description": "UC1_Interaction 8 of Scenario A",
 			"request": {
 				"method": "POST",
 				"path": "/logistics-delivery-notes",
@@ -1664,9 +1664,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_0_of_Scenario_B",
+			"providerState": "UC1_Interaction_0_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 0 of Scenario B (Authentication)",
+			"description": "UC1_Interaction 0 of Scenario B (Authentication)",
 			"request": {
 				"method": "POST",
 				"path": "/tokens"
@@ -1684,9 +1684,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_1_of_Scenario_B",
+			"providerState": "UC1_Interaction_1_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 1 of Scenario B (Get all active orders)",
+			"description": "UC1_Interaction 1 of Scenario B (Get all active orders)",
 			"request": {
 				"method": "GET",
 				"path": "/supplier-orders",
@@ -1713,9 +1713,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_2_of_Scenario_B",
+			"providerState": "UC1_Interaction_2_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 2 of Scenario B",
+			"description": "UC1_Interaction 2 of Scenario B",
 			"request": {
 				"method": "GET",
 				"path": "/supplier-orders/3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -1904,9 +1904,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_3_of_Scenario_B",
+			"providerState": "UC1_Interaction_3_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 3 of Scenario B",
+			"description": "UC1_Interaction 3 of Scenario B",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-notes",
@@ -1972,9 +1972,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_4_of_Scenario_B",
+			"providerState": "UC1_Interaction_4_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 4 of Scenario B",
+			"description": "UC1_Interaction 4 of Scenario B",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841"
@@ -2572,9 +2572,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_5_of_Scenario_B",
+			"providerState": "UC1_Interaction_5_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 5 of Scenario B",
+			"description": "UC1_Interaction 5 of Scenario B",
 			"request": {
 				"method": "POST",
 				"path": "/logistics-goods-receipts",
@@ -2604,9 +2604,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_6_of_Scenario_B",
+			"providerState": "UC1_Interaction_6_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 6 of Scenario B",
+			"description": "UC1_Interaction 6 of Scenario B",
 			"request": {
 				"method": "PUT",
 				"path": "/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a",
@@ -2828,9 +2828,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_7_of_Scenario_B",
+			"providerState": "UC1_Interaction_7_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 7 of Scenario B",
+			"description": "UC1_Interaction 7 of Scenario B",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-instructions",
@@ -2857,9 +2857,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_8_of_Scenario_B",
+			"providerState": "UC1_Interaction_8_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 8 of Scenario B",
+			"description": "UC1_Interaction 8 of Scenario B",
 			"request": {
 				"method": "GET",
 				"path": "/logistics-delivery-instructions/52c5caed-57c6-4a68-97ff-b2745a514af6"
@@ -3020,9 +3020,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_9_of_Scenario_B",
+			"providerState": "UC1_Interaction_9_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 9 of Scenario B",
+			"description": "UC1_Interaction 9 of Scenario B",
 			"request": {
 				"method": "POST",
 				"path": "/logistics-delivery-notes",
@@ -3502,9 +3502,9 @@
 			}
 		},
 		{
-			"providerState": "Interaction_10_of_Scenario_B",
+			"providerState": "UC1_Interaction_10_of_Scenario_B",
 			"type": "Synchronous/HTTP",
-			"description": "Interaction 10 of Scenario B",
+			"description": "UC1_Interaction 10 of Scenario B",
 			"request": {
 				"method": "PUT",
 				"path": "/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841",
