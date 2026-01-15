@@ -1058,7 +1058,7 @@ In step 5 of scenario A _Logistics supplier_ completes the inload of the deliver
 
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
-curl --request POST \
+curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
@@ -1282,7 +1282,7 @@ In step 8 of scenario A _logistics supplier_ confirms the loading of the deliver
 
 <!-- request-file: ../3.0.0/mock/GW08.post-logistic-delivery-notes.request.json -->
 ```text
-curl --request 'POST' \
+curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes' \
   --header 'X-Provider-State: Interaction_8_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
@@ -2730,7 +2730,7 @@ In step 5 of scenario B _Logistics supplier_ completes the inload of the deliver
 
 <!-- request-file: ../3.0.0/mock/GW05&BW05.post-logistic-goods-receipts.request.json -->
 ```text
-curl --request POST \
+curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts' \
   --header 'X-Provider-State: Interaction_5_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26'
@@ -2757,7 +2757,7 @@ In step 6 of scenario B _logistics supplier_ updates the inload of the delivery 
 
 <!-- request-file: ../3.0.0/mock/BW06.put-logistic-goods-receipts-logisticGoodReceiptId.request.json -->
 ```text
-curl --request PUT \
+curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-goods-receipts/3aa556bb-7198-4107-8dd9-450845eb365a' \
   --header 'X-Provider-State: Interaction_6_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
@@ -3173,7 +3173,7 @@ In step 9 of scenario B _logistics supplier_ confirms the loading of the deliver
 
 <!-- request-file: ../3.0.0/mock/BW09.post-logistic-delivery-notes.request.json -->
 ```text
-curl --request POST \
+curl --request POST --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes' \
   --header 'X-Provider-State: Interaction_9_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
@@ -3650,7 +3650,7 @@ In step 10 of scenario B the _logistics supplier_ updates the loading of the del
 
 <!-- request-file: ../3.0.0/mock/BW10.put-logistic-delivery-notes-logisticDeliveryNoteId.request.json -->
 ```text
-curl --request PUT \
+curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-delivery-notes/fc190dd0-d239-40db-8196-ea72ae5b4841' \
   --header 'X-Provider-State: Interaction_10_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
