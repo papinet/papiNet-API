@@ -1426,21 +1426,9 @@ components:
                             - BorderCrossing
                             - CustomerFacility
                             - CustomerStock
-                            # Laboratory
-                            # LoggingArea
                             - Mill
-                            # PlaceFinalDestination
-                            # PlaceOfAccept
-                            # PlaceOfDespatch
-                            # PlaceOfDischarge
-                            # PlaceOfLoading
-                            # PlaceOfMeasuring
-                            # PlaceOfPassingThrough
-                            # PlaceOfReloading
                             - Port
                             - PrinterFacility
-                            # ShipFromLocation
-                            # ShipTo
                             - Terminal
                             - Warehouse
                         identifiers:
@@ -1614,27 +1602,16 @@ components:
                                   type:
                                     type: string
                                     enum:
-                                      # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                      #
-                                      # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                      # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                       - ContainerID
                                       - CassetteID
-                                      # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                      # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                       - ISO6346ContainerNumber
-                                      # Don't use `assignedBy` with this type!
+                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
                                       - LicencePlateNumber
-                                      # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
-                                      # RFTag (deprecated)
                                       - RFTagSerialNumber
                                       - SealNumber
-                                      # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
                                       - VesselUnitID
-                                      # WagonID (deprecated)
-                                      # Other (deprecated)
                                   value:
                                     type: string
                                     minLength: 1
@@ -1773,27 +1750,16 @@ components:
                                         type:
                                           type: string
                                           enum:
-                                            # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                            #
-                                            # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                            # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                             - ContainerID
                                             - CassetteID
-                                            # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                            # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                             - ISO6346ContainerNumber
-                                            # Don't use `assignedBy` with this type!
+                                            # Don't use `assignedBy` with ISO6346ContainerNumber!
                                             - LicencePlateNumber
-                                            # MachineID not applicable in Paper, Board and Pulp business
                                             - RailCarID
-                                            # RFTag (deprecated)
                                             - RFTagSerialNumber
                                             - SealNumber
-                                            # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                             - TrailerID
                                             - VesselUnitID
-                                            # WagonID (deprecated)
-                                            # Other (deprecated)
                                         value:
                                           type: string
                                           minLength: 1
@@ -1963,21 +1929,9 @@ components:
                       - BorderCrossing
                       - CustomerFacility
                       - CustomerStock
-                      # Laboratory
-                      # LoggingArea
                       - Mill
-                      # PlaceFinalDestination
-                      # PlaceOfAccept
-                      # PlaceOfDespatch
-                      # PlaceOfDischarge
-                      # PlaceOfLoading
-                      # PlaceOfMeasuring
-                      # PlaceOfPassingThrough
-                      # PlaceOfReloading
                       - Port
                       - PrinterFacility
-                      # ShipFromLocation
-                      # ShipTo
                       - Terminal
                       - Warehouse
                   identifiers:
@@ -2064,21 +2018,8 @@ components:
                       - BorderCrossing
                       - CustomerFacility
                       - CustomerStock
-                      # Laboratory
-                      # LoggingArea
                       - Mill
-                      # PlaceFinalDestination
-                      # PlaceOfAccept
-                      # PlaceOfDespatch
-                      # PlaceOfDischarge
-                      # PlaceOfLoading
-                      # PlaceOfMeasuring
-                      # PlaceOfPassingThrough
-                      # PlaceOfReloading
-                      - Port
                       - PrinterFacility
-                      # ShipFromLocation
-                      # ShipTo
                       - Terminal
                       - Warehouse
                   identifiers:
@@ -2241,21 +2182,9 @@ components:
                       - BorderCrossing
                       - CustomerFacility
                       - CustomerStock
-                      # Laboratory
-                      # LoggingArea
                       - Mill
-                      # PlaceFinalDestination
-                      # PlaceOfAccept
-                      # PlaceOfDespatch
-                      # PlaceOfDischarge
-                      # PlaceOfLoading
-                      # PlaceOfMeasuring
-                      # PlaceOfPassingThrough
-                      # PlaceOfReloading
                       - Port
                       - PrinterFacility
-                      # ShipFromLocation
-                      # ShipTo
                       - Terminal
                       - Warehouse
                   identifiers:
@@ -2343,21 +2272,9 @@ components:
                       - BorderCrossing
                       - CustomerFacility
                       - CustomerStock
-                      # Laboratory
-                      # LoggingArea
                       - Mill
-                      # PlaceFinalDestination
-                      # PlaceOfAccept
-                      # PlaceOfDespatch
-                      # PlaceOfDischarge
-                      # PlaceOfLoading
-                      # PlaceOfMeasuring
-                      # PlaceOfPassingThrough
-                      # PlaceOfReloading
                       - Port
                       - PrinterFacility
-                      # ShipFromLocation
-                      # ShipTo
                       - Terminal
                       - Warehouse
                   identifiers:
@@ -2549,27 +2466,16 @@ components:
                             type:
                               type: string
                               enum:
-                                # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                #
-                                # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                 - ContainerID
                                 - CassetteID
-                                # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                 - ISO6346ContainerNumber
-                                # Don't use `assignedBy` with this type!
+                                # Don't use `assignedBy` with ISO6346ContainerNumber!
                                 - LicencePlateNumber
-                                # MachineID not applicable in Paper, Board and Pulp business
                                 - RailCarID
-                                # RFTag (deprecated)
                                 - RFTagSerialNumber
                                 - SealNumber
-                                # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                 - TrailerID
                                 - VesselUnitID
-                                # WagonID (deprecated)
-                                # Other (deprecated)
                             value:
                               type: string
                               minLength: 1
@@ -2708,27 +2614,16 @@ components:
                                   type:
                                     type: string
                                     enum:
-                                      # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                      #
-                                      # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                      # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                       - ContainerID
                                       - CassetteID
-                                      # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                      # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                       - ISO6346ContainerNumber
-                                      # Don't use `assignedBy` with this type!
+                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
                                       - LicencePlateNumber
-                                      # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
-                                      # RFTag (deprecated)
                                       - RFTagSerialNumber
                                       - SealNumber
-                                      # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
                                       - VesselUnitID
-                                      # WagonID (deprecated)
-                                      # Other (deprecated)
                                   value:
                                     type: string
                                     minLength: 1
@@ -2992,7 +2887,6 @@ components:
                         - Lying
                         - Standing
                         - StandingUpsideDown
-                        # Other (removed)
                     code:
                       type: object
                       unevaluatedProperties: false
@@ -3074,11 +2968,8 @@ components:
                       type: string
                       enum:
                         - Loaded
-                        # when shipmentStatus = Loaded
                         - Planned
-                        # when shipmentStatus = Planned
                         - Shipped
-                        # when shipmentStatus = Arrived | Departed | Unloaded
                     type:
                       description: |
                         - **Area**: The area that is the length multiplied by the width of the item.
@@ -3220,11 +3111,8 @@ components:
                             type: string
                             enum:
                               - Loaded
-                              # when shipmentStatus = Loaded
                               - Planned
-                              # when shipmentStatus = Planned
                               - Shipped
-                              # when shipmentStatus = Arrived | Departed | Unloaded
                           type:
                             description: |
                               - **Area**: The area that is the length multiplied by the width of the item.
@@ -3321,7 +3209,7 @@ components:
             - WithDamage
             - WithoutDeliveryNote
             - WithoutInspection
-            # Changed compared to XML, formerly GoodsReceivedAsIs
+            # WithoutInspection, A Change compared to XML, formerly GoodsReceivedAsIs IN XML
             - WithVariance
             - WithVarianceAndDamage
         isComplete:
@@ -3367,21 +3255,9 @@ components:
                 - BorderCrossing
                 - CustomerFacility
                 - CustomerStock
-                # Laboratory
-                # LoggingArea
                 - Mill
-                # PlaceFinalDestination
-                # PlaceOfAccept
-                # PlaceOfDespatch
-                # PlaceOfDischarge
-                # PlaceOfLoading
-                # PlaceOfMeasuring
-                # PlaceOfPassingThrough
-                # PlaceOfReloading
                 - Port
                 - PrinterFacility
-                # ShipFromLocation
-                # ShipTo
                 - Terminal
                 - Warehouse
             identifiers:
@@ -3477,13 +3353,13 @@ components:
                 type: string
                 enum:
                   - WithoutInspection
-                  # Changed compared to XML, formerly GoodsReceivedAsIs
+                  # WithoutInspection a change compared to XML, formerly GoodsReceivedAsIs in XML
                   - AsSpecified
                   - Cancelled
                   - Rejected
                   - WithDamage
                   - WithVariance
-                  # then, we give ALL the packages!
+                  # WithVariance, then, we give ALL the packages!
                   - WithVarianceAndDamage
               deliveryNoteLineItemNumber:
                 type: integer
@@ -3779,7 +3655,7 @@ components:
                       type: string
                       enum:
                         - WithoutInspection
-                        # Changed compared to XML, formerly GoodsReceivedAsIs
+                        # WithoutInspection a change compared to XML, formerly GoodsReceivedAsIs inXML
                         - AsSpecified
                         - Cancelled
                         - Rejected
@@ -3923,21 +3799,9 @@ components:
                             - BorderCrossing
                             - CustomerFacility
                             - CustomerStock
-                            # Laboratory
-                            # LoggingArea
                             - Mill
-                            # PlaceFinalDestination
-                            # PlaceOfAccept
-                            # PlaceOfDespatch
-                            # PlaceOfDischarge
-                            # PlaceOfLoading
-                            # PlaceOfMeasuring
-                            # PlaceOfPassingThrough
-                            # PlaceOfReloading
                             - Port
                             - PrinterFacility
-                            # ShipFromLocation
-                            # ShipTo
                             - Terminal
                             - Warehouse
                         identifiers:
@@ -4025,21 +3889,9 @@ components:
                             - BorderCrossing
                             - CustomerFacility
                             - CustomerStock
-                            # Laboratory
-                            # LoggingArea
                             - Mill
-                            # PlaceFinalDestination
-                            # PlaceOfAccept
-                            # PlaceOfDespatch
-                            # PlaceOfDischarge
-                            # PlaceOfLoading
-                            # PlaceOfMeasuring
-                            # PlaceOfPassingThrough
-                            # PlaceOfReloading
                             - Port
                             - PrinterFacility
-                            # ShipFromLocation
-                            # ShipTo
                             - Terminal
                             - Warehouse
                         identifiers:
@@ -4284,27 +4136,16 @@ components:
                                   type:
                                     type: string
                                     enum:
-                                      # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                      #
-                                      # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                      # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                       - ContainerID
                                       - CassetteID
-                                      # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                      # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                       - ISO6346ContainerNumber
-                                      # Don't use `assignedBy` with this type!
+                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
                                       - LicencePlateNumber
-                                      # MachineID not applicable in Paper, Board and Pulp business
                                       - RailCarID
-                                      # RFTag (deprecated)
                                       - RFTagSerialNumber
                                       - SealNumber
-                                      # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                       - TrailerID
                                       - VesselUnitID
-                                      # WagonID (deprecated)
-                                      # Other (deprecated)
                                   value:
                                     type: string
                                     minLength: 1
@@ -4443,27 +4284,16 @@ components:
                                         type:
                                           type: string
                                           enum:
-                                            # Reduced list from enumeration for "TransportUnitIdentifierType" [attribute]
-                                            #
-                                            # AssignedByAgencyID not applicable in Paper, Board and Pulp business
-                                            # AssignedByMachineOwnerID not applicable in Paper, Board and Pulp business
                                             - ContainerID
                                             - CassetteID
-                                            # GlobalIndividualAssetIdentifier not applicable in Paper, Board and Pulp business
-                                            # GlobalReturnableAssetIdentifier not applicable in Paper, Board and Pulp business
                                             - ISO6346ContainerNumber
-                                            # Don't use `assignedBy` with this type!
+                                            # Don't use `assignedBy` with ISO6346ContainerNumber!
                                             - LicencePlateNumber
-                                            # MachineID not applicable in Paper, Board and Pulp business
                                             - RailCarID
-                                            # RFTag (deprecated)
                                             - RFTagSerialNumber
                                             - SealNumber
-                                            # SerialShippingContainerCode not applicable in Paper, Board and Pulp business
                                             - TrailerID
                                             - VesselUnitID
-                                            # WagonID (deprecated)
-                                            # Other (deprecated)
                                         value:
                                           type: string
                                           minLength: 1
@@ -4759,7 +4589,6 @@ components:
                               - Lying
                               - Standing
                               - StandingUpsideDown
-                              # Other (removed)
                           code:
                             type: object
                             unevaluatedProperties: false
