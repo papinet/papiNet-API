@@ -1034,11 +1034,6 @@ components:
           type: object
           unevaluatedProperties: false
           required:
-            # addressLines is not required
-            # city is not required
-            # postalCode is not required
-            # stateOrProvince is not required
-            # county is not required
             - countryCode
           properties:
             addressLines:
@@ -1076,7 +1071,6 @@ components:
       required:
         - count
         - items
-        # links is not required
       properties:
         count:
           type: integer
@@ -1093,11 +1087,6 @@ components:
               - timestamp
               - isCancelled
               - isActive
-              # sellerParty is not required
-              # supplierParty is not required
-              # logisticsSupplierParty is not required
-              # customerParty is not required
-              # buyerParty is not required
               - lineItemCount
             properties:
               id:
@@ -1139,11 +1128,6 @@ components:
         - timestamp
         - isCancelled
         - isActive
-        # sellerParty is not required
-        # supplierParty is not required
-        # logisticsSupplierParty is not required
-        # customerParty is not required
-        # buyerParty is not required
         - lineItems
       properties:
         id:
@@ -1180,13 +1164,7 @@ components:
             required:
               - number
               - isCancelled
-              # purchaseOrderNumber is not required
-              # purchaseOrderLineItemNumber is not required
-              # customerReferenceNumber is not required
               - sellerProduct
-              # customerArticleReference is not required
-              # millParty is not required
-              # deliveryLegs is not mandatory
               - quantities
             properties:
               number:
@@ -1247,7 +1225,6 @@ components:
                       required:
                         - type
                         - value
-                        # countryCode is not required
                       properties:
                         type:
                           type: string
@@ -1299,14 +1276,7 @@ components:
                   required:
                     - number
                     - shipFromLocation
-                    # shipFromParty is not required
                     - shipToLocation
-                    # shipToParty is not required
-                    # mainCarrierParty is not required
-                    # estimatedLoadingDateTime is not required
-                    # estimatedDepartureDateTime is not required
-                    # estimatedArrivalDateTime is not required
-                    # transport is not required
                   properties:
                     number:
                       type: integer
@@ -1315,7 +1285,6 @@ components:
                       type: object
                       unevaluatedProperties: false
                       required:
-                        # type is not required
                         - identifiers
                       properties:
                         type:
@@ -1324,21 +1293,9 @@ components:
                             - BorderCrossing
                             - CustomerFacility
                             - CustomerStock
-                            # Laboratory
-                            # LoggingArea
                             - Mill
-                            # PlaceFinalDestination
-                            # PlaceOfAccept
-                            # PlaceOfDespatch
-                            # PlaceOfDischarge
-                            # PlaceOfLoading
-                            # PlaceOfMeasuring
-                            # PlaceOfPassingThrough
-                            # PlaceOfReloading
                             - Port
                             - PrinterFacility
-                            # ShipFromLocation
-                            # ShipTo
                             - Terminal
                             - Warehouse
                         identifiers:
@@ -1369,11 +1326,6 @@ components:
                           type: object
                           unevaluatedProperties: false
                           required:
-                            # addressLines is not required
-                            # city is not required
-                            # postalCode is not required
-                            # stateOrProvince is not required
-                            # county is not required
                             - countryCode
                           properties:
                             addressLines:
@@ -1417,7 +1369,6 @@ components:
                       type: object
                       unevaluatedProperties: false
                       required:
-                        # type is not required
                         - identifiers
                       properties:
                         type:
@@ -1459,11 +1410,6 @@ components:
                           type: object
                           unevaluatedProperties: false
                           required:
-                            # addressLines is not required
-                            # city is not required
-                            # postalCode is not required
-                            # stateOrProvince is not required
-                            # county is not required
                             - countryCode
                           properties:
                             addressLines:
@@ -1537,7 +1483,6 @@ components:
                       unevaluatedProperties: false
                       required:
                         - modeType
-                        # units is not required
                       properties:
                         modeType:
                           type: string
@@ -1555,12 +1500,8 @@ components:
                             type: object
                             unevaluatedProperties: false
                             required:
-                              # level
                               - type
-                              # detailCode
                               - identifier
-                              # measurements
-                              # unitReferences
                             properties:
                               level:
                                 type: integer
@@ -1596,8 +1537,6 @@ components:
                                 required:
                                   - type
                                   - value
-                                  # assignedBy not required
-                                  # countryCode not required
                                 properties:
                                   type:
                                     type: string
@@ -1629,10 +1568,6 @@ components:
                                 type: object
                                 unevaluatedProperties: false
                                 required: []
-                                # length is not required
-                                # width is not required
-                                # height is not required
-                                # weight is not required
                                 properties:
                                   length:
                                     type: object
@@ -1744,8 +1679,6 @@ components:
                                       required:
                                         - type
                                         - value
-                                        # assignedBy not required
-                                        # countryCode not required
                                       properties:
                                         type:
                                           type: string
@@ -1855,7 +1788,6 @@ components:
       required:
         - count
         - items
-        # links is not required
       properties:
         count:
           type: integer
@@ -1872,15 +1804,8 @@ components:
               - timestamp
               - isCancelled
               - isActive
-              # shipmentStatus is not required
-              # supplierParty is not required
-              # logisticsSupplierParty is not required
-              # deliveryInstructionNumber
-              # deliveryInstructionSequenceNumber
               - shipFromLocation
-              # of the **first** `.deliveryLeg[]`
               - shipToLocation
-              # of the  **last** `.deliveryLeg[]`
               - lineItemCount
             properties:
               id:
@@ -1920,7 +1845,6 @@ components:
                 type: object
                 unevaluatedProperties: false
                 required:
-                  # type is not required
                   - identifiers
                 properties:
                   type:
@@ -1962,11 +1886,6 @@ components:
                     type: object
                     unevaluatedProperties: false
                     required:
-                      # addressLines is not required
-                      # city is not required
-                      # postalCode is not required
-                      # stateOrProvince is not required
-                      # county is not required
                       - countryCode
                     properties:
                       addressLines:
@@ -2009,7 +1928,6 @@ components:
                 type: object
                 unevaluatedProperties: false
                 required:
-                  # type is not required
                   - identifiers
                 properties:
                   type:
@@ -2050,11 +1968,6 @@ components:
                     type: object
                     unevaluatedProperties: false
                     required:
-                      # addressLines is not required
-                      # city is not required
-                      # postalCode is not required
-                      # stateOrProvince is not required
-                      # county is not required
                       - countryCode
                     properties:
                       addressLines:
@@ -2106,11 +2019,6 @@ components:
         - timestamp
         - isCancelled
         - isActive
-        # shipmentStatus is not required
-        # supplierParty is not required
-        # logisticsSupplierParty is not required
-        # deliveryInstructionNumber
-        # deliveryInstructionSequenceNumber
         - deliveryLegs
         - lineItems
       properties:
@@ -2155,16 +2063,7 @@ components:
             required:
               - number
               - shipFromLocation
-              # shipFromParty is not required
               - shipToLocation
-              # shipToParty is not required
-              # mainCarrierParty is not required
-              # estimatedLoadingDateTime is not required
-              # actualLoadingDateTime is not required
-              # estimatedDepartureDateTime is not required
-              # actualDepartureDateTime is not required
-              # estimatedArrivalDateTime is not required
-              # transport is not required
             properties:
               number:
                 type: integer
@@ -2173,7 +2072,6 @@ components:
                 type: object
                 unevaluatedProperties: false
                 required:
-                  # type is not required
                   - identifiers
                 properties:
                   type:
@@ -2215,11 +2113,6 @@ components:
                     type: object
                     unevaluatedProperties: false
                     required:
-                      # addressLines is not required
-                      # city is not required
-                      # postalCode is not required
-                      # stateOrProvince is not required
-                      # county is not required
                       - countryCode
                     properties:
                       addressLines:
@@ -2263,7 +2156,6 @@ components:
                 type: object
                 unevaluatedProperties: false
                 required:
-                  # type is not required
                   - identifiers
                 properties:
                   type:
@@ -2305,11 +2197,6 @@ components:
                     type: object
                     unevaluatedProperties: false
                     required:
-                      # addressLines is not required
-                      # city is not required
-                      # postalCode is not required
-                      # stateOrProvince is not required
-                      # county is not required
                       - countryCode
                     properties:
                       addressLines:
@@ -2401,7 +2288,6 @@ components:
                 unevaluatedProperties: false
                 required:
                   - modeType
-                  # units is not required
                 properties:
                   modeType:
                     type: string
@@ -2419,12 +2305,8 @@ components:
                       type: object
                       unevaluatedProperties: false
                       required:
-                        # level
                         - type
-                        # detailCode
                         - identifier
-                        # measurements
-                        # unitReferences
                       properties:
                         level:
                           type: integer
@@ -2460,8 +2342,6 @@ components:
                           required:
                             - type
                             - value
-                            # assignedBy not required
-                            # countryCode not required
                           properties:
                             type:
                               type: string
@@ -2493,10 +2373,6 @@ components:
                           type: object
                           unevaluatedProperties: false
                           required: []
-                          # length is not required
-                          # width is not required
-                          # height is not required
-                          # weight is not required
                           properties:
                             length:
                               type: object
@@ -2608,8 +2484,6 @@ components:
                                 required:
                                   - type
                                   - value
-                                  # assignedBy not required
-                                  # countryCode not required
                                 properties:
                                   type:
                                     type: string
@@ -2647,19 +2521,7 @@ components:
               - number
               - supplierOrderNumber
               - supplierOrderLineItemNumber
-              # callOffNumber is not required
-              # callOffLineItemNumber is not required
-              # deliveryInstructionSequenceLineItemNumber
-              # purchaseOrderNumber is not required
-              # purchaseOrderLineItemNumber is not required
-              # customerReferenceNumber is not required
-              # sellerProduct is not required
-              # customerArticleReference is not required
-              # safetyAndEnvironmentDetails is not required
-              # loadingCharacteristics is not required
-              # unloadingCharacteristics is not required
               - quantities
-              # packages is not required
             properties:
               number:
                 type: integer
@@ -2731,7 +2593,6 @@ components:
                       required:
                         - type
                         - value
-                        # countryCode is not required
                       properties:
                         type:
                           type: string
@@ -2780,11 +2641,6 @@ components:
                   unevaluatedProperties: false
                   required:
                     - type
-                    # assignedBy is not required
-                    # licenceNumber is not required
-                    # chainOfCustody is not required
-                    # certificationPercentage is not required
-                    # references is not required
                   properties:
                     # quantity and freeText existing in XML not added
                     # certification now limited to a percentage, in XML a measurement value.
@@ -2813,7 +2669,6 @@ components:
                       type: object
                       unevaluatedProperties: false
                       required:
-                        # certificationBody is not required
                         - value
                       properties:
                         certificationBody:
@@ -2833,7 +2688,6 @@ components:
                         unevaluatedProperties: false
                         required:
                           - identifier
-                          # subReference is not required
                         properties:
                           identifier:
                             type: object
@@ -2875,10 +2729,6 @@ components:
                   type: object
                   unevaluatedProperties: false
                   required: []
-                  # type is not required
-                  # code is not required
-                  # labelOrientation is not required
-                  # text is not required
                   properties:
                     type:
                       type: string
@@ -2919,9 +2769,6 @@ components:
                   type: object
                   unevaluatedProperties: false
                   required: []
-                  # type is not required
-                  # code is not required
-                  # text is not required
                   properties:
                     type:
                       type: string
@@ -2930,7 +2777,6 @@ components:
                         - Lying
                         - Standing
                         - StandingUpsideDown
-                        # Other (removed)
                     code:
                       type: object
                       unevaluatedProperties: false
@@ -3036,7 +2882,6 @@ components:
                   required:
                     - type
                     - identifiers
-                    # transportUnitIdentifierReference is not required
                     - quantities
                   properties:
                     type:
@@ -3179,12 +3024,6 @@ components:
         - isActive
         - acceptance
         - isComplete
-        # deliveryNoteNumber is not required
-        # deliveryNoteTimeStamp is not required
-        # arrivalDateTime is not required
-        # unloadingDateTime is not required
-        # shipToLocation is not required
-        # lineItems is not required
       properties:
         id:
           type: string
@@ -3246,7 +3085,6 @@ components:
           type: object
           unevaluatedProperties: false
           required:
-            # type is not required
             - identifiers
           properties:
             type:
@@ -3288,11 +3126,6 @@ components:
               type: object
               unevaluatedProperties: false
               required:
-                # addressLines is not required
-                # city is not required
-                # postalCode is not required
-                # stateOrProvince is not required
-                # county is not required
                 - countryCode
               properties:
                 addressLines:
@@ -3338,13 +3171,6 @@ components:
             unevaluatedProperties: false
             required:
               - number
-              # acceptance is not required
-              # deliveryNoteLineItemNumber is not required
-              # supplierOrderNumber is not required
-              # supplierOrderLineItemNumber is not required
-              # sellerProduct is not required
-              # quantities is not required
-              # packages is not required
             properties:
               number:
                 type: integer
@@ -3414,7 +3240,6 @@ components:
                       required:
                         - type
                         - value
-                        # countryCode is not required
                       properties:
                         type:
                           type: string
@@ -3515,10 +3340,7 @@ components:
                   required:
                     - type
                     - identifiers
-                    # transportUnitIdentifierReference is not required
-                    # quantities is not required
                     - acceptance
-                    # varianceType is not required
                   properties:
                     type:
                       type: string
@@ -3635,7 +3457,6 @@ components:
                               - MetricTon
                               - Millimeter
                               - ReelPackage
-                              # Issue #137: Renamed form "Package" (2024-08-15)
                               - Piece
                               - Pound
                               - Ream
@@ -3674,7 +3495,6 @@ components:
       required:
         - count
         - items
-        # links is not required
       properties:
         count:
           type: integer
@@ -3746,9 +3566,6 @@ components:
             required:
               - number
               - isCancelled
-              # supplierParty is not required
-              # logisticsSupplierParty is not required
-              # buyerParty is not required
               - deliveryLegs
               - lineItems
             properties:
@@ -3772,16 +3589,7 @@ components:
                   required:
                     - number
                     - shipFromLocation
-                    # shipFromParty is not required
                     - shipToLocation
-                    # shipToParty is not required
-                    # termsOfDelivery is not required
-                    # mainCarrierParty is not required
-                    # mainCarrierReferenceNumber is not required
-                    # requestedLoadingDateTime is not required
-                    # requestedDepartureDateTime is not required
-                    # requestedArrivalDateTime is not required
-                    # transport is not required
                   properties:
                     number:
                       type: integer
@@ -3790,7 +3598,6 @@ components:
                       type: object
                       unevaluatedProperties: false
                       required:
-                        # type is not required
                         - identifiers
                       properties:
                         type:
@@ -3832,11 +3639,6 @@ components:
                           type: object
                           unevaluatedProperties: false
                           required:
-                            # addressLines is not required
-                            # city is not required
-                            # postalCode is not required
-                            # stateOrProvince is not required
-                            # county is not required
                             - countryCode
                           properties:
                             addressLines:
@@ -3880,7 +3682,6 @@ components:
                       type: object
                       unevaluatedProperties: false
                       required:
-                        # type is not required
                         - identifiers
                       properties:
                         type:
@@ -3922,11 +3723,6 @@ components:
                           type: object
                           unevaluatedProperties: false
                           required:
-                            # addressLines is not required
-                            # city is not required
-                            # postalCode is not required
-                            # stateOrProvince is not required
-                            # county is not required
                             - countryCode
                           properties:
                             addressLines:
@@ -4071,7 +3867,6 @@ components:
                       unevaluatedProperties: false
                       required:
                         - modeType
-                        # units is not required
                       properties:
                         modeType:
                           type: string
@@ -4089,12 +3884,8 @@ components:
                             type: object
                             unevaluatedProperties: false
                             required:
-                              # level
                               - type
-                              # detailCode
                               - identifier
-                              # measurements
-                              # unitReferences
                             properties:
                               level:
                                 type: integer
@@ -4130,8 +3921,6 @@ components:
                                 required:
                                   - type
                                   - value
-                                  # assignedBy not required
-                                  # countryCode not required
                                 properties:
                                   type:
                                     type: string
@@ -4163,10 +3952,6 @@ components:
                                 type: object
                                 unevaluatedProperties: false
                                 required: []
-                                # length is not required
-                                # width is not required
-                                # height is not required
-                                # weight is not required
                                 properties:
                                   length:
                                     type: object
@@ -4278,8 +4063,6 @@ components:
                                       required:
                                         - type
                                         - value
-                                        # assignedBy not required
-                                        # countryCode not required
                                       properties:
                                         type:
                                           type: string
@@ -4315,18 +4098,7 @@ components:
                   unevaluatedProperties: false
                   required:
                     - number
-                    # supplierOrderNumber is not required
-                    # supplierOrderLineItemNumber is not required
-                    # callOffNumber is not required
-                    # callOffLineItemNumber is not required
-                    # customerReferenceNumber is not required
-                    # sellerProduct is not mandatory
-                    # customerArticleReference
-                    # safetyAndEnvironmentDetails is not required
-                    # loadingCharacteristics is not required
-                    # unloadingCharacteristics is not required
                     - quantities
-                    # packages is not required
                   properties:
                     number:
                       type: integer
@@ -4389,7 +4161,6 @@ components:
                             required:
                               - type
                               - value
-                              # countryCode is not required
                             properties:
                               type:
                                 type: string
@@ -4438,11 +4209,7 @@ components:
                         unevaluatedProperties: false
                         required:
                           - type
-                          # assignedBy is not required
-                          # licenceNumber is not required
-                          # chainOfCustody is not required
-                          # certificationPercentage is not required
-                          # references is not required
+
                         properties:
                           # quantity and freeText existing in XML not added
                           # certification now limited to a percentage, in XML a measurement value.
@@ -4471,7 +4238,6 @@ components:
                             type: object
                             unevaluatedProperties: false
                             required:
-                              # certificationBody is not required
                               - value
                             properties:
                               certificationBody:
@@ -4491,7 +4257,6 @@ components:
                               unevaluatedProperties: false
                               required:
                                 - identifier
-                                # subReference is not required
                               properties:
                                 identifier:
                                   type: object
@@ -4533,10 +4298,6 @@ components:
                         type: object
                         unevaluatedProperties: false
                         required: []
-                        # type is not required
-                        # code is not required
-                        # labelOrientation is not required
-                        # text is not required
                         properties:
                           type:
                             type: string
@@ -4545,7 +4306,6 @@ components:
                               - Lying
                               - Standing
                               - StandingUpsideDown
-                              # Other (removed)
                           code:
                             type: object
                             unevaluatedProperties: false
@@ -4578,9 +4338,6 @@ components:
                         type: object
                         unevaluatedProperties: false
                         required: []
-                        # type is not required
-                        # code is not required
-                        # text is not required
                         properties:
                           type:
                             type: string
@@ -4690,7 +4447,6 @@ components:
                         required:
                           - type
                           - identifiers
-                          # transportUnitIdentifierReference is not required
                           - quantities
                         properties:
                           type:
@@ -4824,7 +4580,6 @@ components:
       required:
         - count
         - items
-        # links is not required
       properties:
         count:
           type: integer
@@ -4840,8 +4595,6 @@ components:
               - number
               - timestamp
               - isActive
-              # logisticsSupplierParty is not required
-              # supplierParty is not required
               - storageLocation
               - supplierOrderNumber
               - supplierOrderLineItemNumber
@@ -4850,9 +4603,9 @@ components:
                 type: string
                 format: uuid
               number:
+                description: The identifier of the inventory change assigned by the creator of the inventory change, i.e. the supplier.
                 type: string
                 minLength: 1
-                # This is the identifier of the inventory change assigned by the creator of the inventory change, i.e. the supplier.
               timestamp:
                 type: string
                 format: date-time
@@ -4897,11 +4650,6 @@ components:
                     type: object
                     unevaluatedProperties: false
                     required:
-                      # addressLines is not required
-                      # city is not required
-                      # postalCode is not required
-                      # stateOrProvince is not required
-                      # county is not required
                       - countryCode
                     properties:
                       addressLines:
@@ -4944,8 +4692,6 @@ components:
         - number
         - timestamp
         - isActive
-        # logisticsSupplierParty is not required
-        # supplierParty is not required
         - storageLocation
         - supplierOrderNumber
         - supplierOrderLineItemNumber
@@ -4955,9 +4701,9 @@ components:
           type: string
           format: uuid
         number:
+          description: The identifier of the inventory change assigned by the creator of the inventory change, i.e. the supplier or the logistics supplier.
           type: string
           minLength: 1
-          # This is the identifier of the inventory change assigned by the creator of the inventory change, i.e. the supplier or the logistics supplier.
         timestamp:
           type: string
           format: date-time
@@ -5002,11 +4748,6 @@ components:
               type: object
               unevaluatedProperties: false
               required:
-                # addressLines is not required
-                # city is not required
-                # postalCode is not required
-                # stateOrProvince is not required
-                # county is not required
                 - countryCode
               properties:
                 addressLines:
@@ -5180,10 +4921,6 @@ components:
                 required:
                   - qualityGrade
                   - isDamaged
-                  # damages is not required
-                  # rejected is not required
-                  # refurbished is not required
-                  # dispatchStop is not required
                 properties:
                   qualityGrade:
                     type: string
@@ -5200,8 +4937,6 @@ components:
                       unevaluatedProperties: false
                       required:
                         - typeOfDamage
-                        # placeOfDamage is not required
-                        # causeOfDamage is not required
                       properties:
                         typeOfDamage:
                           type: string
