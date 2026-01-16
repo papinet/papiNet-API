@@ -1,4 +1,9 @@
 {
+	"metadata": {
+    	"pactSpecification": {
+    		"version": "2.0.0"
+    	}
+    },
 	"consumer": {
 		"name": "Logistics Supplier"
 	},
@@ -8,7 +13,6 @@
 	"interactions": [
 		{
 			"providerState": "UC1_Interaction_0_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 0 of Scenario A (Authentication)",
 			"request": {
 				"method": "POST",
@@ -28,7 +32,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_1_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 1 of Scenario A (Get all active orders)",
 			"request": {
 				"method": "GET",
@@ -57,7 +60,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_2_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 2 of Scenario A",
 			"request": {
 				"method": "GET",
@@ -248,7 +250,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_3_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 3 of Scenario A",
 			"request": {
 				"method": "GET",
@@ -316,7 +317,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_4_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 4 of Scenario A",
 			"request": {
 				"method": "GET",
@@ -916,7 +916,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_5_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 5 of Scenario A",
 			"request": {
 				"method": "POST",
@@ -948,7 +947,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_6_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 6 of Scenario A",
 			"request": {
 				"method": "GET",
@@ -977,7 +975,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_7_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 7 of Scenario A",
 			"request": {
 				"method": "GET",
@@ -1140,7 +1137,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_8_of_Scenario_A",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 8 of Scenario A",
 			"request": {
 				"method": "POST",
@@ -1665,7 +1661,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_0_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 0 of Scenario B (Authentication)",
 			"request": {
 				"method": "POST",
@@ -1685,7 +1680,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_1_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 1 of Scenario B (Get all active orders)",
 			"request": {
 				"method": "GET",
@@ -1714,7 +1708,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_2_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 2 of Scenario B",
 			"request": {
 				"method": "GET",
@@ -1905,7 +1898,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_3_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 3 of Scenario B",
 			"request": {
 				"method": "GET",
@@ -1973,7 +1965,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_4_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 4 of Scenario B",
 			"request": {
 				"method": "GET",
@@ -2573,7 +2564,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_5_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 5 of Scenario B",
 			"request": {
 				"method": "POST",
@@ -2605,7 +2595,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_6_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 6 of Scenario B",
 			"request": {
 				"method": "PUT",
@@ -2829,7 +2818,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_7_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 7 of Scenario B",
 			"request": {
 				"method": "GET",
@@ -2858,7 +2846,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_8_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 8 of Scenario B",
 			"request": {
 				"method": "GET",
@@ -3021,7 +3008,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_9_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 9 of Scenario B",
 			"request": {
 				"method": "POST",
@@ -3503,7 +3489,6 @@
 		},
 		{
 			"providerState": "UC1_Interaction_10_of_Scenario_B",
-			"type": "Synchronous/HTTP",
 			"description": "UC1_Interaction 10 of Scenario B",
 			"request": {
 				"method": "PUT",
