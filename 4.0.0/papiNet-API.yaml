@@ -1447,8 +1447,6 @@ components:
                               type: number
                             longitude:
                               type: number
-                    shipToParty:
-                      $ref: "#/components/schemas/Party"
                     mainCarrierParty:
                       $ref: "#/components/schemas/Party"
                     estimatedLoadingDateTime:
@@ -2234,8 +2232,6 @@ components:
                         type: number
                       longitude:
                         type: number
-              shipToParty:
-                $ref: "#/components/schemas/Party"
               mainCarrierParty:
                 $ref: "#/components/schemas/Party"
               estimatedLoadingDateTime:
@@ -3760,8 +3756,6 @@ components:
                               type: number
                             longitude:
                               type: number
-                    shipToParty:
-                      $ref: "#/components/schemas/Party"
                     termsOfDelivery:
                       type: object
                       unevaluatedProperties: false
