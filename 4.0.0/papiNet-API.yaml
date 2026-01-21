@@ -1365,8 +1365,6 @@ components:
                       minimum: 0
                     shipFromLocation:
                       $ref: "#/components/schemas/Location"
-                    shipFromParty:
-                      $ref: "#/components/schemas/Party"
                     shipToLocation:
                       $ref: "#/components/schemas/Location"
                     mainCarrierParty:
@@ -1831,8 +1829,6 @@ components:
                 minimum: 0
               shipFromLocation:
                 $ref: "#/components/schemas/Location"
-              shipFromParty:
-                $ref: "#/components/schemas/Party"
               shipToLocation:
                 $ref: "#/components/schemas/Location"
               mainCarrierParty:
@@ -3115,8 +3111,6 @@ components:
                       minimum: 0
                     shipFromLocation:
                       $ref: "#/components/schemas/Location"
-                    shipFromParty:
-                      $ref: "#/components/schemas/Party"
                     shipToLocation:
                       $ref: "#/components/schemas/Location"
                     termsOfDelivery:
