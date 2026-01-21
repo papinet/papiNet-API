@@ -4622,6 +4622,14 @@ components:
                 required:
                   - identifiers
                 properties:
+                  type:
+                    type: string
+                    enum:
+                      - CustomerStock
+                      - Mill
+                      - Port
+                      - Terminal
+                      - Warehouse                 
                   identifiers:
                     type: array
                     minItems: 1
@@ -4720,6 +4728,14 @@ components:
           required:
             - identifiers
           properties:
+            type:
+              type: string
+              enum:
+                - CustomerStock
+                - Mill
+                - Port
+                - Terminal
+                - Warehouse         
             identifiers:
               type: array
               minItems: 1
