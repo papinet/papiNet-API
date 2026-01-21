@@ -4678,6 +4678,17 @@ components:
                         minLength: 2
                         maxLength: 2
                         description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  coordinatesWgs84:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - latitude
+                      - longitude
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
               supplierOrderNumber:
                 type: string
                 minLength: 1
@@ -4784,6 +4795,17 @@ components:
                   minLength: 2
                   maxLength: 2
                   description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            coordinatesWgs84:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - latitude
+                - longitude
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
         supplierOrderNumber:
           type: string
           minLength: 1
