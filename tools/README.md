@@ -2,6 +2,49 @@
 
 This `tools/` folder does contain a few tools/scripts that help us to develop the papiNet API standard.
 
+### How to install the _Standalone Pact Stub Server_ on Windows (without administrative rights)
+
+1\. Download the archive `pact-stub-server-windows-x86_64.exe.gz` containing the latest version of the binary `pact-stub-server.exe` at https://github.com/pact-foundation/pact-stub-server/releases into your `\Downloads` folder.
+
+***Note:*** You might have to click on the "Show all __ assets" link!
+
+2\. Using the File Explorer, create a new subfolder `Pact` within the folder `C:\Users\{Username}\AppData\Local\Programs`.
+
+3\. Unzip/Extract the file `pact-stub-server.exe` from the `pact-stub-server-windows-x86_64.exe.gz` archive into the folder `C:\Users\{Username}\AppData\Local\Programs\Pact`.
+
+4\. From a Windows Command Prompt run the following command:
+
+```text
+rundll32.exe sysdm.cpl,EditEnvironmentVariables
+```
+
+5\ . From the "User variables for {Username}" section, click on the "New..." button to create a new variable with the name `PACT_BIN` and the value `C:\Users\{Username}\AppData\Local\Programs\Pact`.
+
+6\. From the "User variables for {Username}" section, select the `Path` variable and click on the "Edit.." button, then click on the "New" button and add the line `%PACT_BIN%` at the end.
+
+7\. From a new Windows Command Prompt run the following command to verify the installation:
+
+```text
+pact-stub-server --version
+```
+
+If all went well, you should get a response like this one:
+
+```text
+pact stub server version  : v0.7.0
+pact specification version: v4.0
+```
+
+### `analyse-uom.js`
+
+This script will list all the `uom` (unit of measure) within the schemas of the papiNet API OpenAPI documentation.
+
+```text
+node analyse-uom.js
+```
+
+
+
 ### `analyse-uom.js`
 
 This script will list all the `uom` (unit of measure) within the schemas of the papiNet API OpenAPI documentation.
