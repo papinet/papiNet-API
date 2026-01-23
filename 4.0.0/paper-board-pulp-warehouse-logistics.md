@@ -9,19 +9,19 @@ This use case is designed for _Paper_, _Board_ and _Pulp_ businesses.
 
 ## Simplification
 
-For now, we only consider a simplified version of the business interactions between only two types of parties: the _logistics supplier_ and the _supplier_, where the _logistics supplier_ will host the client calling the papiNet API endpoints implemented by the _supplier_.
+For now, papiNet only considers a simplified version of the business interactions between only two types of parties: the _logistics supplier_ and the _supplier_, where the _logistics supplier_ will host the client calling the papiNet API endpoints implemented by the _supplier_.
 
 ## Domain Name
 
-We suggest that the _supplier_ (as well as the _logistics supplier_ if it uses the notification mechanism) exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+papiNet suggests that the _supplier_ (as well as the _logistics supplier_ if it uses the notification mechanism) exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
 
 ## Notifications
 
 In order to get updated information on _suppier-orders_, _logistics delivery notes_ and _Logistics delivery instructions_ the _logistics suppliers_ have to call API endpoints of the _supplier_. As the _logistics suplliers_ do not know when these informations are getting updated, they should normally poll these API endpoints on a regular basis.
 
-This polling mechanism is not optimal from an IT resources point of view, that's why we recommend the usage of notifications from the _logistics suppliers_ to the _supplier_. However, as the usage of these notifications would require additional investment on the _logistics supplier_ side, they remain an optional optimization.
+This polling mechanism is not optimal from an IT resources point of view, that's why papiNet recommends the usage of notifications from the _logistics suppliers_ to the _supplier_. However, as the usage of these notifications would require additional investment on the _logistics supplier_ side, they remain an optional optimization.
 
-For the implementation of these notifications, we recommend to use the [CloudEvents](https://cloudevents.io/) specification, which is a vendor-neutral specification for defining the format of event data. In order to ensure the decoupling between this notification mechanism and the papiNet API, we will use the CloudEvents specification following the **_thin event_** pattern. (...)
+For the implementation of these notifications, papiNet recommends to use the [CloudEvents](https://cloudevents.io/) specification, which is a vendor-neutral specification for defining the format of event data. In order to ensure the decoupling between this notification mechanism and the papiNet API, papiNet will use the CloudEvents specification following the **_thin event_** pattern. (...)
 
 ## papiNet Stub Service
 
@@ -34,7 +34,7 @@ pact-stub-server --file ./stub/papiNet.PACT.json --port 3040 --provider-state-he
 
 ## Authentication
 
-For authenticating the _logistics supplier_, we recommend to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
+For authenticating the _logistics supplier_, papiNet recommends to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
 
 The _logistics supplier_ sends an API request to create a session, and gets its associated _access token_:
 
@@ -181,7 +181,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
   
-  We have prepared the scenario A on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+  papiNet has prepared the scenario A on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
 
 #### UC1_Interaction 2 of Scenario A
 
@@ -1844,7 +1844,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 You can see that the _supplier_ has 1 active order. The response only contains part of the header information, to get the details of the order, including the order lines, you can see the link properties that contains a prepared API endpoint giving direct access to the full order info.
 
-We have prepared the scenario B on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+papiNet has prepared the scenario B on the order 3fa85f64-5717-4562-b3fc-2c963f66afa6.
 
 #### UC1_Interaction 2 of Scenario B
 
