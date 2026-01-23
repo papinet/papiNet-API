@@ -1,6 +1,7 @@
 ## Tools
 
-This `tools/` folder does contain a few tools/scripts that help us to develop the papiNet API standard.
+The `tools/` folder serves as a repository for some tools.  
+papiNet makes no guarantees regarding the functionality, performance or suitability of these tools.
 
 ### How to install the _Standalone Pact Stub Server_ on Windows (without administrative rights)
 
