@@ -4,6 +4,22 @@ Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("pap
 
 This document intends to establish guidelines which build a transparent, open mechanism for deciding how to evolve the papiNet API standard. The papiNet Central Working Group (CWG) will follow these processes when merging changes from external contributors or from the CWG itself. This guideline document will be adjusted as practicality dictates.
 
+## Use of GitHub issues
+
+Issues are created for tracking of decisions and changes.
+
+* Issues should be assigned to responsible maintainers, so that they get notifications when issues are updated or commented.
+
+* Issues should be given appropiate labels when updated or commented.
+
+* Solutions for issues are approved, approved with amendment or rejected by CWG.
+
+* Implementation of a solution for an issue should have one or several commits. No other changes should exist in these commits. The commits should have a reference to the issue number. A description of the change and a link to the commits should be given in a comment of the issue.
+
+* Implementation of a solution for an issue should be reviewed by at least one maintainer.
+
+* Issues are closed at CWG API meetings.
+
 ## Tracking Process
 
 GitHub is the medium of record for all papiNet API standard updates.
