@@ -7,6 +7,19 @@ Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("pap
 
 This use case is designed for _Paper_, _Board_ and _Pulp_ businesses.
 
+Endpoints used in this use case
+ 
+* `GET /supplier-orders`
+* `GET /supplier-orders/{supplierOrderId}`
+* `GET /logistics-delivery-notes`
+* `GET /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-delivery-notes`
+* `PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-goods-receipts`
+* `PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}`
+* `GET /logistics-delivery-instructions`
+* `GET /logistics-delivery-instructions/{deliveryInstructionId}`
+
 ## Simplification
 
 For now, papiNet only considers a simplified version of the business interactions between only two types of parties: the _logistics supplier_ and the _supplier_, where the _logistics supplier_ will host the client calling the papiNet API endpoints implemented by the _supplier_.
