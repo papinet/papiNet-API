@@ -1,4 +1,5 @@
-Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
+Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet. <br/><br/>
+
 
 <!-- markdownlint-disable MD041 -->
 
@@ -46,13 +47,21 @@ The following API endpoints allows a _supplier_ to communicate to a _logistics s
 * `PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}`
 * `POST /logistics-goods-receipts`
 * `PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}`
-* `GET /delivery-instructions`
-* `GET /delivery-instructions/{deliveryInstructionId}`
+* `GET /logistics-delivery-instructions`
+* `GET /logistics-delivery-instructions/{deliveryInstructionId}`
+
+### Warehouse Logistics Inventory Change Use Case
+
+The following API endpoints allows a _supplier_ to communicate inventory changes with a _logistics supplier_:
+
+* `GET /logistics-inventory-changes`
+* `GET /logistics-inventory-changes/{logisticsInventoryChangeId}`
+* `POST /logistics-inventory-changes`
 
 ## The papiNet API Standard
 
 The following normative document is available:
 
-* [`papiNet-API.yaml`](3.0.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
+* [`papiNet-API.yaml`](4.0.0/papiNet-API.yaml) the OpenAPI document describing the papiNet API. This is the main normative document.
 
-In addition to these normative documents, we also have a papiNet mock service that provides live responses in line with the scenarios described within the use case documents.
+In addition to these normative documents, papiNet also has a **papiNet stub service** that provides live responses in line with the scenarios described within the use case documents.
