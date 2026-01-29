@@ -1,6 +1,6 @@
 Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
 
-# Paper, Board and Pulp Warehouse Logistics Inventory Change Use case
+# Warehouse Logistics Inventory Change Use Case
 
 ## Context
 
