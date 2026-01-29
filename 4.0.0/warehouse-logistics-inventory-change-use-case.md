@@ -207,12 +207,12 @@ If all goes well, the logistics supplier will receive a response like this:
 }
 ```
 
-You can see that the _supplier_ has 1 active _inventory change_. The response only contains part of the header information, to get the details of the _inventory change_, including the _inventory change_ packages.
+You can see that the _supplier_ has 1 active _inventory change_. The response only contains part of the header information, to get the details of the _inventory change_, including the _inventory change_ packages see Interaction 2 of Scenario A.
 
 
 #### UC2_Interaction 2 of Scenario A (Get details of the inventory change)
 
-The step 2 of the scenario A will simulate the situation in which the _logistics supplier_ requests to get the _inventory changes_ detail. The _logistics supplier_ sends an API get request to the _supplier_ in order to get the details of the _inventory change_ bc6effb4-26f4-4932-b556-7fde22f31902:
+The interaction 2 of the scenario A will simulate the situation in which the _logistics supplier_ requests to get the _inventory changes_ detail. The _logistics supplier_ sends an API get request to the _supplier_ in order to get the details of the _inventory change_ bc6effb4-26f4-4932-b556-7fde22f31902:
 
 ```text
 curl --request GET \
@@ -349,7 +349,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 ```
 
 
-
 ### Scenario B: Damage Reporting
 
 #### UC2_Interaction 0 of Scenario B (Authentication)
@@ -375,7 +374,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "expires_in": 86400
 }
 ```
-
 
 
 #### UC2_Interaction 1 of Scenario B (Report damage)
@@ -576,7 +574,6 @@ curl --request POST --verbose \
   ] 
 }'
 ```
-
 
 
 #### UC2_Interaction 2 of Scenario B (Report refurbishment)
