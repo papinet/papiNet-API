@@ -140,66 +140,66 @@ If all goes well, the logistics supplier will receive a response like this:
       "number": "LIC789101",
       "timestamp": "2026-01-13T18:33:55Z",
       "isActive": true,
-  "logisticsSupplierParty": {
-    "identifiers": [
-      {
-        "value": "LOGSUP",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "LogSupName"
-    ],
-    "address": {
-      "addressLines": [
-        "Term Road 1"
-      ],
-      "city": "City 1",
-      "postalCode": "78567",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "supplierParty": {
-    "identifiers": [
-      {
-        "value": "MILL",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "MillName"
-    ],
-    "address": {
-      "addressLines": [
-        "Mill Road 1"
-      ],
-      "city": "City 2",
-      "postalCode": "39655",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "storageLocation": {
-    "identifiers": [
-      {
-        "value": "TERM",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "TermName"
-    ],
-    "address": {
-      "addressLines": [
-        "Term Road 1"
-      ],
-      "city": "City 1",
-      "postalCode": "78567",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
+      "logisticsSupplierParty": {
+        "identifiers": [
+          {
+            "value": "LOGSUP",
+            "assignedBy": "Supplier"
+          }
+        ],
+        "nameLines": [
+          "LogSupName"
+        ],
+        "address": {
+          "addressLines": [
+            "Term Road 1"
+          ],
+          "city": "City 1",
+          "postalCode": "78567",
+          "county": "Sweden",
+          "countryCode": "SE"
+        }
+      },
+      "supplierParty": {
+        "identifiers": [
+          {
+            "value": "MILL",
+            "assignedBy": "Supplier"
+          }
+        ],
+        "nameLines": [
+          "MillName"
+        ],
+        "address": {
+          "addressLines": [
+            "Mill Road 1"
+          ],
+          "city": "City 2",
+          "postalCode": "39655",
+          "county": "Sweden",
+          "countryCode": "SE"
+        }
+      },
+      "storageLocation": {
+        "identifiers": [
+          {
+            "value": "TERM",
+            "assignedBy": "Supplier"
+          }
+        ],
+        "nameLines": [
+          "TermName"
+        ],
+        "address": {
+          "addressLines": [
+            "Term Road 1"
+          ],
+          "city": "City 1",
+          "postalCode": "78567",
+          "county": "Sweden",
+          "countryCode": "SE"
+        }
+      },
       "supplierOrderNumber": "ABCD-476433",
       "supplierOrderLineItemNumber": 1
     }
@@ -388,191 +388,191 @@ curl --request POST --verbose \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
   --data '{
-  "id": "3a562400-da0e-48ef-986c-3e83dfe02063",
-  "number": "I25534",
-  "timestamp": "2026-01-21T14:32:11Z",
-  "isActive": true,
-  "logisticsSupplierParty": {
-    "identifiers": [
-      {
-        "value": "LOGSUP",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "LogSupName"
-    ],
-    "address": {
-      "addressLines": [
-        "Term Road 1"
-      ],
-      "city": "City 1",
-      "postalCode": "78567",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "supplierParty": {
-    "identifiers": [
-      {
-        "value": "MILL",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "MillName"
-    ],
-    "address": {
-      "addressLines": [
-        "Mill Road 1"
-      ],
-      "city": "City 2",
-      "postalCode": "39655",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "storageLocation": {
-    "identifiers": [
-      {
-        "value": "TERM",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "TermName"
-    ],
-    "address": {
-      "addressLines": [
-        "Term Road 1"
-      ],
-      "city": "City 1",
-      "postalCode": "78567",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "supplierOrderNumber": "ABCD-386788",
-  "supplierOrderLineItemNumber": 2,
-  "packages": [
-    {
-      "type": "ReelPackage",
-      "changeType": "Change",
+    "id": "3a562400-da0e-48ef-986c-3e83dfe02063",
+    "number": "I25534",
+    "timestamp": "2026-01-21T14:32:11Z",
+    "isActive": true,
+    "logisticsSupplierParty": {
       "identifiers": [
         {
-          "role": "Secondary",
-          "type": "Barcode",
-          "codeType": "UIC14",
-          "value": "14780104633814"
-        },
-        {
-          "role": "Primary",
-          "type": "Number",
-          "codeType": "Supplier",
-          "value": "00001"
+          "value": "LOGSUP",
+          "assignedBy": "Supplier"
         }
       ],
-      "quantities": [
-        {
-          "context": "Stored",
-          "type": "GrossWeight",
-          "value": 1500,
-          "uom": "Kilogram"
-        },
-        {
-          "context": "Stored",
-          "type": "NetNetWeight",
-          "value": 1450,
-          "uom": "Kilogram"
-        },
-        {
-          "context": "Stored",
-          "type": "Length",
-          "value": 4000,
-          "uom": "Meter"
-        },
-        {
-          "context": "Stored",
-          "type": "Area",
-          "value": 3500,
-          "uom": "SquareMeter"
-        }
+      "nameLines": [
+        "LogSupName"
       ],
-      "classification": {
-        "qualityGrade": "Prime",
-        "isDamaged": true,
-        "damages": [
-          {
-            "typeOfDamage": "CoreDamage",
-            "placeOfDamage": "AtPlaceOfInspection",
-            "causeOfDamage": "Condensation"
-          }
+      "address": {
+        "addressLines": [
+          "Term Road 1"
         ],
-        "isRejected": false,
-        "isRefurbished": false,
-        "isDispatchStop": true
+        "city": "City 1",
+        "postalCode": "78567",
+        "county": "Sweden",
+        "countryCode": "SE"
       }
     },
-    {
-      "type": "ReelPackage",
-      "changeType": "Change",
+    "supplierParty": {
       "identifiers": [
         {
-          "role": "Secondary",
-          "type": "Barcode",
-          "codeType": "UIC14",
-          "value": "14780104634814"
-        },
-        {
-          "role": "Primary",
-          "type": "Number",
-          "codeType": "Supplier",
-          "value": "00013"
+          "value": "MILL",
+          "assignedBy": "Supplier"
         }
       ],
-      "quantities": [
+      "nameLines": [
+        "MillName"
+      ],
+      "address": {
+        "addressLines": [
+          "Mill Road 1"
+        ],
+        "city": "City 2",
+        "postalCode": "39655",
+        "county": "Sweden",
+        "countryCode": "SE"
+      }
+    },
+    "storageLocation": {
+      "identifiers": [
         {
-          "context": "Stored",
-          "type": "GrossWeight",
-          "value": 1550,
-          "uom": "Kilogram"
-        },
-        {
-          "context": "Stored",
-          "type": "NetNetWeight",
-          "value": 1500,
-          "uom": "Kilogram"
-        },
-        {
-          "context": "Stored",
-          "type": "Length",
-          "value": 4080,
-          "uom": "Meter"
-        },
-        {
-          "context": "Stored",
-          "type": "Area",
-          "value": 3500,
-          "uom": "SquareMeter"
+          "value": "TERM",
+          "assignedBy": "Supplier"
         }
       ],
-      "classification": {
-        "qualityGrade": "Prime",
-        "isDamaged": true,
-        "damages": [
+      "nameLines": [
+        "TermName"
+      ],
+      "address": {
+        "addressLines": [
+          "Term Road 1"
+        ],
+        "city": "City 1",
+        "postalCode": "78567",
+        "county": "Sweden",
+        "countryCode": "SE"
+      }
+    },
+    "supplierOrderNumber": "ABCD-386788",
+    "supplierOrderLineItemNumber": 2,
+    "packages": [
+      {
+        "type": "ReelPackage",
+        "changeType": "Change",
+        "identifiers": [
           {
-            "typeOfDamage": "SideDamage",
-            "placeOfDamage": "AtPlaceOfInspection",
-            "causeOfDamage": "Handling"
+            "role": "Secondary",
+            "type": "Barcode",
+            "codeType": "UIC14",
+            "value": "14780104633814"
+          },
+          {
+            "role": "Primary",
+            "type": "Number",
+            "codeType": "Supplier",
+            "value": "00001"
           }
         ],
-        "isRejected": false,
-        "isRefurbished": false,
-        "isDispatchStop": true
+        "quantities": [
+          {
+            "context": "Stored",
+            "type": "GrossWeight",
+            "value": 1500,
+            "uom": "Kilogram"
+          },
+          {
+            "context": "Stored",
+            "type": "NetNetWeight",
+            "value": 1450,
+            "uom": "Kilogram"
+          },
+          {
+            "context": "Stored",
+            "type": "Length",
+            "value": 4000,
+            "uom": "Meter"
+          },
+          {
+            "context": "Stored",
+            "type": "Area",
+            "value": 3500,
+            "uom": "SquareMeter"
+          }
+        ],
+        "classification": {
+          "qualityGrade": "Prime",
+          "isDamaged": true,
+          "damages": [
+            {
+              "typeOfDamage": "CoreDamage",
+              "placeOfDamage": "AtPlaceOfInspection",
+              "causeOfDamage": "Condensation"
+            }
+          ],
+          "isRejected": false,
+          "isRefurbished": false,
+          "isDispatchStop": true
+        }
+      },
+      {
+        "type": "ReelPackage",
+        "changeType": "Change",
+        "identifiers": [
+          {
+            "role": "Secondary",
+            "type": "Barcode",
+            "codeType": "UIC14",
+            "value": "14780104634814"
+          },
+          {
+            "role": "Primary",
+            "type": "Number",
+            "codeType": "Supplier",
+            "value": "00013"
+          }
+        ],
+        "quantities": [
+          {
+            "context": "Stored",
+            "type": "GrossWeight",
+            "value": 1550,
+            "uom": "Kilogram"
+          },
+          {
+            "context": "Stored",
+            "type": "NetNetWeight",
+            "value": 1500,
+            "uom": "Kilogram"
+          },
+          {
+            "context": "Stored",
+            "type": "Length",
+            "value": 4080,
+            "uom": "Meter"
+          },
+          {
+            "context": "Stored",
+            "type": "Area",
+            "value": 3500,
+            "uom": "SquareMeter"
+          }
+        ],
+        "classification": {
+          "qualityGrade": "Prime",
+          "isDamaged": true,
+          "damages": [
+            {
+              "typeOfDamage": "SideDamage",
+              "placeOfDamage": "AtPlaceOfInspection",
+              "causeOfDamage": "Handling"
+            }
+          ],
+          "isRejected": false,
+          "isRefurbished": false,
+          "isDispatchStop": true
+        }
       }
-    }
-  ] 
-}'
+    ] 
+  }'
 ```
 
 
@@ -588,124 +588,124 @@ curl --request POST --verbose \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
   --data '{
-  "id": "56f514f5-a21f-417c-8620-a891a12d7182",
-  "number": "I25134",
-  "timestamp": "2026-01-26T08:17:13Z",
-  "isActive": true,
-  "logisticsSupplierParty": {
-    "identifiers": [
-      {
-        "value": "LOGSUP",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "LogSupName"
-    ],
-    "address": {
-      "addressLines": [
-        "Term Road 1"
-      ],
-      "city": "City 1",
-      "postalCode": "78567",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "supplierParty": {
-    "identifiers": [
-      {
-        "value": "MILL",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "MillName"
-    ],
-    "address": {
-      "addressLines": [
-        "Mill Road 1"
-      ],
-      "city": "City 2",
-      "postalCode": "39655",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "storageLocation": {
-    "identifiers": [
-      {
-        "value": "TERM",
-        "assignedBy": "Supplier"
-      }
-    ],
-    "nameLines": [
-      "TermName"
-    ],
-    "address": {
-      "addressLines": [
-        "Term Road 1"
-      ],
-      "city": "City 1",
-      "postalCode": "78567",
-      "county": "Sweden",
-      "countryCode": "SE"
-    }
-  },
-  "supplierOrderNumber": "ABCD-386788",
-  "supplierOrderLineItemNumber": 2,
-  "packages": [
-    {
-      "type": "ReelPackage",
-      "changeType": "Change",
+    "id": "56f514f5-a21f-417c-8620-a891a12d7182",
+    "number": "I25134",
+    "timestamp": "2026-01-26T08:17:13Z",
+    "isActive": true,
+    "logisticsSupplierParty": {
       "identifiers": [
         {
-          "role": "Secondary",
-          "type": "Barcode",
-          "codeType": "UIC14",
-          "value": "14780104633814"
-        },
-        {
-          "role": "Primary",
-          "type": "Number",
-          "codeType": "Supplier",
-          "value": "00001"
+          "value": "LOGSUP",
+          "assignedBy": "Supplier"
         }
       ],
-      "quantities": [
-        {
-          "context": "Stored",
-          "type": "GrossWeight",
-          "value": 1450,
-          "uom": "Kilogram"
-        },
-        {
-          "context": "Stored",
-          "type": "NetNetWeight",
-          "value": 1400,
-          "uom": "Kilogram"
-        },
-        {
-          "context": "Stored",
-          "type": "Length",
-          "value": 3800,
-          "uom": "Meter"
-        },
-        {
-          "context": "Stored",
-          "type": "Area",
-          "value": 3400,
-          "uom": "SquareMeter"
-        }
+      "nameLines": [
+        "LogSupName"
       ],
-      "classification": {
-        "qualityGrade": "Prime",
-        "isDamaged": false,
-        "isRejected": false,
-        "isRefurbished": true,
-        "isDispatchStop": false
+      "address": {
+        "addressLines": [
+          "Term Road 1"
+        ],
+        "city": "City 1",
+        "postalCode": "78567",
+        "county": "Sweden",
+        "countryCode": "SE"
       }
-    }
-  ]
-}'
+    },
+    "supplierParty": {
+      "identifiers": [
+        {
+          "value": "MILL",
+          "assignedBy": "Supplier"
+        }
+      ],
+      "nameLines": [
+        "MillName"
+      ],
+      "address": {
+        "addressLines": [
+          "Mill Road 1"
+        ],
+        "city": "City 2",
+        "postalCode": "39655",
+        "county": "Sweden",
+        "countryCode": "SE"
+      }
+    },
+    "storageLocation": {
+      "identifiers": [
+        {
+          "value": "TERM",
+          "assignedBy": "Supplier"
+        }
+      ],
+      "nameLines": [
+        "TermName"
+      ],
+      "address": {
+        "addressLines": [
+          "Term Road 1"
+        ],
+        "city": "City 1",
+        "postalCode": "78567",
+        "county": "Sweden",
+        "countryCode": "SE"
+      }
+    },
+    "supplierOrderNumber": "ABCD-386788",
+    "supplierOrderLineItemNumber": 2,
+    "packages": [
+      {
+        "type": "ReelPackage",
+        "changeType": "Change",
+        "identifiers": [
+          {
+            "role": "Secondary",
+            "type": "Barcode",
+            "codeType": "UIC14",
+            "value": "14780104633814"
+          },
+          {
+            "role": "Primary",
+            "type": "Number",
+            "codeType": "Supplier",
+            "value": "00001"
+          }
+        ],
+        "quantities": [
+          {
+            "context": "Stored",
+            "type": "GrossWeight",
+            "value": 1450,
+            "uom": "Kilogram"
+          },
+          {
+            "context": "Stored",
+            "type": "NetNetWeight",
+            "value": 1400,
+            "uom": "Kilogram"
+          },
+          {
+            "context": "Stored",
+            "type": "Length",
+            "value": 3800,
+            "uom": "Meter"
+          },
+          {
+            "context": "Stored",
+            "type": "Area",
+            "value": 3400,
+            "uom": "SquareMeter"
+          }
+        ],
+        "classification": {
+          "qualityGrade": "Prime",
+          "isDamaged": false,
+          "isRejected": false,
+          "isRefurbished": true,
+          "isDispatchStop": false
+        }
+      }
+    ]
+  }'
 ```
