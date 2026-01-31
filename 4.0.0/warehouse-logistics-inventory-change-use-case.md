@@ -123,7 +123,7 @@ The authenticated _logistics supplier_ sends an API request to the _supplier_ in
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3040/inventory-changes?isActive=true' \
+  --url 'http://localhost:3040/logistics-inventory-changes?isActive=true' \
   --header 'X-Provider-State: UC2_Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
