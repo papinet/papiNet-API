@@ -664,7 +664,7 @@ paths:
           description: Not Found          
 components:
   schemas:
-    # Re-usable schemas (3) in alphabetical order:
+    # Re-usable schemas (5) in alphabetical order:
     Location:
       type: object
       unevaluatedProperties: false
