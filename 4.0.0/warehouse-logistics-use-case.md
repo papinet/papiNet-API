@@ -218,12 +218,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "isCancelled": false,
   "isActive": true,
   "supplierParty": {
-    "identifiers": [
-      {
-        "value": "MILL",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "MILL",
     "nameLines": [
       "MillName"
     ],
@@ -237,12 +232,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "customerParty": {
-    "identifiers": [
-      {
-        "value": "CUSTOMER",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "CUSTOMER",
     "nameLines": [
       "CustomerName"
     ],
@@ -256,18 +246,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "buyerParty": {
-    "identifiers": [
-      {
-        "value": "CUSTOMER",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "Buyer",
     "nameLines": [
-      "CustomerName"
+      "BuyerName"
     ],
     "address": {
       "addressLines": [
-        "Customer Road 1"
+        "Buyer Road 1"
       ],
       "city": "CITY",
       "postalCode": "23456",
@@ -308,12 +293,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "millParty": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL",
         "nameLines": [
             "MillName"
         ],
@@ -331,12 +311,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "number": 1,
           "shipFromLocation": {
             "type": "Mill",
-            "identifiers": [
-              {
-                "value": "MILL",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "MILL",
             "nameLines": [
               "MillName"
             ],
@@ -351,12 +326,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "shipToLocation": {
             "type": "Terminal",
-            "identifiers": [
-              {
-                "value": "TERM",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "TERM",
             "nameLines": [
               "TermName"
             ],
@@ -414,13 +384,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "isCancelled": false,
       "isActive": true,
       "shipmentStatus": "Departed",
-      "shipFromLocation": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+      "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -434,12 +398,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "shipToLocation": {
-        "identifiers": [
-          {
-            "value": "TERM",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "TERM",
         "nameLines": [
           "TermName"
         ],
@@ -484,12 +443,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     {
       "number": 1,
       "shipFromLocation": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -503,12 +457,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "shipToLocation": {
-        "identifiers": [
-          {
-            "value": "TERM",
-            "assignedBy": "Supplier"
-          }
-        ],
+       "identifierBySupplier": "TERM",
         "nameLines": [
           "TermName"
         ],
@@ -522,12 +471,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "mainCarrierParty": {
-        "identifiers": [
-          {
-            "value": "CARRIER",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySUpplier": "CARRIER",
         "nameLines": [
           "Transport Company 1"
         ],
@@ -1142,14 +1086,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "number": 1,
       "isCancelled": false,
       "supplierParty": {
-        "identifiers": [
-          {
-            "value": "AB",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL",
         "nameLines": [
-          "Company",
           "MillName"
         ],
         "address": {
@@ -1162,18 +1100,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "buyerParty": {
-        "identifiers": [
-          {
-            "value": "CUSTOMER",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "Buyer",
         "nameLines": [
-          "CustomerName"
+          "BuyerName"
         ],
         "address": {
           "addressLines": [
-            "Customer Road 1"
+            "Buyer Road 1"
           ],
           "city": "CITY",
           "postalCode": "23456",
@@ -1184,12 +1117,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         {
           "number": 1,
           "shipFromLocation": {
-            "identifiers": [
-              {
-                "value": "TERM",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "TERM",
             "nameLines": [
               "TermName"
             ],
@@ -1203,12 +1131,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             }
           },
           "shipToLocation": {
-            "identifiers": [
-              {
-                "value": "DEST1",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "DEST1",
             "nameLines": [
               "CustomerName"
             ],
@@ -1223,18 +1146,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "termsOfDelivery": {
             "incoterms": {
-              "location": "DEST1",
+              "location": "Destination",
               "code": "DAP",
               "version": "2020"
             }
           },
           "mainCarrierParty": {
-            "identifiers": [
-              {
-                "value": "TERM",
-                "assignedBy": "Supplier"
-              }
-            ]
+            "identifierBySUpplier": "CARRIER"
           },
           "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
@@ -1303,28 +1221,13 @@ curl --request POST --verbose \
       {
         "number": 1,
         "shipFromLocation": {
-          "identifiers": [
-            {
-              "value": "TERM",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "TERM"
         },
         "shipToLocation": {
-          "identifiers": [
-            {
-              "value": "DEST1",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "DEST1"
         },
         "mainCarrierParty": {
-          "identifiers": [
-            {
-              "value": "TERM",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "CARRIER"
         },
         "actualDepartureDateTime": "2024-05-23T12:24:00",
         "transport": {
@@ -1881,12 +1784,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "isCancelled": false,
   "isActive": true,
   "supplierParty": {
-    "identifiers": [
-      {
-        "value": "MILL",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "MILL",
     "nameLines": [
       "MillName"
     ],
@@ -1900,12 +1798,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "customerParty": {
-    "identifiers": [
-      {
-        "value": "CUSTOMER",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "CUSTOMER",
     "nameLines": [
       "CustomerName"
     ],
@@ -1919,18 +1812,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "buyerParty": {
-    "identifiers": [
-      {
-        "value": "CUSTOMER",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "Buyer",
     "nameLines": [
-      "CustomerName"
+      "BuyerName"
     ],
     "address": {
       "addressLines": [
-        "Customer Road 1"
+        "Buyer Road 1"
       ],
       "city": "CITY",
       "postalCode": "23456",
@@ -1971,12 +1859,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "millParty": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL", 
         "nameLines": [
             "MillName"
         ],
@@ -1994,12 +1877,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "number": 1,
           "shipFromLocation": {
             "type": "Mill",
-            "identifiers": [
-              {
-                "value": "MILL",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "MILL", 
             "nameLines": [
               "MillName"
             ],
@@ -2014,12 +1892,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "shipToLocation": {
             "type": "Terminal",
-            "identifiers": [
-              {
-                "value": "TERM",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "TERM",
             "nameLines": [
               "TermName"
             ],
@@ -2078,12 +1951,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "isActive": true,
       "shipmentStatus": "Departed",
       "shipFromLocation": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+       "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -2097,12 +1965,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "shipToLocation": {
-        "identifiers": [
-          {
-            "value": "TERM",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "TERM",
         "nameLines": [
           "TermName"
         ],
@@ -2147,12 +2010,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     {
       "number": 1,
       "shipFromLocation": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -2166,12 +2024,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "shipToLocation": {
-        "identifiers": [
-          {
-            "value": "TERM",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "TERM",
         "nameLines": [
           "TermName"
         ],
@@ -2185,12 +2038,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "mainCarrierParty": {
-        "identifiers": [
-          {
-            "value": "CARRIER",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySUpplier": "CARRIER",
         "nameLines": [
           "Transport Company 1"
         ],
@@ -3023,12 +2871,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "number": 1,
       "isCancelled": false,
       "supplierParty": {
-        "identifiers": [
-          {
-            "value": "AB",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL", 
         "nameLines": [
           "Company",
           "MillName"
@@ -3043,18 +2886,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "buyerParty": {
-        "identifiers": [
-          {
-            "value": "CUSTOMER",
-            "assignedBy": "Supplier"
-          }
-        ],
+       "identifierBySupplier": "Buyer",
         "nameLines": [
-          "CustomerName"
+          "BuyerName"
         ],
         "address": {
           "addressLines": [
-            "Customer Road 1"
+            "Buyer Road 1"
           ],
           "city": "CITY",
           "postalCode": "23456",
@@ -3065,12 +2903,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         {
           "number": 1,
           "shipFromLocation": {
-            "identifiers": [
-              {
-                "value": "TERM",
-                "assignedBy": "Supplier"
-              }
-            ],
+            "identifierBySupplier": "TERM",
             "nameLines": [
               "TermName"
             ],
@@ -3084,12 +2917,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             }
           },
           "shipToLocation": {
-            "identifiers": [
-              {
-                "value": "DEST1",
-                "assignedBy": "Supplier"
-              }
-            ],
+           "identifierBySupplier": "DEST1",
             "nameLines": [
               "CustomerName"
             ],
@@ -3104,18 +2932,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           },
           "termsOfDelivery": {
             "incoterms": {
-              "location": "DEST1",
+              "location": "Destination",
               "code": "DAP",
               "version": "2020"
             }
           },
           "mainCarrierParty": {
-            "identifiers": [
-              {
-                "value": "TERM",
-                "assignedBy": "Supplier"
-              }
-            ]
+            "identifierBySUpplier": "CARRIER"
           },
           "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
@@ -3184,28 +3007,13 @@ curl --request POST --verbose \
       {
         "number": 1,
         "shipFromLocation": {
-          "identifiers": [
-            {
-              "value": "TERM",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "TERM"
         },
         "shipToLocation": {
-          "identifiers": [
-            {
-              "value": "DEST1",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "DEST1"
         },
         "mainCarrierParty": {
-          "identifiers": [
-            {
-              "value": "TERM",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySUpplier": "CARRIER"
         },
         "actualDepartureDateTime": "2024-05-23T12:24:00",
         "transport": {
@@ -3660,28 +3468,13 @@ curl --request PUT --verbose \
       {
         "number": 1,
         "shipFromLocation": {
-          "identifiers": [
-            {
-              "value": "TERM",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "TERM"
         },
         "shipToLocation": {
-          "identifiers": [
-            {
-              "value": "DEST1",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySupplier": "DEST1"
         },
         "mainCarrierParty": {
-          "identifiers": [
-            {
-              "value": "TERM",
-              "assignedBy": "Supplier"
-            }
-          ]
+          "identifierBySUpplier": "CARRIER"
         },
         "actualDepartureDateTime": "2024-05-23T12:24:00",
         "transport": {
