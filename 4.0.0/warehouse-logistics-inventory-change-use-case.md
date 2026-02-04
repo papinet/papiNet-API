@@ -141,12 +141,7 @@ If all goes well, the logistics supplier will receive a response like this:
       "timestamp": "2026-01-13T18:33:55Z",
       "isActive": true,
       "logisticsSupplierParty": {
-        "identifiers": [
-          {
-            "value": "LOGSUP",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "LOGSUP",
         "nameLines": [
           "LogSupName"
         ],
@@ -161,12 +156,7 @@ If all goes well, the logistics supplier will receive a response like this:
         }
       },
       "supplierParty": {
-        "identifiers": [
-          {
-            "value": "MILL",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -181,12 +171,7 @@ If all goes well, the logistics supplier will receive a response like this:
         }
       },
       "storageLocation": {
-        "identifiers": [
-          {
-            "value": "TERM",
-            "assignedBy": "Supplier"
-          }
-        ],
+        "identifierBySupplier": "TERM",
         "nameLines": [
           "TermName"
         ],
@@ -231,12 +216,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "timestamp": "2026-01-13T19:00:47Z",
   "isActive": true,
   "logisticsSupplierParty": {
-    "identifiers": [
-      {
-        "value": "LOGSUP",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "LOGSUP",
     "nameLines": [
       "LogSupName"
     ],
@@ -251,12 +231,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "supplierParty": {
-    "identifiers": [
-      {
-        "value": "MILL",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "MILL",
     "nameLines": [
       "MillName"
     ],
@@ -271,12 +246,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "storageLocation": {
-    "identifiers": [
-      {
-        "value": "TERM",
-        "assignedBy": "Supplier"
-      }
-    ],
+    "identifierBySupplier": "TERM",
     "nameLines": [
       "TermName"
     ],
@@ -393,12 +363,7 @@ curl --request POST --verbose \
     "timestamp": "2026-01-21T14:32:11Z",
     "isActive": true,
     "logisticsSupplierParty": {
-      "identifiers": [
-        {
-          "value": "LOGSUP",
-          "assignedBy": "Supplier"
-        }
-      ],
+      "identifierBySupplier": "LOGSUP",
       "nameLines": [
         "LogSupName"
       ],
@@ -413,12 +378,7 @@ curl --request POST --verbose \
       }
     },
     "supplierParty": {
-      "identifiers": [
-        {
-          "value": "MILL",
-          "assignedBy": "Supplier"
-        }
-      ],
+      "identifierBySupplier": "MILL",
       "nameLines": [
         "MillName"
       ],
@@ -433,12 +393,7 @@ curl --request POST --verbose \
       }
     },
     "storageLocation": {
-      "identifiers": [
-        {
-          "value": "TERM",
-          "assignedBy": "Supplier"
-        }
-      ],
+      "identifierBySupplier": "TERM",
       "nameLines": [
         "TermName"
       ],
@@ -593,12 +548,7 @@ curl --request POST --verbose \
     "timestamp": "2026-01-26T08:17:13Z",
     "isActive": true,
     "logisticsSupplierParty": {
-      "identifiers": [
-        {
-          "value": "LOGSUP",
-          "assignedBy": "Supplier"
-        }
-      ],
+      "identifierBySupplier": "LOGSUP",
       "nameLines": [
         "LogSupName"
       ],
@@ -613,12 +563,7 @@ curl --request POST --verbose \
       }
     },
     "supplierParty": {
-      "identifiers": [
-        {
-          "value": "MILL",
-          "assignedBy": "Supplier"
-        }
-      ],
+      "identifierBySupplier": "MILL",
       "nameLines": [
         "MillName"
       ],
@@ -633,12 +578,7 @@ curl --request POST --verbose \
       }
     },
     "storageLocation": {
-      "identifiers": [
-        {
-          "value": "TERM",
-          "assignedBy": "Supplier"
-        }
-      ],
+      "identifierBySupplier": "TERM",
       "nameLines": [
         "TermName"
       ],
