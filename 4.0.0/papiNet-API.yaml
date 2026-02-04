@@ -69,89 +69,54 @@ paths:
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          name: sellerParty.value
+          name: sellerParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
+          description: filter based on `sellerParty.identifierBySupplier`.
         - in: query
-          name: sellerParty.assignedBy
+          name: supplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `sellerParty.identifiers[].value` and `sellerParty.identifiers[].assignedBy`
+          description: filter based on `supplierParty.identifierBySupplier`.
         - in: query
-          name: supplierParty.value
+          name: logisticsSupplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
         - in: query
-          name: supplierParty.assignedBy
+          name: customerParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+          description: filter based on `customerParty.identifierBySupplier`.
         - in: query
-          name: logisticsSupplierParty.value
+          name: buyerParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+          description: filter based on `buyerParty.identifierBySupplier`.
         - in: query
-          name: logisticsSupplierParty.assignedBy
+          name: shipFromLocation.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+          description: filter based on `shipFromLocation.identifierBySupplier`.
         - in: query
-          name: customerParty.value
+          name: shipToLocation.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
-        - in: query
-          name: customerParty.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `customerParty.identifiers[].value` and `customerParty.identifiers[].assignedBy`
-        - in: query
-          name: buyerParty.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query
-          name: buyerParty.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query
-          name: shipFromLocation.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipFromLocation.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipToLocation.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipToLocation.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
+          description: filter based on `shipToLocation.identifierBySupplier`.
       responses:
         "200":
           description: OK
@@ -238,29 +203,19 @@ paths:
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          name: supplierParty.value
+          name: supplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+          description: filter based on `supplierParty.identifierBySupplier`.
         - in: query
-          name: supplierParty.assignedBy
+          name: logisticsSupplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query
-          name: logisticsSupplierParty.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query
-          name: logisticsSupplierParty.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
         - in: query
           name: deliveryInstructionNumber
           schema:
@@ -276,29 +231,19 @@ paths:
           required: false
           description: filter based on `deliveryInstructionNumber` (string) and `deliveryInstructionSequenceNumber` (integer)
         - in: query
-          name: shipFromLocation.value
+          name: shipFromLocation.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
+          description: filter based on `shipFromLocation.identifierBySupplier`.
         - in: query
-          name: shipFromLocation.assignedBy
+          name: shipToLocation.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipToLocation.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipToLocation.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
+          description: filter based on `shipToLocation.identifierBySupplier`.
       responses:
         "200":
           description: OK
@@ -458,65 +403,40 @@ paths:
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          name: supplierParty.value
+          name: supplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+          description: filter based on `supplierParty.identifierBySupplier`.
         - in: query
-          name: supplierParty.assignedBy
+          name: logisticsSupplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
         - in: query
-          name: logisticsSupplierParty.value
+          name: buyerParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+          description: filter based on `buyerParty.identifierBySupplier`.
         - in: query
-          name: logisticsSupplierParty.assignedBy
+          name: shipFromLocation.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+          description: filter based on `shipFromLocation.identifierBySupplier`.
         - in: query
-          name: buyerParty.value
+          name: shipToLocation.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query
-          name: buyerParty.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `buyerParty.identifiers[].value` and `buyerParty.identifiers[].assignedBy`
-        - in: query
-          name: shipFromLocation.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipFromLocation.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipFromLocation.identifiers[].value` and `shipFromLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipToLocation.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
-        - in: query
-          name: shipToLocation.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `shipToLocation.identifiers[].value` and `shipToLocation.identifiers[].assignedBy`
+          description: filter based on `shipToLocation.identifierBySupplier`.
       responses:
         "200":
           description: OK
@@ -590,29 +510,19 @@ paths:
           required: false
           description: filter based on `isActive` (true|false)
         - in: query
-          name: supplierParty.value
+          name: supplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
+          description: filter based on `supplierParty.identifierBySupplier`.
         - in: query
-          name: supplierParty.assignedBy
+          name: logisticsSupplierParty.identifierBySupplier
           schema:
             type: string
+            minLength: 1
           required: false
-          description: filter based on `supplierParty.identifiers[].value` and `supplierParty.identifiers[].assignedBy`
-        - in: query
-          name: logisticsSupplierParty.value
-          schema:
-            type: string
-          required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
-        - in: query
-          name: logisticsSupplierParty.assignedBy
-          schema:
-            type: string
-          required: false
-          description: filter based on `logisticsSupplierParty.identifiers[].value` and `logisticsSupplierParty.identifiers[].assignedBy`
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
       responses:
         "200":
           description: OK
@@ -669,7 +579,7 @@ components:
       type: object
       unevaluatedProperties: false
       required:
-        - identifiers
+        - identifierBySupplier
       properties:
         type:
           type: string
@@ -682,23 +592,10 @@ components:
             - PrinterFacility
             - Terminal
             - Warehouse
-        identifiers:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            unevaluatedProperties: false
-            required:
-              - value
-              - assignedBy
-            properties:
-              value:
-                type: string
-                minLength: 1
-              assignedBy:
-                type: string
-                enum:
-                  - Supplier
+        identifierBySupplier:
+          type: string
+          minLength: 1
+          description: The identifier assigned by the _Supplier_.
         nameLines:
           type: array
           minItems: 1
@@ -1086,25 +983,12 @@ components:
       type: object
       unevaluatedProperties: false
       required:
-        - identifiers
+        - identifierBySupplier
       properties:
-        identifiers:
-          type: array
-          minItems: 1
-          items:
-            type: object
-            unevaluatedProperties: false
-            required:
-              - value
-              - assignedBy
-            properties:
-              value:
-                type: string
-                minLength: 1
-              assignedBy:
-                type: string
-                enum:
-                  - Supplier
+        identifierBySupplier:
+          type: string
+          minLength: 1
+          description: The identifier assigned by the _Supplier_.
         nameLines:
           type: array
           minItems: 1
@@ -3971,7 +3855,7 @@ components:
                 type: object
                 unevaluatedProperties: false
                 required:
-                  - identifiers
+                  - identifierBySupplier
                 properties:
                   type:
                     type: string
@@ -3981,23 +3865,10 @@ components:
                       - Port
                       - Terminal
                       - Warehouse                 
-                  identifiers:
-                    type: array
-                    minItems: 1
-                    items:
-                      type: object
-                      unevaluatedProperties: false
-                      required:
-                        - value
-                        - assignedBy
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
-                        assignedBy:
-                          type: string
-                          enum:
-                            - Supplier
+                  identifierBySupplier:
+                    type: string
+                    minLength: 1
+                    description: The identifier assigned by the _Supplier_.
                   nameLines:
                     type: array
                     minItems: 1
@@ -4088,7 +3959,7 @@ components:
           type: object
           unevaluatedProperties: false
           required:
-            - identifiers
+            - identifierBySupplier
           properties:
             type:
               type: string
@@ -4098,23 +3969,10 @@ components:
                 - Port
                 - Terminal
                 - Warehouse         
-            identifiers:
-              type: array
-              minItems: 1
-              items:
-                type: object
-                unevaluatedProperties: false
-                required:
-                  - value
-                  - assignedBy
-                properties:
-                  value:
-                    type: string
-                    minLength: 1
-                  assignedBy:
-                    type: string
-                    enum:
-                      - Supplier
+            identifierBySupplier:
+              type: string
+              minLength: 1
+              description: The identifier assigned by the _Supplier_.
             nameLines:
               type: array
               minItems: 1
