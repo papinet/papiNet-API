@@ -384,7 +384,8 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "isCancelled": false,
       "isActive": true,
       "shipmentStatus": "Departed",
-      "identifierBySupplier": "MILL",
+      "shipFromLocation": {
+        "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -471,7 +472,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "mainCarrierParty": {
-        "identifierBySUpplier": "CARRIER",
+        "identifierBySupplier": "CARRIER",
         "nameLines": [
           "Transport Company 1"
         ],
@@ -1006,7 +1007,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 #### UC1_Interaction 5 of Scenario A
 
-In step 5 of scenario A _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
+In step 5 of scenario A _Logistics supplier_ completes the inload of the delivery note and post logistics goods receipts towards the _supplier_.
 
 ```text
 curl --request POST --verbose \
@@ -1152,7 +1153,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             }
           },
           "mainCarrierParty": {
-            "identifierBySUpplier": "CARRIER"
+            "identifierBySupplier": "CARRIER"
           },
           "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
@@ -2038,7 +2039,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "mainCarrierParty": {
-        "identifierBySUpplier": "CARRIER",
+        "identifierBySupplier": "CARRIER",
         "nameLines": [
           "Transport Company 1"
         ],
@@ -2573,7 +2574,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 #### UC1_Interaction 5 of Scenario B
 
-In step 5 of scenario B _Logistics supplier_ completes the inload of the delivery note and post logistic goods receipts towards the _supplier_.
+In step 5 of scenario B _Logistics supplier_ completes the inload of the delivery note and post logistics goods receipts towards the _supplier_.
 
 ```text
 curl --request POST --verbose \
@@ -2599,7 +2600,7 @@ curl --request POST --verbose \
 
 #### UC1_Interaction 6 of Scenario B
 
-In step 6 of scenario B _logistics supplier_ updates the inload of the delivery note and put logistic goods receipts towards the _supplier_ with one package indicated with variance = "Not Received", package no. 3.
+In step 6 of scenario B _logistics supplier_ updates the inload of the delivery note and put logistics goods receipts towards the _supplier_ with one package indicated with variance = "Not Received", package no. 3.
 
 ```text
 curl --request PUT --verbose \
@@ -2938,7 +2939,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             }
           },
           "mainCarrierParty": {
-            "identifierBySUpplier": "CARRIER"
+            "identifierBySupplier": "CARRIER"
           },
           "requestedArrivalDateTime": "2024-05-24T10:00",
           "transport": {
@@ -3474,7 +3475,7 @@ curl --request PUT --verbose \
           "identifierBySupplier": "DEST1"
         },
         "mainCarrierParty": {
-          "identifierBySUpplier": "CARRIER"
+          "identifierBySupplier": "CARRIER"
         },
         "actualDepartureDateTime": "2024-05-23T12:24:00",
         "transport": {
