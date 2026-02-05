@@ -3014,7 +3014,7 @@ curl --request POST --verbose \
           "identifierBySupplier": "DEST1"
         },
         "mainCarrierParty": {
-          "identifierBySUpplier": "CARRIER"
+          "identifierBySupplier": "CARRIER"
         },
         "actualDepartureDateTime": "2024-05-23T12:24:00",
         "transport": {
