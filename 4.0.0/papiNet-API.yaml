@@ -229,21 +229,27 @@ paths:
             type: integer
             minimum: 0
           required: false
-          description: filter based on `deliveryInstructionNumber` (string) and `deliveryInstructionSequenceNumber` (integer)
+          description: | 
+            filter based on `deliveryInstructionSequenceNumber` (integer).
+            MUST only be used combined with query parameter `deliveryInstructionNumber` (string).
         - in: query
           name: shipFromLocation.identifierBySupplier
           schema:
             type: string
             minLength: 1
           required: false
-          description: filter based on `shipFromLocation.identifierBySupplier`.
+          description: | 
+            filter based on `shipFromLocation.identifierBySupplier`.
+            It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
         - in: query
           name: shipToLocation.identifierBySupplier
           schema:
             type: string
             minLength: 1
           required: false
-          description: filter based on `shipToLocation.identifierBySupplier`.
+          description: | 
+            filter based on `shipToLocation.identifierBySupplier`.
+            It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
       responses:
         "200":
           description: OK
