@@ -77,12 +77,7 @@
 					"isCancelled": false,
 					"isActive": true,
 					"supplierParty": {
-						"identifiers": [
-							{
-								"value": "MILL",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "MILL",
 						"nameLines": [
 							"MillName"
 						],
@@ -96,12 +91,7 @@
 						}
 					},
 					"customerParty": {
-						"identifiers": [
-							{
-								"value": "CUSTOMER",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "CUSTOMER",
 						"nameLines": [
 							"CustomerName"
 						],
@@ -115,18 +105,13 @@
 						}
 					},
 					"buyerParty": {
-						"identifiers": [
-							{
-								"value": "CUSTOMER",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "Buyer",
 						"nameLines": [
-							"CustomerName"
+							"BuyerName"
 						],
 						"address": {
 							"addressLines": [
-								"Customer Road 1"
+								"Buyer Road 1"
 							],
 							"city": "CITY",
 							"postalCode": "23456",
@@ -167,12 +152,7 @@
 								}
 							},
 							"millParty": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -190,12 +170,7 @@
 									"number": 1,
 									"shipFromLocation": {
 										"type": "Mill",
-										"identifiers": [
-											{
-												"value": "MILL",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "MILL",
 										"nameLines": [
 											"MillName"
 										],
@@ -210,12 +185,7 @@
 									},
 									"shipToLocation": {
 										"type": "Terminal",
-										"identifiers": [
-											{
-												"value": "TERM",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "TERM",
 										"nameLines": [
 											"TermName"
 										],
@@ -272,12 +242,7 @@
 							"isActive": true,
 							"shipmentStatus": "Departed",
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -291,12 +256,7 @@
 								}
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "TERM",
 								"nameLines": [
 									"TermName"
 								],
@@ -338,12 +298,7 @@
 						{
 							"number": 1,
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -357,12 +312,7 @@
 								}
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "TERM",
 								"nameLines": [
 									"TermName"
 								],
@@ -376,12 +326,7 @@
 								}
 							},
 							"mainCarrierParty": {
-								"identifiers": [
-									{
-										"value": "CARRIER",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "CARRIER",
 								"nameLines": [
 									"Transport Company 1"
 								],
@@ -996,14 +941,8 @@
 							"number": 1,
 							"isCancelled": false,
 							"supplierParty": {
-								"identifiers": [
-									{
-										"value": "AB",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
-									"Company",
 									"MillName"
 								],
 								"address": {
@@ -1016,18 +955,13 @@
 								}
 							},
 							"buyerParty": {
-								"identifiers": [
-									{
-										"value": "CUSTOMER",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "Buyer",
 								"nameLines": [
-									"CustomerName"
+									"BuyerName"
 								],
 								"address": {
 									"addressLines": [
-										"Customer Road 1"
+										"Buyer Road 1"
 									],
 									"city": "CITY",
 									"postalCode": "23456",
@@ -1038,12 +972,7 @@
 								{
 									"number": 1,
 									"shipFromLocation": {
-										"identifiers": [
-											{
-												"value": "TERM",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "TERM",
 										"nameLines": [
 											"TermName"
 										],
@@ -1057,12 +986,7 @@
 										}
 									},
 									"shipToLocation": {
-										"identifiers": [
-											{
-												"value": "DEST1",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "DEST1",
 										"nameLines": [
 											"CustomerName"
 										],
@@ -1077,18 +1001,13 @@
 									},
 									"termsOfDelivery": {
 										"incoterms": {
-											"location": "DEST1",
+											"location": "Destination",
 											"code": "DAP",
 											"version": "2020"
 										}
 									},
 									"mainCarrierParty": {
-										"identifiers": [
-											{
-												"value": "TERM",
-												"assignedBy": "Supplier"
-											}
-										]
+										"identifierBySupplier": "CARRIER"
 									},
 									"requestedArrivalDateTime": "2024-05-24T10:00",
 									"transport": {
@@ -1156,28 +1075,13 @@
 						{
 							"number": 1,
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "TERM"
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "DEST1",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "DEST1"
 							},
 							"mainCarrierParty": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "CARRIER"
 							},
 							"actualDepartureDateTime": "2024-05-23T12:24:00",
 							"transport": {
@@ -1725,12 +1629,7 @@
 					"isCancelled": false,
 					"isActive": true,
 					"supplierParty": {
-						"identifiers": [
-							{
-								"value": "MILL",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "MILL",
 						"nameLines": [
 							"MillName"
 						],
@@ -1744,12 +1643,7 @@
 						}
 					},
 					"customerParty": {
-						"identifiers": [
-							{
-								"value": "CUSTOMER",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "CUSTOMER",
 						"nameLines": [
 							"CustomerName"
 						],
@@ -1763,18 +1657,13 @@
 						}
 					},
 					"buyerParty": {
-						"identifiers": [
-							{
-								"value": "CUSTOMER",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "Buyer",
 						"nameLines": [
-							"CustomerName"
+							"BuyerName"
 						],
 						"address": {
 							"addressLines": [
-								"Customer Road 1"
+								"Buyer Road 1"
 							],
 							"city": "CITY",
 							"postalCode": "23456",
@@ -1815,12 +1704,7 @@
 								}
 							},
 							"millParty": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -1838,12 +1722,7 @@
 									"number": 1,
 									"shipFromLocation": {
 										"type": "Mill",
-										"identifiers": [
-											{
-												"value": "MILL",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "MILL",
 										"nameLines": [
 											"MillName"
 										],
@@ -1858,12 +1737,7 @@
 									},
 									"shipToLocation": {
 										"type": "Terminal",
-										"identifiers": [
-											{
-												"value": "TERM",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "TERM",
 										"nameLines": [
 											"TermName"
 										],
@@ -1920,12 +1794,7 @@
 							"isActive": true,
 							"shipmentStatus": "Departed",
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -1939,12 +1808,7 @@
 								}
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "TERM",
 								"nameLines": [
 									"TermName"
 								],
@@ -1986,12 +1850,7 @@
 						{
 							"number": 1,
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -2005,12 +1864,7 @@
 								}
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "TERM",
 								"nameLines": [
 									"TermName"
 								],
@@ -2024,12 +1878,7 @@
 								}
 							},
 							"mainCarrierParty": {
-								"identifiers": [
-									{
-										"value": "CARRIER",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "CARRIER",
 								"nameLines": [
 									"Transport Company 1"
 								],
@@ -2867,12 +2716,7 @@
 							"number": 1,
 							"isCancelled": false,
 							"supplierParty": {
-								"identifiers": [
-									{
-										"value": "AB",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"Company",
 									"MillName"
@@ -2887,18 +2731,13 @@
 								}
 							},
 							"buyerParty": {
-								"identifiers": [
-									{
-										"value": "CUSTOMER",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "Buyer",
 								"nameLines": [
-									"CustomerName"
+									"BuyerName"
 								],
 								"address": {
 									"addressLines": [
-										"Customer Road 1"
+										"Buyer Road 1"
 									],
 									"city": "CITY",
 									"postalCode": "23456",
@@ -2909,12 +2748,7 @@
 								{
 									"number": 1,
 									"shipFromLocation": {
-										"identifiers": [
-											{
-												"value": "TERM",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "TERM",
 										"nameLines": [
 											"TermName"
 										],
@@ -2928,12 +2762,7 @@
 										}
 									},
 									"shipToLocation": {
-										"identifiers": [
-											{
-												"value": "DEST1",
-												"assignedBy": "Supplier"
-											}
-										],
+										"identifierBySupplier": "DEST1",
 										"nameLines": [
 											"CustomerName"
 										],
@@ -2948,18 +2777,13 @@
 									},
 									"termsOfDelivery": {
 										"incoterms": {
-											"location": "DEST1",
+											"location": "Destination",
 											"code": "DAP",
 											"version": "2020"
 										}
 									},
 									"mainCarrierParty": {
-										"identifiers": [
-											{
-												"value": "TERM",
-												"assignedBy": "Supplier"
-											}
-										]
+										"identifierBySupplier": "CARRIER"
 									},
 									"requestedArrivalDateTime": "2024-05-24T10:00",
 									"transport": {
@@ -3027,28 +2851,13 @@
 						{
 							"number": 1,
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "TERM"
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "DEST1",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "DEST1"
 							},
 							"mainCarrierParty": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "CARRIER"
 							},
 							"actualDepartureDateTime": "2024-05-23T12:24:00",
 							"transport": {
@@ -3508,28 +3317,13 @@
 						{
 							"number": 1,
 							"shipFromLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "TERM"
 							},
 							"shipToLocation": {
-								"identifiers": [
-									{
-										"value": "DEST1",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "DEST1"
 							},
 							"mainCarrierParty": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								]
+								"identifierBySupplier": "CARRIER"
 							},
 							"actualDepartureDateTime": "2024-05-23T12:24:00",
 							"transport": {
@@ -4009,12 +3803,7 @@
 							"timestamp": "2026-01-13T18:33:55Z",
 							"isActive": true,
 							"logisticsSupplierParty": {
-								"identifiers": [
-									{
-										"value": "LOGSUP",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "LOGSUP",
 								"nameLines": [
 									"LogSupName"
 								],
@@ -4029,12 +3818,7 @@
 								}
 							},
 							"supplierParty": {
-								"identifiers": [
-									{
-										"value": "MILL",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "MILL",
 								"nameLines": [
 									"MillName"
 								],
@@ -4049,12 +3833,7 @@
 								}
 							},
 							"storageLocation": {
-								"identifiers": [
-									{
-										"value": "TERM",
-										"assignedBy": "Supplier"
-									}
-								],
+								"identifierBySupplier": "TERM",
 								"nameLines": [
 									"TermName"
 								],
@@ -4093,12 +3872,7 @@
 					"timestamp": "2026-01-13T19:00:47Z",
 					"isActive": true,
 					"logisticsSupplierParty": {
-						"identifiers": [
-							{
-								"value": "LOGSUP",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "LOGSUP",
 						"nameLines": [
 							"LogSupName"
 						],
@@ -4113,12 +3887,7 @@
 						}
 					},
 					"supplierParty": {
-						"identifiers": [
-							{
-								"value": "MILL",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "MILL",
 						"nameLines": [
 							"MillName"
 						],
@@ -4133,12 +3902,7 @@
 						}
 					},
 					"storageLocation": {
-						"identifiers": [
-							{
-								"value": "TERM",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "TERM",
 						"nameLines": [
 							"TermName"
 						],
@@ -4245,12 +4009,7 @@
 					"timestamp": "2026-01-21T14:32:11Z",
 					"isActive": true,
 					"logisticsSupplierParty": {
-						"identifiers": [
-							{
-								"value": "LOGSUP",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "LOGSUP",
 						"nameLines": [
 							"LogSupName"
 						],
@@ -4265,12 +4024,7 @@
 						}
 					},
 					"supplierParty": {
-						"identifiers": [
-							{
-								"value": "MILL",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "MILL",
 						"nameLines": [
 							"MillName"
 						],
@@ -4285,12 +4039,7 @@
 						}
 					},
 					"storageLocation": {
-						"identifiers": [
-							{
-								"value": "TERM",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "TERM",
 						"nameLines": [
 							"TermName"
 						],
@@ -4449,12 +4198,7 @@
 					"timestamp": "2026-01-26T08:17:13Z",
 					"isActive": true,
 					"logisticsSupplierParty": {
-						"identifiers": [
-							{
-								"value": "LOGSUP",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "LOGSUP",
 						"nameLines": [
 							"LogSupName"
 						],
@@ -4469,12 +4213,7 @@
 						}
 					},
 					"supplierParty": {
-						"identifiers": [
-							{
-								"value": "MILL",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "MILL",
 						"nameLines": [
 							"MillName"
 						],
@@ -4489,12 +4228,7 @@
 						}
 					},
 					"storageLocation": {
-						"identifiers": [
-							{
-								"value": "TERM",
-								"assignedBy": "Supplier"
-							}
-						],
+						"identifierBySupplier": "TERM",
 						"nameLines": [
 							"TermName"
 						],
