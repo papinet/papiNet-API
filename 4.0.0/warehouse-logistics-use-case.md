@@ -458,7 +458,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "shipToLocation": {
-       "identifierBySupplier": "TERM",
+        "identifierBySupplier": "TERM",
         "nameLines": [
           "TermName"
         ],
@@ -1952,7 +1952,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "isActive": true,
       "shipmentStatus": "Departed",
       "shipFromLocation": {
-       "identifierBySupplier": "MILL",
+        "identifierBySupplier": "MILL",
         "nameLines": [
           "MillName"
         ],
@@ -2887,7 +2887,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "buyerParty": {
-       "identifierBySupplier": "Buyer",
+        "identifierBySupplier": "Buyer",
         "nameLines": [
           "BuyerName"
         ],
@@ -2918,7 +2918,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
             }
           },
           "shipToLocation": {
-           "identifierBySupplier": "DEST1",
+            "identifierBySupplier": "DEST1",
             "nameLines": [
               "CustomerName"
             ],
