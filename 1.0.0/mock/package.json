@@ -14,9 +14,9 @@
   },
   "license" : "MIT",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.4",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.22.1",
     "jsonfile": "^6.1.0",
     "short-uuid": "^4.1.0"
   }
