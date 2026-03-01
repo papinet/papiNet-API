@@ -94,6 +94,6 @@ JSON properties MUST be written in lowerCamelCase names capitalize the first let
 
 ### Rule 12 - Avoid abbreviations
 
-All names specified in path and query parameters, resource names, and JSON input and output fields and pre-defined values SHOULD NOT use abbreviations or acronyms.
+All names specified in path and query parameters, resource names, and JSON input and output fields and pre-defined values SHOULD NOT use abbreviations or acronyms, unless they are well-known acronyms.
 
 However, we have decided, during papiNet CWG meeting 2024-06-19 (Wed), to make an exception with "unit of measure" that we will write `uom` or `(...)Uom`, instead of `unitOfMeasure` or `(...)UnitOfMeasure`.
