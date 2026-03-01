@@ -45,7 +45,7 @@ papiNet restrict enumerated values to the minimum list that applies within the c
 
 ### Rule 2 - How to handle empty collection
 
-An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. This rule will be enforced by not allowing empty array in the non-empty response's body using `minItems: 1`.
+An empty collection MUST be communicated via the HTTP status code `200 OK` using the standard pagination envelope, with the total count set to `0` and the items array empty. This is enforced by the schema, which explicitly allows empty arrays via `minItems: 0`.
 
 ### Rule 3 - minLength of property with type `string`
 
