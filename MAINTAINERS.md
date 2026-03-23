@@ -5,8 +5,8 @@ Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("pap
 * Al Ivan [@robertalivan](https://github.com/robertalivan)
 * Bengt Wentus [@bengtwentus](https://github.com/bengtwentus)
 * Lars Olofsson [@larsolofsson](https://github.com/larsolofsson)
-* Magnus Haapaniemi
-* Peder Månsson
+* Magnus Haapaniemi [@magnushaapaniemi](https://github.com/magnushaapaniemi)
+* Peder Månsson [@PedMan079](https://github.com/PedMan079)
 * Per Hammarström [@t02phf](https://github.com/t02phf)
 
 
