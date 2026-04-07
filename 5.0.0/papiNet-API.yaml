@@ -1,0 +1,4230 @@
+# Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner". All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign. For support, more information, or to report implementation bugs, please contact papiNet at https://github.com/papinet.
+openapi: 3.1.0
+info:
+  title: papiNet API
+  description: papinet API is a global initiative for the Forest Industry supply chain.
+  contact:
+    name: papiNet API CWG
+    url: https://github.com/papinet/papiNet-API/issues
+  license:
+    name: Apache 2.0
+    url: https://github.com/papinet/papiNet-API/blob/master/LICENSE
+  version: 4.0.0
+servers:
+  - url: http://localhost:3040/
+    description: papiNet Pact Stub Server
+paths:
+  ## LOGISTICS (13)
+  #  GET /supplier-orders
+  #  GET /supplier-orders/{supplierOrderId}
+  #  GET /logistics-delivery-notes
+  #  GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
+  # POST /logistics-delivery-notes
+  #  PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
+  # POST /logistics-goods-receipts
+  #  PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
+  #  GET /logistics-delivery-instructions
+  #  GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
+  #  GET /logistics-inventory-changes
+  #  GET /logistics-inventory-changes/{logisticsInventoryChangeId}
+  # POST /logistics-inventory-changes
+  /supplier-orders:
+    # GET /supplier-orders
+    # None => ListOfSupplierOrders
+    get:
+      summary: List `supplier-orders`
+      description: Get a paginated list of all `supplier-orders`.
+      parameters:
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: isActive
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `isActive` (true|false)
+        - in: query
+          name: sellerParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `sellerParty.identifierBySupplier`.
+        - in: query
+          name: supplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `supplierParty.identifierBySupplier`.
+        - in: query
+          name: logisticsSupplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
+        - in: query
+          name: customerParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `customerParty.identifierBySupplier`.
+        - in: query
+          name: buyerParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `buyerParty.identifierBySupplier`.
+        - in: query
+          name: shipFromLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `shipFromLocation.identifierBySupplier`.
+        - in: query
+          name: shipToLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `shipToLocation.identifierBySupplier`.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfSupplierOrders"
+        "204":
+          description: No Content
+  /supplier-orders/{supplierOrderId}:
+    # GET /supplier-orders/{supplierOrderId}
+    # None => SupplierOrderById
+    get:
+      summary: Get a `supplier-order`
+      description: Gets the details of a specific `supplier-order`.
+      parameters:
+        - in: path
+          name: supplierOrderId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `supplier-order` to get
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierOrderById"
+        "404":
+          description: Not Found
+  /logistics-delivery-notes:
+    # GET /logistics-delivery-notes
+    # None => ListOfLogisticsDeliveryNotes
+    get:
+      summary: List `logistics-delivery-notes`
+      description: Get a paginated list of all `logistics-delivery-notes`.
+      parameters:
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: shipmentStatus
+          schema:
+            type: string
+            enum:
+              - Arrived
+              - Cancelled
+              - Departed
+              - Loaded
+              - Planned
+              - Unloaded
+          required: false
+          description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
+        - in: query
+          name: isActive
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `isActive` (true|false)
+        - in: query
+          name: supplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `supplierParty.identifierBySupplier`.
+        - in: query
+          name: logisticsSupplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
+        - in: query
+          name: deliveryInstructionNumber
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `deliveryInstructionNumber` (string)
+        - in: query
+          name: deliveryInstructionSequenceNumber
+          schema:
+            type: integer
+            minimum: 0
+          required: false
+          description: | 
+            filter based on `deliveryInstructionSequenceNumber` (integer).
+            MUST only be used combined with query parameter `deliveryInstructionNumber` (string).
+        - in: query
+          name: shipFromLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: | 
+            filter based on `shipFromLocation.identifierBySupplier`.
+            It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
+        - in: query
+          name: shipToLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: | 
+            filter based on `shipToLocation.identifierBySupplier`.
+            It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfLogisticsDeliveryNotes"
+        "204":
+          description: No Content
+    # POST /logistics-delivery-notes
+    # LogisticsDeliveryNoteById => None
+    post:
+      summary: Push an _Original_ `logistics-delivery-note`
+      description: Pushes the details of a specific _Original_ `logistics-delivery-note`.
+      requestBody:
+        description: The details of the _Original_ `logistics-delivery-note` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogisticsDeliveryNoteById"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+  /logistics-delivery-notes/{logisticsDeliveryNoteId}:
+    # GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
+    # None => LogisticsDeliveryNoteById
+    get:
+      summary: Get a `logistics-delivery-note`
+      description: Gets the details of a specific `logistics-delivery-note`.
+      parameters:
+        - in: path
+          name: logisticsDeliveryNoteId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `logistics-delivery-note` to get
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogisticsDeliveryNoteById"
+        "404":
+          description: Not Found
+    # PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
+    # LogisticsDeliveryNoteById => None
+    put:
+      summary: Push a _Replaced_ `logistics-delivery-note`
+      description: Pushes the details of a specific _Replaced_ `logistics-delivery-note`.
+      parameters:
+        - in: path
+          name: logisticsDeliveryNoteId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the _Replaced_ `logistics-delivery-note` to push
+      requestBody:
+        description: The details of the _Replaced_ `logistics-delivery-note` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogisticsDeliveryNoteById"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+  /logistics-goods-receipts:
+    # POST /logistics-goods-receipts
+    # LogisticsGoodsReceiptById => None
+    post:
+      summary: Push an _Original_ `logistics-goods-receipt`
+      description: Pushes the details of a specific _Original_ `logistics-goods-receipt`.
+      requestBody:
+        description: The details of the _Original_ `logistics-goods-receipt` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogisticsGoodsReceiptById"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+  /logistics-goods-receipts/{logisticsGoodsReceiptId}:
+    # PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
+    # LogisticsGoodsReceiptById => None
+    put:
+      summary: Push an _Replaced_ `logistics-goods-receipt`
+      description: Pushes the details of a specific _Replaced_ `logistics-goods-receipt`.
+      parameters:
+        - in: path
+          name: logisticsGoodsReceiptId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the _Replaced_ `logistics-goods-receipt` to push.
+      requestBody:
+        description: The details of the _Replaced_ `logistics-goods-receipt` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogisticsGoodsReceiptById"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+  /logistics-delivery-instructions:
+    # GET /logistics-delivery-instructions
+    # None => ListOfLogisticsDeliveryInstructions
+    get:
+      summary: List `logistics-delivery-instructions`
+      description: Get a paginated list of all `logistics-delivery-instructions`.
+      parameters:
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: isActive
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `isActive` (true|false)
+        - in: query
+          name: supplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `supplierParty.identifierBySupplier`.
+        - in: query
+          name: logisticsSupplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
+        - in: query
+          name: buyerParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `buyerParty.identifierBySupplier`.
+        - in: query
+          name: shipFromLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `shipFromLocation.identifierBySupplier`.
+        - in: query
+          name: shipToLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `shipToLocation.identifierBySupplier`.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfLogisticsDeliveryInstructions"
+        "204":
+          description: No Content
+  /logistics-delivery-instructions/{logisticsDeliveryInstructionId}:
+    # GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
+    # None => LogisticsDeliveryInstructionById
+    get:
+      summary: Get a `logistics-delivery-instruction`
+      description: Gets the details of a specific `logistics-delivery-instruction`.
+      parameters:
+        - in: path
+          name: logisticsDeliveryInstructionId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `logistics-delivery-instruction` to get.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogisticsDeliveryInstructionById"
+        "404":
+          description: Not Found
+  /logistics-inventory-changes:
+    # GET /logistics-inventory-changes
+    # None => ListOfLogisticsInventoryChanges
+    get:
+      summary: List `logistics-inventory-changes`
+      description: Get a paginated list of all `logistics-inventory-changes`.
+      parameters:
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: isActive
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `isActive` (true|false)
+        - in: query
+          name: supplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `supplierParty.identifierBySupplier`.
+        - in: query
+          name: logisticsSupplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfLogisticsInventoryChanges"
+        "204":
+          description: No Content
+    # POST /logistics-inventory-changes
+    # LogisticsInventoryChangeById => None
+    post:
+      summary: Push an _Original_ `logistics-inventory-change`
+      description: Pushes the details of a specific _Original_ `logistics-inventory-change`.
+      requestBody:
+        description: The details of the _Original_ `logistics-inventory-change` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogisticsInventoryChangeById"
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+  /logistics-inventory-changes/{logisticsInventoryChangeId}:
+    # GET /logistics-inventory-changes/{logisticsInventoryChangeId}
+    # None => LogisticsInventoryChangeById
+    get:
+      summary: Get a `logistics-inventory-change`
+      description: Gets the details of a specific `logistics-inventory-change`.
+      parameters:
+        - in: path
+          name: logisticsInventoryChangeId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `logistics-inventory-change` to get
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogisticsInventoryChangeById"
+        "404":
+          description: Not Found          
+components:
+  schemas:
+    # Re-usable schemas (5) in alphabetical order:
+    Location:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - identifierBySupplier
+      properties:
+        type:
+          type: string
+          enum:
+            - BorderCrossing
+            - CustomerFacility
+            - CustomerStock
+            - Mill
+            - Port
+            - PrinterFacility
+            - Terminal
+            - Warehouse
+        identifierBySupplier:
+          type: string
+          minLength: 1
+          description: The identifier assigned by the _Supplier_.
+        nameLines:
+          type: array
+          minItems: 1
+          maxItems: 3
+          items:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              maxItems: 4
+              items:
+                type: string
+                minLength: 1
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
+              type: string
+              minLength: 1
+            countryCode:
+              type: string
+              minLength: 2
+              maxLength: 2
+              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        coordinatesWgs84:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - latitude
+            - longitude
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number    
+    PaginationLinks:
+      type: object
+      unevaluatedProperties: false
+      # none of the properties are required.
+      properties:
+        first:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        prev:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        next:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+        last:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - href
+          properties:
+            href:
+              type: string
+              format: uri-reference
+    PaperAndBoard:
+      type: object
+      unevaluatedProperties: false
+      properties:
+        # Properties that do not depend on the reel or sheet format:
+        coatingTop:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        coatingBottom:
+          type: string
+          enum:
+            - Acrylic
+            - Flexolyn
+            - FoilCoated
+            - GreaseBarrier
+            - Metallic
+            - MetalizedPolyester
+            - MoistureBarrier
+            - MoldInhibitor
+            - None
+            - OilBarrier
+            - OxygenBarrier
+            - Plastic
+            - PolyCoating
+            - Polyethylene
+            - Pyroxylin
+            - Silicone
+        finishType:
+          type: string
+          enum:
+            - Dull
+            - English
+            - Gloss
+            - Laid
+            - Linen
+            - Machine
+            - Matte
+            - Satin
+            - SCA
+            - SCB
+            - SCC
+            - Silk
+            - Smooth
+            - SoftGloss
+            - Vellum
+            - Velvet
+        printType:
+          type: string
+          enum:
+            - ColdsetOffset
+            - ContinuousForms
+            - Digital
+            - Flexography
+            - FoilPrint
+            - Forms
+            - Gravure
+            - HeatsetOffset
+            - InkJet
+            - InstantOffset
+            - Laser
+            - Letterpress
+            - LightPrint
+            - MiniWeb
+            - RotoFlexography
+            - RotoGravure
+            - RotoLetterpress
+            - RotoSilkScreen
+            - SheetfedOffset
+            - SilkScreen
+            - WebOffset
+        basisWeight: # This is the result of a nice compromise between EU and US usage.
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            sizeType:
+              type: string
+              enum:
+                - 24x36
+                - 25x38
+            value:
+              type: number
+              minimum: 0
+            uom:
+              description: |
+                - **GramsPerSquareMeter**: ...
+                - **Pound**: The value is expressed in pounds.
+              type: string
+              enum:
+                - GramsPerSquareMeter
+                - Pound
+        bulk:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              type: string
+              enum:
+                - CubicCentimeterPerGram
+        caliper:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              description: |
+                - **Micron**: ...
+                - **Millimeter**: The value is expressed in millimetres.
+              type: string
+              enum:
+                - Micron
+                - Millimeter
+        colourShade:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - assignedBy
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Supplier
+        colourDescription:
+          type: string
+          minLength: 1
+        recycledContent:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              type: string
+              enum:
+                - Percentage
+        format:
+          type: string
+          enum:
+            - Reel
+            - Sheet
+        # Properties that are common to reel or sheet format:
+        width:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              description: |
+                - **Centimeter**: The value is expressed in centimetres.
+                - **Inch**: The value is expressed in inches.
+                - **Millimeter**: The value is expressed in millimetres.
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        length:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              type: string
+              enum:
+                - Centimeter
+                - Foot
+                - Inch
+                - Meter
+                - Millimeter
+                - Yard
+        # Properties that are specific to reel format:
+        windingDirection:
+          type: string
+          enum:
+            - WireSideIn
+            - WireSideOut
+        reelMakeToConstraint:
+          type: string
+          enum:
+            - Length
+            - Diameter
+        reelDiameter:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreEndType:
+          type: string
+          enum:
+            - Adaptor
+            - Bevelled
+            - Bridge
+            - Notched
+            - NotchedFullMetal
+            - Plain
+            - PlainFullMetal
+            - Tapered
+        coreMaterialType:
+          type: string
+          enum:
+            - Aluminium
+            - Composite
+            - Fibre
+            - Iron
+            - Paper
+            - Plastic
+            - Steel
+        coreDiameterInside:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - uom
+          properties:
+            value:
+              type: number
+            uom:
+              type: string
+              enum:
+                - Centimeter
+                - Inch
+                - Millimeter
+        coreStrengthCode:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - value
+            - assignedBy
+          properties:
+            value:
+              type: string
+              minLength: 1
+            assignedBy:
+              type: string
+              enum:
+                - Supplier
+        # Properties that are specific to sheet format:
+        grainDirection:
+          type: string
+          enum:
+            - Long
+            - Short
+    Party:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - identifierBySupplier
+      properties:
+        identifierBySupplier:
+          type: string
+          minLength: 1
+          description: The identifier assigned by the _Supplier_.
+        nameLines:
+          type: array
+          minItems: 1
+          maxItems: 3
+          items:
+            type: string
+            minLength: 1
+        address:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - countryCode
+          properties:
+            addressLines:
+              type: array
+              minItems: 1
+              maxItems: 4
+              items:
+                type: string
+                minLength: 1
+            city:
+              type: string
+              minLength: 1
+            postalCode:
+              type: string
+              minLength: 1
+            stateOrProvince:
+              type: string
+              minLength: 1
+            county:
+              type: string
+              minLength: 1
+            countryCode:
+              type: string
+              minLength: 2
+              maxLength: 2
+              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+    Pulp:
+      type: object
+      unevaluatedProperties: false
+      # And empty object is good enough for now :-)
+    # API endpoint schemas (9) in order of appearance:
+    ListOfSupplierOrders:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - count
+        - items
+      properties:
+        count:
+          type: integer
+          minimum: 1
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - id
+              - number
+              - timestamp
+              - isCancelled
+              - isActive
+              - lineItemCount
+            properties:
+              id:
+                type: string
+                format: uuid
+              number:
+                type: string
+                minLength: 1
+                description: This is the identifier of the supplier order assigned by the supplier.
+              timestamp:
+                type: string
+                format: date-time
+                # UTC MUST be used!
+              isCancelled:
+                type: boolean
+              isActive:
+                type: boolean
+              sellerParty:
+                $ref: "#/components/schemas/Party"
+              supplierParty:
+                $ref: "#/components/schemas/Party"
+              logisticsSupplierParty:
+                $ref: "#/components/schemas/Party"
+              customerParty:
+                $ref: "#/components/schemas/Party"
+              buyerParty:
+                $ref: "#/components/schemas/Party"
+              lineItemCount:
+                type: integer
+                minimum: 1
+        links:
+          $ref: "#/components/schemas/PaginationLinks"
+    SupplierOrderById:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - id
+        - number
+        - timestamp
+        - isCancelled
+        - isActive
+        - lineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+          description: This is the identifier of the supplier order assigned by the supplier.
+        timestamp:
+          type: string
+          format: date-time
+          # UTC MUST be used!
+        isCancelled:
+          type: boolean
+        isActive:
+          type: boolean
+        sellerParty:
+          $ref: "#/components/schemas/Party"
+        supplierParty:
+          $ref: "#/components/schemas/Party"
+        logisticsSupplierParty:
+          $ref: "#/components/schemas/Party"
+        customerParty:
+          $ref: "#/components/schemas/Party"
+        buyerParty:
+          $ref: "#/components/schemas/Party"
+        lineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - number
+              - isCancelled
+              - sellerProduct
+              - quantities
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              isCancelled:
+                type: boolean
+              purchaseOrderNumber:
+                type: string
+                minLength: 1
+                description: This is the identifier of the _purchase order_ as assigned by the _customer_.
+              purchaseOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              customerReferenceNumber:
+                type: string
+                minLength: 1
+              sellerProduct:
+                type: object
+                unevaluatedProperties: false
+                allOf:
+                  - oneOf:
+                      - required:
+                          - gradeCode
+                      - required:
+                          - partNumber
+                  - anyOf:
+                      - oneOf:
+                          - required:
+                              - paperAndBoard
+                          - required:
+                              - pulp
+                      - not:
+                          required:
+                            - paperAndBoard
+                            - pulp
+                properties:
+                  gradeCode:
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  classifications:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - type
+                        - value
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ExportHarmonisedSystemCode
+                        value:
+                          type: string
+                          minLength: 1
+                        countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
+                  paperAndBoard:
+                    $ref: "#/components/schemas/PaperAndBoard"
+                  pulp:
+                    $ref: "#/components/schemas/Pulp"
+              customerArticleReference:
+                type: object
+                unevaluatedProperties: false
+                oneOf:
+                  - required:
+                      - gradeCode
+                  - required:
+                      - partNumber
+                properties:
+                  gradeCode:
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+              millParty:
+                $ref: "#/components/schemas/Party"
+              deliveryLegs:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - number
+                    - shipFromLocation
+                    - shipToLocation
+                  properties:
+                    number:
+                      type: integer
+                      minimum: 0
+                    shipFromLocation:
+                      $ref: "#/components/schemas/Location"
+                    shipToLocation:
+                      $ref: "#/components/schemas/Location"
+                    mainCarrierParty:
+                      $ref: "#/components/schemas/Party"
+                    estimatedLoadingDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    estimatedDepartureDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    estimatedArrivalDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    transport:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - modeType
+                      properties:
+                        modeType:
+                          type: string
+                          enum:
+                            - InlandWaterway
+                            - Intermodal
+                            - Multimodal
+                            - Rail
+                            - Road
+                            - Sea
+                        units:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - type
+                              - identifier
+                            properties:
+                              level:
+                                type: integer
+                                minimum: 1
+                              type:
+                                type: string
+                                enum:
+                                  - Barge
+                                  - Cassette
+                                  - Container
+                                  - DrawBarCombination
+                                  - RailCar
+                                  - RigidLorry
+                                  - Trailer
+                                  - VesselUnit
+                              detailCode:
+                                type: object
+                                unevaluatedProperties: false
+                                required:
+                                  - value
+                                  - assignedBy
+                                properties:
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Supplier
+                              identifier:
+                                type: object
+                                unevaluatedProperties: false
+                                required:
+                                  - type
+                                  - value
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                      - ContainerID
+                                      - CassetteID
+                                      - ISO6346ContainerNumber
+                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                      - LicencePlateNumber
+                                      - RailCarID
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - TrailerID
+                                      - VesselUnitID
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - LogisticsSupplier
+                                      - Supplier
+                                  countryCode:
+                                    type: string
+                                    minLength: 2
+                                    maxLength: 2
+                                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              measurements:
+                                type: object
+                                unevaluatedProperties: false
+                                required: []
+                                properties:
+                                  length:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  width:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  height:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  weight:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Gram
+                                          - HundredPounds
+                                          - Kilogram
+                                          - MetricTon
+                                          - Pound
+                                          - ShortTon
+                              unitReferences:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  unevaluatedProperties: false
+                                  required:
+                                    # transportUnitLevel is not required (as in `units[]`)
+                                    - transportUnitType
+                                    - transportUnitIdentifier
+                                  properties:
+                                    transportUnitLevel:
+                                      type: integer
+                                      minimum: 1
+                                    transportUnitType:
+                                      type: string
+                                      enum:
+                                        - Barge
+                                        - Cassette
+                                        - Container
+                                        - DrawBarCombination
+                                        - RailCar
+                                        - RigidLorry
+                                        - Trailer
+                                        - VesselUnit
+                                    transportUnitIdentifier:
+                                      type: object
+                                      unevaluatedProperties: false
+                                      required:
+                                        - type
+                                        - value
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                            - ContainerID
+                                            - CassetteID
+                                            - ISO6346ContainerNumber
+                                            # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                            - LicencePlateNumber
+                                            - RailCarID
+                                            - RFTagSerialNumber
+                                            - SealNumber
+                                            - TrailerID
+                                            - VesselUnitID
+                                        value:
+                                          type: string
+                                          minLength: 1
+                                        assignedBy:
+                                          type: string
+                                          enum:
+                                            - LogisticsSupplier
+                                            - Supplier
+                                        countryCode:
+                                          type: string
+                                          minLength: 2
+                                          maxLength: 2
+                                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - context
+                    - type
+                    - value
+                    - uom
+                  properties:
+                    context:
+                      description: |
+                        - **Confirmed**: The quantity is confirmed.
+                        - **Ordered**: The quantity is the purchase order requested quantity.
+                      type: string
+                      enum:
+                        - Confirmed
+                        - Ordered
+                    type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    value:
+                      type: number
+                      minimum: 0
+                    uom:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - ReelPackage
+                        - Pallet
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+    ListOfLogisticsDeliveryNotes:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - count
+        - items
+      properties:
+        count:
+          type: integer
+          minimum: 1
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - id
+              - number
+              - timestamp
+              - isCancelled
+              - isActive
+              - shipFromLocation
+              - shipToLocation
+              - lineItemCount
+            properties:
+              id:
+                type: string
+                format: uuid
+              number:
+                type: string
+                minLength: 1
+              timestamp:
+                type: string
+                format: date-time
+                # UTC MUST be used!
+              isCancelled:
+                type: boolean
+              isActive:
+                type: boolean
+              shipmentStatus:
+                type: string
+                enum:
+                  - Arrived
+                  - Departed
+                  - Loaded
+                  - Planned
+                  - Unloaded
+              supplierParty:
+                $ref: "#/components/schemas/Party"
+              logisticsSupplierParty:
+                $ref: "#/components/schemas/Party"
+              deliveryInstructionNumber:
+                type: string
+                minLength: 1
+              deliveryInstructionSequenceNumber:
+                type: integer
+                minimum: 0
+              shipFromLocation:
+                description: It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
+                $ref: "#/components/schemas/Location"
+              shipToLocation:
+                description: It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
+                $ref: "#/components/schemas/Location"
+              lineItemCount:
+                type: integer
+                minimum: 1
+        links:
+          $ref: "#/components/schemas/PaginationLinks"
+    LogisticsDeliveryNoteById:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - id
+        - number
+        - timestamp
+        - isCancelled
+        - isActive
+        - deliveryLegs
+        - lineItems
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time
+          # UTC MUST be used!
+        isCancelled:
+          type: boolean
+        isActive:
+          type: boolean
+        shipmentStatus:
+          type: string
+          enum:
+            - Arrived
+            - Departed
+            - Loaded
+            - Planned
+            - Unloaded
+        supplierParty:
+          $ref: "#/components/schemas/Party"
+        logisticsSupplierParty:
+          $ref: "#/components/schemas/Party"
+        deliveryInstructionNumber:
+          type: string
+          minLength: 1
+        deliveryInstructionSequenceNumber:
+          type: integer
+          minimum: 0
+        deliveryLegs:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - number
+              - shipFromLocation
+              - shipToLocation
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              shipFromLocation:
+                $ref: "#/components/schemas/Location"
+              shipToLocation:
+                $ref: "#/components/schemas/Location"
+              mainCarrierParty:
+                $ref: "#/components/schemas/Party"
+              estimatedLoadingDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              actualLoadingDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              estimatedDepartureDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              actualDepartureDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              estimatedArrivalDateTime:
+                type: string
+                minLength: 4
+                description: |-
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                  - 2023-08-16T13:00/2023-08-18T13:00
+                  - 2023-08-16/2023-08-18
+                  - 2023-08-16T13:00/P2D
+                  - P2D/2023-08-18T13:00
+              transport:
+                type: object
+                unevaluatedProperties: false
+                required:
+                  - modeType
+                properties:
+                  modeType:
+                    type: string
+                    enum:
+                      - InlandWaterway
+                      - Intermodal
+                      - Multimodal
+                      - Rail
+                      - Road
+                      - Sea
+                  units:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - type
+                        - identifier
+                      properties:
+                        level:
+                          type: integer
+                          minimum: 1
+                        type:
+                          type: string
+                          enum:
+                            - Barge
+                            - Cassette
+                            - Container
+                            - DrawBarCombination
+                            - RailCar
+                            - RigidLorry
+                            - Trailer
+                            - VesselUnit
+                        detailCode:
+                          type: object
+                          unevaluatedProperties: false
+                          required:
+                            - value
+                            - assignedBy
+                          properties:
+                            value:
+                              type: string
+                              minLength: 1
+                            assignedBy:
+                              type: string
+                              enum:
+                                - Supplier
+                        identifier:
+                          type: object
+                          unevaluatedProperties: false
+                          required:
+                            - type
+                            - value
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - ContainerID
+                                - CassetteID
+                                - ISO6346ContainerNumber
+                                # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                - LicencePlateNumber
+                                - RailCarID
+                                - RFTagSerialNumber
+                                - SealNumber
+                                - TrailerID
+                                - VesselUnitID
+                            value:
+                              type: string
+                              minLength: 1
+                            assignedBy:
+                              type: string
+                              enum:
+                                - LogisticsSupplier
+                                - Supplier
+                            countryCode:
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                        measurements:
+                          type: object
+                          unevaluatedProperties: false
+                          required: []
+                          properties:
+                            length:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - value
+                                - uom
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                uom:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            width:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - value
+                                - uom
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                uom:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            height:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - value
+                                - uom
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                uom:
+                                  type: string
+                                  enum:
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Inch
+                                    - Meter
+                                    - Millimeter
+                                    - Yard
+                            weight:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - value
+                                - uom
+                              properties:
+                                value:
+                                  type: number
+                                  exclusiveMinimum: 0
+                                uom:
+                                  type: string
+                                  enum:
+                                    - Gram
+                                    - HundredPounds
+                                    - Kilogram
+                                    - MetricTon
+                                    - Pound
+                                    - ShortTon
+                        unitReferences:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              # transportUnitLevel is not required (as in `units[]`)
+                              - transportUnitType
+                              - transportUnitIdentifier
+                            properties:
+                              transportUnitLevel:
+                                type: integer
+                                minimum: 1
+                              transportUnitType:
+                                type: string
+                                enum:
+                                  - Barge
+                                  - Cassette
+                                  - Container
+                                  - DrawBarCombination
+                                  - RailCar
+                                  - RigidLorry
+                                  - Trailer
+                                  - VesselUnit
+                              transportUnitIdentifier:
+                                type: object
+                                unevaluatedProperties: false
+                                required:
+                                  - type
+                                  - value
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                      - ContainerID
+                                      - CassetteID
+                                      - ISO6346ContainerNumber
+                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                      - LicencePlateNumber
+                                      - RailCarID
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - TrailerID
+                                      - VesselUnitID
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - LogisticsSupplier
+                                      - Supplier
+                                  countryCode:
+                                    type: string
+                                    minLength: 2
+                                    maxLength: 2
+                                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+        lineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - number
+              - supplierOrderNumber
+              - supplierOrderLineItemNumber
+              - quantities
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              callOffNumber:
+                type: string
+                minLength: 1
+              callOffLineItemNumber:
+                type: integer
+                minimum: 0
+              deliveryInstructionSequenceLineItemNumber:
+                type: integer
+                minimum: 0
+              purchaseOrderNumber:
+                type: string
+                minLength: 1
+              purchaseOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              customerReferenceNumber:
+                type: string
+                minLength: 1
+              sellerProduct:
+                type: object
+                unevaluatedProperties: false
+                allOf:
+                  - oneOf:
+                      - required:
+                          - gradeCode
+                      - required:
+                          - partNumber
+                  - anyOf:
+                      - oneOf:
+                          - required:
+                              - paperAndBoard
+                          - required:
+                              - pulp
+                      - not:
+                          required:
+                            - paperAndBoard
+                            - pulp
+                properties:
+                  gradeCode:
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  classifications:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - type
+                        - value
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ExportHarmonisedSystemCode
+                        value:
+                          type: string
+                          minLength: 1
+                        countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
+                  paperAndBoard:
+                    $ref: "#/components/schemas/PaperAndBoard"
+                  pulp:
+                    $ref: "#/components/schemas/Pulp"
+              customerArticleReference:
+                type: object
+                unevaluatedProperties: false
+                oneOf:
+                  - required:
+                      - gradeCode
+                  - required:
+                      - partNumber
+                properties:
+                  gradeCode:
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+              safetyAndEnvironmentDetails:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - type
+                  properties:
+                    # quantity and freeText existing in XML not added
+                    # certification now limited to a percentage, in XML a measurement value.
+                    type:
+                      type: string
+                      enum:
+                        - Deforestation
+                        - FSC100%
+                        - FSCControlledWood
+                        - FSCMix_x%
+                        - FSCMixCredit
+                        - FSCRecycled_x%
+                        - FSCRecycledCredit
+                        - PEFCControlledSources
+                        - X%_PEFCcertified
+                    assignedBy:
+                      type: string
+                      enum:
+                        - EU
+                        - FSC
+                        - PEFC
+                    licenceNumber:
+                      type: string
+                      minLength: 1
+                    chainOfCustody:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - value
+                      properties:
+                        certificationBody:
+                          type: string
+                          minlength: 1
+                        value:
+                          type: string
+                          minlength: 1
+                    certificationPercentage:
+                      type: number
+                      exclusiveMinimum: 0
+                    references:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - identifier
+                        properties:
+                          identifier:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - type
+                              - value
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - EUDRDueDiligenceStatementReferenceNumber
+                              value:
+                                type: string
+                                minlength: 1
+                          subReference:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - identifier
+                            identifier:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - type
+                                - value
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                    - EUDRDueDiligenceStatementVerificationNumber
+                                value:
+                                  type: string
+                                  minLength: 1
+              loadingCharacteristics:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required: []
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ByLoadingCode
+                        - Lying
+                        - Standing
+                        - StandingUpsideDown
+                    code:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Supplier
+                    labelOrientation:
+                      type: string
+                      enum:
+                        - BackEndSide
+                        - FrontEndSide
+                        - LeftAndRightSide
+                        - LeftSide
+                        - RightSide
+                    text:
+                      type: string
+                      minLength: 1
+              unloadingCharacteristics:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required: []
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ByLoadingCode
+                        - Lying
+                        - Standing
+                        - StandingUpsideDown
+                    code:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - value
+                        - assignedBy
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                        assignedBy:
+                          type: string
+                          enum:
+                            - Supplier
+                    text:
+                      type: string
+                      minLength: 1
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - context
+                    - type
+                    - value
+                    - uom
+                  properties:
+                    context:
+                      description: |
+                        - **Loaded**: ...
+                        - **Planned**: ...
+                        - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
+                      type: string
+                      enum:
+                        - Loaded
+                        - Planned
+                        - Shipped
+                    type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    value:
+                      type: number
+                      exclusiveMinimum: 0
+                    uom:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - ReelPackage
+                        - Pallet
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+              packages:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - type
+                    - identifiers
+                    - quantities
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Pallet
+                        - PulpUnit
+                        - ReelPackage
+                    identifiers:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - role
+                          - type
+                          - codeType
+                          - value
+                        properties:
+                          role:
+                            type: string
+                            enum:
+                              - Primary
+                              - Secondary
+                          type:
+                            type: string
+                            enum:
+                              - Barcode
+                              - RFTag
+                              - Number
+                              - QRCode
+                          codeType:
+                            type: string
+                            enum:
+                              - IFRA
+                              - NARI
+                              - Supplier
+                              - UIC14
+                              - UIC16
+                          value:
+                            type: string
+                            minLength: 1
+                    transportUnitIdentifierReference:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - value
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - context
+                          - type
+                          - value
+                          - uom
+                        properties:
+                          context:
+                            description: |
+                              - **Loaded**: ...
+                              - **Planned**: ...
+                              - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
+                            type: string
+                            enum:
+                              - Loaded
+                              - Planned
+                              - Shipped
+                          type:
+                            description: |
+                              - **Area**: The area that is the length multiplied by the width of the item.
+                              - **Count**: The number of items.
+                              - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                              - **Length**: The length of the item.
+                              - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                              - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                              - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                              - **TareWeight**: The weight of the packaging and the furnishing materials.
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                            exclusiveMinimum: 0
+                          uom:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - ReelPackage
+                              - Piece
+                              - Pound
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+    LogisticsGoodsReceiptById:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - id
+        - number
+        - timestamp
+        - isCancelled
+        - isActive
+        - acceptance
+        - isComplete
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time
+          # UTC MUST be used!
+        isCancelled:
+          type: boolean
+        isActive:
+          type: boolean
+        acceptance:
+          type: string
+          enum:
+            - AsSpecified
+            - Cancelled
+            - Rejected
+            - WithDamage
+            - WithoutDeliveryNote
+            - WithoutInspection
+            # WithoutInspection, A Change compared to XML, formerly GoodsReceivedAsIs IN XML
+            - WithVariance
+            - WithVarianceAndDamage
+        isComplete:
+          type: boolean
+        deliveryNoteNumber:
+          type: string
+          minLength: 1
+          description: deliveryNoteNumber is required if a DeliveryNote is received for the goods
+        deliveryNoteTimestamp:
+          type: string
+          format: date-time
+          # UTC MUST be used!
+        arrivalDateTime:
+          type: string
+          minLength: 4
+          description: |-
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+        unloadingDateTime:
+          type: string
+          minLength: 4
+          description: |-
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+        shipToLocation:
+          $ref: "#/components/schemas/Location"
+        lineItems:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - number
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              acceptance:
+                type: string
+                enum:
+                  - WithoutInspection
+                  # WithoutInspection a change compared to XML, formerly GoodsReceivedAsIs in XML
+                  - AsSpecified
+                  - Cancelled
+                  - Rejected
+                  - WithDamage
+                  - WithVariance
+                  # WithVariance, then, we give ALL the packages!
+                  - WithVarianceAndDamage
+              deliveryNoteLineItemNumber:
+                type: integer
+                minimum: 0
+                description: deliveryNoteLineItemNumber is required if a Delivery Note is received for the goods
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+              sellerProduct:
+                type: object
+                unevaluatedProperties: false
+                allOf:
+                  - oneOf:
+                      - required:
+                          - gradeCode
+                      - required:
+                          - partNumber
+                  - anyOf:
+                      - oneOf:
+                          - required:
+                              - paperAndBoard
+                          - required:
+                              - pulp
+                      - not:
+                          required:
+                            - paperAndBoard
+                            - pulp
+                properties:
+                  gradeCode:
+                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    type: string
+                    minLength: 1
+                  partNumber:
+                    description: The product identifier assigned by the seller for a fully-defined product.
+                    type: string
+                    minLength: 1
+                  brandName:
+                    type: string
+                    minLength: 1
+                  name:
+                    type: string
+                    minLength: 1
+                  classifications:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - type
+                        - value
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ExportHarmonisedSystemCode
+                        value:
+                          type: string
+                          minLength: 1
+                        countryCode:
+                          type: string
+                          minLength: 2
+                          maxLength: 2
+                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
+                  paperAndBoard:
+                    $ref: "#/components/schemas/PaperAndBoard"
+                  pulp:
+                    $ref: "#/components/schemas/Pulp"
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - context
+                    - type
+                    - value
+                    - uom
+                  properties:
+                    context:
+                      description: |
+                        - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
+                      type: string
+                      enum:
+                        - Shipped
+                    type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    value:
+                      type: number
+                    uom:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - ReelPackage
+                        - Pallet
+                        - Piece
+                        - Pound
+                        - PulpUnit
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+              packages:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - type
+                    - identifiers
+                    - acceptance
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ReelPackage
+                        - Pallet
+                        - PulpUnit
+                    identifiers:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - role
+                          - type
+                          - codeType
+                          - value
+                        properties:
+                          role:
+                            type: string
+                            enum:
+                              - Primary
+                              - Secondary
+                          type:
+                            type: string
+                            enum:
+                              - Barcode
+                              - RFTag
+                              - Number
+                              - QRCode
+                          codeType:
+                            type: string
+                            enum:
+                              - IFRA
+                              - NARI
+                              - Supplier
+                              - UIC14
+                              - UIC16
+                          value:
+                            type: string
+                            minLength: 1
+                    transportUnitIdentifierReference:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - value
+                      properties:
+                        value:
+                          type: string
+                          minLength: 1
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - context
+                          - type
+                          - value
+                          - uom
+                        properties:
+                          context:
+                            description: |
+                              - **Confirmed**: The quantity is confirmed.
+                              - **Invoiced**: The quantity is invoiced and qualified for compensation.
+                              - **Ordered**: The quantity is the purchase order requested quantity.
+                              - **Produced**: The quantity is added to stock through a production or conversion process.
+                              - **Shipped**: The quantity is shipped, it has departed the _Supplier_'s location.
+                            type: string
+                            enum:
+                              - Confirmed
+                              - Invoiced
+                              - Ordered
+                              - Produced
+                              - Shipped
+                          type:
+                            description: |
+                              - **Area**: The area that is the length multiplied by the width of the item.
+                              - **Count**: The number of items.
+                              - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                              - **Length**: The length of the item.
+                              - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                              - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                              - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                              - **TareWeight**: The weight of the packaging and the furnishing materials.
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                          uom:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - ReelPackage
+                              - Piece
+                              - Pound
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+                    acceptance:
+                      type: string
+                      enum:
+                        - WithoutInspection
+                        # WithoutInspection a change compared to XML, formerly GoodsReceivedAsIs inXML
+                        - AsSpecified
+                        - Cancelled
+                        - Rejected
+                        - WithDamage
+                        - WithVariance
+                        - WithVarianceAndDamage
+                    varianceType:
+                      type: string
+                      enum:
+                        - DifferingWeights
+                        - NotReceived
+                        - ReceivedNotSpecified
+    ListOfLogisticsDeliveryInstructions:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - count
+        - items
+      properties:
+        count:
+          type: integer
+          minimum: 1
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - id
+              - number
+              - timestamp
+              - isCancelled
+              - isActive
+              - sequenceCount
+            properties:
+              id:
+                type: string
+                format: uuid
+              number:
+                type: string
+                minLength: 1
+              timestamp:
+                type: string
+                format: date-time
+                # UTC MUST be used!
+              isCancelled:
+                type: boolean
+              isActive:
+                type: boolean
+              sequenceCount:
+                type: integer
+                minimum: 1
+        links:
+          $ref: "#/components/schemas/PaginationLinks"
+    LogisticsDeliveryInstructionById:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - id
+        - number
+        - timestamp
+        - isCancelled
+        - isActive
+        - sequences
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time
+          # UTC MUST be used!
+        isCancelled:
+          type: boolean
+        isActive:
+          type: boolean
+        sequences:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - number
+              - isCancelled
+              - deliveryLegs
+              - lineItems
+            properties:
+              number:
+                type: integer
+                minimum: 0
+              isCancelled:
+                type: boolean
+              supplierParty:
+                $ref: "#/components/schemas/Party"
+              logisticsSupplierParty:
+                $ref: "#/components/schemas/Party"
+              buyerParty:
+                $ref: "#/components/schemas/Party"
+              deliveryLegs:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - number
+                    - shipFromLocation
+                    - shipToLocation
+                  properties:
+                    number:
+                      type: integer
+                      minimum: 0
+                    shipFromLocation:
+                      $ref: "#/components/schemas/Location"
+                    shipToLocation:
+                      $ref: "#/components/schemas/Location"
+                    termsOfDelivery:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - incoterms
+                      properties:
+                        incoterms:
+                          type: object
+                          unevaluatedProperties: false
+                          required:
+                            - location
+                            - code
+                            - version
+                          properties:
+                            location:
+                              type: string
+                              minLength: 1
+                            code:
+                              description: |
+                                - **CFR**: COST AND FREIGHT (... named port of destination)
+                                - **CIF**: COST, INSURANCE AND FREIGHT (... named port of destination).
+                                - **CIP**: CARRIAGE AND INSURANCE PAID TO (... named place of destination).
+                                - **CPT**: CARRIAGE PAID TO (... named place of destination).
+                                - **DAF**: DELIVERED AT FRONTIER (... named place).
+                                - **DAP**: DELIVERED AT PLACE (... named place of destination).
+                                - **DAT**: DELIVERED AT TERMINAL (... named place of destination).
+                                - **DDP**: DELIVERED DUTY PAID (... named place of destination).
+                                - **DDU**: DELIVERED DUTY UNPAID (... named place of destination).
+                                - **DEQ**: DELIVERED EX QUAY (... named port of destination).
+                                - **DES**: DELIVERED EX SHIP (... named port of destination).
+                                - **DPU**: DELIVERED AT PLACE UNLOADED (... named place of destination).
+                                - **EXW**: EX WORKS (... named place).
+                                - **FAS**: FREE ALONGSIDE SHIP (... named port of shipment).
+                                - **FCA**: FREE CARRIER (... named place).
+                                - **FOB**: FREE ON BOARD (... named port of shipment).
+                              type: string
+                              enum:
+                                - CFR
+                                - CIF
+                                - CIP
+                                - CPT
+                                - DAF
+                                - DAP
+                                - DAT
+                                - DDP
+                                - DDU
+                                - DEQ
+                                - DES
+                                - DPU
+                                - EXW
+                                - FAS
+                                - FCA
+                                - FOB
+                            version:
+                              description: |
+                                - **1980**: The incoterms definitions provided in 1980.
+                                - **1990**: The incoterms definitions provided in 1990.
+                                - **2000**: The incoterms definitions provided in 2000.
+                                - **2010**: The incoterms definitions provided in 2010.
+                                - **2020**: The incoterms definitions provided in 2020.
+                              type: string
+                              enum:
+                                - "1980"
+                                - "1990"
+                                - "2000"
+                                - "2010"
+                                - "2020"
+                    mainCarrierParty:
+                      description: The _main carrier_ is the party that is **contracted** to handle the transport.
+                      $ref: "#/components/schemas/Party"
+                    mainCarrierReferenceNumber:
+                      type: string
+                      minLength: 1
+                    requestedLoadingDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    requestedDepartureDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    requestedArrivalDateTime:
+                      type: string
+                      minLength: 4
+                      description: |-
+                        It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+                        - 2023-08-16T13:00/2023-08-18T13:00
+                        - 2023-08-16/2023-08-18
+                        - 2023-08-16T13:00/P2D
+                        - P2D/2023-08-18T13:00
+                    transport:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - modeType
+                      properties:
+                        modeType:
+                          type: string
+                          enum:
+                            - InlandWaterway
+                            - Intermodal
+                            - Multimodal
+                            - Rail
+                            - Road
+                            - Sea
+                        units:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - type
+                              - identifier
+                            properties:
+                              level:
+                                type: integer
+                                minimum: 1
+                              type:
+                                type: string
+                                enum:
+                                  - Barge
+                                  - Cassette
+                                  - Container
+                                  - DrawBarCombination
+                                  - RailCar
+                                  - RigidLorry
+                                  - Trailer
+                                  - VesselUnit
+                              detailCode:
+                                type: object
+                                unevaluatedProperties: false
+                                required:
+                                  - value
+                                  - assignedBy
+                                properties:
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - Supplier
+                              identifier:
+                                type: object
+                                unevaluatedProperties: false
+                                required:
+                                  - type
+                                  - value
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                      - ContainerID
+                                      - CassetteID
+                                      - ISO6346ContainerNumber
+                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                      - LicencePlateNumber
+                                      - RailCarID
+                                      - RFTagSerialNumber
+                                      - SealNumber
+                                      - TrailerID
+                                      - VesselUnitID
+                                  value:
+                                    type: string
+                                    minLength: 1
+                                  assignedBy:
+                                    type: string
+                                    enum:
+                                      - LogisticsSupplier
+                                      - Supplier
+                                  countryCode:
+                                    type: string
+                                    minLength: 2
+                                    maxLength: 2
+                                    description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                              measurements:
+                                type: object
+                                unevaluatedProperties: false
+                                required: []
+                                properties:
+                                  length:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  width:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  height:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Centimeter
+                                          - Decimeter
+                                          - Foot
+                                          - Inch
+                                          - Meter
+                                          - Millimeter
+                                          - Yard
+                                  weight:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - value
+                                      - uom
+                                    properties:
+                                      value:
+                                        type: number
+                                        exclusiveMinimum: 0
+                                      uom:
+                                        type: string
+                                        enum:
+                                          - Gram
+                                          - HundredPounds
+                                          - Kilogram
+                                          - MetricTon
+                                          - Pound
+                                          - ShortTon
+                              unitReferences:
+                                type: array
+                                minItems: 1
+                                items:
+                                  type: object
+                                  unevaluatedProperties: false
+                                  required:
+                                    # transportUnitLevel is not required (as in `units[]`)
+                                    - transportUnitType
+                                    - transportUnitIdentifier
+                                  properties:
+                                    transportUnitLevel:
+                                      type: integer
+                                      minimum: 1
+                                    transportUnitType:
+                                      type: string
+                                      enum:
+                                        - Barge
+                                        - Cassette
+                                        - Container
+                                        - DrawBarCombination
+                                        - RailCar
+                                        - RigidLorry
+                                        - Trailer
+                                        - VesselUnit
+                                    transportUnitIdentifier:
+                                      type: object
+                                      unevaluatedProperties: false
+                                      required:
+                                        - type
+                                        - value
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                            - ContainerID
+                                            - CassetteID
+                                            - ISO6346ContainerNumber
+                                            # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                            - LicencePlateNumber
+                                            - RailCarID
+                                            - RFTagSerialNumber
+                                            - SealNumber
+                                            - TrailerID
+                                            - VesselUnitID
+                                        value:
+                                          type: string
+                                          minLength: 1
+                                        assignedBy:
+                                          type: string
+                                          enum:
+                                            - LogisticsSupplier
+                                            - Supplier
+                                        countryCode:
+                                          type: string
+                                          minLength: 2
+                                          maxLength: 2
+                                          description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+              lineItems:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - number
+                    - quantities
+                  properties:
+                    number:
+                      type: integer
+                      minimum: 0
+                    supplierOrderNumber:
+                      type: string
+                      minLength: 1
+                    supplierOrderLineItemNumber:
+                      type: integer
+                      minimum: 0
+                    callOffNumber:
+                      type: string
+                      minLength: 1
+                    callOffLineItemNumber:
+                      type: integer
+                      minimum: 0
+                    customerReferenceNumber:
+                      type: string
+                      minLength: 1
+                    sellerProduct:
+                      type: object
+                      unevaluatedProperties: false
+                      allOf:
+                        - oneOf:
+                            - required:
+                                - gradeCode
+                            - required:
+                                - partNumber
+                        - anyOf:
+                            - oneOf:
+                                - required:
+                                    - paperAndBoard
+                                - required:
+                                    - pulp
+                            - not:
+                                required:
+                                  - paperAndBoard
+                                  - pulp
+                      properties:
+                        gradeCode:
+                          description: The product identifier assigned by the seller for a not-fully-defined product.
+                          type: string
+                          minLength: 1
+                        partNumber:
+                          description: The product identifier assigned by the seller for a fully-defined product.
+                          type: string
+                          minLength: 1
+                        brandName:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                        classifications:
+                          type: array
+                          minItems: 1
+                          items:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - type
+                              - value
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                  - ExportHarmonisedSystemCode
+                              value:
+                                type: string
+                                minLength: 1
+                              countryCode:
+                                type: string
+                                minLength: 2
+                                maxLength: 2
+                                description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list. The `countryCode` is required when the `type` is `ExportHarmonisedSystemCode`.
+                        paperAndBoard:
+                          $ref: "#/components/schemas/PaperAndBoard"
+                        pulp:
+                          $ref: "#/components/schemas/Pulp"
+                    customerArticleReference:
+                      type: object
+                      unevaluatedProperties: false
+                      oneOf:
+                        - required:
+                            - gradeCode
+                        - required:
+                            - partNumber
+                      properties:
+                        gradeCode:
+                          description: The product identifier assigned by the seller for a not-fully-defined product.
+                          type: string
+                          minLength: 1
+                        partNumber:
+                          description: The product identifier assigned by the seller for a fully-defined product.
+                          type: string
+                          minLength: 1
+                        brandName:
+                          type: string
+                          minLength: 1
+                        name:
+                          type: string
+                          minLength: 1
+                    safetyAndEnvironmentDetails:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - type
+
+                        properties:
+                          # quantity and freeText existing in XML not added
+                          # certification now limited to a percentage, in XML a measurement value.
+                          type:
+                            type: string
+                            enum:
+                              - Deforestation
+                              - FSC100%
+                              - FSCControlledWood
+                              - FSCMix_x%
+                              - FSCMixCredit
+                              - FSCRecycled_x%
+                              - FSCRecycledCredit
+                              - PEFCControlledSources
+                              - X%_PEFCcertified
+                          assignedBy:
+                            type: string
+                            enum:
+                              - EU
+                              - FSC
+                              - PEFC
+                          licenceNumber:
+                            type: string
+                            minLength: 1
+                          chainOfCustody:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - value
+                            properties:
+                              certificationBody:
+                                type: string
+                                minlength: 1
+                              value:
+                                type: string
+                                minlength: 1
+                          certificationPercentage:
+                            type: number
+                            exclusiveMinimum: 0
+                          references:
+                            type: array
+                            minItems: 1
+                            items:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - identifier
+                              properties:
+                                identifier:
+                                  type: object
+                                  unevaluatedProperties: false
+                                  required:
+                                    - type
+                                    - value
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                        - EUDRDueDiligenceStatementReferenceNumber
+                                    value:
+                                      type: string
+                                      minlength: 1
+                                subReference:
+                                  type: object
+                                  unevaluatedProperties: false
+                                  required:
+                                    - identifier
+                                  identifier:
+                                    type: object
+                                    unevaluatedProperties: false
+                                    required:
+                                      - type
+                                      - value
+                                    properties:
+                                      type:
+                                        type: string
+                                        enum:
+                                          - EUDRDueDiligenceStatementVerificationNumber
+                                      value:
+                                        type: string
+                                        minLength: 1
+                    loadingCharacteristics:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required: []
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - ByLoadingCode
+                              - Lying
+                              - Standing
+                              - StandingUpsideDown
+                          code:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - value
+                              - assignedBy
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Supplier
+                          labelOrientation:
+                            type: string
+                            enum:
+                              - BackEndSide
+                              - FrontEndSide
+                              - LeftAndRightSide
+                              - LeftSide
+                              - RightSide
+                          text:
+                            type: string
+                            minLength: 1
+                    unloadingCharacteristics:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required: []
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - ByLoadingCode
+                              - Lying
+                              - Standing
+                              - StandingUpsideDown
+                          code:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - value
+                              - assignedBy
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                              assignedBy:
+                                type: string
+                                enum:
+                                  - Supplier
+                          text:
+                            type: string
+                            minLength: 1
+                    quantities:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - context
+                          - type
+                          - value
+                          - uom
+                        properties:
+                          context:
+                            description: |
+                              - **Instructed**: ...
+                            type: string
+                            enum:
+                              - Instructed
+                          type:
+                            description: |
+                              - **Area**: The area that is the length multiplied by the width of the item.
+                              - **Count**: The number of items.
+                              - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                              - **Length**: The length of the item.
+                              - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                              - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                              - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                              - **TareWeight**: The weight of the packaging and the furnishing materials.
+                            type: string
+                            enum:
+                              - Area
+                              - Count
+                              - GrossWeight
+                              - Length
+                              - NetNetWeight
+                              - NetWeight
+                              - NominalWeight
+                              - TareWeight
+                          value:
+                            type: number
+                            minimum: 0
+                          uom:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Gram
+                              - HundredPounds
+                              - Inch
+                              - Kilogram
+                              - Kilometer
+                              - Meter
+                              - MetricTon
+                              - Millimeter
+                              - ReelPackage
+                              - Pallet
+                              - Piece
+                              - Pound
+                              - PulpUnit
+                              - Ream
+                              - Reel
+                              - Sheet
+                              - ShortTon
+                              - SquareDecimeter
+                              - SquareFoot
+                              - SquareInch
+                              - SquareMeter
+                              - ThousandPieces
+                              - ThousandSquareCentimeters
+                              - ThousandSquareFeet
+                              - ThousandSquareInches
+                              - Yard
+                    packages:
+                      type: array
+                      minItems: 1
+                      items:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - type
+                          - identifiers
+                          - quantities
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - Bale
+                              - Box
+                              - ReelPackage
+                              - Pallet
+                              - PulpUnit
+                          identifiers:
+                            type: array
+                            minItems: 1
+                            items:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - role
+                                - type
+                                - codeType
+                                - value
+                              properties:
+                                role:
+                                  type: string
+                                  enum:
+                                    - Primary
+                                    - Secondary
+                                type:
+                                  type: string
+                                  enum:
+                                    - Barcode
+                                    - RFTag
+                                    - Number
+                                    - QRCode
+                                codeType:
+                                  type: string
+                                  enum:
+                                    - IFRA
+                                    - NARI
+                                    - Supplier
+                                    - UIC14
+                                    - UIC16
+                                value:
+                                  type: string
+                                  minLength: 1
+                          transportUnitIdentifierReference:
+                            type: object
+                            unevaluatedProperties: false
+                            required:
+                              - value
+                            properties:
+                              value:
+                                type: string
+                                minLength: 1
+                          quantities:
+                            type: array
+                            minItems: 1
+                            items:
+                              type: object
+                              unevaluatedProperties: false
+                              required:
+                                - context
+                                - type
+                                - value
+                                - uom
+                              properties:
+                                context:
+                                  description: |
+                                    - **Instructed**: ...
+                                  type: string
+                                  enum:
+                                    - Instructed
+                                type:
+                                  description: |
+                                    - **Area**: The area that is the length multiplied by the width of the item.
+                                    - **Count**: The number of items.
+                                    - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                                    - **Length**: The length of the item.
+                                    - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                                    - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                                    - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                                    - **TareWeight**: The weight of the packaging and the furnishing materials.
+                                  type: string
+                                  enum:
+                                    - Area
+                                    - Count
+                                    - GrossWeight
+                                    - Length
+                                    - NetNetWeight
+                                    - NetWeight
+                                    - NominalWeight
+                                    - TareWeight
+                                value:
+                                  type: number
+                                  minimum: 0
+                                uom:
+                                  type: string
+                                  enum:
+                                    - Bale
+                                    - Box
+                                    - Centimeter
+                                    - Decimeter
+                                    - Foot
+                                    - Gram
+                                    - HundredPounds
+                                    - Inch
+                                    - Kilogram
+                                    - Kilometer
+                                    - Meter
+                                    - MetricTon
+                                    - Millimeter
+                                    - ReelPackage
+                                    - Piece
+                                    - Pound
+                                    - Ream
+                                    - Reel
+                                    - Sheet
+                                    - ShortTon
+                                    - SquareDecimeter
+                                    - SquareFoot
+                                    - SquareInch
+                                    - SquareMeter
+                                    - ThousandPieces
+                                    - ThousandSquareCentimeters
+                                    - ThousandSquareFeet
+                                    - ThousandSquareInches
+                                    - Yard
+    ListOfLogisticsInventoryChanges:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - count
+        - items
+      properties:
+        count:
+          type: integer
+          minimum: 1
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - id
+              - number
+              - timestamp
+              - isActive
+              - storageLocation
+              - supplierOrderNumber
+              - supplierOrderLineItemNumber
+            properties:
+              id:
+                type: string
+                format: uuid
+              number:
+                description: The identifier of the inventory change assigned by the creator of the inventory change, i.e. the supplier.
+                type: string
+                minLength: 1
+              timestamp:
+                type: string
+                format: date-time
+                # UTC MUST be used!       
+              isActive:
+                type: boolean
+              logisticsSupplierParty:
+                $ref: "#/components/schemas/Party"
+              supplierParty:
+                $ref: "#/components/schemas/Party"
+              storageLocation:
+                type: object
+                unevaluatedProperties: false
+                required:
+                  - identifierBySupplier
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - CustomerStock
+                      - Mill
+                      - Port
+                      - Terminal
+                      - Warehouse                 
+                  identifierBySupplier:
+                    type: string
+                    minLength: 1
+                    description: The identifier assigned by the _Supplier_.
+                  nameLines:
+                    type: array
+                    minItems: 1
+                    maxItems: 3
+                    items:
+                      type: string
+                      minLength: 1
+                  address:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - countryCode
+                    properties:
+                      addressLines:
+                        type: array
+                        minItems: 1
+                        maxItems: 4
+                        items:
+                          type: string
+                          minLength: 1
+                      city:
+                        type: string
+                        minLength: 1
+                      postalCode:
+                        type: string
+                        minLength: 1
+                      stateOrProvince:
+                        type: string
+                        minLength: 1
+                      county:
+                        type: string
+                        minLength: 1
+                      countryCode:
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  coordinatesWgs84:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - latitude
+                      - longitude
+                    properties:
+                      latitude:
+                        type: number
+                      longitude:
+                        type: number
+              supplierOrderNumber:
+                type: string
+                minLength: 1
+              supplierOrderLineItemNumber:
+                type: integer
+                minimum: 0
+        links:
+          $ref: "#/components/schemas/PaginationLinks"
+    LogisticsInventoryChangeById:
+      type: object
+      unevaluatedProperties: false
+      required:
+        - id
+        - number
+        - timestamp
+        - isActive
+        - storageLocation
+        - supplierOrderNumber
+        - supplierOrderLineItemNumber
+        - packages
+      properties:
+        id:
+          type: string
+          format: uuid
+        number:
+          description: The identifier of the inventory change assigned by the creator of the inventory change, i.e. the supplier or the logistics supplier.
+          type: string
+          minLength: 1
+        timestamp:
+          type: string
+          format: date-time
+          # UTC MUST be used!    
+        isActive:
+          type: boolean
+        logisticsSupplierParty:
+          $ref: "#/components/schemas/Party"
+        supplierParty:
+          $ref: "#/components/schemas/Party"
+        storageLocation:
+          type: object
+          unevaluatedProperties: false
+          required:
+            - identifierBySupplier
+          properties:
+            type:
+              type: string
+              enum:
+                - CustomerStock
+                - Mill
+                - Port
+                - Terminal
+                - Warehouse         
+            identifierBySupplier:
+              type: string
+              minLength: 1
+              description: The identifier assigned by the _Supplier_.
+            nameLines:
+              type: array
+              minItems: 1
+              maxItems: 3
+              items:
+                type: string
+                minLength: 1
+            address:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - countryCode
+              properties:
+                addressLines:
+                  type: array
+                  minItems: 1
+                  maxItems: 4
+                  items:
+                    type: string
+                    minLength: 1
+                city:
+                  type: string
+                  minLength: 1
+                postalCode:
+                  type: string
+                  minLength: 1
+                stateOrProvince:
+                  type: string
+                  minLength: 1
+                county:
+                  type: string
+                  minLength: 1
+                countryCode:
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+            coordinatesWgs84:
+              type: object
+              unevaluatedProperties: false
+              required:
+                - latitude
+                - longitude
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+        supplierOrderNumber:
+          type: string
+          minLength: 1
+        supplierOrderLineItemNumber:
+          type: integer
+          minimum: 0
+        packages:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            unevaluatedProperties: false
+            required:
+              - type
+              - changeType
+              - identifiers
+              - quantities
+              - classification
+            properties:
+              type:
+                type: string
+                enum:
+                  - Bale
+                  - Box
+                  - Pallet
+                  - PulpUnit
+                  - ReelPackage
+              changeType:
+                type: string
+                enum:
+                  - Add
+                  - Change
+                  - Remove
+              identifiers:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - role
+                    - type
+                    - codeType
+                    - value
+                  properties:
+                    role:
+                      type: string
+                      enum:
+                        - Primary
+                        - Secondary
+                    type:
+                      type: string
+                      enum:
+                        - Barcode
+                        - RFTag
+                        - Number
+                        - QRCode
+                    codeType:
+                      type: string
+                      enum:
+                        - IFRA
+                        - NARI
+                        - Supplier
+                        - UIC14
+                        - UIC16
+                    value:
+                      type: string
+                      minLength: 1
+              quantities:
+                type: array
+                minItems: 1
+                items:
+                  type: object
+                  unevaluatedProperties: false
+                  required:
+                    - context
+                    - type
+                    - value
+                    - uom
+                  properties:
+                    context:
+                      description: |
+                        - **Stored**: ...
+                      type: string
+                      enum:
+                        - Stored
+                    type:
+                      description: |
+                        - **Area**: The area that is the length multiplied by the width of the item.
+                        - **Count**: The number of items.
+                        - **GrossWeight**: The weight including all packaging and furnishing materials. The gross weight of the shipments includes tare weight.
+                        - **Length**: The length of the item.
+                        - **NetNetWeight**: The net weight of the product without any packaging and conversion components.
+                        - **NetWeight**: The net weight of the product that may include certain conversion components, but does not include tare weight.
+                        - **NominalWeight**: The calculated weight that is derived from other measurements. For example, the length of paper multiplied by the width of the paper and multiplied by the specified basis weight could be used to derive a nominal weight.
+                        - **TareWeight**: The weight of the packaging and the furnishing materials.
+                      type: string
+                      enum:
+                        - Area
+                        - Count
+                        - GrossWeight
+                        - Length
+                        - NetNetWeight
+                        - NetWeight
+                        - NominalWeight
+                        - TareWeight
+                    value:
+                      type: number
+                      exclusiveMinimum: 0
+                    uom:
+                      type: string
+                      enum:
+                        - Bale
+                        - Box
+                        - Centimeter
+                        - Decimeter
+                        - Foot
+                        - Gram
+                        - HundredPounds
+                        - Inch
+                        - Kilogram
+                        - Kilometer
+                        - Meter
+                        - MetricTon
+                        - Millimeter
+                        - ReelPackage
+                        - Piece
+                        - Pound
+                        - Ream
+                        - Reel
+                        - Sheet
+                        - ShortTon
+                        - SquareDecimeter
+                        - SquareFoot
+                        - SquareInch
+                        - SquareMeter
+                        - ThousandPieces
+                        - ThousandSquareCentimeters
+                        - ThousandSquareFeet
+                        - ThousandSquareInches
+                        - Yard
+              classification:
+                type: object
+                unevaluatedProperties: false
+                required:
+                  - qualityGrade
+                  - isDamaged
+                properties:
+                  qualityGrade:
+                    type: string
+                    enum:
+                      - Prime
+                      - Second
+                      - Waste
+                  isDamaged:
+                    type: boolean
+                  damages:
+                    type: array
+                    items:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        - typeOfDamage
+                      properties:
+                        typeOfDamage:
+                          type: string
+                          enum:
+                            - CoreDamage
+                            - Deformation
+                            - DirtAndContamination
+                            - EdgeDamage
+                            - EndDamage
+                            - Other
+                            - Shortage,NonDelivery
+                            - SideDamage
+                            - WaterDamage
+                            - WrapperDamage/BrokenPalletBase
+                        placeOfDamage:
+                          type: string
+                          enum:
+                            - AtPlaceOfInspection
+                            - BeforePlaceOfInspection
+                        causeOfDamage:
+                          type: string
+                          enum:
+                            - Condensation
+                            - DeficienciesOfHandlingEquipment
+                            - DeficienciesOfTransportEquipment
+                            - DeficienciesOfWarehouse
+                            - Handling
+                            - InsufficientLashing
+                            - InsufficientPackaging
+                            - Other
+                            - Transportation
+                            - Warehousing
+                  isRejected:
+                    type: boolean
+                  isRefurbished:
+                    type: boolean
+                  isDispatchStop:
+                    type: boolean                                    
