@@ -4,7 +4,7 @@ Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("pap
 
 This document intends to establish guidelines which build a transparent, open mechanism for deciding how to evolve the papiNet API standard. The papiNet Central Working Group (CWG) will follow these processes when merging changes from external contributors or from the CWG itself. This guideline document will be adjusted as practicality dictates.
 
-## Use of GitHub issues
+## Use of GitHub Issues
 
 Issues are created for tracking of decisions and changes.
 
@@ -35,8 +35,8 @@ The repository uses the following branches:
 
 * The `main` branch containing the latest stable, released version.
 * The `develop` working branch containing the next release. 
-* The `feature/[<initials>/]<name>` branches containing specific aspects of the next release. Branched off `develop`.
-* The `hotfix/[<initials>/]<name>` branches containing critical fixes to a released version. Branched off `main`.
+* The `feature/[<initials>/]<feature-name>` branches containing specific aspects of the next release. Branched from `develop`.
+* The `hotfix/[<initials>/]<hotfix-name>` branches containing critical fixes to a released version. Branched from `main`.
 
 The `[<initials>/]` part of the branch name is optional. It can be used to avoid naming collisions or to signal ownership of a work-in-progress branch (e.g. `feature/jd/fix-response-schema`).
 
@@ -50,7 +50,7 @@ Direct pushes to `main` and `develop` are not allowed. All changes must go throu
 
 Maintainers contribute directly via branches on the main repository. External contributors must fork the repository and submit Pull Requests from their fork.
 
-### Starting a new feature
+### Feature Process
 
 ```text
 # Make sure your local develop branch is up to date with the remote:
@@ -59,11 +59,14 @@ git pull origin develop
 ```
 
 ```text
-# Create your feature branch off develop
-git checkout -b feature/my-feature-name
+# Create your feature branch from develop:
+git checkout -b feature/[<initials>/]<feature-name> develop
 ```
 
-where `my-feature-name` should be replaced by the name of **your** feature branch.
+where
+
+* `<feature-name>` MUST describe the feature in a concise and meaningful way (e.g., add-extra-endpoint).
+* `<initials>` SHOULD be used to avoid conflicts and to make branch ownership explicit. The shorter form without initials MAY be used when no ambiguity or naming conflict is expected.
 
 If the `develop` branch did not yet contain a folder for the intended next release version, you should create it as follows.
 
@@ -94,9 +97,9 @@ where `describe your change here` should be replaced by the appropriate text.
 git push origin feature/my-feature-name
 ```
 
-Open a Pull Request from your feature branch into the `develop` branch on GitHub.
+Feature branches branches MUST be merged into the `develop` branch via a pull request.
 
-> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed!
+> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed before merging!
 
 ### Keeping your feature branch up to date with the `develop` branch
 
@@ -126,25 +129,28 @@ git pull origin main
 ```
 
 ```text
-# Create your hotfix branch off main
-git checkout -b hotfix/my-hotfix-name
+# Create your hotfix branch from main:
+git checkout -b hotfix/[<initials>/]<hotfix-name>
 ```
 
-where `my-hotfix-name` should be replaced by the name of **your** hotfix branch.
+where
+
+* `<hotfix-name>` MUST describe the hotfix in a concise and meaningful way (e.g., fix-supporting-file).
+* `<initials>` SHOULD be used to avoid conflicts and to make branch ownership explicit. The shorter form without initials MAY be used when no ambiguity or naming conflict is expected.
 
 ```text
 # Make your changes and commit them:
 git add .
-git commit -m "fix: describe your change here"
+git commit -m "fix: describe your hotfix here"
 ```
 
-where `describe your change here` should be replaced by the appropriate text.
+where `describe your hotfix here` should be replaced by the appropriate text.
 
-Open a Pull Request from your hotfix branch into the `main` branch on GitHub.
+Feature branches branches MUST be merged into the `main` branch via a pull request.
 
 > **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed!
 
-The merge MUST happen during an ad-hoc meeting and **2 maintainer approvals** are required.
+The merge MUST happen during an ad-hoc meeting and **3 maintainer approvals** are required.
 
 After the hotfix is merged into `main`, open another Pull Request from the `main` branch into the `develop` branch on GitHub, to ensure it is not lost in the next release.
 
