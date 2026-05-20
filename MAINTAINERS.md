@@ -17,8 +17,6 @@ Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("pap
 ## Non-Voting Maintainer
 
 * Patrice Krakow [@patricekrakow](https://github.com/patricekrakow)
-* Bo-Göran Skansen [@4boge](https://github.com/4boge)
 * Tom Meniga [@tommeniga](https://github.com/tommeniga)
 
-## Non-Active Maintainer
 
