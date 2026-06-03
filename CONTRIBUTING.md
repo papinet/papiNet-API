@@ -94,7 +94,7 @@ where `describe your change here` should be replaced by the appropriate text.
 
 ```text
 # Push your feature branch
-git push origin feature/my-feature-name
+git push origin feature/[<initials>/]<feature-name>
 ```
 
 Feature branches branches MUST be merged into the `develop` branch via a pull request.
@@ -108,7 +108,7 @@ Feature branches branches MUST be merged into the `develop` branch via a pull re
 git checkout develop
 git pull origin develop
 # Switch back to your feature branch
-git checkout feature/my-feature-name
+git checkout feature/[<initials>/]<feature-name>
 # Merge develop into your feature branch
 git merge develop
 # This brings all changes from `develop` into your branch.
@@ -146,9 +146,9 @@ git commit -m "fix: describe your hotfix here"
 
 where `describe your hotfix here` should be replaced by the appropriate text.
 
-Feature branches branches MUST be merged into the `main` branch via a pull request.
+Hotfix branches branches MUST be merged into the `main` branch via a pull request.
 
-> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed!
+> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed before merging!
 
 The merge MUST happen during an ad-hoc meeting and **3 maintainer approvals** are required.
 
@@ -162,9 +162,9 @@ Releases are governed by maintainers.
 
 2. A release meeting is scheduled with a quorum of maintainers present (as defined in `GOVERNANCE.md`).
 
-3. During the meeting, a Pull Request is opened from `develop` → `main` with the title "papiNet API <MAJOR>.<MINOR>.<PATCH> is ready ;-) | Release".
+3. During the meeting, a Pull Request is opened from `develop` → `main` with the title "papiNet API `<MAJOR>.<MINOR>.<PATCH>` is ready ;-) | Release".
 
-> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed!
+> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed before merging!
 
 4. **3 maintainer approvals** are required before the PR can be merged.
 
