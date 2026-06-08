@@ -1049,7 +1049,7 @@ components:
           minimum: 1
         items:
           type: array
-          minItems: 1
+          minItems: 0
           items:
             type: object
             unevaluatedProperties: false
@@ -1602,7 +1602,7 @@ components:
           minimum: 1
         items:
           type: array
-          minItems: 1
+          minItems: 0
           items:
             type: object
             unevaluatedProperties: false
@@ -2906,7 +2906,7 @@ components:
           minimum: 1
         items:
           type: array
-          minItems: 1
+          minItems: 0
           items:
             type: object
             unevaluatedProperties: false
@@ -3827,7 +3827,7 @@ components:
           minimum: 1
         items:
           type: array
-          minItems: 1
+          minItems: 0
           items:
             type: object
             unevaluatedProperties: false
