@@ -4958,4 +4958,8 @@ components:
                             type: string
                             enum:
                               - KilogramCO2
-                              - KilogramCO2e                                   
+                              - KilogramCO2e
+    ListOfLogisticsLoadingInstructions:
+      $ref: "#/components/schemas/ListOfLogisticsDeliveryInstructions"
+    LogisticsLoadingInstructionById:
+      $ref: "#/components/schemas/LogisticsDeliveryInstructionById"
