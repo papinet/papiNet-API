@@ -14,7 +14,7 @@ servers:
   - url: http://localhost:3040/
     description: papiNet Pact Stub Server
 paths:
-  ## LOGISTICS (11)
+  ## LOGISTICS (14)
   #  GET /supplier-orders
   #  GET /supplier-orders/{supplierOrderId}
   #  GET /logistics-delivery-notes
@@ -26,6 +26,9 @@ paths:
   #  GET /logistics-inventory-changes
   #  GET /logistics-inventory-changes/{logisticsInventoryChangeId}
   #  PUT /logistics-inventory-changes/{logisticsInventoryChangeId}
+  #  GET /logistics-shipments
+  #  GET /logistics-shipments/{logisticsShipmentId}
+  #  Put /logistics-shipments/{logisticsShipmentId}
   /supplier-orders:
     # GET /supplier-orders
     # None => ListOfSupplierOrders
@@ -556,6 +559,147 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/LogisticsInventoryChangeById"
+      responses:
+        "201":
+          description: Created
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+  /logistics-shipments:
+    # GET /logistics-shipments
+    # None => ListOfLogisticsShipments
+    get:
+      summary: List `logistics-shipments`
+      description: Get a paginated list of all `logistics-shipments`.
+      parameters:
+        - in: query
+          name: offset
+          description: The number of items to skip before starting to collect the result set.
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+        - in: query
+          name: limit
+          description: The maximum number of items to return. If the value exceeds the maximum, then the maximum value will be used.
+          required: false
+          schema:
+            type: integer
+            exclusiveMinimum: 0
+        - in: query
+          name: number
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `number` (string)
+        - in: query
+          name: timestamp
+          schema:
+            type: string
+          required: false
+          description: filter based on `timestamp` (can contain an ISO 8601 interval)
+        - in: query
+          name: isActive
+          schema:
+            type: boolean
+          required: false
+          description: filter based on `isActive` (true|false)
+        - in: query
+          name: supplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `supplierParty.identifierBySupplier`.
+        - in: query
+          name: logisticsSupplierParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `logisticsSupplierParty.identifierBySupplier`.
+        - in: query
+          name: shipFromLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: | 
+            filter based on `shipFromLocation.identifierBySupplier`.
+        - in: query
+          name: shipToLocation.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: | 
+            filter based on `shipToLocation.identifierBySupplier`.
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - OnTime
+              - Early
+              - Delayed
+          required: false
+          description: filter based on `status` (OnTime|Early|Delayed|Loaded|Planned|Unloaded)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListOfLogisticsShipments"
+        "400":
+          description: Bad Request
+  /logistics-shipments/{logisticsShipmentId}:
+    # GET /logistics-shipments/{logisticsShipmentId}
+    # None => LogisticsShipmentById
+    get:
+      summary: Get a `logistics-shipment`
+      description: Gets the details of a specific `logistics-shipment`.
+      parameters:
+        - in: path
+          name: logisticsShipmentId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `logistics-shipment` to get
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogisticsShipmentById"
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+    # Put /logistics-shipments/{logisticsShipmentId}
+    # None => LogisticsShipmentById
+    put:
+      summary: Push an _Original_ or a _Replaced_ `logistics-shipment`
+      description: Pushes the details of a specific _Original_ or _Replaced_ `logistics-shipment`.
+      parameters:
+        - in: path
+          name: logisticsShipmentId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: UUID of the `logistics-shipment` to push.
+      requestBody:
+        description: The details of the _Original_ or _Replaced_ `logistics-shipment` to push.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogisticsShipmentById"
       responses:
         "201":
           description: Created
