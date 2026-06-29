@@ -637,6 +637,50 @@ paths:
           description: | 
             filter based on `shipToLocation.identifierBySupplier`.
         - in: query
+          name: references.type
+          schema:
+            type: string
+            enum:
+              - DeliveryNoteNumber
+              - DeliveryInstructionNumber
+              - LoadingInstructionNumber
+              - ShipmentNumber
+          required: false
+          description: | 
+            filter based on `references.type` (string) (DeliveryNoteNumber|DeliveryInstructionNumber|LoadingInstructionNumber|ShipmentNumber)
+            MUST only be used combined with query parameters `references.assignedBy` (string), `references.identifier.value` (string)
+             and `references.identifier.assignedByIdentifierBySupplier` (string).
+        - in: query
+          name: references.assignedBy
+          schema:
+            type: string
+            enum:
+              - Forwarder
+              - Supplier
+              - WarehouseOperator
+          required: false
+          description: | 
+            filter based on `references.assignedBy` (string) (Forwarder|Supplier|WarehouseOperator)
+            MUST only be used combined with query parameter `references.type` (string).
+        - in: query
+          name: references.identifier.value
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: | 
+             filter based on `references.identifier.value` (string)
+             MUST only be used combined with query parameter `references.type` (string).
+        - in: query
+          name: references.identifier.assignedByIdentifierBySupplier
+          schema:
+            type: integer
+            minimum: 0
+          required: false
+          description: | 
+            filter based on `references.identifier.assignedByIdentifierBySupplier` (string).
+            MUST only be used combined with query parameter `references.type` (string).
+        - in: query
           name: status
           schema:
             type: string
