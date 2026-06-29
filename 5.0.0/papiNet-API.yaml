@@ -4316,6 +4316,12 @@ components:
                     lineItemNumber:
                       type: integer
                       minimum: 0
+              status:
+                type: string
+                enum:
+                  - OnTime
+                  - Early
+                  - Delayed
         links:
           $ref: "#/components/schemas/PaginationLinks"
     LogisticsShipmentById:
