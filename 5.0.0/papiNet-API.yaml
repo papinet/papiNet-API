@@ -685,7 +685,7 @@ paths:
             filter based on `references.identifier.assignedByIdentifierBySupplier` (string).
             MUST only be used combined with query parameter `references.type` (string).
         - in: query
-          name: status
+          name: statusArrivalShipFromLocation
           schema:
             type: string
             enum:
@@ -693,7 +693,17 @@ paths:
               - Early
               - Delayed
           required: false
-          description: filter based on `status` (OnTime|Early|Delayed|Loaded|Planned|Unloaded)
+          description: filter based on `statusArrivalShipFromLocation` (string) (OnTime|Early|Delayed)
+        - in: query
+          name: statusArrivalShipToLocation
+          schema:
+            type: string
+            enum:
+              - OnTime
+              - Early
+              - Delayed
+          required: false
+          description: filter based on `statusArrivalShipToLocation` (string) (OnTime|Early|Delayed)
       responses:
         "200":
           description: OK
@@ -1349,7 +1359,7 @@ components:
       type: object
       unevaluatedProperties: false
       # And empty object is good enough for now :-)
-    # API endpoint schemas (11) in order of appearance:
+    # API endpoint schemas (13) in order of appearance:
     ListOfSupplierOrders:
       type: object
       unevaluatedProperties: false
@@ -4644,7 +4654,13 @@ components:
                     lineItemNumber:
                       type: integer
                       minimum: 0
-              status:
+              statusArrivalShipFromLocation:
+                type: string
+                enum:
+                  - OnTime
+                  - Early
+                  - Delayed
+              statusArrivalShipToLocation:
                 type: string
                 enum:
                   - OnTime
@@ -4746,15 +4762,19 @@ components:
               lineItemNumber:
                 type: integer
                 minimum: 0
-        status:
+        statusArrivalShipFromLocation:
           type: string
           enum:
             - OnTime
             - Early
             - Delayed
-        # Any dateTimes needed for arrival to shipFromLocation and loading?
-        # new names for DateTime properties, add ShipFromLocation resp. ShipToLocation
-        scheduledDateTimeOfArrival:
+        statusArrivalShipToLocation:
+          type: string
+          enum:
+            - OnTime
+            - Early
+            - Delayed
+        scheduledDateTimeOfArrivalShipFromLocation:
           type: string
           minLength: 4
           description: |-
@@ -4763,7 +4783,7 @@ components:
             - 2023-08-16/2023-08-18
             - 2023-08-16T13:00/P2D
             - P2D/2023-08-18T13:00
-        estimatedDateTimeOfArrival:
+        estimatedDateTimeOfArrivalShipFromLocation:
           type: string
           minLength: 4
           description: |-
@@ -4772,7 +4792,29 @@ components:
             - 2023-08-16/2023-08-18
             - 2023-08-16T13:00/P2D
             - P2D/2023-08-18T13:00
-        actualDateTimeOfArrival:
+        actualDateTimeOfArrivalShipFromLocation:
+          type: string
+          minLength: 4
+          description: It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone)
+        scheduledDateTimeOfArrivalShipToLocation:
+          type: string
+          minLength: 4
+          description: |-
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+        estimatedDateTimeOfArrivalShipToLocation:
+          type: string
+          minLength: 4
+          description: |-
+            It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
+            - 2023-08-16T13:00/2023-08-18T13:00
+            - 2023-08-16/2023-08-18
+            - 2023-08-16T13:00/P2D
+            - P2D/2023-08-18T13:00
+        actualDateTimeOfArrivalShipToLocation:
           type: string
           minLength: 4
           description: It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone)
