@@ -1395,7 +1395,7 @@ components:
       properties:
         count:
           type: integer
-          minimum: 1
+          minimum: 0
         items:
           type: array
           minItems: 0
@@ -1948,7 +1948,7 @@ components:
       properties:
         count:
           type: integer
-          minimum: 1
+          minimum: 0
         items:
           type: array
           minItems: 0
@@ -3252,7 +3252,7 @@ components:
       properties:
         count:
           type: integer
-          minimum: 1
+          minimum: 0
         items:
           type: array
           minItems: 0
@@ -4173,7 +4173,7 @@ components:
       properties:
         count:
           type: integer
-          minimum: 1
+          minimum: 0
         items:
           type: array
           minItems: 0
@@ -4586,7 +4586,7 @@ components:
       properties:
         count:
           type: integer
-          minimum: 1
+          minimum: 0
         items:
           type: array
           minItems: 0
