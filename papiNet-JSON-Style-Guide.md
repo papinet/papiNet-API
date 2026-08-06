@@ -96,6 +96,10 @@ When a response contains the reference to something (e.g. a _seller-product_), i
 
 When papiNet defines a property of type `array`, papiNet ALWAYS means that this array MUST have at least one element; therefore the constraint `minItems: 1` will always be added.
 
+**Exception:** 
+
+Responses with empty collections having HTTP status code `200 OK` MUST have an items array with constraint `minItems: 0`.
+
 ### Rule 8 - Deprecated
 
 ### Rule 9 - Deprecated
