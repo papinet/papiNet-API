@@ -65,6 +65,7 @@ The following HTTP Status Codes MUST be used for the specified cases below..
 - `400 Bad request`
 
 **How to handle an empty collection**
+
 An empty collection MUST be returned with HTTP Status Code `200 OK`. The HTTP response message body MUST contain the standard pagination envelope, where the total `count` is set to 0, and the collection array property is present and empty.
 
 This ensures consistent response structures and simplifies client handling. The schema enforces this behavior by explicitly allowing an empty array (`minItems: 0`).
