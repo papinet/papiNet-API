@@ -44,6 +44,7 @@ Let's give an example of each case:
 papiNet restrict enumerated values to the minimum list that applies within the context. As a consequence, objects will be usually be defined **locally**! However, if a structure can be reuse whatever the context is, it could be defined globally.
 
 ### Rule 2 - HTTP Status Codes
+
 The following HTTP Status Codes MUST be used for the specified cases below.. 
 
 **GET a list of items**
@@ -64,8 +65,7 @@ The following HTTP Status Codes MUST be used for the specified cases below..
 - `204 No Content` with no response body, when replaced successfully.
 - `400 Bad request`
 
-**How to handle an empty collection**
-
+**How to handle an empty collection**    
 An empty collection MUST be returned with HTTP Status Code `200 OK`. The HTTP response message body MUST contain the standard pagination envelope, where the total `count` is set to 0, and the collection array property is present and empty.
 
 This ensures consistent response structures and simplifies client handling. The schema enforces this behavior by explicitly allowing an empty array (`minItems: 0`).
@@ -96,8 +96,7 @@ When a response contains the reference to something (e.g. a _seller-product_), i
 
 When papiNet defines a property of type `array`, papiNet ALWAYS means that this array MUST have at least one element; therefore the constraint `minItems: 1` will always be added.
 
-**Exception:** 
-
+**Exception:**  
 Responses with empty collections having HTTP status code `200 OK` MUST have an items array with constraint `minItems: 0`.
 
 ### Rule 8 - Deprecated
