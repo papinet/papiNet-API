@@ -43,9 +43,29 @@ Let's give an example of each case:
 
 papiNet restrict enumerated values to the minimum list that applies within the context. As a consequence, objects will be usually be defined **locally**! However, if a structure can be reuse whatever the context is, it could be defined globally.
 
-### Rule 2 - How to handle empty collection
+### Rule 2 - HTTP Status Codes
+The following HTTP Status Codes MUST be used for the specified cases below.. 
 
-An empty collection MUST be returned with HTTP status code `200 OK`. The HTTP response message body MUST contain the standard pagination envelope, where the total `count` is set to 0, and the collection array property is present and empty.
+**GET a list of items**
+- `200 OK`, when items found.
+- `200 OK` with an empty collection, when no items found,
+- `400 Bad request`
+
+**GET details of an item**
+- `200 OK`, when the item is found
+- `404 Not Found`, when the item is not found
+- `400 Bad request`
+
+**PUT to create an item**
+- `201 Created` with no reponse body, when created successfully.
+- `400 Bad request`
+
+**PUT to replace an existing item**
+- `204 No Content` with no response body, when replaced successfully.
+- `400 Bad request`
+
+**How to handle an empty collection**
+An empty collection MUST be returned with HTTP Status Code `200 OK`. The HTTP response message body MUST contain the standard pagination envelope, where the total `count` is set to 0, and the collection array property is present and empty.
 
 This ensures consistent response structures and simplifies client handling. The schema enforces this behavior by explicitly allowing an empty array (`minItems: 0`).
 
