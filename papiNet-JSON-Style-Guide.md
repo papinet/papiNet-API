@@ -45,7 +45,9 @@ papiNet restrict enumerated values to the minimum list that applies within the c
 
 ### Rule 2 - How to handle empty collection
 
-An empty collection MUST be communicated via the HTTP status code `204 No Content` and the response MUST NOT contain a response's body. This rule will be enforced by not allowing empty array in the non-empty response's body using `minItems: 1`.
+An empty collection MUST be returned with HTTP status code `200 OK`. The HTTP response message body MUST contain the standard pagination envelope, where the total `count` is set to 0, and the collection array property is present and empty.
+
+This ensures consistent response structures and simplifies client handling. The schema enforces this behavior by explicitly allowing an empty array (`minItems: 0`).
 
 ### Rule 3 - minLength of property with type `string`
 
@@ -65,21 +67,17 @@ The response body always contains the full representation of the resource, inclu
 
 ### Rule 6 - Avoid lookup optimization
 
-When a response contains the reference to something (e.g. a _seller-product_), it MUST only contain the identifier of that thing and any additional information MUST be retrieved via a subsequent lookup. There should not be any lookup optimization combining the identifier with additional information.
+When a response contains the reference to something (e.g. a _seller-product_), it MUST only contain the identifier (1) of that thing and any additional information MUST be retrieved via a subsequent lookup. There should not be any lookup optimization combining the identifier with additional information.
+
+(1) By "identifier" you should understand a property or a collection of properties that uniquely identifies a specific thing/object amongst all the other things/objects.
 
 ### Rule 7 - Array MUST be defined to have at least one element
 
 When papiNet defines a property of type `array`, papiNet ALWAYS means that this array MUST have at least one element; therefore the constraint `minItems: 1` will always be added.
 
-### Rule 8 - Response payload size SHOULD always be minimized
+### Rule 8 - Deprecated
 
-... (with the execption of the `id`)
-
-### Rule 9 - UUID (only) as resource IDs
-
-We MUST use UUID (only) for resource ID defined by the `id` property of every resource/entity/object.
-
-When referring to another resource/entity/object we MUST also use this UUID only, therefore, to be able to know which type of resource/entity/object this UUID refers to, we MUST name of property or one of its ancestors including the type of resource/entity/object.
+### Rule 9 - Deprecated
 
 ### Rule 10 - Properties with `...Timestamp` and `...DateTime` suffixes
 
@@ -98,6 +96,6 @@ JSON properties MUST be written in lowerCamelCase names capitalize the first let
 
 ### Rule 12 - Avoid abbreviations
 
-All names specified in path and query parameters, resource names, and JSON input and output fields and pre-defined values SHOULD NOT use abbreviations or acronyms.
+All names specified in path and query parameters, resource names, and JSON input and output fields and pre-defined values SHOULD NOT use abbreviations or acronyms, unless they are well-known acronyms.
 
 However, we have decided, during papiNet CWG meeting 2024-06-19 (Wed), to make an exception with "unit of measure" that we will write `uom` or `(...)Uom`, instead of `unitOfMeasure` or `(...)UnitOfMeasure`.
