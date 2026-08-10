@@ -4857,8 +4857,8 @@ components:
             - Incident
             - LoadingStarted
             - LoadingCompleted
-            - OnRoute
-            #OnRoute: both for going to ShipFromLocation and ShipToLocation
+            - OnRouteToShipFromLocation
+            - OnRouteToShipToLocation
             - Planned
             - Scheduled
             - TrafficJam
