@@ -4849,11 +4849,14 @@ components:
           enum:
             - ArrivedAtShipFromLocation
             - ArrivedAtShipToLocation
+            - Completed
             - CostBasisCompleted
             - CustomsInspected
             - CustomsReleased
             - DepartedToShipFromLocation
             - DepartedToShipToLocation
+            - GateIn
+            - GateOut
             - Incident
             - LoadingStarted
             - LoadingCompleted
@@ -4864,36 +4867,10 @@ components:
             - TrafficJam
             - UnloadingStarted
             - UnloadingCompleted
-            # From 1.3.0, will be removed after review
-            - Scheduled
-            - ReadyToLoad
-            - LoadingStarted
-            - LoadingCompleted
-            - Departed
-            - TrafficJam
-            - Transshipment
-            - Arrived
-            - Measured
-            - UnloadingStarted
-            - UnloadingCompleted
-            - Completed
             # proposed by Petter, will be removed after review
-            - Loading
-            - Unloading
-            - ArrivedAtDestination
-            - OnRoute (for GPS coordinates)
-            - ArrivedAtLoadingLocation
-            - Planned
-            - LoadingStarted
-            - LoadingEnded
-            - Departed
             - Stuffed
             # Lars: must be discussed
             - Unstuffed
-            - GateIn
-            - GateOut
-            - CustomsInspected
-            - CustomsReleased
         eventDateTime:
           type: string
           format: date-time
@@ -4927,7 +4904,6 @@ components:
                 - InlandWaterway
                 - Intermodal
                 - Multimodal
-                # Should InlandWaterway, Intermodal and/or Multimodal be removed? If so also removed from other endpoints?
                 - Rail
                 - Road
                 - Sea
@@ -5015,194 +4991,195 @@ components:
                       assignedBy:
                         type: string
                         enum:
+                          - LogisticsSupplier
                           - Supplier
                       assignedByIdentifierBySupplier:
                         type: string
                         minLength: 1
                         description: The identifier of the assigning party assigned by the _Supplier_.
-                      identifier:
+                  identifier:
+                    type: object
+                    unevaluatedProperties: false
+                    required:
+                      - type
+                      - value
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - ContainerID
+                          - CassetteID
+                          - ISO6346ContainerNumber
+                          # Don't use `assignedBy` with ISO6346ContainerNumber!
+                          - LicencePlateNumber
+                          - RailCarID
+                          - RFTagSerialNumber
+                          - SealNumber
+                          - TrailerID
+                          - VesselUnitID
+                      value:
+                        type: string
+                        minLength: 1
+                      assignedBy:
+                        type: string
+                        enum:
+                          - LogisticsSupplier
+                          - Supplier
+                      assignedByIdentifierBySupplier:
+                        type: string
+                        minLength: 1
+                        description: The identifier of the assigning party assigned by the _Supplier_.
+                      countryCode:
+                        type: string
+                        minLength: 2
+                        maxLength: 2
+                        description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                  measurements:
+                    type: object
+                    unevaluatedProperties: false
+                    required: []
+                    properties:
+                      length:
                         type: object
                         unevaluatedProperties: false
                         required:
-                          - type
                           - value
+                          - uom
                         properties:
-                          type:
-                            type: string
-                            enum:
-                              - ContainerID
-                              - CassetteID
-                              - ISO6346ContainerNumber
-                              # Don't use `assignedBy` with ISO6346ContainerNumber!
-                              - LicencePlateNumber
-                              - RailCarID
-                              - RFTagSerialNumber
-                              - SealNumber
-                              - TrailerID
-                              - VesselUnitID
                           value:
-                            type: string
-                            minLength: 1
-                          assignedBy:
+                            type: number
+                            exclusiveMinimum: 0
+                          uom:
                             type: string
                             enum:
-                              - LogisticsSupplier
-                              - Supplier
-                          assignedByIdentifierBySupplier:
-                            type: string
-                            minLength: 1
-                            description: The identifier of the assigning party assigned by the _Supplier_.
-                          countryCode:
-                            type: string
-                            minLength: 2
-                            maxLength: 2
-                            description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
-                      measurements:
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Inch
+                              - Meter
+                              - Millimeter
+                              - Yard
+                      width:
                         type: object
                         unevaluatedProperties: false
-                        required: []
+                        required:
+                          - value
+                          - uom
                         properties:
-                          length:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - uom
-                            properties:
-                              value:
-                                type: number
-                                exclusiveMinimum: 0
-                              uom:
-                                type: string
-                                enum:
-                                  - Centimeter
-                                  - Decimeter
-                                  - Foot
-                                  - Inch
-                                  - Meter
-                                  - Millimeter
-                                  - Yard
-                          width:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - uom
-                            properties:
-                              value:
-                                type: number
-                                exclusiveMinimum: 0
-                              uom:
-                                type: string
-                                enum:
-                                  - Centimeter
-                                  - Decimeter
-                                  - Foot
-                                  - Inch
-                                  - Meter
-                                  - Millimeter
-                                  - Yard
-                          height:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - uom
-                            properties:
-                              value:
-                                type: number
-                                exclusiveMinimum: 0
-                              uom:
-                                type: string
-                                enum:
-                                  - Centimeter
-                                  - Decimeter
-                                  - Foot
-                                  - Inch
-                                  - Meter
-                                  - Millimeter
-                                  - Yard
-                          weight:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - uom
-                            properties:
-                              value:
-                                type: number
-                                exclusiveMinimum: 0
-                              uom:
-                                type: string
-                                enum:
-                                  - Gram
-                                  - HundredPounds
-                                  - Kilogram
-                                  - MetricTon
-                                  - Pound
-                                  - ShortTon
-                      unitReferences:
-                        type: array
-                        minItems: 1
-                        items:
+                          value:
+                            type: number
+                            exclusiveMinimum: 0
+                          uom:
+                            type: string
+                            enum:
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Inch
+                              - Meter
+                              - Millimeter
+                              - Yard
+                      height:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - value
+                          - uom
+                        properties:
+                          value:
+                            type: number
+                            exclusiveMinimum: 0
+                          uom:
+                            type: string
+                            enum:
+                              - Centimeter
+                              - Decimeter
+                              - Foot
+                              - Inch
+                              - Meter
+                              - Millimeter
+                              - Yard
+                      weight:
+                        type: object
+                        unevaluatedProperties: false
+                        required:
+                          - value
+                          - uom
+                        properties:
+                          value:
+                            type: number
+                            exclusiveMinimum: 0
+                          uom:
+                            type: string
+                            enum:
+                              - Gram
+                              - HundredPounds
+                              - Kilogram
+                              - MetricTon
+                              - Pound
+                              - ShortTon
+                  unitReferences:
+                    type: array
+                    minItems: 1
+                    items:
+                      type: object
+                      unevaluatedProperties: false
+                      required:
+                        # transportUnitLevel is not required (as in `units[]`)
+                        - transportUnitType
+                        - transportUnitIdentifier
+                      properties:
+                        transportUnitLevel:
+                          type: integer
+                          minimum: 1
+                        transportUnitType:
+                          type: string
+                          enum:
+                            - Barge
+                            - Cassette
+                            - Container
+                            - DrawBarCombination
+                            - RailCar
+                            - RigidLorry
+                            - Trailer
+                            - VesselUnit
+                        transportUnitIdentifier:
                           type: object
                           unevaluatedProperties: false
                           required:
-                            # transportUnitLevel is not required (as in `units[]`)
-                            - transportUnitType
-                            - transportUnitIdentifier
+                            - type
+                            - value
                           properties:
-                            transportUnitLevel:
-                              type: integer
-                              minimum: 1
-                            transportUnitType:
+                            type:
                               type: string
                               enum:
-                                - Barge
-                                - Cassette
-                                - Container
-                                - DrawBarCombination
-                                - RailCar
-                                - RigidLorry
-                                - Trailer
-                                - VesselUnit
-                            transportUnitIdentifier:
-                              type: object
-                              unevaluatedProperties: false
-                              required:
-                                - type
-                                - value
-                              properties:
-                                type:
-                                  type: string
-                                  enum:
-                                    - ContainerID
-                                    - CassetteID
-                                    - ISO6346ContainerNumber
-                                    # Don't use `assignedBy` with ISO6346ContainerNumber!
-                                    - LicencePlateNumber
-                                    - RailCarID
-                                    - RFTagSerialNumber
-                                    - SealNumber
-                                    - TrailerID
-                                    - VesselUnitID
-                                value:
-                                  type: string
-                                  minLength: 1
-                                assignedBy:
-                                  type: string
-                                  enum:
-                                    - LogisticsSupplier
-                                    - Supplier
-                                assignedByIdentifierBySupplier:
-                                  type: string
-                                  minLength: 1
-                                  description: The identifier of the assigning party assigned by the _Supplier_.
-                                countryCode:
-                                  type: string
-                                  minLength: 2
-                                  maxLength: 2
-                                  description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
+                                - ContainerID
+                                - CassetteID
+                                - ISO6346ContainerNumber
+                                # Don't use `assignedBy` with ISO6346ContainerNumber!
+                                - LicencePlateNumber
+                                - RailCarID
+                                - RFTagSerialNumber
+                                - SealNumber
+                                - TrailerID
+                                - VesselUnitID
+                            value:
+                              type: string
+                              minLength: 1
+                            assignedBy:
+                              type: string
+                              enum:
+                                - LogisticsSupplier
+                                - Supplier
+                            assignedByIdentifierBySupplier:
+                              type: string
+                              minLength: 1
+                              description: The identifier of the assigning party assigned by the _Supplier_.
+                            countryCode:
+                              type: string
+                              minLength: 2
+                              maxLength: 2
+                              description: The (two-letter) value - e.g. "BE", "SE", ... - MUST exist in the ISO 3166-1 alpha-2 standard list.
             characteristics:
               type: object
               unevaluatedProperties: false
