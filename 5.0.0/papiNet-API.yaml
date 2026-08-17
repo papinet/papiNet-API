@@ -4871,6 +4871,9 @@ components:
             - Stuffed
             # Lars: must be discussed
             - Unstuffed
+            # required by Bo-Göran as we get these as standard from shipping lines
+            - Bearthed
+            - Unbearthed
         eventDateTime:
           type: string
           format: date-time
