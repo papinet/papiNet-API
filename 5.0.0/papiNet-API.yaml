@@ -4849,14 +4849,17 @@ components:
           enum:
             - ArrivedAtShipFromLocation
             - ArrivedAtShipToLocation
+            - Bearthed
             - Completed
             - CostBasisCompleted
             - CustomsInspected
             - CustomsReleased
             - DepartedToShipFromLocation
             - DepartedToShipToLocation
-            - GateIn
-            - GateOut
+            - GatedInShipFromLocation
+            - GatedInShipToLocation
+            - GatedOutShipFromLocation
+            - GatedOutShipToLocation
             - Incident
             - LoadingStarted
             - LoadingCompleted
@@ -4864,16 +4867,12 @@ components:
             - OnRouteToShipToLocation
             - Planned
             - Scheduled
+            - Stuffed
             - TrafficJam
+            - Unbearthed
             - UnloadingStarted
             - UnloadingCompleted
-            # proposed by Petter, will be removed after review
-            - Stuffed
-            # Lars: must be discussed
             - Unstuffed
-            # required by Bo-Göran as we get these as standard from shipping lines
-            - Bearthed
-            - Unbearthed
         eventDateTime:
           type: string
           format: date-time
