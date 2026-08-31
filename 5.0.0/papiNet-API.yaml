@@ -1314,20 +1314,10 @@ components:
                 - Centimeter
                 - Inch
                 - Millimeter
-        coreStrengthCode:
-          type: object
-          unevaluatedProperties: false
-          required:
-            - value
-            - assignedBy
-          properties:
-            value:
-              type: string
-              minLength: 1
-            assignedBy:
-              type: string
-              enum:
-                - Supplier
+        coreStrengthCodeBySupplier:
+          type: string
+          minLength: 1 
+          description: The coreStrengthCode defined by the _Supplier_
         # Properties that are specific to sheet format:
         grainDirection:
           type: string
@@ -3846,20 +3836,10 @@ components:
                               - Lying
                               - Standing
                               - StandingUpsideDown
-                          code:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                minLength: 1
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
+                          codeBySupplier:
+                            type: string
+                            minLength: 1 
+                            description: The code defined by the _Supplier_
                           labelOrientation:
                             type: string
                             enum:
