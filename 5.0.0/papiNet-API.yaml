@@ -950,7 +950,7 @@ components:
         identifierBySupplier:
           type: string
           minLength: 1
-          description: The identifier assigned by the _Supplier_.
+          description: The identifier defined by the _Supplier_.
         nameLines:
           type: array
           minItems: 1
@@ -1343,7 +1343,7 @@ components:
         identifierBySupplier:
           type: string
           minLength: 1
-          description: The identifier assigned by the _Supplier_.
+          description: The identifier defined by the _Supplier_.
         nameLines:
           type: array
           minItems: 1
@@ -1524,11 +1524,11 @@ components:
                             - pulp
                 properties:
                   gradeCode:
-                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    description: The product identifier defined by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
-                    description: The product identifier assigned by the seller for a fully-defined product.
+                    description: The product identifier defined by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -1573,11 +1573,11 @@ components:
                       - partNumber
                 properties:
                   gradeCode:
-                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    description: The product identifier defined by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
-                    description: The product identifier assigned by the seller for a fully-defined product.
+                    description: The product identifier defined by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -1674,20 +1674,10 @@ components:
                                   - RigidLorry
                                   - Trailer
                                   - VesselUnit
-                              detailCode:
-                                type: object
-                                unevaluatedProperties: false
-                                required:
-                                  - value
-                                  - assignedBy
-                                properties:
-                                  value:
-                                    type: string
-                                    minLength: 1
-                                  assignedBy:
-                                    type: string
-                                    enum:
-                                      - Supplier
+                              detailCodeBySupplier:
+                                type: string
+                                minLength: 1 
+                                description: The detailCode defined by the _Supplier_
                               identifier:
                                 type: object
                                 unevaluatedProperties: false
@@ -2156,20 +2146,10 @@ components:
                             - RigidLorry
                             - Trailer
                             - VesselUnit
-                        detailCode:
-                          type: object
-                          unevaluatedProperties: false
-                          required:
-                            - value
-                            - assignedBy
-                          properties:
-                            value:
-                              type: string
-                              minLength: 1
-                            assignedBy:
-                              type: string
-                              enum:
-                                - Supplier
+                        detailCodeBySupplier:
+                          type: string
+                          minLength: 1 
+                          description: The detailCode defined by the _Supplier_
                         identifier:
                           type: object
                           unevaluatedProperties: false
@@ -2405,11 +2385,11 @@ components:
                             - pulp
                 properties:
                   gradeCode:
-                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    description: The product identifier defined by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
-                    description: The product identifier assigned by the seller for a fully-defined product.
+                    description: The product identifier defined by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -2454,11 +2434,11 @@ components:
                       - partNumber
                 properties:
                   gradeCode:
-                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    description: The product identifier defined by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
-                    description: The product identifier assigned by the seller for a fully-defined product.
+                    description: The product identifier defined by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -2571,20 +2551,10 @@ components:
                         - Lying
                         - Standing
                         - StandingUpsideDown
-                    code:
-                      type: object
-                      unevaluatedProperties: false
-                      required:
-                        - value
-                        - assignedBy
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
-                        assignedBy:
-                          type: string
-                          enum:
-                            - Supplier
+                    codeBySupplier:
+                       type: string
+                       minLength: 1 
+                       description: The code defined by the _Supplier_
                     labelOrientation:
                       type: string
                       enum:
@@ -2611,20 +2581,10 @@ components:
                         - Lying
                         - Standing
                         - StandingUpsideDown
-                    code:
-                      type: object
-                      unevaluatedProperties: false
-                      required:
-                        - value
-                        - assignedBy
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
-                        assignedBy:
-                          type: string
-                          enum:
-                            - Supplier
+                    codeBySupplier:
+                       type: string
+                       minLength: 1 
+                       description: The code defined by the _Supplier_
                     text:
                       type: string
                       minLength: 1
@@ -2972,11 +2932,11 @@ components:
                             - pulp
                 properties:
                   gradeCode:
-                    description: The product identifier assigned by the seller for a not-fully-defined product.
+                    description: The product identifier defined by the seller for a not-fully-defined product.
                     type: string
                     minLength: 1
                   partNumber:
-                    description: The product identifier assigned by the seller for a fully-defined product.
+                    description: The product identifier defined by the seller for a fully-defined product.
                     type: string
                     minLength: 1
                   brandName:
@@ -3491,20 +3451,10 @@ components:
                                   - RigidLorry
                                   - Trailer
                                   - VesselUnit
-                              detailCode:
-                                type: object
-                                unevaluatedProperties: false
-                                required:
-                                  - value
-                                  - assignedBy
-                                properties:
-                                  value:
-                                    type: string
-                                    minLength: 1
-                                  assignedBy:
-                                    type: string
-                                    enum:
-                                      - Supplier
+                              detailCodeBySupplier:
+                                type: string
+                                minLength: 1 
+                                description: The detailCode defined by the _Supplier_
                               identifier:
                                 type: object
                                 unevaluatedProperties: false
@@ -3729,11 +3679,11 @@ components:
                                   - pulp
                       properties:
                         gradeCode:
-                          description: The product identifier assigned by the seller for a not-fully-defined product.
+                          description: The product identifier defined by the seller for a not-fully-defined product.
                           type: string
                           minLength: 1
                         partNumber:
-                          description: The product identifier assigned by the seller for a fully-defined product.
+                          description: The product identifier defined by the seller for a fully-defined product.
                           type: string
                           minLength: 1
                         brandName:
@@ -3778,11 +3728,11 @@ components:
                             - partNumber
                       properties:
                         gradeCode:
-                          description: The product identifier assigned by the seller for a not-fully-defined product.
+                          description: The product identifier defined by the seller for a not-fully-defined product.
                           type: string
                           minLength: 1
                         partNumber:
-                          description: The product identifier assigned by the seller for a fully-defined product.
+                          description: The product identifier defined by the seller for a fully-defined product.
                           type: string
                           minLength: 1
                         brandName:
@@ -3936,20 +3886,10 @@ components:
                               - Lying
                               - Standing
                               - StandingUpsideDown
-                          code:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                              - assignedBy
-                            properties:
-                              value:
-                                type: string
-                                minLength: 1
-                              assignedBy:
-                                type: string
-                                enum:
-                                  - Supplier
+                          codeBySupplier:
+                            type: string
+                            minLength: 1 
+                            description: The code defined by the _Supplier_
                           text:
                             type: string
                             minLength: 1
@@ -4223,7 +4163,7 @@ components:
                   identifierBySupplier:
                     type: string
                     minLength: 1
-                    description: The identifier assigned by the _Supplier_.
+                    description: The identifier defined by the _Supplier_.
                   nameLines:
                     type: array
                     minItems: 1
@@ -4327,7 +4267,7 @@ components:
             identifierBySupplier:
               type: string
               minLength: 1
-              description: The identifier assigned by the _Supplier_.
+              description: The identifier defined by the _Supplier_.
             nameLines:
               type: array
               minItems: 1
@@ -4669,7 +4609,7 @@ components:
                         assignedByIdentifierBySupplier:
                           type: string
                           minLength: 1
-                          description: The identifier of the assigning party assigned by the _Supplier_.
+                          description: The identifier of the assigning party defined by the _Supplier_.
                     dateTime:
                       type: string
                       format: date-time
@@ -4777,7 +4717,7 @@ components:
                   assignedByIdentifierBySupplier:
                     type: string
                     minLength: 1
-                    description: The identifier of the assigning party assigned by the _Supplier_.
+                    description: The identifier of the assigning party defined by the _Supplier_.
               dateTime:
                 type: string
                 format: date-time
@@ -4949,7 +4889,7 @@ components:
                     assignedByIdentifierBySupplier:
                       type: string
                       minLength: 1
-                      description: The identifier of the assigning party assigned by the _Supplier_.
+                      description: The identifier of the assigning party defined by the _Supplier_.
                     countryCode:
                       type: string
                       minLength: 2
@@ -4979,26 +4919,10 @@ components:
                       - RigidLorry
                       - Trailer
                       - VesselUnit
-                  detailCode:
-                    type: object
-                    unevaluatedProperties: false
-                    required:
-                      - value
-                      - assignedBy
-                      - assignedByIdentifierBySupplier
-                    properties:
-                      value:
-                        type: string
-                        minLength: 1
-                      assignedBy:
-                        type: string
-                        enum:
-                          - LogisticsSupplier
-                          - Supplier
-                      assignedByIdentifierBySupplier:
-                        type: string
-                        minLength: 1
-                        description: The identifier of the assigning party assigned by the _Supplier_.
+                  detailCodeBySupplier:
+                      type: string
+                      minLength: 1 
+                      description: The detailCode defined by the _Supplier_
                   identifier:
                     type: object
                     unevaluatedProperties: false
@@ -5030,7 +4954,7 @@ components:
                       assignedByIdentifierBySupplier:
                         type: string
                         minLength: 1
-                        description: The identifier of the assigning party assigned by the _Supplier_.
+                        description: The identifier of the assigning party defined1 by the _Supplier_.
                       countryCode:
                         type: string
                         minLength: 2
@@ -5176,7 +5100,7 @@ components:
                             assignedByIdentifierBySupplier:
                               type: string
                               minLength: 1
-                              description: The identifier of the assigning party assigned by the _Supplier_.
+                              description: The identifier of the assigning party defined by the _Supplier_.
                             countryCode:
                               type: string
                               minLength: 2
