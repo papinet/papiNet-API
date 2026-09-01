@@ -2067,11 +2067,7 @@ components:
                 type: string
                 minLength: 4
                 description: |-
-                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
-                  - 2023-08-16T13:00/2023-08-18T13:00
-                  - 2023-08-16/2023-08-18
-                  - 2023-08-16T13:00/P2D
-                  - P2D/2023-08-18T13:00
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone).
               estimatedDepartureDateTime:
                 type: string
                 minLength: 4
@@ -2085,11 +2081,7 @@ components:
                 type: string
                 minLength: 4
                 description: |-
-                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone), excluding duration alone, but including intervals such as the following:
-                  - 2023-08-16T13:00/2023-08-18T13:00
-                  - 2023-08-16/2023-08-18
-                  - 2023-08-16T13:00/P2D
-                  - P2D/2023-08-18T13:00
+                  It MUST be local date-time expressed in ISO8601 (preferably without explicit time-zone).
               estimatedArrivalDateTime:
                 type: string
                 minLength: 4
