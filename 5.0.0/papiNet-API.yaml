@@ -400,6 +400,13 @@ paths:
           required: false
           description: filter based on `logisticsSupplierParty.identifierBySupplier`.
         - in: query
+        - in: query
+          name: customerParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `customerParty.identifierBySupplier`.
           name: buyerParty.identifierBySupplier
           schema:
             type: string
@@ -847,6 +854,13 @@ paths:
             minLength: 1
           required: false
           description: filter based on `logisticsSupplierParty.identifierBySupplier`.
+        - in: query
+          name: customerParty.identifierBySupplier
+          schema:
+            type: string
+            minLength: 1
+          required: false
+          description: filter based on `customerParty.identifierBySupplier`.
         - in: query
           name: buyerParty.identifierBySupplier
           schema:
@@ -3261,6 +3275,8 @@ components:
               supplierParty:
                 $ref: "#/components/schemas/Party"
               logisticsSupplierParty:
+                $ref: "#/components/schemas/Party"
+              customerParty:
                 $ref: "#/components/schemas/Party"
               buyerParty:
                 $ref: "#/components/schemas/Party"
