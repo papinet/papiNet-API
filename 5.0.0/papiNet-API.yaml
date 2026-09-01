@@ -400,13 +400,13 @@ paths:
           required: false
           description: filter based on `logisticsSupplierParty.identifierBySupplier`.
         - in: query
-        - in: query
           name: customerParty.identifierBySupplier
           schema:
             type: string
             minLength: 1
           required: false
           description: filter based on `customerParty.identifierBySupplier`.
+        - in: query
           name: buyerParty.identifierBySupplier
           schema:
             type: string
@@ -659,8 +659,8 @@ paths:
               - ShipmentNumber
           required: false
           description: | 
-            Filter based on `references.type` (DeliveryNoteNumber|DeliveryInstructionNumber|LoadingInstructionNumber|ShipmentNumber).
-            MUST be used combined with query parameters `references.assignedBy`, `references.identifier.value` and `references.identifier.assignedByIdentifierBySupplier`.
+            Filter based on `references.type` (DeliveryNote|DeliveryInstruction|LoadingInstruction|Shipment).
+            MUST be used combined with query parameters `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
         - in: query
           name: references.assignedBy
           schema:
@@ -672,25 +672,25 @@ paths:
           required: false
           description: | 
             Filter based on `references.assignedBy` (Forwarder|Supplier|WarehouseOperator).
-            MUST be used combined with query parameters `references.type`, `references.identifier.value` and `references.identifier.assignedByIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
         - in: query
-          name: references.identifier.value
+          name: references.number
           schema:
             type: string
             minLength: 1
           required: false
           description: | 
-            Filter based on `references.identifier.value`.
-            MUST be used combined with query parameters `references.type`, `references.assignedBy` and `references.identifier.assignedByIdentifierBySupplier`.
+            Filter based on `references.number`.
+            MUST be used combined with query parameters `references.type`, `references.assignedBy` and `references.assigningPartyIdentifierBySupplier`.
         - in: query
-          name: references.identifier.assignedByIdentifierBySupplier
+          name: references.assigningPartyIdentifierBySupplier
           schema:
             type: string
             minLength: 1
           required: false
           description: | 
-            Filter based on `references.identifier.assignedByIdentifierBySupplier`.
-            MUST be used combined with query parameters `references.type`, `references.assignedBy` and `references.identifier.value`.
+            Filter based on `references.assigningPartyIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.assignedBy` and `references.number`.
         - in: query
           name: references.dateTime
           schema:
@@ -699,7 +699,7 @@ paths:
           required: false
           description: | 
             Filter based on `references.dateTime` (can contain an ISO 8601 interval)
-            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.identifier.value` and `references.identifier.assignedByIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
         - in: query
           name: references.sequenceNumber
           schema:
@@ -708,7 +708,7 @@ paths:
           required: false
           description: | 
             Filter based on `references.sequenceNumber`
-            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.identifier.value` and `references.identifier.assignedByIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
         - in: query
           name: references.lineItemNumber
           schema:
@@ -717,7 +717,7 @@ paths:
           required: false
           description: | 
             Filter based on `references.lineItemNumber` 
-            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.identifier.value` and `references.identifier.assignedByIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
         - in: query
           name: statusArrivalShipFromLocation
           schema:
@@ -4537,15 +4537,20 @@ components:
                     - required:
                         - id
                     - required:
-                        - identifier
+                        - number
+                        - assigningPartyIdentifierBySupplier
+                  dependentRequired:
+                    number:
+                      - assigningPartyIdentifierBySupplier
                   properties:
                     type:
+                      description: The type of the referenced item.
                       type: string
                       enum:
-                        - DeliveryNoteNumber
-                        - DeliveryInstructionNumber
-                        - LoadingInstructionNumber
-                        - ShipmentNumber
+                        - DeliveryNote
+                        - DeliveryInstruction
+                        - LoadingInstruction
+                        - Shipment
                     assignedBy:
                       description: The business role of the assigning party.
                       type: string
@@ -4556,42 +4561,29 @@ components:
                     id:
                       type: string
                       format: uuid
-                    identifier:
-                      type: object
-                      unevaluatedProperties: false
-                      required:
-                        - value
-                        - assignedByIdentifierBySupplier
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
-                        assignedByIdentifierBySupplier:
-                          type: string
-                          minLength: 1
-                          description: The identifier of the assigning party defined by the _Supplier_.
+                      description: The uuid of the referenced item given by the assigning party.
+                    number:
+                      type: string
+                      minLength: 1
+                      description: The identifier of the referenced item given by the assigning party.
+                    assigningPartyIdentifierBySupplier:
+                      type: string
+                      minLength: 1
+                      description: The party identifier of the assigning party defined by the _Supplier_.
                     dateTime:
                       type: string
                       format: date-time
-                      description: It MUST be local or UTC date-time expressed in ISO 8601
+                      description: |
+                        The dateTime when the referenced item was created or updated. 
+                        It MUST be local or UTC date-time expressed in ISO 8601
                     sequenceNumber:
                       type: integer
                       minimum: 0
+                      description: A sequence number in the referenced item.
                     lineItemNumber:
                       type: integer
                       minimum: 0
-              statusArrivalShipFromLocation:
-                type: string
-                enum:
-                  - OnTime
-                  - Early
-                  - Delayed
-              statusArrivalShipToLocation:
-                type: string
-                enum:
-                  - OnTime
-                  - Early
-                  - Delayed
+                      description: A line item number in the referenced item.
         links:
           $ref: "#/components/schemas/PaginationLinks"
     LogisticsShipmentById:
@@ -4645,15 +4637,20 @@ components:
               - required:
                   - id
               - required:
-                  - identifier
+                  - number
+                  - assigningPartyIdentifierBySupplier
+            dependentRequired:
+              number:
+                - assigningPartyIdentifierBySupplier
             properties:
               type:
+                description: The type of the referenced item.
                 type: string
                 enum:
-                  - DeliveryNoteNumber
-                  - DeliveryInstructionNumber
-                  - LoadingInstructionNumber
-                  - ShipmentNumber
+                  - DeliveryNote
+                  - DeliveryInstruction
+                  - LoadingInstruction
+                  - Shipment
               assignedBy:
                 description: The business role of the assigning party.
                 type: string
@@ -4664,30 +4661,29 @@ components:
               id:
                 type: string
                 format: uuid
-              identifier:
-                type: object
-                unevaluatedProperties: false
-                required:
-                  - value
-                  - assignedByIdentifierBySupplier
-                properties:
-                  value:
-                    type: string
-                    minLength: 1
-                  assignedByIdentifierBySupplier:
-                    type: string
-                    minLength: 1
-                    description: The identifier of the assigning party defined by the _Supplier_.
+                description: The uuid of the referenced item given by the assigning party.
+              number:
+                type: string
+                minLength: 1
+                description: The identifier of the referenced item given by the assigning party.
+              assigningPartyIdentifierBySupplier:
+                type: string
+                minLength: 1
+                description: The party identifier of the assigning party defined by the _Supplier_.
               dateTime:
                 type: string
                 format: date-time
-                description: It MUST be local or UTC date-time expressed in ISO 8601
+                description: |
+                  The dateTime when the referenced item was created or updated. 
+                  It MUST be local or UTC date-time expressed in ISO 8601
               sequenceNumber:
                 type: integer
                 minimum: 0
+                description: A sequence number in the referenced item.
               lineItemNumber:
                 type: integer
                 minimum: 0
+                description: A line item number in the referenced item.
         statusArrivalShipFromLocation:
           type: string
           enum:
