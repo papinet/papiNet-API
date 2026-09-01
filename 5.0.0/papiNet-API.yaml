@@ -191,18 +191,14 @@ paths:
           required: false
           description: filter based on `timestamp` (can contain an ISO 8601 interval)
         - in: query
-          name: shipmentStatus
+          name: eventType
           schema:
             type: string
             enum:
-              - Arrived
-              - Cancelled
               - Departed
               - Loaded
-              - Planned
-              - Unloaded
           required: false
-          description: filter based on `shipmentStatus` (Arrived|Cancelled|Departed|Loaded|Planned|Unloaded)
+          description: filter based on `eventType` (Departed|Loaded)
         - in: query
           name: isActive
           schema:
@@ -1951,14 +1947,11 @@ components:
                 type: boolean
               isActive:
                 type: boolean
-              shipmentStatus:
+              eventType:
                 type: string
                 enum:
-                  - Arrived
                   - Departed
                   - Loaded
-                  - Planned
-                  - Unloaded
               supplierParty:
                 $ref: "#/components/schemas/Party"
               logisticsSupplierParty:
@@ -2006,14 +1999,11 @@ components:
           type: boolean
         isActive:
           type: boolean
-        shipmentStatus:
+        eventType:
           type: string
           enum:
-            - Arrived
             - Departed
             - Loaded
-            - Planned
-            - Unloaded
         supplierParty:
           $ref: "#/components/schemas/Party"
         logisticsSupplierParty:
