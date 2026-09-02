@@ -105,7 +105,7 @@ Responses with empty collections having HTTP status code `200 OK` MUST have an i
 
 ### Rule 10 - Properties with `...Timestamp` and `...DateTime` suffixes
 
-We have three types of properties capturing date and time:
+papiNet has three types of properties capturing date and time:
 
 * The properties ending with the suffix `...Timestamp`: they MUST contain a date and time expressed in UTC, ending with the letter "Z", e.g. `2024-04-23T13:24:26.000Z`.
 * The  properties having prefix actual and ending suffix DateTime  `actual...DateTime`: they MUST contain a local date and time, in accordance with the ISO 8601 standard (preferably without explicit time-zone) for which the location is defined by the business context, excluding duration and intervals, e.g. `2024-04-23T13:24:26`
