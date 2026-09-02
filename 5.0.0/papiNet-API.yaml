@@ -653,14 +653,15 @@ paths:
           schema:
             type: string
             enum:
-              - DeliveryNoteNumber
-              - DeliveryInstructionNumber
-              - LoadingInstructionNumber
-              - ShipmentNumber
+              - DeliveryNote
+              - DeliveryInstruction
+              - LoadingInstruction
+              - Shipment
           required: false
           description: | 
             Filter based on `references.type` (DeliveryNote|DeliveryInstruction|LoadingInstruction|Shipment).
-            MUST be used combined with query parameters `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier` 
+            or with query parameters `references.assignedBy` and `references.id`.
         - in: query
           name: references.assignedBy
           schema:
@@ -672,7 +673,8 @@ paths:
           required: false
           description: | 
             Filter based on `references.assignedBy` (Forwarder|Supplier|WarehouseOperator).
-            MUST be used combined with query parameters `references.type`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.number` and `references.assigningPartyIdentifierBySupplier` 
+            or with query parameters `references.type` and `references.id`.
         - in: query
           name: references.number
           schema:
@@ -692,15 +694,6 @@ paths:
             Filter based on `references.assigningPartyIdentifierBySupplier`.
             MUST be used combined with query parameters `references.type`, `references.assignedBy` and `references.number`.
         - in: query
-          name: references.dateTime
-          schema:
-            type: string
-            minLength: 1
-          required: false
-          description: | 
-            Filter based on `references.dateTime` (can contain an ISO 8601 interval)
-            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
-        - in: query
           name: references.sequenceNumber
           schema:
             type: integer
@@ -708,16 +701,17 @@ paths:
           required: false
           description: | 
             Filter based on `references.sequenceNumber`
-            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
+            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier` 
+            or with query parameters `references.type`, `references.assignedBy` and `references.id`.
         - in: query
-          name: references.lineItemNumber
+          name: references.id
           schema:
-            type: integer
-            minimum: 0
+            type: string
+            format: uuid
           required: false
           description: | 
-            Filter based on `references.lineItemNumber` 
-            MUST be used combined with query parameters `references.type`, `references.assignedBy`, `references.number` and `references.assigningPartyIdentifierBySupplier`.
+            Filter based on `references.id` 
+            MUST be used combined with query parameters `references.type` and `references.assignedBy`.
         - in: query
           name: statusArrivalShipFromLocation
           schema:
