@@ -4739,7 +4739,7 @@ components:
           enum:
             - ArrivedAtShipFromLocation
             - ArrivedAtShipToLocation
-            - Bearthed
+            - Berthed
             - Completed
             - CostBasisCompleted
             - CustomsInspected
@@ -4759,7 +4759,7 @@ components:
             - Scheduled
             - Stuffed
             - TrafficJam
-            - Unbearthed
+            - Unberthed
             - UnloadingStarted
             - UnloadingCompleted
             - Unstuffed
