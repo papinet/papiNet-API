@@ -1825,21 +1825,14 @@ components:
                                             - ContainerID
                                             - CassetteID
                                             - ISO6346ContainerNumber
-                                            # Don't use `assignedBy` with ISO6346ContainerNumber!
                                             - LicencePlateNumber
                                             - RailCarID
                                             - RFTagSerialNumber
                                             - SealNumber
-                                            - TrailerID
                                             - VesselUnitID
                                         value:
                                           type: string
                                           minLength: 1
-                                        assignedBy:
-                                          type: string
-                                          enum:
-                                            - LogisticsSupplier
-                                            - Supplier
                                         countryCode:
                                           type: string
                                           minLength: 2
@@ -2275,21 +2268,14 @@ components:
                                       - ContainerID
                                       - CassetteID
                                       - ISO6346ContainerNumber
-                                      # Don't use `assignedBy` with ISO6346ContainerNumber!
                                       - LicencePlateNumber
                                       - RailCarID
                                       - RFTagSerialNumber
                                       - SealNumber
-                                      - TrailerID
                                       - VesselUnitID
                                   value:
                                     type: string
                                     minLength: 1
-                                  assignedBy:
-                                    type: string
-                                    enum:
-                                      - LogisticsSupplier
-                                      - Supplier
                                   countryCode:
                                     type: string
                                     minLength: 2
@@ -3574,21 +3560,14 @@ components:
                                             - ContainerID
                                             - CassetteID
                                             - ISO6346ContainerNumber
-                                            # Don't use `assignedBy` with ISO6346ContainerNumber!
                                             - LicencePlateNumber
                                             - RailCarID
                                             - RFTagSerialNumber
                                             - SealNumber
-                                            - TrailerID
                                             - VesselUnitID
                                         value:
                                           type: string
                                           minLength: 1
-                                        assignedBy:
-                                          type: string
-                                          enum:
-                                            - LogisticsSupplier
-                                            - Supplier
                                         countryCode:
                                           type: string
                                           minLength: 2
@@ -5011,25 +4990,14 @@ components:
                                 - ContainerID
                                 - CassetteID
                                 - ISO6346ContainerNumber
-                                # Don't use `assignedBy` with ISO6346ContainerNumber!
                                 - LicencePlateNumber
                                 - RailCarID
                                 - RFTagSerialNumber
                                 - SealNumber
-                                - TrailerID
                                 - VesselUnitID
                             value:
                               type: string
                               minLength: 1
-                            assignedBy:
-                              type: string
-                              enum:
-                                - LogisticsSupplier
-                                - Supplier
-                            assignedByIdentifierBySupplier:
-                              type: string
-                              minLength: 1
-                              description: The identifier of the assigning party defined by the _Supplier_.
                             countryCode:
                               type: string
                               minLength: 2
