@@ -4898,9 +4898,10 @@ components:
             - UnloadingStarted
             - UnloadingCompleted
             - Unstuffed
-        eventDateTime:
+        eventTimestamp:
           type: string
           format: date-time
+          # UTC MUST be used!
         eventLocation:
           type: object
           unevaluatedProperties: false
