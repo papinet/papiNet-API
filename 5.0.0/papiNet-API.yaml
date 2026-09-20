@@ -2065,7 +2065,7 @@ components:
                       description: The party identifier of the assigning party defined by the _Supplier_.
                     dateTime:
                       type: string
-                      format: date-time
+                      minLength: 4
                       description: |
                         The dateTime when the referenced item was created or updated. 
                         It MUST be local or UTC date-time expressed in ISO 8601
@@ -2165,7 +2165,7 @@ components:
                 description: The party identifier of the assigning party defined by the _Supplier_.
               dateTime:
                 type: string
-                format: date-time
+                minLength: 4
                 description: |
                   The dateTime when the referenced item was created or updated. 
                   It MUST be local or UTC date-time expressed in ISO 8601
@@ -4701,7 +4701,7 @@ components:
                       description: The party identifier of the assigning party defined by the _Supplier_.
                     dateTime:
                       type: string
-                      format: date-time
+                      minLength: 4
                       description: |
                         The dateTime when the referenced item was created or updated. 
                         It MUST be local or UTC date-time expressed in ISO 8601
@@ -4801,7 +4801,7 @@ components:
                 description: The party identifier of the assigning party defined by the _Supplier_.
               dateTime:
                 type: string
-                format: date-time
+                minLength: 4
                 description: |
                   The dateTime when the referenced item was created or updated. 
                   It MUST be local or UTC date-time expressed in ISO 8601
