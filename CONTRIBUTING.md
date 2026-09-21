@@ -4,13 +4,13 @@ Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("pap
 
 This document intends to establish guidelines which build a transparent, open mechanism for deciding how to evolve the papiNet API standard. The papiNet Central Working Group (CWG) will follow these processes when merging changes from external contributors or from the CWG itself. This guideline document will be adjusted as practicality dictates.
 
-## Use of GitHub issues
+## Use of GitHub Issues
 
 Issues are created for tracking of decisions and changes.
 
 * Issues should be assigned to responsible maintainers, so that they get notifications when issues are updated or commented.
 
-* Issues should be given appropiate labels when updated or commented.
+* Issues should be given appropriate labels when updated or commented.
 
 * Solutions for issues are approved, approved with amendment or rejected by CWG.
 
@@ -20,141 +20,152 @@ Issues are created for tracking of decisions and changes.
 
 * Issues are closed at CWG API meetings.
 
-## Tracking Process
+## Repository Structure
 
-GitHub is the medium of record for all papiNet API standard updates.
+The repository contains two types of content:
 
-We will use an adapted version of the _git-flow_ branching model, as defined in the blog post [_A successful Git branching model_](https://nvie.com/posts/a-successful-git-branching-model/) written by [Vincent Driessen](https://nvie.com/about/) in 2010.
+- **Versioned folders** are folders named `<MAJOR>.<MINOR>.<PATCH>/` (e.g. `2.1.0/`) that contain the normative files for a specific released version.
+These folders are **immutable** once their corresponding release has been published. No changes to their content will be accepted after release.
 
-We will have:
+- **Supporting files** are all files outside of versioned folders (e.g. tooling, templates, documentation about the project itself).
 
-* The `main` branch
-* The `develop` branch
-* _Feature_ branches, with names starting with the `feature/` prefix
-* _Hotfix_ branches, with names starting with the `hotfix/` prefix
+## Branching Strategy
+
+The repository uses the following branches:
+
+* The `main` branch containing the latest stable, released version.
+* The `develop` working branch containing the next release. 
+* The `feature/[<initials>/]<feature-name>` branches containing specific aspects of the next release. Branched from `develop`.
+* The `hotfix/[<initials>/]<hotfix-name>` branches containing critical fixes to a released version. Branched from `main`.
+
+The `[<initials>/]` part of the branch name is optional. It can be used to avoid naming collisions or to signal ownership of a work-in-progress branch (e.g. `feature/jd/fix-response-schema`).
 
 The `main` and `develop` branches have an infinite lifetime.
 
-The _feature_ and _hotfix_ branches have a limited lifetime. They SHOULD be deleted after being merged or abandoned.
+The `feature/*` and `hotfix/*` branches have a limited lifetime. They SHOULD be deleted after being merged or abandoned.
 
-The _feature_ branches MUST be created from the `develop` branch and eventually merged back **using a pull request** into the `develop` branch.
+Direct pushes to `main` and `develop` are not allowed. All changes must go through a Pull Request.
 
-The _hotfix_ branches MUST be created from the `main` branch and eventually merged back **using a pull request** into the `main` branch.
+## Contribution Workflows
 
-The `main` branch will always contain the latest version of the standard located in the directory with the highest semantic version, `MAJOR.MINOR.PATCH/`.
+Maintainers contribute directly via branches on the main repository. External contributors must fork the repository and submit Pull Requests from their fork.
 
-The files located in the root directory are called the _supporting files_.
-
-The `develop` branch will contain the latest delivered changes for the next release. These latest delivered changes MUST be located in either:
-
-* the directory `MAJOR++.0.0/` if they are _incompatible_ changes
-* the directory `MAJOR.MINOR++.0/` if they are _backwards compatible_ changes
-
-The latest delivered changes located in `MAJOR.MINOR++.0/` SHOULD also be present within `MAJOR++.0.0/`. However, we do not recommend to workon two different releases at the same time .
-
-For _bug fixes_ the directory `MAJOR.MINOR.PATCH++/` SHOULD only be present in a `hotfix/<my-hotfix>` branch.
-
-In order to contribute to the papiNet standard, you MUST either:
-
-* start a `feature/<my-feature>` branch created from the `develop` branch
-* start a `hotfix/<my-hotfix>` branch from the `main` branch
-
-As a maintainer, you can create/push these branches on the `papiNet-API` repository from the `papinet` GitHub account. As an external contributor, you MUST use your own fork. Both maintainers and external contributors MUST use pull request (PR) for merging their `feature/<my-feature>` branches into the `develop` branch, as well as for merging their `hotfix/<my-hotfix>` branches into the `main` branch.
-
-Regularly, the maintainers SHOULD transfer the latest delivered changes of the `develop` branch to the `main`, and then create a Release with GitHub using the higher `MAJOR.MINOR.PATCH` semantic version as tag.
-
-Changes of the _supporting files_ COULD be done using `hotfix/<my-hotfix>` branches.
-
-It is crucial that once a `MAJOR.MINOR.PATCH/` folder is present in a commit within the `main` branch, tagged with `MAJOR.MINOR.PATCH`, it **MUST NEVER** change! When you merge the `develop` branch or a `hotfix/<my-hotfix>` branch into the `main` branch, you MUST ALWAYS check that there are only changes via the new `MAJOR++.0.0/`, `MAJOR.MINOR++.0/`, or `MAJOR.MINOR.PATCH++/` folders, and that all other `MAJOR.MINOR.PATCH/` folder remains unchanged.
-
-## Getting Started
-
-### Let's Change a _Supporting File_
-
-1\. From the `main` branch, create a `hotfix/<my-hotfix>` branch, and switch to it.
+### Feature Process
 
 ```text
-git checkout main
-```
-
-```text
-git branch hotfix/my-hotfix
-```
-
-```text
-$ git checkout hotfix/my-hotfix
-```
-
-2\. Create, update and/or delete _supporting file(s)_.
-
-3\. Stage, commit and push your changes.
-
-```text
-git add .
-```
-
-```text
-git commit -m "Describe what you have done"
-```
-
-```text
-git push --set-upstream origin hotfix/my-hotfix
-```
-
-4\. From GitHub, create a Pull Request from `hotfix/my-hotfix` to `main`.
-
-5\. Make sure that none of the folders with semantic versions `MAJOR.MINOR.PATCH/` have changed and do **not** create a release.
-
-### Let's Work on a Backwards Compatible Bug Fix
-
-1\. From the `main` branch, create a `hotfix/<my-hotfix>` branch, and switch to it.
-
-2\. Copy the folder with the highest semantic version and rename it as `MAJOR.MINOR.PATCH++/`.
-
-3\. Stage, commit and push this change.
-
-4\. Work on your changes within the new `MAJOR.MINOR.PATCH++/` folder and don't make any changes to the other folders.
-
-5\. Stage, commit and push your changes.
-
-6\. When you have finished, from GitHub, create a Pull Request from `hotfix/my-hotfix` to `main`.
-
-7\. When the `hotfix/<my-hotfix>` branch has been merged into `main`, create a Release with GitHub using the higher `MAJOR.MINOR.PATCH++` semantic version as tag.
-
-### Let's Work on a New Feature
-
-1\. From the `develop` branch, create a `feature/<my-feature>` branch, and switch to it.
-
-```text
+# Make sure your local develop branch is up to date with the remote:
 git checkout develop
+git pull origin develop
 ```
 
 ```text
-git branch feature/my-feature
+# Create your feature branch from develop:
+git checkout -b feature/[<initials>/]<feature-name> develop
+```
+
+where
+
+* `<feature-name>` MUST describe the feature in a concise and meaningful way (e.g., add-extra-endpoint).
+* `<initials>` SHOULD be used to avoid conflicts and to make branch ownership explicit. The shorter form without initials MAY be used when no ambiguity or naming conflict is expected.
+
+If the `develop` branch did not yet contain a folder for the intended next release version, you should create it as follows.
+
+```text
+# Create a new folder named after the new version
+# and copy the content of the previous version folder into it exactly,
+# without any modifications:
+cp -r 2.0.0/ 2.1.0/
+# Commit this copy as a standalone commit before making any changes:
+git add 2.1.0/
+git commit -m "chore: initialize 2.1.0 from 2.0.0"
+```
+
+where `2.0.0/` should be replaced by the latest released version and `2.1.0/` should be replaced by the intended next release version.
+
+Now changes can be made, either within the new versioned folder, or to supporting files, or both.
+
+```text
+# Make your changes and commit them:
+git add .
+git commit -m "feat: describe your change here"
+```
+
+where `describe your change here` should be replaced by the appropriate text.
+
+```text
+# Push your feature branch
+git push origin feature/[<initials>/]<feature-name>
+```
+
+Feature branches branches MUST be merged into the `develop` branch via a pull request.
+
+> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed before merging!
+
+### Keeping your feature branch up to date with the `develop` branch
+
+```text
+# Make sure your local develop is up to date
+git checkout develop
+git pull origin develop
+# Switch back to your feature branch
+git checkout feature/[<initials>/]<feature-name>
+# Merge develop into your feature branch
+git merge develop
+# This brings all changes from `develop` into your branch.
+# If there are conflicts, git will tell you which files need attention.
+# Open those files, resolve the conflicts manually, then run:
+# git add <resolved-file>
+# git commit
+```
+
+### Hotfix Process
+
+Hotfixes address critical issues in an already-released version and bypass `develop` to go directly to `main`.
+
+```text
+# Make sure your local main branch is up to date with the remote:
+git checkout main
+git pull origin main
 ```
 
 ```text
-$ git checkout feature/my-feature
+# Create your hotfix branch from main:
+git checkout -b hotfix/[<initials>/]<hotfix-name>
 ```
 
-2\. Copy the folder with the highest semantic version and rename it as
+where
 
-* `MAJOR.MINOR++.0/` if you plan to work on _backwards compatible_ changes
+* `<hotfix-name>` MUST describe the hotfix in a concise and meaningful way (e.g., fix-supporting-file).
+* `<initials>` SHOULD be used to avoid conflicts and to make branch ownership explicit. The shorter form without initials MAY be used when no ambiguity or naming conflict is expected.
 
-* `MAJOR++.0.0/` if you plan to work on _incompatible_ changes
+```text
+# Make your changes and commit them:
+git add .
+git commit -m "fix: describe your hotfix here"
+```
 
-***WARNING:*** The folder with the highest semantic version might already a work-in-progress version created by another feature branch! In that case, you SHOULD NOT copy and rename that folder but just work in it. However, you should then be prepared for merge conflict(s) when merging back into the `develop` branch!
+where `describe your hotfix here` should be replaced by the appropriate text.
 
-3\. Stage, commit and push this change (if you actually copy a folder).
+Hotfix branches branches MUST be merged into the `main` branch via a pull request.
 
-4\. Work on your changes within the new `MAJOR.MINOR++.0/` or `MAJOR++.0.0/` folder and don't make any changes to the other folders.
+> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed before merging!
 
-5\. Stage, commit and push your changes.
+The merge MUST happen during an ad-hoc meeting and **3 maintainer approvals** are required.
 
-6\. When you have finished, from GitHub, create a Pull Request from `feature/<my-feature>` to `develop`.
+After the hotfix is merged into `main`, open another Pull Request from the `main` branch into the `develop` branch on GitHub, to ensure it is not lost in the next release.
 
-### Let's Release a New Version of the papiNet API Standard
+## Release Process
 
-1\. When you `develop` branch is ready, from GitHub, create a Pull Request with the title "Release papiNet API X.Y.Z" from `develop` to `main`, where "X.Y.Z" is the new `MAJOR.MINOR++.0/` or `MAJOR++.0.0/` semantic version.
+Releases are governed by maintainers.
 
-2\. Create a Release with GitHub using the new `MAJOR.MINOR++.0/` or `MAJOR++.0.0/` semantic version as tag.
+1. Maintainers collaboratively draft release notes using the **GitHub draft release** feature ahead of the release meeting, until consensus is reached on the content.
+
+2. A release meeting is scheduled with a quorum of maintainers present (as defined in `GOVERNANCE.md`).
+
+3. During the meeting, a Pull Request is opened from `develop` → `main` with the title "papiNet API `<MAJOR>.<MINOR>.<PATCH>` is ready ;-) | Release".
+
+> **WARNING:** You should ALWAYS verify that the content of all previous _versioned folders_ have not been changed before merging!
+
+4. **3 maintainer approvals** are required before the PR can be merged.
+
+5. On merge, the draft GitHub Release is published with the agreed semver tag (e.g. `v2.1.0`) and release notes.
