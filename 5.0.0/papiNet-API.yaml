@@ -2834,14 +2834,8 @@ components:
                             type: string
                             minLength: 1
                     transportUnitIdentifierReference:
-                      type: object
-                      unevaluatedProperties: false
-                      required:
-                        - value
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
+                      type: string
+                      minLength: 1
                     quantities:
                       type: array
                       minItems: 1
@@ -3210,14 +3204,8 @@ components:
                             type: string
                             minLength: 1
                     transportUnitIdentifierReference:
-                      type: object
-                      unevaluatedProperties: false
-                      required:
-                        - value
-                      properties:
-                        value:
-                          type: string
-                          minLength: 1
+                      type: string
+                      minLength: 1
                     quantities:
                       type: array
                       minItems: 1
@@ -4112,14 +4100,8 @@ components:
                                   type: string
                                   minLength: 1
                           transportUnitIdentifierReference:
-                            type: object
-                            unevaluatedProperties: false
-                            required:
-                              - value
-                            properties:
-                              value:
-                                type: string
-                                minLength: 1
+                            type: string
+                            minLength: 1
                           quantities:
                             type: array
                             minItems: 1
