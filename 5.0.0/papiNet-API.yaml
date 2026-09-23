@@ -3297,6 +3297,8 @@ components:
               - timestamp
               - isCancelled
               - isActive
+              - shipFromLocation
+              - shipToLocation
               - lineItemCount
             properties:
               id:
@@ -3313,6 +3315,20 @@ components:
                 type: boolean
               isActive:
                 type: boolean
+              supplierParty:
+                $ref: "#/components/schemas/Party"
+              logisticsSupplierParty:
+                $ref: "#/components/schemas/Party"
+              customerParty:
+                $ref: "#/components/schemas/Party"
+              buyerParty:
+                $ref: "#/components/schemas/Party"
+              shipFromLocation:
+                description: It MUST correspond to the `.shipFromLocation` object of the **first** `.deliveryLegs[]`.
+                $ref: "#/components/schemas/Location"
+              shipToLocation:
+                description: It MUST correspond to the `.shipToLocation` object of the **last** `.deliveryLegs[]`.
+                $ref: "#/components/schemas/Location"
               lineItemCount:
                 type: integer
                 minimum: 1
