@@ -38,7 +38,7 @@ papiNet suggests that the _supplier_ (as well as the _logistics supplier_ if it 
 
 ## Notifications
 
-In order to get updated information on _supplier orders_ and _logistics delivery notes_ the _logistics suppliers_ have to call API endpoints of the _supplier_. As the _logistics suppliers_ do not know when these informations are getting updated, they should normally poll these API endpoints on a regular basis.
+In order to get updated information on _supplier orders_, _logistics delivery instructions_ and _logistics delivery notes_ the _logistics suppliers_ have to call API endpoints of the _supplier_. As the _logistics suppliers_ do not know when these informations are getting updated, they should normally poll these API endpoints on a regular basis.
 
 This polling mechanism is not optimal from an IT resources point of view, that's why papiNet recommends the usage of notifications from the _logistics suppliers_ to the _supplier_. However, as the usage of these notifications would require additional investment on the _logistics supplier_ side, they remain an optional optimization.
 
