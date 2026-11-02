@@ -28,7 +28,6 @@ The following assumptions are used:
 - _Logistics supplier_ are responsible for transportation, warehousing, or both.
 - API communication occurs between a _logistics supplier_ and the _supplier_.
 - Authentication is assumed to use OAuth 2.0 Client Credentials.
-- PUT operations create new versions of business transactions.
 - PATCH operations are not used.
 - The _supplier_ remains the master owner of shared business transactions.
 
@@ -81,17 +80,17 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 This use case covers shipment visibility and shipment status reporting.
 
-**Scenario A:**  Logistics Supplier is responsible only for distributing the products.
-Logistics Supplier endpoints
+**Scenario A:**  _Logistics supplier_ is responsible only for distributing the products.
+_Logistics supplier_ endpoints
   * `PUT /logistics-shipments/{logisticsShipmentId}`
 
-**Scenario B:**  Logistics Supplier is responsible for only a warehouse. Logistics Supplier can request logistics-shipments from   the Supplier. The Supplier has received logistics-shipments from the Logistics Supplier responsible for distributing the product.
-Logistics Supplier endpoints
+**Scenario B:**  _Logistics supplier_ is responsible for only a warehouse. _Logistics supplier_ can request logistics-shipments from the _supplier_. The _supplier_ has received logistics-shipments from the _logistics supplier_ responsible for distributing the product.
+_Logistics supplier_ endpoints
   * `GET /logistics-shipments`
   * `GET /logistics-shipments/{logisticsShipmentId}`
 
-**Scenario C:**  Logistics Supplier is responsible for both distributing the products and the warehouse.
-Logistics Supplier endpoints
+**Scenario C:**  _Logistics supplier_ is responsible for both distributing the products and the warehouse.
+_Logistics supplier_ endpoints
   * `PUT /logistics-shipments/{logisticsShipmentId}`
 
 
