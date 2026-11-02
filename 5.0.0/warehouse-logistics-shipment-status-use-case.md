@@ -1,7 +1,7 @@
 Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner".
 All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign.
 
-# Logistics API Use Cases Version 5.0.0
+# UC3 Logistics Shipment Status
 
 ## Context
 
@@ -16,7 +16,7 @@ The use cases are designed primarily for:
 - Paper
 - Board
 
-The purpose of these use cases is to standardize communication between Suppliers and Logistics Suppliers involved in transportation, warehousing and inventory management.
+The purpose of these use cases is to standardize communication between _suppliers_ and _logistics suppliers_ involved in transportation, warehousing and inventory management.
 
 ## Simplification
 
@@ -24,56 +24,76 @@ For readability, the use cases only describe the key interactions between busine
 
 The following assumptions are used:
 
-- The Supplier is the owner of the goods.
-- Logistics Suppliers are responsible for transportation, warehousing, or both.
-- API communication occurs between a Logistics Supplier and the Supplier.
+- The _supplier_ is the owner of the goods.
+- _Logistics supplier_ are responsible for transportation, warehousing, or both.
+- API communication occurs between a _logistics supplier_ and the _supplier_.
 - Authentication is assumed to use OAuth 2.0 Client Credentials.
 - PUT operations create new versions of business transactions.
 - PATCH operations are not used.
-- The Supplier remains the master owner of shared business transactions.
+- The _supplier_ remains the master owner of shared business transactions.
 
 ## Domain Name
 
-papiNet recommends exposing API endpoints using:
+papiNet suggests that the _supplier_ (as well as the _logistics supplier_ if it uses the notification mechanism) exposes the papiNet API endpoints using the domain name of its corporate web side with the prefix `papinet.*`. For instance, if the _supplier_ is the company **ACME** using `acme.com` for its corporate web site, they SHOULD then expose the papiNet API endpoints on the domain `papinet.acme.com`.
+
+## Notifications
+
+In order to get updated information on _shipment status_ the _logistics suppliers_ have to call API endpoints of the _supplier_. As the _logistics suppliers_ do not know when these informations are getting updated, they should normally poll these API endpoints on a regular basis.
+
+This polling mechanism is not optimal from an IT resources point of view, that's why papiNet recommends the usage of notifications from the _logistics suppliers_ to the _supplier_. However, as the usage of these notifications would require additional investment on the _logistics supplier_ side, they remain an optional optimization.
+
+For the implementation of these notifications, papiNet recommends to use the [CloudEvents](https://cloudevents.io/) specification, which is a vendor-neutral specification for defining the format of event data. In order to ensure the decoupling between this notification mechanism and the papiNet API, papiNet will use the CloudEvents specification following the **_thin event_** pattern. (...)
+
+## papiNet Stub Service
+
+A Standalone Pact Stub Server can be downloaded from [Standalone Pact Stub Server](https://github.com/pact-foundation/pact-stub-server).
+You can run locally the papiNet stub service using the following command:
 
 ```text
-https://papinet.company.com
-```
-
-For example:
-
-```text
-https://papinet.acme.com
+pact-stub-server --file ./stub/papiNet.PACT.json --port 3040 --provider-state-header-name X-Provider-State
 ```
 
 ## Authentication
 
-For authenticating Logistics Suppliers, papiNet recommends OAuth 2.0 with the Client Credentials grant.
+For authenticating the _logistics supplier_, papiNet recommends to secure the access to the papiNet API endpoints using the OAuth 2.0 standard, with the _client credentials_ authorization grant.
 
-Example:
+The _logistics supplier_ sends an API request to create a session, and gets its associated _access token_:
 
-```bash
-POST /tokens
+```text
+curl --request POST \
+  --url 'http://localhost:3040/tokens' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
 ```
 
-The response returns an access token used for subsequent API requests.
+If all goes well, the _logistics supplier_ will receive a response like this:
 
----
+```json
+{ 
+  "access_token": "3e36bcb1-248b-436b-bdf1-4ff735f03000",
+  "token_type": "bearer",
+  "expires_in_": 86400
+}
+```
 
-# UC1 Logistics Shipment Status
-
-## Context
+## Scenarios 
 
 This use case covers shipment visibility and shipment status reporting.
 
-Shipment information can be exchanged between Suppliers and Logistics Suppliers regardless of warehousing responsibilities.
+**Scenario A:**  Logistics Supplier is responsible only for distributing the products.
+Logistics Supplier endpoints
+  * `PUT /logistics-shipments/{logisticsShipmentId}`
 
-## Common Business Rules
+**Scenario B:**  Logistics Supplier is responsible for only a warehouse. Logistics Supplier can request logistics-shipments from   the Supplier. The Supplier has received logistics-shipments from the Logistics Supplier responsible for distributing the product.
+Logistics Supplier endpoints
+  * `GET /logistics-shipments`
+  * `GET /logistics-shipments/{logisticsShipmentId}`
 
-- PATCH shall not be used.
-- PUT shall be used for shipment updates.
-- The server stores all versions of the shipment transaction.
-- Shipment identifiers remain stable throughout the shipment lifecycle.
+**Scenario C:**  Logistics Supplier is responsible for both distributing the products and the warehouse.
+Logistics Supplier endpoints
+  * `PUT /logistics-shipments/{logisticsShipmentId}`
+
 
 ---
 
@@ -160,296 +180,3 @@ PUT /logistics-shipments/{logisticsShipmentId}
 5. Updated shipment information remains available to the Supplier.
 
 ---
-
-# UC2 Logistics Movement of Goods to a Logistics Warehouse
-
-## Context
-
-This use case covers movement of goods into warehouse locations.
-
-The destination is always a warehouse operated by a Logistics Supplier.
-
----
-
-## Scenario A: Mill to Logistics Warehouse
-
-### Business Context
-
-The Supplier is responsible for distribution.
-
-Goods move from a mill to a warehouse.
-
-This scenario originates from version 4.0.0.
-
-### Endpoints
-
-```text
-GET /supplier-orders
-GET /supplier-orders/{supplierOrderId}
-GET /logistics-delivery-notes
-GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
-```
-
-Shipment-related requests are covered in UC3.
-
-### Flow
-
-1. Warehouse operator requests active supplier orders.
-2. Warehouse operator obtains order details.
-3. Warehouse operator retrieves delivery notes.
-4. Goods arrive at warehouse.
-5. Warehouse operator performs unloading.
-6. Goods receipt is created.
-7. Variances are reported if applicable.
-8. Inventory becomes available in warehouse.
-
----
-
-## Scenario B: Warehouse to Warehouse (Two Logistics Suppliers)
-
-### Business Context
-
-Goods are transferred between two logistics warehouses.
-
-#### Logistics Supplier A
-
-Responsible for:
-
-- Ship-from warehouse
-- Transportation execution
-
-#### Logistics Supplier B
-
-Responsible for:
-
-- Ship-to warehouse
-
-### Logistics Supplier A Endpoints
-
-```text
-GET /logistics-delivery-instructions
-GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
-PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
-```
-
-Shipment updates are covered by UC1.
-
-### Logistics Supplier B Endpoints
-
-```text
-GET /supplier-orders
-GET /supplier-orders/{supplierOrderId}
-GET /logistics-delivery-notes
-GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
-```
-
-Shipment requests are covered by UC1.
-
-### Flow
-
-1. Supplier issues delivery instruction.
-2. Logistics Supplier A receives instruction.
-3. Goods are loaded.
-4. Delivery note is reported.
-5. Shipment status is continuously updated.
-6. Goods arrive at destination warehouse.
-7. Logistics Supplier B receives delivery information.
-8. Goods receipt is reported.
-9. Inventory is updated.
-
----
-
-## Scenario C: Warehouse to Warehouse (Three Logistics Suppliers)
-
-### Business Context
-
-Three logistics providers participate.
-
-#### Logistics Supplier A
-
-Responsible for transportation.
-
-#### Logistics Supplier B
-
-Responsible for ship-from warehouse.
-
-#### Logistics Supplier C
-
-Responsible for ship-to warehouse.
-
-### Logistics Supplier A Endpoints
-
-```text
-GET /logistics-delivery-instructions
-GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
-PUT /logistics-loading-instructions/{logisticsLoadingInstructionId}
-GET /logistics-delivery-notes
-GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-```
-
-### Logistics Supplier B Endpoints
-
-```text
-GET /logistics-loading-instructions
-GET /logistics-loading-instructions/{logisticsLoadingInstructionId}
-PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
-```
-
-### Logistics Supplier C Endpoints
-
-```text
-GET /supplier-orders
-GET /supplier-orders/{supplierOrderId}
-GET /logistics-delivery-notes
-GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}
-```
-
-### Flow
-
-1. Supplier issues transportation requirement.
-2. Logistics Supplier A coordinates transport.
-3. Logistics Supplier B prepares loading.
-4. Loading instruction is exchanged.
-5. Delivery note is generated.
-6. Shipment status is updated.
-7. Logistics Supplier C receives shipment.
-8. Goods receipt is reported.
-9. Inventory becomes available in destination warehouse.
-
----
-
-# UC3 Logistics Movement of Goods to a Logistics Ship-To Location
-
-## Context
-
-This use case covers outbound logistics from warehouse to final receiving locations.
-
-The destination is a customer facility or other designated ship-to location.
-
----
-
-## Scenario A: Single Logistics Supplier
-
-### Business Context
-
-The Logistics Supplier is responsible for both transportation and warehousing.
-
-This scenario exists in version 4.0.0.
-
-### Endpoints
-
-```text
-GET /logistics-delivery-instructions
-GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
-PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
-```
-
-Shipment updates are covered by UC1.
-
-### Flow
-
-1. Delivery instruction is received.
-2. Goods are picked from warehouse.
-3. Loading is completed.
-4. Delivery note is issued.
-5. Shipment status is maintained.
-6. Goods are delivered to final destination.
-
----
-
-## Scenario B: Separate Transportation and Warehouse Providers
-
-### Business Context
-
-Two Logistics Suppliers participate.
-
-#### Logistics Supplier A
-
-Responsible for transportation.
-
-#### Logistics Supplier B
-
-Responsible for warehouse operations.
-
-### Logistics Supplier A Endpoints
-
-```text
-GET /logistics-delivery-instructions
-GET /logistics-delivery-instructions/{logisticsDeliveryInstructionId}
-PUT /logistics-loading-instructions/{logisticsLoadingInstructionId}
-GET /logistics-delivery-notes
-GET /logistics-delivery-notes/{logisticsDeliveryNoteId}
-```
-
-### Logistics Supplier B Endpoints
-
-```text
-GET /logistics-loading-instructions
-GET /logistics-loading-instructions/{logisticsLoadingInstructionId}
-PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}
-```
-
-### Flow
-
-1. Delivery instruction is issued.
-2. Warehouse operator prepares order.
-3. Loading instruction is exchanged.
-4. Goods are loaded.
-5. Delivery note is generated.
-6. Transportation provider executes delivery.
-7. Shipment status is updated.
-8. Goods reach final destination.
-
----
-
-# Use Cases with Several Logistics Suppliers
-
-## Context
-
-All transactions are exchanged between the Supplier and individual Logistics Suppliers.
-
-When information generated by one Logistics Supplier is required by another Logistics Supplier:
-
-1. The Supplier receives the transaction.
-2. The Supplier transforms the transaction.
-3. The Supplier creates a new UUID.
-4. The Supplier creates a new Supplier-assigned transaction number.
-5. References to original transactions may be maintained.
-6. End-to-end traceability remains possible.
-
-## Example
-
-A shipment created by Logistics Supplier A may be required by Logistics Supplier B.
-
-The Supplier:
-
-- Creates a new shipment transaction.
-- Assigns a new UUID.
-- Assigns a new business number.
-- Maintains references to the originating shipment.
-
-This enables tracking of a shipment throughout the entire supply chain.
-
----
-
-# Transport Modes
-
-The following transport modes should be supported:
-
-- Road
-- Rail
-- Sea
-
-Additional transport modes may be added where required.
-
----
-
-# Open Questions
-
-1. Are Road, Rail and Sea sufficient for version 5.0.0?
-2. Are any additional transport modes required?
-3. Are additional logistics scenarios required?
-4. Are all practical logistics processes covered through combinations of UC2, UC3, UC4 and UC5?
