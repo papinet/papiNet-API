@@ -80,7 +80,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 This use case covers shipment visibility and shipment status reporting.
 
-**Scenario A:**  _Logistics supplier_ is responsible only for distributing the products.
+**Scenario A:**  _Logistics supplier_ is responsible only for distributing the products and has an obligation to provide status update to the _supplier_ on status of the shipment. 
 _Logistics supplier_ endpoints
   * `PUT /logistics-shipments/{logisticsShipmentId}`
 
@@ -98,37 +98,140 @@ _Logistics supplier_ endpoints
 
 ## Scenario A: Logistics Supplier Responsible Only for Distribution
 
-### Business Context
-
-The Logistics Supplier is responsible only for transport execution.
-
-The Supplier remains responsible for warehouse operations.
-
-### Logistics Supplier Endpoints
+#### UC3_Interaction 0 of Scenario A (Authentication)
+The logistics supplier sends an API request to the supplier in order to be authenticated, and gets an access token:
 
 ```text
-PUT /logistics-shipments/{logisticsShipmentId}
+curl --request POST \
+  --url 'http://localhost:3040/tokens' \
+  --header 'X-Provider-State: UC3_Interaction_0_of_Scenario_A' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+```
+If all goes well, the logistics supplier will receive a response like this:
+
+```text
+{
+  "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+  "token_type": "bearer",
+  "expires_in": 86400
+}
 ```
 
-### Flow
+#### UC3_Interaction 1 of Scenario A
+_Logistics supplier_ is responsible only for distributing the products. _Logistics supplier_ provides a status update to the _supplier_ on where the transport is and if any delays are expected.
 
-1. A shipment is planned by the Supplier.
-2. Transportation is executed by the Logistics Supplier.
-3. Shipment status changes occur during transportation.
-4. The Logistics Supplier updates shipment status.
-5. The Supplier receives the updated shipment information.
-6. Historical versions remain available.
-
-### Typical Statuses
-
-- Planned
-- Confirmed
-- Loaded
-- Departed
-- In Transit
-- Arrived
-- Delivered
-- Cancelled
+```text
+curl --request PUT --verbose \
+  --url 'http://localhost:3040/logistics-shipments' \
+  --header 'X-Provider-State: UC1_Interaction_5_of_Scenario_A' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
+  --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
+  --data '{
+  "id": "241119a4-d32d-4c5d-83c7-253211b0530f",
+  "number": "SS6789",
+  "timestamp": "2024-05-24T06:30:47.0",
+  "isActive": true,
+  "isCancelled": false,
+  "supplierParty": {
+    "identifierBySupplier": "MILL",
+    "nameLines": [
+      "MillName"
+    ],
+    "address": {
+      "addressLines": [
+        "Mill Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "12345",
+      "countryCode": "SE"
+    }
+  },
+  "LogisticsSupplierParty": {
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TermName"
+    ],
+    "address": {
+      "addressLines": [
+        "Term Road 1"
+      ],
+      "city": "CITY 2",
+      "postalCode": "34567",
+      "countryCode": "SE"
+    }
+  },
+  "shipFromLocation": {
+    "type": "Terminal",
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TermName"
+    ],
+    "address": {
+      "addressLines": [
+        "Term Road 1"
+      ],
+      "city": "CITY 2",
+      "postalCode": "34567",
+      "countryCode": "SE"
+    }
+  },
+  "shipToLocation": {
+    "type": "CustomerFacility",
+    "identifierBySupplier": "DEST1",
+    "nameLines": [
+      "CustomerName"
+    ],
+    "address": {
+      "addressLines": [
+        "Customer Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "23456",
+      "countryCode": "BE"
+    }
+  },
+  "MainCarrierParty": {
+    "identifierBySupplier": "CARRIER",
+    "nameLines": [
+      "CARRIER"
+    ]
+  },
+  "references": [
+    {
+      "type": "DeliveryNote",
+      "number": "LDN6789",
+      "assignedBy": "Forwarder",
+      "assigningPartyIdentifierBySupplier": "TERM"
+    }
+  ],
+  "statusArrivalShipToLocation": "OnTime",
+  "scheduledDateTimeOfArrivalShipToLocation": "2024-05-24T10:00",
+  "estimatedDateTimeOfArrivalShipToLocation": "2024-05-24T09:42",
+  "eventType": "OnRouteToShipToLocation",
+  "eventTimestamp": "2026-11-09T06:25:23.0",
+  "eventLocation": {
+    "name": "Waypoint 23",
+    "coordinatesWGS84": {
+      "latitude": 51.080703,
+      "longitude": 5.449962
+    }
+  },
+  "transport": {
+    "modeType": "Road",
+    "vehicle": {
+      "type": "Truck",
+      "identifier": {
+        "type": "LicencePlateNumber",
+        "value": "XX-XXX-XX",
+        "countryCode": "SE"
+      }
+    }
+  }
+}
+```
 
 ---
 
