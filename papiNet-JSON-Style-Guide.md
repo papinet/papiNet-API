@@ -41,11 +41,11 @@ Let's give an example of each case:
 
 ### Rule 1
 
-papiNet restrict enumerated values to the minimum list that applies within the context. As a consequence, objects will be usually be defined **locally**! However, if a structure can be reuse whatever the context is, it could be defined globally.
+papiNet restrict enumerated values to the minimum list that applies within the context. As a consequence, objects will be usually be defined **locally**! However, if a structure can be reused whatever the context is, it could be defined globally.
 
 ### Rule 2 - HTTP Status Codes
 
-The following HTTP Status Codes MUST be used for the specified cases below.. 
+The following HTTP Status Codes MUST be used for the specified cases below. 
 
 **GET a list of items**
 - `200 OK`, when items found.
