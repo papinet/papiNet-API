@@ -109,7 +109,7 @@ curl --request POST \
   --header 'Content-Type: application/x-www-form-urlencoded' \
   --data 'grant_type=client_credentials'
 ```
-If all goes well, the logistics supplier will receive a response like this:
+If all goes well, the _logistics supplier_ will receive a response like this:
 
 ```text
 {
@@ -124,7 +124,7 @@ _Logistics supplier_ is responsible only for distributing the products. _Logisti
 
 ```text
 curl --request PUT --verbose \
-  --url 'http://localhost:3040/logistics-shipments' \
+  --url 'http://localhost:3040/logistics-shipments-id' \
   --header 'X-Provider-State: UC1_Interaction_5_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
@@ -237,48 +237,162 @@ curl --request PUT --verbose \
 
 ## Scenario B: Warehouse Logistics Supplier Requests Shipment Information
 
-### Business Context
-
-The Logistics Supplier is responsible only for warehousing.
-
-Transportation is performed by another Logistics Supplier.
-
-The Supplier receives transportation updates and makes them available to the warehouse operator.
-
-### Logistics Supplier Endpoints
+#### UC3_Interaction 0 of Scenario B (Authentication)
+The logistics supplier sends an API request to the supplier in order to be authenticated, and gets an access token:
 
 ```text
-GET /logistics-shipments
-GET /logistics-shipments/{logisticsShipmentId}
+curl --request POST \
+  --url 'http://localhost:3040/tokens' \
+  --header 'X-Provider-State: UC3_Interaction_0_of_Scenario_B' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+```
+If all goes well, the _logistics supplier_ will receive a response like this:
+
+```text
+{
+  "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+  "token_type": "bearer",
+  "expires_in": 86400
+}
 ```
 
-### Flow
+#### UC3_Interaction 1 of Scenario B
+The _logistics supplier_ is responsible for warehousing and is requesting logistics shipments from the _supplier_. The _supplier_ has received logistics-shipments information from the _logistics supplier_ responsible for freight forwarding. The _logistics supplier_ requests all active logistics shipments on route to the warehouse. 
 
-1. Transportation status updates are received by the Supplier.
-2. Warehouse operators request shipment information.
-3. Shipment status information is returned.
-4. Warehouse planning activities are executed using available transport information.
+```text
+curl --request GET \
+  --url 'http://localhost:3040/logistics-shipments?isActive=true' \
+  --header 'X-Provider-State: UC3_Interaction_1_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
+  --header 'Accept: application/json'
+
+```
+
+If all goes well, the _logistics supplier_ will receive a response like this:
+
+
+```text
+{
+  "count": 1,
+  "items": [
+    {
+      "id": "899de6f8-8a10-493f-9700-bff702710a13",
+      "number": "String",
+      "timestamp": "2026-11-12T09:30:47.0",
+      "isCancelled": false,
+      "isActive": true,
+      "supplierParty": {
+        "identifierBySupplier": "MILL",
+        "nameLines": [
+          "MillName"
+        ],
+        "address": {
+          "addressLines": [
+            "Mill Road 1"
+          ],
+          "city": "CITY",
+          "postalCode": "12345",
+          "countryCode": "SE"
+        }
+      },
+      "logisticsSupplierParty": {
+        "identifierBySupplier": "TERM",
+        "nameLines": [
+          "TermName"
+        ],
+        "address": {
+          "addressLines": [
+            "Term Road 1"
+          ],
+          "city": "CITY 2",
+          "postalCode": "34567",
+          "countryCode": "SE"
+        }
+      },
+      "shipFromLocation": {
+        "type": "Terminal",
+        "identifierBySupplier": "TERM",
+        "nameLines": [
+          "TermName"
+        ],
+        "address": {
+          "addressLines": [
+            "Term Road 1"
+          ],
+          "city": "CITY 2",
+          "postalCode": "34567",
+          "countryCode": "SE"
+        }
+      },
+      "shipToLocation": {
+        "type": "Terminal",
+        "identifierBySupplier": "WAREHOUSE1",
+        "nameLines": [
+          "Warehouse1Name"
+        ],
+        "address": {
+          "addressLines": [
+            "Warehouse Road 2"
+          ],
+          "city": "CITY 3",
+          "postalCode": "34787",
+          "countryCode": "SE"
+        }
+      },
+      "references": [
+        {
+      "type": "DeliveryNote",
+      "number": "LDN3800",
+      "assignedBy": "Forwarder",
+      "assigningPartyIdentifierBySupplier": "TERM"
+        }
+      ]
+    }
+  ]
+}
+```
+
+There is one active logistics-shipment available for the _logistics supplier_ to GET. The _logistics supplier_ request the details of Delivery Note LDN3800.
+
+```text
+curl --request GET \
+  --url 'http://localhost:3040/logistics-shipments-id?isActive=true&DeliveryNote=LDN3800' \
+  --header 'X-Provider-State: UC3_Interaction_1_of_Scenario_B' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
+  --header 'Accept: application/json'
+```
+
+
+
 
 ---
 
 ## Scenario C: Logistics Supplier Responsible for Warehouse and Distribution
 
-### Business Context
-
-The same Logistics Supplier manages both transportation and warehousing.
-
-### Logistics Supplier Endpoints
+#### UC3_Interaction 0 of Scenario C (Authentication)
+The logistics supplier sends an API request to the supplier in order to be authenticated, and gets an access token:
 
 ```text
-PUT /logistics-shipments/{logisticsShipmentId}
+curl --request POST \
+  --url 'http://localhost:3040/tokens' \
+  --header 'X-Provider-State: UC3_Interaction_0_of_Scenario_C' \
+  --user 'public-36297346:private-ce2d3cf4' \
+  --header 'Content-Type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials'
+```
+If all goes well, the logistics supplier will receive a response like this:
+
+```text
+{
+  "access_token": "a4f071c3-fe1f-4a45-9eae-07ddcb5bed26",
+  "token_type": "bearer",
+  "expires_in": 86400
+}
 ```
 
-### Flow
-
-1. Goods are received into warehouse.
-2. Shipment planning is performed.
-3. Transportation is executed.
-4. Shipment status changes are reported.
-5. Updated shipment information remains available to the Supplier.
+#### UC3_Interaction 1 of Scenario C
+_Logistics supplier_ is responsible only for distribut
 
 ---
