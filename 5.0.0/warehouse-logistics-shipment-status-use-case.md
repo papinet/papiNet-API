@@ -125,7 +125,7 @@ _Logistics supplier_ is responsible only for distributing the products. _Logisti
 ```text
 curl --request PUT --verbose \
   --url 'http://localhost:3040/logistics-shipments-id' \
-  --header 'X-Provider-State: UC1_Interaction_5_of_Scenario_A' \
+  --header 'X-Provider-State: UC1_Interaction_1_of_Scenario_A' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
@@ -511,6 +511,117 @@ If all goes well, the logistics supplier will receive a response like this:
 ```
 
 #### UC3_Interaction 1 of Scenario C
-_Logistics supplier_ is responsible only for distribut
+_Logistics supplier_ is responsible for both freight forwarding and warehousing. The _logistics supplier_ is required to provide re-occuring status on the shipment to the _supplier_. The _logistic supplier_ report arrival at destination status on the shipment.
+
+```text
+curl --request PUT --verbose \
+  --url 'http://localhost:3040/logistics-shipments-id' \
+  --header 'X-Provider-State: UC1_Interaction_1_of_Scenario_C' \
+  --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
+  --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
+  --data '{
+  "id": "7a9d3536-4b6f-4873-9db7-845a60416601",
+  "number": "SS3251",
+  "timestamp": "2026-11-16T14:31:27.0",
+  "isActive": true,
+  "isCancelled": false,
+  "supplierParty": {
+    "identifierBySupplier": "MILL",
+    "nameLines": [
+      "MillName"
+    ],
+    "address": {
+      "addressLines": [
+        "Mill Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "12345",
+      "countryCode": "SE"
+    }
+  },
+  "LogisticsSupplierParty": {
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TermName"
+    ],
+    "address": {
+      "addressLines": [
+        "Term Road 1"
+      ],
+      "city": "CITY 2",
+      "postalCode": "34567",
+      "countryCode": "SE"
+    }
+  },
+  "shipFromLocation": {
+    "type": "Terminal",
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TermName"
+    ],
+    "address": {
+      "addressLines": [
+        "Term Road 1"
+      ],
+      "city": "CITY 2",
+      "postalCode": "34567",
+      "countryCode": "SE"
+    }
+  },
+  "shipToLocation": {
+    "type": "CustomerFacility",
+    "identifierBySupplier": "DEST1",
+    "nameLines": [
+      "CustomerName"
+    ],
+    "address": {
+      "addressLines": [
+        "Customer Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "23456",
+      "countryCode": "BE"
+    }
+  },
+  "mainCarrierParty": {
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TERM"
+    ]
+  },
+  "references": [
+    {
+      "type": "DeliveryNote",
+      "number": "LDN1255",
+      "assignedBy": "Forwarder",
+      "assigningPartyIdentifierBySupplier": "TERM"
+    }
+  ],
+  "statusArrivalShipToLocation": "OnTime",
+  "scheduledDateTimeOfArrivalShipToLocation": "2026-11-16T14:25",
+  "estimatedDateTimeOfArrivalShipToLocation": "2026-11-16T15:41",
+  "eventType": "ArrivedAtShipToLocation",
+  "eventTimestamp": "2026-11-16T14:31:25.0",
+  "eventLocation": {
+    "name": "Destination",
+    "coordinatesWGS84": {
+      "latitude": 56.164246,
+      "longitude": 15.586948
+    }
+  },
+  "transport": {
+    "modeType": "Road",
+    "vehicle": {
+      "type": "Truck",
+      "identifier": {
+        "type": "LicencePlateNumber",
+        "value": "DEF77A",
+        "countryCode": "SE"
+      }
+    }
+  }
+}
+```
 
 ---
