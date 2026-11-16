@@ -364,8 +364,126 @@ curl --request GET \
   --header 'Accept: application/json'
 ```
 
+If all goes well, the _logistics supplier_ will receive a response like this:
 
 
+```text
+{
+  "id": "899de6f8-8a10-493f-9700-bff702710a13",
+  "number": "LDN3800",
+  "timestamp": "2026-11-12T09:35:51.0",
+  "isActive": true,
+  "isCancelled": false,
+  "supplierParty": {
+    "identifierBySupplier": "MILL",
+    "nameLines": [
+      "MillName"
+    ],
+    "address": {
+      "addressLines": [
+        "Mill Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "12345",
+      "countryCode": "SE"
+    }
+  },
+  "logisticsSupplierParty": {
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TermName"
+    ],
+    "address": {
+      "addressLines": [
+        "Term Road 1"
+      ],
+      "city": "CITY 2",
+      "postalCode": "34567",
+      "countryCode": "SE"
+    }
+  },
+  "shipFromLocation": {
+    "type": "Terminal",
+    "identifierBySupplier": "TERM",
+    "nameLines": [
+      "TermName"
+    ],
+    "address": {
+      "addressLines": [
+        "Term Road 1"
+      ],
+      "city": "CITY 2",
+      "postalCode": "34567",
+      "countryCode": "SE"
+    }
+  },
+  "shipToLocation": {
+    "type": "Terminal",
+    "identifierBySupplier": "WAREHOUSE1",
+    "nameLines": [
+      "Warehouse1Name"
+    ],
+    "address": {
+      "addressLines": [
+        "Warehouse Road 2"
+      ],
+      "city": "CITY 3",
+      "postalCode": "34787",
+      "countryCode": "SE"
+    }
+  },
+  "mainCarrierParty": {
+    "identifierBySupplier": "CARRIER2",
+    "nameLines": [
+      "CARRIER2"
+    ]
+  },
+  "references": [
+    {
+    "type": "DeliveryNote",
+    "number": "LDN3800",
+    "assignedBy": "Forwarder",
+    "assigningPartyIdentifierBySupplier": "TERM"
+    }
+  ],
+  "statusArrivalShipFromLocation": "Delayed",
+  "scheduledDateTimeOfArrivalShipFromLocation": "2024-11-14T12:00",
+  "estimatedDateTimeOfArrivalShipFromLocation": "2024-11-15T03:00",
+  "eventType": "OnRouteToShipFromLocation",
+  "eventTimestamp": "2026-11-12T09:29:13.0",
+  "eventLocation": {
+    "name": "Waypoint",
+    "coordinatesWGS84": {
+      "latitude": 62.523785,
+      "longitude": 17.471277
+    }
+  },
+  "transport": {
+    "modeType": "Road",
+    "vehicle": {
+      "type": "Truck",
+      "identifier": {
+        "type": "LicencePlateNumber",
+        "value": "ABC12D",
+        "countryCode": "SE"
+      }
+    },
+    "characteristics": {
+      "safetyAndEnvironmentDetails": [
+        {
+          "type": "CarbonDioxide(CO2)Emission",
+          "quantity": {
+            "context": "Predicted",
+            "type": "NominalWeight",
+            "value": 915.0,
+            "uom": "KilogramCO2e"
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 ---
 
