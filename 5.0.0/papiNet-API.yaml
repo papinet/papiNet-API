@@ -4898,15 +4898,15 @@ components:
           type: boolean
         supplierParty:
           $ref: "#/components/schemas/Party"
-        LogisticsSupplierParty:
+        logisticsSupplierParty:
           $ref: "#/components/schemas/Party"
         shipFromLocation:
           $ref: "#/components/schemas/Location"
         shipToLocation:
           $ref: "#/components/schemas/Location"
-        MainCarrierParty:
+        mainCarrierParty:
           $ref: "#/components/schemas/Party"
-        CarrierParty:
+        carrierParty:
           $ref: "#/components/schemas/Party"
         references:
           type: array
