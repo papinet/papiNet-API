@@ -1,24 +1,24 @@
 Copyright 2000 - 2026 the Confederation of European Paper Industries AISBL ("papiNet") the "Copyright Owner".
 All rights reserved by the Copyright Owner under the laws of the United States, Belgium, the European Economic Community, and all states, domestic and foreign.
 
-# UC3 Logistics Shipment Status
+# Logistics Shipment Use Case
 
 ## Context
 
-This use case is designed for _Paper_, _Board_ and _Pulp_ businesses.
+This use case is designed for _Paper_, _Board_ and _Pulp_ businesses. 
+The purpose of this use case is to standardize communication between the _supplier_ and _logistics suppliers_ involved in freight forwarding and warehousing.
 
 Endpoints used in this use case
  
-* `GET /supplier-orders`
-* `GET /supplier-orders/{supplierOrderId}`
-* `GET /logistics-delivery-notes`
-* `GET /logistics-delivery-notes/{logisticsDeliveryNoteId}`
-* `POST /logistics-delivery-notes`
-* `PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}`
-* `POST /logistics-goods-receipts`
-* `PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}`
-* `GET /logistics-delivery-instructions`
-* `GET /logistics-delivery-instructions/{deliveryInstructionId}`
+* `PUT /logistics-shipments/{logisticsShipmentId}`
+* `GET /logistics-shipments`
+* `GET /logistics-shipments/{logisticsShipmentId}`
+
+General assumptions
+
+- Masterdata is defined by _supplier_. 
+- _Supplier_ is hosting the server, while _logistics supplier_ is hosting the client.
+- Supplier is acting as message Hub between several logistics suppliers
 
 ## Domain Name
 
@@ -69,16 +69,23 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 This use case covers shipment visibility and shipment status reporting.
 
-**Scenario A:**  _Logistics supplier_ is responsible only for distributing the products and has an obligation to provide status update to the _supplier_ on status of the shipment. 
+
+LÄGG TILL SCENARIO (NYTT A) MED FREIGHT FORWARD BY SUPPLIER
+
+**Scenario A:** lägg till rubrik _Logistics supplier_ is responsible only for freight forwarding of the products having the business role _Forwarder_ and has an obligation to provide status update to the _supplier_ on status of the shipment. 
 _Logistics supplier_ endpoints
   * `PUT /logistics-shipments/{logisticsShipmentId}`
 
-**Scenario B:**  _Logistics supplier_ is responsible for only a warehouse. _Logistics supplier_ can request logistics-shipments from the _supplier_. The _supplier_ has received logistics-shipments from the _logistics supplier_ responsible for distributing the product.
+**Scenario B:** lägg till rubrik  _Logistics supplier_ is responsible for only a  (LÄGG TILL ÖVERALT) Ship To warehouse. _Logistics supplier_ can request logistics-shipments from the _supplier_. The _supplier_ has received logistics-shipments from the _logistics supplier_ responsible for distributing the product.
 _Logistics supplier_ endpoints
   * `GET /logistics-shipments`
   * `GET /logistics-shipments/{logisticsShipmentId}`
 
-**Scenario C:**  _Logistics supplier_ is responsible for both distributing the products and the warehouse.
+**Scenario C:** lägg till rubrik TA BORT SCENARIO
+
+
+
+_Logistics supplier_ is responsible for both distributing the products and the warehouse.
 _Logistics supplier_ endpoints
   * `PUT /logistics-shipments/{logisticsShipmentId}`
 
