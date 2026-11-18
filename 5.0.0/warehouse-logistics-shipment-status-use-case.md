@@ -5,31 +5,20 @@ All rights reserved by the Copyright Owner under the laws of the United States, 
 
 ## Context
 
-This document describes logistics integration use cases supported by papiNet API version 5.0.0.
+This use case is designed for _Paper_, _Board_ and _Pulp_ businesses.
 
-The use cases are designed primarily for:
-
-- Forest Products
-- Wood Supply
-- Bioproducts
-- Pulp
-- Paper
-- Board
-
-The purpose of these use cases is to standardize communication between _suppliers_ and _logistics suppliers_ involved in transportation, warehousing and inventory management.
-
-## Simplification
-
-For readability, the use cases only describe the key interactions between business parties.
-
-The following assumptions are used:
-
-- The _supplier_ is the owner of the goods.
-- _Logistics supplier_ are responsible for transportation, warehousing, or both.
-- API communication occurs between a _logistics supplier_ and the _supplier_.
-- Authentication is assumed to use OAuth 2.0 Client Credentials.
-- PATCH operations are not used.
-- The _supplier_ remains the master owner of shared business transactions.
+Endpoints used in this use case
+ 
+* `GET /supplier-orders`
+* `GET /supplier-orders/{supplierOrderId}`
+* `GET /logistics-delivery-notes`
+* `GET /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-delivery-notes`
+* `PUT /logistics-delivery-notes/{logisticsDeliveryNoteId}`
+* `POST /logistics-goods-receipts`
+* `PUT /logistics-goods-receipts/{logisticsGoodsReceiptId}`
+* `GET /logistics-delivery-instructions`
+* `GET /logistics-delivery-instructions/{deliveryInstructionId}`
 
 ## Domain Name
 
