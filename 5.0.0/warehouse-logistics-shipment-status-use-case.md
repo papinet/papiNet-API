@@ -137,7 +137,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     {
       "id": "899de6f8-8a10-493f-9700-bff702710a13",
       "number": "String",
-      "timestamp": "2026-11-12T09:30:47Z",
+      "timestamp": "2026-11-12T09:30:47.000Z",
       "isCancelled": false,
       "isActive": true,
       "supplierParty": {
@@ -230,7 +230,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 {
   "id": "899de6f8-8a10-493f-9700-bff702710a13",
   "number": "LDN3800",
-  "timestamp": "2026-11-12T09:35:51Z",
+  "timestamp": "2026-11-12T09:35:12.000Z",
   "isActive": true,
   "isCancelled": false,
   "supplierParty": {
@@ -309,7 +309,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "scheduledDateTimeOfArrivalShipToLocation": "2024-11-14T12:00",
   "estimatedDateTimeOfArrivalShipToLocation": "2024-11-15T03:00",
   "eventType": "OnRouteToShipToLocation",
-  "eventTimestamp": "2026-11-12T09:29:13Z",
+  "eventTimestamp": "2026-11-12T09:29:13.000Z",
   "eventLocation": {
     "name": "Waypoint",
     "coordinatesWGS84": {
@@ -382,7 +382,7 @@ curl --request PUT --verbose \
   --data '{
   "id": "241119a4-d32d-4c5d-83c7-253211b0530f",
   "number": "SS6789",
-  "timestamp": "2024-05-24T06:30:47Z",
+  "timestamp": "2024-05-24T06:30:47.000Z",
   "isActive": true,
   "isCancelled": false,
   "supplierParty": {
@@ -460,7 +460,7 @@ curl --request PUT --verbose \
   "scheduledDateTimeOfArrivalShipToLocation": "2024-05-24T10:00",
   "estimatedDateTimeOfArrivalShipToLocation": "2024-05-24T09:42",
   "eventType": "OnRouteToShipToLocation",
-  "eventTimestamp": "2026-11-09T06:25:23Z",
+  "eventTimestamp": "2026-11-09T06:25:23.000Z",
   "eventLocation": {
     "name": "Waypoint 23",
     "coordinatesWGS84": {
@@ -529,7 +529,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     {
       "id": "eefb63cc-8e45-4549-b3e6-99adec2ebb5b",
       "number": "String",
-      "timestamp": "2026-11-20T11:17:13Z",
+      "timestamp": "2026-11-20T11:17:13.000Z",
       "isCancelled": false,
       "isActive": true,
       "supplierParty": {
@@ -621,7 +621,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 {
   "id": "eefb63cc-8e45-4549-b3e6-99adec2ebb5b",
   "number": "LDN1900",
-  "timestamp": "2026-11-20T11:20:10Z",
+  "timestamp": "2026-11-20T11:20:10.000Z",
   "isActive": true,
   "isCancelled": false,
   "supplierParty": {
@@ -700,7 +700,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "scheduledDateTimeOfArrivalShipToLocation": "2026-11-22T12:00",
   "estimatedDateTimeOfArrivalShipToLocation": "2024-11-23T11:00",
   "eventType": "OnRouteToShipToLocation",
-  "eventTimestamp": "2026-11-20T11:20:03:00Z",
+  "eventTimestamp": "2026-11-20T11:20:03.000Z",
   "eventLocation": {
     "name": "Waypoint",
     "coordinatesWGS84": {
