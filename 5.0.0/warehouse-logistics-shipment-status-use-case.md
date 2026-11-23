@@ -72,30 +72,30 @@ This use case covers shipment visibility using _logistics shipment_.
 
 **Scenario A:** Forwarding as a _supplier_
 
-_Supplier_ is responinsible for freight forwarding of the products having the business role _Forwarder_ and has obligation to provide status update to the _logistics supplier_. 
+_Supplier_ is responinsible for freight forwarding of the products having the business role _Forwarder_ and has obligation to provide logistics shipment information to the _logistics supplier_. 
 _Logistics supplier_ endpoints
   * `GET /logistics-shipments`
   * `GET /logistics-shipments/{logisticsShipmentId}`
 
 **Scenario B:** Forwarding as a _logistics supplier_
 
-_Logistics supplier_ is responsible only for freight forwarding of the products having the business role _Forwarder_ and has an obligation to provide status update to the _supplier_. 
+_Logistics supplier_ is responsible only for freight forwarding of the products having the business role _Forwarder_ and has an obligation to provide logistics shipment information to the _supplier_. 
 _Logistics supplier_ endpoints
   * `PUT /logistics-shipments/{logisticsShipmentId}`
 
 **Scenario C:** Forwarding as an additional _logistics supplier_
 
-_Logistics supplier_ is responsible for only a ship to warehouse. _Logistics supplier_ can request logistics-shipments from the _supplier_. The _supplier_ has received logistics-shipments from the _logistics supplier_ responsible for distributing the product.
+_Logistics supplier_ is responsible for only a ship to warehouse. _Logistics supplier_ can request logistics-shipments from the _supplier_. The _supplier_ has received logistics-shipments from the _logistics supplier_ responsible for freight forwarding the product.
 _Logistics supplier_ endpoints
   * `GET /logistics-shipments`
   * `GET /logistics-shipments/{logisticsShipmentId}`
 
 ---
 
-## Scenario A: Forwarding as an additional _logistics supplier_
+## Scenario A: Forwarding as a _supplier_
 
 #### UC3_Interaction 0 of Scenario A (Authentication)
-The logistics supplier sends an API request to the supplier in order to be authenticated, and gets an access token:
+The _logistics supplier_ sends an API request to the supplier in order to be authenticated, and gets an access token:
 
 ```text
 curl --request POST \
@@ -116,7 +116,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 ```
 
 #### UC3_Interaction 1 of Scenario A
-_Supplier_ is responinsible for freight forwarding of the products having the business role _Forwarder_ and has obligation to provide status update to the _logistics supplier_. 
+_Supplier_ is responinsible for freight forwarding of the products having the business role _forwarder_ and has obligation to provide logistics shipment information to the _logistics supplier_. 
 
 ```text
 curl --request GET \
@@ -137,17 +137,17 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     {
       "id": "899de6f8-8a10-493f-9700-bff702710a13",
       "number": "String",
-      "timestamp": "2026-11-12T09:30:47.0",
+      "timestamp": "2026-11-12T09:30:47Z",
       "isCancelled": false,
       "isActive": true,
       "supplierParty": {
-        "identifierBySupplier": "MILL",
+        "identifierBySupplier": "PAPEROWNER",
         "nameLines": [
-          "MillName"
+          "Paper Owner"
         ],
         "address": {
           "addressLines": [
-            "Mill Road 1"
+            "Paper Road 1"
           ],
           "city": "CITY",
           "postalCode": "12345",
@@ -169,6 +169,21 @@ If all goes well, the _logistics supplier_ will receive a response like this:
         }
       },
       "shipFromLocation": {
+        "type": "Mill",
+        "identifierBySupplier": "PAPEROWNER",
+        "nameLines": [
+          "Paper Owner"
+        ],
+        "address": {
+          "addressLines": [
+            "Paper Road 1"
+          ],
+          "city": "CITY",
+          "postalCode": "12345",
+          "countryCode": "SE"
+        }
+      },
+      "shipToLocation": {
         "type": "Terminal",
         "identifierBySupplier": "TERM",
         "nameLines": [
@@ -180,21 +195,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           ],
           "city": "CITY 2",
           "postalCode": "34567",
-          "countryCode": "SE"
-        }
-      },
-      "shipToLocation": {
-        "type": "Terminal",
-        "identifierBySupplier": "WAREHOUSE1",
-        "nameLines": [
-          "Warehouse1Name"
-        ],
-        "address": {
-          "addressLines": [
-            "Warehouse Road 2"
-          ],
-          "city": "CITY 3",
-          "postalCode": "34787",
           "countryCode": "SE"
         }
       },
@@ -211,11 +211,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-There is one active logistics-shipment available for the _logistics supplier_ to GET. The _logistics supplier_ request the details of Delivery Note LDN3800.
+#### UC3_Interaction 2 of Scenario A
+
+There is one active logistics-shipment available for the _logistics supplier_ to GET. The _logistics supplier_ request the details of GUID 899de6f8-8a10-493f-9700-bff702710a13 to get the logistics shipment information.
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3040/logistics-shipments-id?isActive=true&DeliveryNote=LDN3800' \
+  --url 'http://localhost:3040/logistics-shipments/899de6f8-8a10-493f-9700-bff702710a13' \
   --header 'X-Provider-State: UC3_Interaction_1_of_Scenario_B' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
@@ -228,17 +230,17 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 {
   "id": "899de6f8-8a10-493f-9700-bff702710a13",
   "number": "LDN3800",
-  "timestamp": "2026-11-12T09:35:51.0",
+  "timestamp": "2026-11-12T09:35:51Z",
   "isActive": true,
   "isCancelled": false,
   "supplierParty": {
-    "identifierBySupplier": "MILL",
+    "identifierBySupplier": "PAPEROWNER",
     "nameLines": [
-      "MillName"
+      "Paper Owner"
     ],
     "address": {
       "addressLines": [
-        "Mill Road 1"
+        "Paper Road 1"
       ],
       "city": "CITY",
       "postalCode": "12345",
@@ -260,6 +262,21 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "shipFromLocation": {
+    "type": "Mill",
+    "identifierBySupplier": "PAPEROWNER",
+    "nameLines": [
+      "Paper Owner"
+    ],
+    "address": {
+      "addressLines": [
+        "Paper Road 1"
+      ],
+      "city": "CITY",
+      "postalCode": "12345",
+      "countryCode": "SE"
+    }
+  },
+  "shipToLocation": {
     "type": "Terminal",
     "identifierBySupplier": "TERM",
     "nameLines": [
@@ -274,21 +291,6 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "countryCode": "SE"
     }
   },
-  "shipToLocation": {
-    "type": "Terminal",
-    "identifierBySupplier": "WAREHOUSE1",
-    "nameLines": [
-      "Warehouse1Name"
-    ],
-    "address": {
-      "addressLines": [
-        "Warehouse Road 2"
-      ],
-      "city": "CITY 3",
-      "postalCode": "34787",
-      "countryCode": "SE"
-    }
-  },
   "mainCarrierParty": {
     "identifierBySupplier": "CARRIER2",
     "nameLines": [
@@ -300,14 +302,14 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     "type": "DeliveryNote",
     "number": "LDN3800",
     "assignedBy": "Forwarder",
-    "assigningPartyIdentifierBySupplier": "TERM"
+    "assigningPartyIdentifierBySupplier": "PAPEROWNER"
     }
   ],
   "statusArrivalShipFromLocation": "Delayed",
-  "scheduledDateTimeOfArrivalShipFromLocation": "2024-11-14T12:00",
-  "estimatedDateTimeOfArrivalShipFromLocation": "2024-11-15T03:00",
-  "eventType": "OnRouteToShipFromLocation",
-  "eventTimestamp": "2026-11-12T09:29:13.0",
+  "scheduledDateTimeOfArrivalShipToLocation": "2024-11-14T12:00",
+  "estimatedDateTimeOfArrivalShipToLocation": "2024-11-15T03:00",
+  "eventType": "OnRouteToShipToLocation",
+  "eventTimestamp": "2026-11-12T09:29:13Z",
   "eventLocation": {
     "name": "Waypoint",
     "coordinatesWGS84": {
@@ -347,7 +349,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 ## Scenario B: Forwarding as a _logistics supplier_
 
 #### UC3_Interaction 0 of Scenario B (Authentication)
-The logistics supplier sends an API request to the supplier in order to be authenticated, and gets an access token:
+The _logistics supplier_ sends an API request to the _supplier_ in order to be authenticated, and gets an access token:
 
 ```text
 curl --request POST \
@@ -368,7 +370,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 ```
 
 #### UC3_Interaction 1 of Scenario B
-_Logistics supplier_ is responsible only for distributing the products. _Logistics supplier_ provides a status update to the _supplier_ on where the transport is and if any delays are expected.
+_Logistics supplier_ is responsible only for distributing the products. _Logistics supplier_ provides logistics shipment information to the _supplier_ on where the transport is and if any delays are expected.
 
 ```text
 curl --request PUT --verbose \
@@ -380,24 +382,24 @@ curl --request PUT --verbose \
   --data '{
   "id": "241119a4-d32d-4c5d-83c7-253211b0530f",
   "number": "SS6789",
-  "timestamp": "2024-05-24T06:30:47.0",
+  "timestamp": "2024-05-24T06:30:47Z",
   "isActive": true,
   "isCancelled": false,
   "supplierParty": {
-    "identifierBySupplier": "MILL",
+    "identifierBySupplier": "PAPEROWNER",
     "nameLines": [
-      "MillName"
+      "Paper Owner"
     ],
     "address": {
       "addressLines": [
-        "Mill Road 1"
+        "Paper Road 1"
       ],
       "city": "CITY",
       "postalCode": "12345",
       "countryCode": "SE"
     }
   },
-  "LogisticsSupplierParty": {
+  "logisticsSupplierParty": {
     "identifierBySupplier": "TERM",
     "nameLines": [
       "TermName"
@@ -410,7 +412,6 @@ curl --request PUT --verbose \
       "postalCode": "34567",
       "countryCode": "SE"
     }
-  },
   "shipFromLocation": {
     "type": "Terminal",
     "identifierBySupplier": "TERM",
@@ -459,7 +460,7 @@ curl --request PUT --verbose \
   "scheduledDateTimeOfArrivalShipToLocation": "2024-05-24T10:00",
   "estimatedDateTimeOfArrivalShipToLocation": "2024-05-24T09:42",
   "eventType": "OnRouteToShipToLocation",
-  "eventTimestamp": "2026-11-09T06:25:23.0",
+  "eventTimestamp": "2026-11-09T06:25:23Z",
   "eventLocation": {
     "name": "Waypoint 23",
     "coordinatesWGS84": {
@@ -473,12 +474,12 @@ curl --request PUT --verbose \
       "type": "Truck",
       "identifier": {
         "type": "LicencePlateNumber",
-        "value": "XX-XXX-XX",
-        "countryCode": "SE"
+        "value": "Q-APD-741",
+        "countryCode": "BE"
       }
     }
   }
-}
+}'
 ```
 
 ---
@@ -486,7 +487,7 @@ curl --request PUT --verbose \
 ## Scenario C: Forwarding as an additional _logistics supplier_
 
 #### UC3_Interaction 0 of Scenario C (Authentication)
-The logistics supplier sends an API request to the supplier in order to be authenticated, and gets an access token:
+The _logistics supplier_ sends an API request to the _supplier_ in order to be authenticated, and gets an access token:
 
 ```text
 curl --request POST \
@@ -507,7 +508,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 ```
 
 #### UC3_Interaction 1 of Scenario C
-The _logistics supplier_ is responsible for warehousing and is requesting logistics shipments from the _supplier_. The _supplier_ has received logistics-shipments information from the _logistics supplier_ responsible for freight forwarding. The _logistics supplier_ requests all active logistics shipments on route to the ship to warehouse. 
+The _logistics supplier_ is responsible for warehousing and is requesting logistics shipments from the _supplier_. The _supplier_ has received logistics-shipments information from an additional _logistics supplier_ responsible for freight forwarding. The _logistics supplier_ requests all active logistics shipments on route to the ship to warehouse. 
 
 ```text
 curl --request GET \
@@ -526,19 +527,19 @@ If all goes well, the _logistics supplier_ will receive a response like this:
   "count": 1,
   "items": [
     {
-      "id": "899de6f8-8a10-493f-9700-bff702710a13",
+      "id": "eefb63cc-8e45-4549-b3e6-99adec2ebb5b",
       "number": "String",
-      "timestamp": "2026-11-12T09:30:47.0",
+      "timestamp": "2026-11-20T11:17:13Z",
       "isCancelled": false,
       "isActive": true,
       "supplierParty": {
-        "identifierBySupplier": "MILL",
+        "identifierBySupplier": "PAPEROWNER",
         "nameLines": [
-          "MillName"
+          "Paper Owner"
         ],
         "address": {
           "addressLines": [
-            "Mill Road 1"
+            "Paper Road 1"
           ],
           "city": "CITY",
           "postalCode": "12345",
@@ -558,7 +559,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "postalCode": "34567",
           "countryCode": "SE"
         }
-      },
+       },
       "shipFromLocation": {
         "type": "Terminal",
         "identifierBySupplier": "TERM",
@@ -592,9 +593,9 @@ If all goes well, the _logistics supplier_ will receive a response like this:
       "references": [
         {
       "type": "DeliveryNote",
-      "number": "LDN3800",
+      "number": "LDN1900",
       "assignedBy": "Forwarder",
-      "assigningPartyIdentifierBySupplier": "TERM"
+      "assigningPartyIdentifierBySupplier": "LSUPPLIER"
         }
       ]
     }
@@ -602,12 +603,13 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 }
 ```
 
-There is one active logistics-shipment available for the _logistics supplier_ to GET. The _logistics supplier_ request the details of Delivery Note LDN3800.
+#### UC3_Interaction 2 of Scenario C
+There is one active logistics-shipment available for the _logistics supplier_ to GET. The _logistics supplier_ request the details of GUID eefb63cc-8e45-4549-b3e6-99adec2ebb5b.
 
 ```text
 curl --request GET \
-  --url 'http://localhost:3040/logistics-shipments-id?isActive=true&DeliveryNote=LDN3800' \
-  --header 'X-Provider-State: UC3_Interaction_1_of_Scenario_B' \
+  --url 'http://localhost:3040/logistics-shipments/eefb63cc-8e45-4549-b3e6-99adec2ebb5b' \
+  --header 'X-Provider-State: UC3_Interaction_2_of_Scenario_C' \
   --header 'Authorization: Bearer a4f071c3-fe1f-4a45-9eae-07ddcb5bed26' \
   --header 'Accept: application/json'
 ```
@@ -617,19 +619,19 @@ If all goes well, the _logistics supplier_ will receive a response like this:
 
 ```text
 {
-  "id": "899de6f8-8a10-493f-9700-bff702710a13",
-  "number": "LDN3800",
-  "timestamp": "2026-11-12T09:35:51.0",
+  "id": "eefb63cc-8e45-4549-b3e6-99adec2ebb5b",
+  "number": "LDN1900",
+  "timestamp": "2026-11-20T11:20:10Z",
   "isActive": true,
   "isCancelled": false,
   "supplierParty": {
-    "identifierBySupplier": "MILL",
+    "identifierBySupplier": "PAPEROWNER",
     "nameLines": [
-      "MillName"
+      "Paper Owner"
     ],
     "address": {
       "addressLines": [
-        "Mill Road 1"
+        "Paper Road 1"
       ],
       "city": "CITY",
       "postalCode": "12345",
@@ -637,17 +639,17 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "logisticsSupplierParty": {
-    "identifierBySupplier": "TERM",
+    "identifierBySupplier": "LSUPPLIER",
     "nameLines": [
-      "TermName"
+      "LSupplier"
     ],
     "address": {
       "addressLines": [
-        "Term Road 1"
+        "Logistics Road 1"
       ],
-      "city": "CITY 2",
-      "postalCode": "34567",
-      "countryCode": "SE"
+      "city": "CITY 3",
+      "postalCode": "56789",
+      "countryCode": "PL"
     }
   },
   "shipFromLocation": {
@@ -681,38 +683,38 @@ If all goes well, the _logistics supplier_ will receive a response like this:
     }
   },
   "mainCarrierParty": {
-    "identifierBySupplier": "CARRIER2",
+    "identifierBySupplier": "LSUPPLIER",
     "nameLines": [
-      "CARRIER2"
+      "LSupplier"
     ]
   },
   "references": [
     {
     "type": "DeliveryNote",
-    "number": "LDN3800",
+    "number": "LDN1900",
     "assignedBy": "Forwarder",
-    "assigningPartyIdentifierBySupplier": "TERM"
+    "assigningPartyIdentifierBySupplier": "LSUPPLIER"
     }
   ],
-  "statusArrivalShipFromLocation": "Delayed",
-  "scheduledDateTimeOfArrivalShipFromLocation": "2024-11-14T12:00",
-  "estimatedDateTimeOfArrivalShipFromLocation": "2024-11-15T03:00",
-  "eventType": "OnRouteToShipFromLocation",
-  "eventTimestamp": "2026-11-12T09:29:13.0",
+  "statusArrivalShipFromLocation": "Early",
+  "scheduledDateTimeOfArrivalShipToLocation": "2026-11-22T12:00",
+  "estimatedDateTimeOfArrivalShipToLocation": "2024-11-23T11:00",
+  "eventType": "OnRouteToShipToLocation",
+  "eventTimestamp": "2026-11-20T11:20:03:00Z",
   "eventLocation": {
     "name": "Waypoint",
     "coordinatesWGS84": {
-      "latitude": 62.523785,
-      "longitude": 17.471277
+      "latitude": 55.574183,
+      "longitude": 13.368616
     }
   },
   "transport": {
-    "modeType": "Road",
+    "modeType": "Rail",
     "vehicle": {
-      "type": "Truck",
+      "type": "Train",
       "identifier": {
-        "type": "LicencePlateNumber",
-        "value": "ABC12D",
+        "type": "TrainNumber",
+        "value": "SK887766",
         "countryCode": "SE"
       }
     },
@@ -723,7 +725,7 @@ If all goes well, the _logistics supplier_ will receive a response like this:
           "quantity": {
             "context": "Predicted",
             "type": "NominalWeight",
-            "value": 915.0,
+            "value": 678.0,
             "uom": "KilogramCO2e"
           }
         }
