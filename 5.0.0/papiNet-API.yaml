@@ -1318,20 +1318,10 @@ components:
               enum:
                 - Micron
                 - Millimeter
-        colourShade:
-          type: object
-          unevaluatedProperties: false
-          required:
-            - value
-            - assignedBy
-          properties:
-            value:
-              type: string
-              minLength: 1
-            assignedBy:
-              type: string
-              enum:
-                - Supplier
+        colourShadeBySupplier:
+          type: string
+          minLength: 1
+          description: The colour shade defined by the _Supplier_
         colourDescription:
           type: string
           minLength: 1
