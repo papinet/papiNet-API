@@ -5318,8 +5318,8 @@ components:
                     uom:
                       type: string
                       enum:
-                        - Linealfoot
-                        - HunredLinealFeet
+                        - LinealFoot
+                        - HundredLinealFeet
                         - Kilometer
                         - Meter
                         - TenKilometer
@@ -5338,8 +5338,8 @@ components:
                     uom:
                       type: string
                       enum:
-                        - Linealfoot
-                        - HunredLinealFeet
+                        - LinealFoot
+                        - HundredLinealFeet
                         - ImperialMile
                         - Kilometer
                         - Meter
@@ -5359,8 +5359,8 @@ components:
                     uom:
                       type: string
                       enum:
-                        - Linealfoot
-                        - HunredLinealFeet
+                        - LinealFoot
+                        - HundredLinealFeet
                         - Kilometer
                         - Meter
                         - TenKilometer
